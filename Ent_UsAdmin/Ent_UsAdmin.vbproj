@@ -1,0 +1,1183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4B0D0B51-5A64-43D6-AF93-820935916EBC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ConfiaAdmin.My.MyApplication</StartupObject>
+    <RootNamespace>ConfiaAdmin</RootNamespace>
+    <AssemblyName>ConfiaAdmin</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ConfiaAdmin.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ConfiaAdmin.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>lconfia.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge.Controls">
+      <HintPath>..\..\..\..\..\..\Documents\aforge net\Release\AForge.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video">
+      <HintPath>..\..\..\..\..\..\..\..\Ent_Us\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow">
+      <HintPath>..\..\..\..\..\..\..\..\Ent_Us\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.9.11\lib\net45\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\..\..\..\..\Ent_Us\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="CheckBoxComboBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CheckBoxComboBox.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Toolkit">
+      <HintPath>C:\DLL JAIRO\KryptonWinFormControls.4.4.1.0\lib\net40\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.13.3.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.13.3\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="Encryption">
+      <HintPath>..\..\..\..\..\..\..\..\Windows\System32\Encryption.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Controls.WinForms, Version=19.3.365.1347, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.DocumentStudio.WinForms.Free.19.3.0\lib\net45\Gnostice.Controls.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Core, Version=19.3.365.1347, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.DocumentStudio.Foundation.19.3.0\lib\net45\Gnostice.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Documents, Version=19.3.365.1347, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.DocumentStudio.Foundation.19.3.0\lib\net45\Gnostice.Documents.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Free.Documents.Controls.WinForms">
+      <HintPath>..\XtremeDocumentStudio.NETFree.19.1.1\lib\net40\Gnostice.Free.Documents.Controls.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Graphics.GDIPlus, Version=19.3.365.1347, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.DocumentStudio.Foundation.19.3.0\lib\net45\Gnostice.Graphics.GDIPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Graphics.Skia, Version=19.3.365.1347, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.DocumentStudio.Foundation.19.3.0\lib\net45\Gnostice.Graphics.Skia.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.ImageEngine, Version=19.3.365.1347, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.DocumentStudio.Foundation.19.3.0\lib\net45\Gnostice.ImageEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.PageManager, Version=19.3.365.1347, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.DocumentStudio.WinForms.Free.19.3.0\lib\net45\Gnostice.PageManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.XtremeFontEngine.4.0">
+      <HintPath>..\XtremeDocumentStudio.NETFree.19.1.1\lib\net40\Gnostice.XtremeFontEngine.4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.XtremeImageEngine">
+      <HintPath>..\XtremeDocumentStudio.NETFree.19.1.1\lib\net40\Gnostice.XtremeImageEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Reduced">
+      <HintPath>..\XtremeDocumentStudio.NETFree.19.1.1\lib\net40\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MadMilkman.Ini, Version=1.0.6.0, Culture=neutral, PublicKeyToken=4e0b5157a7ffbb74, processorArchitecture=MSIL" />
+    <Reference Include="MetalYoutubeUtils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MetroFramework">
+      <HintPath>..\..\..\Mora Uruapan\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Doc">
+      <HintPath>C:\Program Files (x86)\e-iceblue\Spire.Doc-FE\Bin\NET4.0\Spire.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WebKitBrowser, Version=0.5.0.0, Culture=neutral, PublicKeyToken=b967213f6d29a3be" />
+    <Reference Include="WinControls.ListView">
+      <HintPath>C:\Users\SVRCONFIAUPN\Downloads\WinControls.TreeListViewSample\TreeListViewSample\TreeListViewSample\bin\Release\WinControls.ListView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET">
+      <HintPath>C:\Users\SVRCONFIAUPN\Downloads\Sistema Confia\Sistema Confia\Sistema Confia\packages\DocX.1.1.0\lib\Xceed.Words.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="YoutubeLibrary2012, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Zeroit.Framework.Metro">
+      <HintPath>C:\DLL JAIRO\Zeroit.Framework.Metro.1.0.0\lib\Zeroit.Framework.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing">
+      <HintPath>C:\DLL JAIRO\zxing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActInformacionCredito.Designer.vb">
+      <DependentUpon>ActInformacionCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ActInformacionCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActInformacionLegal.Designer.vb">
+      <DependentUpon>ActInformacionLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ActInformacionLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarCaja.Designer.vb">
+      <DependentUpon>AgregarCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarDocumentoCredito.Designer.vb">
+      <DependentUpon>AgregarDocumentoCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarDocumentoCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarDocumentoLegal.Designer.vb">
+      <DependentUpon>AgregarDocumentoLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarDocumentoLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarDocumentoVerificacion.Designer.vb">
+      <DependentUpon>AgregarDocumentoVerificacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarDocumentoVerificacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarDocumentoDatosSolicitud.Designer.vb">
+      <DependentUpon>AgregarDocumentoDatosSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarDocumentoDatosSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarGastosLegales.Designer.vb">
+      <DependentUpon>AgregarGastosLegales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarGastosLegales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarGestionCredito.Designer.vb">
+      <DependentUpon>AgregarGestionCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarGestionCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarGestionLegal.Designer.vb">
+      <DependentUpon>AgregarGestionLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarGestionLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="agregargrupos.Designer.vb">
+      <DependentUpon>agregargrupos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="agregargrupos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="agregarservicio.Designer.vb">
+      <DependentUpon>agregarservicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="agregarservicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarTipoCredito.Designer.vb">
+      <DependentUpon>AgregarTipoCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarTipoCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarTipoDocumentoSolicitud.Designer.vb">
+      <DependentUpon>AgregarTipoDocumentoSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarTipoDocumentoSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agregar_Impuestos.Designer.vb">
+      <DependentUpon>Agregar_Impuestos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Agregar_Impuestos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutorizacionRetiro.Designer.vb">
+      <DependentUpon>AutorizacionRetiro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AutorizacionRetiro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Autorizacion.Designer.vb">
+      <DependentUpon>Autorizacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Autorizacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarEmpleadoUsuarioActualizar.Designer.vb">
+      <DependentUpon>BuscarEmpleadoUsuarioActualizar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarEmpleadoUsuarioActualizar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarEmpleadoUsuario.Designer.vb">
+      <DependentUpon>BuscarEmpleadoUsuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarEmpleadoUsuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarClienteSolicitud.Designer.vb">
+      <DependentUpon>BuscarClienteSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarClienteSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cajas.Designer.vb">
+      <DependentUpon>Cajas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Cajas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalendarioConvenio.Designer.vb">
+      <DependentUpon>CalendarioConvenio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarioConvenio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalendarioConvenioLegal.Designer.vb">
+      <DependentUpon>CalendarioConvenioLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarioConvenioLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cargando.Designer.vb">
+      <DependentUpon>Cargando.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Cargando.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CatTiposdeCredito.Designer.vb">
+      <DependentUpon>CatTiposdeCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CatTiposdeCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckCombobox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Class1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Class2.vb" />
+    <Compile Include="Class3.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Agregar_Usuario.Designer.vb">
+      <DependentUpon>Agregar_Usuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Agregar_Usuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cmd.Designer.vb">
+      <DependentUpon>cmd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cmd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuraciones.Designer.vb">
+      <DependentUpon>Configuraciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Configuraciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearConvenio.Designer.vb">
+      <DependentUpon>CrearConvenio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CrearConvenio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearConvenioLegal.Designer.vb">
+      <DependentUpon>CrearConvenioLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CrearConvenioLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreditosEnLegal.Designer.vb">
+      <DependentUpon>CreditosEnLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreditosEnLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreditosActivos.Designer.vb">
+      <DependentUpon>CreditosActivos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreditosActivos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetalleCaja.Designer.vb">
+      <DependentUpon>DetalleCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentosCreditoLegal - Copia.Designer.vb">
+      <DependentUpon>DocumentosCreditoLegal - Copia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentosCreditoLegal - Copia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentosCredito.Designer.vb">
+      <DependentUpon>DocumentosCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentosCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportarExcel.Designer.vb">
+      <DependentUpon>ImportarExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImportarExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImprimirConvenio.Designer.vb">
+      <DependentUpon>ImprimirConvenio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImprimirConvenio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformacionLegal.Designer.vb">
+      <DependentUpon>InformacionLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InformacionLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformacionCliente.Designer.vb">
+      <DependentUpon>InformacionCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InformacionCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Migrar.Designer.vb">
+      <DependentUpon>Migrar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecibirRetiro.Designer.vb">
+      <DependentUpon>RecibirRetiro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RecibirRetiro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Retiros.Designer.vb">
+      <DependentUpon>Retiros.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Retiros.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RetirosPorFecha.Designer.vb">
+      <DependentUpon>RetirosPorFecha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RetirosPorFecha.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Run.Designer.vb">
+      <DependentUpon>Run.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Run.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValorCartera.Designer.vb">
+      <DependentUpon>ValorCartera.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ValorCartera.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreditosPorEntregar.Designer.vb">
+      <DependentUpon>CreditosPorEntregar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreditosPorEntregar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatosConsultaSolicitud.Designer.vb">
+      <DependentUpon>DatosConsultaSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DatosConsultaSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatosAprobacion.Designer.vb">
+      <DependentUpon>DatosAprobacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DatosAprobacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatosVerificacion.Designer.vb">
+      <DependentUpon>DatosVerificacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DatosVerificacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatosSolicitud.Designer.vb">
+      <DependentUpon>DatosSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DatosSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreditosEnMora.Designer.vb">
+      <DependentUpon>CreditosEnMora.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreditosEnMora.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tickets.Designer.vb">
+      <DependentUpon>Tickets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tickets.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desembolsos.Designer.vb">
+      <DependentUpon>Desembolsos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Desembolsos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentosNecesarios.Designer.vb">
+      <DependentUpon>DocumentosNecesarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentosNecesarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Usuario.Designer.vb">
+      <DependentUpon>Editar Usuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Editar Usuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editarperfil.Designer.vb">
+      <DependentUpon>editarperfil.vb</DependentUpon>
+    </Compile>
+    <Compile Include="editarperfil.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empresas.Designer.vb">
+      <DependentUpon>Empresas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Empresas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntregarDocumentacion.Designer.vb">
+      <DependentUpon>EntregarDocumentacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EntregarDocumentacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="grupos.Designer.vb">
+      <DependentUpon>grupos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="grupos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historia_de_Solicitud.Designer.vb">
+      <DependentUpon>Historia_de_Solicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Historia_de_Solicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="impuestos.Designer.vb">
+      <DependentUpon>impuestos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="impuestos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformacionSolicitud.Designer.vb">
+      <DependentUpon>InformacionSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InformacionSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes.Designer.vb">
+      <DependentUpon>Reportes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Levantar_Solicitud.Designer.vb">
+      <DependentUpon>Levantar_Solicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Levantar_Solicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module1.vb" />
+    <Compile Include="modulo resize.vb" />
+    <Compile Include="nombregrupo.Designer.vb">
+      <DependentUpon>nombregrupo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="nombregrupo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumLetra.vb" />
+    <Compile Include="perfil.Designer.vb">
+      <DependentUpon>perfil.vb</DependentUpon>
+    </Compile>
+    <Compile Include="perfil.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="inv.Designer.vb">
+      <DependentUpon>inv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="inv.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="inicio.Designer.vb">
+      <DependentUpon>inicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="inicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.vb">
+      <DependentUpon>login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_adm.Designer.vb">
+      <DependentUpon>frm_adm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_adm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="perfilalt.Designer.vb">
+      <DependentUpon>perfilalt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="perfilalt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PermisosGrupo.Designer.vb">
+      <DependentUpon>PermisosGrupo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PermisosGrupo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos.Designer.vb">
+      <DependentUpon>Productos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Productos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="servicios.Designer.vb">
+      <DependentUpon>servicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="servicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="slider.Designer.vb">
+      <DependentUpon>slider.vb</DependentUpon>
+    </Compile>
+    <Compile Include="slider.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Solicitudes.Designer.vb">
+      <DependentUpon>Solicitudes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Solicitudes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SolicitudesRechazadasCliente.Designer.vb">
+      <DependentUpon>SolicitudesRechazadasCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudesRechazadasCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TicketsPfecha.Designer.vb">
+      <DependentUpon>TicketsPfecha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TicketsPfecha.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TiposDeCreditos.Designer.vb">
+      <DependentUpon>TiposDeCreditos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TiposDeCreditos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TiposDocumentosSolicitud.Designer.vb">
+      <DependentUpon>TiposDocumentosSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TiposDocumentosSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="usuarios.Designer.vb">
+      <DependentUpon>usuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="usuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verificacion.Designer.vb">
+      <DependentUpon>Verificacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Verificacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verificar.Designer.vb">
+      <DependentUpon>Verificar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Verificar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaDocumento.Designer.vb">
+      <DependentUpon>VistaDocumento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VistaDocumento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaPreviaDocumento.Designer.vb">
+      <DependentUpon>VistaPreviaDocumento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VistaPreviaDocumento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webcamCredito.Designer.vb">
+      <DependentUpon>webcamCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="webcamCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webcam.Designer.vb">
+      <DependentUpon>webcam.vb</DependentUpon>
+    </Compile>
+    <Compile Include="webcam.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ActInformacionCredito.resx">
+      <DependentUpon>ActInformacionCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActInformacionLegal.resx">
+      <DependentUpon>ActInformacionLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarCaja.resx">
+      <DependentUpon>AgregarCaja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarDocumentoCredito.resx">
+      <DependentUpon>AgregarDocumentoCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarDocumentoLegal.resx">
+      <DependentUpon>AgregarDocumentoLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarDocumentoVerificacion.resx">
+      <DependentUpon>AgregarDocumentoVerificacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarDocumentoDatosSolicitud.resx">
+      <DependentUpon>AgregarDocumentoDatosSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarGastosLegales.resx">
+      <DependentUpon>AgregarGastosLegales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarGestionCredito.resx">
+      <DependentUpon>AgregarGestionCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarGestionLegal.resx">
+      <DependentUpon>AgregarGestionLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="agregargrupos.resx">
+      <DependentUpon>agregargrupos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="agregarservicio.resx">
+      <DependentUpon>agregarservicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarTipoCredito.resx">
+      <DependentUpon>AgregarTipoCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarTipoDocumentoSolicitud.resx">
+      <DependentUpon>AgregarTipoDocumentoSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agregar_Impuestos.resx">
+      <DependentUpon>Agregar_Impuestos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agregar_Usuario.resx">
+      <DependentUpon>Agregar_Usuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutorizacionRetiro.resx">
+      <DependentUpon>AutorizacionRetiro.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Autorizacion.resx">
+      <DependentUpon>Autorizacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarEmpleadoUsuarioActualizar.resx">
+      <DependentUpon>BuscarEmpleadoUsuarioActualizar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarEmpleadoUsuario.resx">
+      <DependentUpon>BuscarEmpleadoUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarClienteSolicitud.resx">
+      <DependentUpon>BuscarClienteSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cajas.resx">
+      <DependentUpon>Cajas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarioConvenio.resx">
+      <DependentUpon>CalendarioConvenio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarioConvenioLegal.resx">
+      <DependentUpon>CalendarioConvenioLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cargando.resx">
+      <DependentUpon>Cargando.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CatTiposdeCredito.resx">
+      <DependentUpon>CatTiposdeCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuraciones.resx">
+      <DependentUpon>Configuraciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearConvenio.resx">
+      <DependentUpon>CrearConvenio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearConvenioLegal.resx">
+      <DependentUpon>CrearConvenioLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreditosEnLegal.resx">
+      <DependentUpon>CreditosEnLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreditosActivos.resx">
+      <DependentUpon>CreditosActivos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetalleCaja.resx">
+      <DependentUpon>DetalleCaja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentosCreditoLegal - Copia.resx">
+      <DependentUpon>DocumentosCreditoLegal - Copia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentosCredito.resx">
+      <DependentUpon>DocumentosCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportarExcel.resx">
+      <DependentUpon>ImportarExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImprimirConvenio.resx">
+      <DependentUpon>ImprimirConvenio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformacionLegal.resx">
+      <DependentUpon>InformacionLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformacionCliente.resx">
+      <DependentUpon>InformacionCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrar.resx">
+      <DependentUpon>Migrar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="RecibirRetiro.resx">
+      <DependentUpon>RecibirRetiro.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Retiros.resx">
+      <DependentUpon>Retiros.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RetirosPorFecha.resx">
+      <DependentUpon>RetirosPorFecha.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Run.resx">
+      <DependentUpon>Run.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValorCartera.resx">
+      <DependentUpon>ValorCartera.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreditosPorEntregar.resx">
+      <DependentUpon>CreditosPorEntregar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatosConsultaSolicitud.resx">
+      <DependentUpon>DatosConsultaSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatosAprobacion.resx">
+      <DependentUpon>DatosAprobacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatosVerificacion.resx">
+      <DependentUpon>DatosVerificacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatosSolicitud.resx">
+      <DependentUpon>DatosSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreditosEnMora.resx">
+      <DependentUpon>CreditosEnMora.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tickets.resx">
+      <DependentUpon>Tickets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desembolsos.resx">
+      <DependentUpon>Desembolsos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentosNecesarios.resx">
+      <DependentUpon>DocumentosNecesarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Usuario.resx">
+      <DependentUpon>Editar Usuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editarperfil.resx">
+      <DependentUpon>editarperfil.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empresas.resx">
+      <DependentUpon>Empresas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntregarDocumentacion.resx">
+      <DependentUpon>EntregarDocumentacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="grupos.resx">
+      <DependentUpon>grupos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historia_de_Solicitud.resx">
+      <DependentUpon>Historia_de_Solicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="impuestos.resx">
+      <DependentUpon>impuestos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformacionSolicitud.resx">
+      <DependentUpon>InformacionSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes.resx">
+      <DependentUpon>Reportes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Levantar_Solicitud.resx">
+      <DependentUpon>Levantar_Solicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="nombregrupo.resx">
+      <DependentUpon>nombregrupo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="perfil.resx">
+      <DependentUpon>perfil.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="inv.resx">
+      <DependentUpon>inv.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="inicio.resx">
+      <DependentUpon>inicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_adm.resx">
+      <DependentUpon>frm_adm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="perfilalt.resx">
+      <DependentUpon>perfilalt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PermisosGrupo.resx">
+      <DependentUpon>PermisosGrupo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos.resx">
+      <DependentUpon>Productos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="servicios.resx">
+      <DependentUpon>servicios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="slider.resx">
+      <DependentUpon>slider.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Solicitudes.resx">
+      <DependentUpon>Solicitudes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SolicitudesRechazadasCliente.resx">
+      <DependentUpon>SolicitudesRechazadasCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TicketsPfecha.resx">
+      <DependentUpon>TicketsPfecha.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiposDeCreditos.resx">
+      <DependentUpon>TiposDeCreditos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiposDocumentosSolicitud.resx">
+      <DependentUpon>TiposDocumentosSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="usuarios.resx">
+      <DependentUpon>usuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Verificacion.resx">
+      <DependentUpon>Verificacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaDocumento.resx">
+      <DependentUpon>VistaDocumento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaPreviaDocumento.resx">
+      <DependentUpon>VistaPreviaDocumento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webcamCredito.resx">
+      <DependentUpon>webcamCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webcam.resx">
+      <DependentUpon>webcam.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\23782214_1949735195350343_1299272425_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu-alt-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contraseña.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_producto-hogar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proveedores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mostrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ocultar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mostrar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mostrar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ocultar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarionegro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reproductor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mas1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mas2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\modificar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario agregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grupos agregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\196766-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ojochico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\impuestos mas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lconfia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empresa-azul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\875781.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo dando vueltas.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_seo2-38-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantalla de bienvenida.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SATI.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="gnlicense_key.txt" />
+    <None Include="Resources\Logo Confia.png" />
+    <None Include="Resources\eaad3b05-c22d-49fb-ae4f-2d0e4ff7b0cb.jpg" />
+    <Content Include="lconfia.ico" />
+    <Content Include="Resources\gnlicense_key.txt" />
+    <None Include="Resources\icono reportes.png" />
+    <None Include="Resources\icono cerrar empresa.png" />
+    <None Include="Resources\icono solicitudes.png" />
+    <None Include="Resources\icono catalogos.png" />
+    <None Include="Resources\icono home.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
