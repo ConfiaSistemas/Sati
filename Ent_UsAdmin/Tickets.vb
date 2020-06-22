@@ -1,10 +1,11 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
-Imports ConfiaAdmin.CustomControl
+'Imports ConfiaAdmin.CustomControl
 
 Public Class Tickets
     Dim dataCajas As DataTable
     Dim adapterCajas As SqlDataAdapter
+    Public autorizado As Boolean
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         dtdatos.Rows.Clear()
@@ -218,9 +219,16 @@ Public Class Tickets
     End Sub
 
     Private Sub CancelarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CancelarToolStripMenuItem.Click
-        Cargando.Show()
-        Cargando.MonoFlat_Label1.Text = "Cancelando Ticket"
-        BackgroundCancelar.RunWorkerAsync()
+        Autorizacion.tipoAutorizacion = "SacCancelarTicket"
+        Autorizacion.ShowDialog()
+        If autorizado Then
+            Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Cancelando Ticket"
+            BackgroundCancelar.RunWorkerAsync()
+        Else
+            MessageBox.Show("No fue autorizado")
+        End If
+
 
     End Sub
 

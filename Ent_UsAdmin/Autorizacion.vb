@@ -184,6 +184,9 @@ Public Class Autorizacion
             Case "SatiModCajasAgregar"
                 AgregarCaja.autorizado = False
                 Me.Close()
+            Case "SacCancelarTicket"
+                Reportes.CatTickets.autorizado = False
+                Me.Close()
 
         End Select
     End Sub
@@ -382,6 +385,18 @@ Public Class Autorizacion
                     txtusr.Text = ""
                     txtcontra.Text = ""
                 End If
+            Case "SacCancelarTicket"
+                If autorizado Then
+                    Reportes.CatTickets.autorizado = True
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                Else
+                    Tickets.autorizado = False
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                End If
 
         End Select
     End Sub
@@ -556,6 +571,9 @@ Public Class Autorizacion
                 Case "SatiModCajasModificar"
                 Case "SatiModCajasAgregar"
                     AgregarCaja.autorizado = True
+                    Me.Close()
+                Case "SacCancelarTicket"
+                    Reportes.CatTickets.autorizado = True
                     Me.Close()
             End Select
         Else

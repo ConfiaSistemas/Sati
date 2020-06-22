@@ -236,7 +236,6 @@ D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Da
 C:\Users\JJAH\Desktop\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosAprobacion.resources
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CreditosPorEntregar.resources
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\bin\Debug\MetroFramework.dll
-D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\bin\Debug\Xceed.Words.NET.dll
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EntregarDocumentacion.resources
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SplashScreen1.resources
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.VistaPreviaDocumento.resources
@@ -284,7 +283,6 @@ D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.De
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Reportes.resources
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Tickets.resources
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TicketsPfecha.resources
-D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\bin\Debug\WinControls.ListView.dll
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\bin\Debug\WinControls.ListView.pdb
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\bin\Debug\WinControls.ListView.xml
 D:\Proyectos VB\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CreditosEnMora.resources
