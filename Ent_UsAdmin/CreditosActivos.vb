@@ -18,7 +18,7 @@ Public Class CreditosActivos
 
             Dim ejec = New SqlCommand(strimpuestos)
             ejec.Connection = conexionempresa
-            Dim id, nombre, valor, factor, tipo As String
+            Dim id, nombre As String
 
             Dim myreaderimpuestos As SqlDataReader = ejec.ExecuteReader()
             While myreaderimpuestos.Read

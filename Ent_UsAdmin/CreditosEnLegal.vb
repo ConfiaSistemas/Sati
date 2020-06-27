@@ -3,6 +3,32 @@
 Public Class CreditosEnLegal
     Dim strimpuestos As String
     Private Sub CreditosPorEntregar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        For Each row As DataRow In dataPermisos.Rows
+            If row("SatiModLegalConvenio") Then
+                EntregarToolStripMenuItem.Visible = True
+                Exit For
+            Else
+                EntregarToolStripMenuItem.Visible = False
+                Exit For
+            End If
+
+
+        Next
+
+        For Each row As DataRow In dataPermisos.Rows
+            If row("SatiModLegalVer") Then
+                InformacionToolStripMenuItem.Visible = True
+                ToolStripMenuItem2.Visible = True
+                Exit For
+            Else
+                ToolStripMenuItem2.Visible = False
+                InformacionToolStripMenuItem.Visible = False
+                Exit For
+            End If
+
+
+        Next
+
         cargarSolicitudes()
         txtnombre.Select()
     End Sub
@@ -16,7 +42,7 @@ Public Class CreditosEnLegal
 
             Dim ejec = New SqlCommand(strimpuestos)
             ejec.Connection = conexionempresa
-            Dim id, nombre, valor, factor, tipo As String
+            Dim id, nombre As String
 
             Dim myreaderimpuestos As SqlDataReader = ejec.ExecuteReader()
             While myreaderimpuestos.Read
@@ -92,4 +118,5 @@ Public Class CreditosEnLegal
             cargarSolicitudes()
         End If
     End Sub
+
 End Class

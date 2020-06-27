@@ -37,6 +37,20 @@ Public Class InformacionLegal
     Dim montoConvenio As Double
     Dim gastos As Double
     Private Sub InformacionSolicitud_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        For Each row As DataRow In dataPermisos.Rows
+            If row("SatiModLegalModificar") Then
+                btnGenerarCalendario.Enabled = True
+                BunifuThinButton23.Enabled = True
+                BunifuThinButton21.Enabled = True
+                BunifuThinButton24.Enabled = True
+            Else
+                btnGenerarCalendario.Enabled = False
+                BunifuThinButton23.Enabled = False
+                BunifuThinButton21.Enabled = False
+                BunifuThinButton24.Enabled = False
+            End If
+        Next
+
         Panel2.Size = New Size(51, 85)
         Panel2.Location = New Drawing.Point(Me.Width - Panel2.Width, TabControl1.Location.Y - Panel2.Height)
         Cargando.Show()

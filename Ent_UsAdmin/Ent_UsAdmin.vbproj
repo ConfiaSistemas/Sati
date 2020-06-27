@@ -414,6 +414,12 @@
     <Compile Include="InformacionCliente.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Solicitud_Boleta.Designer.vb">
+      <DependentUpon>Solicitud_Boleta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Solicitud_Boleta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Migrar.Designer.vb">
       <DependentUpon>Migrar.vb</DependentUpon>
     </Compile>
@@ -442,6 +448,12 @@
       <DependentUpon>Run.vb</DependentUpon>
     </Compile>
     <Compile Include="Run.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TiposDeEmpeños.Designer.vb">
+      <DependentUpon>TiposDeEmpeños.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TiposDeEmpeños.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ValorCartera.Designer.vb">
@@ -842,6 +854,9 @@
     <EmbeddedResource Include="InformacionCliente.resx">
       <DependentUpon>InformacionCliente.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Solicitud_Boleta.resx">
+      <DependentUpon>Solicitud_Boleta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrar.resx">
       <DependentUpon>Migrar.vb</DependentUpon>
     </EmbeddedResource>
@@ -857,6 +872,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Run.resx">
       <DependentUpon>Run.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiposDeEmpeños.resx">
+      <DependentUpon>TiposDeEmpeños.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ValorCartera.resx">
       <DependentUpon>ValorCartera.vb</DependentUpon>

@@ -874,4 +874,8 @@ Public Class DatosSolicitud
             Next
         End If
     End Sub
+
+    Private Sub TabPage5_Click(sender As Object, e As EventArgs) Handles TabPage5.Click
+
+    End Sub
 End Class
