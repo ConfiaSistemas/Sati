@@ -8,6 +8,7 @@
     Public CatCreditosActivos As New CreditosActivos
     Public catCajas As New Cajas
     Public catLegal As New CreditosEnLegal
+    Public catEmpeños As New EmpeñosActivos
     Private Sub MonoFlat_Button2_Click(sender As Object, e As EventArgs) Handles MonoFlat_Button2.Click
         catimpuestos.Visible = False
         catLegal.Visible = False
@@ -41,6 +42,8 @@
                 catCajas.Size = Panel1.Size
             Case "Legal"
                 catLegal.Size = Panel1.Size
+            Case "Empeños"
+                catEmpeños.Size = Panel1.Size
         End Select
 
 
@@ -55,6 +58,7 @@
                 catTiposDocumentos.Visible = False
                 CatTiposdecreditos.Visible = False
                 CatCreditosActivos.Visible = False
+                catEmpeños.Visible = False
                 catimpuestos.Visible = True
 
                 catimpuestos.TopLevel = False
@@ -81,6 +85,7 @@
                 catservicios.Visible = False
                 catLegal.Visible = False
                 CatCreditosActivos.Visible = False
+                catEmpeños.Visible = False
                 catTiposDocumentos.Visible = True
                 catTiposDocumentos.TopLevel = False
 
@@ -107,6 +112,7 @@
                 catservicios.Visible = False
                 catTiposDocumentos.Visible = False
                 CatCreditosActivos.Visible = False
+                catEmpeños.Visible = False
                 CatTiposdecreditos.Visible = True
                 CatTiposdecreditos.TopLevel = False
 
@@ -132,6 +138,7 @@
                 catservicios.Visible = False
                 catLegal.Visible = False
                 catTiposDocumentos.Visible = False
+                catEmpeños.Visible = False
                 catCajas.Visible = False
                 CatCreditosActivos.Visible = True
                 CatCreditosActivos.TopLevel = False
@@ -155,6 +162,7 @@
                 catimpuestos.Visible = False
                 CatTiposdecreditos.Visible = False
                 catservicios.Visible = False
+                catEmpeños.Visible = False
                 catTiposDocumentos.Visible = False
                 CatCreditosActivos.Visible = False
                 catLegal.Visible = False
@@ -184,6 +192,7 @@
                 catservicios.Visible = False
                 catTiposDocumentos.Visible = False
                 CatCreditosActivos.Visible = False
+                catEmpeños.Visible = False
                 catCajas.Visible = False
                 catLegal.Visible = True
                 catLegal.TopLevel = False
@@ -200,5 +209,36 @@
         Next
 
 
+    End Sub
+
+    Private Sub inv_Load(sender As Object, e As EventArgs) Handles Me.Load
+        For Each row As DataRow In dataPermisos.Rows
+            If row("SatiModEmpeñosAgregarSolicitud") Then
+                btnEmpeños.Visible = True
+            Else
+                btnEmpeños.Visible = False
+            End If
+        Next
+
+    End Sub
+
+    Private Sub btnEmpeños_Click(sender As Object, e As EventArgs) Handles btnEmpeños.Click
+        catimpuestos.Visible = False
+        CatTiposdecreditos.Visible = False
+        catservicios.Visible = False
+        catTiposDocumentos.Visible = False
+        CatCreditosActivos.Visible = False
+        catCajas.Visible = False
+        catLegal.Visible = False
+
+        catEmpeños.Visible = True
+        catEmpeños.TopLevel = False
+
+        catEmpeños.Size = Panel1.Size
+        catEmpeños.Location = New System.Drawing.Point(0, 0)
+        catEmpeños.WindowState = FormWindowState.Normal
+        catEmpeños.Visible = True
+        ventanapanel = "Empeños"
+        Panel1.Controls.Add(catEmpeños)
     End Sub
 End Class

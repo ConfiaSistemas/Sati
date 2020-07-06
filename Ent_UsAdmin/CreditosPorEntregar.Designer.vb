@@ -37,6 +37,7 @@ Partial Class CreditosPorEntregar
         Me.ContextMenuEntregar = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EntregarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuEntregar.SuspendLayout()
         Me.SuspendLayout()
@@ -163,12 +164,25 @@ Partial Class CreditosPorEntregar
         Me.BunifuThinButton21.TabIndex = 7
         Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'MonoFlat_HeaderLabel1
+        '
+        Me.MonoFlat_HeaderLabel1.AutoSize = True
+        Me.MonoFlat_HeaderLabel1.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel1.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(12, 25)
+        Me.MonoFlat_HeaderLabel1.Name = "MonoFlat_HeaderLabel1"
+        Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(159, 20)
+        Me.MonoFlat_HeaderLabel1.TabIndex = 9
+        Me.MonoFlat_HeaderLabel1.Text = "Créditos por Entregar"
+        '
         'CreditosPorEntregar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(993, 555)
+        Me.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.dtimpuestos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -177,6 +191,7 @@ Partial Class CreditosPorEntregar
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuEntregar.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -191,4 +206,5 @@ Partial Class CreditosPorEntregar
     Friend WithEvents Cobrado As DataGridViewTextBoxColumn
     Friend WithEvents Estado As DataGridViewTextBoxColumn
     Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents MonoFlat_HeaderLabel1 As MonoFlat.MonoFlat_HeaderLabel
 End Class

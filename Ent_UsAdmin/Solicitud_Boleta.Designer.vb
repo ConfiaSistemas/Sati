@@ -29,49 +29,40 @@ Partial Class Solicitud_Boleta
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.txtNombreSolicitud = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtplazo = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.txtMontoTotalSugerido = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtInteres = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.txtPorcentajeRefrendo = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.txtIdCliente = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.dtdatos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
+        Me.Foto = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.TipoPrenda = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Marca = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Modelo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NoSerie = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MontoValuado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MontoSugerido = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MonoFlat_Separator1 = New ConfiaAdmin.MonoFlat.MonoFlat_Separator()
-        Me.txtIntegrantes = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.btn_Procesar = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.btn_agregar = New System.Windows.Forms.Button()
         Me.BackgroundGestores = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundPromotores = New System.ComponentModel.BackgroundWorker()
-        Me.txtResponsable = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.txtMontoTotal = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.txtMontoTotalValuado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.txtTotal = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.lblTotal = New System.Windows.Forms.Label()
-        Me.BackgroundLegal = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundSolicitudLegal = New System.ComponentModel.BackgroundWorker()
-        Me.txtTotalMoratorios = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.lblTotalMoratorios = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.txtTipo = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtPrenda = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.ComboPromotor = New System.Windows.Forms.ComboBox()
         Me.lblCliente = New System.Windows.Forms.Label()
         Me.lblTipo = New System.Windows.Forms.Label()
-        Me.Foto = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.TipoPrenda = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Marca = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Modelo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MontoValuado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BackgroundTipos = New System.ComponentModel.BackgroundWorker()
+        Me.txtIdCLiente = New VB.Windows.Forms.ControlExt.TextBoxEx()
+        Me.txtPrenda = New VB.Windows.Forms.ControlExt.TextBoxEx()
+        Me.txtTipo = New VB.Windows.Forms.ControlExt.TextBoxEx()
         Me.Panel1.SuspendLayout()
         CType(Me.dtdatos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -85,7 +76,7 @@ Partial Class Solicitud_Boleta
         Me.Panel1.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.Panel1.Location = New System.Drawing.Point(1, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1062, 36)
+        Me.Panel1.Size = New System.Drawing.Size(1057, 36)
         Me.Panel1.TabIndex = 2
         '
         'EvolveControlBox1
@@ -116,88 +107,59 @@ Partial Class Solicitud_Boleta
         Me.MonoFlat_HeaderLabel1.TabIndex = 1
         Me.MonoFlat_HeaderLabel1.Text = "Solicitud de Empeño"
         '
-        'txtNombreSolicitud
+        'txtMontoTotalSugerido
         '
-        Me.txtNombreSolicitud.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtNombreSolicitud.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtNombreSolicitud.ForeColor = System.Drawing.Color.White
-        Me.txtNombreSolicitud.HintForeColor = System.Drawing.Color.White
-        Me.txtNombreSolicitud.HintText = ""
-        Me.txtNombreSolicitud.isPassword = False
-        Me.txtNombreSolicitud.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtNombreSolicitud.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtNombreSolicitud.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtNombreSolicitud.LineThickness = 3
-        Me.txtNombreSolicitud.Location = New System.Drawing.Point(21, 307)
-        Me.txtNombreSolicitud.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtNombreSolicitud.Name = "txtNombreSolicitud"
-        Me.txtNombreSolicitud.Size = New System.Drawing.Size(226, 25)
-        Me.txtNombreSolicitud.TabIndex = 6
-        Me.txtNombreSolicitud.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(18, 290)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(44, 13)
-        Me.Label3.TabIndex = 12
-        Me.Label3.Text = "Nombre"
-        '
-        'txtplazo
-        '
-        Me.txtplazo.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtplazo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtplazo.ForeColor = System.Drawing.Color.White
-        Me.txtplazo.HintForeColor = System.Drawing.Color.White
-        Me.txtplazo.HintText = ""
-        Me.txtplazo.isPassword = False
-        Me.txtplazo.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtplazo.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtplazo.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtplazo.LineThickness = 3
-        Me.txtplazo.Location = New System.Drawing.Point(406, 307)
-        Me.txtplazo.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtplazo.Name = "txtplazo"
-        Me.txtplazo.Size = New System.Drawing.Size(102, 25)
-        Me.txtplazo.TabIndex = 8
-        Me.txtplazo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.txtMontoTotalSugerido.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtMontoTotalSugerido.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoTotalSugerido.ForeColor = System.Drawing.Color.White
+        Me.txtMontoTotalSugerido.HintForeColor = System.Drawing.Color.White
+        Me.txtMontoTotalSugerido.HintText = ""
+        Me.txtMontoTotalSugerido.isPassword = False
+        Me.txtMontoTotalSugerido.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtMontoTotalSugerido.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtMontoTotalSugerido.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtMontoTotalSugerido.LineThickness = 3
+        Me.txtMontoTotalSugerido.Location = New System.Drawing.Point(592, 430)
+        Me.txtMontoTotalSugerido.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMontoTotalSugerido.Name = "txtMontoTotalSugerido"
+        Me.txtMontoTotalSugerido.Size = New System.Drawing.Size(107, 25)
+        Me.txtMontoTotalSugerido.TabIndex = 6
+        Me.txtMontoTotalSugerido.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(403, 290)
+        Me.Label4.Location = New System.Drawing.Point(589, 413)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(82, 13)
         Me.Label4.TabIndex = 14
         Me.Label4.Text = "Monto Sugerido"
         '
-        'txtInteres
+        'txtPorcentajeRefrendo
         '
-        Me.txtInteres.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtInteres.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtInteres.ForeColor = System.Drawing.Color.White
-        Me.txtInteres.HintForeColor = System.Drawing.Color.White
-        Me.txtInteres.HintText = ""
-        Me.txtInteres.isPassword = False
-        Me.txtInteres.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtInteres.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtInteres.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtInteres.LineThickness = 3
-        Me.txtInteres.Location = New System.Drawing.Point(530, 307)
-        Me.txtInteres.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtInteres.Name = "txtInteres"
-        Me.txtInteres.Size = New System.Drawing.Size(117, 25)
-        Me.txtInteres.TabIndex = 9
-        Me.txtInteres.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.txtPorcentajeRefrendo.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtPorcentajeRefrendo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtPorcentajeRefrendo.ForeColor = System.Drawing.Color.White
+        Me.txtPorcentajeRefrendo.HintForeColor = System.Drawing.Color.White
+        Me.txtPorcentajeRefrendo.HintText = ""
+        Me.txtPorcentajeRefrendo.isPassword = False
+        Me.txtPorcentajeRefrendo.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtPorcentajeRefrendo.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtPorcentajeRefrendo.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtPorcentajeRefrendo.LineThickness = 3
+        Me.txtPorcentajeRefrendo.Location = New System.Drawing.Point(803, 430)
+        Me.txtPorcentajeRefrendo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPorcentajeRefrendo.Name = "txtPorcentajeRefrendo"
+        Me.txtPorcentajeRefrendo.Size = New System.Drawing.Size(115, 25)
+        Me.txtPorcentajeRefrendo.TabIndex = 7
+        Me.txtPorcentajeRefrendo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(527, 290)
+        Me.Label5.Location = New System.Drawing.Point(798, 413)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(120, 13)
         Me.Label5.TabIndex = 16
@@ -205,37 +167,19 @@ Partial Class Solicitud_Boleta
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(269, 74)
+        Me.Button2.Location = New System.Drawing.Point(601, 74)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(27, 21)
-        Me.Button2.TabIndex = 3
+        Me.Button2.TabIndex = 21
+        Me.Button2.TabStop = False
         Me.Button2.Text = "F2"
         Me.Button2.UseVisualStyleBackColor = True
-        '
-        'txtIdCliente
-        '
-        Me.txtIdCliente.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtIdCliente.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtIdCliente.ForeColor = System.Drawing.Color.White
-        Me.txtIdCliente.HintForeColor = System.Drawing.Color.White
-        Me.txtIdCliente.HintText = ""
-        Me.txtIdCliente.isPassword = False
-        Me.txtIdCliente.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtIdCliente.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtIdCliente.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtIdCliente.LineThickness = 3
-        Me.txtIdCliente.Location = New System.Drawing.Point(204, 70)
-        Me.txtIdCliente.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtIdCliente.Name = "txtIdCliente"
-        Me.txtIdCliente.Size = New System.Drawing.Size(58, 25)
-        Me.txtIdCliente.TabIndex = 2
-        Me.txtIdCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(200, 53)
+        Me.Label7.Location = New System.Drawing.Point(339, 53)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(39, 13)
         Me.Label7.TabIndex = 20
@@ -262,55 +206,83 @@ Partial Class Solicitud_Boleta
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dtdatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtdatos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Foto, Me.TipoPrenda, Me.Marca, Me.Modelo, Me.Descripcion, Me.MontoValuado})
+        Me.dtdatos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Foto, Me.TipoPrenda, Me.Marca, Me.Modelo, Me.NoSerie, Me.Descripcion, Me.MontoValuado, Me.MontoSugerido})
         Me.dtdatos.DoubleBuffered = True
         Me.dtdatos.EnableHeadersVisualStyles = False
         Me.dtdatos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
         Me.dtdatos.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        Me.dtdatos.Location = New System.Drawing.Point(514, 45)
+        Me.dtdatos.Location = New System.Drawing.Point(34, 137)
         Me.dtdatos.Name = "dtdatos"
         Me.dtdatos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.dtdatos.RowHeadersVisible = False
-        Me.dtdatos.Size = New System.Drawing.Size(542, 183)
-        Me.dtdatos.TabIndex = 24
+        Me.dtdatos.Size = New System.Drawing.Size(1000, 255)
+        Me.dtdatos.TabIndex = 4
+        '
+        'Foto
+        '
+        Me.Foto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Foto.FillWeight = 150.0!
+        Me.Foto.HeaderText = "Foto"
+        Me.Foto.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
+        Me.Foto.MinimumWidth = 20
+        Me.Foto.Name = "Foto"
+        Me.Foto.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Foto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Foto.Width = 200
+        '
+        'TipoPrenda
+        '
+        Me.TipoPrenda.HeaderText = "Tipo"
+        Me.TipoPrenda.Name = "TipoPrenda"
+        Me.TipoPrenda.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.TipoPrenda.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.TipoPrenda.Width = 55
+        '
+        'Marca
+        '
+        Me.Marca.HeaderText = "Marca"
+        Me.Marca.Name = "Marca"
+        Me.Marca.Width = 70
+        '
+        'Modelo
+        '
+        Me.Modelo.HeaderText = "Modelo"
+        Me.Modelo.Name = "Modelo"
+        Me.Modelo.Width = 77
+        '
+        'NoSerie
+        '
+        Me.NoSerie.HeaderText = "No. de Serie"
+        Me.NoSerie.Name = "NoSerie"
+        Me.NoSerie.Width = 94
+        '
+        'Descripcion
+        '
+        Me.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Descripcion.HeaderText = "Descripción"
+        Me.Descripcion.Name = "Descripcion"
+        '
+        'MontoValuado
+        '
+        Me.MontoValuado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.MontoValuado.HeaderText = "Monto Valuado"
+        Me.MontoValuado.Name = "MontoValuado"
+        Me.MontoValuado.Width = 90
+        '
+        'MontoSugerido
+        '
+        Me.MontoSugerido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.MontoSugerido.HeaderText = "Monto Sugerido"
+        Me.MontoSugerido.Name = "MontoSugerido"
+        Me.MontoSugerido.Width = 90
         '
         'MonoFlat_Separator1
         '
-        Me.MonoFlat_Separator1.Location = New System.Drawing.Point(1, 257)
+        Me.MonoFlat_Separator1.Location = New System.Drawing.Point(1, 398)
         Me.MonoFlat_Separator1.Name = "MonoFlat_Separator1"
         Me.MonoFlat_Separator1.Size = New System.Drawing.Size(1062, 12)
         Me.MonoFlat_Separator1.TabIndex = 25
         Me.MonoFlat_Separator1.Text = "MonoFlat_Separator1"
-        '
-        'txtIntegrantes
-        '
-        Me.txtIntegrantes.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtIntegrantes.Enabled = False
-        Me.txtIntegrantes.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtIntegrantes.ForeColor = System.Drawing.Color.White
-        Me.txtIntegrantes.HintForeColor = System.Drawing.Color.White
-        Me.txtIntegrantes.HintText = ""
-        Me.txtIntegrantes.isPassword = False
-        Me.txtIntegrantes.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtIntegrantes.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtIntegrantes.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtIntegrantes.LineThickness = 3
-        Me.txtIntegrantes.Location = New System.Drawing.Point(658, 307)
-        Me.txtIntegrantes.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtIntegrantes.Name = "txtIntegrantes"
-        Me.txtIntegrantes.Size = New System.Drawing.Size(58, 25)
-        Me.txtIntegrantes.TabIndex = 9
-        Me.txtIntegrantes.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(655, 290)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(60, 13)
-        Me.Label2.TabIndex = 26
-        Me.Label2.Text = "Integrantes"
         '
         'btn_Procesar
         '
@@ -330,7 +302,7 @@ Partial Class Solicitud_Boleta
         Me.btn_Procesar.IdleFillColor = System.Drawing.Color.White
         Me.btn_Procesar.IdleForecolor = System.Drawing.Color.Gray
         Me.btn_Procesar.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_Procesar.Location = New System.Drawing.Point(358, 451)
+        Me.btn_Procesar.Location = New System.Drawing.Point(433, 487)
         Me.btn_Procesar.Margin = New System.Windows.Forms.Padding(5)
         Me.btn_Procesar.Name = "btn_Procesar"
         Me.btn_Procesar.Size = New System.Drawing.Size(216, 38)
@@ -339,10 +311,11 @@ Partial Class Solicitud_Boleta
         '
         'btn_agregar
         '
-        Me.btn_agregar.Location = New System.Drawing.Point(422, 74)
+        Me.btn_agregar.Location = New System.Drawing.Point(956, 74)
         Me.btn_agregar.Name = "btn_agregar"
         Me.btn_agregar.Size = New System.Drawing.Size(27, 21)
         Me.btn_agregar.TabIndex = 5
+        Me.btn_agregar.TabStop = False
         Me.btn_agregar.Text = "+"
         Me.btn_agregar.UseVisualStyleBackColor = True
         Me.btn_agregar.Visible = False
@@ -353,36 +326,6 @@ Partial Class Solicitud_Boleta
         'BackgroundPromotores
         '
         '
-        'txtResponsable
-        '
-        Me.txtResponsable.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtResponsable.Enabled = False
-        Me.txtResponsable.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtResponsable.ForeColor = System.Drawing.Color.White
-        Me.txtResponsable.HintForeColor = System.Drawing.Color.White
-        Me.txtResponsable.HintText = ""
-        Me.txtResponsable.isPassword = False
-        Me.txtResponsable.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtResponsable.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtResponsable.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtResponsable.LineThickness = 3
-        Me.txtResponsable.Location = New System.Drawing.Point(745, 307)
-        Me.txtResponsable.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtResponsable.Name = "txtResponsable"
-        Me.txtResponsable.Size = New System.Drawing.Size(58, 25)
-        Me.txtResponsable.TabIndex = 10
-        Me.txtResponsable.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(742, 290)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(69, 13)
-        Me.Label9.TabIndex = 32
-        Me.Label9.Text = "Responsable"
-        '
         'BackgroundWorker1
         '
         '
@@ -390,139 +333,51 @@ Partial Class Solicitud_Boleta
         '
         Me.Label10.AutoSize = True
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(354, 53)
+        Me.Label10.Location = New System.Drawing.Point(687, 53)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(41, 13)
         Me.Label10.TabIndex = 34
         Me.Label10.Text = "Prenda"
         '
-        'txtMontoTotal
+        'txtMontoTotalValuado
         '
-        Me.txtMontoTotal.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtMontoTotal.Enabled = False
-        Me.txtMontoTotal.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoTotal.ForeColor = System.Drawing.Color.White
-        Me.txtMontoTotal.HintForeColor = System.Drawing.Color.White
-        Me.txtMontoTotal.HintText = ""
-        Me.txtMontoTotal.isPassword = False
-        Me.txtMontoTotal.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtMontoTotal.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtMontoTotal.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtMontoTotal.LineThickness = 3
-        Me.txtMontoTotal.Location = New System.Drawing.Point(277, 307)
-        Me.txtMontoTotal.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtMontoTotal.Name = "txtMontoTotal"
-        Me.txtMontoTotal.Size = New System.Drawing.Size(101, 25)
-        Me.txtMontoTotal.TabIndex = 7
-        Me.txtMontoTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.txtMontoTotalValuado.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtMontoTotalValuado.Enabled = False
+        Me.txtMontoTotalValuado.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoTotalValuado.ForeColor = System.Drawing.Color.White
+        Me.txtMontoTotalValuado.HintForeColor = System.Drawing.Color.White
+        Me.txtMontoTotalValuado.HintText = ""
+        Me.txtMontoTotalValuado.isPassword = False
+        Me.txtMontoTotalValuado.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtMontoTotalValuado.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtMontoTotalValuado.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtMontoTotalValuado.LineThickness = 3
+        Me.txtMontoTotalValuado.Location = New System.Drawing.Point(380, 430)
+        Me.txtMontoTotalValuado.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMontoTotalValuado.Name = "txtMontoTotalValuado"
+        Me.txtMontoTotalValuado.Size = New System.Drawing.Size(103, 25)
+        Me.txtMontoTotalValuado.TabIndex = 20
+        Me.txtMontoTotalValuado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(274, 290)
+        Me.Label11.Location = New System.Drawing.Point(377, 413)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(106, 13)
         Me.Label11.TabIndex = 36
         Me.Label11.Text = "Monto Total Valuado"
         '
-        'txtTotal
-        '
-        Me.txtTotal.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtTotal.Enabled = False
-        Me.txtTotal.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtTotal.ForeColor = System.Drawing.Color.White
-        Me.txtTotal.HintForeColor = System.Drawing.Color.White
-        Me.txtTotal.HintText = ""
-        Me.txtTotal.isPassword = False
-        Me.txtTotal.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtTotal.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtTotal.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtTotal.LineThickness = 3
-        Me.txtTotal.Location = New System.Drawing.Point(920, 307)
-        Me.txtTotal.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(114, 25)
-        Me.txtTotal.TabIndex = 39
-        Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.txtTotal.Visible = False
-        '
-        'lblTotal
-        '
-        Me.lblTotal.AutoSize = True
-        Me.lblTotal.ForeColor = System.Drawing.Color.White
-        Me.lblTotal.Location = New System.Drawing.Point(917, 290)
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(66, 13)
-        Me.lblTotal.TabIndex = 40
-        Me.lblTotal.Text = "Deuda Total"
-        Me.lblTotal.Visible = False
-        '
-        'BackgroundLegal
-        '
-        '
-        'BackgroundSolicitudLegal
-        '
-        '
-        'txtTotalMoratorios
-        '
-        Me.txtTotalMoratorios.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtTotalMoratorios.Enabled = False
-        Me.txtTotalMoratorios.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtTotalMoratorios.ForeColor = System.Drawing.Color.White
-        Me.txtTotalMoratorios.HintForeColor = System.Drawing.Color.White
-        Me.txtTotalMoratorios.HintText = ""
-        Me.txtTotalMoratorios.isPassword = False
-        Me.txtTotalMoratorios.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtTotalMoratorios.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtTotalMoratorios.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtTotalMoratorios.LineThickness = 3
-        Me.txtTotalMoratorios.Location = New System.Drawing.Point(827, 307)
-        Me.txtTotalMoratorios.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtTotalMoratorios.Name = "txtTotalMoratorios"
-        Me.txtTotalMoratorios.Size = New System.Drawing.Size(80, 25)
-        Me.txtTotalMoratorios.TabIndex = 44
-        Me.txtTotalMoratorios.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.txtTotalMoratorios.Visible = False
-        '
-        'lblTotalMoratorios
-        '
-        Me.lblTotalMoratorios.AutoSize = True
-        Me.lblTotalMoratorios.ForeColor = System.Drawing.Color.White
-        Me.lblTotalMoratorios.Location = New System.Drawing.Point(824, 290)
-        Me.lblTotalMoratorios.Name = "lblTotalMoratorios"
-        Me.lblTotalMoratorios.Size = New System.Drawing.Size(83, 13)
-        Me.lblTotalMoratorios.TabIndex = 45
-        Me.lblTotalMoratorios.Text = "Total Moratorios"
-        Me.lblTotalMoratorios.Visible = False
-        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(99, 74)
+        Me.Button1.Location = New System.Drawing.Point(218, 74)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(27, 21)
-        Me.Button1.TabIndex = 1
+        Me.Button1.TabIndex = 20
+        Me.Button1.TabStop = False
         Me.Button1.Text = "F2"
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'txtTipo
-        '
-        Me.txtTipo.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtTipo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtTipo.ForeColor = System.Drawing.Color.White
-        Me.txtTipo.HintForeColor = System.Drawing.Color.White
-        Me.txtTipo.HintText = ""
-        Me.txtTipo.isPassword = False
-        Me.txtTipo.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtTipo.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtTipo.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtTipo.LineThickness = 3
-        Me.txtTipo.Location = New System.Drawing.Point(34, 70)
-        Me.txtTipo.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtTipo.Name = "txtTipo"
-        Me.txtTipo.Size = New System.Drawing.Size(58, 25)
-        Me.txtTipo.TabIndex = 0
-        Me.txtTipo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label1
         '
@@ -534,30 +389,11 @@ Partial Class Solicitud_Boleta
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Tipo"
         '
-        'txtPrenda
-        '
-        Me.txtPrenda.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtPrenda.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtPrenda.ForeColor = System.Drawing.Color.White
-        Me.txtPrenda.HintForeColor = System.Drawing.Color.White
-        Me.txtPrenda.HintText = ""
-        Me.txtPrenda.isPassword = False
-        Me.txtPrenda.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtPrenda.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtPrenda.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtPrenda.LineThickness = 3
-        Me.txtPrenda.Location = New System.Drawing.Point(357, 70)
-        Me.txtPrenda.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtPrenda.Name = "txtPrenda"
-        Me.txtPrenda.Size = New System.Drawing.Size(58, 25)
-        Me.txtPrenda.TabIndex = 4
-        Me.txtPrenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(377, 374)
+        Me.Label8.Location = New System.Drawing.Point(31, 413)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(49, 13)
         Me.Label8.TabIndex = 29
@@ -568,16 +404,16 @@ Partial Class Solicitud_Boleta
         Me.ComboPromotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboPromotor.FormattingEnabled = True
         Me.ComboPromotor.ItemHeight = 13
-        Me.ComboPromotor.Location = New System.Drawing.Point(380, 404)
+        Me.ComboPromotor.Location = New System.Drawing.Point(34, 434)
         Me.ComboPromotor.Name = "ComboPromotor"
         Me.ComboPromotor.Size = New System.Drawing.Size(239, 21)
-        Me.ComboPromotor.TabIndex = 12
+        Me.ComboPromotor.TabIndex = 5
         '
         'lblCliente
         '
         Me.lblCliente.AutoSize = True
         Me.lblCliente.ForeColor = System.Drawing.Color.White
-        Me.lblCliente.Location = New System.Drawing.Point(201, 108)
+        Me.lblCliente.Location = New System.Drawing.Point(339, 108)
         Me.lblCliente.Name = "lblCliente"
         Me.lblCliente.Size = New System.Drawing.Size(13, 13)
         Me.lblCliente.TabIndex = 22
@@ -593,87 +429,71 @@ Partial Class Solicitud_Boleta
         Me.lblTipo.TabIndex = 10
         Me.lblTipo.Text = ".."
         '
-        'Foto
+        'BackgroundTipos
         '
-        Me.Foto.HeaderText = "Foto"
-        Me.Foto.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
-        Me.Foto.Name = "Foto"
-        Me.Foto.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Foto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Foto.Width = 58
         '
-        'TipoPrenda
+        'txtIdCLiente
         '
-        Me.TipoPrenda.HeaderText = "Tipo"
-        Me.TipoPrenda.Name = "TipoPrenda"
-        Me.TipoPrenda.Width = 55
+        Me.txtIdCLiente.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.txtIdCLiente.BorderColor = System.Drawing.Color.Gray
+        Me.txtIdCLiente.ForeColor = System.Drawing.Color.White
+        Me.txtIdCLiente.Location = New System.Drawing.Point(342, 76)
+        Me.txtIdCLiente.Name = "txtIdCLiente"
+        Me.txtIdCLiente.Size = New System.Drawing.Size(253, 20)
+        Me.txtIdCLiente.TabIndex = 1
         '
-        'Marca
+        'txtPrenda
         '
-        Me.Marca.HeaderText = "Marca"
-        Me.Marca.Name = "Marca"
-        Me.Marca.Width = 70
+        Me.txtPrenda.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.txtPrenda.BorderColor = System.Drawing.Color.Gray
+        Me.txtPrenda.ForeColor = System.Drawing.Color.White
+        Me.txtPrenda.Location = New System.Drawing.Point(690, 76)
+        Me.txtPrenda.Name = "txtPrenda"
+        Me.txtPrenda.Size = New System.Drawing.Size(260, 20)
+        Me.txtPrenda.TabIndex = 3
         '
-        'Modelo
+        'txtTipo
         '
-        Me.Modelo.HeaderText = "Modelo"
-        Me.Modelo.Name = "Modelo"
-        Me.Modelo.Width = 77
-        '
-        'Descripcion
-        '
-        Me.Descripcion.HeaderText = "Descripción"
-        Me.Descripcion.Name = "Descripcion"
-        Me.Descripcion.Width = 102
-        '
-        'MontoValuado
-        '
-        Me.MontoValuado.HeaderText = "Monto Valuado"
-        Me.MontoValuado.Name = "MontoValuado"
-        Me.MontoValuado.Width = 124
+        Me.txtTipo.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.txtTipo.BorderColor = System.Drawing.Color.Gray
+        Me.txtTipo.ForeColor = System.Drawing.Color.White
+        Me.txtTipo.Location = New System.Drawing.Point(34, 76)
+        Me.txtTipo.Name = "txtTipo"
+        Me.txtTipo.Size = New System.Drawing.Size(178, 20)
+        Me.txtTipo.TabIndex = 0
         '
         'Solicitud_Boleta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1065, 503)
-        Me.Controls.Add(Me.txtTotalMoratorios)
-        Me.Controls.Add(Me.lblTotalMoratorios)
-        Me.Controls.Add(Me.txtTotal)
-        Me.Controls.Add(Me.lblTotal)
-        Me.Controls.Add(Me.txtMontoTotal)
-        Me.Controls.Add(Me.Label11)
+        Me.ClientSize = New System.Drawing.Size(1060, 551)
+        Me.Controls.Add(Me.txtTipo)
         Me.Controls.Add(Me.txtPrenda)
+        Me.Controls.Add(Me.txtIdCLiente)
+        Me.Controls.Add(Me.txtMontoTotalValuado)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.txtResponsable)
-        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.btn_agregar)
         Me.Controls.Add(Me.btn_Procesar)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.txtIntegrantes)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.MonoFlat_Separator1)
         Me.Controls.Add(Me.dtdatos)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.lblCliente)
-        Me.Controls.Add(Me.txtIdCliente)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.ComboPromotor)
-        Me.Controls.Add(Me.txtInteres)
+        Me.Controls.Add(Me.txtPorcentajeRefrendo)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.txtplazo)
+        Me.Controls.Add(Me.txtMontoTotalSugerido)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.txtNombreSolicitud)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lblTipo)
-        Me.Controls.Add(Me.txtTipo)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Solicitud_Boleta"
-        Me.Text = "Levantar_Solicitud"
+        Me.Text = "Solicitud de Empeño"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dtdatos, System.ComponentModel.ISupportInitialize).EndInit()
@@ -684,48 +504,39 @@ Partial Class Solicitud_Boleta
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents MonoFlat_HeaderLabel1 As MonoFlat.MonoFlat_HeaderLabel
-    Friend WithEvents txtNombreSolicitud As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents txtplazo As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents txtMontoTotalSugerido As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label4 As Label
-    Friend WithEvents txtInteres As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents txtPorcentajeRefrendo As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label5 As Label
     Friend WithEvents Button2 As Button
-    Friend WithEvents txtIdCliente As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label7 As Label
     Friend WithEvents dtdatos As Bunifu.Framework.UI.BunifuCustomDataGrid
     Friend WithEvents MonoFlat_Separator1 As MonoFlat.MonoFlat_Separator
-    Friend WithEvents txtIntegrantes As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents Label2 As Label
     Friend WithEvents btn_Procesar As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents EvolveControlBox1 As EvolveControlBox
     Friend WithEvents btn_agregar As Button
     Friend WithEvents BackgroundGestores As System.ComponentModel.BackgroundWorker
     Friend WithEvents BackgroundPromotores As System.ComponentModel.BackgroundWorker
-    Friend WithEvents txtResponsable As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents Label9 As Label
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Label10 As Label
-    Friend WithEvents txtMontoTotal As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents txtMontoTotalValuado As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label11 As Label
-    Friend WithEvents txtTotal As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents lblTotal As Label
-    Friend WithEvents BackgroundLegal As System.ComponentModel.BackgroundWorker
-    Friend WithEvents BackgroundSolicitudLegal As System.ComponentModel.BackgroundWorker
-    Friend WithEvents txtTotalMoratorios As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents lblTotalMoratorios As Label
     Friend WithEvents Button1 As Button
-    Friend WithEvents txtTipo As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label1 As Label
-    Friend WithEvents txtPrenda As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label8 As Label
     Friend WithEvents ComboPromotor As ComboBox
     Friend WithEvents lblCliente As Label
     Friend WithEvents lblTipo As Label
     Friend WithEvents Foto As DataGridViewImageColumn
-    Friend WithEvents TipoPrenda As DataGridViewTextBoxColumn
+    Friend WithEvents TipoPrenda As DataGridViewComboBoxColumn
     Friend WithEvents Marca As DataGridViewTextBoxColumn
     Friend WithEvents Modelo As DataGridViewTextBoxColumn
+    Friend WithEvents NoSerie As DataGridViewTextBoxColumn
     Friend WithEvents Descripcion As DataGridViewTextBoxColumn
     Friend WithEvents MontoValuado As DataGridViewTextBoxColumn
+    Friend WithEvents MontoSugerido As DataGridViewTextBoxColumn
+    Friend WithEvents BackgroundTipos As System.ComponentModel.BackgroundWorker
+    Friend WithEvents txtIdCLiente As VB.Windows.Forms.ControlExt.TextBoxEx
+    Friend WithEvents txtPrenda As VB.Windows.Forms.ControlExt.TextBoxEx
+    Friend WithEvents txtTipo As VB.Windows.Forms.ControlExt.TextBoxEx
 End Class

@@ -215,6 +215,14 @@ Public Class frm_adm
             Else
                 BunifuFlatButton8.Enabled = False
             End If
+            If row("SatiModEmpeñosAgregarSolicitud") Then
+                MonoFlat_Button1.Visible = True
+                MonoFlat_Button2.Visible = True
+            Else
+                MonoFlat_Button1.Visible = False
+                MonoFlat_Button2.Visible = False
+
+            End If
         Next
 
         FlushMemory()
@@ -329,7 +337,14 @@ Public Class frm_adm
     Private Sub BunifuFlatButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BunifuFlatButton2.Click
         For Each row As DataRow In dataPermisos.Rows
             If row("SatiModCatalogos") Then
-                inicio.Close()
+                For Each frmForm As Form In My.Application.OpenForms
+
+
+                    If frmForm.Name = ventana.Name Then
+                        frmForm.Close()
+                        Exit For
+                    End If
+                Next
                 ventana.Name = inv.Name
 
                 inv.MdiParent = Me
@@ -368,7 +383,7 @@ Public Class frm_adm
 
 
             If frmForm.Name = ventana.Name Then
-                frmForm.Hide()
+                frmForm.Close()
                 Exit For
             End If
         Next
@@ -511,7 +526,7 @@ Public Class frm_adm
 
         panelmenus.Width = widthmenu
         If panelmenus.Width < 258 Then
-            widthmenu = widthmenu + 10
+            widthmenu = widthmenu + 30
             inicio.Panelsecundario.Left = panelusuarios.Width + Panelconfiguracion.Width + BunifuImageButton1.Width - panelmenus.Width + 10
 
             acomodar()
@@ -607,10 +622,14 @@ Public Class frm_adm
     End Sub
 
     Private Sub BunifuFlatButton4_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton4.Click
-        inicio.Close()
-        inv.Close()
-        Solicitudes.Close()
-        Reportes.Close()
+        For Each frmForm As Form In My.Application.OpenForms
+
+
+            If frmForm.Name = ventana.Name Then
+                frmForm.Close()
+                Exit For
+            End If
+        Next
 
         ventana.Name = CreditosPorEntregar.Name
 
@@ -661,10 +680,14 @@ Public Class frm_adm
     End Sub
 
     Private Sub BunifuFlatButton8_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton8.Click
-        inicio.Close()
-        inv.Close()
-        Solicitudes.Close()
-        CreditosPorEntregar.Close()
+        For Each frmForm As Form In My.Application.OpenForms
+
+
+            If frmForm.Name = ventana.Name Then
+                frmForm.Close()
+                Exit For
+            End If
+        Next
         ventana.Name = Reportes.Name
 
         Reportes.MdiParent = Me
@@ -695,5 +718,72 @@ Public Class frm_adm
 
     Private Sub BunifuFlatButton6_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton6.Click
         Retiros.Show()
+    End Sub
+
+    Private Sub MonoFlat_Button1_Click(sender As Object, e As EventArgs) Handles MonoFlat_Button1.Click
+        For Each frmForm As Form In My.Application.OpenForms
+
+
+            If frmForm.Name = ventana.Name Then
+                frmForm.Close()
+                Exit For
+            End If
+        Next
+        ventana.Name = EmpeñosPorEntregar.Name
+
+        EmpeñosPorEntregar.MdiParent = Me
+        EmpeñosPorEntregar.Height = Me.Height - Panel1.Height
+        EmpeñosPorEntregar.Width = Me.Width - panelmenus.Width
+
+
+        EmpeñosPorEntregar.Top = 0
+        EmpeñosPorEntregar.Left = 0
+        EmpeñosPorEntregar.Show()
+        EmpeñosPorEntregar.Top = 0
+        EmpeñosPorEntregar.Left = 0
+        EmpeñosPorEntregar.Height = Me.Height - Panel1.Height - 43
+        EmpeñosPorEntregar.Width = Me.Width - panelmenus.Width - 20
+        'inv.Size = sizeventanas
+        EmpeñosPorEntregar.Show()
+
+        If EmpeñosPorEntregar.Top > 0 Then
+            EmpeñosPorEntregar.Top = 0
+
+        End If
+        EmpeñosPorEntregar.Update()
+    End Sub
+
+    Private Sub MonoFlat_Button2_Click(sender As Object, e As EventArgs) Handles MonoFlat_Button2.Click
+        For Each frmForm As Form In My.Application.OpenForms
+
+
+            If frmForm.Name = ventana.Name Then
+                frmForm.Close()
+                Exit For
+            End If
+        Next
+
+        ventana.Name = SolicitudesEmpeños.Name
+
+        SolicitudesEmpeños.MdiParent = Me
+        SolicitudesEmpeños.Height = Me.Height - Panel1.Height
+        SolicitudesEmpeños.Width = Me.Width - panelmenus.Width
+
+
+        SolicitudesEmpeños.Top = 0
+        SolicitudesEmpeños.Left = 0
+        SolicitudesEmpeños.Show()
+        SolicitudesEmpeños.Top = 0
+        SolicitudesEmpeños.Left = 0
+        SolicitudesEmpeños.Height = Me.Height - Panel1.Height - 43
+        SolicitudesEmpeños.Width = Me.Width - panelmenus.Width - 20
+        'inv.Size = sizeventanas
+        SolicitudesEmpeños.Show()
+
+        If SolicitudesEmpeños.Top > 0 Then
+            SolicitudesEmpeños.Top = 0
+
+        End If
+        SolicitudesEmpeños.Update()
     End Sub
 End Class

@@ -187,6 +187,9 @@ Public Class Autorizacion
             Case "SacCancelarTicket"
                 Reportes.CatTickets.autorizado = False
                 Me.Close()
+            Case "SatiModEmpeñosAgregarSolicitud"
+                Solicitud_Boleta.autorizado = False
+                Me.Close()
 
         End Select
     End Sub
@@ -397,6 +400,18 @@ Public Class Autorizacion
                     txtusr.Text = ""
                     txtcontra.Text = ""
                 End If
+            Case "SatiModEmpeñosAgregarSolicitud"
+                If autorizado Then
+                    Solicitud_Boleta.autorizado = True
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                Else
+                    Solicitud_Boleta.autorizado = False
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                End If
 
         End Select
     End Sub
@@ -575,6 +590,9 @@ Public Class Autorizacion
                 Case "SacCancelarTicket"
                     Reportes.CatTickets.autorizado = True
                     Me.Close()
+                Case "SatiModEmpeñosAgregarSolicitud"
+                    Solicitud_Boleta.autorizado = True
+                    Me.Close()
             End Select
         Else
             If passwordCorrect Then
@@ -596,5 +614,9 @@ Public Class Autorizacion
         If e.Button = MouseButtons.Left Then
             MoveForm(Me)
         End If
+    End Sub
+
+    Private Sub txtcontra_TextChanged(sender As Object, e As EventArgs) Handles txtcontra.TextChanged
+
     End Sub
 End Class

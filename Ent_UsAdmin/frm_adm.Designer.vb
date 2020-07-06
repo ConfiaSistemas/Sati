@@ -38,6 +38,8 @@ Partial Class frm_adm
         Me.imgperfil = New Bunifu.Framework.UI.BunifuImageButton()
         Me.BunifuImageButton1 = New Bunifu.Framework.UI.BunifuImageButton()
         Me.panelmenus = New System.Windows.Forms.Panel()
+        Me.MonoFlat_Button2 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button1 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.BunifuFlatButton8 = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.BunifuFlatButton5 = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.BunifuFlatButton4 = New Bunifu.Framework.UI.BunifuFlatButton()
@@ -290,6 +292,8 @@ Partial Class frm_adm
         'panelmenus
         '
         Me.panelmenus.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.panelmenus.Controls.Add(Me.MonoFlat_Button2)
+        Me.panelmenus.Controls.Add(Me.MonoFlat_Button1)
         Me.panelmenus.Controls.Add(Me.BunifuFlatButton8)
         Me.panelmenus.Controls.Add(Me.BunifuFlatButton5)
         Me.panelmenus.Controls.Add(Me.BunifuFlatButton4)
@@ -299,8 +303,36 @@ Partial Class frm_adm
         Me.panelmenus.Dock = System.Windows.Forms.DockStyle.Left
         Me.panelmenus.Location = New System.Drawing.Point(0, 66)
         Me.panelmenus.Name = "panelmenus"
-        Me.panelmenus.Size = New System.Drawing.Size(258, 376)
+        Me.panelmenus.Size = New System.Drawing.Size(258, 424)
         Me.panelmenus.TabIndex = 1
+        '
+        'MonoFlat_Button2
+        '
+        Me.MonoFlat_Button2.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.MonoFlat_Button2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button2.Image = Nothing
+        Me.MonoFlat_Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button2.Location = New System.Drawing.Point(12, 386)
+        Me.MonoFlat_Button2.Name = "MonoFlat_Button2"
+        Me.MonoFlat_Button2.Size = New System.Drawing.Size(214, 26)
+        Me.MonoFlat_Button2.TabIndex = 12
+        Me.MonoFlat_Button2.Text = "Solicitudes de Empeño"
+        Me.MonoFlat_Button2.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'MonoFlat_Button1
+        '
+        Me.MonoFlat_Button1.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.MonoFlat_Button1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button1.Image = Nothing
+        Me.MonoFlat_Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button1.Location = New System.Drawing.Point(12, 338)
+        Me.MonoFlat_Button1.Name = "MonoFlat_Button1"
+        Me.MonoFlat_Button1.Size = New System.Drawing.Size(214, 26)
+        Me.MonoFlat_Button1.TabIndex = 11
+        Me.MonoFlat_Button1.Text = "Empeños por Entregar"
+        Me.MonoFlat_Button1.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'BunifuFlatButton8
         '
@@ -540,7 +572,7 @@ Partial Class frm_adm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ClientSize = New System.Drawing.Size(890, 442)
+        Me.ClientSize = New System.Drawing.Size(890, 490)
         Me.Controls.Add(Me.imgmostrarpanel)
         Me.Controls.Add(Me.panelmenus)
         Me.Controls.Add(Me.Panel1)
@@ -589,4 +621,6 @@ Partial Class frm_adm
     Friend WithEvents Panel3 As Panel
     Friend WithEvents BunifuFlatButton6 As Bunifu.Framework.UI.BunifuFlatButton
     Friend WithEvents TimerLiberar As Timer
+    Friend WithEvents MonoFlat_Button1 As MonoFlat.MonoFlat_Button
+    Friend WithEvents MonoFlat_Button2 As MonoFlat.MonoFlat_Button
 End Class

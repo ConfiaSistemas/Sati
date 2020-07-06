@@ -878,4 +878,8 @@ Public Class DatosSolicitud
     Private Sub TabPage5_Click(sender As Object, e As EventArgs) Handles TabPage5.Click
 
     End Sub
+
+    Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
+
+    End Sub
 End Class

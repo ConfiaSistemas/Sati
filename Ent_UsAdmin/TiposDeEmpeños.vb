@@ -13,7 +13,7 @@ Public Class TiposDeEmpeños
 
                                         iniciarconexionempresa()
                                         Dim strgrupos As String
-                                        strgrupos = "select id,nombre from TiposDeEmpeños"
+                                        strgrupos = "select id,nombre from TiposDeEmpeño"
                                         Dim ejec = New SqlCommand(strgrupos)
                                         ejec.Connection = conexionempresa
                                         Dim labelgrupo As Label

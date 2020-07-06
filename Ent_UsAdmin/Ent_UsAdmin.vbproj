@@ -142,6 +142,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="VB.Windows.Forms.ControlExt">
+      <HintPath>..\..\..\..\Downloads\VB.Windows.Forms.ControlExt\VB.Windows.Forms.ControlExt\bin\Debug\VB.Windows.Forms.ControlExt.dll</HintPath>
+    </Reference>
     <Reference Include="WebKitBrowser, Version=0.5.0.0, Culture=neutral, PublicKeyToken=b967213f6d29a3be" />
     <Reference Include="WinControls.ListView">
       <HintPath>C:\Users\SVRCONFIAUPN\Downloads\WinControls.TreeListViewSample\TreeListViewSample\TreeListViewSample\bin\Release\WinControls.ListView.dll</HintPath>
@@ -192,6 +195,12 @@
       <DependentUpon>AgregarDocumentoCredito.vb</DependentUpon>
     </Compile>
     <Compile Include="AgregarDocumentoCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarDocumentoDatosSolicitudBoleta.Designer.vb">
+      <DependentUpon>AgregarDocumentoDatosSolicitudBoleta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarDocumentoDatosSolicitudBoleta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AgregarDocumentoLegal.Designer.vb">
@@ -272,6 +281,12 @@
     <Compile Include="Autorizacion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="BuscarClienteEmpeño.Designer.vb">
+      <DependentUpon>BuscarClienteEmpeño.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarClienteEmpeño.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BuscarEmpleadoUsuarioActualizar.Designer.vb">
       <DependentUpon>BuscarEmpleadoUsuarioActualizar.vb</DependentUpon>
     </Compile>
@@ -326,7 +341,6 @@
     <Compile Include="Class1.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Class2.vb" />
     <Compile Include="Class3.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -360,6 +374,18 @@
     <Compile Include="CrearConvenioLegal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EmpeñosPorEntregar.Designer.vb">
+      <DependentUpon>EmpeñosPorEntregar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmpeñosPorEntregar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpeñosActivos.Designer.vb">
+      <DependentUpon>EmpeñosActivos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmpeñosActivos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CreditosEnLegal.Designer.vb">
       <DependentUpon>CreditosEnLegal.vb</DependentUpon>
     </Compile>
@@ -370,6 +396,18 @@
       <DependentUpon>CreditosActivos.vb</DependentUpon>
     </Compile>
     <Compile Include="CreditosActivos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatosSolicitudBoletaVerificar.Designer.vb">
+      <DependentUpon>DatosSolicitudBoletaVerificar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DatosSolicitudBoletaVerificar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatosSolicitudBoleta.Designer.vb">
+      <DependentUpon>DatosSolicitudBoleta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DatosSolicitudBoleta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DetalleCaja.Designer.vb">
@@ -388,6 +426,12 @@
       <DependentUpon>DocumentosCredito.vb</DependentUpon>
     </Compile>
     <Compile Include="DocumentosCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntregarDocumentacionEmpeño.Designer.vb">
+      <DependentUpon>EntregarDocumentacionEmpeño.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EntregarDocumentacionEmpeño.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ImportarExcel.Designer.vb">
@@ -412,6 +456,18 @@
       <DependentUpon>InformacionCliente.vb</DependentUpon>
     </Compile>
     <Compile Include="InformacionCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformacionEmpeño.Designer.vb">
+      <DependentUpon>InformacionEmpeño.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InformacionEmpeño.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SolicitudesEmpeños.Designer.vb">
+      <DependentUpon>SolicitudesEmpeños.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudesEmpeños.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Solicitud_Boleta.Designer.vb">
@@ -726,6 +782,12 @@
     <Compile Include="VistaPreviaDocumento.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="webcamEmpeño.Designer.vb">
+      <DependentUpon>webcamEmpeño.vb</DependentUpon>
+    </Compile>
+    <Compile Include="webcamEmpeño.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="webcamCredito.Designer.vb">
       <DependentUpon>webcamCredito.vb</DependentUpon>
     </Compile>
@@ -751,6 +813,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarDocumentoCredito.resx">
       <DependentUpon>AgregarDocumentoCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarDocumentoDatosSolicitudBoleta.resx">
+      <DependentUpon>AgregarDocumentoDatosSolicitudBoleta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarDocumentoLegal.resx">
       <DependentUpon>AgregarDocumentoLegal.vb</DependentUpon>
@@ -794,6 +859,9 @@
     <EmbeddedResource Include="Autorizacion.resx">
       <DependentUpon>Autorizacion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BuscarClienteEmpeño.resx">
+      <DependentUpon>BuscarClienteEmpeño.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BuscarEmpleadoUsuarioActualizar.resx">
       <DependentUpon>BuscarEmpleadoUsuarioActualizar.vb</DependentUpon>
     </EmbeddedResource>
@@ -827,11 +895,23 @@
     <EmbeddedResource Include="CrearConvenioLegal.resx">
       <DependentUpon>CrearConvenioLegal.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmpeñosPorEntregar.resx">
+      <DependentUpon>EmpeñosPorEntregar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpeñosActivos.resx">
+      <DependentUpon>EmpeñosActivos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreditosEnLegal.resx">
       <DependentUpon>CreditosEnLegal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreditosActivos.resx">
       <DependentUpon>CreditosActivos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatosSolicitudBoletaVerificar.resx">
+      <DependentUpon>DatosSolicitudBoletaVerificar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatosSolicitudBoleta.resx">
+      <DependentUpon>DatosSolicitudBoleta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DetalleCaja.resx">
       <DependentUpon>DetalleCaja.vb</DependentUpon>
@@ -841,6 +921,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DocumentosCredito.resx">
       <DependentUpon>DocumentosCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntregarDocumentacionEmpeño.resx">
+      <DependentUpon>EntregarDocumentacionEmpeño.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportarExcel.resx">
       <DependentUpon>ImportarExcel.vb</DependentUpon>
@@ -853,6 +936,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InformacionCliente.resx">
       <DependentUpon>InformacionCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformacionEmpeño.resx">
+      <DependentUpon>InformacionEmpeño.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SolicitudesEmpeños.resx">
+      <DependentUpon>SolicitudesEmpeños.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Solicitud_Boleta.resx">
       <DependentUpon>Solicitud_Boleta.vb</DependentUpon>
@@ -1005,6 +1094,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaPreviaDocumento.resx">
       <DependentUpon>VistaPreviaDocumento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webcamEmpeño.resx">
+      <DependentUpon>webcamEmpeño.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="webcamCredito.resx">
       <DependentUpon>webcamCredito.vb</DependentUpon>

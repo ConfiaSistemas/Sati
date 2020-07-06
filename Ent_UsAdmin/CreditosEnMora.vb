@@ -162,54 +162,7 @@ else '0' end as MultasVencidas
 
                 Else
 
-                    consulta = "select carteravencida.nombre,carteraVencida.id,format(pagare,'C','es-mx') as Pagaré,format(PagoSemanal,'C','es-mx') as PagoSemanal,format(AbonadoSinMultas,'C','es-mx') as AbonadoSinMultas,format(Multas,'C','es-mx') as Multas,format(AbonadoMultas,'C','es-mx') as AbonadoMultas,format(multasPendientes,'C','es-mx') as MultasPendientes,format(VencidoNormal,'C','es-mx') as VencidoNormal,format(TotalPendiente,'C','es-mx') as TotalPendiente,semanasAtraso,format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as LiquidaCon,DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ' ' + DatosSolicitud.Noext + ' ' + DatosSolicitud.Colonia ) as Domicilio,Gestor,carteravencida.Estado from 
-(select nombre,id,pagare,PagoSemanal,AbonadoSinMultas,Multas,(AbonadoMultasL + AbonadoMultasV) as AbonadoMultas,(Multas - (AbonadoMultasL+AbonadoMultasV)) as multasPendientes, case when carteratotal.Estado = 'C' then
-case when pendiente = 0 then '0' else
-(pendiente - (MultasVencidas - (AbonadoMultasV)))end
-else(pendiente - (Multas - (AbonadoMultasL+AbonadoMultasV))) end as VencidoNormal,((Multas - (AbonadoMultasL+AbonadoMultasV)) + (pendiente - (Multas - (AbonadoMultasL+AbonadoMultasV))) ) as TotalPendiente,Gestor,Estado,semanasAtraso,IdSolicitud from
-(select Cartera.nombre,Cartera.id,
-case when Cartera.Estado = 'C' then
- isnull((select SUM(Abonado - interes) as pagonormal from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where Abonado <> 0 and Abonado >= interes and convenios.id_credito = Cartera.id group by id_credito),0)
-else
-isnull((select SUM(Abonado - interes) as pagonormal from CalendarioNormal where Abonado <> 0 and Abonado >= interes and id_credito = Cartera.id group by id_credito),0) end as AbonadoSinMultas,
-case when Cartera.Estado = 'C' then
-isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConvenios inner join Convenios on Convenios.id = CalendarioConvenios.Id_Convenio where abonado <> 0 and abonado <= interes and CalendarioConvenios.estado = 'V' and Convenios.id_credito = Cartera.id group by Convenios.id_credito),0) 
-else
-isnull((select isnull((select SUM( ((((abonado ))) )) as AbonadoInteres from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where CalendarioNormal.estado = 'V' and Abonado <= CalendarioNormal.Interes and CalendarioNormal.id_credito =cartera.id group by CalendarioNormal.id_credito),0)
-+
-isnull((select SUM( ((((abonado -(abonado -calendarionormal.Interes) ))) )) as AbonadoInteres from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where CalendarioNormal.estado = 'V' and Abonado >=CalendarioNormal.Interes and CalendarioNormal.id_credito =cartera.id group by CalendarioNormal.id_credito),0)),0)end as AbonadoMultasV,
-case when Cartera.Estado = 'C' then
-isnull((select SUM(Abonado - CalendarioConvenios.monto) as AbonadoMultas from CalendarioConvenios inner join Convenios on Convenios.id = CalendarioConvenios.Id_Convenio where  CalendarioConvenios.estado = 'L' and Convenios.id_credito = Cartera.id group by Convenios.id_credito),0)
-else
-isnull((select SUM(Abonado - CalendarioNormal.monto) as AbonadoMultas from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where  CalendarioNormal.estado = 'L' and CalendarioNormal.id_credito = Cartera.id group by CalendarioNormal.id_credito),0) end as AbonadoMultasL,
-case when Cartera.Estado = 'C' THEN 
-isnull((select SUM(CalendarioConvenios.interes) as Multas from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where  Convenios.id_credito = Cartera.id group by Convenios.id_credito),0)
-else
-isnull((select SUM(CalendarioNormal.interes) as Multas from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where  CalendarioNormal.id_credito = Cartera.id group by CalendarioNormal.id_credito),0) end as Multas,
-case when cartera.Estado = 'C' THEN 
-(select SUM(calendarioconvenios.monto) from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where convenios.id_credito = Cartera.id)
-else
-(select Pagare from credito where id = Cartera.id) end as pagare,
-case when Cartera.Estado = 'C' then
-(select COUNT(pendiente) AS semanasAtraso from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where CalendarioConvenios.Estado = 'V' and Convenios.id_credito = cartera.id) else
-(select count(pendiente) as semanasAtraso from CalendarioNormal where Estado = 'V' and id_credito = Cartera.id) end as semanasAtraso
-,
-case when Cartera.Estado = 'C' then
-(select top 1 (monto + interes) as pagoNormal from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where Convenios.id_credito = Cartera.id and CalendarioConvenios.Estado = 'V' )
-else
-(select PagoIndividual  as PagoNormal From Credito where id = Cartera.id)
-end as PagoSemanal
-,
-case when Cartera.Estado = 'C' then
-isnull((select SUM(calendarioconvenios.pendiente) from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where calendarioconvenios.Estado = 'V' and convenios.id_credito = Cartera.id),0)
-else
-isnull((select SUM(pendiente) from CalendarioNormal where Estado = 'V' and id_credito = Cartera.id),0) end as pendiente,
-case when Cartera.Estado = 'C' then
-(select SUM(interes) as MultasVencidas from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where CalendarioConvenios.Estado ='V' and Convenios.id_credito = Cartera.id)
-else '0' end as MultasVencidas
-,Gestores.Nombre as Gestor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V' and Credito.Estado <> 'L' and credito.idgestor = '" & idEmpleado & "' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
-(select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id  ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0 order by carteravencida.nombre asc"
+                    consulta = "r = Gestores.id  ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0 order by carteravencida.nombre asc"
                 End If
             Case "Promotor"
                 If ComboElección.Text = "Todos" Then
@@ -327,8 +280,32 @@ else (case when carteraVencida.Estado = 'C' then
 	else 
 	datediff(day,(select top 1 fechapago from CalendarioNormal where Abonado < (monto+interes) and id_credito = carteraVencida.id order by FechaPago asc),GETDATE())
 	end)
-end as Diasdeatraso
-,format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ' ' + DatosSolicitud.Noext + ' ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,carteravencida.Estado from 
+end as Diasdeatraso,
+case when FechaDeAtraso = 'Nunca' then
+	(case when carteraVencida.Estado = 'C' then
+	format(datediff(day,(select top 1 fechapago from CalendarioConveniosSac inner join ConveniosSac on CalendarioConveniosSac.idConvenio = ConveniosSac.id where Abonado < (monto+interes) and ConveniosSac.idCredito = carteraVencida.id order by FechaPago asc),GETDATE()) *50,'C','es-mx')
+	else
+	format(0,'C','es-mx')
+	end)
+else (case when carteraVencida.Estado = 'C' then
+	format(datediff(day,(select top 1 fechapago from CalendarioConveniosSac inner join ConveniosSac on CalendarioConveniosSac.idConvenio = ConveniosSac.id where Abonado < (monto+interes) and ConveniosSac.idCredito = carteraVencida.id order by FechaPago asc),GETDATE())*50,'C','es-mx')
+	else
+	format(0,'C','es-mx')
+	end)
+end as MultasConvenio,
+case when FechaDeAtraso = 'Nunca' then
+	(case when carteraVencida.Estado = 'C' then
+	format(totalpendiente + (datediff(day,(select top 1 fechapago from CalendarioConveniosSac inner join ConveniosSac on CalendarioConveniosSac.idConvenio = ConveniosSac.id where Abonado < (monto+interes) and ConveniosSac.idCredito = carteraVencida.id order by FechaPago asc),GETDATE()) *50),'C','es-mx')
+	else
+	format(0,'C','es-mx')
+	end)
+else (case when carteraVencida.Estado = 'C' then
+	format(totalpendiente + (datediff(day,(select top 1 fechapago from CalendarioConveniosSac inner join ConveniosSac on CalendarioConveniosSac.idConvenio = ConveniosSac.id where Abonado < (monto+interes) and ConveniosSac.idCredito = carteraVencida.id order by FechaPago asc),GETDATE())*50),'C','es-mx')
+	else
+	format(0,'C','es-mx')
+	end)
+end as TotalAtrasoConvenio
+,format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,carteravencida.Estado from 
 (select nombre,id,pagare,PagoSemanal,AbonadoSinMultas,Multas,(AbonadoMultasL + AbonadoMultasV) as AbonadoMultas,(Multas - (AbonadoMultasL+AbonadoMultasV)) as multasPendientes, case when carteratotal.Estado = 'C' then
 case when pendiente = 0 then '0' else
 (pendiente - (MultasVencidas - (AbonadoMultasV)))end
