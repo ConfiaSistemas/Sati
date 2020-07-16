@@ -183,13 +183,13 @@ isnull((select vencidoNormal from ValorCarteraXcreditoSati where fecha='" & date
             Dim consultaSugiereFechaInicial As String
             Dim comandoSugiereFechaInicial As SqlCommand
             Dim readerSugiereFechaInicial As SqlDataReader
-            consultaSugiereFechaInicial = "if exists (select top 1 fecha from ValorCarteraXcreditoSati where idCredito = 48 and fecha <='" & dateDesde.Value.ToString("yyyy-MM-dd") & "' order by fecha desc)
+            consultaSugiereFechaInicial = "if exists (select top 1 fecha from ValorCarteraXcreditoSati where idCredito = '" & idCredito & "' and fecha <='" & dateDesde.Value.ToString("yyyy-MM-dd") & "' order by fecha desc)
                                            begin
-                                           select top 1 fecha from ValorCarteraXcreditoSati where idCredito = 48 and fecha <='" & dateDesde.Value.ToString("yyyy-MM-dd") & "' order by fecha desc
+                                           select top 1 fecha from ValorCarteraXcreditoSati where idCredito = '" & idCredito & "'  and fecha <='" & dateDesde.Value.ToString("yyyy-MM-dd") & "' order by fecha desc
                                            end
-                                           else if exists(select top 1 fecha from ValorCarteraXcreditoSati where idCredito = 48 and fecha >='" & dateDesde.Value.ToString("yyyy-MM-dd") & "' order by fecha asc)
+                                           else if exists(select top 1 fecha from ValorCarteraXcreditoSati where idCredito = '" & idCredito & "' and fecha >='" & dateDesde.Value.ToString("yyyy-MM-dd") & "' order by fecha asc)
                                            begin
-                                           select top 1 fecha from ValorCarteraXcreditoSati where idCredito = 48 and fecha >='" & dateDesde.Value.ToString("yyyy-MM-dd") & "' order by fecha asc
+                                           select top 1 fecha from ValorCarteraXcreditoSati where idCredito = '" & idCredito & "'  and fecha >='" & dateDesde.Value.ToString("yyyy-MM-dd") & "' order by fecha asc
                                            end
                                            else
                                            begin
@@ -214,13 +214,13 @@ isnull((select vencidoNormal from ValorCarteraXcreditoSati where fecha='" & date
             Dim consultaSugiereFechaFinal As String
             Dim comandoSugiereFechaFinal As SqlCommand
             Dim readerSugiereFechaFinal As SqlDataReader
-            consultaSugiereFechaFinal = "if exists (select top 1 fecha from ValorCarteraXcreditoSati where idCredito = 48 and fecha <='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' order by fecha desc)
+            consultaSugiereFechaFinal = "if exists (select top 1 fecha from ValorCarteraXcreditoSati where idCredito = '" & idCredito & "'  and fecha <='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' order by fecha desc)
                                            begin
-                                           select top 1 fecha from ValorCarteraXcreditoSati where idCredito = 48 and fecha <='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' order by fecha desc
+                                           select top 1 fecha from ValorCarteraXcreditoSati where idCredito = '" & idCredito & "' and fecha <='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' order by fecha desc
                                            end
-                                           else if exists(select top 1 fecha from ValorCarteraXcreditoSati where idCredito = 48 and fecha >='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' order by fecha asc)
+                                           else if exists(select top 1 fecha from ValorCarteraXcreditoSati where idCredito = '" & idCredito & "'  and fecha >='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' order by fecha asc)
                                            begin
-                                           select top 1 fecha from ValorCarteraXcreditoSati where idCredito = 48 and fecha >='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' order by fecha asc
+                                           select top 1 fecha from ValorCarteraXcreditoSati where idCredito = '" & idCredito & "' and fecha >='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' order by fecha asc
                                            end
                                            else
                                            begin
@@ -404,9 +404,10 @@ end
             documento.ReplaceText("%FECHAIMPRESION%", Now.Date.ToString("yyyy-MM-dd"))
             documento.ReplaceText("%VENCIDO%", FormatCurrency(pagoMinimo, 2))
             documento.ReplaceText("%FECHALIMITE%", FechaLimite)
-            documento.ReplaceText("%NOMBRECLIENTE% ", nombreCredito)
+            documento.ReplaceText("%NOMBRECLIENTE%", nombreCredito)
             documento.ReplaceText("%MONTOCREDITO%", FormatCurrency(Pagare, 2))
-
+            documento.ReplaceText("%PERIODO%", "del " & GeneraDateString(dateDesde.Value.DayOfWeek, dateDesde.Value.Month, dateDesde.Value.Year) & " al " & GeneraDateString(dateHasta.Value.DayOfWeek, dateHasta.Value.Month, dateHasta.Value.Year))
+            documento.ReplaceText("%DIASPERIODO%", DateDiff(DateInterval.Day, dateDesde.Value, dateHasta.Value))
             Dim para As String
             para = "Nota: *Cuando la fecha de pago corresponda a un día inhábil, el pago podrá efectuarse sin cargo adicional alguno el día hábil siguiente.
 
@@ -427,4 +428,59 @@ www.gob.mx/profeco; teléfono 01 800 468 87 22)
         End If
 
     End Sub
+
+    Private Function GeneraDateString(ByVal dia As DayOfWeek, ByVal mes As Integer, ByVal año As Integer) As String
+        Dim dateString As String
+        Dim diaString, mesString, añoString As String
+        Select Case dia
+            Case 1
+                diaString = "Lunes"
+            Case 2
+                diaString = "Martes"
+            Case 3
+                diaString = "Miércoles"
+            Case 4
+                diaString = "Jueves"
+            Case 5
+                diaString = "Viernes"
+            Case 6
+                diaString = "Sábado"
+            Case 7
+                diaString = "Domingo"
+
+        End Select
+
+        Select Case mes
+            Case 1
+                mesString = "Enero"
+            Case 2
+                mesString = "Febrero"
+            Case 3
+                mesString = "Marzo"
+            Case 4
+                mesString = "Abril"
+            Case 5
+                mesString = "Mayo"
+            Case 6
+                mesString = "Junio"
+            Case 7
+                mesString = "Julio"
+            Case 8
+                mesString = "Agosto"
+            Case 9
+                mesString = "Septiembre"
+            Case 10
+                mesString = "Octubre"
+            Case 11
+                mesString = "Noviembre"
+            Case 12
+                mesString = "Diciembre"
+
+        End Select
+
+        dateString = dia & " de " & mesString & " del " & año
+        Return dateString
+
+    End Function
+
 End Class
