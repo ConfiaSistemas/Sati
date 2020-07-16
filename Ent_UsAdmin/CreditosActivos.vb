@@ -88,4 +88,9 @@ Public Class CreditosActivos
     Private Sub MonoFlat_HeaderLabel1_Click(sender As Object, e As EventArgs) Handles MonoFlat_HeaderLabel1.Click
 
     End Sub
+
+    Private Sub EstadoDeCuentaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EstadoDeCuentaToolStripMenuItem.Click
+        EstadoDeCuenta.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        EstadoDeCuenta.Show()
+    End Sub
 End Class

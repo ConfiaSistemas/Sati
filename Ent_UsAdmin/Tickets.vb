@@ -123,7 +123,7 @@ Public Class Tickets
         Dim afecta As Boolean
         For Each row As DataGridViewRow In dtdatos.Rows
             afecta = AfectaCaja(row.Cells(6).Value)
-            If afecta Then
+            If afecta And row.Cells(8).Value <> "C" Then
                 total = total + row.Cells(3).Value
             Else
 
@@ -254,6 +254,8 @@ Public Class Tickets
     Private Sub dtdatos_SelectionChanged(sender As Object, e As EventArgs) Handles dtdatos.SelectionChanged
         If dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(8).Value = "A" Then
             dtdatos.ContextMenuStrip = ContextMenuCancelar
+        Else
+            dtdatos.ContextMenuStrip = Nothing
 
         End If
     End Sub
