@@ -50,7 +50,4 @@ Public Class EmpeñosPorEntregar
         cargarSolicitudes()
     End Sub
 
-    Private Sub ContextMenuEntregar_Click(sender As Object, e As EventArgs) Handles ContextMenuEntregar.Click
-
-    End Sub
 End Class

@@ -252,13 +252,13 @@ Public Class DatosSolicitudBoletaVerificar
         comandoActEstado.ExecuteNonQuery()
 
         Dim MontoRefrendo As Double
-        MontoRefrendo = (porcentajeRefrendo * 0.01) * montoTotalAutorizado
+        MontoRefrendo = ((porcentajeRefrendo * 0.01) * montoTotalAutorizado) * 1.16
         Dim comandoCreaEmpeño As SqlCommand
         Dim consultaCreaEmpeños As String
         Dim interesdiario As Double
         interesdiario = MontoRefrendo / 7
 
-        consultaCreaEmpeños = "insert into Empeños values('" & idcliente & "','" & idSolicitud & "','" & nombreCliente & "','" & montoTotalValuado & "','" & montoTotalAutorizado & "','7','" & MontoRefrendo & "','" & porcentajeRefrendo & "','" & interesdiario & "','" & Now.Date.ToString("yyyy-MM-dd") & "','','','','" & idPromotor & "','E','" & txtIne.Text & "')"
+        consultaCreaEmpeños = "insert into Empeños values('" & idcliente & "','" & idSolicitud & "','" & nombreCliente & "','" & montoTotalValuado & "','" & montoTotalAutorizado & "','7','" & MontoRefrendo & "','" & porcentajeRefrendo & "','" & interesdiario & "','" & Now.Date.ToString("yyyy-MM-dd") & "','','','','" & idPromotor & "','E','" & txtIne.Text & "','','')"
         comandoCreaEmpeño = New SqlCommand
         comandoCreaEmpeño.Connection = conexionempresa
         comandoCreaEmpeño.CommandText = consultaCreaEmpeños
