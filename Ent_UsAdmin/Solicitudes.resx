@@ -148,6 +148,22 @@
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BunifuThinButton22.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAFwAAAAfCAYAAABqI6qaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJMSURBVGhD7ZnPSxRhGMf7C0wNzYRIFBc3YnFdd2WVQkkF
+        L1GysbJbGyRECiL+gBICg1hxd0O7hHioqEMgeYguiT9gD3qxg1RI4cEg2EOJKOFB7PCt78y4uu4kVjPv
+        6fnAFxbemT18Znjmed73WE6BAxJ1EeGKI8IVR4QrjghXHBGuOIcKP15UgVMXalDZ3QrfvTZ4h8NwJYKS
+        A6EX+vH0X0Vxgx+5p52mPpk/Cj/p86Amfh0dL6N4+2kB774uI7X5HUI29EI/cyuL6J18CH8igjNN5029
+        Zgnn03F3XUHo6QDWtjaMvxT+hh/bW+ieiKH6bhB5JWcz/GYIp2z/UASvlmaNW4X/YX51CfXxduSXnTMX
+        zjdbZFsLSw3re5Zw1myWEcF6olNPUB5o2hPOboQfSKnZ9rD9cweNj27jRIVLF85Whl9XwT7G5yfhCDfr
+        wtk/sqUR7OPzty/wPQjrwquHQ1hdTxlLgh2wrLgTbbpw/pChxn44lepv+O8GnT2jYB+sIL6oUVJKLzcg
+        NvPMWBLs4PXHJFydl3ThnITqR9q1OiPYw80Xgyjye3XhjDPcgsT0c2NZsJI3H5Ko6glkTpocfmrvX8P7
+        1IpxmWAFHCbr4jfSW7Zp4QwnoYujt6RFtAjKbh3rRaGnKu04QzhT4HJrO4aPkxPGbcK/MLW8oL3Z+2Uz
+        WcIZlhdnpAWB8T7t6yp7LEeD++A8rOGhjfdO0PTkx1T4bvh02Mp4Y3K0dpR44iHtOJLHkmY+mUOFS6yP
+        CFccEa44IlxxRLjSOPALRGT1Xl/S64IAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="BunifuThinButton21.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFwAAAAfCAYAAABqI6qaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -178,5 +194,8 @@
   </metadata>
   <metadata name="ContextMenuAprobado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>814, 24</value>
+  </metadata>
+  <metadata name="BackgroundExcel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>994, 24</value>
   </metadata>
 </root>

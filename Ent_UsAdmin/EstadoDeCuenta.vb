@@ -11,9 +11,9 @@ Public Class EstadoDeCuenta
     Public idCredito As Integer
     Dim ncargando As Cargando
     Dim pagoMinimo, montoCredito, MontoPagado, SaldoVencido, SaldoInicial, SaldoFinal, Pagare As Double
-    Dim FechaLimite, FechaCorte As Date
+    Dim FechaLimite As Date
     Dim ExisteSaldoInicial, ExisteSaldoFinal, EncontroRegistros As Boolean
-    Dim nombreCredito As String
+    Dim nombreCredito, fechacorte As String
 
     Private Sub EstadoDeCuenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ncargando = New Cargando
@@ -133,10 +133,12 @@ Public Class EstadoDeCuenta
 ISNULL((select Convert(varchar,ValorCarteraCmultas) from ValorCarteraXcreditoSati where fecha='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' and idCredito=cred.id),'No existe')as SaldoFinal,
 case when not exists (select id from conveniossac where idCredito=cred.id) then (isnull((select top 1 FechaPago from CalendarioNormal where id_credito=cred.id and estado='P' order by FechaPago asc),getdate()))
 else isnull((select top 1 FechaPago from CalendarioConveniosSac where idConvenio=(select id from conveniossac where idcredito=cred.id) and estado='P' order by FechaPago asc),getdate()) end as FechaLimite,
+case when not exists (select id from conveniossac where idCredito=cred.id) then (isnull((select top 1 convert(varchar,dateadd(DAY,-1,FechaPago),23) from CalendarioNormal where id_credito=cred.id and (estado='P' or estado = 'V') order by FechaPago asc),'N/A'))
+else isnull((select top 1 convert(varchar,dateadd(DAY,-1,FechaPago),23) from CalendarioConveniosSac where idConvenio=(select id from conveniossac where idcredito=cred.id) and estado='P' order by FechaPago asc),'N/A') end as FechaCorte,
 isnull((select TotalPendiente from ValorCarteraXcreditoSati where fecha='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' and idCredito=cred.id ),0)as PagoMinimo,
 isnull((select AbonadoSMultas from ValorCarteraXcreditoSati where fecha='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' and idcredito=cred.id),0)as Pagado,
 isnull((select vencidoNormal from ValorCarteraXcreditoSati where fecha='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' and idcredito=cred.id),0)as Vencido from
-(select id, nombre, pagare from credito where id='" & idCredito & "')cred"
+(select id, nombre, monto,pagare from credito where id='" & idCredito & "')cred"
 
 
         comandoInformacion = New SqlCommand
@@ -161,6 +163,8 @@ isnull((select vencidoNormal from ValorCarteraXcreditoSati where fecha='" & date
                     SaldoVencido = readerInformacion("Vencido")
                     Pagare = readerInformacion("pagare")
                     nombreCredito = readerInformacion("nombre")
+                    montoCredito = readerInformacion("Monto")
+                    FechaCorte = readerInformacion("fechacorte")
                     ExisteSaldoInicial = True
 
                     ExisteSaldoFinal = True
@@ -405,9 +409,10 @@ end
             documento.ReplaceText("%VENCIDO%", FormatCurrency(pagoMinimo, 2))
             documento.ReplaceText("%FECHALIMITE%", FechaLimite)
             documento.ReplaceText("%NOMBRECLIENTE%", nombreCredito)
-            documento.ReplaceText("%MONTOCREDITO%", FormatCurrency(Pagare, 2))
+            documento.ReplaceText("%MONTOCREDITO%", FormatCurrency(montoCredito, 2))
             documento.ReplaceText("%PERIODO%", "del " & GeneraDateString(dateDesde.Value.DayOfWeek, dateDesde.Value.Month, dateDesde.Value.Year) & " al " & GeneraDateString(dateHasta.Value.DayOfWeek, dateHasta.Value.Month, dateHasta.Value.Year))
             documento.ReplaceText("%DIASPERIODO%", DateDiff(DateInterval.Day, dateDesde.Value, dateHasta.Value))
+            documento.ReplaceText("%FECHACORTE%", FechaCorte)
             Dim para As String
             para = "Nota: *Cuando la fecha de pago corresponda a un día inhábil, el pago podrá efectuarse sin cargo adicional alguno el día hábil siguiente.
 

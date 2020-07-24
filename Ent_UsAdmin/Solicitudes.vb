@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 
 Public Class Solicitudes
     Dim consultaSolicitudes
@@ -35,39 +36,39 @@ Public Class Solicitudes
         dtimpuestos.Rows.Clear()
         'Try
         Dim strimpuestos As String
-            iniciarconexionempresa()
-            If EmpleadoAsignado <> 0 Then
+        iniciarconexionempresa()
+        If EmpleadoAsignado <> 0 Then
 
             strimpuestos = "select id,nombre,fecha,monto,estado,tipo, from Solicitud inner join tipo where idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "' order by nombre"
         Else
             strimpuestos = "select id,nombre,fecha,monto,estado,tipo from Solicitud order by nombre asc"
         End If
 
-            If Combofiltro.Text = "Por Nombre" Then
+        If Combofiltro.Text = "Por Nombre" Then
 
-                If EmpleadoAsignado <> 0 Then
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+            If EmpleadoAsignado <> 0 Then
+                consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
 (select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,solicitud.estado,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.nombre like '%" & BunifuMaterialTextbox1.Text & "%' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
 (select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
 (select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
-                    ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where nombre like '%" & BunifuMaterialTextbox1.Text & "%' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
-                Else
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where nombre like '%" & BunifuMaterialTextbox1.Text & "%' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
+            Else
+                consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
 (select Solicitud.id,Solicitud.Nombre,solicitud.estado,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.nombre like '%" & BunifuMaterialTextbox1.Text & "%'  ) asce inner join
 (select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
 (select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.Nombre asc"
-                    ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where nombre like '%" & BunifuMaterialTextbox1.Text & "%' "
-                End If
+                ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where nombre like '%" & BunifuMaterialTextbox1.Text & "%' "
             End If
+        End If
 
-            Dim ejec = New SqlCommand(consultaSolicitudes)
-            ejec.Connection = conexionempresa
-            Dim id, nombre, valor, factor, tipo As String
+        Dim ejec = New SqlCommand(consultaSolicitudes)
+        ejec.Connection = conexionempresa
+        Dim id, nombre, valor, factor, tipo As String
 
         Dim myreaderimpuestos As SqlDataReader = ejec.ExecuteReader()
-            While myreaderimpuestos.Read
-                id = myreaderimpuestos("id")
-                nombre = myreaderimpuestos("nombre")
+        While myreaderimpuestos.Read
+            id = myreaderimpuestos("id")
+            nombre = myreaderimpuestos("nombre")
             If IsDBNull(myreaderimpuestos("MontoAutorizado")) Then
                 valor = 0
             Else
@@ -75,8 +76,8 @@ Public Class Solicitudes
             End If
             dtimpuestos.Rows.Add(id, nombre, myreaderimpuestos("fecha"), FormatCurrency(myreaderimpuestos("Monto"), 2), FormatCurrency(valor, 2), myreaderimpuestos("nombretipo"), myreaderimpuestos("gestor"), myreaderimpuestos("promotor"), myreaderimpuestos("estado"), myreaderimpuestos("tipo"))
         End While
-            myreaderimpuestos.Close()
-            ' Catch ex As Exception
+        myreaderimpuestos.Close()
+        ' Catch ex As Exception
         '  MessageBox.Show(ex.Message)
         ' End Try
 
@@ -267,5 +268,22 @@ Public Class Solicitudes
         If e.KeyCode = Keys.Enter Then
             cargarSolicitudes()
         End If
+    End Sub
+
+    Private Sub BackgroundExcel_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundExcel.DoWork
+        nuevolibro()
+        GridAExcel(dtimpuestos)
+    End Sub
+
+    Private Sub BackgroundExcel_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundExcel.RunWorkerCompleted
+        Cargando.Close()
+        cerrarlibro()
+    End Sub
+
+    Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
+        Cargando.Show()
+        Cargando.MonoFlat_Label1.Text = "Exportando a Excel"
+        BackgroundExcel.RunWorkerAsync()
+
     End Sub
 End Class
