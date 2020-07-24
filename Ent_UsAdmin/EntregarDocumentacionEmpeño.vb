@@ -58,12 +58,12 @@ Public Class EntregarDocumentacionEmpeño
         comando.CommandText = consulta
         reader = comando.ExecuteReader
         While reader.Read
-            NombreEmpeñoAentregar = reader("Nombre")
+            nombreEmpeñoAentregar = reader("Nombre")
             montoAentregar = reader("MontoPrestado")
             If Not IsDBNull(reader("Fechaentrega")) Then
                 fechaEntrega = reader("fechaentrega")
             End If
-            MontoRefrendo = reader("MontoRefrendo")
+            montoRefrendo = reader("MontoRefrendo")
             plazoRefrendo = reader("PlazoRefrendo")
             porcentajeRefrendo = reader("PorcentajeRefrendo")
             idSolicitudAentregar = reader("IdSolicitudBoleta")
@@ -105,8 +105,8 @@ Public Class EntregarDocumentacionEmpeño
 
     Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
 
-        lblNombre.Text = NombreEmpeñoAentregar
-        lblMonto.Text = FormatCurrency(MontoAentregar)
+        lblNombre.Text = nombreEmpeñoAentregar
+        lblMonto.Text = FormatCurrency(montoAentregar)
         Cargando.Close()
         Select Case estadoCredito
             Case "E"
