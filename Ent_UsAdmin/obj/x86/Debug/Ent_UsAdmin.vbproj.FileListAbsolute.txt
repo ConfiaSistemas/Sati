@@ -759,7 +759,6 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debu
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EntregarDocumentacionEmpeño.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.InformacionEmpeño.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpeñosPorEntregar.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\VB.Windows.Forms.ControlExt.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\VB.Windows.Forms.ControlExt.pdb
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\VB.Windows.Forms.ControlExt.xml
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoDatosSolicitudBoleta.resources
@@ -776,3 +775,5 @@ D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TiposDeEmpeños.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.webcamEmpeño.resources
 D:\Repos\SATI\Ent_UsAdmin\bin\Debug\VB.Windows.Forms.ControlExt.dll
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EstadoDeCuenta.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EstadoDeCuenta.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.webcamEmpeño.resources

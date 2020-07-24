@@ -15,25 +15,28 @@ Imports Gma.QrCodeNet.Encoding.Windows
 Imports Gma.QrCodeNet.Encoding.Windows.Render
 
 Public Class EntregarDocumentacionEmpeño
-    Public NombreCreditoAentregar As String
-    Public MontoAentregar As Double
-    Public PagareAentregar As Double
-    Public integrantesAentregar As Integer
-    Public pagoIndividualAentregar As Double
-    Public plazoAentregar As Integer
-    Public interesAentregar As Double
-    Public idSolicitudAentregar As Integer
+    Public nombreEmpeñoAentregar As String
+    Public montoAentregar As Double
+    Public montoRefrendo As Double
+    Dim montoValuado As Double
+    Public plazoRefrendo As Integer
+    Public porcentajeRefrendo As Double
+    Dim idSolicitudAentregar As Integer
     Public idEmpeñoAentregar As Integer
     Public idClienteAentregar As Integer
     Public NombreClienteAentregar As String
-    Public modalidadAentregar As String
-    Dim dataIntegrantes As Data.DataTable
-    Dim adapterIntegrantes As SqlDataAdapter
-    Dim diaDepago As String
+    'Public modalidadAentregar As String
+    Dim dataArticulos As Data.DataTable
+    Dim adapterArticulos As SqlDataAdapter
+    Dim diaDepago, Ine, Domicilio, Colonia, Entidad, Municipio, Telefono As String
+    Dim CodigoPostal As Integer
     Public estadoCredito As String
-    Dim fechaCredito As Date
+    'Dim fechaCredito As Date
     Dim fechaPimerPago As Date
     Dim fechaEntrega As Date
+    Dim interes As Double
+    Dim NombreUsuario, UsuarioCaptura As String
+    Dim nCargando As Cargando
     Private Sub EntregarDocumentacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BunifuImageButton1.Image = Nothing
         CheckForIllegalCrossThreadCalls = False
@@ -48,52 +51,82 @@ Public Class EntregarDocumentacionEmpeño
         Dim comando As SqlCommand
         Dim consulta As String
         Dim reader As SqlDataReader
-        consulta = "select Empeños.Nombre,MontoPrestado,Montorefrendo,Empeños.Plazo,Empeños.PorcentajeRefrendo,IdSolicitud,idCLiente,Clientes.Nombre + ' ' + Clientes.ApellidoPaterno + ' ' + Clientes.ApellidoMaterno as nombreCliente,Empeños.estado,empeños.fechaentrega from Empeños inner join Clientes on Empeños.IdCliente = Clientes.id inner join tiposdeEmpeño on Empeños.tipo = tiposdeEmpeño.id where Empeño.id = '" & idEmpeñoAentregar & "'"
+        consulta = "select Empeños.Nombre,MontoPrestado,Montorefrendo,Empeños.MontoValuado,Empeños.PlazoRefrendo,Empeños.PorcentajeRefrendo,IdSolicitudBoleta,Empeños.idCLiente,Clientes.Nombre + ' ' + Clientes.ApellidoPaterno + ' ' + Clientes.ApellidoMaterno as nombreCliente,Empeños.estado,empeños.fechaentrega,DATENAME(dw, empeños.fechaentrega)as diaDePago, " &
+        "SolicitudBoleta.Ine, SolicitudBoleta.Domicilio, SolicitudBoleta.CodigoPostal, SolicitudBoleta.Colonia, SolicitudBoleta.Municipio, SolicitudBoleta.Entidad, SolicitudBoleta.Telefono, SolicitudBoleta.UsuarioCaptura from Empeños inner join Clientes on Empeños.IdCliente = Clientes.id inner join SolicitudBoleta on SolicitudBoleta.id=Empeños.idSolicitudBoleta" & " where Empeños.id = '" & idEmpeñoAentregar & "'"
         comando = New SqlCommand
         comando.Connection = conexionempresa
         comando.CommandText = consulta
         reader = comando.ExecuteReader
         While reader.Read
-            NombreCreditoAentregar = reader("Nombre")
-            MontoAentregar = reader("MontoPrestado")
-            'PagareAentregar = reader("Pagare")
+            NombreEmpeñoAentregar = reader("Nombre")
+            montoAentregar = reader("MontoPrestado")
             If Not IsDBNull(reader("Fechaentrega")) Then
                 fechaEntrega = reader("fechaentrega")
             End If
-            pagoIndividualAentregar = reader("MontoRefrendo")
-            plazoAentregar = reader("Plazo")
-            interesAentregar = reader("PorcentajeRefrendo")
-            idSolicitudAentregar = reader("IdSolicitud")
+            MontoRefrendo = reader("MontoRefrendo")
+            plazoRefrendo = reader("PlazoRefrendo")
+            porcentajeRefrendo = reader("PorcentajeRefrendo")
+            idSolicitudAentregar = reader("IdSolicitudBoleta")
             idClienteAentregar = reader("idCliente")
             NombreClienteAentregar = reader("nombreCliente")
-
             estadoCredito = reader("Estado")
+            Ine = reader("Ine")
+            Domicilio = reader("Domicilio")
+            Colonia = reader("Colonia")
+            CodigoPostal = reader("CodigoPostal")
+            Entidad = reader("Entidad")
+            Municipio = reader("Municipio")
+            Telefono = reader("Telefono")
+            interes = reader("PorcentajeRefrendo")
+            diaDepago = reader("diaDePago")
+            montoValuado = reader("MontoValuado")
+            UsuarioCaptura = reader("UsuarioCaptura")
+
         End While
         reader.Close()
+        Dim consultaArticulos As String
+        consultaArticulos = "select Descripcion,TipoArticulosEmpeño.nombre as Tipo,Marca,Modelo,NoSerie,MontoValuado,MontoPrestado from ArticulosEmpeños inner join TipoArticulosEmpeño on TipoArticulosEmpeño.id=articulosempeños.tipo where idSolicitud=" & idSolicitudAentregar
+        adapterArticulos = New SqlDataAdapter(consultaArticulos, conexionempresa)
+        dataArticulos = New Data.DataTable
+        adapterArticulos.Fill(dataArticulos)
+
+        iniciarconexion()
+        Dim comandoUsuario As OleDb.OleDbCommand
+        Dim consultaUsuario As String
+        consultaUsuario = "select nm_complete from usr where nm='" & UsuarioCaptura & "'"
+        comandoUsuario = New OleDb.OleDbCommand
+        comandoUsuario.Connection = conexion
+        comandoUsuario.CommandText = consultaUsuario
+        NombreUsuario = comandoUsuario.ExecuteScalar
+        conexion.Close()
+
 
     End Sub
 
     Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
 
-        lblNombre.Text = NombreCreditoAentregar
+        lblNombre.Text = NombreEmpeñoAentregar
         lblMonto.Text = FormatCurrency(MontoAentregar)
         Cargando.Close()
         Select Case estadoCredito
             Case "E"
-
-                BunifuThinButton21.Visible = False
-                btn_Procesar.Visible = False
-                BunifuThinButton23.Visible = False
-                BunifuImageButton1.Visible = False
-                BunifuThinButton24.Visible = False
-                labelimagen.Visible = False
-                btn_activar.Visible = False
-
+                If fechaEntrega <> "1900-01-01" Then
+                    btn_Testimonial.Visible = True
+                    btn_Contrato.Visible = True
+                    btn_Webcam.Visible = True
+                    BunifuImageButton1.Visible = True
+                    btn_Boleta.Visible = True
+                    labelimagen.Visible = True
+                    btn_activarEmpeño.Visible = True
+                    btn_EntregarEmpeño.Visible = False
+                Else
+                    btn_EntregarEmpeño.Visible = True
+                End If
             Case "A"
 
-                BunifuThinButton21.Visible = True
-                btn_Procesar.Visible = True
-                BunifuThinButton24.Visible = True
+                btn_Testimonial.Visible = True
+                btn_Contrato.Visible = True
+                btn_Boleta.Visible = True
                 '  BunifuThinButton23.Visible = False
                 'BunifuImageButton1.Visible = False
                 'labelimagen.Visible = False
@@ -102,229 +135,129 @@ Public Class EntregarDocumentacionEmpeño
     End Sub
 
 
-    Private Sub BackgroundPagare_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundContrato.DoWork
+    Private Sub BackgroundContrato_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundContrato.DoWork
         Dim NumeroLetra As New NumLetra
-        'Dim MSWord As New Word.Application
-        'Dim Documento As Word.Document
-        ' Dim fechaActual As Date
-        'fechaActual = Now
 
-
-        FileCopy("C:\ConfiaAdmin\SATI\Pagare.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempPagare.docx")
-        Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempPagare.docx")
-        documento.ReplaceText("%%MontoTotal%%", FormatCurrency(PagareAentregar))
-        documento.ReplaceText("%%MontoTotalLetra%%", NumeroLetra.Convertir(PagareAentregar, True))
-        documento.ReplaceText("%%Ciudad%%", CiudadEmpresa)
-        documento.ReplaceText("%%Estado%%", EstadoEmpresa)
-        documento.ReplaceText("%%Dia%%", CDate(fechaEntrega).ToString("dd"))
-        documento.ReplaceText("%%Mes%%", CDate(fechaEntrega).ToString("MMMM"))
-        documento.ReplaceText("%%Año%%", CDate(fechaEntrega).ToString("yyyy"))
-        documento.ReplaceText("%%Diad%%", CDate(fechaEntrega.AddMonths(1)).ToString("dd"))
-        documento.ReplaceText("%%Mesd%%", CDate(fechaEntrega.AddMonths(1)).ToString("MMMM"))
-        documento.ReplaceText("%%Añod%%", CDate(fechaEntrega.AddMonths(1)).ToString("yyyy"))
-        Dim integrantes As String = ""
-        documento.ReplaceText("%%Responsable%%", NombreClienteAentregar)
-        If integrantesAentregar > 1 Then
-
-            For Each row As DataRow In dataIntegrantes.Rows
-                If row("nombreCliente").ToString <> NombreClienteAentregar Then
-                    integrantes = integrantes & row("nombreCliente").ToString & ","
-                End If
-
-            Next
-        Else
-
-        End If
-        Dim linea As String = "__________________________________"
-        Dim firmaintegrantes As String = ""
-        documento.ReplaceText("%%Avales%%", integrantes)
-        If integrantesAentregar > 1 Then
-            For Each row As DataRow In dataIntegrantes.Rows
-                If row("nombreCliente").ToString <> NombreClienteAentregar Then
-                    'firmaintegrantes = firmaintegrantes & linea & Environment.NewLine & row("nombreCliente").ToString & Environment.NewLine
-                    documento.InsertParagraph(linea).Alignment = Alignment.center
-                    documento.InsertParagraph(row("nombreCliente").ToString).Alignment = Alignment.center
-                End If
-
-            Next
-        End If
-
-        documento.InsertParagraph(firmaintegrantes).Alignment = Alignment.center
-
+        FileCopy("C:\ConfiaAdmin\SATI\ContratoEmpeño.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempContratoEmpeño.docx")
+        'Reemplazamos las etiquetas del contrato
+        Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempContratoEmpeño.docx")
+        documento.ReplaceText("%dia%", fechaEntrega.ToString("dd"))
+        documento.ReplaceText("%mes%", CDate(fechaEntrega).ToString("MMMM"))
+        documento.ReplaceText("%año%", CDate(fechaEntrega).ToString("yyyy"))
+        documento.ReplaceText("%folio%", idEmpeñoAentregar)
+        documento.ReplaceText("%nombreCliente%", NombreClienteAentregar)
+        documento.ReplaceText("%numeroIdentificacion%", Ine)
+        documento.ReplaceText("%domicilio%", Domicilio)
+        documento.ReplaceText("%colonia%", Colonia)
+        documento.ReplaceText("%codigoPostal%", CodigoPostal)
+        documento.ReplaceText("%ciudad%", Municipio)
+        documento.ReplaceText("%estado%", Entidad)
+        documento.ReplaceText("%telefono%", Telefono)
+        documento.ReplaceText("%correo%", "-")
+        documento.ReplaceText("%cotitular%", "-")
+        documento.ReplaceText("%domicilioCotitular%", "-")
+        documento.ReplaceText("%coloniaCotitular%", "-")
+        documento.ReplaceText("%codigoPostalCotitular%", "-")
+        documento.ReplaceText("%ciudadCotitular%", "-")
+        documento.ReplaceText("%nombreBeneficiario%", "-")
+        documento.ReplaceText("%montoPrestado%", FormatCurrency(montoAentregar))
+        documento.ReplaceText("%montoTotalDeuda%", FormatCurrency(montoAentregar + (montoRefrendo * 52)))
+        documento.ReplaceText("%fechaRefrendo%", CDate(fechaEntrega.AddDays(7)).ToString("dd-MMMM-yyyy"))
+        documento.ReplaceText("%numeroDeRefrendos%", "52")
+        documento.ReplaceText("%interesRefrendo%", porcentajeRefrendo)
+        documento.ReplaceText("%Iva%", FormatCurrency((montoRefrendo / 1.16) * 0.16))
+        documento.ReplaceText("%montoDesempeño%", FormatCurrency(montoRefrendo + montoAentregar))
+        documento.ReplaceText("%montoRefrendo%", FormatCurrency(montoRefrendo))
+        documento.ReplaceText("%diaDePago%", diaDepago)
+        documento.ReplaceText("%montoValuadoTotal%", FormatCurrency(montoValuado))
+        documento.ReplaceText("%montoValuadoLetra%", NumeroLetra.Convertir(montoValuado, False))
+        documento.ReplaceText("%porcentajePrestamo%", FormatNumber(((montoAentregar * 100) / montoValuado), 2))
+        documento.ReplaceText("%fechaVentaPrenda%", CDate(fechaEntrega.AddMonths(1)).ToString("dd-MMMM-yyyy"))
+        documento.ReplaceText("%fechaLimiteFiniquito%", CDate(fechaEntrega.AddYears(1)).ToString("dd-MMMM-yyyy"))
+        documento.ReplaceText("%nombreValuador%", NombreUsuario)
+        'Definimos una variable que cuente el numero de articulo a empeñar
+        Dim numeroArticulos As Integer = 0
+        For Each row As DataRow In dataArticulos.Rows
+            'Sustituimos las etiquetas dentro de la tabla de artículos
+            If numeroArticulos = 0 Then
+                documento.ReplaceText("%descripcion%", row("Descripcion"))
+                documento.ReplaceText("%caracteristicas%", row("Tipo") & ", Marca: " & row("Marca") & ", Modelo: " & row("Modelo") & ", No. de Serie: " & row("NoSerie"))
+                documento.ReplaceText("%montoValuadoPrenda%", FormatCurrency(row("MontoValuado")))
+                documento.ReplaceText("%montoPrestadoPrenda%", FormatCurrency(row("MontoPrestado")))
+                documento.ReplaceText("%porcentajePrestamoPrenda%", FormatNumber(((row("MontoPrestado") * 100) / row("MontoValuado")), 2))
+            Else 'Insertamos una fila extra si hay más de un artículo, y añadimos los datos de dicho artículo
+                Dim rowTable As Xceed.Words.NET.Row
+                rowTable = documento.Tables(2).InsertRow(numeroArticulos)
+                rowTable.Cells(0).Paragraphs.First.Append(row("Descripcion"))
+                rowTable.Cells(1).Paragraphs.First.Append(row("Tipo") & ", Marca: " & row("Marca") & ", Modelo: " & row("Modelo") & ", No. de Serie: " & row("NoSerie"))
+                rowTable.Cells(2).Paragraphs.First.Append(FormatCurrency(row("MontoValuado")))
+                rowTable.Cells(3).Paragraphs.First.Append(FormatCurrency(row("MontoPrestado")))
+                rowTable.Cells(4).Paragraphs.First.Append(FormatNumber((row("MontoPrestado") * 100) / row("MontoValuado"), 2))
+                documento.Tables(1).Rows.Add(rowTable)
+            End If
+            numeroArticulos += 1
+        Next
         documento.Save()
         documento.Dispose()
+        'Abrimos el documento con word para acomodar el formato de las tablas
+        Dim MSWord As New Word.Application
+        Dim Doc As New Word.Document
+        MSWord = CreateObject("Word.Application")
+        Doc = MSWord.Documents.Open("C:\ConfiaAdmin\SATI\TEMPDOCS\TempContratoEmpeño.docx")
 
-
+        For i As Integer = 1 To numeroArticulos
+            Doc.Tables(3).Cell(i, 1).Select()
+            MSWord.Selection.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft
+            Doc.Tables(3).Cell(i, 2).Select()
+            MSWord.Selection.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft
+        Next
+        'Fijamos el ancho de las columnas
+        Doc.Tables(3).Columns(1).Width = 162.75
+        Doc.Tables(3).Columns(2).Width = 155.95
+        Doc.Tables(3).Columns(3).Width = 63.8
+        Doc.Tables(3).Columns(4).Width = 63.8
+        Doc.Tables(3).Columns(5).Width = 70.9
+        Doc.Save()
+        Doc.Close()
+        MSWord.Application.Quit()
     End Sub
 
-    Private Sub btn_Procesar_Click(sender As Object, e As EventArgs) Handles btn_Procesar.Click
-
+    Private Sub btn_Contrato_Click(sender As Object, e As EventArgs) Handles btn_Contrato.Click
+        nCargando = New Cargando
+        nCargando.MonoFlat_Label1.Text = "Generando Contrato..."
+        nCargando.Show()
+        nCargando.TopMost = True
         BackgroundContrato.RunWorkerAsync()
     End Sub
 
-    Private Sub BackgroundPagare_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundContrato.RunWorkerCompleted
-        VistaPreviaDocumento.ruta = "C:\ConfiaAdmin\SATI\TEMPDOCS\TempPagare.docx"
+    Private Sub BackgroundContrato_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundContrato.RunWorkerCompleted
+        nCargando.Close()
+        VistaPreviaDocumento.ruta = "C: \ConfiaAdmin\SATI\TEMPDOCS\TempContratoEmpeño.docx"
         VistaPreviaDocumento.Show()
         ' BackgroundCalendario.RunWorkerAsync()
     End Sub
 
     Private Sub BackgroundEntrega_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundEntrega.DoWork
         iniciarconexionempresa()
-        Dim ci As CultureInfo = CultureInfo.InvariantCulture
-        Dim comandoDia As SqlCommand
-        Dim consultaDia As String
-        Dim diaCreditoAnterior As String
-        Dim diaDeHoy As Date = Now
-        Dim Numerodiahoy As DayOfWeek = ci.Calendar.GetDayOfWeek(diaDeHoy)
-        Dim numeroDiaMes As Integer = diaDeHoy.Day
-        Dim primerPago As Date
-        consultaDia = "select isnull((select top 1 DATENAME(dw,fechaPrimerPago) from Credito inner join tiposdecredito on credito.tipo = tiposdecredito.id where FechaEntrega is not null and tiposdecredito.modalidad = 'S' order by credito.id desc),0)"
-        comandoDia = New SqlCommand
-        comandoDia.Connection = conexionempresa
-        comandoDia.CommandText = consultaDia
-        diaCreditoAnterior = comandoDia.ExecuteScalar
 
-        Select Case modalidadAentregar
-            Case "S"
-                Select Case diaCreditoAnterior
-                    Case "0"
-                        diaDepago = "Lunes"
-                        Select Case Numerodiahoy
-                            Case "0"
-                                primerPago = diaDeHoy.AddDays(1)
-                            Case "1"
-                                primerPago = diaDeHoy.AddDays(7)
-                            Case "2"
-                                primerPago = diaDeHoy.AddDays(6)
-                            Case "3"
-                                primerPago = diaDeHoy.AddDays(5)
-                            Case "4"
-                                primerPago = diaDeHoy.AddDays(4)
-                            Case "5"
-                                primerPago = diaDeHoy.AddDays(3)
-                            Case "6"
-                                primerPago = diaDeHoy.AddDays(2)
-                        End Select
-                    Case "Lunes"
-                        diaDepago = "Martes"
-                        Select Case Numerodiahoy
-                            Case "0"
-                                primerPago = diaDeHoy.AddDays(2)
-                            Case "1"
-                                primerPago = diaDeHoy.AddDays(8)
-                            Case "2"
-                                primerPago = diaDeHoy.AddDays(7)
-                            Case "3"
-                                primerPago = diaDeHoy.AddDays(6)
-                            Case "4"
-                                primerPago = diaDeHoy.AddDays(5)
-                            Case "5"
-                                primerPago = diaDeHoy.AddDays(4)
-                            Case "6"
-                                primerPago = diaDeHoy.AddDays(3)
-                        End Select
-                    Case "Martes"
-                        diaDepago = "Lunes"
-                        Select Case Numerodiahoy
-                            Case "0"
-                                primerPago = diaDeHoy.AddDays(1)
-                            Case "1"
-                                primerPago = diaDeHoy.AddDays(7)
-                            Case "2"
-                                primerPago = diaDeHoy.AddDays(6)
-                            Case "3"
-                                primerPago = diaDeHoy.AddDays(5)
-                            Case "4"
-                                primerPago = diaDeHoy.AddDays(4)
-                            Case "5"
-                                primerPago = diaDeHoy.AddDays(3)
-                            Case "6"
-                                primerPago = diaDeHoy.AddDays(2)
-                        End Select
-                End Select
-                Dim comandoActCredito As SqlCommand
-                Dim consultaActCredito As String
-                Dim fechaPago As Date
-                consultaActCredito = "update credito set fechaentrega = '" & diaDeHoy.ToString("yyyy-MM-dd") & "',fechaprimerpago = '" & primerPago.ToString("yyyy-MM-dd") & "', estado = 'P',DiaDePago = '" & diaDepago & "' where id = '" & idEmpeñoAentregar & "'"
-                comandoActCredito = New SqlCommand
-                comandoActCredito.Connection = conexionempresa
-                comandoActCredito.CommandText = consultaActCredito
-                comandoActCredito.ExecuteNonQuery()
+        Dim comandoFecha As SqlCommand
+        Dim consultaFecha As String
+        Dim Fecha As Date
+        consultaFecha = "select fechaEntrega from Empeños where id= '" & idEmpeñoAentregar & "'"
+        comandoFecha = New SqlCommand
+        comandoFecha.Connection = conexionempresa
+        comandoFecha.CommandText = consultaFecha
+        Fecha = comandoFecha.ExecuteScalar
 
-                For i As Integer = 0 To plazoAentregar - 1
-                    Dim comandoCalendario As SqlCommand
-                    Dim consultaCalendario As String
-                    fechaPago = primerPago.AddDays(i * 7)
-                    consultaCalendario = "insert into CalendarioNormal values('" & fechaPago.ToString("yyyy-MM-dd") & "','" & pagoIndividualAentregar & "',0,'" & pagoIndividualAentregar & "',0,'" & i + 1 & "','" & idEmpeñoAentregar & "','P',0,'')"
-                    comandoCalendario = New SqlCommand
-                    comandoCalendario.Connection = conexionempresa
-                    comandoCalendario.CommandText = consultaCalendario
-                    comandoCalendario.ExecuteNonQuery()
-
-                Next
-
-            Case "Q"
-                ' MessageBox.Show("Hola")
-                If numeroDiaMes >= 9 And numeroDiaMes <= 23 Then
-                    If diaDeHoy.Month = 12 Then
-                        primerPago = Convert.ToDateTime(diaDeHoy.AddYears(1).Year.ToString & "-" & diaDeHoy.AddMonths(1).Month.ToString & "-" & "01")
-                    Else
-                        primerPago = Convert.ToDateTime(diaDeHoy.Year.ToString & "-" & diaDeHoy.AddMonths(1).Month.ToString & "-" & "01")
-                    End If
-                ElseIf numeroDiaMes >= 1 And numeroDiaMes <= 8 Then
-                    primerPago = Convert.ToDateTime(diaDeHoy.Year.ToString & "-" & diaDeHoy.Month.ToString & "-" & "16")
-                ElseIf numeroDiaMes >= 24 And numeroDiaMes <= DateTime.DaysInMonth(diaDeHoy.Year, diaDeHoy.Month) Then
-                    If diaDeHoy.Month = 12 Then
-                        primerPago = Convert.ToDateTime(diaDeHoy.AddYears(1).Year.ToString & "-" & diaDeHoy.AddMonths(1).Month.ToString & "-" & "16")
-                    Else
-                        primerPago = Convert.ToDateTime(diaDeHoy.Year.ToString & "-" & diaDeHoy.AddMonths(1).Month.ToString & "-" & "16")
-                    End If
-
-                End If
-                Dim comandoActCredito As SqlCommand
-                Dim consultaActCredito As String
-                '   Dim fechaPago As Date
-                consultaActCredito = "update credito set fechaentrega = '" & diaDeHoy.ToString("yyyy-MM-dd") & "',fechaprimerpago = '" & primerPago.ToString("yyyy-MM-dd") & "', estado = 'P',DiaDePago = '" & diaDepago & "' where id = '" & idEmpeñoAentregar & "'"
-                comandoActCredito = New SqlCommand
-                comandoActCredito.Connection = conexionempresa
-                comandoActCredito.CommandText = consultaActCredito
-                comandoActCredito.ExecuteNonQuery()
-                Dim fechapago As Date
-                For i As Integer = 0 To plazoAentregar - 1
-                    Dim comandoCalendario As SqlCommand
-                    Dim consultaCalendario As String
-                    If primerPago.Day = 16 Then
-                        fechapago = primerPago
-                        consultaCalendario = "insert into CalendarioNormal values('" & fechapago.ToString("yyyy-MM-dd") & "','" & pagoIndividualAentregar & "',0,'" & pagoIndividualAentregar & "',0,'" & i + 1 & "','" & idEmpeñoAentregar & "','P',0,'')"
-                        comandoCalendario = New SqlCommand
-                        comandoCalendario.Connection = conexionempresa
-                        comandoCalendario.CommandText = consultaCalendario
-                        comandoCalendario.ExecuteNonQuery()
-                        '  dtdatos.Rows.Add(fechapago.ToString("yyyy-MM-dd"), MontoPago)
-                        If primerPago.Month = 12 Then
-                            primerPago = Convert.ToDateTime(primerPago.AddYears(1).Year.ToString & "-" & primerPago.AddMonths(1).Month.ToString & "-" & "01")
-                        Else
-                            primerPago = Convert.ToDateTime(primerPago.Year.ToString & "-" & primerPago.AddMonths(1).Month.ToString & "-" & "01")
-                        End If
-
-                        'deuda = deuda - MontoPago
-                    Else
-                        fechapago = primerPago
-                        consultaCalendario = "insert into CalendarioNormal values('" & fechapago.ToString("yyyy-MM-dd") & "','" & pagoIndividualAentregar & "',0,'" & pagoIndividualAentregar & "',0,'" & i + 1 & "','" & idEmpeñoAentregar & "','P',0,'')"
-                        comandoCalendario = New SqlCommand
-                        comandoCalendario.Connection = conexionempresa
-                        comandoCalendario.CommandText = consultaCalendario
-                        comandoCalendario.ExecuteNonQuery()
-                        'dtdatos.Rows.Add(fechapago.ToString("yyyy-MM-dd"), MontoPago)
-                        primerPago = Convert.ToDateTime(primerPago.Year.ToString & "-" & primerPago.Month.ToString & "-" & "16")
-                        ' deuda = deuda - MontoPago
-                    End If
-                Next
-
-
-        End Select
-
-
+        If Fecha = "1900-01-01" Then
+            Dim comandoActEmpeño As SqlCommand
+            Dim consultaActEmpeño As String
+            consultaActEmpeño = "update Empeños set fechaEntrega = GETDATE() where id = '" & idEmpeñoAentregar & "'"
+            comandoActEmpeño = New SqlCommand
+            comandoActEmpeño.Connection = conexionempresa
+            comandoActEmpeño.CommandText = consultaActEmpeño
+            comandoActEmpeño.ExecuteNonQuery()
+        End If
     End Sub
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs)
@@ -344,9 +277,6 @@ Public Class EntregarDocumentacionEmpeño
         Dim Doc As Word.Document
         Dim Table As Word.Table
         Dim Rng As Range
-        Dim Prf1 As Word.Paragraph
-        Dim Prf2 As Word.Paragraph
-        Dim Prf3 As Word.Paragraph
 
         Word = CreateObject("Word.Application")
 
@@ -391,91 +321,94 @@ Public Class EntregarDocumentacionEmpeño
         Doc.Close()
         ' Word = Nothing
         Word.Application.Quit()
-
-
     End Sub
 
-    Private Sub BackgroundCalendario_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundCalendario.DoWork
+    Private Sub BackgroundTestimonial_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundTestimonial.DoWork
         iniciarconexionempresa()
 
         Dim comandoFechaEntrega As SqlCommand
         Dim consultaFechaEntrega As String
-        consultaFechaEntrega = "Select fechaEntrega,fechaPrimerPago,DiaDePago from credito where id = '" & idEmpeñoAentregar & "'"
+        consultaFechaEntrega = "Select FechaEntrega, Nombre, idSolicitudBoleta from Empeños where id = '" & idEmpeñoAentregar & "'"
         Dim readerFechaEntrega As SqlDataReader
         comandoFechaEntrega = New SqlCommand
         comandoFechaEntrega.Connection = conexionempresa
         comandoFechaEntrega.CommandText = consultaFechaEntrega
         readerFechaEntrega = comandoFechaEntrega.ExecuteReader
         While readerFechaEntrega.Read
-            fechaCredito = readerFechaEntrega("FechaEntrega")
-            fechaPimerPago = readerFechaEntrega("fechaPrimerPago")
-            diaDepago = readerFechaEntrega("DiaDePago")
+            fechaEntrega = readerFechaEntrega("FechaEntrega")
+            nombreEmpeñoAentregar = readerFechaEntrega("Nombre")
+            idSolicitudAentregar = readerFechaEntrega("idSolicitudBoleta")
         End While
         readerFechaEntrega.Close()
-        Dim dataCalendario As System.Data.DataTable
-        Dim adapterCalendario As SqlDataAdapter
-        Dim consultaCalendario As String
+        Dim dataArticulos As System.Data.DataTable
+        Dim adapterArticulos As SqlDataAdapter
+        Dim consultaArticulos As String
 
-        consultaCalendario = "select format(Fechapago,'dd/MM/yyyy') as 'Fecha de pago',npago as 'Número de pago',format(Monto,'C','es-mx') as Monto from calendarioNormal where id_credito = '" & idEmpeñoAentregar & "'"
-        adapterCalendario = New SqlDataAdapter(consultaCalendario, conexionempresa)
-        dataCalendario = New Data.DataTable
-        adapterCalendario.Fill(dataCalendario)
-        dataTableToWord(dataCalendario)
+        consultaArticulos = "select ArticulosEmpeños.Descripcion, ArticulosEmpeños.Marca, ArticulosEmpeños.Modelo, ArticulosEmpeños.NoSerie, ArticulosEmpeños.MontoValuado, TipoArticulosEmpeño.Nombre from ArticulosEmpeños inner join TipoArticulosEmpeño on TipoArticulosEmpeño.id=ArticulosEmpeños.Tipo where ArticulosEmpeños.idSolicitud = '" & idSolicitudAentregar & "'"
+        adapterArticulos = New SqlDataAdapter(consultaArticulos, conexionempresa)
+        dataArticulos = New Data.DataTable
+        adapterArticulos.Fill(dataArticulos)
+        'dataTableToWord(dataCalendario)
+
+        FileCopy("C:\ConfiaAdmin\SATI\TestimonialEmpeño.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempTestimonialEmpeño.docx")
+        Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempTestimonialEmpeño.docx")
+        documento.ReplaceText("%dia%", fechaEntrega.ToString("dd"))
+        documento.ReplaceText("%mes%", CDate(fechaEntrega).ToString("MMMM"))
+        documento.ReplaceText("%año%", CDate(fechaEntrega).ToString("yyyy"))
+        documento.ReplaceText("%nombre%", nombreEmpeñoAentregar)
+
+        Dim nArticulos As Integer = 0
+        For Each row As DataRow In dataArticulos.Rows
+            If nArticulos = 0 Then
+                documento.ReplaceText("%descripcion%", row("Descripcion"))
+                documento.ReplaceText("%caracteristicas%", "Marca: " & row("Marca") & ", Modelo: " & row("Modelo") & ", No de Serie: " & row("NoSerie"))
+                documento.ReplaceText("%montoValuadoPrenda%", FormatCurrency(row("MontoValuado")))
+                nArticulos += 1
+                documento.Save()
+                documento.Dispose()
+            Else
+                'Dim parrafo As String
+                'Dim parra As Xceed.Words.NET.Paragraph
+                'parrafo = "Descripción: " & row("Descripcion") & ", Marca: " & row("Marca") & ", Modelo: " & row("Modelo") & ", No de Serie: " & row("NoSerie") & ", Valuado en: " & FormatCurrency(row("MontoValuado"))
+                'documento.InsertParagraph(1, parrafo)
+                'parra = documento.InsertParagraph(3, parrafo, False)
+
+
+
+                nArticulos += 1
+
+            End If
+        Next
+
+        'Usamos word para agregar más elementos a la lista si hay más de un artículo
+        If nArticulos > 1 Then
+            Dim Word As Application
+            Dim Doc As Word.Document
+            Word = CreateObject("Word.Application")
+            Doc = Word.Documents.Open("C:\ConfiaAdmin\SATI\TEMPDOCS\TempTestimonialEmpeño.docx")
+            For i As Integer = 2 To nArticulos
+                Doc.Paragraphs(i + 5).Range.InsertParagraphAfter()
+                'Doc.Lists(1).Range.InsertParagraphAfter()
+                'Word.Selection.InsertParagraphAfter()
+                Doc.Paragraphs(i + 6).Range.ListFormat.ApplyNumberDefault()
+                'Doc.Paragraphs(i + 6).JoinList()
+                Doc.Paragraphs(i + 6).SelectNumber()
+                Word.Selection.TypeText(Convert.ToString(dataArticulos.Rows(i - 1).Item(1)))
+                Doc.Paragraphs(i + 6).Range.ListFormat.ApplyNumberDefault()
+            Next
+            Doc.Save()
+            Doc.Close()
+            Word.Application.Quit()
+        End If
+
 
     End Sub
 
-    Private Sub BackgroundEntrega_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BackgroundEntrega.ProgressChanged
+    Private Sub BackgroundTestimonial_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundTestimonial.RunWorkerCompleted
+        nCargando.Close()
+        VistaPreviaDocumento.ruta = "C:\ConfiaAdmin\SATI\TEMPDOCS\TempTestimonialEmpeño.docx"
+        VistaPreviaDocumento.Show()
 
-    End Sub
-
-    Private Sub BackgroundCalendario_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundCalendario.RunWorkerCompleted
-        Dim NumeroLetra As New NumLetra
-        'Dim MSWord As New Word.Application
-        'Dim Documento As Word.Document
-        'Dim fechaActual As Date
-        'fechaActual = Now
-
-        ' FileCopy("C:\ConfiaAdmin\SATI\Pagare.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempPagare.docx")
-        Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempCalendario.docx")
-        documento.ReplaceText("%%FECHACREDITO%%", fechaCredito.ToString("dd/MM/yyyy"))
-        documento.ReplaceText("%%NOMBRECREDITO%%", NombreCreditoAentregar)
-        documento.ReplaceText("%%NOMBRERESPONSABLE%%", NombreClienteAentregar)
-        documento.ReplaceText("%%IDCREDITO%%", idEmpeñoAentregar)
-        documento.ReplaceText("%%DIAPAGO%%", diaDepago)
-
-        Dim para As String = "Por medio del presente he sido debidamente notificado respecto a el pago diario, en caso de incumplimiento que asciende a la cantidad de $ 50.00 (CINCUENTA PESOS 00/100 M.N.). La cual se pagará de forma obligatoria juntamente con los pagos amortizados del calendario anteriormente descritos.
-
-
-___________________________________________
-Acepto
-PRÉSTAMOS CONFIA S.A. DE C.V.
-TEL.:" & telEmpresa & "
-HORARIOS: Lunes a Viernes 09:00 a.m. a 02:00 p.m. / 04:00 p.m. a 07:00 p.m.
-Sábado 09:00 a.m. a 02:00 p.m."
-        documento.InsertParagraph(para).Alignment = Alignment.center
-        documento.Save()
-        documento.Dispose()
-        'VistaPreviaDocumento.ruta = "C:\ConfiaAdmin\SATI\TEMPDOCS\TempCalendario.docx"
-        'VistaPreviaDocumento.Show()
-        Dim spDoc As New Spire.Doc.Document
-        spDoc.LoadFromFile("C:\ConfiaAdmin\SATI\TEMPDOCS\TempCalendario.docx")
-        Dim dialog As New PrintPreviewDialog
-
-        ' dialog.AllowCurrentPage = True
-        ' dialog.AllowSomePages = True
-        ' dialog.UseEXDialog = True
-        Cargando.Close()
-
-        Try
-            '  spDoc.PrintDialog = dialog.
-            spDoc.PrintDocument.PrinterSettings.PrinterName = ImpresoraPredeterminada
-
-
-            dialog.Document = spDoc.PrintDocument
-            dialog.ShowDialog()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
 
     End Sub
     Private Sub BunifuImageButton1_DragDrop(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles BunifuImageButton1.DragDrop
@@ -533,11 +466,11 @@ Sábado 09:00 a.m. a 02:00 p.m."
         End If
     End Sub
 
-    Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click
+    Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles btn_Webcam.Click
         webcamCredito.Show()
     End Sub
 
-    Private Sub btn_activar_Click(sender As Object, e As EventArgs) Handles btn_activar.Click
+    Private Sub btn_activar_Click(sender As Object, e As EventArgs) Handles btn_activarEmpeño.Click
         If BunifuImageButton1.Image IsNot Nothing Then
             Cargando.Show()
             Cargando.MonoFlat_Label1.Text = "Activando Crédito"
@@ -584,12 +517,13 @@ Sábado 09:00 a.m. a 02:00 p.m."
         BackgroundWorker1.RunWorkerAsync()
     End Sub
 
-    Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        Cargando.Show()
-        Cargando.MonoFlat_Label1.Text = "Generando Calendario"
+    Private Sub Btn_Testimonial_Click(sender As Object, e As EventArgs) Handles btn_Testimonial.Click
+        nCargando = New Cargando
+        Cargando.MonoFlat_Label1.Text = "Generando Documento Testimonial..."
+        nCargando.Show()
         Cargando.TopMost = True
 
-        BackgroundCalendario.RunWorkerAsync()
+        BackgroundTestimonial.RunWorkerAsync()
     End Sub
     Private Sub WordDocViewer(ByVal fileName As String)
         Try
@@ -652,7 +586,7 @@ Sábado 09:00 a.m. a 02:00 p.m."
 
     End Sub
 
-    Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs) Handles BunifuThinButton24.Click
+    Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs) Handles btn_Boleta.Click
         Cargando.Show()
         Cargando.MonoFlat_Label1.Text = "Generando carátula informativa"
         Cargando.TopMost = True
@@ -735,5 +669,9 @@ Sábado 09:00 a.m. a 02:00 p.m."
         Dim imageTemp = New Bitmap(ms)
         Dim image = New Bitmap(imageTemp, New Size(New System.Drawing.Point(image_size, image_size)))
         image.Save(new_file_name & ".png", ImageFormat.Png)
+    End Sub
+
+    Private Sub btn_EntregarEmpeño_Click(sender As Object, e As EventArgs) Handles btn_EntregarEmpeño.Click
+        BackgroundEntrega.RunWorkerAsync()
     End Sub
 End Class
