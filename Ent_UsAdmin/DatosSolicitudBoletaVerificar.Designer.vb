@@ -74,6 +74,7 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.BackgroundCargaDocumentos = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundVerificaDocumentos = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundActivarLegal = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundRechazarSolicitud = New System.ComponentModel.BackgroundWorker()
         Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.idSolicitudColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -186,9 +187,9 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.MonoFlat_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(3, 3)
         Me.MonoFlat_HeaderLabel1.Name = "MonoFlat_HeaderLabel1"
-        Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(135, 20)
+        Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(217, 20)
         Me.MonoFlat_HeaderLabel1.TabIndex = 1
-        Me.MonoFlat_HeaderLabel1.Text = "Datos de Solicitud"
+        Me.MonoFlat_HeaderLabel1.Text = "Datos de Solicitud de Empeño"
         '
         'TabControl1
         '
@@ -197,7 +198,7 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.TabControl1.Location = New System.Drawing.Point(12, 327)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1141, 376)
+        Me.TabControl1.Size = New System.Drawing.Size(1141, 362)
         Me.TabControl1.TabIndex = 4
         '
         'TabPage1
@@ -228,7 +229,7 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1133, 350)
+        Me.TabPage1.Size = New System.Drawing.Size(1133, 336)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Datos Personales"
         '
@@ -554,7 +555,7 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(1133, 350)
+        Me.TabPage5.Size = New System.Drawing.Size(1133, 336)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Documentación"
         '
@@ -647,7 +648,7 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.btn_Procesar.IdleFillColor = System.Drawing.Color.White
         Me.btn_Procesar.IdleForecolor = System.Drawing.Color.Gray
         Me.btn_Procesar.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_Procesar.Location = New System.Drawing.Point(469, 294)
+        Me.btn_Procesar.Location = New System.Drawing.Point(469, 282)
         Me.btn_Procesar.Margin = New System.Windows.Forms.Padding(5)
         Me.btn_Procesar.Name = "btn_Procesar"
         Me.btn_Procesar.Size = New System.Drawing.Size(216, 38)
@@ -711,63 +712,75 @@ Partial Class DatosSolicitudBoletaVerificar
         'BackgroundVerificaDocumentos
         '
         '
+        'BackgroundRechazarSolicitud
+        '
+        '
         'id
         '
         Me.id.HeaderText = "id"
         Me.id.Name = "id"
+        Me.id.Width = 45
         '
         'idSolicitudColumn
         '
-        Me.idSolicitudColumn.HeaderText = "idSolicitud"
+        Me.idSolicitudColumn.HeaderText = "id Solicitud"
         Me.idSolicitudColumn.Name = "idSolicitudColumn"
         Me.idSolicitudColumn.ReadOnly = True
+        Me.idSolicitudColumn.Width = 60
         '
         'Descripcion
         '
         Me.Descripcion.HeaderText = "Descripción"
         Me.Descripcion.Name = "Descripcion"
         Me.Descripcion.ReadOnly = True
+        Me.Descripcion.Width = 200
         '
         'Marca
         '
         Me.Marca.HeaderText = "Marca"
         Me.Marca.Name = "Marca"
         Me.Marca.ReadOnly = True
+        Me.Marca.Width = 75
         '
         'Modelo
         '
         Me.Modelo.HeaderText = "Modelo"
         Me.Modelo.Name = "Modelo"
         Me.Modelo.ReadOnly = True
+        Me.Modelo.Width = 70
         '
         'NoSerie
         '
         Me.NoSerie.HeaderText = "No de Serie"
         Me.NoSerie.Name = "NoSerie"
         Me.NoSerie.ReadOnly = True
+        Me.NoSerie.Width = 80
         '
         'MontoValuado
         '
-        Me.MontoValuado.HeaderText = "MontoValuado"
+        Me.MontoValuado.HeaderText = "Monto Valuado"
         Me.MontoValuado.Name = "MontoValuado"
         Me.MontoValuado.ReadOnly = True
+        Me.MontoValuado.Width = 75
         '
         'MontoSugerido
         '
-        Me.MontoSugerido.HeaderText = "MontoSugerido"
+        Me.MontoSugerido.HeaderText = "Monto Sugerido"
         Me.MontoSugerido.Name = "MontoSugerido"
         Me.MontoSugerido.ReadOnly = True
+        Me.MontoSugerido.Width = 75
         '
         'MontoAutorizado
         '
         Me.MontoAutorizado.HeaderText = "Monto Autorizado"
         Me.MontoAutorizado.Name = "MontoAutorizado"
+        Me.MontoAutorizado.Width = 75
         '
         'ImagenColumn
         '
         Me.ImagenColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.ImagenColumn.HeaderText = "Imagen"
-        Me.ImagenColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
+        Me.ImagenColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
         Me.ImagenColumn.Name = "ImagenColumn"
         Me.ImagenColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ImagenColumn.Width = 200
@@ -777,11 +790,13 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.NombreTipo.HeaderText = "Tipo"
         Me.NombreTipo.Name = "NombreTipo"
         Me.NombreTipo.ReadOnly = True
+        Me.NombreTipo.Width = 55
         '
         'Autorizado
         '
         Me.Autorizado.HeaderText = "Autorizado"
         Me.Autorizado.Name = "Autorizado"
+        Me.Autorizado.Width = 75
         '
         'DatosSolicitudBoletaVerificar
         '
@@ -793,7 +808,9 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "DatosSolicitudBoletaVerificar"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DatosSolicitud"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -857,6 +874,7 @@ Partial Class DatosSolicitudBoletaVerificar
     Friend WithEvents btn_rechazar As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents txtIne As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label3 As Label
+    Friend WithEvents BackgroundRechazarSolicitud As System.ComponentModel.BackgroundWorker
     Friend WithEvents id As DataGridViewTextBoxColumn
     Friend WithEvents idSolicitudColumn As DataGridViewTextBoxColumn
     Friend WithEvents Descripcion As DataGridViewTextBoxColumn

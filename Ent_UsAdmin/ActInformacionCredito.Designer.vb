@@ -90,9 +90,9 @@ Partial Class ActInformacionCredito
         Me.MonoFlat_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(3, 3)
         Me.MonoFlat_HeaderLabel1.Name = "MonoFlat_HeaderLabel1"
-        Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(286, 20)
+        Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(245, 20)
         Me.MonoFlat_HeaderLabel1.TabIndex = 1
-        Me.MonoFlat_HeaderLabel1.Text = "Actualizar Información de Crédito Legal"
+        Me.MonoFlat_HeaderLabel1.Text = "Actualizar Información de Crédito"
         '
         'ComboTipo
         '

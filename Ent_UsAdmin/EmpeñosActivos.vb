@@ -14,7 +14,7 @@ Public Class EmpeñosActivos
 
             iniciarconexionempresa()
 
-            strimpuestos = "select id,format(Fecha,'yyyy-MM-dd')as Fecha,Nombre,MontoPrestado,MontoRefrendo, format(FechaPrimerPago,'yyyy-MM-dd')as FechaPrimerPago, Estado from Empeños where (estado = 'A' or estado = 'E') and nombre like '%" & txtnombre.Text & "%' order by nombre asc"
+            strimpuestos = "select id,format(Fecha,'yyyy-MM-dd')as Fecha,Nombre,MontoPrestado,MontoRefrendo, format(FechaPrimerPago,'yyyy-MM-dd')as FechaPrimerPago, Estado from Empeños where (estado = 'A') and nombre like '%" & txtnombre.Text & "%' order by nombre asc"
 
             Dim ejec = New SqlCommand(strimpuestos)
             ejec.Connection = conexionempresa
@@ -67,5 +67,4 @@ Public Class EmpeñosActivos
             cargarSolicitudes()
         End If
     End Sub
-
 End Class

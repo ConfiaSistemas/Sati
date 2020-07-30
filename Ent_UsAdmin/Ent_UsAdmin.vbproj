@@ -173,6 +173,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActInformacionEmpeño.Designer.vb">
+      <DependentUpon>ActInformacionEmpeño.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ActInformacionEmpeño.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ActInformacionCredito.Designer.vb">
       <DependentUpon>ActInformacionCredito.vb</DependentUpon>
     </Compile>
@@ -189,6 +195,12 @@
       <DependentUpon>AgregarCaja.vb</DependentUpon>
     </Compile>
     <Compile Include="AgregarCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarDocumentoEmpeño.Designer.vb">
+      <DependentUpon>AgregarDocumentoEmpeño.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarDocumentoEmpeño.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AgregarDocumentoCredito.Designer.vb">
@@ -372,6 +384,12 @@
       <DependentUpon>CrearConvenioLegal.vb</DependentUpon>
     </Compile>
     <Compile Include="CrearConvenioLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentosEmpeño.Designer.vb">
+      <DependentUpon>DocumentosEmpeño.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentosEmpeño.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EmpeñosPorEntregar.Designer.vb">
@@ -808,6 +826,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ActInformacionEmpeño.resx">
+      <DependentUpon>ActInformacionEmpeño.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ActInformacionCredito.resx">
       <DependentUpon>ActInformacionCredito.vb</DependentUpon>
     </EmbeddedResource>
@@ -816,6 +837,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarCaja.resx">
       <DependentUpon>AgregarCaja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarDocumentoEmpeño.resx">
+      <DependentUpon>AgregarDocumentoEmpeño.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarDocumentoCredito.resx">
       <DependentUpon>AgregarDocumentoCredito.vb</DependentUpon>
@@ -900,6 +924,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrearConvenioLegal.resx">
       <DependentUpon>CrearConvenioLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentosEmpeño.resx">
+      <DependentUpon>DocumentosEmpeño.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmpeñosPorEntregar.resx">
       <DependentUpon>EmpeñosPorEntregar.vb</DependentUpon>

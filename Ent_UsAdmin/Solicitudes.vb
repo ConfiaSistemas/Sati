@@ -127,11 +127,13 @@ Public Class Solicitudes
 
     Private Sub VerHistoriaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerHistoriaToolStripMenuItem.Click
         Historia_de_Solicitud.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        Historia_de_Solicitud.esEmpeño = False
         Historia_de_Solicitud.Show()
     End Sub
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
         Historia_de_Solicitud.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        Historia_de_Solicitud.esEmpeño = False
         Historia_de_Solicitud.Show()
     End Sub
 

@@ -161,19 +161,13 @@
         CFccEa44IlxxRLjSOPALRGT1Xl/S64IAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="BackgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="ContextMenuVerificar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>246, 17</value>
+    <value>22, 30</value>
   </metadata>
   <metadata name="ContextMenuIncompleto.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>421, 22</value>
-  </metadata>
-  <metadata name="ContextMenuAprobacion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>628, 26</value>
+    <value>190, 30</value>
   </metadata>
   <metadata name="ContextMenuAprobado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>814, 24</value>
+    <value>370, 30</value>
   </metadata>
 </root>

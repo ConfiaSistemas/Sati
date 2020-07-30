@@ -27,6 +27,7 @@ Public Class DatosSolicitudBoletaVerificar
     Dim montoTotalSugerido As Double
     Dim porcentajeRefrendo As Double
     Dim nombreCliente As String
+    Public verSolicitud As Boolean
     Private Sub DatosSolicitud_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         For Each ctrl As Control In TabPage1.Controls
             If TypeOf ctrl Is Bunifu.Framework.UI.BunifuMaterialTextbox Then
@@ -258,11 +259,20 @@ Public Class DatosSolicitudBoletaVerificar
         Dim interesdiario As Double
         interesdiario = MontoRefrendo / 7
 
-        consultaCreaEmpeños = "insert into Empeños values('" & idcliente & "','" & idSolicitud & "','" & nombreCliente & "','" & montoTotalValuado & "','" & montoTotalAutorizado & "','7','" & MontoRefrendo & "','" & porcentajeRefrendo & "','" & interesdiario & "','" & Now.Date.ToString("yyyy-MM-dd") & "','','','','" & idPromotor & "','E','" & txtIne.Text & "','','')"
+        consultaCreaEmpeños = "insert into Empeños values('" & idcliente & "','" & idSolicitud & "','" & nombreCliente & "','" & montoTotalValuado & "','" & montoTotalAutorizado & "','7','" & MontoRefrendo & "','" & porcentajeRefrendo & "','" & interesdiario & "','" & Now.Date.ToString("yyyy-MM-dd") & "','','','','" & idPromotor & "','E','" & txtIne.Text & "','','') select SCOPE_IDENTITY()"
         comandoCreaEmpeño = New SqlCommand
         comandoCreaEmpeño.Connection = conexionempresa
         comandoCreaEmpeño.CommandText = consultaCreaEmpeños
-        comandoCreaEmpeño.ExecuteNonQuery()
+        Dim idEmpeñoCreado As Integer
+        idEmpeñoCreado = comandoCreaEmpeño.ExecuteScalar
+
+        Dim insertCronogramaSolicitud As SqlCommand
+        Dim consultaInsertCronogramaSolicitud As String
+        consultaInsertCronogramaSolicitud = "insert into CronogramaSolicitudEmpeño values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & idSolicitud & "','Se autorizó por " & nmusr & " y se creó el empeño con el id " & idEmpeñoCreado & "')"
+        insertCronogramaSolicitud = New SqlCommand
+        insertCronogramaSolicitud.Connection = conexionempresa
+        insertCronogramaSolicitud.CommandText = consultaInsertCronogramaSolicitud
+        insertCronogramaSolicitud.ExecuteNonQuery()
 
     End Sub
 
@@ -291,7 +301,7 @@ Public Class DatosSolicitudBoletaVerificar
         dtdatosDocumentos.DataSource = dataDocumentos
         For Each column As DataGridViewColumn In dtdatosDocumentos.Columns
             If TypeOf dtdatosDocumentos.Columns(2) Is DataGridViewImageColumn Then 'resizes images
-                CType(dtdatosDocumentos.Columns(2), DataGridViewImageColumn).ImageLayout = DataGridViewImageCellLayout.Stretch
+                CType(dtdatosDocumentos.Columns(2), DataGridViewImageColumn).ImageLayout = DataGridViewImageCellLayout.Zoom
             End If
 
 
@@ -351,19 +361,16 @@ Public Class DatosSolicitudBoletaVerificar
     End Sub
 
     Private Sub BackgroundWorker2_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker2.RunWorkerCompleted
-        'dtdatos.Columns.Item(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
 
-        'dtdatos.Columns.Item(3).FillWeight = 150
-        'dtdatos.Columns.Item(3).Width = 200
-        ''Dim imagecolumn As DataGridViewImageColumn
-        ''  imagecolumn = dtdatos.Columns.Item(3)
-        'imagecolumn.ImageLayout = DataGridViewImageCellLayout.Stretch
-        'For Each row As DataGridViewRow In dtdatos.Rows
-        '    row.Height = 200
-
-        'Next
         dtdatos.ScrollBars = ScrollBars.Both
 
+        'Deshabilitamos los botones si solo se tiene que ver la solicitud sin modificarla
+        If verSolicitud Then
+            btn_Procesar.Enabled = False
+            btn_Procesar.Visible = False
+            dtdatos.Columns(8).ReadOnly = True
+            dtdatos.Columns(11).Visible = False
+        End If
         Cargando.Close()
     End Sub
 
@@ -499,7 +506,7 @@ Public Class DatosSolicitudBoletaVerificar
 
 
 
-    Private Sub dtdatosDocumentos_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtdatosDocumentos.CellContentDoubleClick
+    Private Sub dtdatosDocumentos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtdatosDocumentos.CellDoubleClick
         VistaDocumento.PictureBox1.Image = dtdatosDocumentos.Rows(dtdatosDocumentos.CurrentRow.Index).Cells(2).FormattedValue
         VistaDocumento.ShowDialog()
     End Sub
@@ -561,6 +568,35 @@ Public Class DatosSolicitudBoletaVerificar
         VistaDocumento.Show()
     End Sub
 
+    Private Sub btn_rechazar_Click(sender As Object, e As EventArgs) Handles btn_rechazar.Click
+        Cargando.Show()
+        Cargando.MonoFlat_Label1.Text = "Rechazando Crédito..."
+        BackgroundRechazarSolicitud.RunWorkerAsync()
+    End Sub
+
+    Private Sub BackgroundRechazarSolicitud_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundRechazarSolicitud.DoWork
+        iniciarconexionempresa()
+        Dim tiempo As String = TimeOfDay.ToString("HH:mm:ss")
+        Dim comandoActEstado As SqlCommand
+        Dim consultaActEstado As String
+        consultaActEstado = "update SolicitudBoleta set estado = 'R',autorizadoPor='" & nmusr & "',montoAutorizado = '0' where id = '" & idSolicitud & "'"
+        comandoActEstado = New SqlCommand
+        comandoActEstado.Connection = conexionempresa
+        comandoActEstado.CommandText = consultaActEstado
+        comandoActEstado.ExecuteNonQuery()
+
+
+
+
+        Dim insertCronogramaSolicitud As SqlCommand
+        Dim consultaInsertCronogramaSolicitud As String
+        consultaInsertCronogramaSolicitud = "insert into CronogramaSolicitudEmpeño values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & idSolicitud & "','Se rechazó por " & nmusr & "')"
+        insertCronogramaSolicitud = New SqlCommand
+        insertCronogramaSolicitud.Connection = conexionempresa
+        insertCronogramaSolicitud.CommandText = consultaInsertCronogramaSolicitud
+        insertCronogramaSolicitud.ExecuteNonQuery()
+    End Sub
+
     Private Sub dtdatos_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dtdatos.CellEndEdit
         montoTotalAutorizado = 0
         For Each row As DataGridViewRow In dtdatos.Rows
@@ -572,7 +608,13 @@ Public Class DatosSolicitudBoletaVerificar
         Next
     End Sub
 
-    Private Sub DatosSolicitudBoletaVerificar_AutoSizeChanged(sender As Object, e As EventArgs) Handles Me.AutoSizeChanged
+    Private Sub BackgroundRechazarSolicitud_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundRechazarSolicitud.RunWorkerCompleted
+        Me.Invoke(Sub()
+                      SolicitudesEmpeños.cargarSolicitudes()
 
+                  End Sub)
+
+        Cargando.Close()
+        Me.Close()
     End Sub
 End Class

@@ -210,6 +210,13 @@ Public Class DatosSolicitudBoleta
         comandoActEstado.CommandText = consultaActEstado
         comandoActEstado.ExecuteNonQuery()
 
+        Dim insertCronogramaSolicitud As SqlCommand
+        Dim consultaInsertCronogramaSolicitud As String
+        consultaInsertCronogramaSolicitud = "insert into CronogramaSolicitudEmpeño values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & idSolicitud & "','Se envió a autorización por " & nmusr & "')"
+        insertCronogramaSolicitud = New SqlCommand
+        insertCronogramaSolicitud.Connection = conexionempresa
+        insertCronogramaSolicitud.CommandText = consultaInsertCronogramaSolicitud
+        insertCronogramaSolicitud.ExecuteNonQuery()
 
     End Sub
 

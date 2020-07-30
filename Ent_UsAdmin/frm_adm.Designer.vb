@@ -584,6 +584,7 @@ Partial Class frm_adm
         Me.Opacity = 0.1R
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Confía Admin"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)

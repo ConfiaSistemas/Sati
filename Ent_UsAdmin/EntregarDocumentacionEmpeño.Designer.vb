@@ -34,7 +34,7 @@ Partial Class EntregarDocumentacionEmpeño
         Me.BackgroundTestimonial = New System.ComponentModel.BackgroundWorker()
         Me.labelimagen = New Bunifu.Framework.UI.BunifuCustomLabel()
         Me.BackgroundActivar = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundCatatula = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundBoleta = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundTarjeta = New System.ComponentModel.BackgroundWorker()
         Me.btn_Boleta = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.btn_activarEmpeño = New Bunifu.Framework.UI.BunifuThinButton2()
@@ -135,7 +135,7 @@ Partial Class EntregarDocumentacionEmpeño
         'BackgroundActivar
         '
         '
-        'BackgroundCatatula
+        'BackgroundBoleta
         '
         '
         'BackgroundTarjeta
@@ -332,7 +332,9 @@ Partial Class EntregarDocumentacionEmpeño
         Me.Controls.Add(Me.btn_Contrato)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "EntregarDocumentacionEmpeño"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Entregar Documentación"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -359,7 +361,7 @@ Partial Class EntregarDocumentacionEmpeño
     Friend WithEvents btn_activarEmpeño As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents BackgroundActivar As System.ComponentModel.BackgroundWorker
     Friend WithEvents btn_Boleta As Bunifu.Framework.UI.BunifuThinButton2
-    Friend WithEvents BackgroundCatatula As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BackgroundBoleta As System.ComponentModel.BackgroundWorker
     Friend WithEvents BackgroundTarjeta As System.ComponentModel.BackgroundWorker
     Friend WithEvents btn_EntregarEmpeño As Bunifu.Framework.UI.BunifuThinButton2
 End Class

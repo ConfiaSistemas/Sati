@@ -192,7 +192,7 @@ Public Class EntregarDocumentacionEmpeño
                 rowTable.Cells(1).Paragraphs.First.Append(row("Tipo") & ", Marca: " & row("Marca") & ", Modelo: " & row("Modelo") & ", No. de Serie: " & row("NoSerie"))
                 rowTable.Cells(2).Paragraphs.First.Append(FormatCurrency(row("MontoValuado")))
                 rowTable.Cells(3).Paragraphs.First.Append(FormatCurrency(row("MontoPrestado")))
-                rowTable.Cells(4).Paragraphs.First.Append(FormatNumber((row("MontoPrestado") * 100) / row("MontoValuado"), 2))
+                rowTable.Cells(4).Paragraphs.First.Append(FormatNumber((row("MontoPrestado") * 100) / row("MontoValuado"), 2) & "%")
                 documento.Tables(1).Rows.Add(rowTable)
             End If
             numeroArticulos += 1
@@ -350,18 +350,30 @@ Public Class EntregarDocumentacionEmpeño
         adapterArticulos.Fill(dataArticulos)
         'dataTableToWord(dataCalendario)
 
-        FileCopy("C:\ConfiaAdmin\SATI\TestimonialEmpeño.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempTestimonialEmpeño.docx")
+        Try
+            FileCopy("C:\ConfiaAdmin\SATI\TestimonialEmpeño.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempTestimonialEmpeño.docx")
+        Catch ex As Exception
+            MessageBox.Show("Error al abrir el archivo del formato")
+            'Finally
+            '    BackgroundTestimonial.WorkerSupportsCancellation = True
+            '    BackgroundTestimonial.CancelAsync()
+            '    'If BackgroundTestimonial.CancellationPending Then
+            '    e.Cancel = True
+            '    'End If
+        End Try
+
         Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempTestimonialEmpeño.docx")
+
         documento.ReplaceText("%dia%", fechaEntrega.ToString("dd"))
-        documento.ReplaceText("%mes%", CDate(fechaEntrega).ToString("MMMM"))
+        documento.ReplaceText("%mes%", CDate(fechaEntrega).ToString("MMMM").ToUpper)
         documento.ReplaceText("%año%", CDate(fechaEntrega).ToString("yyyy"))
         documento.ReplaceText("%nombre%", nombreEmpeñoAentregar)
 
         Dim nArticulos As Integer = 0
         For Each row As DataRow In dataArticulos.Rows
             If nArticulos = 0 Then
-                documento.ReplaceText("%descripcion%", row("Descripcion"))
-                documento.ReplaceText("%caracteristicas%", "Marca: " & row("Marca") & ", Modelo: " & row("Modelo") & ", No de Serie: " & row("NoSerie"))
+                documento.ReplaceText("%descripcion%", ("Tipo de Artículo: " & row("Nombre") & "; Descripción: " & row("Descripcion")))
+                documento.ReplaceText("%caracteristicas%", "Marca: " & row("Marca") & "; Modelo: " & row("Modelo") & "; No. de Serie: " & row("NoSerie"))
                 documento.ReplaceText("%montoValuadoPrenda%", FormatCurrency(row("MontoValuado")))
                 nArticulos += 1
                 documento.Save()
@@ -389,12 +401,16 @@ Public Class EntregarDocumentacionEmpeño
             For i As Integer = 2 To nArticulos
                 Doc.Paragraphs(i + 5).Range.InsertParagraphAfter()
                 'Doc.Lists(1).Range.InsertParagraphAfter()
-                'Word.Selection.InsertParagraphAfter()
+                'Word.Selection.InsertParagraphAfter()               
                 Doc.Paragraphs(i + 6).Range.ListFormat.ApplyNumberDefault()
-                'Doc.Paragraphs(i + 6).JoinList()
+                Doc.Paragraphs(i + 5).Format.SpaceAfter = 10
+                If i = nArticulos Then
+                    Doc.Paragraphs(i + 6).Format.SpaceAfter = 18
+                End If
                 Doc.Paragraphs(i + 6).SelectNumber()
-                Word.Selection.TypeText(Convert.ToString(dataArticulos.Rows(i - 1).Item(1)))
-                Doc.Paragraphs(i + 6).Range.ListFormat.ApplyNumberDefault()
+                'Word.Selection.TypeText(Convert.ToString("werwerwerwer" & n(0)))
+                Word.Selection.Text = (Convert.ToString("Tipo de Articulo: " & dataArticulos.Rows(i - 1).Item(5) & "; Descripción: " & dataArticulos.Rows(i - 1).Item(0) & "; Marca: " & dataArticulos.Rows(i - 1).Item(1) & "; Modelo: " & dataArticulos.Rows(i - 1).Item(2) & "; No. de Serie: " & dataArticulos.Rows(i - 1).Item(3) & "; Valuado en:" & FormatCurrency(dataArticulos.Rows(i - 1).Item(4))))
+                'Doc.Paragraphs(i + 6).Range.ListFormat.ApplyNumberDefault()
             Next
             Doc.Save()
             Doc.Close()
@@ -519,7 +535,7 @@ Public Class EntregarDocumentacionEmpeño
 
     Private Sub Btn_Testimonial_Click(sender As Object, e As EventArgs) Handles btn_Testimonial.Click
         nCargando = New Cargando
-        Cargando.MonoFlat_Label1.Text = "Generando Documento Testimonial..."
+        nCargando.MonoFlat_Label1.Text = "Generando Documento Testimonial..."
         nCargando.Show()
         Cargando.TopMost = True
 
@@ -542,55 +558,107 @@ Public Class EntregarDocumentacionEmpeño
         End If
     End Sub
 
-    Private Sub BackgroundCatatula_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundCatatula.DoWork
-        Dim comandoFechaEntrega As SqlCommand
-        Dim consultaFechaEntrega As String
-        consultaFechaEntrega = "select fechaEntrega from credito where id = '" & idEmpeñoAentregar & "'"
-        Dim fechaEntrega As Date
-        comandoFechaEntrega = New SqlCommand
-        comandoFechaEntrega.Connection = conexionempresa
-        comandoFechaEntrega.CommandText = consultaFechaEntrega
-        fechaEntrega = comandoFechaEntrega.ExecuteScalar
+    Private Sub BackgroundBoleta_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundBoleta.DoWork
+        Dim NumeroLetra As New NumLetra
 
-        FileCopy("C:\ConfiaAdmin\SATI\Caratula Informativa.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempCaratula.docx")
-        Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempCaratula.docx")
-        documento.ReplaceText("%%FECHACREDITO%%", fechaEntrega.ToString("dd/MM/yyyy"))
-
-        documento.ReplaceText("%%NOMBRERESPONSABLE%%", NombreClienteAentregar)
+        FileCopy("C:\ConfiaAdmin\SATI\BoletaEmpeño.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempBoletaEmpeño.docx")
+        'Reemplazamos las etiquetas del contrato
+        Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempBoletaEmpeño.docx")
+        documento.ReplaceText("%dia%", fechaEntrega.ToString("dd"))
+        documento.ReplaceText("%mes%", CDate(fechaEntrega).ToString("MMMM"))
+        documento.ReplaceText("%año%", CDate(fechaEntrega).ToString("yyyy"))
+        documento.ReplaceText("%folio%", idEmpeñoAentregar)
+        documento.ReplaceText("%nombreCliente%", NombreClienteAentregar)
+        documento.ReplaceText("%numeroIdentificacion%", Ine)
+        documento.ReplaceText("%domicilio%", Domicilio)
+        documento.ReplaceText("%colonia%", Colonia)
+        documento.ReplaceText("%codigoPostal%", CodigoPostal)
+        documento.ReplaceText("%ciudad%", Municipio)
+        documento.ReplaceText("%estado%", Entidad)
+        documento.ReplaceText("%telefono%", Telefono)
+        documento.ReplaceText("%correo%", "-")
+        documento.ReplaceText("%cotitular%", "-")
+        documento.ReplaceText("%domicilioCotitular%", "-")
+        documento.ReplaceText("%coloniaCotitular%", "-")
+        documento.ReplaceText("%codigoPostalCotitular%", "-")
+        documento.ReplaceText("%ciudadCotitular%", "-")
+        documento.ReplaceText("%nombreBeneficiario%", "-")
+        documento.ReplaceText("%montoPrestado%", FormatCurrency(montoAentregar))
+        documento.ReplaceText("%montoTotalDeuda%", FormatCurrency(montoAentregar + (montoRefrendo * 52)))
+        documento.ReplaceText("%fechaRefrendo%", CDate(fechaEntrega.AddDays(7)).ToString("dd-MMMM-yyyy"))
+        documento.ReplaceText("%numeroDeRefrendos%", "52")
+        documento.ReplaceText("%interesRefrendo%", porcentajeRefrendo)
+        documento.ReplaceText("%Iva%", FormatCurrency((montoRefrendo / 1.16) * 0.16))
+        documento.ReplaceText("%montoDesempeño%", FormatCurrency(montoRefrendo + montoAentregar))
+        documento.ReplaceText("%montoRefrendo%", FormatCurrency(montoRefrendo))
+        documento.ReplaceText("%diaDePago%", diaDepago)
+        documento.ReplaceText("%montoValuadoTotal%", FormatCurrency(montoValuado))
+        documento.ReplaceText("%montoValuadoLetra%", NumeroLetra.Convertir(montoValuado, False))
+        documento.ReplaceText("%porcentajePrestamo%", FormatNumber(((montoAentregar * 100) / montoValuado), 2))
+        documento.ReplaceText("%fechaVentaPrenda%", CDate(fechaEntrega.AddMonths(1)).ToString("dd-MMMM-yyyy"))
+        documento.ReplaceText("%fechaLimiteFiniquito%", CDate(fechaEntrega.AddYears(1)).ToString("dd-MMMM-yyyy"))
+        documento.ReplaceText("%nombreValuador%", NombreUsuario)
+        'Definimos una variable que cuente el numero de articulo a empeñar
+        Dim numeroArticulos As Integer = 0
+        For Each row As DataRow In dataArticulos.Rows
+            'Sustituimos las etiquetas dentro de la tabla de artículos
+            If numeroArticulos = 0 Then
+                documento.ReplaceText("%descripcion%", row("Descripcion"))
+                documento.ReplaceText("%caracteristicas%", row("Tipo") & ", Marca: " & row("Marca") & ", Modelo: " & row("Modelo") & ", No. de Serie: " & row("NoSerie"))
+                documento.ReplaceText("%montoValuadoPrenda%", FormatCurrency(row("MontoValuado")))
+                documento.ReplaceText("%montoPrestadoPrenda%", FormatCurrency(row("MontoPrestado")))
+                documento.ReplaceText("%porcentajePrestamoPrenda%", FormatNumber(((row("MontoPrestado") * 100) / row("MontoValuado")), 2))
+            Else 'Insertamos una fila extra si hay más de un artículo, y añadimos los datos de dicho artículo
+                Dim rowTable As Xceed.Words.NET.Row
+                rowTable = documento.Tables(2).InsertRow(numeroArticulos)
+                rowTable.Cells(0).Paragraphs.First.Append(row("Descripcion"))
+                rowTable.Cells(1).Paragraphs.First.Append(row("Tipo") & ", Marca: " & row("Marca") & ", Modelo: " & row("Modelo") & ", No. de Serie: " & row("NoSerie"))
+                rowTable.Cells(2).Paragraphs.First.Append(FormatCurrency(row("MontoValuado")))
+                rowTable.Cells(3).Paragraphs.First.Append(FormatCurrency(row("MontoPrestado")))
+                rowTable.Cells(4).Paragraphs.First.Append(FormatNumber((row("MontoPrestado") * 100) / row("MontoValuado"), 2) & "%")
+                documento.Tables(1).Rows.Add(rowTable)
+            End If
+            numeroArticulos += 1
+        Next
         documento.Save()
         documento.Dispose()
+        'Abrimos el documento con word para acomodar el formato de las tablas
+        Dim MSWord As New Word.Application
+        Dim Doc As New Word.Document
+        MSWord = CreateObject("Word.Application")
+        Doc = MSWord.Documents.Open("C:\ConfiaAdmin\SATI\TEMPDOCS\TempBoletaEmpeño.docx")
+
+        For i As Integer = 1 To numeroArticulos
+            Doc.Tables(3).Cell(i, 1).Select()
+            MSWord.Selection.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft
+            Doc.Tables(3).Cell(i, 2).Select()
+            MSWord.Selection.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft
+        Next
+        'Fijamos el ancho de las columnas
+        Doc.Tables(3).Columns(1).Width = 162.75
+        Doc.Tables(3).Columns(2).Width = 155.95
+        Doc.Tables(3).Columns(3).Width = 63.8
+        Doc.Tables(3).Columns(4).Width = 63.8
+        Doc.Tables(3).Columns(5).Width = 70.9
+        Doc.Save()
+        Doc.Close()
+        MSWord.Application.Quit()
 
     End Sub
 
-    Private Sub BackgroundCatatula_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundCatatula.RunWorkerCompleted
-        Dim spDoc As New Spire.Doc.Document
-        spDoc.LoadFromFile("C:\ConfiaAdmin\SATI\TEMPDOCS\TempCaratula.docx")
-
-
-        Dim Dialog As New PrintPreviewDialog
-
-        ' dialog.AllowCurrentPage = True
-        ' dialog.AllowSomePages = True
-        ' dialog.UseEXDialog = True
-        Cargando.Close()
-
-        Try
-            '  spDoc.PrintDialog = dialog.
-            spDoc.PrintDocument.PrinterSettings.PrinterName = ImpresoraPredeterminada
-
-            Dialog.Document = spDoc.PrintDocument
-            Dialog.ShowDialog()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+    Private Sub BackgroundBoleta_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundBoleta.RunWorkerCompleted
+        nCargando.Close()
+        VistaPreviaDocumento.ruta = "C: \ConfiaAdmin\SATI\TEMPDOCS\TempBoletaEmpeño.docx"
+        VistaPreviaDocumento.Show()
 
     End Sub
 
     Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs) Handles btn_Boleta.Click
-        Cargando.Show()
-        Cargando.MonoFlat_Label1.Text = "Generando carátula informativa"
-        Cargando.TopMost = True
-        BackgroundCatatula.RunWorkerAsync()
+        nCargando = New Cargando
+        nCargando.Show()
+        nCargando.MonoFlat_Label1.Text = "Generando Boleta de Empeño"
+        nCargando.TopMost = True
+        BackgroundBoleta.RunWorkerAsync()
 
     End Sub
 
