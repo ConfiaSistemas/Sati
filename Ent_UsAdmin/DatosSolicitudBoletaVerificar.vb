@@ -572,6 +572,10 @@ Public Class DatosSolicitudBoletaVerificar
         Next
     End Sub
 
+    Private Sub dtdatos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtdatos.CellContentClick
+
+    End Sub
+
     Private Sub DatosSolicitudBoletaVerificar_AutoSizeChanged(sender As Object, e As EventArgs) Handles Me.AutoSizeChanged
 
     End Sub

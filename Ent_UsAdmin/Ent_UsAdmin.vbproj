@@ -470,6 +470,12 @@
     <Compile Include="InformacionEmpeño.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PagosHoy.Designer.vb">
+      <DependentUpon>PagosHoy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PagosHoy.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SolicitudesEmpeños.Designer.vb">
       <DependentUpon>SolicitudesEmpeños.vb</DependentUpon>
     </Compile>
@@ -948,6 +954,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InformacionEmpeño.resx">
       <DependentUpon>InformacionEmpeño.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagosHoy.resx">
+      <DependentUpon>PagosHoy.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SolicitudesEmpeños.resx">
       <DependentUpon>SolicitudesEmpeños.vb</DependentUpon>

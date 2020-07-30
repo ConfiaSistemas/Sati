@@ -69,6 +69,15 @@ Public Class Tickets
                     comandonombre.Connection = conexionempresa
                     comandonombre.CommandText = consultaNombre
                     nombrecredito = comandonombre.ExecuteScalar
+                Case "Refrendo", "Comisión por avalúo", "Desempeño"
+                    Dim comandonombre As SqlCommand
+                    comandonombre = New SqlCommand
+
+                    Dim consultaNombre As String
+                    consultaNombre = "select nombre from empeños  where id = '" & reader("idcredito") & "'"
+                    comandonombre.Connection = conexionempresa
+                    comandonombre.CommandText = consultaNombre
+                    nombrecredito = comandonombre.ExecuteScalar
                 Case Else
                     Dim comandonombre As SqlCommand
                     comandonombre = New SqlCommand
@@ -233,17 +242,188 @@ Public Class Tickets
     End Sub
 
     Private Sub BackgroundCancelar_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundCancelar.DoWork
-        Dim comandoConsultaTicketDetalle As SqlCommand
-        Dim consultaTicketDetalle As String
-        Dim readerTicketDetalle As SqlDataReader
-        consultaTicketDetalle = "CancelarTicket"
-        comandoConsultaTicketDetalle = New SqlCommand
-        comandoConsultaTicketDetalle.Connection = conexionempresa
-        comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
-        comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
-        comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value)
-        comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(6).Value)
-        comandoConsultaTicketDetalle.ExecuteNonQuery()
+
+        If dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(6).Value = "Refrendo" Then
+            Dim comandoFechaUpagoTicket As SqlCommand
+            Dim fechaUpagoTicket As Date
+            Dim consultaUfechaTicket As String
+            consultaUfechaTicket = "select fecha from ticket where id = '" & dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value & "'"
+            comandoFechaUpagoTicket = New SqlCommand
+            comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
+            comandoFechaUpagoTicket.Connection = conexionempresa
+            fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
+
+            Dim fechaPosterior As String
+            Dim comandoFechaPosterior As SqlCommand
+            Dim consultaFechaPosterior As String
+            consultaFechaPosterior = "if exists (select top 1 fecha from ticket where fecha > '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
+                                           begin
+                                           select 'Sí hay' as ss
+                                           end
+                                           else 
+                                           begin
+                                           select 'No hay' as ss
+                                           end"
+
+            comandoFechaPosterior = New SqlCommand
+            comandoFechaPosterior.Connection = conexionempresa
+            comandoFechaPosterior.CommandText = consultaFechaPosterior
+            fechaPosterior = comandoFechaPosterior.ExecuteScalar
+
+            If fechaPosterior = "No hay" Then
+                Dim fechaUpago As Date
+                Dim comandoFechaUpago As SqlCommand
+                Dim consultaFechaUpago As String
+                consultaFechaUpago = "if exists (select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
+                                           begin
+                                           select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc
+                                           end
+                                           else 
+                                           begin
+                                           select '1900-01-01' as fecha
+                                           end"
+                comandoFechaUpago = New SqlCommand
+                comandoFechaUpago.Connection = conexionempresa
+                comandoFechaUpago.CommandText = consultaFechaUpago
+                fechaUpago = comandoFechaUpago.ExecuteScalar
+
+                Dim comandoConsultaTicketDetalle As SqlCommand
+                Dim consultaTicketDetalle As String
+                Dim readerTicketDetalle As SqlDataReader
+                consultaTicketDetalle = "CancelarTicket"
+                comandoConsultaTicketDetalle = New SqlCommand
+                comandoConsultaTicketDetalle.Connection = conexionempresa
+                comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
+                comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
+                comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value)
+                comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(6).Value)
+                comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
+                comandoConsultaTicketDetalle.ExecuteNonQuery()
+            Else
+                MessageBox.Show("No se puede cancelar éste ticket, existen tickets activos con fechas posteriores")
+            End If
+
+
+
+        ElseIf dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(6).Value = "Desempeño" Then
+            Dim comandoFechaUpagoTicket As SqlCommand
+            Dim fechaUpagoTicket As Date
+            Dim consultaUfechaTicket As String
+            consultaUfechaTicket = "select fecha from ticket where id = '" & dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value & "'"
+            comandoFechaUpagoTicket = New SqlCommand
+            comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
+            comandoFechaUpagoTicket.Connection = conexionempresa
+            fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
+
+
+
+
+            Dim fechaUpago As Date
+            Dim comandoFechaUpago As SqlCommand
+            Dim consultaFechaUpago As String
+            consultaFechaUpago = "if exists (select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
+                                           begin
+                                           select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc
+                                           end
+                                           else 
+                                           begin
+                                           select '1900-01-01' as fecha
+                                           end"
+            comandoFechaUpago = New SqlCommand
+            comandoFechaUpago.Connection = conexionempresa
+            comandoFechaUpago.CommandText = consultaFechaUpago
+            fechaUpago = comandoFechaUpago.ExecuteScalar
+
+            Dim comandoConsultaTicketDetalle As SqlCommand
+            Dim consultaTicketDetalle As String
+            Dim readerTicketDetalle As SqlDataReader
+            consultaTicketDetalle = "CancelarTicket"
+            comandoConsultaTicketDetalle = New SqlCommand
+            comandoConsultaTicketDetalle.Connection = conexionempresa
+            comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
+            comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
+            comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value)
+            comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(6).Value)
+            comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
+            comandoConsultaTicketDetalle.ExecuteNonQuery()
+
+
+        ElseIf dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(6).Value = "Comisión por avalúo" Then
+            Dim comandoFechaUpagoTicket As SqlCommand
+            Dim fechaUpagoTicket As Date
+            Dim consultaUfechaTicket As String
+            consultaUfechaTicket = "select fecha from ticket where id = '" & dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value & "'"
+            comandoFechaUpagoTicket = New SqlCommand
+            comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
+            comandoFechaUpagoTicket.Connection = conexionempresa
+            fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
+
+            Dim fechaPosterior As String
+            Dim comandoFechaPosterior As SqlCommand
+            Dim consultaFechaPosterior As String
+            consultaFechaPosterior = "if exists (select top 1 fecha from ticket where fecha >= '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
+                                           begin
+                                           select 'Sí hay' as ss
+                                           end
+                                           else 
+                                           begin
+                                           select 'No hay' as ss
+                                           end"
+
+            comandoFechaPosterior = New SqlCommand
+            comandoFechaPosterior.Connection = conexionempresa
+            comandoFechaPosterior.CommandText = consultaFechaPosterior
+            fechaPosterior = comandoFechaPosterior.ExecuteScalar
+
+            If fechaPosterior = "No hay" Then
+                Dim fechaUpago As Date
+                Dim comandoFechaUpago As SqlCommand
+                Dim consultaFechaUpago As String
+                consultaFechaUpago = "if exists (select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
+                                           begin
+                                           select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc
+                                           end
+                                           else 
+                                           begin
+                                           select '1900-01-01' as fecha
+                                           end"
+                comandoFechaUpago = New SqlCommand
+                comandoFechaUpago.Connection = conexionempresa
+                comandoFechaUpago.CommandText = consultaFechaUpago
+                fechaUpago = comandoFechaUpago.ExecuteScalar
+
+                Dim comandoConsultaTicketDetalle As SqlCommand
+                Dim consultaTicketDetalle As String
+                Dim readerTicketDetalle As SqlDataReader
+                consultaTicketDetalle = "CancelarTicket"
+                comandoConsultaTicketDetalle = New SqlCommand
+                comandoConsultaTicketDetalle.Connection = conexionempresa
+                comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
+                comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
+                comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value)
+                comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(6).Value)
+                comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
+                comandoConsultaTicketDetalle.ExecuteNonQuery()
+            Else
+                MessageBox.Show("No se puede cancelar éste ticket, existen tickets activos con fechas posteriores")
+            End If
+        Else
+            Dim comandoConsultaTicketDetalle As SqlCommand
+            Dim consultaTicketDetalle As String
+            Dim readerTicketDetalle As SqlDataReader
+            consultaTicketDetalle = "CancelarTicket"
+            comandoConsultaTicketDetalle = New SqlCommand
+            comandoConsultaTicketDetalle.Connection = conexionempresa
+            comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
+            comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
+            comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value)
+            comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(6).Value)
+            comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", "")
+            comandoConsultaTicketDetalle.ExecuteNonQuery()
+
+        End If
+
+
 
     End Sub
 

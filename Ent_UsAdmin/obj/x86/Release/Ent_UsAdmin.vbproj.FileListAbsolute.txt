@@ -1,9 +1,0 @@
-C:\Users\JJAHSCRIPT\Desktop\proyectos\ent_us\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\bin\Release\Ent_UsAdmin.exe
-C:\Users\JJAHSCRIPT\Desktop\proyectos\ent_us\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\bin\Release\Ent_UsAdmin.pdb
-C:\Users\JJAHSCRIPT\Desktop\proyectos\ent_us\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\bin\Release\Ent_UsAdmin.xml
-C:\Users\JJAHSCRIPT\Desktop\proyectos\ent_us\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Release\Ent_UsAdmin.Frm_login.resources
-C:\Users\JJAHSCRIPT\Desktop\proyectos\ent_us\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Release\Ent_UsAdmin.Resources.resources
-C:\Users\JJAHSCRIPT\Desktop\proyectos\ent_us\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Release\Ent_UsAdmin.vbproj.GenerateResource.Cache
-C:\Users\JJAHSCRIPT\Desktop\proyectos\ent_us\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Release\Ent_UsAdmin.exe
-C:\Users\JJAHSCRIPT\Desktop\proyectos\ent_us\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Release\Ent_UsAdmin.xml
-C:\Users\JJAHSCRIPT\Desktop\proyectos\ent_us\Ent_UsAdmin\Ent_UsAdmin\Ent_UsAdmin\obj\x86\Release\Ent_UsAdmin.pdb

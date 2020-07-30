@@ -11,11 +11,229 @@ Public Class EstadoDeCuenta
     Public idCredito As Integer
     Dim ncargando As Cargando
     Dim pagoMinimo, montoCredito, MontoPagado, SaldoVencido, SaldoInicial, SaldoFinal, Pagare As Double
-    Dim FechaLimite As Date
+    Dim FechaLimite, FechaCorte As Date
     Dim ExisteSaldoInicial, ExisteSaldoFinal, EncontroRegistros As Boolean
-    Dim nombreCredito, fechacorte As String
+
+    Private Sub BackgroundGeneral_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundGeneral.DoWork
+        Dim comandoInformacion As SqlCommand
+        Dim consultaInformacion As String
+        Dim readerInformacion As SqlDataReader
+        consultaInformacion = "select nombre,id,pagare,AbonadoSinMultas,(pagare-AbonadoSinMultas) as valorCarteraSinMultas,Multas,(AbonadoMultasL + AbonadoMultasV) as AbonadoMultas,(Multas - (AbonadoMultasL+AbonadoMultasV)) as multasPendientes,((Multas-(AbonadoMultasL+AbonadoMultasV))+(pagare-AbonadoSinMultas)) as ValorCarteraConMultas, case when carteratotal.Estado = 'C' then
+case when pendiente = 0 then '0' else
+(pendiente - (MultasVencidas - (AbonadoMultasV)))end
+else(pendiente - (Multas - (AbonadoMultasL+AbonadoMultasV))) end as VencidoNormal,((Multas - (AbonadoMultasL+AbonadoMultasV)) + (pendiente - (Multas - (AbonadoMultasL+AbonadoMultasV))) ) as TotalPendiente,Gestor,Promotor,Estado,FechaLimite from
+(select Cartera.nombre,Cartera.id,
+case when Cartera.Estado = 'C' then
+ isnull((select SUM(Abonado - interes) as pagonormal from CalendarioConveniossac inner join Conveniossac on CalendarioConveniossac.IdConvenio = Conveniossac.id where Abonado <> 0 and Abonado >= interes and conveniossac.idcredito = Cartera.id group by idcredito),0)
+else
+isnull((select SUM(Abonado - interes) as pagonormal from CalendarioNormal where Abonado <> 0 and Abonado >= interes and id_credito = Cartera.id group by id_credito),0) end as AbonadoSinMultas,
+case when Cartera.Estado = 'C' then
+isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = Cartera.id group by Conveniossac.idcredito),0) 
+else
+isnull((select isnull((select SUM( ((((abonado ))) )) as AbonadoInteres from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where CalendarioNormal.estado = 'V' and Abonado <= CalendarioNormal.Interes and CalendarioNormal.id_credito =cartera.id group by CalendarioNormal.id_credito),0)
++
+isnull((select SUM( ((((abonado -(abonado -calendarionormal.Interes) ))) )) as AbonadoInteres from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where CalendarioNormal.estado = 'V' and Abonado >=CalendarioNormal.Interes and CalendarioNormal.id_credito =cartera.id group by CalendarioNormal.id_credito),0)),0)end as AbonadoMultasV,
+case when Cartera.Estado = 'C' then
+isnull((select SUM(Abonado - CalendarioConveniossac.monto) as AbonadoMultas from CalendarioConveniossac inner join Conveniossac on Conveniossac.id = CalendarioConveniossac.IdConvenio where  CalendarioConveniossac.estado = 'L' and Conveniossac.idcredito = Cartera.id group by Conveniossac.idcredito),0)
+else
+isnull((select SUM(Abonado - CalendarioNormal.monto) as AbonadoMultas from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where  CalendarioNormal.estado = 'L' and CalendarioNormal.id_credito = Cartera.id group by CalendarioNormal.id_credito),0) end as AbonadoMultasL,
+case when Cartera.Estado = 'C' THEN 
+isnull((select SUM(CalendarioConveniossac.interes) as Multas from CalendarioConveniossac inner join Conveniossac on CalendarioConveniossac.IdConvenio = Conveniossac.id where  Conveniossac.idcredito = Cartera.id group by Conveniossac.idcredito),0)
+else
+isnull((select SUM(CalendarioNormal.interes) as Multas from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where  CalendarioNormal.id_credito = Cartera.id group by CalendarioNormal.id_credito),0) end as Multas,
+case when cartera.Estado = 'C' THEN 
+(select SUM(calendarioconveniossac.monto) from CalendarioConveniossac inner join Conveniossac on CalendarioConveniossac.IdConvenio = Conveniossac.id where conveniossac.idcredito = Cartera.id)
+else
+(select Pagare from credito where id = Cartera.id) end as pagare,
+case when Cartera.Estado = 'C' then
+isnull((select SUM(calendarioconveniossac.pendiente) from CalendarioConveniossac inner join Conveniossac on CalendarioConveniossac.IdConvenio = Conveniossac.id where calendarioconveniossac.Estado = 'V' and conveniossac.idcredito = Cartera.id),0)
+else
+isnull((select SUM(pendiente) from CalendarioNormal where Estado = 'V' and id_credito = Cartera.id),0) end as pendiente,
+case when not exists (select id from conveniossac where idCredito=Cartera.id) then (isnull((select top 1 FechaPago from CalendarioNormal where id_credito=cartera.id and estado='P' order by FechaPago asc),getdate()))
+else isnull((select top 1 FechaPago from CalendarioConveniosSac where idConvenio=(select id from conveniossac where idcredito=cartera.id) and estado='P' order by FechaPago asc),getdate()) end as FechaLimite,
+case when Cartera.Estado = 'C' then
+(select SUM(interes) as MultasVencidas from CalendarioConveniossac inner join Conveniossac on CalendarioConveniossac.IdConvenio = Conveniossac.id where CalendarioConveniossac.Estado ='V' and Conveniossac.idcredito = Cartera.id)
+else '0' end as MultasVencidas
+,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado from
+(select credito.nombre,Credito.id,Credito.idgestor,Credito.IdPromotor,credito.Estado from Credito inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito where Credito.id = '" & idCredito & "' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado) Cartera inner join
+(select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
+(select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal order by nombre asc"
+
+
+        comandoInformacion = New SqlCommand
+        comandoInformacion.Connection = conexionempresa
+        comandoInformacion.CommandText = consultaInformacion
+        readerInformacion = comandoInformacion.ExecuteReader
+        If readerInformacion.HasRows Then
+            While readerInformacion.Read
+                SaldoFinal = readerInformacion("TotalPendiente")
+                SaldoInicial = readerInformacion("TotalPendiente")
+
+                FechaLimite = readerInformacion("FechaLimite")
+                pagoMinimo = readerInformacion("TotalPendiente")
+                MontoPagado = readerInformacion("AbonadoSinMultas")
+                SaldoVencido = readerInformacion("VencidoNormal")
+                Pagare = readerInformacion("pagare")
+                nombreCredito = readerInformacion("nombre")
+                FechaCorte = readerInformacion("fechalimite")
+                ExisteSaldoInicial = True
+
+                ExisteSaldoFinal = True
+            End While
+
+
+        End If
+
+
+        Dim consultaComportamiento As String
+        consultaComportamiento = "if  exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
+begin
+declare @SQL varchar(max),@numero int,@TipoPago varchar(50),
+@idPago int,
+@Npago int,
+@Monto money,
+@Interes money,
+@Abonado money,
+@Pendiente money,
+@FechaPago date,
+@FechaUltimoPago date
+set @SQL = 'select * from ('
+declare Comportamiento cursor  LOCAL STATIC READ_ONLY FORWARD_ONLY for
+select  ROW_NUMBER() OVER(ORDER BY fechapago ASC) AS Numero,EstadoDeCuenta.* from
+(select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' and Estado = 'L'
+union
+select 'Creación de convenio' as TipoDePago,'','',DeudaCredito,Moratorios,'',TotalDeuda,Fecha,'' from ConveniosSac where idCredito = '" & idCredito & "'
+union
+select 'Convenio' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from CalendarioConveniosSac where idConvenio = (select id from ConveniosSac where idCredito = '" & idCredito & "' and CalendarioConveniosSac.Estado = 'L' ) ) EstadoDeCuenta  order by FechaPago asc
+open Comportamiento
+fetch next from Comportamiento into @numero,@TipoPago ,
+@idPago ,
+@Npago,
+@Monto ,
+@Interes ,
+@Abonado ,
+@Pendiente ,
+@FechaPago ,
+@FechaUltimoPago 
+while(@@fetch_status=0)
+begin
+if @TipoPago = 'Normal'
+begin
+set @SQL = concat(@SQL , 'select   ' ,char(39), @TipoPago ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago, ',char(39), @Npago ,char(39),' as Npago, ',char(39), @Monto ,char(39),' as Monto, ',char(39), @Interes ,char(39),' as Interes, ',char(39), @Abonado ,char(39),' as Abonado, ',char(39), @Pendiente ,char(39),' as Pendiente, ',char(39), @FechaPago ,char(39),' as FechaPago, ',char(39), @FechaUltimoPago ,char(39),' as FechaUltimoPago, ',char(39),char(39),' as Hora', ' Union ')
+	if exists(select * from TicketDetalle inner join TipoDoc on TicketDetalle.TipoDoc = TipoDoc.id where idpago = @idPago and TipoDoc.Nombre = 'Pago' )
+	begin
+		set @SQL = concat(@SQL , ' select ' ,char(39), 'Ticket' ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago,', char(39),char(39),',ticketdetalle.pagonormal,ticketdetalle.intereses,', char(39),char(39),',',char(39),char(39),',','ticketdetalle.fecha,',char(39),char(39),',hora from ticketdetalle inner join tipodoc on ticketdetalle.tipodoc = tipodoc.id inner join ticket on ticketdetalle.idticket = ticket.id where idpago = ',@idPago,' and tipodoc.nombre = ',char(39),'Pago',char(39),' Union ')
+
+	end
+end
+if @TipoPago = 'Creación de Convenio'
+begin
+set @SQL = concat(@SQL , 'select   ' ,char(39), @TipoPago ,char(39), ' as TipoDePago,',char(39), '' ,char(39),' as Idpago, ',char(39), '' ,char(39),' as Npago, ',char(39), @Monto ,char(39),' as Monto, ',char(39), @Interes ,char(39),' as Interes, ',char(39), '' ,char(39),' as Abonado, ',char(39), '' ,char(39),' as Pendiente, ',char(39), @FechaPago ,char(39),' as FechaPago, ',char(39), '' ,char(39),' as FechaUltimopago, ',char(39),char(39),' as Hora', ' Union ')
+
+end
+if @TipoPago = 'Convenio'
+begin
+set @SQL = concat(@SQL , 'select  ' ,char(39), @TipoPago ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago, ',char(39), @Npago ,char(39),' as Npago, ',char(39), @Monto ,char(39),' as Monto, ',char(39), @Interes ,char(39),' as Interes, ',char(39), @Abonado ,char(39),' as Abonado, ',char(39), @Pendiente ,char(39),' as Pendiente, ',char(39), @FechaPago ,char(39),' as FechaPago, ',char(39), @FechaUltimoPago ,char(39),' as FechaUltimopago, ',char(39),char(39),' as Hora', ' Union ')
+	if exists(select * from TicketDetalle inner join TipoDoc on TicketDetalle.TipoDoc = TipoDoc.id where idpago = @idPago and TipoDoc.Nombre = 'Convenio' )
+	begin
+		set @SQL = concat(@SQL , ' select   ' ,char(39), 'TicketC' ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago,', char(39),char(39),',ticketdetalle.pagonormal,ticketdetalle.intereses,', char(39),char(39),',',char(39),char(39),',','ticketdetalle.fecha,',char(39),char(39),',hora from ticketdetalle inner join tipodoc on ticketdetalle.tipodoc = tipodoc.id inner join ticket on ticketdetalle.idticket = ticket.id where idpago = ',@idPago,' and tipodoc.nombre = ',char(39),'Convenio',char(39),' Union ')
+
+	end
+
+end
+fetch next from Comportamiento into @numero,@TipoPago ,
+@idPago ,
+@Npago,
+@Monto ,
+@Interes ,
+@Abonado ,
+@Pendiente ,
+@FechaPago ,
+@FechaUltimoPago 
+end
+end
+else if not exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
+begin
+
+set @SQL = 'select * from ('
+declare Comportamiento cursor  LOCAL STATIC READ_ONLY FORWARD_ONLY for
+select  ROW_NUMBER() OVER(ORDER BY fechapago ASC) AS Numero,EstadoDeCuenta.* from
+(select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' and Estado = 'L' 
+union
+select 'Creación de convenio' as TipoDePago,'','',DeudaCredito,Moratorios,'',TotalDeuda,Fecha,'' from ConveniosSac where idCredito = '" & idCredito & "'
+union
+select 'Convenio' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from CalendarioConveniosSac where idConvenio = (select id from ConveniosSac where idCredito = '" & idCredito & "' and CalendarioConveniosSac.Estado = 'L') ) EstadoDeCuenta  order by FechaPago asc
+open Comportamiento
+fetch next from Comportamiento into @numero,@TipoPago ,
+@idPago ,
+@Npago,
+@Monto ,
+@Interes ,
+@Abonado ,
+@Pendiente ,
+@FechaPago ,
+@FechaUltimoPago 
+while(@@fetch_status=0)
+begin
+if @TipoPago = 'Normal'
+begin
+set @SQL = concat(@SQL , 'select   ' ,char(39), @TipoPago ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago, ',char(39), @Npago ,char(39),' as Npago, ',char(39), @Monto ,char(39),' as Monto, ',char(39), @Interes ,char(39),' as Interes, ',char(39), @Abonado ,char(39),' as Abonado, ',char(39), @Pendiente ,char(39),' as Pendiente, ',char(39), @FechaPago ,char(39),' as FechaPago, ',char(39), @FechaUltimoPago ,char(39),' as FechaUltimopago, ',char(39),char(39),' as Hora', ' Union ')
+	if exists(select * from TicketDetalle inner join TipoDoc on TicketDetalle.TipoDoc = TipoDoc.id where idpago = @idPago and TipoDoc.Nombre = 'Pago' )
+	begin
+		set @SQL = concat(@SQL , ' select ' ,char(39), 'Ticket' ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago,', char(39),char(39),',ticketdetalle.pagonormal,ticketdetalle.intereses,', char(39),char(39),',',char(39),char(39),',','ticketdetalle.fecha,',char(39),char(39),',hora from ticketdetalle inner join tipodoc on ticketdetalle.tipodoc = tipodoc.id inner join ticket on ticketdetalle.idticket = ticket.id where idpago = ',@idPago,' and tipodoc.nombre = ',char(39),'Pago',char(39),' Union ')
+
+	end
+end
+fetch next from Comportamiento into @numero,@TipoPago ,
+@idPago ,
+@Npago,
+@Monto ,
+@Interes ,
+@Abonado ,
+@Pendiente ,
+@FechaPago ,
+@FechaUltimoPago 
+end
+end
+close Comportamiento
+deallocate comportamiento
+if @sql <> ''
+begin
+Set @SQL = Left(@SQL , Len(@SQL) - 5)
+end
+else
+begin
+set @SQL = CONCAT(@sql,'select  ',char(39), '' ,char(39),' as TipoDePago,',char(39), '' ,char(39),' as idPago,',char(39), '' ,char(39),' as Npago,',char(39), '' ,char(39),' as Monto,',char(39), '' ,char(39),' as Interes,',char(39), '' ,char(39),' as Abonado,',char(39), '' ,char(39),' as Pendiente,',char(39), '' ,char(39),' as FechaPago,',char(39), '' ,char(39),' as FechaUltimoPago,',char(39), '' ,char(39),' as Hora  ')
+end
+
+
+
+set @SQL = CONCAT(@SQL,') estadocuenta group by idpago,npago,monto,interes,abonado,pendiente,fechapago,fechaultimopago,hora,tipodepago order by  (case tipodepago when  ',char(39), 'Convenio' ,char(39),' then idpago when ',char(39), 'TicketC' ,char(39),' then idpago when ',char(39), 'Creación de Convenio' ,char(39),'  then idpago   end ) asc, idpago,fechapago,hora asc')
+print @sql
+if @SQL <> ') estadocuenta group by idpago,tipodepago order by (case tipodepago wh) fechapago,hora desc'
+begin
+Execute (@SQL)
+end
+"
+        adapterComportamiento = New SqlDataAdapter(consultaComportamiento, conexionempresa)
+        dataComportamiento = New Data.DataTable
+        adapterComportamiento.Fill(dataComportamiento)
+
+
+
+
+        dataTableToWord(dataComportamiento)
+
+
+
+    End Sub
+
+    Dim nombreCredito As String
 
     Private Sub EstadoDeCuenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dateDesde.Value = Now
+        dateHasta.Value = Now
+
         ncargando = New Cargando
         ncargando.Show()
         ncargando.MonoFlat_Label1.Text = "Cargando Información"
@@ -133,12 +351,12 @@ Public Class EstadoDeCuenta
 ISNULL((select Convert(varchar,ValorCarteraCmultas) from ValorCarteraXcreditoSati where fecha='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' and idCredito=cred.id),'No existe')as SaldoFinal,
 case when not exists (select id from conveniossac where idCredito=cred.id) then (isnull((select top 1 FechaPago from CalendarioNormal where id_credito=cred.id and estado='P' order by FechaPago asc),getdate()))
 else isnull((select top 1 FechaPago from CalendarioConveniosSac where idConvenio=(select id from conveniossac where idcredito=cred.id) and estado='P' order by FechaPago asc),getdate()) end as FechaLimite,
-case when not exists (select id from conveniossac where idCredito=cred.id) then (isnull((select top 1 convert(varchar,dateadd(DAY,-1,FechaPago),23) from CalendarioNormal where id_credito=cred.id and (estado='P' or estado = 'V') order by FechaPago asc),'N/A'))
-else isnull((select top 1 convert(varchar,dateadd(DAY,-1,FechaPago),23) from CalendarioConveniosSac where idConvenio=(select id from conveniossac where idcredito=cred.id) and estado='P' order by FechaPago asc),'N/A') end as FechaCorte,
+case when not exists (select id from conveniossac where idCredito=cred.id) then (isnull((select top 1 FechaPago from CalendarioNormal where id_credito=cred.id and estado='P' order by FechaPago asc),getdate()))
+else isnull((select top 1 FechaPago from CalendarioConveniosSac where idConvenio=(select id from conveniossac where idcredito=cred.id) and estado='P' order by FechaPago asc),getdate()) end as FechaCorte,
 isnull((select TotalPendiente from ValorCarteraXcreditoSati where fecha='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' and idCredito=cred.id ),0)as PagoMinimo,
 isnull((select AbonadoSMultas from ValorCarteraXcreditoSati where fecha='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' and idcredito=cred.id),0)as Pagado,
 isnull((select vencidoNormal from ValorCarteraXcreditoSati where fecha='" & dateHasta.Value.ToString("yyyy-MM-dd") & "' and idcredito=cred.id),0)as Vencido from
-(select id, nombre, monto,pagare from credito where id='" & idCredito & "')cred"
+(select id, nombre, pagare from credito where id='" & idCredito & "')cred"
 
 
         comandoInformacion = New SqlCommand
@@ -163,7 +381,6 @@ isnull((select vencidoNormal from ValorCarteraXcreditoSati where fecha='" & date
                     SaldoVencido = readerInformacion("Vencido")
                     Pagare = readerInformacion("pagare")
                     nombreCredito = readerInformacion("nombre")
-                    montoCredito = readerInformacion("Monto")
                     FechaCorte = readerInformacion("fechacorte")
                     ExisteSaldoInicial = True
 
@@ -393,7 +610,12 @@ end
         ncargando = New Cargando
         ncargando.Show()
         ncargando.MonoFlat_Label1.Text = "Generando Estado de Cuenta"
-        BackgroundEstadodeCuenta.RunWorkerAsync()
+        If CheckGeneral.Checked Then
+            BackgroundGeneral.RunWorkerAsync()
+        Else
+            BackgroundEstadodeCuenta.RunWorkerAsync()
+        End If
+
 
     End Sub
 
@@ -408,11 +630,15 @@ end
             documento.ReplaceText("%FECHAIMPRESION%", Now.Date.ToString("yyyy-MM-dd"))
             documento.ReplaceText("%VENCIDO%", FormatCurrency(pagoMinimo, 2))
             documento.ReplaceText("%FECHALIMITE%", FechaLimite)
+            If FechaCorte = Now Then
+                documento.ReplaceText("%FECHACORTE%", FechaCorte)
+            Else
+                documento.ReplaceText("%FECHACORTE%", FechaCorte.AddDays(-1))
+            End If
             documento.ReplaceText("%NOMBRECLIENTE%", nombreCredito)
-            documento.ReplaceText("%MONTOCREDITO%", FormatCurrency(montoCredito, 2))
-            documento.ReplaceText("%PERIODO%", "del " & GeneraDateString(dateDesde.Value.DayOfWeek, dateDesde.Value.Month, dateDesde.Value.Year) & " al " & GeneraDateString(dateHasta.Value.DayOfWeek, dateHasta.Value.Month, dateHasta.Value.Year))
+            documento.ReplaceText("%MONTOCREDITO%", FormatCurrency(Pagare, 2))
+            documento.ReplaceText("%PERIODO%", "del " & GeneraDateString(dateDesde.Value.Day, dateDesde.Value.Month, dateDesde.Value.Year) & " al " & GeneraDateString(dateHasta.Value.Day, dateHasta.Value.Month, dateHasta.Value.Year))
             documento.ReplaceText("%DIASPERIODO%", DateDiff(DateInterval.Day, dateDesde.Value, dateHasta.Value))
-            documento.ReplaceText("%FECHACORTE%", FechaCorte)
             Dim para As String
             para = "Nota: *Cuando la fecha de pago corresponda a un día inhábil, el pago podrá efectuarse sin cargo adicional alguno el día hábil siguiente.
 
@@ -427,14 +653,34 @@ www.gob.mx/profeco; teléfono 01 800 468 87 22)
             documento.InsertParagraph(para).Bold.FontSize(9).Alignment = Alignment.center
             documento.Save()
             documento.Dispose()
+            Dim spDoc As New Spire.Doc.Document
+            spDoc.LoadFromFile("C:\ConfiaAdmin\SATI\TEMPDOCS\TempEstadodeCuenta.docx")
+            Dim dialog As New PrintPreviewDialog
+
+            ' dialog.AllowCurrentPage = True
+            ' dialog.AllowSomePages = True
+            ' dialog.UseEXDialog = True
+
+
+            Try
+                '  spDoc.PrintDialog = dialog.
+                spDoc.PrintDocument.PrinterSettings.PrinterName = ImpresoraPredeterminada
+
+                dialog.Document = spDoc.PrintDocument
+                dialog.ShowDialog()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            ncargando.Close()
             ncargando.Close()
         Else
+            MessageBox.Show("No se encontraron registros con esas fechas, marca la opción Estado de cuenta general")
             ncargando.Close()
         End If
 
     End Sub
 
-    Private Function GeneraDateString(ByVal dia As DayOfWeek, ByVal mes As Integer, ByVal año As Integer) As String
+    Private Function GeneraDateString(ByVal dia As Integer, ByVal mes As Integer, ByVal año As Integer) As String
         Dim dateString As String
         Dim diaString, mesString, añoString As String
         Select Case dia
@@ -488,4 +734,59 @@ www.gob.mx/profeco; teléfono 01 800 468 87 22)
 
     End Function
 
+    Private Sub BackgroundGeneral_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundGeneral.RunWorkerCompleted
+        Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempEstadodeCuenta.docx")
+        documento.ReplaceText("%IDCREDITO%", idCredito)
+        documento.ReplaceText("%SALDOINICIALCORTE%", FormatCurrency(SaldoInicial, 2))
+        documento.ReplaceText("%SALDOFINALCORTE%", FormatCurrency(SaldoFinal, 2))
+        documento.ReplaceText("%PAGOMINIMO%", FormatCurrency(pagoMinimo, 2))
+        documento.ReplaceText("%PAGADO%", FormatCurrency(MontoPagado, 2))
+        documento.ReplaceText("%FECHAIMPRESION%", Now.Date.ToString("yyyy-MM-dd"))
+        documento.ReplaceText("%VENCIDO%", FormatCurrency(pagoMinimo, 2))
+        documento.ReplaceText("%FECHALIMITE%", FechaLimite)
+        If FechaCorte = Now Then
+            documento.ReplaceText("%FECHACORTE%", FechaCorte)
+        Else
+            documento.ReplaceText("%FECHACORTE%", FechaCorte.AddDays(-1))
+        End If
+
+        documento.ReplaceText("%NOMBRECLIENTE%", nombreCredito)
+        documento.ReplaceText("%MONTOCREDITO%", FormatCurrency(Pagare, 2))
+        documento.ReplaceText("%PERIODO%", "del " & GeneraDateString(Now.Date.Day, Now.Date.Month, Now.Date.Year) & " al " & GeneraDateString(Now.Date.Day, Now.Date.Month, Now.Date.Year))
+        documento.ReplaceText("%DIASPERIODO%", DateDiff(DateInterval.Day, dateDesde.Value, dateHasta.Value))
+        Dim para As String
+        para = "Nota: *Cuando la fecha de pago corresponda a un día inhábil, el pago podrá efectuarse sin cargo adicional alguno el día hábil siguiente.
+
+*Para solicitudes, aclaraciones o reclamaciones favor de comunicarse a la siguiente dirección, dentro de 90 días naturales Contados a partir de la fecha de la operación de que se trate.
+Contacto: Omar Enrique Paniahua Ambriz 
+Número telefónico de la oficina 01 (452) 52 4 43 91
+correo: opaniahua@prestamosconfia.com
+
+Procuraduría Federal del Consumidor
+www.gob.mx/profeco; teléfono 01 800 468 87 22)
+"
+        documento.InsertParagraph(para).Bold.FontSize(9).Alignment = Alignment.center
+        documento.Save()
+        documento.Dispose()
+
+        Dim spDoc As New Spire.Doc.Document
+        spDoc.LoadFromFile("C:\ConfiaAdmin\SATI\TEMPDOCS\TempEstadodeCuenta.docx")
+        Dim dialog As New PrintPreviewDialog
+
+        ' dialog.AllowCurrentPage = True
+        ' dialog.AllowSomePages = True
+        ' dialog.UseEXDialog = True
+
+
+        Try
+            '  spDoc.PrintDialog = dialog.
+            spDoc.PrintDocument.PrinterSettings.PrinterName = ImpresoraPredeterminada
+
+            dialog.Document = spDoc.PrintDocument
+            dialog.ShowDialog()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        ncargando.Close()
+    End Sub
 End Class
