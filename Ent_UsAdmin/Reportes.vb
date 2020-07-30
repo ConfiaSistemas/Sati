@@ -15,6 +15,8 @@
     Public catCreditosEnMora As New CreditosEnMora
     Public catValorCartera As New ValorCartera
     Public catRetiros As New RetirosPorFecha
+    Public catPagosHoy As New PagosHoy
+
     Private Sub inv_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         Select Case ventanapanel
             Case "Tickets"
@@ -37,6 +39,8 @@
                 catValorCartera.Size = Panel1.Size
             Case "Retiros"
                 catRetiros.Size = Panel1.Size
+            Case "PagosHoy"
+                catPagosHoy.Size = Panel1.Size
         End Select
 
 
@@ -52,6 +56,7 @@
         catTicketsDetalle.Visible = False
         catCreditosEnMora.Visible = False
         catValorCartera.Visible = False
+        catPagosHoy.Visible = False
         catRetiros.Visible = False
         catDesembolsos.Visible = True
 
@@ -81,6 +86,7 @@
         catTicketsDetalle.Visible = False
         catCreditosEnMora.Visible = False
         catValorCartera.Visible = False
+        catPagosHoy.Visible = False
         catRetiros.Visible = False
         CatTickets.Visible = True
         CatTickets.TopLevel = False
@@ -107,6 +113,7 @@
         catCreditosEnMora.Visible = False
         catValorCartera.Visible = False
         catRetiros.Visible = False
+        catPagosHoy.Visible = False
         catTicketsDetalle.Visible = True
         catTicketsDetalle.Visible = True
         catTicketsDetalle.TopLevel = False
@@ -125,6 +132,7 @@
         catTicketsDetalle.Visible = False
         catValorCartera.Visible = False
         catRetiros.Visible = False
+        catPagosHoy.Visible = False
         catCreditosEnMora.Visible = True
 
         catCreditosEnMora.Visible = True
@@ -144,6 +152,7 @@
         CatTickets.Visible = False
         catTicketsDetalle.Visible = False
         catRetiros.Visible = False
+        catPagosHoy.Visible = False
         catValorCartera.Visible = True
         catCreditosEnMora.Visible = False
 
@@ -165,6 +174,7 @@
         catTicketsDetalle.Visible = False
         catValorCartera.Visible = False
         catCreditosEnMora.Visible = False
+        catPagosHoy.Visible = False
         catRetiros.Visible = True
         catRetiros.Visible = True
         catRetiros.Visible = True
@@ -176,5 +186,26 @@
         catRetiros.Visible = True
         ventanapanel = "Retiros"
         Panel1.Controls.Add(catRetiros)
+    End Sub
+
+    Private Sub MonoFlat_Button7_Click(sender As Object, e As EventArgs) Handles MonoFlat_Button7.Click
+        catDesembolsos.Visible = False
+        CatTickets.Visible = False
+        catTicketsDetalle.Visible = False
+        catValorCartera.Visible = False
+        catCreditosEnMora.Visible = False
+        catRetiros.Visible = False
+
+        catPagosHoy.Visible = True
+        catPagosHoy.Visible = True
+        catPagosHoy.Visible = True
+        catPagosHoy.TopLevel = False
+
+        catPagosHoy.Size = Panel1.Size
+        catPagosHoy.Location = New System.Drawing.Point(0, 0)
+        catPagosHoy.WindowState = FormWindowState.Normal
+        catPagosHoy.Visible = True
+        ventanapanel = "PagosHoy"
+        Panel1.Controls.Add(catPagosHoy)
     End Sub
 End Class

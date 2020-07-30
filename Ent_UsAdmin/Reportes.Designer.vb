@@ -30,6 +30,7 @@ Partial Class Reportes
         Me.MonoFlat_Button2 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button4 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button6 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button7 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -80,6 +81,7 @@ Partial Class Reportes
         Me.FlowLayoutPanel1.Controls.Add(Me.MonoFlat_Button2)
         Me.FlowLayoutPanel1.Controls.Add(Me.MonoFlat_Button4)
         Me.FlowLayoutPanel1.Controls.Add(Me.MonoFlat_Button6)
+        Me.FlowLayoutPanel1.Controls.Add(Me.MonoFlat_Button7)
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(2, -2)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(765, 38)
@@ -137,6 +139,19 @@ Partial Class Reportes
         Me.MonoFlat_Button6.Text = "Retiros Recibidos"
         Me.MonoFlat_Button6.TextAlignment = System.Drawing.StringAlignment.Center
         '
+        'MonoFlat_Button7
+        '
+        Me.MonoFlat_Button7.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button7.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.MonoFlat_Button7.Image = Nothing
+        Me.MonoFlat_Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button7.Location = New System.Drawing.Point(152, 33)
+        Me.MonoFlat_Button7.Name = "MonoFlat_Button7"
+        Me.MonoFlat_Button7.Size = New System.Drawing.Size(190, 24)
+        Me.MonoFlat_Button7.TabIndex = 10
+        Me.MonoFlat_Button7.Text = "Pagos programados para hoy"
+        Me.MonoFlat_Button7.TextAlignment = System.Drawing.StringAlignment.Center
+        '
         'Reportes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -161,4 +176,5 @@ Partial Class Reportes
     Friend WithEvents MonoFlat_Button2 As MonoFlat.MonoFlat_Button
     Friend WithEvents MonoFlat_Button4 As MonoFlat.MonoFlat_Button
     Friend WithEvents MonoFlat_Button6 As MonoFlat.MonoFlat_Button
+    Friend WithEvents MonoFlat_Button7 As MonoFlat.MonoFlat_Button
 End Class

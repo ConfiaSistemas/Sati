@@ -33,6 +33,8 @@ Partial Class EstadoDeCuenta
         Me.dateDesde = New Bunifu.Framework.UI.BunifuDatepicker()
         Me.BackgroundInformacion = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundEstadodeCuenta = New System.ComponentModel.BackgroundWorker()
+        Me.CheckGeneral = New ConfiaAdmin.MonoFlat.MonoFlat_CheckBox()
+        Me.BackgroundGeneral = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -158,12 +160,26 @@ Partial Class EstadoDeCuenta
         'BackgroundEstadodeCuenta
         '
         '
+        'CheckGeneral
+        '
+        Me.CheckGeneral.Checked = False
+        Me.CheckGeneral.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.CheckGeneral.Location = New System.Drawing.Point(61, 131)
+        Me.CheckGeneral.Name = "CheckGeneral"
+        Me.CheckGeneral.Size = New System.Drawing.Size(167, 16)
+        Me.CheckGeneral.TabIndex = 18
+        Me.CheckGeneral.Text = "Estado de cuenta general"
+        '
+        'BackgroundGeneral
+        '
+        '
         'EstadoDeCuenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(722, 159)
+        Me.Controls.Add(Me.CheckGeneral)
         Me.Controls.Add(Me.BunifuThinButton22)
         Me.Controls.Add(Me.MonoFlat_Label2)
         Me.Controls.Add(Me.MonoFlat_Label1)
@@ -190,4 +206,6 @@ Partial Class EstadoDeCuenta
     Friend WithEvents dateDesde As Bunifu.Framework.UI.BunifuDatepicker
     Friend WithEvents BackgroundInformacion As System.ComponentModel.BackgroundWorker
     Friend WithEvents BackgroundEstadodeCuenta As System.ComponentModel.BackgroundWorker
+    Friend WithEvents CheckGeneral As MonoFlat.MonoFlat_CheckBox
+    Friend WithEvents BackgroundGeneral As System.ComponentModel.BackgroundWorker
 End Class
