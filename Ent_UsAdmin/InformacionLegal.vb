@@ -37,6 +37,7 @@ Public Class InformacionLegal
     Dim montoConvenio As Double
     Dim gastos As Double
     Private Sub InformacionSolicitud_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size
         For Each row As DataRow In dataPermisos.Rows
             If row("SatiModLegalModificar") Then
                 btnGenerarCalendario.Enabled = True

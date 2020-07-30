@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class ActInformacionCredito
+Partial Class ActInformacionEmpeño
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -22,33 +22,33 @@ Partial Class ActInformacionCredito
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ActInformacionCredito))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ActInformacionEmpeño))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.ComboTipo = New Bunifu.Framework.UI.BunifuDropdown()
-        Me.txtCalle = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtNoExt = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtNoInt = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtDomicilio = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.lblDomicilio = New System.Windows.Forms.Label()
         Me.txtCodigoPostal = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.PanelDomicilio = New System.Windows.Forms.Panel()
+        Me.lblCodigoPostal = New System.Windows.Forms.Label()
         Me.txtColonia = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblColonia = New System.Windows.Forms.Label()
+        Me.txtCiudad = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.lblMunicipio = New System.Windows.Forms.Label()
+        Me.PanelDomicilio = New System.Windows.Forms.Panel()
+        Me.txtEstado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.lblEntidad = New System.Windows.Forms.Label()
         Me.PanelValor = New System.Windows.Forms.Panel()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtValor = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.txtMotivo = New System.Windows.Forms.RichTextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BackgroundConsultaInformacion = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundActualizacion = New System.ComponentModel.BackgroundWorker()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.ComboCliente = New Bunifu.Framework.UI.BunifuDropdown()
+        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.Panel1.SuspendLayout()
         Me.PanelDomicilio.SuspendLayout()
         Me.PanelValor.SuspendLayout()
@@ -90,9 +90,9 @@ Partial Class ActInformacionCredito
         Me.MonoFlat_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(3, 3)
         Me.MonoFlat_HeaderLabel1.Name = "MonoFlat_HeaderLabel1"
-        Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(245, 20)
+        Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(286, 20)
         Me.MonoFlat_HeaderLabel1.TabIndex = 1
-        Me.MonoFlat_HeaderLabel1.Text = "Actualizar Información de Crédito"
+        Me.MonoFlat_HeaderLabel1.Text = "Actualizar Información de Crédito Legal"
         '
         'ComboTipo
         '
@@ -100,7 +100,7 @@ Partial Class ActInformacionCredito
         Me.ComboTipo.BorderRadius = 10
         Me.ComboTipo.DisabledColor = System.Drawing.Color.Gray
         Me.ComboTipo.ForeColor = System.Drawing.Color.White
-        Me.ComboTipo.Items = New String() {"Domicilio", "Número de Teléfono", "Número de Celular", "Domicilio de Trabajo", "Teléfono de Trabajo"}
+        Me.ComboTipo.Items = New String() {"Nombre", "Domicilio", "Número de Teléfono", "CURP", "INE"}
         Me.ComboTipo.Location = New System.Drawing.Point(41, 66)
         Me.ComboTipo.Name = "ComboTipo"
         Me.ComboTipo.NomalColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
@@ -109,92 +109,34 @@ Partial Class ActInformacionCredito
         Me.ComboTipo.Size = New System.Drawing.Size(203, 35)
         Me.ComboTipo.TabIndex = 33
         '
-        'txtCalle
+        'txtDomicilio
         '
-        Me.txtCalle.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtCalle.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtCalle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        Me.txtCalle.HintForeColor = System.Drawing.Color.White
-        Me.txtCalle.HintText = ""
-        Me.txtCalle.isPassword = False
-        Me.txtCalle.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtCalle.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtCalle.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtCalle.LineThickness = 3
-        Me.txtCalle.Location = New System.Drawing.Point(27, 37)
-        Me.txtCalle.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtCalle.Name = "txtCalle"
-        Me.txtCalle.Size = New System.Drawing.Size(379, 33)
-        Me.txtCalle.TabIndex = 35
-        Me.txtCalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.txtDomicilio.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtDomicilio.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtDomicilio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        Me.txtDomicilio.HintForeColor = System.Drawing.Color.White
+        Me.txtDomicilio.HintText = ""
+        Me.txtDomicilio.isPassword = False
+        Me.txtDomicilio.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtDomicilio.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtDomicilio.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtDomicilio.LineThickness = 3
+        Me.txtDomicilio.Location = New System.Drawing.Point(27, 37)
+        Me.txtDomicilio.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDomicilio.Name = "txtDomicilio"
+        Me.txtDomicilio.Size = New System.Drawing.Size(379, 33)
+        Me.txtDomicilio.TabIndex = 35
+        Me.txtDomicilio.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
-        'Label4
+        'lblDomicilio
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(24, 20)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(30, 13)
-        Me.Label4.TabIndex = 34
-        Me.Label4.Text = "Calle"
-        '
-        'txtNoExt
-        '
-        Me.txtNoExt.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtNoExt.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtNoExt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        Me.txtNoExt.HintForeColor = System.Drawing.Color.White
-        Me.txtNoExt.HintText = ""
-        Me.txtNoExt.isPassword = False
-        Me.txtNoExt.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtNoExt.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtNoExt.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtNoExt.LineThickness = 3
-        Me.txtNoExt.Location = New System.Drawing.Point(27, 110)
-        Me.txtNoExt.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtNoExt.Name = "txtNoExt"
-        Me.txtNoExt.Size = New System.Drawing.Size(379, 33)
-        Me.txtNoExt.TabIndex = 37
-        Me.txtNoExt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(24, 93)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(82, 13)
-        Me.Label1.TabIndex = 36
-        Me.Label1.Text = "Número Exterior"
-        '
-        'txtNoInt
-        '
-        Me.txtNoInt.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtNoInt.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtNoInt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        Me.txtNoInt.HintForeColor = System.Drawing.Color.White
-        Me.txtNoInt.HintText = ""
-        Me.txtNoInt.isPassword = False
-        Me.txtNoInt.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtNoInt.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtNoInt.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtNoInt.LineThickness = 3
-        Me.txtNoInt.Location = New System.Drawing.Point(27, 181)
-        Me.txtNoInt.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtNoInt.Name = "txtNoInt"
-        Me.txtNoInt.Size = New System.Drawing.Size(379, 33)
-        Me.txtNoInt.TabIndex = 39
-        Me.txtNoInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(24, 164)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(79, 13)
-        Me.Label2.TabIndex = 38
-        Me.Label2.Text = "Número Interior"
+        Me.lblDomicilio.AutoSize = True
+        Me.lblDomicilio.ForeColor = System.Drawing.Color.White
+        Me.lblDomicilio.Location = New System.Drawing.Point(24, 20)
+        Me.lblDomicilio.Name = "lblDomicilio"
+        Me.lblDomicilio.Size = New System.Drawing.Size(112, 13)
+        Me.lblDomicilio.TabIndex = 34
+        Me.lblDomicilio.Text = "Calle, No Ext., No. Int."
         '
         'txtCodigoPostal
         '
@@ -208,39 +150,22 @@ Partial Class ActInformacionCredito
         Me.txtCodigoPostal.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCodigoPostal.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCodigoPostal.LineThickness = 3
-        Me.txtCodigoPostal.Location = New System.Drawing.Point(27, 249)
+        Me.txtCodigoPostal.Location = New System.Drawing.Point(27, 110)
         Me.txtCodigoPostal.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodigoPostal.Name = "txtCodigoPostal"
         Me.txtCodigoPostal.Size = New System.Drawing.Size(379, 33)
-        Me.txtCodigoPostal.TabIndex = 41
+        Me.txtCodigoPostal.TabIndex = 37
         Me.txtCodigoPostal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
-        'Label3
+        'lblCodigoPostal
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(24, 232)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(72, 13)
-        Me.Label3.TabIndex = 40
-        Me.Label3.Text = "Código Postal"
-        '
-        'PanelDomicilio
-        '
-        Me.PanelDomicilio.Controls.Add(Me.txtColonia)
-        Me.PanelDomicilio.Controls.Add(Me.txtCodigoPostal)
-        Me.PanelDomicilio.Controls.Add(Me.Label5)
-        Me.PanelDomicilio.Controls.Add(Me.Label4)
-        Me.PanelDomicilio.Controls.Add(Me.txtCalle)
-        Me.PanelDomicilio.Controls.Add(Me.Label1)
-        Me.PanelDomicilio.Controls.Add(Me.Label3)
-        Me.PanelDomicilio.Controls.Add(Me.txtNoExt)
-        Me.PanelDomicilio.Controls.Add(Me.txtNoInt)
-        Me.PanelDomicilio.Controls.Add(Me.Label2)
-        Me.PanelDomicilio.Location = New System.Drawing.Point(41, 124)
-        Me.PanelDomicilio.Name = "PanelDomicilio"
-        Me.PanelDomicilio.Size = New System.Drawing.Size(431, 412)
-        Me.PanelDomicilio.TabIndex = 42
+        Me.lblCodigoPostal.AutoSize = True
+        Me.lblCodigoPostal.ForeColor = System.Drawing.Color.White
+        Me.lblCodigoPostal.Location = New System.Drawing.Point(24, 93)
+        Me.lblCodigoPostal.Name = "lblCodigoPostal"
+        Me.lblCodigoPostal.Size = New System.Drawing.Size(72, 13)
+        Me.lblCodigoPostal.TabIndex = 36
+        Me.lblCodigoPostal.Text = "Código Postal"
         '
         'txtColonia
         '
@@ -254,22 +179,97 @@ Partial Class ActInformacionCredito
         Me.txtColonia.LineIdleColor = System.Drawing.Color.Gray
         Me.txtColonia.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtColonia.LineThickness = 3
-        Me.txtColonia.Location = New System.Drawing.Point(27, 320)
+        Me.txtColonia.Location = New System.Drawing.Point(27, 181)
         Me.txtColonia.Margin = New System.Windows.Forms.Padding(4)
         Me.txtColonia.Name = "txtColonia"
         Me.txtColonia.Size = New System.Drawing.Size(379, 33)
-        Me.txtColonia.TabIndex = 44
+        Me.txtColonia.TabIndex = 39
         Me.txtColonia.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
-        'Label5
+        'lblColonia
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(24, 303)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(42, 13)
-        Me.Label5.TabIndex = 43
-        Me.Label5.Text = "Colonia"
+        Me.lblColonia.AutoSize = True
+        Me.lblColonia.ForeColor = System.Drawing.Color.White
+        Me.lblColonia.Location = New System.Drawing.Point(24, 164)
+        Me.lblColonia.Name = "lblColonia"
+        Me.lblColonia.Size = New System.Drawing.Size(42, 13)
+        Me.lblColonia.TabIndex = 38
+        Me.lblColonia.Text = "Colonia"
+        '
+        'txtCiudad
+        '
+        Me.txtCiudad.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtCiudad.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtCiudad.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        Me.txtCiudad.HintForeColor = System.Drawing.Color.White
+        Me.txtCiudad.HintText = ""
+        Me.txtCiudad.isPassword = False
+        Me.txtCiudad.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtCiudad.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtCiudad.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtCiudad.LineThickness = 3
+        Me.txtCiudad.Location = New System.Drawing.Point(27, 249)
+        Me.txtCiudad.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCiudad.Name = "txtCiudad"
+        Me.txtCiudad.Size = New System.Drawing.Size(379, 33)
+        Me.txtCiudad.TabIndex = 41
+        Me.txtCiudad.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'lblMunicipio
+        '
+        Me.lblMunicipio.AutoSize = True
+        Me.lblMunicipio.ForeColor = System.Drawing.Color.White
+        Me.lblMunicipio.Location = New System.Drawing.Point(24, 232)
+        Me.lblMunicipio.Name = "lblMunicipio"
+        Me.lblMunicipio.Size = New System.Drawing.Size(40, 13)
+        Me.lblMunicipio.TabIndex = 40
+        Me.lblMunicipio.Text = "Ciudad"
+        '
+        'PanelDomicilio
+        '
+        Me.PanelDomicilio.Controls.Add(Me.txtEstado)
+        Me.PanelDomicilio.Controls.Add(Me.txtCiudad)
+        Me.PanelDomicilio.Controls.Add(Me.lblEntidad)
+        Me.PanelDomicilio.Controls.Add(Me.lblDomicilio)
+        Me.PanelDomicilio.Controls.Add(Me.txtDomicilio)
+        Me.PanelDomicilio.Controls.Add(Me.lblCodigoPostal)
+        Me.PanelDomicilio.Controls.Add(Me.lblMunicipio)
+        Me.PanelDomicilio.Controls.Add(Me.txtCodigoPostal)
+        Me.PanelDomicilio.Controls.Add(Me.txtColonia)
+        Me.PanelDomicilio.Controls.Add(Me.lblColonia)
+        Me.PanelDomicilio.Location = New System.Drawing.Point(41, 124)
+        Me.PanelDomicilio.Name = "PanelDomicilio"
+        Me.PanelDomicilio.Size = New System.Drawing.Size(431, 412)
+        Me.PanelDomicilio.TabIndex = 42
+        '
+        'txtEstado
+        '
+        Me.txtEstado.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtEstado.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        Me.txtEstado.HintForeColor = System.Drawing.Color.White
+        Me.txtEstado.HintText = ""
+        Me.txtEstado.isPassword = False
+        Me.txtEstado.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtEstado.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtEstado.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtEstado.LineThickness = 3
+        Me.txtEstado.Location = New System.Drawing.Point(27, 320)
+        Me.txtEstado.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtEstado.Name = "txtEstado"
+        Me.txtEstado.Size = New System.Drawing.Size(379, 33)
+        Me.txtEstado.TabIndex = 44
+        Me.txtEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'lblEntidad
+        '
+        Me.lblEntidad.AutoSize = True
+        Me.lblEntidad.ForeColor = System.Drawing.Color.White
+        Me.lblEntidad.Location = New System.Drawing.Point(24, 303)
+        Me.lblEntidad.Name = "lblEntidad"
+        Me.lblEntidad.Size = New System.Drawing.Size(40, 13)
+        Me.lblEntidad.TabIndex = 43
+        Me.lblEntidad.Text = "Estado"
         '
         'PanelValor
         '
@@ -337,32 +337,6 @@ Partial Class ActInformacionCredito
         Me.Label8.TabIndex = 36
         Me.Label8.Text = "Campo a Actualizar"
         '
-        'BunifuThinButton21
-        '
-        Me.BunifuThinButton21.ActiveBorderThickness = 1
-        Me.BunifuThinButton21.ActiveCornerRadius = 20
-        Me.BunifuThinButton21.ActiveFillColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.ActiveForecolor = System.Drawing.Color.White
-        Me.BunifuThinButton21.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BunifuThinButton21.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.BunifuThinButton21.BackgroundImage = CType(resources.GetObject("BunifuThinButton21.BackgroundImage"), System.Drawing.Image)
-        Me.BunifuThinButton21.ButtonText = "Actualizar"
-        Me.BunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BunifuThinButton21.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BunifuThinButton21.ForeColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.IdleBorderThickness = 1
-        Me.BunifuThinButton21.IdleCornerRadius = 20
-        Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
-        Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.Location = New System.Drawing.Point(509, 513)
-        Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(5)
-        Me.BunifuThinButton21.Name = "BunifuThinButton21"
-        Me.BunifuThinButton21.Size = New System.Drawing.Size(92, 31)
-        Me.BunifuThinButton21.TabIndex = 47
-        Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'BackgroundConsultaInformacion
         '
         '
@@ -394,7 +368,33 @@ Partial Class ActInformacionCredito
         Me.ComboCliente.Size = New System.Drawing.Size(203, 35)
         Me.ComboCliente.TabIndex = 48
         '
-        'ActInformacionCredito
+        'BunifuThinButton21
+        '
+        Me.BunifuThinButton21.ActiveBorderThickness = 1
+        Me.BunifuThinButton21.ActiveCornerRadius = 20
+        Me.BunifuThinButton21.ActiveFillColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.ActiveForecolor = System.Drawing.Color.White
+        Me.BunifuThinButton21.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BunifuThinButton21.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.BunifuThinButton21.BackgroundImage = CType(resources.GetObject("BunifuThinButton21.BackgroundImage"), System.Drawing.Image)
+        Me.BunifuThinButton21.ButtonText = "Actualizar"
+        Me.BunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BunifuThinButton21.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuThinButton21.ForeColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.IdleBorderThickness = 1
+        Me.BunifuThinButton21.IdleCornerRadius = 20
+        Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
+        Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.Location = New System.Drawing.Point(509, 513)
+        Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(5)
+        Me.BunifuThinButton21.Name = "BunifuThinButton21"
+        Me.BunifuThinButton21.Size = New System.Drawing.Size(92, 31)
+        Me.BunifuThinButton21.TabIndex = 47
+        Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'ActInformacionEmpeño
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -411,7 +411,7 @@ Partial Class ActInformacionCredito
         Me.Controls.Add(Me.ComboTipo)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "ActInformacionCredito"
+        Me.Name = "ActInformacionEmpeño"
         Me.Text = "ActInformacionLegal"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -428,17 +428,17 @@ Partial Class ActInformacionCredito
     Friend WithEvents EvolveControlBox1 As EvolveControlBox
     Friend WithEvents MonoFlat_HeaderLabel1 As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents ComboTipo As Bunifu.Framework.UI.BunifuDropdown
-    Friend WithEvents txtCalle As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents txtNoExt As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents txtNoInt As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents txtDomicilio As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents lblDomicilio As Label
     Friend WithEvents txtCodigoPostal As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents PanelDomicilio As Panel
+    Friend WithEvents lblCodigoPostal As Label
     Friend WithEvents txtColonia As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents Label5 As Label
+    Friend WithEvents lblColonia As Label
+    Friend WithEvents txtCiudad As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents lblMunicipio As Label
+    Friend WithEvents PanelDomicilio As Panel
+    Friend WithEvents txtEstado As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents lblEntidad As Label
     Friend WithEvents PanelValor As Panel
     Friend WithEvents Label7 As Label
     Friend WithEvents txtValor As Bunifu.Framework.UI.BunifuMaterialTextbox

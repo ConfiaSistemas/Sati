@@ -23,28 +23,6 @@ Public Class login
     End Sub
 
 
-
-
-
-
-
-
-
-
-    Private Sub txtcontra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-
-
-    End Sub
-
-
-
-
-
-
-
-
-
     Private Sub login_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         Timer1.Enabled = True
@@ -52,24 +30,11 @@ Public Class login
 
     End Sub
 
-
-
-
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         Timer1.Interval = 1
         Timer1.Start()
-        If GetAsyncKeyState(Keys.Up) = 1 Then
-            MessageBox.Show("hola")
 
-        End If
     End Sub
-
-    Private Sub MonoFlat_TextBox1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        If e.KeyCode = Keys.Enter Then
-            MessageBox.Show("hola")
-        End If
-    End Sub
-
 
     Private Sub keypressed(ByVal o As [Object], ByVal e As KeyPressEventArgs)
         ' The keypressed method uses the KeyChar property to check 
@@ -84,28 +49,8 @@ Public Class login
         End If
     End Sub
 
-
-
-
-
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         frm_adm.Show()
-
-    End Sub
-
-    Private Sub MonoFlat_Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub txtcontra_Move(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub MonoFlat_ThemeContainer1_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
 
@@ -275,9 +220,6 @@ Public Class login
 
     End Sub
 
-    Private Sub MonoFlat_Button1_Click(sender As Object, e As EventArgs) Handles MonoFlat_Button1.Click
-
-    End Sub
 
     Private Sub login_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If bloqueado Then
@@ -285,28 +227,80 @@ Public Class login
         End If
     End Sub
 
-    Private Sub txtcontra_TextChanged_1(sender As Object, e As EventArgs) Handles txtcontra.TextChanged
+    Private Sub MonoFlat_Button2_Click(sender As Object, e As EventArgs) Handles MonoFlat_Button2.Click
+        'Va a iniciar sesión como admin para hacer pruebas
+        Dim options As New IniOptions() With {.EncryptionPassword = "EntUs01pos"}
+        Dim iniFile As New IniFile(options)
+        iniFile.Load("C:\ConfiaAdmin\SATI\SetConfig.ini")
+        ipser = iniFile.Sections(0).Keys(0).Value
+        bdser = iniFile.Sections(0).Keys(1).Value
+        ImpresoraPredeterminada = iniFile.Sections(0).Keys("Impresora").Value
+        'noCaja = iniFile.Sections(0).Keys("Caja").Value
+        'Impresora = iniFile.Sections(0).Keys("Impresora").Value
+        iniciarconexion()
+        Try
+            Dim pass, passdecrypt As String
+            Dim s As String = ("SELECT idusr FROM usr  where nm = 'Admin'")
 
+            Dim connexio = New OleDbConnection(cn)
+            Dim myCommand = New OleDbCommand(s)
+
+            myCommand.Connection = connexio
+
+            connexio.Open()
+            Dim myReader As OleDbDataReader = myCommand.ExecuteReader()
+
+            While myReader.Read()
+                idusr = myReader("idusr")
+
+            End While
+
+
+            Dim strcontra As String = ("select pass from usr where idusr = '" & idusr & "'")
+            Dim ejec = New OleDbCommand(strcontra)
+            ejec.Connection = connexio
+            Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Cargando"
+            'Await Task.Factory.StartNew(Sub()
+            '                                Dim myreader2 As OleDbDataReader = ejec.ExecuteReader()
+            '                                While myreader2.Read()
+            '                                    pass = myreader2("pass")
+            '                                    Dim byteconverter As New UnicodeEncoding()
+            '                                    Dim CadByte As Byte() = System.Convert.FromBase64String(pass)
+
+            '                                    Dim DecryptedMessage As Encryption.RSAResult = Encryption.RSA.Decrypt(CadByte, "<RSAKeyValue><Modulus>1D3WnN4qZq3DGHf7i3WjEixX0Nzka28RIR9lOrT7Eg2QmJTACm/E6388wMdGgH3yTwKPp/T5zm61yvZn44oHMka8EKlACGKkADsxN/ci0RLKJ0ZGYDVPtB+KSzI+GbmX2eO00R+FlYvXTpMzGXy3e4QpeCJbIbrDGFpt3rmXy28=</Modulus><Exponent>AQAB</Exponent><P>98YU9Nkhu3qQ4Y168ZbMX+kCFUEPK9mRDEc2yZiyfABU9UlrKU4Ja1qy47WJrQNSALA9nnARZgbiY/3JkslISQ==</P><Q>20nBaoUN5QK9cuH6yX0QqAzhhB88rsI/HFzb8xrbEkceNfsTbYOVt+7biqzQQAvsyEILU+0l529eSe6S52yl9w==</Q><DP>wk3CLWkBfQZXC6ppmX9KcoRFr+k/PoH1r41BN8LZZUjVVy3mLZQW6utLkirQ9q695fBPwincWwhXDVb+dnAGkQ==</DP><DQ>Ks/0hhJiCxME37gE2W+kX9rb8IqUs13TKntqqcTVfnUKDent+hSVl2p3zFQ++DIb0WEriwAixVN16iM85RfOMw==</DQ><InverseQ>coc9FIy42//YO02qCCKfORevLIU8GIeTSYFqD9kMwhHSy1a6QMDpKaYWrYvv8FcMHglqWzdTqbSgBSrsfcnibw==</InverseQ><D>JvPie4/awFWLxOXgaMwCTceNpmukEIOl5SpZ7dhhbALJUveZ91BkF8SWZdss+VAkNJQHwY+YeWagPsvSbVRb1WylY11D8gBQEb6EOR3EsM17/5+v6nRrJ5+cySfpcahRbUjUdJFaVhMCUQ1wsnevLNY/Xo20UF4XCE5Exp7TW0E=</D></RSAKeyValue>")
+            '                                    passdecrypt = DecryptedMessage.AsString
+            '                                End While
+            '                            End Sub)
+
+
+
+            'If StrComp(passdecrypt, "123456", 0) = 0 Then
+
+            'Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Contraseña Correcta..."
+
+            cargarperfil()
+
+            'frm_adm.Show()
+
+
+            Cargando.Close()
+            Empresas.Show()
+            connexio.Close()
+
+            Me.Close()
+
+
+
+
+            'End If
+
+
+
+        Catch exc As System.Exception
+            MsgBox(exc.Message, MsgBoxStyle.Exclamation)
+        End Try
     End Sub
 
-    Private Sub txtcontra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtcontra.KeyPress
-        If (Asc(e.KeyChar) = 8) Then
-            MessageBox.Show("Hola")
-        End If
-        MessageBox.Show(e.KeyChar)
-    End Sub
-
-    Private Sub txtcontra_LostFocus(sender As Object, e As EventArgs) Handles txtcontra.LostFocus
-
-    End Sub
-
-    Private Sub txtcontra_KeyDown(sender As Object, e As KeyEventArgs) Handles txtcontra.KeyDown
-
-        MessageBox.Show("Hola")
-
-    End Sub
-
-    Private Sub login_CursorChanged(sender As Object, e As EventArgs) Handles Me.CursorChanged
-
-    End Sub
 End Class

@@ -14,16 +14,12 @@ Public Class SolicitudesEmpeños
                 VerSolicitudToolStripMenuItem.Visible = True
                 VerificarToolStripMenuItem.Visible = True
                 SeguimientoToolStripMenuItem.Visible = True
-                ToolStripMenuItem1.Visible = True
-                VerHistoriaToolStripMenuItem.Visible = True
                 ToolStripMenuItem2.Visible = True
                 VerSolicitudToolStripMenuItem.Visible = True
             Else
                 VerSolicitudToolStripMenuItem.Visible = False
                 VerificarToolStripMenuItem.Visible = False
                 SeguimientoToolStripMenuItem.Visible = False
-                ToolStripMenuItem1.Visible = False
-                VerHistoriaToolStripMenuItem.Visible = False
                 ToolStripMenuItem2.Visible = False
                 VerSolicitudToolStripMenuItem.Visible = False
             End If
@@ -61,7 +57,7 @@ Public Class SolicitudesEmpeños
 
         Dim ejec = New SqlCommand(consultaSolicitudes)
         ejec.Connection = conexionempresa
-        Dim id, nombre, valor, factor, tipo As String
+        Dim id, nombre, valor As String
 
         Dim myreaderimpuestos As SqlDataReader = ejec.ExecuteReader()
         While myreaderimpuestos.Read
@@ -87,23 +83,17 @@ Public Class SolicitudesEmpeños
         DatosSolicitudBoletaVerificar.Show()
     End Sub
 
-    Private Sub dtimpuestos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtimpuestos.CellContentClick
-
-    End Sub
 
     Private Sub dtimpuestos_SelectionChanged(sender As Object, e As EventArgs) Handles dtimpuestos.SelectionChanged
         If dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(7).Value = "E" Then
             dtimpuestos.ContextMenuStrip = ContextMenuVerificar
         ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(7).Value = "I" Then
             dtimpuestos.ContextMenuStrip = ContextMenuIncompleto
-        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(7).Value = "V" Then
-            dtimpuestos.ContextMenuStrip = ContextMenuAprobacion
         ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(7).Value = "A" Then
             dtimpuestos.ContextMenuStrip = ContextMenuAprobado
         ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(7).Value = "R" Then
             dtimpuestos.ContextMenuStrip = ContextMenuAprobado
-        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(7).Value = "N" Then
-            dtimpuestos.ContextMenuStrip = ContextMenuIncompleto
+
         Else
 
             dtimpuestos.ContextMenuStrip = Nothing
@@ -118,19 +108,9 @@ Public Class SolicitudesEmpeños
     End Sub
 
 
-
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-        DatosAprobacion.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
-        DatosAprobacion.Show()
-    End Sub
-
-    Private Sub VerHistoriaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerHistoriaToolStripMenuItem.Click
-        Historia_de_Solicitud.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
-        Historia_de_Solicitud.Show()
-    End Sub
-
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
         Historia_de_Solicitud.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        Historia_de_Solicitud.esEmpeño = True
         Historia_de_Solicitud.Show()
     End Sub
 
@@ -139,18 +119,12 @@ Public Class SolicitudesEmpeños
 
     End Sub
 
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
-
-    End Sub
-
-    Private Sub ContextMenuVerificar_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuVerificar.Opening
-
-    End Sub
 
     Private Sub VerSolicitudToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerSolicitudToolStripMenuItem.Click
-        DatosConsultaSolicitud.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
-        '  DatosConsultaSolicitud.TipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(5).Value
-        DatosConsultaSolicitud.Show()
+        DatosSolicitudBoletaVerificar.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        DatosSolicitudBoletaVerificar.tipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(8).Value
+        DatosSolicitudBoletaVerificar.verSolicitud = True
+        DatosSolicitudBoletaVerificar.Show()
     End Sub
 
     Private Sub Combofiltro_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Combofiltro.SelectedIndexChanged
@@ -258,13 +232,16 @@ Public Class SolicitudesEmpeños
         End Select
     End Sub
 
-    Private Sub BunifuMaterialTextbox1_OnValueChanged(sender As Object, e As EventArgs) Handles BunifuMaterialTextbox1.OnValueChanged
-
-    End Sub
 
     Private Sub BunifuMaterialTextbox1_KeyDown(sender As Object, e As KeyEventArgs) Handles BunifuMaterialTextbox1.KeyDown
         If e.KeyCode = Keys.Enter Then
             cargarSolicitudes()
         End If
+    End Sub
+
+    Private Sub VerHistoriaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerHistoriaToolStripMenuItem.Click
+        Historia_de_Solicitud.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        Historia_de_Solicitud.esEmpeño = True
+        Historia_de_Solicitud.Show()
     End Sub
 End Class

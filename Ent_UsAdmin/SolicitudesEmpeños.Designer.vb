@@ -24,28 +24,10 @@ Partial Class SolicitudesEmpeños
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SolicitudesEmpeños))
         Me.dtimpuestos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
-        Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.BunifuMaterialTextbox1 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.MonoFlat_Label1 = New ConfiaAdmin.MonoFlat.MonoFlat_Label()
-        Me.Combofiltro = New System.Windows.Forms.ComboBox()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.ContextMenuVerificar = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.VerificarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ContextMenuIncompleto = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.SeguimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ContextMenuAprobacion = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VerHistoriaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ContextMenuAprobado = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VerSolicitudToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btn_agregar = New System.Windows.Forms.Button()
         Me.Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -55,11 +37,25 @@ Partial Class SolicitudesEmpeños
         Me.Promotor = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.BunifuMaterialTextbox1 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.MonoFlat_Label1 = New ConfiaAdmin.MonoFlat.MonoFlat_Label()
+        Me.Combofiltro = New System.Windows.Forms.ComboBox()
+        Me.ContextMenuVerificar = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.VerificarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VerHistoriaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContextMenuIncompleto = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SeguimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContextMenuAprobado = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VerSolicitudToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btn_agregar = New System.Windows.Forms.Button()
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.ContextMenuVerificar.SuspendLayout()
         Me.ContextMenuIncompleto.SuspendLayout()
-        Me.ContextMenuAprobacion.SuspendLayout()
         Me.ContextMenuAprobado.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -67,8 +63,8 @@ Partial Class SolicitudesEmpeños
         '
         Me.dtimpuestos.AllowUserToAddRows = False
         Me.dtimpuestos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dtimpuestos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -76,14 +72,14 @@ Partial Class SolicitudesEmpeños
         Me.dtimpuestos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtimpuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtimpuestos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dtimpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtimpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Nombre, Me.Fecha, Me.Monto, Me.MontoAutorizado, Me.TipoCredito, Me.Promotor, Me.Estado, Me.Tipo})
         Me.dtimpuestos.DoubleBuffered = True
@@ -98,6 +94,70 @@ Partial Class SolicitudesEmpeños
         Me.dtimpuestos.Size = New System.Drawing.Size(705, 446)
         Me.dtimpuestos.TabIndex = 4
         '
+        'Id
+        '
+        Me.Id.HeaderText = "Id"
+        Me.Id.Name = "Id"
+        Me.Id.ReadOnly = True
+        Me.Id.Width = 42
+        '
+        'Nombre
+        '
+        Me.Nombre.HeaderText = "Nombre"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        Me.Nombre.Width = 79
+        '
+        'Fecha
+        '
+        Me.Fecha.HeaderText = "Fecha"
+        Me.Fecha.Name = "Fecha"
+        Me.Fecha.ReadOnly = True
+        Me.Fecha.Width = 68
+        '
+        'Monto
+        '
+        Me.Monto.HeaderText = "Monto"
+        Me.Monto.Name = "Monto"
+        Me.Monto.ReadOnly = True
+        Me.Monto.Width = 70
+        '
+        'MontoAutorizado
+        '
+        Me.MontoAutorizado.HeaderText = "Monto Autorizado"
+        Me.MontoAutorizado.Name = "MontoAutorizado"
+        Me.MontoAutorizado.ReadOnly = True
+        Me.MontoAutorizado.Width = 126
+        '
+        'TipoCredito
+        '
+        Me.TipoCredito.HeaderText = "Tipo"
+        Me.TipoCredito.Name = "TipoCredito"
+        Me.TipoCredito.ReadOnly = True
+        Me.TipoCredito.Width = 55
+        '
+        'Promotor
+        '
+        Me.Promotor.HeaderText = "Promotor"
+        Me.Promotor.Name = "Promotor"
+        Me.Promotor.ReadOnly = True
+        Me.Promotor.Width = 86
+        '
+        'Estado
+        '
+        Me.Estado.HeaderText = "Estado"
+        Me.Estado.Name = "Estado"
+        Me.Estado.ReadOnly = True
+        Me.Estado.Width = 71
+        '
+        'Tipo
+        '
+        Me.Tipo.HeaderText = "Tipo"
+        Me.Tipo.Name = "Tipo"
+        Me.Tipo.ReadOnly = True
+        Me.Tipo.Visible = False
+        Me.Tipo.Width = 55
+        '
         'MonoFlat_HeaderLabel1
         '
         Me.MonoFlat_HeaderLabel1.AutoSize = True
@@ -106,9 +166,9 @@ Partial Class SolicitudesEmpeños
         Me.MonoFlat_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(3, 3)
         Me.MonoFlat_HeaderLabel1.Name = "MonoFlat_HeaderLabel1"
-        Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(84, 20)
+        Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(152, 20)
         Me.MonoFlat_HeaderLabel1.TabIndex = 1
-        Me.MonoFlat_HeaderLabel1.Text = "Solicitudes"
+        Me.MonoFlat_HeaderLabel1.Text = "Solicitudes Empeños"
         '
         'Panel1
         '
@@ -192,21 +252,24 @@ Partial Class SolicitudesEmpeños
         Me.Combofiltro.Size = New System.Drawing.Size(121, 21)
         Me.Combofiltro.TabIndex = 9
         '
-        'BackgroundWorker1
-        '
-        '
         'ContextMenuVerificar
         '
         Me.ContextMenuVerificar.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.ContextMenuVerificar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerificarToolStripMenuItem})
+        Me.ContextMenuVerificar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerificarToolStripMenuItem, Me.VerHistoriaToolStripMenuItem})
         Me.ContextMenuVerificar.Name = "ContextMenuVerificar"
-        Me.ContextMenuVerificar.Size = New System.Drawing.Size(117, 26)
+        Me.ContextMenuVerificar.Size = New System.Drawing.Size(135, 48)
         '
         'VerificarToolStripMenuItem
         '
         Me.VerificarToolStripMenuItem.Name = "VerificarToolStripMenuItem"
-        Me.VerificarToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.VerificarToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
         Me.VerificarToolStripMenuItem.Text = "Verificar"
+        '
+        'VerHistoriaToolStripMenuItem
+        '
+        Me.VerHistoriaToolStripMenuItem.Name = "VerHistoriaToolStripMenuItem"
+        Me.VerHistoriaToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.VerHistoriaToolStripMenuItem.Text = "Ver Historia"
         '
         'ContextMenuIncompleto
         '
@@ -220,25 +283,6 @@ Partial Class SolicitudesEmpeños
         Me.SeguimientoToolStripMenuItem.Name = "SeguimientoToolStripMenuItem"
         Me.SeguimientoToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
         Me.SeguimientoToolStripMenuItem.Text = "Seguimiento"
-        '
-        'ContextMenuAprobacion
-        '
-        Me.ContextMenuAprobacion.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.ContextMenuAprobacion.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.VerHistoriaToolStripMenuItem})
-        Me.ContextMenuAprobacion.Name = "ContextMenuIncompleto"
-        Me.ContextMenuAprobacion.Size = New System.Drawing.Size(133, 48)
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(132, 22)
-        Me.ToolStripMenuItem1.Text = "Revisar"
-        '
-        'VerHistoriaToolStripMenuItem
-        '
-        Me.VerHistoriaToolStripMenuItem.Name = "VerHistoriaToolStripMenuItem"
-        Me.VerHistoriaToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
-        Me.VerHistoriaToolStripMenuItem.Text = "Ver historia"
         '
         'ContextMenuAprobado
         '
@@ -273,70 +317,6 @@ Partial Class SolicitudesEmpeños
         Me.btn_agregar.TabIndex = 6
         Me.btn_agregar.UseVisualStyleBackColor = False
         '
-        'Id
-        '
-        Me.Id.HeaderText = "Id"
-        Me.Id.Name = "Id"
-        Me.Id.ReadOnly = True
-        Me.Id.Width = 42
-        '
-        'Nombre
-        '
-        Me.Nombre.HeaderText = "Nombre"
-        Me.Nombre.Name = "Nombre"
-        Me.Nombre.ReadOnly = True
-        Me.Nombre.Width = 79
-        '
-        'Fecha
-        '
-        Me.Fecha.HeaderText = "Fecha"
-        Me.Fecha.Name = "Fecha"
-        Me.Fecha.ReadOnly = True
-        Me.Fecha.Width = 68
-        '
-        'Monto
-        '
-        Me.Monto.HeaderText = "Monto"
-        Me.Monto.Name = "Monto"
-        Me.Monto.ReadOnly = True
-        Me.Monto.Width = 70
-        '
-        'MontoAutorizado
-        '
-        Me.MontoAutorizado.HeaderText = "Monto Autorizado"
-        Me.MontoAutorizado.Name = "MontoAutorizado"
-        Me.MontoAutorizado.ReadOnly = True
-        Me.MontoAutorizado.Width = 126
-        '
-        'TipoCredito
-        '
-        Me.TipoCredito.HeaderText = "Tipo"
-        Me.TipoCredito.Name = "TipoCredito"
-        Me.TipoCredito.ReadOnly = True
-        Me.TipoCredito.Width = 55
-        '
-        'Promotor
-        '
-        Me.Promotor.HeaderText = "Promotor"
-        Me.Promotor.Name = "Promotor"
-        Me.Promotor.ReadOnly = True
-        Me.Promotor.Width = 86
-        '
-        'Estado
-        '
-        Me.Estado.HeaderText = "Estado"
-        Me.Estado.Name = "Estado"
-        Me.Estado.ReadOnly = True
-        Me.Estado.Width = 71
-        '
-        'Tipo
-        '
-        Me.Tipo.HeaderText = "Tipo"
-        Me.Tipo.Name = "Tipo"
-        Me.Tipo.ReadOnly = True
-        Me.Tipo.Visible = False
-        Me.Tipo.Width = 55
-        '
         'SolicitudesEmpeños
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -354,7 +334,6 @@ Partial Class SolicitudesEmpeños
         Me.Panel1.PerformLayout()
         Me.ContextMenuVerificar.ResumeLayout(False)
         Me.ContextMenuIncompleto.ResumeLayout(False)
-        Me.ContextMenuAprobacion.ResumeLayout(False)
         Me.ContextMenuAprobado.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -365,16 +344,12 @@ Partial Class SolicitudesEmpeños
     Friend WithEvents MonoFlat_HeaderLabel1 As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents ContextMenuVerificar As ContextMenuStrip
     Friend WithEvents VerificarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContextMenuIncompleto As ContextMenuStrip
     Friend WithEvents SeguimientoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ContextMenuAprobacion As ContextMenuStrip
-    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ContextMenuAprobado As ContextMenuStrip
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
-    Friend WithEvents VerHistoriaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VerSolicitudToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BunifuMaterialTextbox1 As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents MonoFlat_Label1 As MonoFlat.MonoFlat_Label
@@ -388,4 +363,5 @@ Partial Class SolicitudesEmpeños
     Friend WithEvents Promotor As DataGridViewTextBoxColumn
     Friend WithEvents Estado As DataGridViewTextBoxColumn
     Friend WithEvents Tipo As DataGridViewTextBoxColumn
+    Friend WithEvents VerHistoriaToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -21,7 +21,6 @@ Public Class Solicitud_Boleta
     Dim totalMoratorios As Double
     Dim empezar As Boolean
     Dim MontoTotal As Double = 0
-    Dim idSolicitud As Integer
     Dim esta As String
     Dim usarNombre As Boolean
     Public autorizado As Boolean
@@ -206,7 +205,14 @@ Public Class Solicitud_Boleta
 
         Next
 
-
+        Dim comandoCronograma As SqlCommand
+        Dim consultaCronograma As String
+        Dim tiempo As String = TimeOfDay.ToString("HH:mm:ss")
+        consultaCronograma = "insert into CronogramaSolicitudEmpeño values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & idSolicitudBoleta & "','Se registró la solicitud por " & nmusr & "')"
+        comandoCronograma = New SqlCommand
+        comandoCronograma.Connection = conexionempresa
+        comandoCronograma.CommandText = consultaCronograma
+        comandoCronograma.ExecuteNonQuery()
 
     End Sub
 

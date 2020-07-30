@@ -71,6 +71,7 @@ Partial Class InformacionSolicitud
         Me.dtActualizaciones = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.TabPage8 = New System.Windows.Forms.TabPage()
         Me.TreeListView2 = New WinControls.ListView.TreeListView()
+        Me.ContainerColumnHeader13 = New WinControls.ListView.ContainerColumnHeader()
         Me.ContainerColumnHeader11 = New WinControls.ListView.ContainerColumnHeader()
         Me.ContainerColumnHeader12 = New WinControls.ListView.ContainerColumnHeader()
         Me.ContainerColumnHeader14 = New WinControls.ListView.ContainerColumnHeader()
@@ -105,7 +106,6 @@ Partial Class InformacionSolicitud
         Me.BackgroundGestiones = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundActualizaciones = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundComportamiento = New System.ComponentModel.BackgroundWorker()
-        Me.ContainerColumnHeader13 = New WinControls.ListView.ContainerColumnHeader()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -582,6 +582,11 @@ Partial Class InformacionSolicitud
         Me.TreeListView2.Size = New System.Drawing.Size(1065, 411)
         Me.TreeListView2.TabIndex = 4
         '
+        'ContainerColumnHeader13
+        '
+        Me.ContainerColumnHeader13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ContainerColumnHeader13.Text = "Tipo de Pago"
+        '
         'ContainerColumnHeader11
         '
         Me.ContainerColumnHeader11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -898,15 +903,11 @@ Partial Class InformacionSolicitud
         'BackgroundComportamiento
         '
         '
-        'ContainerColumnHeader13
-        '
-        Me.ContainerColumnHeader13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader13.Text = "Tipo de Pago"
-        '
         'InformacionSolicitud
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1096, 687)
         Me.Controls.Add(Me.Panel2)
@@ -923,7 +924,9 @@ Partial Class InformacionSolicitud
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "InformacionSolicitud"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Información de crédito"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
