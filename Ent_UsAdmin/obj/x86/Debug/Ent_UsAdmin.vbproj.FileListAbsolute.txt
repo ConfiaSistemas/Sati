@@ -158,3 +158,6 @@ D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.xml
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.pdb
 D:\Repos\SATI\Ent_UsAdmin\bin\Debug\ConfiaAdmin.pdb
 D:\Repos\SATI\Ent_UsAdmin\bin\Debug\ConfiaAdmin.xml
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActInformacionEmpeño.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoEmpeño.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DocumentosEmpeño.resources
