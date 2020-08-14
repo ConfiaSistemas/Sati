@@ -166,7 +166,7 @@ Public Class InformacionSolicitud
         ' Else ISNULL((Select nombre from Credito where id = pagos.idCredito),0) 		End) As nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
         '(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "'  )pagos order by Fecha,Hora asc"
 
-        consulta = "if  exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
+        consulta = "if  exists(select * from reestructurassac where idCredito = '" & idCredito & "')
 begin
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
@@ -178,7 +178,14 @@ select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
 							   else ISNULL((select nombre from Credito inner join ConveniosSac on Credito.id = ConveniosSac.idCredito where ConveniosSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from ConveniosSac where idCredito ='" & idCredito & "') and TipoDoc = (select id from tipodoc where nombre = 'Convenio') )pagos order by Fecha,Hora asc
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from ConveniosSac where idCredito ='" & idCredito & "') and TipoDoc = (select id from tipodoc where nombre = 'Convenio') )pagos
+union
+select id,Recibido,(case when tipo = 'Legal' then Concepto
+							   when tipo = 'Extra' then Concepto
+							  
+							   else ISNULL((select nombre from Credito inner join ConveniosSac on Credito.id = ConveniosSac.idCredito where ConveniosSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from ConveniosSac where idCredito ='" & idCredito & "') and TipoDoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') )pagos
+order by Fecha,Hora asc
 end
 else if not exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
 begin
@@ -390,17 +397,43 @@ end
 
 
 
-        consulta = "if  exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
+        consulta = "
+if  exists(select * from ConveniosSac where idCredito = '" & idCredito & "' and estado = 'A')
 begin
 select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' and Estado = 'L'
 union
 select 'Creación de convenio' as TipoDePago,'','',DeudaCredito,Moratorios,'',TotalDeuda,Fecha,'' from ConveniosSac where idCredito = '" & idCredito & "'
 union
-select 'Convenio' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from CalendarioConveniosSac where idConvenio = (select id from ConveniosSac where idCredito = '" & idCredito & "') order by FechaPago asc
+select 'Convenio' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from CalendarioConveniosSac where idConvenio = (select id from ConveniosSac where idCredito ='" & idCredito & "')
+
+order by FechaPago asc
 end
+else if exists(select * from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio'))
+select * from
+(select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' and Estado = 'L' and fechaultimopago <= (select fecha from conveniossac where idcredito = '" & idCredito & "')
+union
+select 'Creación de convenio' as TipoDePago,'','',DeudaCredito,Moratorios,'',TotalDeuda,Fecha,'' from ConveniosSac where idCredito = '" & idCredito & "'
+union
+select 'Convenio' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from CalendarioConveniosSac where idConvenio = (select id from ConveniosSac where idCredito = '" & idCredito & "') and abonado <> 0 and fecha <= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio'))
+union
+select 'Cancelación de convenio' as TipoDePago,'','',PagoNormal,Intereses,'',Total,Fecha,'' from Ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio')
+union
+	
+select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' and 1= case when exists(select id from ReestructurasSac where idCredito = '" & idCredito & "')  and idpago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and (fechaultimopago >= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio')))) then 1 
+when not exists(select id from ReestructurasSac where idCredito = '" & idCredito & "') and idpago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and (fechaultimopago >= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio'))) OR FechaUltimoPago = '1900-01-01')  then 1
+ end
+
+
+union
+
+select 'Creación de reestructura' as TipoDePago,'','',DeudaCredito,Moratorios,'',TotalDeuda,Fecha,'' from reestructurassac where idCredito = '" & idCredito & "'
+union
+select 'Reestructura' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from calendarioreestructurassac where idConvenio = (select id from reestructurassac where idCredito = '" & idCredito & "') 
+) Comportamiento order by  (case  when idPago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and Estado = 'L' and fechaultimopago <= (select fecha from conveniossac where idcredito = '" & idCredito & "')) then 1   when TipoDePago = 'Creación de convenio' then 2 when TipoDePago = 'Convenio' then 3 when TipoDePago = 'Cancelación de convenio' then 4 when idpago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and (fechaultimopago >= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio')) or FechaUltimoPago = '1900-01-01')) then 5 when TipoDePago = 'Creación de reestructura' then 6 when TipoDePago = 'Reestructura' then 7  end )asc
+
 else if not exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
 begin
-select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' 
+select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,6FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' 
 end
 "
 

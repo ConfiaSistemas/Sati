@@ -14,7 +14,7 @@ Public Class CreditosActivos
 
             iniciarconexionempresa()
 
-            strimpuestos = "select id,Fecha,Nombre,Monto,Plazo,format(fechaEntrega,'dd/MM/yyyy') as FechaEntrega,estado from credito where (estado = 'A' or estado = 'C') and nombre like '%" & txtnombre.Text & "%' order by nombre asc"
+            strimpuestos = "select id,Fecha,Nombre,Monto,Plazo,format(fechaEntrega,'dd/MM/yyyy') as FechaEntrega,estado from credito where (estado = 'A' or estado = 'C' or estado = 'I' or estado = 'R') and nombre like '%" & txtnombre.Text & "%' order by nombre asc"
 
             Dim ejec = New SqlCommand(strimpuestos)
             ejec.Connection = conexionempresa
@@ -40,12 +40,24 @@ Public Class CreditosActivos
 
     Private Sub dtimpuestos_SelectionChanged(sender As Object, e As EventArgs) Handles dtimpuestos.SelectionChanged
         If dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value = "A" Then
+            CrearReestructuraToolStripMenuItem.Visible = False
             CrearConvenioToolStripMenuItem.Visible = True
             dtimpuestos.ContextMenuStrip = ContextMenuEntregar
 
         ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value = "C" Then
+            CrearReestructuraToolStripMenuItem.Visible = False
             CrearConvenioToolStripMenuItem.Visible = False
             dtimpuestos.ContextMenuStrip = ContextMenuEntregar
+
+        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value = "I" Then
+            CrearReestructuraToolStripMenuItem.Visible = True
+            CrearConvenioToolStripMenuItem.Visible = False
+            dtimpuestos.ContextMenuStrip = ContextMenuEntregar
+        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value = "R" Then
+            CrearReestructuraToolStripMenuItem.Visible = False
+            CrearConvenioToolStripMenuItem.Visible = False
+            dtimpuestos.ContextMenuStrip = ContextMenuEntregar
+
         Else
 
             dtimpuestos.ContextMenuStrip = Nothing
@@ -92,5 +104,10 @@ Public Class CreditosActivos
     Private Sub EstadoDeCuentaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EstadoDeCuentaToolStripMenuItem.Click
         EstadoDeCuenta.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
         EstadoDeCuenta.Show()
+    End Sub
+
+    Private Sub CrearReestructuraToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CrearReestructuraToolStripMenuItem.Click
+        CrearReestructura.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        CrearReestructura.Show()
     End Sub
 End Class

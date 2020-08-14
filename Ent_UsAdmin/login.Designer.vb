@@ -57,6 +57,7 @@ Partial Class login
         Me.MonoFlat_Button2.TabIndex = 18
         Me.MonoFlat_Button2.Text = "Auto Login"
         Me.MonoFlat_Button2.TextAlignment = System.Drawing.StringAlignment.Center
+        Me.MonoFlat_Button2.Visible = False
         '
         'Button1
         '

@@ -29,15 +29,15 @@ Partial Class CreditosEnMora
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.dtimpuestos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ComboFiltro = New System.Windows.Forms.ComboBox()
-        Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BackgroundGestores = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundPromotores = New System.ComponentModel.BackgroundWorker()
         Me.ComboElección = New System.Windows.Forms.ComboBox()
         Me.BackgroundConsulta = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundExcel = New System.ComponentModel.BackgroundWorker()
+        Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -100,32 +100,6 @@ Partial Class CreditosEnMora
         Me.Panel1.Size = New System.Drawing.Size(1194, 36)
         Me.Panel1.TabIndex = 8
         '
-        'BunifuThinButton21
-        '
-        Me.BunifuThinButton21.ActiveBorderThickness = 1
-        Me.BunifuThinButton21.ActiveCornerRadius = 20
-        Me.BunifuThinButton21.ActiveFillColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.ActiveForecolor = System.Drawing.Color.White
-        Me.BunifuThinButton21.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BunifuThinButton21.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.BunifuThinButton21.BackgroundImage = CType(resources.GetObject("BunifuThinButton21.BackgroundImage"), System.Drawing.Image)
-        Me.BunifuThinButton21.ButtonText = "Exportar"
-        Me.BunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BunifuThinButton21.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BunifuThinButton21.ForeColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.IdleBorderThickness = 1
-        Me.BunifuThinButton21.IdleCornerRadius = 20
-        Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
-        Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.Location = New System.Drawing.Point(1097, 3)
-        Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(5)
-        Me.BunifuThinButton21.Name = "BunifuThinButton21"
-        Me.BunifuThinButton21.Size = New System.Drawing.Size(92, 31)
-        Me.BunifuThinButton21.TabIndex = 4
-        Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -145,6 +119,28 @@ Partial Class CreditosEnMora
         Me.ComboFiltro.Name = "ComboFiltro"
         Me.ComboFiltro.Size = New System.Drawing.Size(240, 21)
         Me.ComboFiltro.TabIndex = 30
+        '
+        'BackgroundGestores
+        '
+        '
+        'BackgroundPromotores
+        '
+        '
+        'ComboElección
+        '
+        Me.ComboElección.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboElección.FormattingEnabled = True
+        Me.ComboElección.ItemHeight = 13
+        Me.ComboElección.Location = New System.Drawing.Point(268, 77)
+        Me.ComboElección.Name = "ComboElección"
+        Me.ComboElección.Size = New System.Drawing.Size(239, 21)
+        Me.ComboElección.TabIndex = 31
+        '
+        'BackgroundConsulta
+        '
+        '
+        'BackgroundExcel
+        '
         '
         'BunifuThinButton22
         '
@@ -171,27 +167,31 @@ Partial Class CreditosEnMora
         Me.BunifuThinButton22.TabIndex = 5
         Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'BackgroundGestores
+        'BunifuThinButton21
         '
-        '
-        'BackgroundPromotores
-        '
-        '
-        'ComboElección
-        '
-        Me.ComboElección.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboElección.FormattingEnabled = True
-        Me.ComboElección.ItemHeight = 13
-        Me.ComboElección.Location = New System.Drawing.Point(268, 77)
-        Me.ComboElección.Name = "ComboElección"
-        Me.ComboElección.Size = New System.Drawing.Size(239, 21)
-        Me.ComboElección.TabIndex = 31
-        '
-        'BackgroundConsulta
-        '
-        '
-        'BackgroundExcel
-        '
+        Me.BunifuThinButton21.ActiveBorderThickness = 1
+        Me.BunifuThinButton21.ActiveCornerRadius = 20
+        Me.BunifuThinButton21.ActiveFillColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.ActiveForecolor = System.Drawing.Color.White
+        Me.BunifuThinButton21.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BunifuThinButton21.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.BunifuThinButton21.BackgroundImage = CType(resources.GetObject("BunifuThinButton21.BackgroundImage"), System.Drawing.Image)
+        Me.BunifuThinButton21.ButtonText = "Exportar"
+        Me.BunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BunifuThinButton21.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuThinButton21.ForeColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.IdleBorderThickness = 1
+        Me.BunifuThinButton21.IdleCornerRadius = 20
+        Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
+        Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.Location = New System.Drawing.Point(1097, 3)
+        Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(5)
+        Me.BunifuThinButton21.Name = "BunifuThinButton21"
+        Me.BunifuThinButton21.Size = New System.Drawing.Size(92, 31)
+        Me.BunifuThinButton21.TabIndex = 4
+        Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'CreditosEnMora
         '
@@ -207,7 +207,7 @@ Partial Class CreditosEnMora
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "CreditosEnMora"
-        Me.Text = "Desembolsos"
+        Me.Text = "Créditos en mora"
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

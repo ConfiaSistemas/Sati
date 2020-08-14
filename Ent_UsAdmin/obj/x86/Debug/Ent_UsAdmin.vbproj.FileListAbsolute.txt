@@ -161,3 +161,14 @@ D:\Repos\SATI\Ent_UsAdmin\bin\Debug\ConfiaAdmin.xml
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActInformacionEmpeño.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoEmpeño.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DocumentosEmpeño.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.MoraPorNiveles.resources
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Newtonsoft.Json.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.MSXML.dll
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ListadoMaestro.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CalendarioReestructura.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearReestructura.resources
