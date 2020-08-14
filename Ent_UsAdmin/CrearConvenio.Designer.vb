@@ -270,7 +270,7 @@ Partial Class CrearConvenio
         Me.datePrimerPago.Name = "datePrimerPago"
         Me.datePrimerPago.Size = New System.Drawing.Size(177, 33)
         Me.datePrimerPago.TabIndex = 42
-        Me.datePrimerPago.Value = New Date(2020, 2, 20, 0, 0, 0, 0)
+        Me.datePrimerPago.Value = New Date(2020, 8, 14, 0, 0, 0, 0)
         '
         'MonoFlat_LinkLabel1
         '

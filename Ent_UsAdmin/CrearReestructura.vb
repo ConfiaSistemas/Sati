@@ -124,6 +124,7 @@ else '0' end as MultasVencidas
         Cargando.Show()
         Cargando.MonoFlat_Label1.Text = "Cargando Datos"
         Cargando.TopMost = True
+        datePrimerPago.Value = Now
         BackgroundDatos.RunWorkerAsync()
 
     End Sub

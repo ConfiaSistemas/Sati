@@ -81,6 +81,7 @@ Public Class CrearConvenioLegal
         Cargando.Show()
         Cargando.MonoFlat_Label1.Text = "Cargando Datos"
         Cargando.TopMost = True
+        datePrimerPago.Value = Now
         BackgroundDatos.RunWorkerAsync()
 
     End Sub
