@@ -22,6 +22,7 @@ Partial Class RecibirRetiro
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RecibirRetiro))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
@@ -144,6 +145,7 @@ Partial Class RecibirRetiro
         Me.Controls.Add(Me.txtmonto)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "RecibirRetiro"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "RecibirRetiro"

@@ -186,6 +186,7 @@ Partial Class CreditosPorEntregar
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.dtimpuestos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CreditosPorEntregar"
         Me.Text = "CreditosPorEntregar"
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).EndInit()

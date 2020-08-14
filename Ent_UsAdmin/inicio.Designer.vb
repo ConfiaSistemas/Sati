@@ -22,6 +22,7 @@ Partial Class inicio
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(inicio))
         Me.Panelsecundario = New System.Windows.Forms.Panel()
         Me.BunifuFlatButton7 = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.Panelsecundario.SuspendLayout()
@@ -81,6 +82,7 @@ Partial Class inicio
         Me.Controls.Add(Me.Panelsecundario)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "inicio"
         Me.Text = "inicio"
         Me.TransparencyKey = System.Drawing.Color.Transparent

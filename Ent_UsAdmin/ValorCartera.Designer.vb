@@ -318,6 +318,7 @@ Partial Class ValorCartera
         Me.Controls.Add(Me.Panel1)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ValorCartera"
         Me.Text = "Desembolsos"
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).EndInit()

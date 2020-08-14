@@ -24,7 +24,7 @@ Partial Class DocumentosEmpeño
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DocumentosCreditoLegal))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DocumentosEmpeño))
         Me.dtdatosDocumentosNuevos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.idTipoDocumento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreDocumento = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -169,7 +169,7 @@ Partial Class DocumentosEmpeño
         'BackgroundDocumentos
         '
         '
-        'DocumentosCreditoLegal
+        'DocumentosEmpeño
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -180,7 +180,8 @@ Partial Class DocumentosEmpeño
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dtdatosDocumentosNuevos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "DocumentosCreditoLegal"
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "DocumentosEmpeño"
         Me.Text = "DocumentosCreditoLegal"
         CType(Me.dtdatosDocumentosNuevos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)

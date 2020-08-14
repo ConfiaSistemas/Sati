@@ -492,6 +492,7 @@ Partial Class Solicitud_Boleta
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Solicitud_Boleta"
         Me.Text = "Solicitud de Empeño"
         Me.Panel1.ResumeLayout(False)

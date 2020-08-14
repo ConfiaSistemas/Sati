@@ -2158,6 +2158,7 @@ Partial Class DatosSolicitud
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "DatosSolicitud"
         Me.Text = "DatosSolicitud"
         Me.Panel1.ResumeLayout(False)

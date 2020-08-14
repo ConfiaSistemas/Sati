@@ -128,6 +128,7 @@ Partial Class AgregarGestionLegal
         Me.Controls.Add(Me.txtConcepto)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "AgregarGestionLegal"
         Me.Text = "AgregarGestionLegal"
         Me.Panel1.ResumeLayout(False)

@@ -25,6 +25,7 @@ Partial Class BuscarEmpleadoUsuarioActualizar
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BuscarEmpleadoUsuarioActualizar))
         Me.dtdatos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
@@ -142,7 +143,7 @@ Partial Class BuscarEmpleadoUsuarioActualizar
         'BackgroundWorker1
         '
         '
-        'BuscarEmpleadoUsuario
+        'BuscarEmpleadoUsuarioActualizar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -153,7 +154,8 @@ Partial Class BuscarEmpleadoUsuarioActualizar
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dtdatos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "BuscarEmpleadoUsuario"
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "BuscarEmpleadoUsuarioActualizar"
         Me.Text = "BuscarClienteSolicitud"
         CType(Me.dtdatos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)

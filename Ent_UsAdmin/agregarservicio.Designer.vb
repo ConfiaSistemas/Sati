@@ -22,6 +22,7 @@ Partial Class agregarservicio
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(agregarservicio))
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
@@ -74,6 +75,7 @@ Partial Class agregarservicio
         Me.ClientSize = New System.Drawing.Size(583, 448)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(583, 448)
         Me.MinimumSize = New System.Drawing.Size(583, 448)
         Me.Name = "agregarservicio"

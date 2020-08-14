@@ -498,6 +498,7 @@ Partial Class CrearConvenioLegal
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CrearConvenioLegal"
         Me.Text = "CrearConvenioLegal"
         Me.Panel1.ResumeLayout(False)

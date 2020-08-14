@@ -359,6 +359,7 @@ Partial Class EntregarDocumentacion
         Me.Controls.Add(Me.btn_Procesar)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "EntregarDocumentacion"
         Me.Text = "Entregar Documentación"
         Me.Panel1.ResumeLayout(False)

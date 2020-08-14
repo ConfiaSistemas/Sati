@@ -64,17 +64,6 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btn_Procesar = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.dtdatos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundAct = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundDocumentosSolicitud = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundVerificacion = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundDatosSolicitud = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundDocumentos = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundCargaDocumentos = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundVerificaDocumentos = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundActivarLegal = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundRechazarSolicitud = New System.ComponentModel.BackgroundWorker()
         Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.idSolicitudColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -87,6 +76,17 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.ImagenColumn = New System.Windows.Forms.DataGridViewImageColumn()
         Me.NombreTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Autorizado = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundAct = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundDocumentosSolicitud = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundVerificacion = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundDatosSolicitud = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundDocumentos = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundCargaDocumentos = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundVerificaDocumentos = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundActivarLegal = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundRechazarSolicitud = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -688,33 +688,6 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.dtdatos.Size = New System.Drawing.Size(1144, 270)
         Me.dtdatos.TabIndex = 25
         '
-        'BackgroundWorker1
-        '
-        '
-        'BackgroundAct
-        '
-        '
-        'BackgroundDocumentosSolicitud
-        '
-        '
-        'BackgroundVerificacion
-        '
-        '
-        'BackgroundDocumentos
-        '
-        '
-        'BackgroundWorker2
-        '
-        '
-        'BackgroundCargaDocumentos
-        '
-        '
-        'BackgroundVerificaDocumentos
-        '
-        '
-        'BackgroundRechazarSolicitud
-        '
-        '
         'id
         '
         Me.id.HeaderText = "id"
@@ -797,6 +770,33 @@ Partial Class DatosSolicitudBoletaVerificar
         Me.Autorizado.HeaderText = "Autorizado"
         Me.Autorizado.Name = "Autorizado"
         Me.Autorizado.Width = 75
+        '
+        'BackgroundWorker1
+        '
+        '
+        'BackgroundAct
+        '
+        '
+        'BackgroundDocumentosSolicitud
+        '
+        '
+        'BackgroundVerificacion
+        '
+        '
+        'BackgroundDocumentos
+        '
+        '
+        'BackgroundWorker2
+        '
+        '
+        'BackgroundCargaDocumentos
+        '
+        '
+        'BackgroundVerificaDocumentos
+        '
+        '
+        'BackgroundRechazarSolicitud
+        '
         '
         'DatosSolicitudBoletaVerificar
         '

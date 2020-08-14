@@ -162,6 +162,7 @@ Partial Class PagosHoy
         Me.Controls.Add(Me.dtdatos)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "PagosHoy"
         Me.Text = "PagosHoy"
         Me.Panel1.ResumeLayout(False)

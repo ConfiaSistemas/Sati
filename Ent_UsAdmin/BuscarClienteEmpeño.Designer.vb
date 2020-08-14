@@ -24,6 +24,7 @@ Partial Class BuscarClienteEmpeño
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BuscarClienteEmpeño))
         Me.dtdatos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
@@ -152,6 +153,7 @@ Partial Class BuscarClienteEmpeño
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dtdatos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "BuscarClienteEmpeño"
         Me.Text = "BuscarClienteSolicitud"
         CType(Me.dtdatos, System.ComponentModel.ISupportInitialize).EndInit()

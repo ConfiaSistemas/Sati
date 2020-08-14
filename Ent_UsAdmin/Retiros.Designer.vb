@@ -25,6 +25,7 @@ Partial Class Retiros
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Retiros))
         Me.dtimpuestos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Monto = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -183,12 +184,12 @@ Partial Class Retiros
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RecibirToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(153, 48)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(111, 26)
         '
         'RecibirToolStripMenuItem
         '
         Me.RecibirToolStripMenuItem.Name = "RecibirToolStripMenuItem"
-        Me.RecibirToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RecibirToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.RecibirToolStripMenuItem.Text = "Recibir"
         '
         'Retiros
@@ -200,6 +201,7 @@ Partial Class Retiros
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dtimpuestos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Retiros"
         Me.Text = "Retiros sin recibir"
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).EndInit()

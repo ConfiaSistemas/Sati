@@ -22,7 +22,7 @@ Partial Class AgregarDocumentoDatosSolicitudBoleta
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AgregarDocumentoDatosSolicitud))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AgregarDocumentoDatosSolicitudBoleta))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
@@ -144,7 +144,7 @@ Partial Class AgregarDocumentoDatosSolicitudBoleta
         'BackgroundTiposDocumentos
         '
         '
-        'AgregarDocumentoDatosSolicitud
+        'AgregarDocumentoDatosSolicitudBoleta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -157,7 +157,8 @@ Partial Class AgregarDocumentoDatosSolicitudBoleta
         Me.Controls.Add(Me.ComboDocumento)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "AgregarDocumentoDatosSolicitud"
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "AgregarDocumentoDatosSolicitudBoleta"
         Me.Text = "Agregar Documento"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

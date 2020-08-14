@@ -100,7 +100,7 @@ Public Class ImprimirConvenio
         End If
         readerConvenio.Close()
         Dim consultaCalendario As String
-        consultaCalendario = "select format(Fechapago,'dd/MM/yyyy') as 'Fecha de pago',npago as 'Número de pago',format(monto+interes,'C','es-mx') as Monto from calendarioConveniosSac where idconvenio = '" & idConvenio & "'"
+        consultaCalendario = "select format(Fechapago,'dd/MM/yyyy') as 'Fecha de pago',npago as 'Número de pago',format(monto+multas,'C','es-mx') as Monto from calendarioConveniosSac where idconvenio = '" & idConvenio & "'"
         adapterCalendario = New SqlDataAdapter(consultaCalendario, conexionempresa)
         dataCalendario = New Data.DataTable
         adapterCalendario.Fill(dataCalendario)

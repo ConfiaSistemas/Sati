@@ -180,6 +180,7 @@ Partial Class DocumentosCreditoLegal
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dtdatosDocumentosNuevos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "DocumentosCreditoLegal"
         Me.Text = "DocumentosCreditoLegal"
         CType(Me.dtdatosDocumentosNuevos, System.ComponentModel.ISupportInitialize).EndInit()

@@ -210,6 +210,7 @@ Partial Class impuestos
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dtimpuestos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "impuestos"
         Me.Text = "Clientes"
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).EndInit()

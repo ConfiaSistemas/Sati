@@ -382,6 +382,7 @@ Partial Class ActInformacionLegal
         Me.Controls.Add(Me.ComboTipo)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ActInformacionLegal"
         Me.Text = "ActInformacionLegal"
         Me.Panel1.ResumeLayout(False)

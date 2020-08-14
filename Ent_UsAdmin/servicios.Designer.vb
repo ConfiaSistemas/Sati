@@ -22,6 +22,7 @@ Partial Class servicios
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(servicios))
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.lblmodificar = New ConfiaAdmin.MonoFlat.MonoFlat_Label()
         Me.lbleliminar = New ConfiaAdmin.MonoFlat.MonoFlat_Label()
@@ -112,6 +113,7 @@ Partial Class servicios
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "servicios"
         Me.Text = "servicios"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

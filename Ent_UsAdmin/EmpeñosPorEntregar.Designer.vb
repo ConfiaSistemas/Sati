@@ -122,12 +122,12 @@ Partial Class EmpeñosPorEntregar
         '
         Me.ContextMenuEntregar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EntregarToolStripMenuItem})
         Me.ContextMenuEntregar.Name = "ContextMenuEntregar"
-        Me.ContextMenuEntregar.Size = New System.Drawing.Size(153, 48)
+        Me.ContextMenuEntregar.Size = New System.Drawing.Size(119, 26)
         '
         'EntregarToolStripMenuItem
         '
         Me.EntregarToolStripMenuItem.Name = "EntregarToolStripMenuItem"
-        Me.EntregarToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.EntregarToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
         Me.EntregarToolStripMenuItem.Text = "Entregar"
         '
         'BunifuThinButton21
@@ -178,6 +178,7 @@ Partial Class EmpeñosPorEntregar
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.dtimpuestos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "EmpeñosPorEntregar"
         Me.Text = "CreditosPorEntregar"
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).EndInit()

@@ -22,10 +22,11 @@ Partial Class DatosConsultaSolicitud
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DatosConsultaSolicitud))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
@@ -132,10 +133,16 @@ Partial Class DatosConsultaSolicitud
         Me.txtEnfermedad = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label49 = New System.Windows.Forms.Label()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.txtMontoAutorizado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label50 = New System.Windows.Forms.Label()
         Me.Label39 = New System.Windows.Forms.Label()
+        Me.txtMontoAutorizado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.txtComentarios = New System.Windows.Forms.TextBox()
+        Me.Label50 = New System.Windows.Forms.Label()
+        Me.Label54 = New System.Windows.Forms.Label()
+        Me.txtComentariosVerificacion = New System.Windows.Forms.TextBox()
+        Me.txtMontoVerificacion = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label53 = New System.Windows.Forms.Label()
+        Me.txtMontoSolicitado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label52 = New System.Windows.Forms.Label()
         Me.dtdatosDocumentos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.txtObservacionesDomicilio = New System.Windows.Forms.TextBox()
@@ -155,12 +162,6 @@ Partial Class DatosConsultaSolicitud
         Me.BackgroundDatosSolicitud = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundDocumentos = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundRechazo = New System.ComponentModel.BackgroundWorker()
-        Me.Label54 = New System.Windows.Forms.Label()
-        Me.txtComentariosVerificacion = New System.Windows.Forms.TextBox()
-        Me.txtMontoVerificacion = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label53 = New System.Windows.Forms.Label()
-        Me.txtMontoSolicitado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label52 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -1830,6 +1831,16 @@ Partial Class DatosConsultaSolicitud
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Verificación"
         '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.ForeColor = System.Drawing.Color.White
+        Me.Label39.Location = New System.Drawing.Point(18, 289)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(65, 13)
+        Me.Label39.TabIndex = 155
+        Me.Label39.Text = "Comentarios"
+        '
         'txtMontoAutorizado
         '
         Me.txtMontoAutorizado.Cursor = System.Windows.Forms.Cursors.IBeam
@@ -1850,26 +1861,6 @@ Partial Class DatosConsultaSolicitud
         Me.txtMontoAutorizado.TabIndex = 155
         Me.txtMontoAutorizado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
-        'Label50
-        '
-        Me.Label50.AutoSize = True
-        Me.Label50.ForeColor = System.Drawing.Color.White
-        Me.Label50.Location = New System.Drawing.Point(268, 246)
-        Me.Label50.Name = "Label50"
-        Me.Label50.Size = New System.Drawing.Size(115, 13)
-        Me.Label50.TabIndex = 154
-        Me.Label50.Text = "Monto Autorizado Final"
-        '
-        'Label39
-        '
-        Me.Label39.AutoSize = True
-        Me.Label39.ForeColor = System.Drawing.Color.White
-        Me.Label39.Location = New System.Drawing.Point(18, 289)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(65, 13)
-        Me.Label39.TabIndex = 155
-        Me.Label39.Text = "Comentarios"
-        '
         'txtComentarios
         '
         Me.txtComentarios.Enabled = False
@@ -1879,187 +1870,15 @@ Partial Class DatosConsultaSolicitud
         Me.txtComentarios.Size = New System.Drawing.Size(222, 113)
         Me.txtComentarios.TabIndex = 154
         '
-        'dtdatosDocumentos
+        'Label50
         '
-        Me.dtdatosDocumentos.AllowUserToAddRows = False
-        Me.dtdatosDocumentos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatosDocumentos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
-        Me.dtdatosDocumentos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dtdatosDocumentos.BackgroundColor = System.Drawing.Color.Gainsboro
-        Me.dtdatosDocumentos.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dtdatosDocumentos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatosDocumentos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
-        Me.dtdatosDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtdatosDocumentos.DoubleBuffered = True
-        Me.dtdatosDocumentos.EnableHeadersVisualStyles = False
-        Me.dtdatosDocumentos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
-        Me.dtdatosDocumentos.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        Me.dtdatosDocumentos.Location = New System.Drawing.Point(504, 59)
-        Me.dtdatosDocumentos.Name = "dtdatosDocumentos"
-        Me.dtdatosDocumentos.ReadOnly = True
-        Me.dtdatosDocumentos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dtdatosDocumentos.RowHeadersVisible = False
-        Me.dtdatosDocumentos.Size = New System.Drawing.Size(480, 266)
-        Me.dtdatosDocumentos.TabIndex = 26
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.ForeColor = System.Drawing.Color.White
-        Me.Label21.Location = New System.Drawing.Point(501, 27)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(67, 13)
-        Me.Label21.TabIndex = 150
-        Me.Label21.Text = "Documentos"
-        '
-        'txtObservacionesDomicilio
-        '
-        Me.txtObservacionesDomicilio.Enabled = False
-        Me.txtObservacionesDomicilio.Location = New System.Drawing.Point(21, 44)
-        Me.txtObservacionesDomicilio.Multiline = True
-        Me.txtObservacionesDomicilio.Name = "txtObservacionesDomicilio"
-        Me.txtObservacionesDomicilio.Size = New System.Drawing.Size(222, 93)
-        Me.txtObservacionesDomicilio.TabIndex = 148
-        '
-        'txtHorarioVerificacion
-        '
-        Me.txtHorarioVerificacion.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtHorarioVerificacion.Enabled = False
-        Me.txtHorarioVerificacion.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtHorarioVerificacion.ForeColor = System.Drawing.Color.White
-        Me.txtHorarioVerificacion.HintForeColor = System.Drawing.Color.White
-        Me.txtHorarioVerificacion.HintText = ""
-        Me.txtHorarioVerificacion.isPassword = False
-        Me.txtHorarioVerificacion.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtHorarioVerificacion.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtHorarioVerificacion.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtHorarioVerificacion.LineThickness = 3
-        Me.txtHorarioVerificacion.Location = New System.Drawing.Point(271, 44)
-        Me.txtHorarioVerificacion.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtHorarioVerificacion.Name = "txtHorarioVerificacion"
-        Me.txtHorarioVerificacion.Size = New System.Drawing.Size(101, 29)
-        Me.txtHorarioVerificacion.TabIndex = 125
-        Me.txtHorarioVerificacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label55
-        '
-        Me.Label55.AutoSize = True
-        Me.Label55.ForeColor = System.Drawing.Color.White
-        Me.Label55.Location = New System.Drawing.Point(268, 27)
-        Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(113, 13)
-        Me.Label55.TabIndex = 124
-        Me.Label55.Text = "Horario de verificación"
-        '
-        'Label56
-        '
-        Me.Label56.AutoSize = True
-        Me.Label56.ForeColor = System.Drawing.Color.White
-        Me.Label56.Location = New System.Drawing.Point(23, 28)
-        Me.Label56.Name = "Label56"
-        Me.Label56.Size = New System.Drawing.Size(138, 13)
-        Me.Label56.TabIndex = 122
-        Me.Label56.Text = "Observaciones del domicilio"
-        '
-        'dtdatos
-        '
-        Me.dtdatos.AllowUserToAddRows = False
-        Me.dtdatos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
-        Me.dtdatos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dtdatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.dtdatos.BackgroundColor = System.Drawing.Color.Gainsboro
-        Me.dtdatos.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dtdatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
-        Me.dtdatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtdatos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.IdCliente, Me.Nombre, Me.Estado, Me.Monto})
-        Me.dtdatos.DoubleBuffered = True
-        Me.dtdatos.EnableHeadersVisualStyles = False
-        Me.dtdatos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
-        Me.dtdatos.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        Me.dtdatos.Location = New System.Drawing.Point(12, 43)
-        Me.dtdatos.Name = "dtdatos"
-        Me.dtdatos.ReadOnly = True
-        Me.dtdatos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dtdatos.RowHeadersVisible = False
-        Me.dtdatos.Size = New System.Drawing.Size(945, 158)
-        Me.dtdatos.TabIndex = 25
-        '
-        'Id
-        '
-        Me.Id.HeaderText = "Id"
-        Me.Id.Name = "Id"
-        Me.Id.ReadOnly = True
-        Me.Id.Width = 42
-        '
-        'IdCliente
-        '
-        Me.IdCliente.HeaderText = "IdCliente"
-        Me.IdCliente.Name = "IdCliente"
-        Me.IdCliente.ReadOnly = True
-        Me.IdCliente.Width = 85
-        '
-        'Nombre
-        '
-        Me.Nombre.HeaderText = "Nombre"
-        Me.Nombre.Name = "Nombre"
-        Me.Nombre.ReadOnly = True
-        Me.Nombre.Width = 79
-        '
-        'Estado
-        '
-        Me.Estado.HeaderText = "Estado"
-        Me.Estado.Name = "Estado"
-        Me.Estado.ReadOnly = True
-        Me.Estado.Width = 71
-        '
-        'Monto
-        '
-        Me.Monto.HeaderText = "Monto Autorizado"
-        Me.Monto.Name = "Monto"
-        Me.Monto.ReadOnly = True
-        Me.Monto.Width = 126
-        '
-        'BackgroundWorker1
-        '
-        '
-        'BackgroundAct
-        '
-        '
-        'BackgroundDocumentosSolicitud
-        '
-        '
-        'BackgroundVerificacion
-        '
-        '
-        'BackgroundDatosSolicitud
-        '
-        '
-        'BackgroundDocumentos
-        '
-        '
-        'BackgroundRechazo
-        '
+        Me.Label50.AutoSize = True
+        Me.Label50.ForeColor = System.Drawing.Color.White
+        Me.Label50.Location = New System.Drawing.Point(268, 246)
+        Me.Label50.Name = "Label50"
+        Me.Label50.Size = New System.Drawing.Size(115, 13)
+        Me.Label50.TabIndex = 154
+        Me.Label50.Text = "Monto Autorizado Final"
         '
         'Label54
         '
@@ -2140,16 +1959,199 @@ Partial Class DatosConsultaSolicitud
         Me.Label52.TabIndex = 161
         Me.Label52.Text = "Monto Solicitado"
         '
+        'dtdatosDocumentos
+        '
+        Me.dtdatosDocumentos.AllowUserToAddRows = False
+        Me.dtdatosDocumentos.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatosDocumentos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dtdatosDocumentos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtdatosDocumentos.BackgroundColor = System.Drawing.Color.Gainsboro
+        Me.dtdatosDocumentos.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dtdatosDocumentos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatosDocumentos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dtdatosDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtdatosDocumentos.DoubleBuffered = True
+        Me.dtdatosDocumentos.EnableHeadersVisualStyles = False
+        Me.dtdatosDocumentos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
+        Me.dtdatosDocumentos.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        Me.dtdatosDocumentos.Location = New System.Drawing.Point(504, 59)
+        Me.dtdatosDocumentos.Name = "dtdatosDocumentos"
+        Me.dtdatosDocumentos.ReadOnly = True
+        Me.dtdatosDocumentos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.dtdatosDocumentos.RowHeadersVisible = False
+        Me.dtdatosDocumentos.Size = New System.Drawing.Size(480, 266)
+        Me.dtdatosDocumentos.TabIndex = 26
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.ForeColor = System.Drawing.Color.White
+        Me.Label21.Location = New System.Drawing.Point(501, 27)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(67, 13)
+        Me.Label21.TabIndex = 150
+        Me.Label21.Text = "Documentos"
+        '
+        'txtObservacionesDomicilio
+        '
+        Me.txtObservacionesDomicilio.Enabled = False
+        Me.txtObservacionesDomicilio.Location = New System.Drawing.Point(21, 44)
+        Me.txtObservacionesDomicilio.Multiline = True
+        Me.txtObservacionesDomicilio.Name = "txtObservacionesDomicilio"
+        Me.txtObservacionesDomicilio.Size = New System.Drawing.Size(222, 93)
+        Me.txtObservacionesDomicilio.TabIndex = 148
+        '
+        'txtHorarioVerificacion
+        '
+        Me.txtHorarioVerificacion.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtHorarioVerificacion.Enabled = False
+        Me.txtHorarioVerificacion.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtHorarioVerificacion.ForeColor = System.Drawing.Color.White
+        Me.txtHorarioVerificacion.HintForeColor = System.Drawing.Color.White
+        Me.txtHorarioVerificacion.HintText = ""
+        Me.txtHorarioVerificacion.isPassword = False
+        Me.txtHorarioVerificacion.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtHorarioVerificacion.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtHorarioVerificacion.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtHorarioVerificacion.LineThickness = 3
+        Me.txtHorarioVerificacion.Location = New System.Drawing.Point(271, 44)
+        Me.txtHorarioVerificacion.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtHorarioVerificacion.Name = "txtHorarioVerificacion"
+        Me.txtHorarioVerificacion.Size = New System.Drawing.Size(101, 29)
+        Me.txtHorarioVerificacion.TabIndex = 125
+        Me.txtHorarioVerificacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label55
+        '
+        Me.Label55.AutoSize = True
+        Me.Label55.ForeColor = System.Drawing.Color.White
+        Me.Label55.Location = New System.Drawing.Point(268, 27)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(113, 13)
+        Me.Label55.TabIndex = 124
+        Me.Label55.Text = "Horario de verificación"
+        '
+        'Label56
+        '
+        Me.Label56.AutoSize = True
+        Me.Label56.ForeColor = System.Drawing.Color.White
+        Me.Label56.Location = New System.Drawing.Point(23, 28)
+        Me.Label56.Name = "Label56"
+        Me.Label56.Size = New System.Drawing.Size(138, 13)
+        Me.Label56.TabIndex = 122
+        Me.Label56.Text = "Observaciones del domicilio"
+        '
+        'dtdatos
+        '
+        Me.dtdatos.AllowUserToAddRows = False
+        Me.dtdatos.AllowUserToDeleteRows = False
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        Me.dtdatos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtdatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.dtdatos.BackgroundColor = System.Drawing.Color.Gainsboro
+        Me.dtdatos.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dtdatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.dtdatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtdatos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.IdCliente, Me.Nombre, Me.Estado, Me.Monto})
+        Me.dtdatos.DoubleBuffered = True
+        Me.dtdatos.EnableHeadersVisualStyles = False
+        Me.dtdatos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
+        Me.dtdatos.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        Me.dtdatos.Location = New System.Drawing.Point(12, 43)
+        Me.dtdatos.Name = "dtdatos"
+        Me.dtdatos.ReadOnly = True
+        Me.dtdatos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.dtdatos.RowHeadersVisible = False
+        Me.dtdatos.Size = New System.Drawing.Size(945, 158)
+        Me.dtdatos.TabIndex = 25
+        '
+        'Id
+        '
+        Me.Id.HeaderText = "Id"
+        Me.Id.Name = "Id"
+        Me.Id.ReadOnly = True
+        Me.Id.Width = 42
+        '
+        'IdCliente
+        '
+        Me.IdCliente.HeaderText = "IdCliente"
+        Me.IdCliente.Name = "IdCliente"
+        Me.IdCliente.ReadOnly = True
+        Me.IdCliente.Width = 85
+        '
+        'Nombre
+        '
+        Me.Nombre.HeaderText = "Nombre"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        Me.Nombre.Width = 79
+        '
+        'Estado
+        '
+        Me.Estado.HeaderText = "Estado"
+        Me.Estado.Name = "Estado"
+        Me.Estado.ReadOnly = True
+        Me.Estado.Width = 71
+        '
+        'Monto
+        '
+        Me.Monto.HeaderText = "Monto Autorizado"
+        Me.Monto.Name = "Monto"
+        Me.Monto.ReadOnly = True
+        Me.Monto.Width = 126
+        '
+        'BackgroundWorker1
+        '
+        '
+        'BackgroundAct
+        '
+        '
+        'BackgroundDocumentosSolicitud
+        '
+        '
+        'BackgroundVerificacion
+        '
+        '
+        'BackgroundDatosSolicitud
+        '
+        '
+        'BackgroundDocumentos
+        '
+        '
+        'BackgroundRechazo
+        '
+        '
         'DatosConsultaSolicitud
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1155, 832)
+        Me.ClientSize = New System.Drawing.Size(1155, 788)
         Me.Controls.Add(Me.dtdatos)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "DatosConsultaSolicitud"
         Me.Text = "Datos Verificación"
         Me.Panel1.ResumeLayout(False)

@@ -136,6 +136,8 @@ Partial Class DatosVerificacion
         Me.txtEnfermedad = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label49 = New System.Windows.Forms.Label()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.txtMontoSolicitado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label51 = New System.Windows.Forms.Label()
         Me.Label50 = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
@@ -147,6 +149,8 @@ Partial Class DatosVerificacion
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtMontoVerificacion = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label52 = New System.Windows.Forms.Label()
         Me.Label39 = New System.Windows.Forms.Label()
         Me.txtComentarios = New System.Windows.Forms.TextBox()
         Me.RadioRechazado = New System.Windows.Forms.RadioButton()
@@ -172,10 +176,6 @@ Partial Class DatosVerificacion
         Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundCargaDocumentos = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundVerificaDocumentos = New System.ComponentModel.BackgroundWorker()
-        Me.txtMontoSolicitado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label51 = New System.Windows.Forms.Label()
-        Me.txtMontoVerificacion = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label52 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -1873,6 +1873,36 @@ Partial Class DatosVerificacion
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Verificación"
         '
+        'txtMontoSolicitado
+        '
+        Me.txtMontoSolicitado.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtMontoSolicitado.Enabled = False
+        Me.txtMontoSolicitado.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoSolicitado.ForeColor = System.Drawing.Color.White
+        Me.txtMontoSolicitado.HintForeColor = System.Drawing.Color.White
+        Me.txtMontoSolicitado.HintText = ""
+        Me.txtMontoSolicitado.isPassword = False
+        Me.txtMontoSolicitado.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtMontoSolicitado.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtMontoSolicitado.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtMontoSolicitado.LineThickness = 3
+        Me.txtMontoSolicitado.Location = New System.Drawing.Point(271, 122)
+        Me.txtMontoSolicitado.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMontoSolicitado.Name = "txtMontoSolicitado"
+        Me.txtMontoSolicitado.Size = New System.Drawing.Size(101, 29)
+        Me.txtMontoSolicitado.TabIndex = 157
+        Me.txtMontoSolicitado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label51
+        '
+        Me.Label51.AutoSize = True
+        Me.Label51.ForeColor = System.Drawing.Color.White
+        Me.Label51.Location = New System.Drawing.Point(268, 105)
+        Me.Label51.Name = "Label51"
+        Me.Label51.Size = New System.Drawing.Size(86, 13)
+        Me.Label51.TabIndex = 156
+        Me.Label51.Text = "Monto Solicitado"
+        '
         'Label50
         '
         Me.Label50.AutoSize = True
@@ -2031,6 +2061,35 @@ Partial Class DatosVerificacion
         Me.GroupBox1.TabIndex = 153
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Marcar Como"
+        '
+        'txtMontoVerificacion
+        '
+        Me.txtMontoVerificacion.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtMontoVerificacion.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoVerificacion.ForeColor = System.Drawing.Color.White
+        Me.txtMontoVerificacion.HintForeColor = System.Drawing.Color.White
+        Me.txtMontoVerificacion.HintText = ""
+        Me.txtMontoVerificacion.isPassword = False
+        Me.txtMontoVerificacion.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtMontoVerificacion.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtMontoVerificacion.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtMontoVerificacion.LineThickness = 3
+        Me.txtMontoVerificacion.Location = New System.Drawing.Point(871, 58)
+        Me.txtMontoVerificacion.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMontoVerificacion.Name = "txtMontoVerificacion"
+        Me.txtMontoVerificacion.Size = New System.Drawing.Size(101, 29)
+        Me.txtMontoVerificacion.TabIndex = 159
+        Me.txtMontoVerificacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label52
+        '
+        Me.Label52.AutoSize = True
+        Me.Label52.ForeColor = System.Drawing.Color.White
+        Me.Label52.Location = New System.Drawing.Point(868, 41)
+        Me.Label52.Name = "Label52"
+        Me.Label52.Size = New System.Drawing.Size(90, 13)
+        Me.Label52.TabIndex = 158
+        Me.Label52.Text = "Monto Autorizado"
         '
         'Label39
         '
@@ -2257,65 +2316,6 @@ Partial Class DatosVerificacion
         'BackgroundVerificaDocumentos
         '
         '
-        'txtMontoSolicitado
-        '
-        Me.txtMontoSolicitado.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtMontoSolicitado.Enabled = False
-        Me.txtMontoSolicitado.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoSolicitado.ForeColor = System.Drawing.Color.White
-        Me.txtMontoSolicitado.HintForeColor = System.Drawing.Color.White
-        Me.txtMontoSolicitado.HintText = ""
-        Me.txtMontoSolicitado.isPassword = False
-        Me.txtMontoSolicitado.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtMontoSolicitado.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtMontoSolicitado.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtMontoSolicitado.LineThickness = 3
-        Me.txtMontoSolicitado.Location = New System.Drawing.Point(271, 122)
-        Me.txtMontoSolicitado.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtMontoSolicitado.Name = "txtMontoSolicitado"
-        Me.txtMontoSolicitado.Size = New System.Drawing.Size(101, 29)
-        Me.txtMontoSolicitado.TabIndex = 157
-        Me.txtMontoSolicitado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label51
-        '
-        Me.Label51.AutoSize = True
-        Me.Label51.ForeColor = System.Drawing.Color.White
-        Me.Label51.Location = New System.Drawing.Point(268, 105)
-        Me.Label51.Name = "Label51"
-        Me.Label51.Size = New System.Drawing.Size(86, 13)
-        Me.Label51.TabIndex = 156
-        Me.Label51.Text = "Monto Solicitado"
-        '
-        'txtMontoVerificacion
-        '
-        Me.txtMontoVerificacion.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtMontoVerificacion.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoVerificacion.ForeColor = System.Drawing.Color.White
-        Me.txtMontoVerificacion.HintForeColor = System.Drawing.Color.White
-        Me.txtMontoVerificacion.HintText = ""
-        Me.txtMontoVerificacion.isPassword = False
-        Me.txtMontoVerificacion.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtMontoVerificacion.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtMontoVerificacion.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtMontoVerificacion.LineThickness = 3
-        Me.txtMontoVerificacion.Location = New System.Drawing.Point(871, 58)
-        Me.txtMontoVerificacion.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtMontoVerificacion.Name = "txtMontoVerificacion"
-        Me.txtMontoVerificacion.Size = New System.Drawing.Size(101, 29)
-        Me.txtMontoVerificacion.TabIndex = 159
-        Me.txtMontoVerificacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label52
-        '
-        Me.Label52.AutoSize = True
-        Me.Label52.ForeColor = System.Drawing.Color.White
-        Me.Label52.Location = New System.Drawing.Point(868, 41)
-        Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(90, 13)
-        Me.Label52.TabIndex = 158
-        Me.Label52.Text = "Monto Autorizado"
-        '
         'DatosVerificacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2326,6 +2326,7 @@ Partial Class DatosVerificacion
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "DatosVerificacion"
         Me.Text = "Datos Verificación"
         Me.Panel1.ResumeLayout(False)

@@ -132,7 +132,7 @@ Public Class CalendarioConvenio
             Dim comandoCalendario As SqlCommand
 
             Dim consultaCalendario As String
-            consultaCalendario = "Insert into calendarioConveniosSac values('" & numero & "','" & row.Cells(2).Value & "','" & row.Cells(1).Value & "','0','" & row.Cells(0).Value & "','','" & idConvenio & "','P','" & row.Cells(3).Value & "','0')"
+            consultaCalendario = "Insert into calendarioConveniosSac values('" & numero & "','" & row.Cells(2).Value & "','" & row.Cells(1).Value & "','0','" & row.Cells(0).Value & "','','" & idConvenio & "','P','" & row.Cells(3).Value & "','0','" & row.Cells(3).Value & "')"
             comandoCalendario = New SqlCommand
             comandoCalendario.Connection = conexionempresa
             comandoCalendario.CommandText = consultaCalendario

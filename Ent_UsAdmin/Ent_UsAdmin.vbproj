@@ -52,7 +52,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>lconfia.ico</ApplicationIcon>
+    <ApplicationIcon>SATI.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge.Controls">
@@ -970,6 +970,9 @@
     <EmbeddedResource Include="CatTiposdeCredito.resx">
       <DependentUpon>CatTiposdeCredito.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cmd.resx">
+      <DependentUpon>cmd.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Configuraciones.resx">
       <DependentUpon>Configuraciones.vb</DependentUpon>
     </EmbeddedResource>
@@ -1191,6 +1194,9 @@
     <EmbeddedResource Include="Verificacion.resx">
       <DependentUpon>Verificacion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Verificar.resx">
+      <DependentUpon>Verificar.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VistaDocumento.resx">
       <DependentUpon>VistaDocumento.vb</DependentUpon>
     </EmbeddedResource>
@@ -1374,6 +1380,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="gnlicense_key.txt" />
+    <Content Include="SATI.ico" />
     <None Include="Resources\Logo Confia.png" />
     <None Include="Resources\eaad3b05-c22d-49fb-ae4f-2d0e4ff7b0cb.jpg" />
     <Content Include="lconfia.ico" />

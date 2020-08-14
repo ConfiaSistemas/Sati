@@ -22,6 +22,7 @@ Partial Class Reportes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Reportes))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MonoFlat_Button3 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button5 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
@@ -176,6 +177,7 @@ Partial Class Reportes
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Reportes"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Form1"

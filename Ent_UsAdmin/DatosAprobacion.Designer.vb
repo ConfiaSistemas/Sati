@@ -23,10 +23,10 @@ Partial Class DatosAprobacion
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DatosAprobacion))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btn_rechazar = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
@@ -135,6 +135,12 @@ Partial Class DatosAprobacion
         Me.txtEnfermedad = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label49 = New System.Windows.Forms.Label()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.Label54 = New System.Windows.Forms.Label()
+        Me.txtComentariosVerificacion = New System.Windows.Forms.TextBox()
+        Me.txtMontoVerificacion = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label53 = New System.Windows.Forms.Label()
+        Me.txtMontoSolicitado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label52 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtMontoAutorizado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label50 = New System.Windows.Forms.Label()
@@ -164,12 +170,6 @@ Partial Class DatosAprobacion
         Me.txtMontoTotal = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label51 = New System.Windows.Forms.Label()
         Me.BackgroundRechazo = New System.ComponentModel.BackgroundWorker()
-        Me.txtMontoSolicitado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label52 = New System.Windows.Forms.Label()
-        Me.txtMontoVerificacion = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label53 = New System.Windows.Forms.Label()
-        Me.Label54 = New System.Windows.Forms.Label()
-        Me.txtComentariosVerificacion = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -1845,6 +1845,85 @@ Partial Class DatosAprobacion
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Verificación"
         '
+        'Label54
+        '
+        Me.Label54.AutoSize = True
+        Me.Label54.ForeColor = System.Drawing.Color.White
+        Me.Label54.Location = New System.Drawing.Point(18, 144)
+        Me.Label54.Name = "Label54"
+        Me.Label54.Size = New System.Drawing.Size(65, 13)
+        Me.Label54.TabIndex = 157
+        Me.Label54.Text = "Comentarios"
+        '
+        'txtComentariosVerificacion
+        '
+        Me.txtComentariosVerificacion.Enabled = False
+        Me.txtComentariosVerificacion.Location = New System.Drawing.Point(21, 166)
+        Me.txtComentariosVerificacion.Multiline = True
+        Me.txtComentariosVerificacion.Name = "txtComentariosVerificacion"
+        Me.txtComentariosVerificacion.Size = New System.Drawing.Size(222, 97)
+        Me.txtComentariosVerificacion.TabIndex = 156
+        '
+        'txtMontoVerificacion
+        '
+        Me.txtMontoVerificacion.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtMontoVerificacion.Enabled = False
+        Me.txtMontoVerificacion.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoVerificacion.ForeColor = System.Drawing.Color.White
+        Me.txtMontoVerificacion.HintForeColor = System.Drawing.Color.White
+        Me.txtMontoVerificacion.HintText = ""
+        Me.txtMontoVerificacion.isPassword = False
+        Me.txtMontoVerificacion.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtMontoVerificacion.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtMontoVerificacion.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtMontoVerificacion.LineThickness = 3
+        Me.txtMontoVerificacion.Location = New System.Drawing.Point(271, 183)
+        Me.txtMontoVerificacion.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMontoVerificacion.Name = "txtMontoVerificacion"
+        Me.txtMontoVerificacion.Size = New System.Drawing.Size(101, 29)
+        Me.txtMontoVerificacion.TabIndex = 159
+        Me.txtMontoVerificacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label53
+        '
+        Me.Label53.AutoSize = True
+        Me.Label53.ForeColor = System.Drawing.Color.White
+        Me.Label53.Location = New System.Drawing.Point(268, 166)
+        Me.Label53.Name = "Label53"
+        Me.Label53.Size = New System.Drawing.Size(136, 13)
+        Me.Label53.TabIndex = 158
+        Me.Label53.Text = "Monto Autorizado por V y C"
+        '
+        'txtMontoSolicitado
+        '
+        Me.txtMontoSolicitado.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtMontoSolicitado.Enabled = False
+        Me.txtMontoSolicitado.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoSolicitado.ForeColor = System.Drawing.Color.White
+        Me.txtMontoSolicitado.HintForeColor = System.Drawing.Color.White
+        Me.txtMontoSolicitado.HintText = ""
+        Me.txtMontoSolicitado.isPassword = False
+        Me.txtMontoSolicitado.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtMontoSolicitado.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtMontoSolicitado.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtMontoSolicitado.LineThickness = 3
+        Me.txtMontoSolicitado.Location = New System.Drawing.Point(271, 114)
+        Me.txtMontoSolicitado.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMontoSolicitado.Name = "txtMontoSolicitado"
+        Me.txtMontoSolicitado.Size = New System.Drawing.Size(101, 29)
+        Me.txtMontoSolicitado.TabIndex = 157
+        Me.txtMontoSolicitado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label52
+        '
+        Me.Label52.AutoSize = True
+        Me.Label52.ForeColor = System.Drawing.Color.White
+        Me.Label52.Location = New System.Drawing.Point(268, 97)
+        Me.Label52.Name = "Label52"
+        Me.Label52.Size = New System.Drawing.Size(86, 13)
+        Me.Label52.TabIndex = 156
+        Me.Label52.Text = "Monto Solicitado"
+        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.txtMontoAutorizado)
@@ -1939,22 +2018,22 @@ Partial Class DatosAprobacion
         '
         Me.dtdatosDocumentos.AllowUserToAddRows = False
         Me.dtdatosDocumentos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatosDocumentos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatosDocumentos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dtdatosDocumentos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtdatosDocumentos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatosDocumentos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatosDocumentos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatosDocumentos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatosDocumentos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dtdatosDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatosDocumentos.DoubleBuffered = True
         Me.dtdatosDocumentos.EnableHeadersVisualStyles = False
@@ -2054,22 +2133,22 @@ Partial Class DatosAprobacion
         '
         Me.dtdatos.AllowUserToAddRows = False
         Me.dtdatos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dtdatos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtdatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dtdatos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dtdatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.IdCliente, Me.Nombre, Me.Estado, Me.Monto})
         Me.dtdatos.DoubleBuffered = True
@@ -2170,97 +2249,19 @@ Partial Class DatosAprobacion
         'BackgroundRechazo
         '
         '
-        'txtMontoSolicitado
-        '
-        Me.txtMontoSolicitado.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtMontoSolicitado.Enabled = False
-        Me.txtMontoSolicitado.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoSolicitado.ForeColor = System.Drawing.Color.White
-        Me.txtMontoSolicitado.HintForeColor = System.Drawing.Color.White
-        Me.txtMontoSolicitado.HintText = ""
-        Me.txtMontoSolicitado.isPassword = False
-        Me.txtMontoSolicitado.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtMontoSolicitado.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtMontoSolicitado.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtMontoSolicitado.LineThickness = 3
-        Me.txtMontoSolicitado.Location = New System.Drawing.Point(271, 114)
-        Me.txtMontoSolicitado.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtMontoSolicitado.Name = "txtMontoSolicitado"
-        Me.txtMontoSolicitado.Size = New System.Drawing.Size(101, 29)
-        Me.txtMontoSolicitado.TabIndex = 157
-        Me.txtMontoSolicitado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label52
-        '
-        Me.Label52.AutoSize = True
-        Me.Label52.ForeColor = System.Drawing.Color.White
-        Me.Label52.Location = New System.Drawing.Point(268, 97)
-        Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(86, 13)
-        Me.Label52.TabIndex = 156
-        Me.Label52.Text = "Monto Solicitado"
-        '
-        'txtMontoVerificacion
-        '
-        Me.txtMontoVerificacion.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtMontoVerificacion.Enabled = False
-        Me.txtMontoVerificacion.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoVerificacion.ForeColor = System.Drawing.Color.White
-        Me.txtMontoVerificacion.HintForeColor = System.Drawing.Color.White
-        Me.txtMontoVerificacion.HintText = ""
-        Me.txtMontoVerificacion.isPassword = False
-        Me.txtMontoVerificacion.LineFocusedColor = System.Drawing.Color.Blue
-        Me.txtMontoVerificacion.LineIdleColor = System.Drawing.Color.Gray
-        Me.txtMontoVerificacion.LineMouseHoverColor = System.Drawing.Color.Blue
-        Me.txtMontoVerificacion.LineThickness = 3
-        Me.txtMontoVerificacion.Location = New System.Drawing.Point(271, 183)
-        Me.txtMontoVerificacion.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtMontoVerificacion.Name = "txtMontoVerificacion"
-        Me.txtMontoVerificacion.Size = New System.Drawing.Size(101, 29)
-        Me.txtMontoVerificacion.TabIndex = 159
-        Me.txtMontoVerificacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label53
-        '
-        Me.Label53.AutoSize = True
-        Me.Label53.ForeColor = System.Drawing.Color.White
-        Me.Label53.Location = New System.Drawing.Point(268, 166)
-        Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(136, 13)
-        Me.Label53.TabIndex = 158
-        Me.Label53.Text = "Monto Autorizado por V y C"
-        '
-        'Label54
-        '
-        Me.Label54.AutoSize = True
-        Me.Label54.ForeColor = System.Drawing.Color.White
-        Me.Label54.Location = New System.Drawing.Point(18, 144)
-        Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(65, 13)
-        Me.Label54.TabIndex = 157
-        Me.Label54.Text = "Comentarios"
-        '
-        'txtComentariosVerificacion
-        '
-        Me.txtComentariosVerificacion.Enabled = False
-        Me.txtComentariosVerificacion.Location = New System.Drawing.Point(21, 166)
-        Me.txtComentariosVerificacion.Multiline = True
-        Me.txtComentariosVerificacion.Name = "txtComentariosVerificacion"
-        Me.txtComentariosVerificacion.Size = New System.Drawing.Size(222, 97)
-        Me.txtComentariosVerificacion.TabIndex = 156
-        '
         'DatosAprobacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1155, 832)
+        Me.ClientSize = New System.Drawing.Size(1155, 788)
         Me.Controls.Add(Me.txtMontoTotal)
         Me.Controls.Add(Me.Label51)
         Me.Controls.Add(Me.dtdatos)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "DatosAprobacion"
         Me.Text = "Datos Verificación"
         Me.Panel1.ResumeLayout(False)

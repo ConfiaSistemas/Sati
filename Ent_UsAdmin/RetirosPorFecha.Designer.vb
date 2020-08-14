@@ -275,6 +275,7 @@ Partial Class RetirosPorFecha
         Me.Controls.Add(Me.dateDesde)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "RetirosPorFecha"
         Me.Text = "Retiros Por Fecha"
         CType(Me.dtdatos, System.ComponentModel.ISupportInitialize).EndInit()

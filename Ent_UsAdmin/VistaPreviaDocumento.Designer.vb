@@ -54,6 +54,7 @@ Partial Class VistaPreviaDocumento
         Dim ResolutionSettings2 As Gnostice.Core.Graphics.ResolutionSettings = New Gnostice.Core.Graphics.ResolutionSettings()
         Dim ShapeRenderingSettings2 As Gnostice.Core.Graphics.ShapeRenderingSettings = New Gnostice.Core.Graphics.ShapeRenderingSettings()
         Dim TextRenderingSettings2 As Gnostice.Core.Graphics.TextRenderingSettings = New Gnostice.Core.Graphics.TextRenderingSettings()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(VistaPreviaDocumento))
         Me.DocumentViewer1 = New Gnostice.Controls.WinForms.DocumentViewer()
         Me.DocumentPrinter1 = New Gnostice.Controls.WinForms.DocumentPrinter()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -306,6 +307,7 @@ Partial Class VistaPreviaDocumento
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DocumentViewer1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "VistaPreviaDocumento"
         Me.Text = "VistaPreviaDocumento"
         Me.Panel1.ResumeLayout(False)

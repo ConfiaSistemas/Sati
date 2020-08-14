@@ -66,6 +66,7 @@ Partial Class DocumentosNecesarios
         Me.ClientSize = New System.Drawing.Size(701, 379)
         Me.Controls.Add(Me.btn_Procesar)
         Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "DocumentosNecesarios"
         Me.Text = "DocumentosNecesarios"
         Me.ResumeLayout(False)

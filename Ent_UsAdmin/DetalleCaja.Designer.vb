@@ -22,6 +22,7 @@ Partial Class DetalleCaja
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DetalleCaja))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
@@ -261,6 +262,7 @@ Partial Class DetalleCaja
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "DetalleCaja"
         Me.Text = "Detalle de Caja"
         Me.Panel1.ResumeLayout(False)

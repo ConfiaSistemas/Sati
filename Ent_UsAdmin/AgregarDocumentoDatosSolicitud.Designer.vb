@@ -157,6 +157,7 @@ Partial Class AgregarDocumentoDatosSolicitud
         Me.Controls.Add(Me.ComboDocumento)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "AgregarDocumentoDatosSolicitud"
         Me.Text = "Agregar Documento"
         Me.Panel1.ResumeLayout(False)

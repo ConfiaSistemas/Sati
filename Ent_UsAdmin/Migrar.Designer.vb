@@ -242,6 +242,7 @@ Partial Class Migrar
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dtimpuestos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Migrar"
         Me.Text = "Migrar"
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).EndInit()

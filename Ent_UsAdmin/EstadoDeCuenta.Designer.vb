@@ -187,6 +187,7 @@ Partial Class EstadoDeCuenta
         Me.Controls.Add(Me.dateDesde)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "EstadoDeCuenta"
         Me.Text = "EstadoDeCuenta"
         Me.Panel1.ResumeLayout(False)

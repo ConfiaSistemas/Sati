@@ -22,6 +22,7 @@ Partial Class inv
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(inv))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MonoFlat_Button2 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button1 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
@@ -176,6 +177,7 @@ Partial Class inv
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "inv"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Form1"

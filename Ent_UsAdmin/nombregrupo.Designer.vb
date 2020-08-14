@@ -23,6 +23,7 @@ Partial Class nombregrupo
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(nombregrupo))
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
@@ -51,6 +52,7 @@ Partial Class nombregrupo
         Me.ClientSize = New System.Drawing.Size(248, 101)
         Me.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "nombregrupo"
         Me.ShowInTaskbar = False
         Me.Text = "nombregrupo"

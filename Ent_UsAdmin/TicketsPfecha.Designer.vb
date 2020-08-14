@@ -292,6 +292,7 @@ Partial Class TicketsPfecha
         Me.Controls.Add(Me.TreeListView1)
         Me.Controls.Add(Me.Button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "TicketsPfecha"
         Me.Text = "TicketsPfecha"
         Me.Panel1.ResumeLayout(False)

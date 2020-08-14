@@ -327,6 +327,7 @@ Partial Class SolicitudesEmpeños
         Me.Controls.Add(Me.dtimpuestos)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "SolicitudesEmpeños"
         Me.Text = "Solicitudes"
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).EndInit()

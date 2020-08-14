@@ -294,6 +294,7 @@ Partial Class Agregar_Impuestos
         Me.Controls.Add(Me.txtnombre)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Agregar_Impuestos"
         Me.Text = "Agregar Cliente"
         Me.Panel1.ResumeLayout(False)
