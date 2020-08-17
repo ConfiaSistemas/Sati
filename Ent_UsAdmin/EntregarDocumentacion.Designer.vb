@@ -335,6 +335,7 @@ Partial Class EntregarDocumentacion
         Me.btnTarjeta.Size = New System.Drawing.Size(216, 38)
         Me.btnTarjeta.TabIndex = 43
         Me.btnTarjeta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btnTarjeta.Visible = False
         '
         'BackgroundTarjeta
         '

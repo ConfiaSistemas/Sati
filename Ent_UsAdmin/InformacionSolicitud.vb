@@ -362,10 +362,13 @@ end
 
     Private Sub BackgroundActualizaciones_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundActualizaciones.RunWorkerCompleted
         dtActualizaciones.DataSource = dataActualizaciones
-        If estado <> "C" Then
-            btn_convenio.Enabled = False
-        Else
+        If estado = "C" Then
             btn_convenio.Enabled = True
+        ElseIf estado = "R" Then
+            btn_convenio.Enabled = True
+            btn_convenio.ButtonText = "Imprimir Reestructura"
+        Else
+            btn_convenio.Enabled = False
         End If
         Cargando.MonoFlat_Label1.Text = "Cargando Comportamiento"
 
@@ -380,9 +383,14 @@ end
     End Sub
 
     Private Sub btn_convenio_Click(sender As Object, e As EventArgs) Handles btn_convenio.Click
-        ImprimirConvenio.idCredito = idCredito
-        ImprimirConvenio.Show()
-
+        Select Case estado
+            Case "C"
+                ImprimirConvenio.idCredito = idCredito
+                ImprimirConvenio.Show()
+            Case "R"
+                ImprimirReestructura.idCredito = idCredito
+                ImprimirReestructura.Show()
+        End Select
     End Sub
 
     Private Sub BackgroundComportamiento_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundComportamiento.DoWork

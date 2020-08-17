@@ -419,6 +419,12 @@
     <Compile Include="CrearConvenioLegal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ImprimirReestructura.Designer.vb">
+      <DependentUpon>ImprimirReestructura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImprimirReestructura.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ListadoMaestro.Designer.vb">
       <DependentUpon>ListadoMaestro.vb</DependentUpon>
     </Compile>
@@ -984,6 +990,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrearConvenioLegal.resx">
       <DependentUpon>CrearConvenioLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImprimirReestructura.resx">
+      <DependentUpon>ImprimirReestructura.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoMaestro.resx">
       <DependentUpon>ListadoMaestro.vb</DependentUpon>
