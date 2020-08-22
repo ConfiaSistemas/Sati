@@ -17,6 +17,7 @@
     Public catRetiros As New RetirosPorFecha
     Public catPagosHoy As New PagosHoy
     Public CatMoraNiveles As New MoraPorNiveles
+    Public CatListadoMaestro As New ListadoMaestro
 
 
     Private Sub inv_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
@@ -45,6 +46,8 @@
                 catPagosHoy.Size = Panel1.Size
             Case "MoraNiveles"
                 CatMoraNiveles.Size = Panel1.Size
+            Case "ListadoMaestro"
+                CatMoraNiveles.Size = Panel1.Size
         End Select
 
 
@@ -64,8 +67,9 @@
         catPagosHoy.Visible = False
         catRetiros.Visible = False
         catDesembolsos.Visible = True
+        CatListadoMaestro.Visible = False
 
-                catDesembolsos.TopLevel = False
+        catDesembolsos.TopLevel = False
 
                 catDesembolsos.Size = Panel1.Size
                 catDesembolsos.Location = New System.Drawing.Point(0, 0)
@@ -96,6 +100,7 @@
         catRetiros.Visible = False
         CatTickets.Visible = True
         CatTickets.TopLevel = False
+        CatListadoMaestro.Visible = False
 
         CatTickets.Size = Panel1.Size
         CatTickets.Location = New System.Drawing.Point(0, 0)
@@ -124,6 +129,7 @@
         catTicketsDetalle.Visible = True
         catTicketsDetalle.Visible = True
         catTicketsDetalle.TopLevel = False
+        CatListadoMaestro.Visible = False
 
         catTicketsDetalle.Size = Panel1.Size
         catTicketsDetalle.Location = New System.Drawing.Point(0, 0)
@@ -142,6 +148,7 @@
         CatMoraNiveles.Visible = False
         catPagosHoy.Visible = False
         catCreditosEnMora.Visible = True
+        CatListadoMaestro.Visible = False
 
         catCreditosEnMora.Visible = True
         catCreditosEnMora.Visible = True
@@ -164,6 +171,7 @@
         CatMoraNiveles.Visible = False
         catValorCartera.Visible = True
         catCreditosEnMora.Visible = False
+        CatListadoMaestro.Visible = False
 
         catValorCartera.Visible = True
         catValorCartera.Visible = True
@@ -189,6 +197,7 @@
         catRetiros.Visible = True
         catRetiros.Visible = True
         catRetiros.TopLevel = False
+        CatListadoMaestro.Visible = False
 
         catRetiros.Size = Panel1.Size
         catRetiros.Location = New System.Drawing.Point(0, 0)
@@ -210,6 +219,7 @@
         catPagosHoy.Visible = True
         catPagosHoy.Visible = True
         catPagosHoy.TopLevel = False
+        CatListadoMaestro.Visible = False
 
         catPagosHoy.Size = Panel1.Size
         catPagosHoy.Location = New System.Drawing.Point(0, 0)
@@ -227,6 +237,7 @@
         catCreditosEnMora.Visible = False
         catRetiros.Visible = False
         catPagosHoy.Visible = False
+        CatListadoMaestro.Visible = False
 
         CatMoraNiveles.Visible = True
         CatMoraNiveles.Visible = True
@@ -239,5 +250,25 @@
         CatMoraNiveles.Visible = True
         ventanapanel = "MoraNiveles"
         Panel1.Controls.Add(CatMoraNiveles)
+    End Sub
+
+    Private Sub MonoFlat_Button9_Click(sender As Object, e As EventArgs) Handles MonoFlat_Button9.Click
+        catDesembolsos.Visible = False
+        CatTickets.Visible = False
+        catTicketsDetalle.Visible = False
+        catValorCartera.Visible = False
+        catCreditosEnMora.Visible = False
+        catRetiros.Visible = False
+        catPagosHoy.Visible = False
+        CatMoraNiveles.Visible = False
+
+        CatListadoMaestro.Visible = True
+        CatListadoMaestro.TopLevel = False
+
+        CatListadoMaestro.Size = Panel1.Size
+        CatListadoMaestro.Location = New System.Drawing.Point(0, 0)
+        CatListadoMaestro.WindowState = FormWindowState.Normal
+        ventanapanel = "ListadoMaestro"
+        Panel1.Controls.Add(CatListadoMaestro)
     End Sub
 End Class

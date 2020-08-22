@@ -33,6 +33,7 @@ Partial Class Reportes
         Me.MonoFlat_Button6 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button7 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button8 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button9 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -41,9 +42,9 @@ Partial Class Reportes
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.Location = New System.Drawing.Point(2, 42)
+        Me.Panel1.Location = New System.Drawing.Point(2, 66)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(765, 348)
+        Me.Panel1.Size = New System.Drawing.Size(765, 324)
         Me.Panel1.TabIndex = 2
         '
         'MonoFlat_Button3
@@ -85,9 +86,10 @@ Partial Class Reportes
         Me.FlowLayoutPanel1.Controls.Add(Me.MonoFlat_Button6)
         Me.FlowLayoutPanel1.Controls.Add(Me.MonoFlat_Button7)
         Me.FlowLayoutPanel1.Controls.Add(Me.MonoFlat_Button8)
+        Me.FlowLayoutPanel1.Controls.Add(Me.MonoFlat_Button9)
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(2, -2)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(765, 38)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(765, 62)
         Me.FlowLayoutPanel1.TabIndex = 3
         '
         'MonoFlat_Button1
@@ -168,6 +170,19 @@ Partial Class Reportes
         Me.MonoFlat_Button8.Text = "Mora por niveles"
         Me.MonoFlat_Button8.TextAlignment = System.Drawing.StringAlignment.Center
         '
+        'MonoFlat_Button9
+        '
+        Me.MonoFlat_Button9.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button9.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button9.Image = Nothing
+        Me.MonoFlat_Button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button9.Location = New System.Drawing.Point(488, 33)
+        Me.MonoFlat_Button9.Name = "MonoFlat_Button9"
+        Me.MonoFlat_Button9.Size = New System.Drawing.Size(134, 24)
+        Me.MonoFlat_Button9.TabIndex = 12
+        Me.MonoFlat_Button9.Text = "Listado Maestro"
+        Me.MonoFlat_Button9.TextAlignment = System.Drawing.StringAlignment.Center
+        '
         'Reportes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -195,4 +210,5 @@ Partial Class Reportes
     Friend WithEvents MonoFlat_Button6 As MonoFlat.MonoFlat_Button
     Friend WithEvents MonoFlat_Button7 As MonoFlat.MonoFlat_Button
     Friend WithEvents MonoFlat_Button8 As MonoFlat.MonoFlat_Button
+    Friend WithEvents MonoFlat_Button9 As MonoFlat.MonoFlat_Button
 End Class
