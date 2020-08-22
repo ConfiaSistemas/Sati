@@ -166,8 +166,15 @@ Public Class InformacionSolicitud
         ' Else ISNULL((Select nombre from Credito where id = pagos.idCredito),0) 		End) As nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
         '(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "'  )pagos order by Fecha,Hora asc"
 
-        consulta = "if  exists(select * from reestructurassac where idCredito = '" & idCredito & "')
+        consulta = "if  exists(select * from ticket  where idCredito = '" & idCredito & "' and TipoDoc = (select id from TipoDoc where nombre = 'Cancelación de convenio'))
 begin
+select id,Recibido,(case when tipo = 'Legal' then Concepto
+							   when tipo = 'Extra' then Concepto
+							  
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Apertura')) )pagos 
+union
+
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
@@ -183,12 +190,45 @@ union
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito inner join ConveniosSac on Credito.id = ConveniosSac.idCredito where ConveniosSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from ConveniosSac where idCredito ='" & idCredito & "') and TipoDoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') )pagos
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and TipoDoc = (select id from tipodoc where nombre = 'Cancelación de convenio') )pagos
+union
+select id,Recibido,(case when tipo = 'Legal' then Concepto
+							   when tipo = 'Extra' then Concepto
+							  
+							   else ISNULL((select nombre from Credito inner join ReestructurasSac on credito.id = ReestructurasSac.idCredito where ReestructurasSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from reestructurassac where idcredito = '" & idCredito & "') and TipoDoc = (select id from tipodoc where nombre = 'Reestructura') )pagos
+
 order by Fecha,Hora asc
+end
+else if  exists(select * from ConveniosSac where idCredito = '" & idCredito & "' and Estado = 'A')
+begin
+select id,Recibido,(case when tipo = 'Legal' then Concepto
+							   when tipo = 'Extra' then Concepto
+							  
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Apertura')) )pagos 
+union
+select id,Recibido,(case when tipo = 'Legal' then Concepto
+							   when tipo = 'Extra' then Concepto
+							  
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Pago') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto')) )pagos 
+union
+select id,Recibido,(case when tipo = 'Legal' then Concepto
+							   when tipo = 'Extra' then Concepto
+							  
+							   else ISNULL((select nombre from Credito inner join ConveniosSac on Credito.id = ConveniosSac.idCredito where ConveniosSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from ConveniosSac where idCredito ='" & idCredito & "') and TipoDoc = (select id from tipodoc where nombre = 'Convenio') )pagos
 end
 else if not exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
 begin
+select id,Recibido,(case when tipo = 'Legal' then Concepto
+							   when tipo = 'Extra' then Concepto
+							  
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Apertura')) )pagos 
+union
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
@@ -259,6 +299,28 @@ end
                         End If
                     Case "Liquidación Insoluto"
                         consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & readerTicket("id") & "'"
+                        COMANDOdetalle = New SqlCommand
+                        COMANDOdetalle.Connection = conexionempresa
+                        COMANDOdetalle.CommandText = consultaDetalle
+                        readerDetalle = COMANDOdetalle.ExecuteReader
+                        If readerDetalle.HasRows Then
+                            While readerDetalle.Read
+                                Me._addSubItems(liItem.Nodes.Add(readerDetalle("pago")), readerDetalle("pagonormal"), readerDetalle("intereses"), readerDetalle("monto"))
+                            End While
+                        End If
+                    Case "Cancelación de Convenio"
+                        consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & readerTicket("id") & "'"
+                        COMANDOdetalle = New SqlCommand
+                        COMANDOdetalle.Connection = conexionempresa
+                        COMANDOdetalle.CommandText = consultaDetalle
+                        readerDetalle = COMANDOdetalle.ExecuteReader
+                        If readerDetalle.HasRows Then
+                            While readerDetalle.Read
+                                Me._addSubItems(liItem.Nodes.Add(readerDetalle("pago")), readerDetalle("pagonormal"), readerDetalle("intereses"), readerDetalle("monto"))
+                            End While
+                        End If
+                    Case "Reestructura"
+                        consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioreestructurassac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarioreestructurassac on ticketdetalle.idpago = calendarioreestructurassac.idpago where  idTicket = '" & readerTicket("id") & "'"
                         COMANDOdetalle = New SqlCommand
                         COMANDOdetalle.Connection = conexionempresa
                         COMANDOdetalle.CommandText = consultaDetalle
@@ -502,6 +564,21 @@ end
                         Dim consultaDetalle As String
                         Dim readerDetalle As SqlDataReader
                         consultaDetalle = "select Ticket.id,TicketDetalle.Monto,TicketDetalle.PagoNormal,TicketDetalle.Intereses,Ticket.Fecha,Ticket.Hora from TicketDetalle inner join Ticket on TicketDetalle.idTicket =  Ticket.id and TicketDetalle.idPago = '" & readerTicket("idpago") & "' and ticket.tipodoc = (select id from tipodoc where nombre = 'Convenio') order by Ticket.Fecha,Ticket.Hora asc"
+                        COMANDOdetalle = New SqlCommand
+                        COMANDOdetalle.Connection = conexionempresa
+                        COMANDOdetalle.CommandText = consultaDetalle
+                        readerDetalle = COMANDOdetalle.ExecuteReader
+                        If readerDetalle.HasRows Then
+                            While readerDetalle.Read
+                                ' Me._addSubItems(liItem.Nodes.Add(readerDetalle("pago")), readerDetalle("pagonormal"), readerDetalle("intereses"), readerDetalle("monto"))
+                                Me._addSubItemsDetalle(liItem.Nodes.Add(""), readerDetalle("id"), "", readerDetalle("pagonormal"), readerDetalle("intereses"), "", "", readerDetalle("hora").ToString, "", readerDetalle("fecha"))
+                            End While
+                        End If
+                    Case "Reestructura"
+                        Dim COMANDOdetalle As SqlCommand
+                        Dim consultaDetalle As String
+                        Dim readerDetalle As SqlDataReader
+                        consultaDetalle = "select Ticket.id,TicketDetalle.Monto,TicketDetalle.PagoNormal,TicketDetalle.Intereses,Ticket.Fecha,Ticket.Hora from TicketDetalle inner join Ticket on TicketDetalle.idTicket =  Ticket.id and TicketDetalle.idPago = '" & readerTicket("idpago") & "' and ticket.tipodoc = (select id from tipodoc where nombre = 'Reestructura') order by Ticket.Fecha,Ticket.Hora asc"
                         COMANDOdetalle = New SqlCommand
                         COMANDOdetalle.Connection = conexionempresa
                         COMANDOdetalle.CommandText = consultaDetalle

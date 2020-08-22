@@ -78,6 +78,15 @@ Public Class Tickets
                     comandonombre.Connection = conexionempresa
                     comandonombre.CommandText = consultaNombre
                     nombrecredito = comandonombre.ExecuteScalar
+                Case "Reestructura"
+                    Dim comandonombre As SqlCommand
+                    comandonombre = New SqlCommand
+
+                    Dim consultaNombre As String
+                    consultaNombre = "select credito.nombre from reestructurassac inner join credito on credito.id = reestructurassac.idcredito where reestructurassac.id = '" & reader("idcredito") & "'"
+                    comandonombre.Connection = conexionempresa
+                    comandonombre.CommandText = consultaNombre
+                    nombrecredito = comandonombre.ExecuteScalar
                 Case Else
                     Dim comandonombre As SqlCommand
                     comandonombre = New SqlCommand

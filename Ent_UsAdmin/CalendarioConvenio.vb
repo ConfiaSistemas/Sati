@@ -149,6 +149,14 @@ Public Class CalendarioConvenio
         comandoActCreditoLegal.ExecuteNonQuery()
 
 
+        Dim comandoCongelaMultas As SqlCommand
+        Dim consultaCongelaMultas As String
+        consultaCongelaMultas = "update calendarionormal set convenio = 1 where id_credito = '" & idCredito & "' and (estado = 'V' or estado = 'P')"
+        comandoCongelaMultas = New SqlCommand
+        comandoCongelaMultas.Connection = conexionempresa
+        comandoCongelaMultas.CommandText = consultaCongelaMultas
+        comandoCongelaMultas.ExecuteNonQuery()
+
     End Sub
 
     Private Sub btn_Procesar_Click(sender As Object, e As EventArgs) Handles btn_Procesar.Click
