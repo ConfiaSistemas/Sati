@@ -43,6 +43,7 @@ Partial Class ListadoMaestro
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -242,6 +243,9 @@ Partial Class ListadoMaestro
         Me.BunifuThinButton21.TabIndex = 7
         Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'BackgroundWorker1
+        '
+        '
         'ListadoMaestro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -278,4 +282,5 @@ Partial Class ListadoMaestro
     Friend WithEvents Telefono As DataGridViewTextBoxColumn
     Friend WithEvents Celular As DataGridViewTextBoxColumn
     Friend WithEvents Domicilio As DataGridViewTextBoxColumn
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 End Class

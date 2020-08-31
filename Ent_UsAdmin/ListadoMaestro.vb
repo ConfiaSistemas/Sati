@@ -1,20 +1,48 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 
 Public Class ListadoMaestro
     Dim ConsultaListado As String
+    Dim nCargando As New Cargando
     Private Sub ListadoMaestro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CheckForIllegalCrossThreadCalls = False
-        cargarListado()
-        txtnombre.Select()
 
-    End Sub
-    Public Sub cargarListado()
-        Dim nCargando As New Cargando
         nCargando.Show()
         nCargando.MonoFlat_Label1.Text = "Cargando Datos..."
         nCargando.TopMost = True
-
         dtimpuestos.Rows.Clear()
+        dtimpuestos.ScrollBars = ScrollBars.None
+        BackgroundWorker1.RunWorkerAsync()
+
+
+    End Sub
+
+
+    Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        nCargando = New Cargando
+        nCargando.Show()
+        nCargando.MonoFlat_Label1.Text = "Cargando Datos..."
+        nCargando.TopMost = True
+        dtimpuestos.Rows.Clear()
+        dtimpuestos.ScrollBars = ScrollBars.None
+        BackgroundWorker1.RunWorkerAsync()
+    End Sub
+
+
+    Private Sub txtnombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnombre.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            nCargando = New Cargando
+            nCargando.Show()
+            nCargando.MonoFlat_Label1.Text = "Cargando Datos..."
+            nCargando.TopMost = True
+            dtimpuestos.Rows.Clear()
+            dtimpuestos.ScrollBars = ScrollBars.None
+            BackgroundWorker1.RunWorkerAsync()
+        End If
+    End Sub
+
+    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+
         Try
 
             iniciarconexionempresa()
@@ -86,23 +114,12 @@ Select * from @Listado"
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+    End Sub
+
+    Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
         nCargando.TopMost = False
         nCargando.Close()
+        dtimpuestos.ScrollBars = ScrollBars.Both
+        txtnombre.Select()
     End Sub
-
-    Private Sub dtimpuestos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtimpuestos.CellContentClick
-
-    End Sub
-
-    Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        cargarListado()
-    End Sub
-
-
-    Private Sub txtnombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnombre.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            cargarListado()
-        End If
-    End Sub
-
 End Class
