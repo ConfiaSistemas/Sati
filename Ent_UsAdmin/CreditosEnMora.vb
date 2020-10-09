@@ -66,13 +66,10 @@ Public Class CreditosEnMora
                 ComboElección.Items.Clear()
 
                 ComboElección.Items.Add("Todos")
-                ComboElección.Items.Add("Nivel 1")
-                ComboElección.Items.Add("Nivel 2")
-                ComboElección.Items.Add("Nivel 3")
-                ComboElección.Items.Add("Nivel 4")
-                ComboElección.Items.Add("Legal")
-                ComboElección.Items.Add("Goteo")
+                For Each row As DataRow In dataGestores.Tables(0).Rows
 
+                    ComboElección.Items.Add(row("nombre"))
+                Next
                 ComboElección.SelectedIndex = 0
         End Select
     End Sub
@@ -113,9 +110,7 @@ Public Class CreditosEnMora
         Select Case ComboFiltro.Text
             Case "Gestor"
                 If ComboElección.Text = "Todos" Then
-                    consulta = "select creditos_en_mora.*,
-(case when (Diasdeatraso/7) < 1 then 'Goteo' when (Diasdeatraso /7) between 1 and 4 then 'Nivel 1' when (Diasdeatraso /7) between 5 and 8 then 'Nivel 2' when (Diasdeatraso /7) between 9 and 12 then 'Nivel 3' when (Diasdeatraso /7) between 13 and 16 then 'Nivel 4' else 'Legal'end)as Nivel
-from
+                    consulta = "select creditos_en_mora.* from
 (select carteraVencida.id, carteravencida.nombre as Nombre,format(pagare,'C','es-mx') as Pagaré,format(PagoSemanal,'C','es-mx') as 'Pago Semanal',format(AbonadoSinMultas,'C','es-mx') as 'Abonado sin multas',format(Multas,'C','es-mx') as Multas,format(AbonadoMultas,'C','es-mx') as 'Multas abonadas',format(multasPendientes,'C','es-mx') as 'Multas pendientes',format(VencidoNormal,'C','es-mx') as 'Vencido normal',format(TotalPendiente,'C','es-mx') as 'Total Pendiente',Pagos_atrasados as 'Pagos atrasados',FechaDeAtraso as 'Fecha del último abono',
 case when FechaDeAtraso = 'Nunca' then
 	(case when carteraVencida.Estado = 'C' then
@@ -133,7 +128,7 @@ else (case when carteraVencida.Estado = 'C' then
 	datediff(day,(select top 1 fechapago from CalendarioNormal where Abonado < (monto+interes) and id_credito = carteraVencida.id order by FechaPago asc),GETDATE())
 	end)
 end as Diasdeatraso,
-format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,carteravencida.Estado from 
+format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,Gestor,carteravencida.Estado from 
 (select nombre,id,pagare,PagoSemanal,AbonadoSinMultas,Multas,(AbonadoMultasL + AbonadoMultasV) as AbonadoMultas,(Multas - (AbonadoMultasL+AbonadoMultasV)) as multasPendientes,
  case when carteratotal.Estado = 'C' then
 case when pendiente = 0 then '0' else
@@ -212,16 +207,13 @@ when Cartera.Estado = 'R' then
 (select SUM(interes) as MultasVencidas from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado ='V' and ReestructurasSac.idcredito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V' and Credito.Estado <> 'L' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
+(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
-(select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc
-"
+(select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc"
 
                 Else
 
-                    consulta = "select * from (select creditos_en_mora.*,
-(case when (Diasdeatraso/7) < 1 then 'Goteo' when (Diasdeatraso /7) between 1 and 4 then 'Nivel 1' when (Diasdeatraso /7) between 5 and 8 then 'Nivel 2' when (Diasdeatraso /7) between 9 and 12 then 'Nivel 3' when (Diasdeatraso /7) between 13 and 16 then 'Nivel 4' else 'Legal'end)as Nivel
-from
+                    consulta = "select creditos_en_mora.* from
 (select carteraVencida.id, carteravencida.nombre as Nombre,format(pagare,'C','es-mx') as Pagaré,format(PagoSemanal,'C','es-mx') as 'Pago Semanal',format(AbonadoSinMultas,'C','es-mx') as 'Abonado sin multas',format(Multas,'C','es-mx') as Multas,format(AbonadoMultas,'C','es-mx') as 'Multas abonadas',format(multasPendientes,'C','es-mx') as 'Multas pendientes',format(VencidoNormal,'C','es-mx') as 'Vencido normal',format(TotalPendiente,'C','es-mx') as 'Total Pendiente',Pagos_atrasados as 'Pagos atrasados',FechaDeAtraso as 'Fecha del último abono',
 case when FechaDeAtraso = 'Nunca' then
 	(case when carteraVencida.Estado = 'C' then
@@ -239,7 +231,7 @@ else (case when carteraVencida.Estado = 'C' then
 	datediff(day,(select top 1 fechapago from CalendarioNormal where Abonado < (monto+interes) and id_credito = carteraVencida.id order by FechaPago asc),GETDATE())
 	end)
 end as Diasdeatraso,
-format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,carteravencida.Estado from 
+format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,Gestor,carteravencida.Estado from 
 (select nombre,id,pagare,PagoSemanal,AbonadoSinMultas,Multas,(AbonadoMultasL + AbonadoMultasV) as AbonadoMultas,(Multas - (AbonadoMultasL+AbonadoMultasV)) as multasPendientes,
  case when carteratotal.Estado = 'C' then
 case when pendiente = 0 then '0' else
@@ -318,15 +310,13 @@ when Cartera.Estado = 'R' then
 (select SUM(interes) as MultasVencidas from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado ='V' and ReestructurasSac.idcredito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V' and Credito.Estado <> 'L' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
+(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' and idgestor = '" & idEmpleado & "' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
-(select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora)MoraNiveles where nivel = '" & ComboElección.Text & "' order by creditos_en_mora.nombre asc"
+(select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc"
                 End If
             Case "Promotor"
                 If ComboElección.Text = "Todos" Then
-                    consulta = "select creditos_en_mora.*,
-(case when (Diasdeatraso/7) < 1 then 'Goteo' when (Diasdeatraso /7) between 1 and 4 then 'Nivel 1' when (Diasdeatraso /7) between 5 and 8 then 'Nivel 2' when (Diasdeatraso /7) between 9 and 12 then 'Nivel 3' when (Diasdeatraso /7) between 13 and 16 then 'Nivel 4' else 'Legal'end)as Nivel
-from
+                    consulta = "select creditos_en_mora.* from
 (select carteraVencida.id, carteravencida.nombre as Nombre,format(pagare,'C','es-mx') as Pagaré,format(PagoSemanal,'C','es-mx') as 'Pago Semanal',format(AbonadoSinMultas,'C','es-mx') as 'Abonado sin multas',format(Multas,'C','es-mx') as Multas,format(AbonadoMultas,'C','es-mx') as 'Multas abonadas',format(multasPendientes,'C','es-mx') as 'Multas pendientes',format(VencidoNormal,'C','es-mx') as 'Vencido normal',format(TotalPendiente,'C','es-mx') as 'Total Pendiente',Pagos_atrasados as 'Pagos atrasados',FechaDeAtraso as 'Fecha del último abono',
 case when FechaDeAtraso = 'Nunca' then
 	(case when carteraVencida.Estado = 'C' then
@@ -344,7 +334,7 @@ else (case when carteraVencida.Estado = 'C' then
 	datediff(day,(select top 1 fechapago from CalendarioNormal where Abonado < (monto+interes) and id_credito = carteraVencida.id order by FechaPago asc),GETDATE())
 	end)
 end as Diasdeatraso,
-format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,carteravencida.Estado from 
+format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,Gestor,carteravencida.Estado from 
 (select nombre,id,pagare,PagoSemanal,AbonadoSinMultas,Multas,(AbonadoMultasL + AbonadoMultasV) as AbonadoMultas,(Multas - (AbonadoMultasL+AbonadoMultasV)) as multasPendientes,
  case when carteratotal.Estado = 'C' then
 case when pendiente = 0 then '0' else
@@ -423,13 +413,11 @@ when Cartera.Estado = 'R' then
 (select SUM(interes) as MultasVencidas from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado ='V' and ReestructurasSac.idcredito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V' and Credito.Estado <> 'L' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
+(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
 (select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc"
                 Else
-                    consulta = "select creditos_en_mora.*,
-(case when (Diasdeatraso/7) < 1 then 'Goteo' when (Diasdeatraso /7) between 1 and 4 then 'Nivel 1' when (Diasdeatraso /7) between 5 and 8 then 'Nivel 2' when (Diasdeatraso /7) between 9 and 12 then 'Nivel 3' when (Diasdeatraso /7) between 13 and 16 then 'Nivel 4' else 'Legal'end)as Nivel
-from
+                    consulta = "select creditos_en_mora.* from
 (select carteraVencida.id, carteravencida.nombre as Nombre,format(pagare,'C','es-mx') as Pagaré,format(PagoSemanal,'C','es-mx') as 'Pago Semanal',format(AbonadoSinMultas,'C','es-mx') as 'Abonado sin multas',format(Multas,'C','es-mx') as Multas,format(AbonadoMultas,'C','es-mx') as 'Multas abonadas',format(multasPendientes,'C','es-mx') as 'Multas pendientes',format(VencidoNormal,'C','es-mx') as 'Vencido normal',format(TotalPendiente,'C','es-mx') as 'Total Pendiente',Pagos_atrasados as 'Pagos atrasados',FechaDeAtraso as 'Fecha del último abono',
 case when FechaDeAtraso = 'Nunca' then
 	(case when carteraVencida.Estado = 'C' then
@@ -447,7 +435,7 @@ else (case when carteraVencida.Estado = 'C' then
 	datediff(day,(select top 1 fechapago from CalendarioNormal where Abonado < (monto+interes) and id_credito = carteraVencida.id order by FechaPago asc),GETDATE())
 	end)
 end as Diasdeatraso,
-format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,carteravencida.Estado from 
+format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,Gestor,carteravencida.Estado from 
 (select nombre,id,pagare,PagoSemanal,AbonadoSinMultas,Multas,(AbonadoMultasL + AbonadoMultasV) as AbonadoMultas,(Multas - (AbonadoMultasL+AbonadoMultasV)) as multasPendientes,
  case when carteratotal.Estado = 'C' then
 case when pendiente = 0 then '0' else
@@ -526,14 +514,12 @@ when Cartera.Estado = 'R' then
 (select SUM(interes) as MultasVencidas from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado ='V' and ReestructurasSac.idcredito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V' and Credito.Estado <> 'L' and credito.idpromotor = '" & idEmpleado & "' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
+(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' and idpromotor = '" & idEmpleado & "' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
 (select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc"
                 End If
             Case "Todos"
-                consulta = "select creditos_en_mora.*,
-(case when (Diasdeatraso/7) < 1 then 'Goteo' when (Diasdeatraso /7) between 1 and 4 then 'Nivel 1' when (Diasdeatraso /7) between 5 and 8 then 'Nivel 2' when (Diasdeatraso /7) between 9 and 12 then 'Nivel 3' when (Diasdeatraso /7) between 13 and 16 then 'Nivel 4' else 'Legal'end)as Nivel
-from
+                consulta = "select creditos_en_mora.* from
 (select carteraVencida.id, carteravencida.nombre as Nombre,format(pagare,'C','es-mx') as Pagaré,format(PagoSemanal,'C','es-mx') as 'Pago Semanal',format(AbonadoSinMultas,'C','es-mx') as 'Abonado sin multas',format(Multas,'C','es-mx') as Multas,format(AbonadoMultas,'C','es-mx') as 'Multas abonadas',format(multasPendientes,'C','es-mx') as 'Multas pendientes',format(VencidoNormal,'C','es-mx') as 'Vencido normal',format(TotalPendiente,'C','es-mx') as 'Total Pendiente',Pagos_atrasados as 'Pagos atrasados',FechaDeAtraso as 'Fecha del último abono',
 case when FechaDeAtraso = 'Nunca' then
 	(case when carteraVencida.Estado = 'C' then
@@ -551,7 +537,7 @@ else (case when carteraVencida.Estado = 'C' then
 	datediff(day,(select top 1 fechapago from CalendarioNormal where Abonado < (monto+interes) and id_credito = carteraVencida.id order by FechaPago asc),GETDATE())
 	end)
 end as Diasdeatraso,
-format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,carteravencida.Estado from 
+format(((pagare - AbonadoSinMultas) + multasPendientes),'C','es-mx') as 'Liquida con',DatosSolicitud.Telefono,DatosSolicitud.Celular,(DatosSolicitud.Calle + ', ' + DatosSolicitud.Noext + ', ' + DatosSolicitud.Colonia ) as Domicilio,Promotor,Gestor,carteravencida.Estado from 
 (select nombre,id,pagare,PagoSemanal,AbonadoSinMultas,Multas,(AbonadoMultasL + AbonadoMultasV) as AbonadoMultas,(Multas - (AbonadoMultasL+AbonadoMultasV)) as multasPendientes,
  case when carteratotal.Estado = 'C' then
 case when pendiente = 0 then '0' else
@@ -630,7 +616,7 @@ when Cartera.Estado = 'R' then
 (select SUM(interes) as MultasVencidas from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado ='V' and ReestructurasSac.idcredito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V' and Credito.Estado <> 'L' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
+(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
 (select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc"
         End Select

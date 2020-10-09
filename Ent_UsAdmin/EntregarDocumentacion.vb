@@ -116,22 +116,46 @@ Public Class EntregarDocumentacion
     Private Sub BackgroundPagare_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundPagare.DoWork
         Dim NumeroLetra As New NumLetra
         'Dim MSWord As New Word.Application
+        Dim multas As Double
+        Dim totalPagareCmultas As Double
         'Dim Documento As Word.Document
         ' Dim fechaActual As Date
         'fechaActual = Now
         Dim comandoFechaEntrega As SqlCommand
         Dim consultaFechaEntrega As String
-        consultaFechaEntrega = "select fechaEntrega from credito where id = '" & idCreditoAentregar & "'"
+        Dim readerpagareEntrega As SqlDataReader
+        consultaFechaEntrega = "select *,
+case pagareconmultas.Modalidad when 'S' then
+((DATEDIFF(day,FechaPrimerPago,dateadd(day,7,fechaultimopago))) * 50)
+when 'Q' then
+			--el primero del mes
+			case when DATEDIFF(DAY,fechaultimopago,EOMONTH(fechaultimopago))>16
+			then
+				((DATEDIFF(day,FechaPrimerPago,dateadd(day,15,fechaultimopago))) * 50)
+			else --El día de pago es el 16 del mes
+				((DATEDIFF(day,FechaPrimerPago,dateadd(day,DATEDIFF(day,fechaultimopago,dateadd(day,1,eomonth(fechaultimopago))),fechaultimopago))) * 50)
+				 
+			end
+ END as multas from
+(select *,isnull((select top 1 fechapago from CalendarioNormal where id_credito = fechas.id order by FechaPago desc),'1900-01-01') as fechaultimopago from
+(select credito.id,fechaEntrega,fechaprimerpago,TiposDeCredito.Modalidad from credito inner join TiposDeCredito on credito.Tipo = TiposDeCredito.id where credito.id = '" & idCreditoAentregar & "') fechas) pagareconmultas"
         Dim fechaEntrega As Date
         comandoFechaEntrega = New SqlCommand
         comandoFechaEntrega.Connection = conexionempresa
         comandoFechaEntrega.CommandText = consultaFechaEntrega
-        fechaEntrega = comandoFechaEntrega.ExecuteScalar
+        readerpagareEntrega = comandoFechaEntrega.ExecuteReader
+        If readerpagareEntrega.HasRows Then
+            While readerpagareEntrega.Read
+                fechaEntrega = readerpagareEntrega("fechaentrega")
+                multas = readerpagareEntrega("multas")
+            End While
+        End If
+        totalPagareCmultas = PagareAentregar + multas
 
         FileCopy("C:\ConfiaAdmin\SATI\Pagare.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempPagare.docx")
         Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempPagare.docx")
-        documento.ReplaceText("%%MontoTotal%%", FormatCurrency(PagareAentregar))
-        documento.ReplaceText("%%MontoTotalLetra%%", NumeroLetra.Convertir(PagareAentregar, True))
+        documento.ReplaceText("%%MontoTotal%%", FormatCurrency(totalPagareCmultas))
+        documento.ReplaceText("%%MontoTotalLetra%%", NumeroLetra.Convertir(totalPagareCmultas, True))
         documento.ReplaceText("%%Ciudad%%", CiudadEmpresa)
         documento.ReplaceText("%%Estado%%", EstadoEmpresa)
         documento.ReplaceText("%%Dia%%", CDate(fechaEntrega).ToString("dd"))

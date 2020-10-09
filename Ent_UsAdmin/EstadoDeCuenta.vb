@@ -156,7 +156,7 @@ end
 end
 
 
-else if exists(select * from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio'))
+else if exists(select * from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A')
 begin
 
 set @SQL = 'select * from ('
@@ -166,13 +166,13 @@ select  ROW_NUMBER() OVER(ORDER BY fechapago ASC) AS Numero,EstadoDeCuenta.* fro
 union
 select 'Creación de convenio' as TipoDePago,'','',DeudaCredito,Moratorios,'',TotalDeuda,Fecha,'' from ConveniosSac where idCredito = " & idCredito & "
 union
-select 'Convenio' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from CalendarioConveniosSac where idConvenio = (select id from ConveniosSac where idCredito = " & idCredito & ") and abonado <> 0 and fecha <= (select fecha from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio'))
+select 'Convenio' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from CalendarioConveniosSac where idConvenio = (select id from ConveniosSac where idCredito = " & idCredito & ") and abonado <> 0 and fecha <= (select fecha from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A')
 union
-select 'Cancelación de convenio' as TipoDePago,'','',PagoNormal,Intereses,'',Total,Fecha,'' from Ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio')
+select 'Cancelación de convenio' as TipoDePago,'','',PagoNormal,Intereses,'',Total,Fecha,'' from Ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A'
 union
 	
-select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = " & idCredito & " and 1= case when exists(select id from ReestructurasSac where idCredito = " & idCredito & ")  and idpago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and (fechaultimopago >= (select fecha from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio')))) then 1 
-when not exists(select id from ReestructurasSac where idCredito = " & idCredito & ") and idpago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and (fechaultimopago >= (select fecha from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio'))) )  then 1
+select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = " & idCredito & " and 1= case when exists(select id from ReestructurasSac where idCredito = " & idCredito & ")  and idpago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and (fechaultimopago >= (select fecha from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A'))) then 1 
+when not exists(select id from ReestructurasSac where idCredito = " & idCredito & ") and idpago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and (fechaultimopago >= (select fecha from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A')) )  then 1
  end
 
 
@@ -180,7 +180,7 @@ union
 
 select 'Creación de reestructura' as TipoDePago,'','',DeudaCredito,Moratorios,'',TotalDeuda,Fecha,'' from reestructurassac where idCredito = " & idCredito & "
 union
-select 'Reestructura' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from calendarioreestructurassac where idConvenio = (select id from reestructurassac where idCredito = " & idCredito & ") and abonado <> 0 )estadodecuenta  order by  (case  when idPago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and Estado = 'L' and fechaultimopago <= (select fecha from conveniossac where idcredito = " & idCredito & ")) then 1   when TipoDePago = 'Creación de convenio' then 2 when TipoDePago = 'Convenio' then 3 when TipoDePago = 'Cancelación de convenio' then 4 when idpago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and (fechaultimopago >= (select fecha from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio')) or FechaUltimoPago = '1900-01-01')) then 5 when TipoDePago = 'Creación de reestructura' then 6 when TipoDePago = 'Reestructura' then 7  end )asc
+select 'Reestructura' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from calendarioreestructurassac where idConvenio = (select id from reestructurassac where idCredito = " & idCredito & ") and abonado <> 0 )estadodecuenta  order by  (case  when idPago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and Estado = 'L' and fechaultimopago <= (select fecha from conveniossac where idcredito = " & idCredito & ")) then 1   when TipoDePago = 'Creación de convenio' then 2 when TipoDePago = 'Convenio' then 3 when TipoDePago = 'Cancelación de convenio' then 4 when idpago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and (fechaultimopago >= (select fecha from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A') or FechaUltimoPago = '1900-01-01')) then 5 when TipoDePago = 'Creación de reestructura' then 6 when TipoDePago = 'Reestructura' then 7  end )asc
 open Comportamiento
 fetch next from Comportamiento into @numero,@TipoPago ,
 @idPago ,
@@ -196,18 +196,18 @@ begin
 if @TipoPago = 'Normal'
 begin
 set @SQL = concat(@SQL , 'select   ' ,char(39), @TipoPago ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago, ',char(39), @Npago ,char(39),' as Npago, ',char(39), @Monto ,char(39),' as Monto, ',char(39), @Interes ,char(39),' as Interes, ',char(39), @Abonado ,char(39),' as Abonado, ',char(39), @Pendiente ,char(39),' as Pendiente, ',char(39), @FechaPago ,char(39),' as FechaPago, ',char(39), @FechaUltimoPago ,char(39),' as FechaUltimoPago, ',char(39),char(39),' as Hora', ' Union ')
-	if exists(select * from TicketDetalle inner join TipoDoc on TicketDetalle.TipoDoc = TipoDoc.id where idpago = @idPago and TipoDoc.Nombre = 'Pago' )
+	if exists(select * from TicketDetalle inner join TipoDoc on TicketDetalle.TipoDoc = TipoDoc.id where idpago = @idPago and TipoDoc.Nombre = 'Pago' and estado = 'A' )
 	begin
 		set @SQL = concat(@SQL , ' select ' ,char(39), 'Ticket' ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago,', char(39),char(39),',ticketdetalle.pagonormal,ticketdetalle.intereses,', char(39),char(39),',',char(39),char(39),',','ticketdetalle.fecha,',char(39),char(39),',hora from ticketdetalle inner join tipodoc on ticketdetalle.tipodoc = tipodoc.id inner join ticket on ticketdetalle.idticket = ticket.id where idpago = ',@idPago,' and tipodoc.nombre = ',char(39),'Pago',char(39),' Union ')
-			if exists(select * from TicketDetalle inner join TipoDoc on TicketDetalle.TipoDoc = TipoDoc.id where idpago = @idPago and TipoDoc.Nombre = 'Cancelación de Convenio')
+			if exists(select * from TicketDetalle inner join TipoDoc on TicketDetalle.TipoDoc = TipoDoc.id where idpago = @idPago and TipoDoc.Nombre = 'Cancelación de Convenio' and estado = 'A')
 			begin
-			set @SQL = concat(@SQL , ' select ' ,char(39), 'Pago por cancelación de convenio' ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago,', char(39),char(39),',ticketdetalle.pagonormal,ticketdetalle.intereses,', char(39),char(39),',',char(39),char(39),',','ticketdetalle.fecha,',char(39),char(39),',hora from ticketdetalle inner join tipodoc on ticketdetalle.tipodoc = tipodoc.id inner join ticket on ticketdetalle.idticket = ticket.id where idpago = ',@idPago,' and tipodoc.nombre = ',char(39),'Cancelación de Convenio',char(39),' Union ')
+			set @SQL = concat(@SQL , ' select ' ,char(39), 'Pago por cancelación de convenio' ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago,', char(39),char(39),',ticketdetalle.pagonormal,ticketdetalle.intereses,', char(39),char(39),',',char(39),char(39),',','ticketdetalle.fecha,',char(39),char(39),',hora from ticketdetalle inner join tipodoc on ticketdetalle.tipodoc = tipodoc.id inner join ticket on ticketdetalle.idticket = ticket.id where idpago = ',@idPago,' and tipodoc.nombre = ',char(39),'Cancelación de Convenio',char(39),' and ticket.estado = ',char(39),'A',char(39),' Union ')
 
 			end
 	end
-	else if exists(select * from TicketDetalle inner join TipoDoc on TicketDetalle.TipoDoc = TipoDoc.id where idpago = @idPago and TipoDoc.Nombre = 'Cancelación de Convenio')
+	else if exists(select * from TicketDetalle inner join TipoDoc on TicketDetalle.TipoDoc = TipoDoc.id where idpago = @idPago and TipoDoc.Nombre = 'Cancelación de Convenio' and estado = 'A')
 	begin
-		set @SQL = concat(@SQL , ' select ' ,char(39), 'Pago por cancelación de convenio' ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago,', char(39),char(39),',ticketdetalle.pagonormal,ticketdetalle.intereses,', char(39),char(39),',',char(39),char(39),',','ticketdetalle.fecha,',char(39),char(39),',hora from ticketdetalle inner join tipodoc on ticketdetalle.tipodoc = tipodoc.id inner join ticket on ticketdetalle.idticket = ticket.id where idpago = ',@idPago,' and tipodoc.nombre = ',char(39),'Cancelación de Convenio',char(39),' Union ')
+		set @SQL = concat(@SQL , ' select ' ,char(39), 'Pago por cancelación de convenio' ,char(39), ' as TipoDePago,',char(39), @idPago ,char(39),' as Idpago,', char(39),char(39),',ticketdetalle.pagonormal,ticketdetalle.intereses,', char(39),char(39),',',char(39),char(39),',','ticketdetalle.fecha,',char(39),char(39),',hora from ticketdetalle inner join tipodoc on ticketdetalle.tipodoc = tipodoc.id inner join ticket on ticketdetalle.idticket = ticket.id where idpago = ',@idPago,' and tipodoc.nombre = ',char(39),'Cancelación de Convenio',char(39),' and ticket.estado = ',char(39),'A',char(39),' Union ')
 
 	end
 end
@@ -326,7 +326,7 @@ end
 
 
 --set @SQL = CONCAT(@SQL,') estadocuenta group by idpago,npago,monto,interes,abonado,pendiente,fechapago,fechaultimopago,hora,tipodepago order by  (case tipodepago when ',char(39), 'Creación de reestructura' ,char(39),'  then idpago when  ',char(39), 'Convenio' ,char(39),' then idpago when ',char(39), 'TicketC' ,char(39),' then idpago when ',char(39), 'Creación de Convenio' ,char(39),'  then idpago   end ) asc, idpago,fechapago,hora asc')
-set @SQL = CONCAT(@SQL,') estadocuenta group by idpago,npago,monto,interes,abonado,pendiente,fechapago,fechaultimopago,hora,tipodepago order by  (case  when idPago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and Estado =',char(39),'L',char(39),' and fechaultimopago <= (select fecha from conveniossac where idcredito = " & idCredito & ")) then 1   when TipoDePago = ',char(39), 'Creación de Convenio' ,char(39),' then 2 when TipoDePago = ',char(39), 'Convenio' ,char(39),' or TipoDePago = ',char(39), 'TicketC' ,char(39),' then 3 when TipoDePago = ',char(39), 'Cancelación de convenio' ,char(39),' then 4 when idpago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and (fechaultimopago >= (select fecha from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = ',char(39), 'Cancelación de convenio' ,char(39),')) or FechaUltimoPago = ',char(39), '1900-01-01' ,char(39),')) then 5 when TipoDePago = ',char(39), 'Creación de reestructura' ,char(39),' then 6 when TipoDePago = ',char(39), 'Reestructura' ,char(39),' or TipoDePago = ',char(39), 'TicketR' ,char(39),' then 7  end ) asc, idpago,fechapago,hora asc')
+set @SQL = CONCAT(@SQL,') estadocuenta group by idpago,npago,monto,interes,abonado,pendiente,fechapago,fechaultimopago,hora,tipodepago order by  (case  when idPago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and Estado =',char(39),'L',char(39),' and fechaultimopago <= (select fecha from conveniossac where idcredito = " & idCredito & ")) then 1   when TipoDePago = ',char(39), 'Creación de Convenio' ,char(39),' then 2 when TipoDePago = ',char(39), 'Convenio' ,char(39),' or TipoDePago = ',char(39), 'TicketC' ,char(39),' then 3 when TipoDePago = ',char(39), 'Cancelación de convenio' ,char(39),' then 4 when idpago in (select idPago from CalendarioNormal where id_credito = " & idCredito & " and (fechaultimopago >= (select fecha from ticket where idcredito = " & idCredito & " and tipodoc = (select id from tipodoc where nombre = ',char(39), 'Cancelación de convenio' ,char(39),') and estado = ',char(39),'A',char(39),') or FechaUltimoPago = ',char(39), '1900-01-01' ,char(39),')) then 5 when TipoDePago = ',char(39), 'Creación de reestructura' ,char(39),' then 6 when TipoDePago = ',char(39), 'Reestructura' ,char(39),' or TipoDePago = ',char(39), 'TicketR' ,char(39),' then 7  end ) asc, idpago,fechapago,hora asc')
 --set @SQL = CONCAT(@SQL,') estadocuenta  ')
 
 print @sql

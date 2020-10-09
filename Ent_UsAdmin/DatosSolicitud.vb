@@ -142,9 +142,20 @@ Public Class DatosSolicitud
                 txtNombreR1.Text = row("NombreR1").ToString
                 txtTelefonoR1.Text = row("TelefonoR1").ToString
                 txtRelacionR1.Text = row("RelacionR1").ToString
+                txtCodigoPostalR1.Text = row("CodigoPostalR1").ToString
+                ConsultaColoniasR1()
+                txtCalleR1.Text = row("CalleR1").ToString
+                txtNoExtR1.Text = row("NoExtR1").ToString
+                txtNoIntR1.Text = row("NoIntR1").ToString
+
                 txtNombreR2.Text = row("NombreR2").ToString
                 txtTelefonoR2.Text = row("TelefonoR2").ToString
                 txtRelacionR2.Text = row("RelacionR2").ToString
+                txtCodigoPostalR2.Text = row("CodigoPostalR2").ToString
+                ConsultaColoniasR2()
+                txtCalleR2.Text = row("CalleR2").ToString
+                txtNoExtR2.Text = row("NoExtR2").ToString
+                txtNoIntR2.Text = row("NoIntR2").ToString
                 txtEnfermedad.Text = row("Enfermedad").ToString
                 txtFamiliasEnCasa.Text = row("FamiliasEnCasa").ToString
                 txtDeudas.Text = row("DeudasCon").ToString
@@ -232,9 +243,20 @@ Public Class DatosSolicitud
       ,[NombreR1] = '" & txtNombreR1.Text & "'
       ,[TelefonoR1] =  '" & txtTelefonoR1.Text & "'
       ,[RelacionR1] =  '" & txtRelacionR1.Text & "'
+      ,[CodigoPostalR1] = '" & txtCodigoPostalR1.Text & "'
+      ,[ColoniaR1] = '" & ComboColoniaR1.Text & "'
+      ,[CalleR1] =  '" & txtCalleR1.Text & "'
+      ,[NoIntR1] = '" & txtNoIntR1.Text & "'
+      ,[NoExtR1] = '" & txtNoExtR1.Text & "'
+
       ,[NombreR2] =  '" & txtNombreR2.Text & "'
       ,[TelefonoR2] =  '" & txtTelefonoR2.Text & "'
       ,[RelacionR2] =  '" & txtRelacionR2.Text & "'
+      ,[CodigoPostalR2] = '" & txtCodigoPostalR2.Text & "'
+      ,[ColoniaR2] = '" & ComboColoniaR2.Text & "'
+      ,[CalleR2] =  '" & txtCalleR2.Text & "'
+      ,[NoIntR2] = '" & txtNoIntR2.Text & "'
+      ,[NoExtR2] = '" & txtNoExtR2.Text & "'
       ,[Enfermedad] =  '" & txtEnfermedad.Text & "'
       ,[FamiliasEnCasa] = '" & txtFamiliasEnCasa.Text & "' 
       ,[DeudasCon] =  '" & txtDeudas.Text & "'
@@ -848,14 +870,42 @@ Public Class DatosSolicitud
         ComboColoniaTrabajo.Items.Add("")
         'ComboColonia.AddItem("")
         For Each row As DataRow In dataColonias.Rows
-            If row("CP").ToString = txtCodigoPostal.Text Then
+            If row("CP").ToString = txtCodigoPostalTrabajo.Text Then
                 ComboColoniaTrabajo.Items.Add(row("Colonia").ToString)
             End If
             '
         Next
         'End If
     End Sub
+    Private Sub ConsultaColoniasR1()
+        ' If e.KeyCode = Keys.Enter Then
+        'ComboColonia.Clear()
+        ComboColoniaR1.Items.Clear()
+        ComboColoniaR1.Items.Add("")
+        'ComboColonia.AddItem("")
+        For Each row As DataRow In dataColonias.Rows
+            If row("CP").ToString = txtCodigoPostalR1.Text Then
+                ComboColoniaR1.Items.Add(row("Colonia").ToString)
+            End If
+            '
+        Next
+        'End If
 
+    End Sub
+    Private Sub ConsultaColoniasR2()
+        ' If e.KeyCode = Keys.Enter Then
+        'ComboColonia.Clear()
+        ComboColoniaR2.Items.Clear()
+        ComboColoniaR2.Items.Add("")
+        'ComboColonia.AddItem("")
+        For Each row As DataRow In dataColonias.Rows
+            If row("CP").ToString = txtCodigoPostalR2.Text Then
+                ComboColoniaR2.Items.Add(row("Colonia").ToString)
+            End If
+            '
+        Next
+        'End If
+    End Sub
     Private Sub txtCodigoPostalTrabajo_PaddingChanged(sender As Object, e As EventArgs) Handles txtCodigoPostalTrabajo.PaddingChanged
 
     End Sub
@@ -881,5 +931,60 @@ Public Class DatosSolicitud
 
     Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
 
+    End Sub
+
+    Private Sub txtCodigoPostalR2_OnValueChanged(sender As Object, e As EventArgs) Handles txtCodigoPostalR2.OnValueChanged
+
+    End Sub
+
+    Private Sub txtCodigoPostalR2_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCodigoPostalR2.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            'ComboColonia.Clear()
+            '  ComboColonia.AddItem("")
+            ComboColoniaR2.Items.Clear()
+            ComboColoniaR2.Items.Add("")
+            For Each row As DataRow In dataColonias.Rows
+                If row("CP").ToString = txtCodigoPostalR2.Text Then
+                    ComboColoniaR2.Items.Add(row("Colonia").ToString)
+                End If
+
+            Next
+        End If
+    End Sub
+
+    Private Sub txtCodigoPostalR1_OnValueChanged(sender As Object, e As EventArgs) Handles txtCodigoPostalR1.OnValueChanged
+
+    End Sub
+
+    Private Sub txtCodigoPostalR1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodigoPostalR1.KeyPress
+        If Not (Asc(e.KeyChar) = 8) Then
+            If Not IsNumeric(e.KeyChar) Then
+                e.Handled = True
+            End If
+        End If
+
+    End Sub
+
+    Private Sub txtCodigoPostalR1_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCodigoPostalR1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            'ComboColonia.Clear()
+            '  ComboColonia.AddItem("")
+            ComboColoniaR1.Items.Clear()
+            ComboColoniaR1.Items.Add("")
+            For Each row As DataRow In dataColonias.Rows
+                If row("CP").ToString = txtCodigoPostalR1.Text Then
+                    ComboColoniaR1.Items.Add(row("Colonia").ToString)
+                End If
+
+            Next
+        End If
+    End Sub
+
+    Private Sub txtCodigoPostalR2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodigoPostalR2.KeyPress
+        If Not (Asc(e.KeyChar) = 8) Then
+            If Not IsNumeric(e.KeyChar) Then
+                e.Handled = True
+            End If
+        End If
     End Sub
 End Class

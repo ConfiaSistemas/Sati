@@ -436,9 +436,21 @@ end"
            ,[HorarioVerificacion]
            ,[MontoAutorizado]
            ,[Comentarios]
-           ,[Estado])
+           ,[Estado]
+           ,[CodigoPostalR1]
+           ,[ColoniaR1]
+           ,[CalleR1]
+           ,[NoExtR1]
+           ,[NoIntR1]
+           ,[CodigoPostalR2]
+           ,[ColoniaR2]
+           ,[CalleR2]
+           ,[NoExtR2]
+           ,[NoIntR2]
+            
+)
      VALUES
-           ('" & idSolicitud & "','" & row.Cells(2).Value & "','" & row.Cells(0).Value & "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','P')"
+           ('" & idSolicitud & "','" & row.Cells(2).Value & "','" & row.Cells(0).Value & "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','P','','','','','','','','','','')"
             comandoDatosSolicitud = New SqlCommand
             comandoDatosSolicitud.Connection = conexionempresa
             comandoDatosSolicitud.CommandText = consultaDatosSolicitud

@@ -131,9 +131,21 @@ Public Class DatosAprobacion
                 txtNombreR1.Text = row("NombreR1").ToString
                 txtTelefonoR1.Text = row("TelefonoR1").ToString
                 txtRelacionR1.Text = row("RelacionR1").ToString
+                txtCodigoPostalR1.Text = row("CodigoPostalR1").ToString
+                txtColoniaR1.Text = row("ColoniaR1").ToString
+
+                txtCalleR1.Text = row("CalleR1").ToString
+                txtNoExtR1.Text = row("NoExtR1").ToString
+                txtNoIntR1.Text = row("NoIntR1").ToString
+
                 txtNombreR2.Text = row("NombreR2").ToString
                 txtTelefonoR2.Text = row("TelefonoR2").ToString
                 txtRelacionR2.Text = row("RelacionR2").ToString
+                txtCodigoPostalR2.Text = row("CodigoPostalR2").ToString
+                txtColoniaR2.Text = row("ColoniaR2").ToString
+                txtCalleR2.Text = row("CalleR2").ToString
+                txtNoExtR2.Text = row("NoExtR2").ToString
+                txtNoIntR2.Text = row("NoIntR2").ToString
                 txtEnfermedad.Text = row("Enfermedad").ToString
                 txtFamiliasEnCasa.Text = row("FamiliasEnCasa").ToString
                 txtDeudas.Text = row("DeudasCon").ToString
@@ -487,4 +499,9 @@ Public Class DatosAprobacion
         VistaDocumento.PictureBox1.Image = dtdatosDocumentos.Rows(dtdatosDocumentos.CurrentRow.Index).Cells(2).FormattedValue
         VistaDocumento.ShowDialog()
     End Sub
+
+    Private Sub TabPage3_Click(sender As Object, e As EventArgs) Handles TabPage3.Click
+
+    End Sub
+
 End Class

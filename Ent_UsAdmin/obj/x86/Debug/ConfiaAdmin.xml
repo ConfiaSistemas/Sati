@@ -47,6 +47,11 @@ ConfiaAdmin
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ConfiaAdmin.My.Resources.Resources._9261">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ConfiaAdmin.My.Resources.Resources.background_1">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -128,6 +133,16 @@ ConfiaAdmin
 </summary>
 </member>
 <member name="P:ConfiaAdmin.My.Resources.Resources.inv">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ConfiaAdmin.My.Resources.Resources.kisspng_arrow_scalable_vector_graphics_computer_file_compu_download_svg_png_icon_free_download_513522_on_5c55a19ccfefb8_2177330715491158048517">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ConfiaAdmin.My.Resources.Resources.kisspng_computer_icons_symbol_download_5ae1ab4e6c54d2_8156834015247388944437">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>

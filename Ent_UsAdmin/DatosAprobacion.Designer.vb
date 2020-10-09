@@ -170,6 +170,28 @@ Partial Class DatosAprobacion
         Me.txtMontoTotal = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label51 = New System.Windows.Forms.Label()
         Me.BackgroundRechazo = New System.ComponentModel.BackgroundWorker()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtNoIntR1 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label57 = New System.Windows.Forms.Label()
+        Me.txtNoExtR1 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label58 = New System.Windows.Forms.Label()
+        Me.txtCalleR1 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label59 = New System.Windows.Forms.Label()
+        Me.txtCodigoPostalR1 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label60 = New System.Windows.Forms.Label()
+        Me.Label61 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.txtNoIntR2 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label62 = New System.Windows.Forms.Label()
+        Me.txtNoExtR2 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label63 = New System.Windows.Forms.Label()
+        Me.txtCalleR2 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label64 = New System.Windows.Forms.Label()
+        Me.txtCodigoPostalR2 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label65 = New System.Windows.Forms.Label()
+        Me.Label66 = New System.Windows.Forms.Label()
+        Me.txtColoniaR1 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.txtColoniaR2 = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -180,6 +202,8 @@ Partial Class DatosAprobacion
         Me.GroupBox1.SuspendLayout()
         CType(Me.dtdatosDocumentos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtdatos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -1366,6 +1390,8 @@ Partial Class DatosAprobacion
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.TabPage3.Controls.Add(Me.GroupBox3)
+        Me.TabPage3.Controls.Add(Me.GroupBox2)
         Me.TabPage3.Controls.Add(Me.txtRelacionR2)
         Me.TabPage3.Controls.Add(Me.Label18)
         Me.TabPage3.Controls.Add(Me.txtTelefonoR2)
@@ -1400,7 +1426,7 @@ Partial Class DatosAprobacion
         Me.txtRelacionR2.LineIdleColor = System.Drawing.Color.Gray
         Me.txtRelacionR2.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtRelacionR2.LineThickness = 3
-        Me.txtRelacionR2.Location = New System.Drawing.Point(455, 234)
+        Me.txtRelacionR2.Location = New System.Drawing.Point(455, 319)
         Me.txtRelacionR2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRelacionR2.Name = "txtRelacionR2"
         Me.txtRelacionR2.Size = New System.Drawing.Size(209, 29)
@@ -1411,7 +1437,7 @@ Partial Class DatosAprobacion
         '
         Me.Label18.AutoSize = True
         Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(452, 217)
+        Me.Label18.Location = New System.Drawing.Point(452, 302)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(49, 13)
         Me.Label18.TabIndex = 134
@@ -1429,7 +1455,7 @@ Partial Class DatosAprobacion
         Me.txtTelefonoR2.LineIdleColor = System.Drawing.Color.Gray
         Me.txtTelefonoR2.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtTelefonoR2.LineThickness = 3
-        Me.txtTelefonoR2.Location = New System.Drawing.Point(248, 234)
+        Me.txtTelefonoR2.Location = New System.Drawing.Point(248, 319)
         Me.txtTelefonoR2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefonoR2.Name = "txtTelefonoR2"
         Me.txtTelefonoR2.Size = New System.Drawing.Size(199, 29)
@@ -1440,7 +1466,7 @@ Partial Class DatosAprobacion
         '
         Me.Label19.AutoSize = True
         Me.Label19.ForeColor = System.Drawing.Color.White
-        Me.Label19.Location = New System.Drawing.Point(245, 217)
+        Me.Label19.Location = New System.Drawing.Point(245, 302)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(49, 13)
         Me.Label19.TabIndex = 132
@@ -1458,7 +1484,7 @@ Partial Class DatosAprobacion
         Me.txtNombreR2.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNombreR2.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNombreR2.LineThickness = 3
-        Me.txtNombreR2.Location = New System.Drawing.Point(27, 234)
+        Me.txtNombreR2.Location = New System.Drawing.Point(27, 319)
         Me.txtNombreR2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombreR2.Name = "txtNombreR2"
         Me.txtNombreR2.Size = New System.Drawing.Size(213, 29)
@@ -1469,7 +1495,7 @@ Partial Class DatosAprobacion
         '
         Me.Label20.AutoSize = True
         Me.Label20.ForeColor = System.Drawing.Color.White
-        Me.Label20.Location = New System.Drawing.Point(24, 217)
+        Me.Label20.Location = New System.Drawing.Point(24, 302)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(44, 13)
         Me.Label20.TabIndex = 130
@@ -1481,7 +1507,7 @@ Partial Class DatosAprobacion
         Me.MonoFlat_HeaderLabel3.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel3.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel3.Location = New System.Drawing.Point(23, 178)
+        Me.MonoFlat_HeaderLabel3.Location = New System.Drawing.Point(23, 263)
         Me.MonoFlat_HeaderLabel3.Name = "MonoFlat_HeaderLabel3"
         Me.MonoFlat_HeaderLabel3.Size = New System.Drawing.Size(96, 20)
         Me.MonoFlat_HeaderLabel3.TabIndex = 129
@@ -1501,7 +1527,7 @@ Partial Class DatosAprobacion
         '
         'MonoFlat_Separator1
         '
-        Me.MonoFlat_Separator1.Location = New System.Drawing.Point(6, 151)
+        Me.MonoFlat_Separator1.Location = New System.Drawing.Point(3, 245)
         Me.MonoFlat_Separator1.Name = "MonoFlat_Separator1"
         Me.MonoFlat_Separator1.Size = New System.Drawing.Size(1124, 10)
         Me.MonoFlat_Separator1.TabIndex = 128
@@ -2249,6 +2275,346 @@ Partial Class DatosAprobacion
         'BackgroundRechazo
         '
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.txtColoniaR1)
+        Me.GroupBox2.Controls.Add(Me.txtNoIntR1)
+        Me.GroupBox2.Controls.Add(Me.Label57)
+        Me.GroupBox2.Controls.Add(Me.txtNoExtR1)
+        Me.GroupBox2.Controls.Add(Me.Label58)
+        Me.GroupBox2.Controls.Add(Me.txtCalleR1)
+        Me.GroupBox2.Controls.Add(Me.Label59)
+        Me.GroupBox2.Controls.Add(Me.txtCodigoPostalR1)
+        Me.GroupBox2.Controls.Add(Me.Label60)
+        Me.GroupBox2.Controls.Add(Me.Label61)
+        Me.GroupBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.GroupBox2.Location = New System.Drawing.Point(27, 128)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(1050, 100)
+        Me.GroupBox2.TabIndex = 141
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Dirección"
+        '
+        'txtNoIntR1
+        '
+        Me.txtNoIntR1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtNoIntR1.Enabled = False
+        Me.txtNoIntR1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtNoIntR1.ForeColor = System.Drawing.Color.White
+        Me.txtNoIntR1.HintForeColor = System.Drawing.Color.White
+        Me.txtNoIntR1.HintText = ""
+        Me.txtNoIntR1.isPassword = False
+        Me.txtNoIntR1.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtNoIntR1.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtNoIntR1.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtNoIntR1.LineThickness = 3
+        Me.txtNoIntR1.Location = New System.Drawing.Point(647, 42)
+        Me.txtNoIntR1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNoIntR1.Name = "txtNoIntR1"
+        Me.txtNoIntR1.Size = New System.Drawing.Size(102, 29)
+        Me.txtNoIntR1.TabIndex = 141
+        Me.txtNoIntR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label57
+        '
+        Me.Label57.AutoSize = True
+        Me.Label57.ForeColor = System.Drawing.Color.White
+        Me.Label57.Location = New System.Drawing.Point(644, 25)
+        Me.Label57.Name = "Label57"
+        Me.Label57.Size = New System.Drawing.Size(58, 13)
+        Me.Label57.TabIndex = 144
+        Me.Label57.Text = "No. interior"
+        '
+        'txtNoExtR1
+        '
+        Me.txtNoExtR1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtNoExtR1.Enabled = False
+        Me.txtNoExtR1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtNoExtR1.ForeColor = System.Drawing.Color.White
+        Me.txtNoExtR1.HintForeColor = System.Drawing.Color.White
+        Me.txtNoExtR1.HintText = ""
+        Me.txtNoExtR1.isPassword = False
+        Me.txtNoExtR1.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtNoExtR1.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtNoExtR1.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtNoExtR1.LineThickness = 3
+        Me.txtNoExtR1.Location = New System.Drawing.Point(773, 42)
+        Me.txtNoExtR1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNoExtR1.Name = "txtNoExtR1"
+        Me.txtNoExtR1.Size = New System.Drawing.Size(93, 29)
+        Me.txtNoExtR1.TabIndex = 140
+        Me.txtNoExtR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label58
+        '
+        Me.Label58.AutoSize = True
+        Me.Label58.ForeColor = System.Drawing.Color.White
+        Me.Label58.Location = New System.Drawing.Point(770, 25)
+        Me.Label58.Name = "Label58"
+        Me.Label58.Size = New System.Drawing.Size(61, 13)
+        Me.Label58.TabIndex = 143
+        Me.Label58.Text = "No. exterior"
+        '
+        'txtCalleR1
+        '
+        Me.txtCalleR1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtCalleR1.Enabled = False
+        Me.txtCalleR1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtCalleR1.ForeColor = System.Drawing.Color.White
+        Me.txtCalleR1.HintForeColor = System.Drawing.Color.White
+        Me.txtCalleR1.HintText = ""
+        Me.txtCalleR1.isPassword = False
+        Me.txtCalleR1.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtCalleR1.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtCalleR1.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtCalleR1.LineThickness = 3
+        Me.txtCalleR1.Location = New System.Drawing.Point(383, 42)
+        Me.txtCalleR1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCalleR1.Name = "txtCalleR1"
+        Me.txtCalleR1.Size = New System.Drawing.Size(214, 29)
+        Me.txtCalleR1.TabIndex = 139
+        Me.txtCalleR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label59
+        '
+        Me.Label59.AutoSize = True
+        Me.Label59.ForeColor = System.Drawing.Color.White
+        Me.Label59.Location = New System.Drawing.Point(380, 25)
+        Me.Label59.Name = "Label59"
+        Me.Label59.Size = New System.Drawing.Size(30, 13)
+        Me.Label59.TabIndex = 142
+        Me.Label59.Text = "Calle"
+        '
+        'txtCodigoPostalR1
+        '
+        Me.txtCodigoPostalR1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtCodigoPostalR1.Enabled = False
+        Me.txtCodigoPostalR1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtCodigoPostalR1.ForeColor = System.Drawing.Color.White
+        Me.txtCodigoPostalR1.HintForeColor = System.Drawing.Color.White
+        Me.txtCodigoPostalR1.HintText = ""
+        Me.txtCodigoPostalR1.isPassword = False
+        Me.txtCodigoPostalR1.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtCodigoPostalR1.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtCodigoPostalR1.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtCodigoPostalR1.LineThickness = 3
+        Me.txtCodigoPostalR1.Location = New System.Drawing.Point(7, 42)
+        Me.txtCodigoPostalR1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCodigoPostalR1.Name = "txtCodigoPostalR1"
+        Me.txtCodigoPostalR1.Size = New System.Drawing.Size(89, 29)
+        Me.txtCodigoPostalR1.TabIndex = 135
+        Me.txtCodigoPostalR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label60
+        '
+        Me.Label60.AutoSize = True
+        Me.Label60.ForeColor = System.Drawing.Color.White
+        Me.Label60.Location = New System.Drawing.Point(4, 25)
+        Me.Label60.Name = "Label60"
+        Me.Label60.Size = New System.Drawing.Size(72, 13)
+        Me.Label60.TabIndex = 136
+        Me.Label60.Text = "Código Postal"
+        '
+        'Label61
+        '
+        Me.Label61.AutoSize = True
+        Me.Label61.ForeColor = System.Drawing.Color.White
+        Me.Label61.Location = New System.Drawing.Point(125, 25)
+        Me.Label61.Name = "Label61"
+        Me.Label61.Size = New System.Drawing.Size(42, 13)
+        Me.Label61.TabIndex = 137
+        Me.Label61.Text = "Colonia"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.txtColoniaR2)
+        Me.GroupBox3.Controls.Add(Me.txtNoIntR2)
+        Me.GroupBox3.Controls.Add(Me.Label62)
+        Me.GroupBox3.Controls.Add(Me.txtNoExtR2)
+        Me.GroupBox3.Controls.Add(Me.Label63)
+        Me.GroupBox3.Controls.Add(Me.txtCalleR2)
+        Me.GroupBox3.Controls.Add(Me.Label64)
+        Me.GroupBox3.Controls.Add(Me.txtCodigoPostalR2)
+        Me.GroupBox3.Controls.Add(Me.Label65)
+        Me.GroupBox3.Controls.Add(Me.Label66)
+        Me.GroupBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.GroupBox3.Location = New System.Drawing.Point(27, 376)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(1050, 100)
+        Me.GroupBox3.TabIndex = 147
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Dirección"
+        '
+        'txtNoIntR2
+        '
+        Me.txtNoIntR2.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtNoIntR2.Enabled = False
+        Me.txtNoIntR2.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtNoIntR2.ForeColor = System.Drawing.Color.White
+        Me.txtNoIntR2.HintForeColor = System.Drawing.Color.White
+        Me.txtNoIntR2.HintText = ""
+        Me.txtNoIntR2.isPassword = False
+        Me.txtNoIntR2.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtNoIntR2.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtNoIntR2.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtNoIntR2.LineThickness = 3
+        Me.txtNoIntR2.Location = New System.Drawing.Point(647, 42)
+        Me.txtNoIntR2.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNoIntR2.Name = "txtNoIntR2"
+        Me.txtNoIntR2.Size = New System.Drawing.Size(102, 29)
+        Me.txtNoIntR2.TabIndex = 141
+        Me.txtNoIntR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label62
+        '
+        Me.Label62.AutoSize = True
+        Me.Label62.ForeColor = System.Drawing.Color.White
+        Me.Label62.Location = New System.Drawing.Point(644, 25)
+        Me.Label62.Name = "Label62"
+        Me.Label62.Size = New System.Drawing.Size(58, 13)
+        Me.Label62.TabIndex = 144
+        Me.Label62.Text = "No. interior"
+        '
+        'txtNoExtR2
+        '
+        Me.txtNoExtR2.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtNoExtR2.Enabled = False
+        Me.txtNoExtR2.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtNoExtR2.ForeColor = System.Drawing.Color.White
+        Me.txtNoExtR2.HintForeColor = System.Drawing.Color.White
+        Me.txtNoExtR2.HintText = ""
+        Me.txtNoExtR2.isPassword = False
+        Me.txtNoExtR2.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtNoExtR2.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtNoExtR2.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtNoExtR2.LineThickness = 3
+        Me.txtNoExtR2.Location = New System.Drawing.Point(773, 42)
+        Me.txtNoExtR2.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNoExtR2.Name = "txtNoExtR2"
+        Me.txtNoExtR2.Size = New System.Drawing.Size(93, 29)
+        Me.txtNoExtR2.TabIndex = 140
+        Me.txtNoExtR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label63
+        '
+        Me.Label63.AutoSize = True
+        Me.Label63.ForeColor = System.Drawing.Color.White
+        Me.Label63.Location = New System.Drawing.Point(770, 25)
+        Me.Label63.Name = "Label63"
+        Me.Label63.Size = New System.Drawing.Size(61, 13)
+        Me.Label63.TabIndex = 143
+        Me.Label63.Text = "No. exterior"
+        '
+        'txtCalleR2
+        '
+        Me.txtCalleR2.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtCalleR2.Enabled = False
+        Me.txtCalleR2.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtCalleR2.ForeColor = System.Drawing.Color.White
+        Me.txtCalleR2.HintForeColor = System.Drawing.Color.White
+        Me.txtCalleR2.HintText = ""
+        Me.txtCalleR2.isPassword = False
+        Me.txtCalleR2.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtCalleR2.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtCalleR2.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtCalleR2.LineThickness = 3
+        Me.txtCalleR2.Location = New System.Drawing.Point(383, 42)
+        Me.txtCalleR2.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCalleR2.Name = "txtCalleR2"
+        Me.txtCalleR2.Size = New System.Drawing.Size(214, 29)
+        Me.txtCalleR2.TabIndex = 139
+        Me.txtCalleR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label64
+        '
+        Me.Label64.AutoSize = True
+        Me.Label64.ForeColor = System.Drawing.Color.White
+        Me.Label64.Location = New System.Drawing.Point(380, 25)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(30, 13)
+        Me.Label64.TabIndex = 142
+        Me.Label64.Text = "Calle"
+        '
+        'txtCodigoPostalR2
+        '
+        Me.txtCodigoPostalR2.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtCodigoPostalR2.Enabled = False
+        Me.txtCodigoPostalR2.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtCodigoPostalR2.ForeColor = System.Drawing.Color.White
+        Me.txtCodigoPostalR2.HintForeColor = System.Drawing.Color.White
+        Me.txtCodigoPostalR2.HintText = ""
+        Me.txtCodigoPostalR2.isPassword = False
+        Me.txtCodigoPostalR2.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtCodigoPostalR2.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtCodigoPostalR2.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtCodigoPostalR2.LineThickness = 3
+        Me.txtCodigoPostalR2.Location = New System.Drawing.Point(7, 42)
+        Me.txtCodigoPostalR2.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCodigoPostalR2.Name = "txtCodigoPostalR2"
+        Me.txtCodigoPostalR2.Size = New System.Drawing.Size(89, 29)
+        Me.txtCodigoPostalR2.TabIndex = 135
+        Me.txtCodigoPostalR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label65
+        '
+        Me.Label65.AutoSize = True
+        Me.Label65.ForeColor = System.Drawing.Color.White
+        Me.Label65.Location = New System.Drawing.Point(4, 25)
+        Me.Label65.Name = "Label65"
+        Me.Label65.Size = New System.Drawing.Size(72, 13)
+        Me.Label65.TabIndex = 136
+        Me.Label65.Text = "Código Postal"
+        '
+        'Label66
+        '
+        Me.Label66.AutoSize = True
+        Me.Label66.ForeColor = System.Drawing.Color.White
+        Me.Label66.Location = New System.Drawing.Point(125, 25)
+        Me.Label66.Name = "Label66"
+        Me.Label66.Size = New System.Drawing.Size(42, 13)
+        Me.Label66.TabIndex = 137
+        Me.Label66.Text = "Colonia"
+        '
+        'txtColoniaR1
+        '
+        Me.txtColoniaR1.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtColoniaR1.Enabled = False
+        Me.txtColoniaR1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtColoniaR1.ForeColor = System.Drawing.Color.White
+        Me.txtColoniaR1.HintForeColor = System.Drawing.Color.White
+        Me.txtColoniaR1.HintText = ""
+        Me.txtColoniaR1.isPassword = False
+        Me.txtColoniaR1.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtColoniaR1.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtColoniaR1.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtColoniaR1.LineThickness = 3
+        Me.txtColoniaR1.Location = New System.Drawing.Point(128, 42)
+        Me.txtColoniaR1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtColoniaR1.Name = "txtColoniaR1"
+        Me.txtColoniaR1.Size = New System.Drawing.Size(240, 29)
+        Me.txtColoniaR1.TabIndex = 146
+        Me.txtColoniaR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'txtColoniaR2
+        '
+        Me.txtColoniaR2.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtColoniaR2.Enabled = False
+        Me.txtColoniaR2.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtColoniaR2.ForeColor = System.Drawing.Color.White
+        Me.txtColoniaR2.HintForeColor = System.Drawing.Color.White
+        Me.txtColoniaR2.HintText = ""
+        Me.txtColoniaR2.isPassword = False
+        Me.txtColoniaR2.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtColoniaR2.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtColoniaR2.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtColoniaR2.LineThickness = 3
+        Me.txtColoniaR2.Location = New System.Drawing.Point(128, 42)
+        Me.txtColoniaR2.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtColoniaR2.Name = "txtColoniaR2"
+        Me.txtColoniaR2.Size = New System.Drawing.Size(240, 29)
+        Me.txtColoniaR2.TabIndex = 147
+        Me.txtColoniaR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
         'DatosAprobacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2281,6 +2647,10 @@ Partial Class DatosAprobacion
         Me.GroupBox1.PerformLayout()
         CType(Me.dtdatosDocumentos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtdatos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2429,4 +2799,26 @@ Partial Class DatosAprobacion
     Friend WithEvents Label52 As Label
     Friend WithEvents Label54 As Label
     Friend WithEvents txtComentariosVerificacion As TextBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents txtNoIntR1 As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label57 As Label
+    Friend WithEvents txtNoExtR1 As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label58 As Label
+    Friend WithEvents txtCalleR1 As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label59 As Label
+    Friend WithEvents txtCodigoPostalR1 As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label60 As Label
+    Friend WithEvents Label61 As Label
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents txtNoIntR2 As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label62 As Label
+    Friend WithEvents txtNoExtR2 As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label63 As Label
+    Friend WithEvents txtCalleR2 As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label64 As Label
+    Friend WithEvents txtCodigoPostalR2 As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label65 As Label
+    Friend WithEvents Label66 As Label
+    Friend WithEvents txtColoniaR2 As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents txtColoniaR1 As Bunifu.Framework.UI.BunifuMaterialTextbox
 End Class

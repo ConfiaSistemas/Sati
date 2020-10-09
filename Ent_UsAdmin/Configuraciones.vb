@@ -21,6 +21,7 @@ Public Class Configuraciones
         section.Keys.Add("Base", txtBD.Text)
         '  section.Keys.Add("Caja", txtcaja.Text)
         section.Keys.Add("Impresora", ComboImpresora.Text)
+        section.Keys.Add("Tipo", TipoEquipo)
         ' Save and encrypt the file.
         file.Save("C:\ConfiaAdmin\SATI\SetConfig.ini")
 

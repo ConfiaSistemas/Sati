@@ -113,6 +113,16 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property _9261() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("9261", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property background_1() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("background-1", resourceCulture)
@@ -276,6 +286,27 @@ Namespace My.Resources
         Friend ReadOnly Property inv() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("inv", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property kisspng_arrow_scalable_vector_graphics_computer_file_compu_download_svg_png_icon_free_download_513522_on_5c55a19ccfefb8_2177330715491158048517() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("kisspng-arrow-scalable-vector-graphics-computer-file-compu-download-svg-png-icon-"& _ 
+                        "free-download-513522-on-5c55a19ccfefb8.2177330715491158048517", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property kisspng_computer_icons_symbol_download_5ae1ab4e6c54d2_8156834015247388944437() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("kisspng-computer-icons-symbol-download-5ae1ab4e6c54d2.8156834015247388944437", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

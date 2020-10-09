@@ -259,7 +259,7 @@ Public Class DatosSolicitudBoletaVerificar
         Dim interesdiario As Double
         interesdiario = MontoRefrendo / 7
 
-        consultaCreaEmpeños = "insert into Empeños values('" & idcliente & "','" & idSolicitud & "','" & nombreCliente & "','" & montoTotalValuado & "','" & montoTotalAutorizado & "','7','" & MontoRefrendo & "','" & porcentajeRefrendo & "','" & interesdiario & "','" & Now.Date.ToString("yyyy-MM-dd") & "','','','','" & idPromotor & "','E','" & txtIne.Text & "','','') select SCOPE_IDENTITY()"
+        consultaCreaEmpeños = "insert into Empeños values('" & idcliente & "','" & idSolicitud & "','" & nombreCliente & "','" & montoTotalValuado & "','" & montoTotalAutorizado & "','7','" & MontoRefrendo & "','" & porcentajeRefrendo & "','" & interesdiario & "','" & Now.Date.ToString("yyyy-MM-dd") & "','','','','" & idPromotor & "','E','" & txtIne.Text & "','" & montoTotalAutorizado & "','') select SCOPE_IDENTITY()"
         comandoCreaEmpeño = New SqlCommand
         comandoCreaEmpeño.Connection = conexionempresa
         comandoCreaEmpeño.CommandText = consultaCreaEmpeños

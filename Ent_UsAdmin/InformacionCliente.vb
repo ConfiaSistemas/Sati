@@ -190,7 +190,7 @@ Public Class InformacionCliente
     End Sub
 
     Private Sub dtCredito_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtCredito.CellContentDoubleClick
-        InformacionSolicitud.idCredito = dtCredito.Rows(dtSolicitud.CurrentRow.Index).Cells(0).Value
+        InformacionSolicitud.idCredito = dtCredito.Rows(dtCredito.CurrentRow.Index).Cells(0).Value
         '  DatosConsultaSolicitud.TipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(5).Value
         InformacionSolicitud.Show()
     End Sub

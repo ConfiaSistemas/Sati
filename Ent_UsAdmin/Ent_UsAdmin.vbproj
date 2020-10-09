@@ -16,6 +16,34 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <!-- Incrémentation de l'attribut AssemblyVersion -->
+    <AssemblyMajorVersion>1</AssemblyMajorVersion>
+    <AssemblyMinorVersion>6</AssemblyMinorVersion>
+    <AssemblyBuildNumber>64</AssemblyBuildNumber>
+    <AssemblyBuildNumberType>NoIncrement</AssemblyBuildNumberType>
+    <AssemblyRevisionType>AutoIncrement</AssemblyRevisionType>
+    <!-- Incrémentation de l'attribut AssemblyFileVersion -->
+    <AssemblyFileMajorVersion>1</AssemblyFileMajorVersion>
+    <AssemblyFileMinorVersion>6</AssemblyFileMinorVersion>
+    <AssemblyFileBuildNumber>64</AssemblyFileBuildNumber>
+    <AssemblyFileBuildNumberType>NoIncrement</AssemblyFileBuildNumberType>
+    <AssemblyFileRevisionType>AutoIncrement</AssemblyFileRevisionType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -56,6 +84,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge.Controls">
@@ -140,12 +171,14 @@
       <HintPath>C:\Program Files (x86)\e-iceblue\Spire.Doc-FE\Bin\NET4.0\Spire.Doc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
@@ -305,6 +338,7 @@
     <Compile Include="Agregar_Impuestos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="AutorizacionRetiro.Designer.vb">
       <DependentUpon>AutorizacionRetiro.vb</DependentUpon>
     </Compile>
@@ -1227,7 +1261,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="My Project\app.manifest" />
+    <None Include="My Project\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -1393,6 +1429,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="gnlicense_key.txt" />
+    <None Include="Resources\kisspng-arrow-scalable-vector-graphics-computer-file-compu-download-svg-png-icon-free-download-513522-on-5c55a19ccfefb8.2177330715491158048517.jpg" />
+    <None Include="Resources\kisspng-computer-icons-symbol-download-5ae1ab4e6c54d2.8156834015247388944437.jpg" />
+    <None Include="Resources\9261.png" />
     <Content Include="SATI.ico" />
     <None Include="Resources\Logo Confia.png" />
     <None Include="Resources\eaad3b05-c22d-49fb-ae4f-2d0e4ff7b0cb.jpg" />
@@ -1403,6 +1442,70 @@
     <None Include="Resources\icono solicitudes.png" />
     <None Include="Resources\icono catalogos.png" />
     <None Include="Resources\icono home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="AForge.Controls.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="AForge.Imaging.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="AForge.Math.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="AForge.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="CheckBoxComboBox.pdb">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

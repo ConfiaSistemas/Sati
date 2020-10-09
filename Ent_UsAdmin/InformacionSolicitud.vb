@@ -179,7 +179,7 @@ select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
 							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Pago') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto')) )pagos 
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Pago') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto') or tipodoc =(select id from tipodoc where nombre = 'Liquidación Promoción 90%') ) )pagos 
 union
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
@@ -233,7 +233,7 @@ select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
 							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "'  and (tipodoc = (select id from tipodoc where nombre = 'Pago') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto')))pagos order by Fecha,Hora asc
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "'  and (tipodoc = (select id from tipodoc where nombre = 'Pago') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto') or tipodoc =(select id from tipodoc where nombre = 'Liquidación Promoción 90%')))pagos order by Fecha,Hora asc
 end
 "
 
@@ -321,6 +321,28 @@ end
                         End If
                     Case "Reestructura"
                         consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioreestructurassac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarioreestructurassac on ticketdetalle.idpago = calendarioreestructurassac.idpago where  idTicket = '" & readerTicket("id") & "'"
+                        COMANDOdetalle = New SqlCommand
+                        COMANDOdetalle.Connection = conexionempresa
+                        COMANDOdetalle.CommandText = consultaDetalle
+                        readerDetalle = COMANDOdetalle.ExecuteReader
+                        If readerDetalle.HasRows Then
+                            While readerDetalle.Read
+                                Me._addSubItems(liItem.Nodes.Add(readerDetalle("pago")), readerDetalle("pagonormal"), readerDetalle("intereses"), readerDetalle("monto"))
+                            End While
+                        End If
+                    Case "Liquidación Promoción 90%"
+                        consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & readerTicket("id") & "'"
+                        COMANDOdetalle = New SqlCommand
+                        COMANDOdetalle.Connection = conexionempresa
+                        COMANDOdetalle.CommandText = consultaDetalle
+                        readerDetalle = COMANDOdetalle.ExecuteReader
+                        If readerDetalle.HasRows Then
+                            While readerDetalle.Read
+                                Me._addSubItems(liItem.Nodes.Add(readerDetalle("pago")), readerDetalle("pagonormal"), readerDetalle("intereses"), readerDetalle("monto"))
+                            End While
+                        End If
+                    Case "Liquidación Convenio 90%"
+                        consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioconveniossac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarioconveniossac on ticketdetalle.idpago = calendarioconveniossac.idpago where  idTicket = '" & readerTicket("id") & "'"
                         COMANDOdetalle = New SqlCommand
                         COMANDOdetalle.Connection = conexionempresa
                         COMANDOdetalle.CommandText = consultaDetalle
@@ -478,19 +500,19 @@ select 'Convenio' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,Fec
 
 order by FechaPago asc
 end
-else if exists(select * from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio'))
+else if exists(select * from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A')
 select * from
 (select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' and Estado = 'L' and fechaultimopago <= (select fecha from conveniossac where idcredito = '" & idCredito & "')
 union
 select 'Creación de convenio' as TipoDePago,'','',DeudaCredito,Moratorios,'',TotalDeuda,Fecha,'' from ConveniosSac where idCredito = '" & idCredito & "'
 union
-select 'Convenio' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from CalendarioConveniosSac where idConvenio = (select id from ConveniosSac where idCredito = '" & idCredito & "') and abonado <> 0 and fecha <= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio'))
+select 'Convenio' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from CalendarioConveniosSac where idConvenio = (select id from ConveniosSac where idCredito = '" & idCredito & "') and abonado <> 0 and fecha <= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A')
 union
-select 'Cancelación de convenio' as TipoDePago,'','',PagoNormal,Intereses,'',Total,Fecha,'' from Ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio')
+select 'Cancelación de convenio' as TipoDePago,'','',PagoNormal,Intereses,'',Total,Fecha,'' from Ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A'
 union
 	
-select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' and 1= case when exists(select id from ReestructurasSac where idCredito = '" & idCredito & "')  and idpago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and (fechaultimopago >= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio')))) then 1 
-when not exists(select id from ReestructurasSac where idCredito = '" & idCredito & "') and idpago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and (fechaultimopago >= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio'))) OR FechaUltimoPago = '1900-01-01')  then 1
+select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' and 1= case when exists(select id from ReestructurasSac where idCredito = '" & idCredito & "')  and idpago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and (fechaultimopago >= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A'))) then 1 
+when not exists(select id from ReestructurasSac where idCredito = '" & idCredito & "') and idpago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and (fechaultimopago >= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A')) OR FechaUltimoPago = '1900-01-01')  then 1
  end
 
 
@@ -499,7 +521,7 @@ union
 select 'Creación de reestructura' as TipoDePago,'','',DeudaCredito,Moratorios,'',TotalDeuda,Fecha,'' from reestructurassac where idCredito = '" & idCredito & "'
 union
 select 'Reestructura' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,Fecha from calendarioreestructurassac where idConvenio = (select id from reestructurassac where idCredito = '" & idCredito & "') 
-) Comportamiento order by  (case  when idPago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and Estado = 'L' and fechaultimopago <= (select fecha from conveniossac where idcredito = '" & idCredito & "')) then 1   when TipoDePago = 'Creación de convenio' then 2 when TipoDePago = 'Convenio' then 3 when TipoDePago = 'Cancelación de convenio' then 4 when idpago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and (fechaultimopago >= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio')) or FechaUltimoPago = '1900-01-01')) then 5 when TipoDePago = 'Creación de reestructura' then 6 when TipoDePago = 'Reestructura' then 7  end )asc
+) Comportamiento order by  (case  when idPago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and Estado = 'L' and fechaultimopago <= (select fecha from conveniossac where idcredito = '" & idCredito & "')) then 1   when TipoDePago = 'Creación de convenio' then 2 when TipoDePago = 'Convenio' then 3 when TipoDePago = 'Cancelación de convenio' then 4 when idpago in (select idPago from CalendarioNormal where id_credito = '" & idCredito & "' and (fechaultimopago >= (select fecha from ticket where idcredito = '" & idCredito & "' and tipodoc = (select id from tipodoc where nombre = 'Cancelación de Convenio') and estado = 'A') or FechaUltimoPago = '1900-01-01')) then 5 when TipoDePago = 'Creación de reestructura' then 6 when TipoDePago = 'Reestructura' then 7  end )asc
 
 else if not exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
 begin
@@ -589,6 +611,7 @@ end
                                 Me._addSubItemsDetalle(liItem.Nodes.Add(""), readerDetalle("id"), "", readerDetalle("pagonormal"), readerDetalle("intereses"), "", "", readerDetalle("hora").ToString, "", readerDetalle("fecha"))
                             End While
                         End If
+
                 End Select
 
                 TreeListView2.Nodes.Add(liItem)

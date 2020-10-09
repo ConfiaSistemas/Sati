@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_adm
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,12 +20,13 @@ Partial Class frm_adm
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_adm))
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btn_Actualizar = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.BunifuFlatButton7 = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -49,8 +50,10 @@ Partial Class frm_adm
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Timerwidthmenos = New System.Windows.Forms.Timer(Me.components)
         Me.Timerwidthmas = New System.Windows.Forms.Timer(Me.components)
-        Me.imgmostrarpanel = New Bunifu.Framework.UI.BunifuImageButton()
         Me.TimerLiberar = New System.Windows.Forms.Timer(Me.components)
+        Me.imgmostrarpanel = New Bunifu.Framework.UI.BunifuImageButton()
+        Me.TimerActualizacion = New System.Windows.Forms.Timer(Me.components)
+        Me.BackgroundActualizacion = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -69,6 +72,7 @@ Partial Class frm_adm
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.btn_Actualizar)
         Me.Panel1.Controls.Add(Me.Panel4)
         Me.Panel1.Controls.Add(Me.Panel3)
         Me.Panel1.Controls.Add(Me.notificaciones)
@@ -81,6 +85,40 @@ Partial Class frm_adm
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(890, 66)
         Me.Panel1.TabIndex = 0
+        '
+        'btn_Actualizar
+        '
+        Me.btn_Actualizar.Activecolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.btn_Actualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_Actualizar.BorderRadius = 0
+        Me.btn_Actualizar.ButtonText = "Hay una actualización"
+        Me.btn_Actualizar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_Actualizar.DisabledColor = System.Drawing.Color.Gray
+        Me.btn_Actualizar.Iconcolor = System.Drawing.Color.Transparent
+        Me.btn_Actualizar.Iconimage = Global.ConfiaAdmin.My.Resources.Resources._9261
+        Me.btn_Actualizar.Iconimage_right = Nothing
+        Me.btn_Actualizar.Iconimage_right_Selected = Nothing
+        Me.btn_Actualizar.Iconimage_Selected = Nothing
+        Me.btn_Actualizar.IconMarginLeft = 0
+        Me.btn_Actualizar.IconMarginRight = 0
+        Me.btn_Actualizar.IconRightVisible = True
+        Me.btn_Actualizar.IconRightZoom = 0R
+        Me.btn_Actualizar.IconVisible = True
+        Me.btn_Actualizar.IconZoom = 90.0R
+        Me.btn_Actualizar.IsTab = False
+        Me.btn_Actualizar.Location = New System.Drawing.Point(571, 7)
+        Me.btn_Actualizar.Name = "btn_Actualizar"
+        Me.btn_Actualizar.Normalcolor = System.Drawing.Color.Empty
+        Me.btn_Actualizar.OnHovercolor = System.Drawing.Color.Gray
+        Me.btn_Actualizar.OnHoverTextColor = System.Drawing.Color.White
+        Me.btn_Actualizar.selected = False
+        Me.btn_Actualizar.Size = New System.Drawing.Size(144, 48)
+        Me.btn_Actualizar.TabIndex = 6
+        Me.btn_Actualizar.Text = "Hay una actualización"
+        Me.btn_Actualizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_Actualizar.Textcolor = System.Drawing.Color.WhiteSmoke
+        Me.btn_Actualizar.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Actualizar.Visible = False
         '
         'Panel4
         '
@@ -547,6 +585,11 @@ Partial Class frm_adm
         'Timerwidthmas
         '
         '
+        'TimerLiberar
+        '
+        Me.TimerLiberar.Enabled = True
+        Me.TimerLiberar.Interval = 1000
+        '
         'imgmostrarpanel
         '
         Me.imgmostrarpanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -562,10 +605,13 @@ Partial Class frm_adm
         Me.imgmostrarpanel.TabStop = False
         Me.imgmostrarpanel.Zoom = 10
         '
-        'TimerLiberar
+        'TimerActualizacion
         '
-        Me.TimerLiberar.Enabled = True
-        Me.TimerLiberar.Interval = 1000
+        Me.TimerActualizacion.Enabled = True
+        Me.TimerActualizacion.Interval = 1000
+        '
+        'BackgroundActualizacion
+        '
         '
         'frm_adm
         '
@@ -624,4 +670,7 @@ Partial Class frm_adm
     Friend WithEvents TimerLiberar As Timer
     Friend WithEvents MonoFlat_Button1 As MonoFlat.MonoFlat_Button
     Friend WithEvents MonoFlat_Button2 As MonoFlat.MonoFlat_Button
+    Friend WithEvents btn_Actualizar As Bunifu.Framework.UI.BunifuFlatButton
+    Friend WithEvents TimerActualizacion As Timer
+    Friend WithEvents BackgroundActualizacion As System.ComponentModel.BackgroundWorker
 End Class

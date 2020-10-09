@@ -11,7 +11,7 @@ Public Class CreditosPorEntregar
             iniciarconexionempresa()
 
             strimpuestos = "select * from
-(select SinEntregar.*,isnull((select count(id) from ticket where idCredito = SinEntregar.id and TipoDoc = '2'),0) as Cobrado from
+(select SinEntregar.*,isnull((select count(id) from ticket where idCredito = SinEntregar.id and TipoDoc = '2' and estado = 'A'),0) as Cobrado from
 (select id,Fecha,Nombre,Monto,Plazo,fechaEntrega,estado from credito where (Estado = 'E' or estado = 'P')) SinEntregar) ComisionCobrada where Cobrado = 1 "
 
             Dim ejec = New SqlCommand(strimpuestos)

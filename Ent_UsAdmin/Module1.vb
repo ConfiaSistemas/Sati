@@ -50,6 +50,7 @@ Module Module1
     Public adapterDocs As SqlDataAdapter
     Public dataColonias As DataTable
     Public adapterColonias As SqlDataAdapter
+    Public TipoEquipo As String
 
     Dim exApp As New Microsoft.Office.Interop.Excel.Application
     Dim exLibro As Microsoft.Office.Interop.Excel.Workbook

@@ -65,6 +65,17 @@ Public Class login
         iniFile.Load("C:\ConfiaAdmin\SATI\SetConfig.ini")
         ipser = iniFile.Sections(0).Keys(0).Value
         bdser = iniFile.Sections(0).Keys(1).Value
+        Try
+            TipoEquipo = iniFile.Sections(0).Keys("Tipo").Value
+
+        Catch ex As System.ArgumentOutOfRangeException
+            TipoEquipo = ""
+            'MessageBox.Show("No se encontró el valor leyenda configurado, se recomienda revisar la configuración")
+        Catch ex As NullReferenceException
+            TipoEquipo = ""
+            ' MessageBox.Show("No se encontró el valor leyenda configurado, se recomienda revisar la configuración")
+        End Try
+
         ImpresoraPredeterminada = iniFile.Sections(0).Keys("Impresora").Value
         'noCaja = iniFile.Sections(0).Keys("Caja").Value
         'Impresora = iniFile.Sections(0).Keys("Impresora").Value
@@ -302,5 +313,6 @@ Public Class login
             MsgBox(exc.Message, MsgBoxStyle.Exclamation)
         End Try
     End Sub
+
 
 End Class
