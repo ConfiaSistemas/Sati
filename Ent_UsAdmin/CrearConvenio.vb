@@ -14,9 +14,12 @@ Public Class CrearConvenio
     Dim abonadoMultas As Double
     Dim multasPendientes As Double
     Dim gestor As Integer
+    Dim diasAtraso As String
     Public DeudaAP As Double
     Public DeudaTotal As Double
     Public incluyePorcentaje As Boolean
+    Public Autorizado As Boolean
+
     Private Sub ZeroitMetroSwitch1_CheckedChanged(sender As Object, e As EventArgs) Handles ZeroitMetroSwitch1.CheckedChanged
         If ZeroitMetroSwitch1.Checked Then
             lblTipoPagos.Text = "Pago"
@@ -47,7 +50,17 @@ Public Class CrearConvenio
         consultaCreditoLegal = "select nombre,id,pagare,AbonadoSinMultas,(pagare-AbonadoSinMultas) as valorCarteraSinMultas,Multas,(AbonadoMultasL + AbonadoMultasV) as AbonadoMultas,(Multas - (AbonadoMultasL+AbonadoMultasV)) as multasPendientes,((Multas-(AbonadoMultasL+AbonadoMultasV))+(pagare-AbonadoSinMultas)) as ValorCarteraConMultas, case when carteratotal.Estado = 'C' then
 case when pendiente = 0 then '0' else
 (pendiente - (MultasVencidas - (AbonadoMultasV)))end
-else(pendiente - (Multas - (AbonadoMultasL+AbonadoMultasV))) end as VencidoNormal,((Multas - (AbonadoMultasL+AbonadoMultasV)) + (pendiente - (Multas - (AbonadoMultasL+AbonadoMultasV))) ) as TotalPendiente,Gestor,Promotor,Estado,IdGestor from
+else(pendiente - (Multas - (AbonadoMultasL+AbonadoMultasV))) end as VencidoNormal,
+case when FechaDeAtraso = 'Nunca' then
+	'Nunca abonado'
+else (case when carteratotal.Estado = 'C' then
+	datediff(day,fechadeatraso,GETDATE())
+	when carteratotal.Estado = 'R' then
+	datediff(day,fechadeatraso,GETDATE())
+	else 
+	datediff(day,fechadeatraso,GETDATE())
+	end)
+end as Diasdeatraso,((Multas - (AbonadoMultasL+AbonadoMultasV)) + (pendiente - (Multas - (AbonadoMultasL+AbonadoMultasV))) ) as TotalPendiente,Gestor,Promotor,Estado,FechaDeAtraso,IdGestor from
 (select Cartera.nombre,Cartera.id,
 case when Cartera.Estado = 'C' then
  isnull((select SUM(Abonado - interes) as pagonormal from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where Abonado <> 0 and Abonado >= interes and convenios.id_credito = Cartera.id group by id_credito),0)
@@ -71,6 +84,13 @@ case when cartera.Estado = 'C' THEN
 (select SUM(calendarioconvenios.monto) from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where convenios.id_credito = Cartera.id)
 else
 (select Pagare from credito where id = Cartera.id) end as pagare,
+case when Cartera.Estado = 'C' then
+isnull(convert(varchar,(select top 1 CalendarioConveniosSac.Fecha from CalendarioConveniosSac inner join ConveniosSac on CalendarioConveniossac.IdConvenio = Conveniossac.id where CalendarioConveniosSac.Fecha>'1900-01-01' and ConveniosSac.idCredito = Cartera.id order by CalendarioConveniosSac.Fecha desc),23),'Nunca')
+when Cartera.Estado = 'R' then
+isnull(convert(varchar,(select top 1 CalendarioReestructurasSac.Fecha from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Fecha>'1900-01-01' and ReestructurasSac.idCredito = Cartera.id order by CalendarioReestructurasSac.Fecha desc),23),'Nunca')
+else
+isnull(convert(varchar,(select top 1 FechaUltimoPago from CalendarioNormal where FechaUltimoPago>'1900-01-01' and CalendarioNormal.id_credito = Cartera.id order by FechaUltimoPago desc),23),'Nunca')
+end as FechaDeAtraso,
 case when Cartera.Estado = 'C' then
 isnull((select SUM(calendarioconvenios.pendiente) from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where calendarioconvenios.Estado = 'V' and convenios.id_credito = Cartera.id),0)
 else
@@ -99,6 +119,7 @@ else '0' end as MultasVencidas
                 'DeudaAP = readerCreditoLegal("deudaAP")
                 DeudaTotal = readerCreditoLegal("ValorCarteraConMultas")
                 lblnombre.Text = readerCreditoLegal("Nombre")
+                diasAtraso = readerCreditoLegal("diasdeatraso")
                 ' incluyePorcentaje = readerCreditoLegal("incluyeporcentaje")
             End While
         End If
@@ -107,7 +128,7 @@ else '0' end as MultasVencidas
         lblAbonadoSmultas.Text = FormatCurrency(abonadoSmultas)
         lblmultas.Text = FormatCurrency(multas)
         lblMultasAbonadas.Text = FormatCurrency(abonadoMultas)
-
+        lblDiasAtraso.Text = diasAtraso
         lblParteCredito.Text = FormatCurrency(ParteCredito)
         lblParteMoratorios.Text = FormatCurrency(ParteMoratorios)
         '  lblSubtotal.Text = FormatCurrency(DeudaAP)
@@ -169,20 +190,44 @@ else '0' end as MultasVencidas
 
     Private Sub btnGenerarCalendario_Click(sender As Object, e As EventArgs) Handles btnGenerarCalendario.Click
 
-        CalendarioConvenio.Moratorios = ParteMoratorios
-        CalendarioConvenio.Capital = ParteCredito
+        If diasAtraso = "Nunca abonado" Then
+                CalendarioConvenio.Moratorios = ParteMoratorios
+                CalendarioConvenio.Capital = ParteCredito
 
 
-        ' CalendarioConvenioLegal.personalizado = personalizado
-        CalendarioConvenio.idCredito = idCredito
-        CalendarioConvenio.deuda = DeudaTotal
-        CalendarioConvenio.cantPagos = txtCantPagos.Text
-        CalendarioConvenio.MontoPago = txtPago.Text
-        CalendarioConvenio.PrimerPago = Convert.ToDateTime(datePrimerPago.Value.ToShortDateString)
-        CalendarioConvenio.Modalidad = Modalidad
-        CalendarioConvenio.deudaTotal = DeudaTotal
-        CalendarioConvenio.gestor = gestor
-        CalendarioConvenio.Show()
+                ' CalendarioConvenioLegal.personalizado = personalizado
+                CalendarioConvenio.idCredito = idCredito
+                CalendarioConvenio.deuda = DeudaTotal
+                CalendarioConvenio.cantPagos = txtCantPagos.Text
+                CalendarioConvenio.MontoPago = txtPago.Text
+                CalendarioConvenio.PrimerPago = Convert.ToDateTime(datePrimerPago.Value.ToShortDateString)
+                CalendarioConvenio.Modalidad = Modalidad
+                CalendarioConvenio.deudaTotal = DeudaTotal
+                CalendarioConvenio.gestor = gestor
+                CalendarioConvenio.Show()
+            Else
+                If diasAtraso < 30 Then
+                    MessageBox.Show("Para crear el convenio el crédito debe tener por lo menos 30 días de atraso desde la última fecha de pago")
+                Else
+                    CalendarioConvenio.Moratorios = ParteMoratorios
+                    CalendarioConvenio.Capital = ParteCredito
+
+
+                    ' CalendarioConvenioLegal.personalizado = personalizado
+                    CalendarioConvenio.idCredito = idCredito
+                    CalendarioConvenio.deuda = DeudaTotal
+                    CalendarioConvenio.cantPagos = txtCantPagos.Text
+                    CalendarioConvenio.MontoPago = txtPago.Text
+                    CalendarioConvenio.PrimerPago = Convert.ToDateTime(datePrimerPago.Value.ToShortDateString)
+                    CalendarioConvenio.Modalidad = Modalidad
+                    CalendarioConvenio.deudaTotal = DeudaTotal
+                    CalendarioConvenio.gestor = gestor
+                    CalendarioConvenio.Show()
+                End If
+            End If
+
+
+
     End Sub
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint

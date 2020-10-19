@@ -58,6 +58,8 @@ Partial Class CrearConvenio
         Me.Label12 = New System.Windows.Forms.Label()
         Me.lblMultasAbonadas = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.lblDiasAtraso = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -490,12 +492,36 @@ Partial Class CrearConvenio
         Me.Label13.TabIndex = 161
         Me.Label13.Text = "Multas Abonadas"
         '
+        'lblDiasAtraso
+        '
+        Me.lblDiasAtraso.AutoSize = True
+        Me.lblDiasAtraso.BackColor = System.Drawing.Color.Transparent
+        Me.lblDiasAtraso.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblDiasAtraso.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.lblDiasAtraso.Location = New System.Drawing.Point(770, 227)
+        Me.lblDiasAtraso.Name = "lblDiasAtraso"
+        Me.lblDiasAtraso.Size = New System.Drawing.Size(21, 20)
+        Me.lblDiasAtraso.TabIndex = 164
+        Me.lblDiasAtraso.Text = "..."
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label4.Location = New System.Drawing.Point(771, 202)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(177, 13)
+        Me.Label4.TabIndex = 163
+        Me.Label4.Text = "Días de atraso desde el último pago"
+        '
         'CrearConvenio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1086, 557)
+        Me.Controls.Add(Me.lblDiasAtraso)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.lblMultasAbonadas)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.lblmultas)
@@ -562,4 +588,6 @@ Partial Class CrearConvenio
     Friend WithEvents Label12 As Label
     Friend WithEvents lblMultasAbonadas As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents Label13 As Label
+    Friend WithEvents lblDiasAtraso As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents Label4 As Label
 End Class

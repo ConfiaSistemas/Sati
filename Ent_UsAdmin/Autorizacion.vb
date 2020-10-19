@@ -167,6 +167,15 @@ Public Class Autorizacion
                 Me.Close()
             Case "SatiModCreditos"
             Case "SatiModCreditosVer"
+            Case "SatiModCreditosCrearConvenio"
+                CalendarioConvenio.Autorizado = False
+                Me.Close()
+            Case "SatiModCreditosCrearReestructura"
+                CalendarioReestructura.Autorizado = False
+                Me.Close()
+            Case "SatiModCreditosCrearPromesa"
+                PromesaPago.Autorizado = False
+                Me.Close()
             Case "SatiModReportes"
             Case "SatiModTiposCreditos"
             Case "SatiModTiposCreditosVer"
@@ -353,6 +362,42 @@ Public Class Autorizacion
                 End If
             Case "SatiModCreditos"
             Case "SatiModCreditosVer"
+            Case "SatiModCreditosCrearConvenio"
+                If autorizado Then
+                    CalendarioConvenio.Autorizado = True
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                Else
+                    CalendarioConvenio.Autorizado = False
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                End If
+            Case "SatiModCreditosCrearReestructura"
+                If autorizado Then
+                    CalendarioReestructura.Autorizado = True
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                Else
+                    CalendarioReestructura.Autorizado = False
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                End If
+            Case "SatiModCreditosCrearPromesa"
+                If autorizado Then
+                    PromesaPago.Autorizado = True
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                Else
+                    PromesaPago.Autorizado = False
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                End If
             Case "SatiModReportes"
             Case "SatiModTiposCreditos"
             Case "SatiModTiposCreditosVer"
@@ -569,6 +614,15 @@ Public Class Autorizacion
                     Me.Close()
                 Case "SatiModCreditos"
                 Case "SatiModCreditosVer"
+                Case "SatiModCreditosCrearConvenio"
+                    CalendarioConvenio.Autorizado = True
+                    Me.Close()
+                Case "SatiModCreditosCrearReestructura"
+                    CalendarioReestructura.Autorizado = True
+                    Me.Close()
+                Case "SatiModCreditosCrearPromesa"
+                    PromesaPago.Autorizado = True
+                    Me.Close()
                 Case "SatiModReportes"
 
                 Case "SatiModTiposCreditos"
@@ -619,4 +673,6 @@ Public Class Autorizacion
     Private Sub txtcontra_TextChanged(sender As Object, e As EventArgs) Handles txtcontra.TextChanged
 
     End Sub
+
+
 End Class

@@ -122,4 +122,9 @@ Select * from @Listado"
         dtimpuestos.ScrollBars = ScrollBars.Both
         txtnombre.Select()
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Reportes.Panel1.Visible = False
+        Reportes.RadPanorama1.Visible = True
+    End Sub
 End Class

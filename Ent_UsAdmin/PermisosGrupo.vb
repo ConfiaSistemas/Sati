@@ -370,7 +370,10 @@ SatimodSolicitudesAgregarLegales as 'Agregar Legales' from permisosGrupo  where 
             comandocreditos.Connection = conexionempresaR
             sqlcreditos = "select permiso,valor from
 (select SatiModCreditos as Acceder,
-SatiModCreditosVer as Ver from permisosGrupo  where idGrupo = '" & idgrupousuarios & "') p unpivot(valor for permiso in ( [Acceder],[Ver])) unpvt"
+SatiModCreditosVer as Ver,
+SatiModCreditosCrearConvenio as 'Crear Convenio',
+SatiModCreditosCrearReestructura as 'Crear Reestructura',
+SatiModCreditosCrearPromesa as 'Crear Promesa' from permisosGrupo  where idGrupo = '" & idgrupousuarios & "') p unpivot(valor for permiso in ( [Acceder],[Ver],[Crear Convenio],[Crear Reestructura],[Crear Promesa])) unpvt"
             comandocreditos.CommandText = sqlcreditos
             milectorcreditos = comandocreditos.ExecuteReader
             While milectorcreditos.Read
@@ -384,8 +387,20 @@ SatiModCreditosVer as Ver from permisosGrupo  where idGrupo = '" & idgrupousuari
                 Else
                     checkTipo.CheckState = CheckState.Unchecked
                 End If
+                If checkTipo.Name = "Crear Convenio" Then
+                    checkTipo.AutoSize = False
+                    checkTipo.Size = New Size(104, 33)
+                ElseIf checkTipo.Name = "Acceder" Then
+                    checkTipo.AutoSize = False
+                    checkTipo.Size = New Size(120, 20)
+                Else
+
+                    checkTipo.AutoSize = True
+
+                End If
+
                 checkTipo.ForeColor = Color.Black
-                checkTipo.AutoSize = True
+                'checkTipo.AutoSize = True
                 'checkTipo.Tag = milector("ip")
 
                 Me.Invoke(Sub()
@@ -656,7 +671,7 @@ SacModReportes as Reportes from permisosGrupo where idGrupo = '" & idgrupousuari
         iniciarconexionR()
         'iniciarconexionempresa()
 
-        Dim SatiAcceso, SatiModUsuarios, SatiModUsuariosVer, SatiModUsuariosModificar, SatiModUsuariosAgregar, SatiModGrupos, SatiModGruposVer, SatiModGruposModificar, SatiModGruposAgregar, SatiModCatalogos, SatiModClientes, SatiModClientesVer, SatiModClientesModificar, SatiModClientesAgregar, SatiModDocumentos, SatiModDocumentosVer, SatiModDocumentosModificar, SatiModDocumentosAgregar, SatiModTipoDocumentos, SatiModTipoDocumentosVer, SatiModTipoDocumentosModificar, SatiModTipoDocumentosAgregar, SatiModSolicitudes, SatiModSolicitudesVer, SatiModSolicitudesModificar, SatiModSolicitudesAgregar, SatiModSolicitudesVerificar, SatiModSolicitudesAprobar, SatiModSolicitudesCancelar, SatiModSolicitudesAgregarRechazados, SatiModSolicitudesAgregarLegales, SatiModCreditos, SatiModCreditosVer, SatiModReportes, SatiModTiposCreditos, SatiModTiposCreditosVer, SatiModTiposCreditosModificar, SatiModTiposCreditosAgregar, SatiModEmpleados, SatiModEmpleadosVer, SatiModEmpleadosModificar, SatiModEmpleadosAgregar, SatiModCajas, SatiModCajasVer, SatiModCajasModificar, SatiModCajasAgregar, SacAcceso, SacConsultaCredito, SacCobrarCredito, SacCobrarComision, SacAplicarDescuento, SacCancelarTicket, SacDetalleCaja, SacConsultarTicket, SacModReportes, SatiModLegal, SatiModLegalVer, SatiModLegalGestionar, SatiModLegalConvenio As Boolean
+        Dim SatiAcceso, SatiModUsuarios, SatiModUsuariosVer, SatiModUsuariosModificar, SatiModUsuariosAgregar, SatiModGrupos, SatiModGruposVer, SatiModGruposModificar, SatiModGruposAgregar, SatiModCatalogos, SatiModClientes, SatiModClientesVer, SatiModClientesModificar, SatiModClientesAgregar, SatiModDocumentos, SatiModDocumentosVer, SatiModDocumentosModificar, SatiModDocumentosAgregar, SatiModTipoDocumentos, SatiModTipoDocumentosVer, SatiModTipoDocumentosModificar, SatiModTipoDocumentosAgregar, SatiModSolicitudes, SatiModSolicitudesVer, SatiModSolicitudesModificar, SatiModSolicitudesAgregar, SatiModSolicitudesVerificar, SatiModSolicitudesAprobar, SatiModSolicitudesCancelar, SatiModSolicitudesAgregarRechazados, SatiModSolicitudesAgregarLegales, SatiModCreditos, SatiModCreditosVer, SatiModCreditosCrearConvenio, SatiModCreditosCrearReestructura, SatiModCreditosCrearPromesa, SatiModReportes, SatiModTiposCreditos, SatiModTiposCreditosVer, SatiModTiposCreditosModificar, SatiModTiposCreditosAgregar, SatiModEmpleados, SatiModEmpleadosVer, SatiModEmpleadosModificar, SatiModEmpleadosAgregar, SatiModCajas, SatiModCajasVer, SatiModCajasModificar, SatiModCajasAgregar, SacAcceso, SacConsultaCredito, SacCobrarCredito, SacCobrarComision, SacAplicarDescuento, SacCancelarTicket, SacDetalleCaja, SacConsultarTicket, SacModReportes, SatiModLegal, SatiModLegalVer, SatiModLegalGestionar, SatiModLegalConvenio As Boolean
 
 
         For Each ctrl As Control In FlowAccesoSati.Controls
@@ -835,6 +850,16 @@ SacModReportes as Reportes from permisosGrupo where idGrupo = '" & idgrupousuari
                 End If
                 If checkctrl.Name = "Ver" Then
                     SatiModCreditosVer = checkctrl.CheckState
+                End If
+
+                If checkctrl.Name = "Crear Convenio" Then
+                    SatiModCreditosCrearConvenio = checkctrl.CheckState
+                End If
+                If checkctrl.Name = "Crear Reestructura" Then
+                    SatiModCreditosCrearReestructura = checkctrl.CheckState
+                End If
+                If checkctrl.Name = "Crear Promesa" Then
+                    SatiModCreditosCrearPromesa = checkctrl.CheckState
                 End If
 
 
@@ -1043,6 +1068,9 @@ SatiModSolicitudesAgregarRechazados = '" & SatiModSolicitudesAgregarRechazados &
 SatiModSolicitudesAgregarLegales = '" & SatiModSolicitudesAgregarLegales & "',
 SatiModCreditos = '" & SatiModCreditos & "',
 SatiModCreditosVer = '" & SatiModCreditosVer & "',
+SatiModCreditosCrearConvenio = '" & SatiModCreditosCrearConvenio & "',
+SatiModCreditosCrearReestructura = '" & SatiModCreditosCrearReestructura & "',
+SatiModCreditosCrearPromesa = '" & SatiModCreditosCrearPromesa & "',
 SatiModReportes = '" & SatiModReportes & "',
 SatiModTiposCreditos = '" & SatiModTiposCreditos & "',
 SatiModTiposCreditosVer = '" & SatiModTiposCreditosVer & "',

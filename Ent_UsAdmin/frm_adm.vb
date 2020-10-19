@@ -695,36 +695,46 @@ Public Class frm_adm
     End Sub
 
     Private Sub BunifuFlatButton8_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton8.Click
-        For Each frmForm As Form In My.Application.OpenForms
+
+        For Each row As DataRow In dataPermisos.Rows
+            If row("SatiModSolicitudes") Then
+                For Each frmForm As Form In My.Application.OpenForms
 
 
-            If frmForm.Name = ventana.Name Then
-                frmForm.Close()
-                Exit For
+                    If frmForm.Name = ventana.Name Then
+                        frmForm.Close()
+                        Exit For
+                    End If
+                Next
+                ventana.Name = Reportes.Name
+                Reportes.MdiParent = Me
+                Reportes.Height = Me.Height - Panel1.Height
+                Reportes.Width = Me.Width - panelmenus.Width
+
+
+                Reportes.Top = 0
+                Reportes.Left = 0
+                Reportes.Show()
+                Reportes.Top = 0
+                Reportes.Left = 0
+                Reportes.Height = Me.Height - Panel1.Height - 43
+                Reportes.Width = Me.Width - panelmenus.Width - 20
+                'inv.Size = sizeventanas
+                Reportes.Show()
+
+                If Reportes.Top > 0 Then
+                    Reportes.Top = 0
+
+                End If
+                Reportes.Update()
+            Else
+
             End If
         Next
-        ventana.Name = Reportes.Name
-
-        Reportes.MdiParent = Me
-        Reportes.Height = Me.Height - Panel1.Height
-        Reportes.Width = Me.Width - panelmenus.Width
 
 
-        Reportes.Top = 0
-        Reportes.Left = 0
-        Reportes.Show()
-        Reportes.Top = 0
-        Reportes.Left = 0
-        Reportes.Height = Me.Height - Panel1.Height - 43
-        Reportes.Width = Me.Width - panelmenus.Width - 20
-        'inv.Size = sizeventanas
-        Reportes.Show()
 
-        If Reportes.Top > 0 Then
-            Reportes.Top = 0
 
-        End If
-        Reportes.Update()
     End Sub
 
     Private Sub TimerLiberar_Tick(sender As Object, e As EventArgs) Handles TimerLiberar.Tick

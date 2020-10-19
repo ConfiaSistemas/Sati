@@ -425,7 +425,69 @@ Public Class Tickets
             Else
                 MessageBox.Show("No se puede cancelar éste ticket, existen tickets activos con fechas posteriores")
             End If
+        ElseIf dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(6).Value = "Promesa de pago" Then
+            Dim comandoFechaUpagoTicket As SqlCommand
+            Dim fechaUpagoTicket As Date
+            Dim consultaUfechaTicket As String
+            consultaUfechaTicket = "select fecha from ticket where id = '" & dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value & "'"
+            comandoFechaUpagoTicket = New SqlCommand
+            comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
+            comandoFechaUpagoTicket.Connection = conexionempresa
+            fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
+
+            Dim fechaPosterior As String
+            Dim comandoFechaPosterior As SqlCommand
+            Dim consultaFechaPosterior As String
+            consultaFechaPosterior = "if exists (select top 1 fecha from ticket where fecha > '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Promesa de pago') order by fecha desc)
+                                           begin
+                                           select 'Sí hay' as ss
+                                           end
+                                           else 
+                                           begin
+                                           select 'No hay' as ss
+                                           end"
+
+            comandoFechaPosterior = New SqlCommand
+            comandoFechaPosterior.Connection = conexionempresa
+            comandoFechaPosterior.CommandText = consultaFechaPosterior
+            fechaPosterior = comandoFechaPosterior.ExecuteScalar
+            If fechaPosterior = "No hay" Then
+                Dim fechaUpago As Date
+                Dim comandoFechaUpago As SqlCommand
+                Dim consultaFechaUpago As String
+                consultaFechaUpago = "if exists (select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Promesa de pago') order by fecha desc)
+                                           begin
+                                           select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Promesa de pago') order by fecha desc
+                                           end
+                                           else 
+                                           begin
+                                           select '1900-01-01' as fecha
+                                           end"
+                comandoFechaUpago = New SqlCommand
+                comandoFechaUpago.Connection = conexionempresa
+                comandoFechaUpago.CommandText = consultaFechaUpago
+                fechaUpago = comandoFechaUpago.ExecuteScalar
+
+                Dim comandoConsultaTicketDetalle As SqlCommand
+                Dim consultaTicketDetalle As String
+                Dim readerTicketDetalle As SqlDataReader
+                consultaTicketDetalle = "CancelarTicket"
+                comandoConsultaTicketDetalle = New SqlCommand
+                comandoConsultaTicketDetalle.Connection = conexionempresa
+                comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
+                comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
+                comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value)
+                comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(6).Value)
+                comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
+                comandoConsultaTicketDetalle.ExecuteNonQuery()
+            Else
+                MessageBox.Show("No se puede cancelar éste ticket, existen tickets activos con fechas posteriores")
+            End If
+
         Else
+
+
+
             Dim comandoConsultaTicketDetalle As SqlCommand
             Dim consultaTicketDetalle As String
             Dim readerTicketDetalle As SqlDataReader
@@ -462,5 +524,12 @@ Public Class Tickets
         Cargando.MonoFlat_Label1.Text = "Consultando"
         BackgroundWorker1.RunWorkerAsync()
 
+    End Sub
+
+
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Reportes.Panel1.Visible = False
+        Reportes.RadPanorama1.Visible = True
     End Sub
 End Class

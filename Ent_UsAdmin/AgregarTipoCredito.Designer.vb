@@ -37,6 +37,8 @@ Partial Class AgregarTipoCredito
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btn_Procesar = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.lblOtroPlazo = New System.Windows.Forms.Label()
+        Me.txtOtroPlazo = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -218,12 +220,45 @@ Partial Class AgregarTipoCredito
         Me.btn_Procesar.TabIndex = 32
         Me.btn_Procesar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'lblOtroPlazo
+        '
+        Me.lblOtroPlazo.AutoSize = True
+        Me.lblOtroPlazo.ForeColor = System.Drawing.Color.White
+        Me.lblOtroPlazo.Location = New System.Drawing.Point(17, 241)
+        Me.lblOtroPlazo.Name = "lblOtroPlazo"
+        Me.lblOtroPlazo.Size = New System.Drawing.Size(56, 13)
+        Me.lblOtroPlazo.TabIndex = 34
+        Me.lblOtroPlazo.Text = "Otro Plazo"
+        Me.lblOtroPlazo.Visible = False
+        '
+        'txtOtroPlazo
+        '
+        Me.txtOtroPlazo.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtOtroPlazo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtOtroPlazo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        Me.txtOtroPlazo.HintForeColor = System.Drawing.Color.White
+        Me.txtOtroPlazo.HintText = ""
+        Me.txtOtroPlazo.isPassword = False
+        Me.txtOtroPlazo.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtOtroPlazo.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtOtroPlazo.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtOtroPlazo.LineThickness = 3
+        Me.txtOtroPlazo.Location = New System.Drawing.Point(20, 258)
+        Me.txtOtroPlazo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtOtroPlazo.Name = "txtOtroPlazo"
+        Me.txtOtroPlazo.Size = New System.Drawing.Size(53, 33)
+        Me.txtOtroPlazo.TabIndex = 33
+        Me.txtOtroPlazo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.txtOtroPlazo.Visible = False
+        '
         'AgregarTipoCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(632, 356)
+        Me.Controls.Add(Me.lblOtroPlazo)
+        Me.Controls.Add(Me.txtOtroPlazo)
         Me.Controls.Add(Me.btn_Procesar)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label3)
@@ -262,4 +297,6 @@ Partial Class AgregarTipoCredito
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents btn_Procesar As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents lblOtroPlazo As Label
+    Friend WithEvents txtOtroPlazo As Bunifu.Framework.UI.BunifuMaterialTextbox
 End Class

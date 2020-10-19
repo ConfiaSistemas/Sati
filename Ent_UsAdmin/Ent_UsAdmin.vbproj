@@ -171,6 +171,7 @@
       <HintPath>C:\Program Files (x86)\e-iceblue\Spire.Doc-FE\Bin\NET4.0\Spire.Doc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -438,6 +439,12 @@
     <Compile Include="Configuraciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PromesaPago.Designer.vb">
+      <DependentUpon>PromesaPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PromesaPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CrearReestructura.Designer.vb">
       <DependentUpon>CrearReestructura.vb</DependentUpon>
     </Compile>
@@ -454,6 +461,12 @@
       <DependentUpon>CrearConvenioLegal.vb</DependentUpon>
     </Compile>
     <Compile Include="CrearConvenioLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListadoMaestro.Designer.vb">
@@ -1019,6 +1032,9 @@
     <EmbeddedResource Include="Configuraciones.resx">
       <DependentUpon>Configuraciones.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PromesaPago.resx">
+      <DependentUpon>PromesaPago.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrearReestructura.resx">
       <DependentUpon>CrearReestructura.vb</DependentUpon>
     </EmbeddedResource>
@@ -1027,6 +1043,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrearConvenioLegal.resx">
       <DependentUpon>CrearConvenioLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoMaestro.resx">
       <DependentUpon>ListadoMaestro.vb</DependentUpon>
@@ -1432,6 +1451,7 @@
     <None Include="Resources\kisspng-arrow-scalable-vector-graphics-computer-file-compu-download-svg-png-icon-free-download-513522-on-5c55a19ccfefb8.2177330715491158048517.jpg" />
     <None Include="Resources\kisspng-computer-icons-symbol-download-5ae1ab4e6c54d2.8156834015247388944437.jpg" />
     <None Include="Resources\9261.png" />
+    <None Include="Resources\images.png" />
     <Content Include="SATI.ico" />
     <None Include="Resources\Logo Confia.png" />
     <None Include="Resources\eaad3b05-c22d-49fb-ae4f-2d0e4ff7b0cb.jpg" />

@@ -349,3 +349,5 @@ D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.cmd.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Verificar.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirReestructura.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirReestructura.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Form1.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromesaPago.resources

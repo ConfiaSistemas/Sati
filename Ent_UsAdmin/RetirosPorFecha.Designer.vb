@@ -23,8 +23,8 @@ Partial Class RetirosPorFecha
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RetirosPorFecha))
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.dtdatos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
@@ -41,6 +41,7 @@ Partial Class RetirosPorFecha
         Me.BackgroundCajas = New System.ComponentModel.BackgroundWorker()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.dtdatos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -51,7 +52,7 @@ Partial Class RetirosPorFecha
         Me.MonoFlat_HeaderLabel1.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel1.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(3, 3)
+        Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(63, 5)
         Me.MonoFlat_HeaderLabel1.Name = "MonoFlat_HeaderLabel1"
         Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(129, 20)
         Me.MonoFlat_HeaderLabel1.TabIndex = 1
@@ -61,8 +62,8 @@ Partial Class RetirosPorFecha
         '
         Me.dtdatos.AllowUserToAddRows = False
         Me.dtdatos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dtdatos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -70,14 +71,14 @@ Partial Class RetirosPorFecha
         Me.dtdatos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dtdatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatos.DoubleBuffered = True
         Me.dtdatos.EnableHeadersVisualStyles = False
@@ -96,6 +97,7 @@ Partial Class RetirosPorFecha
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.Panel1.Location = New System.Drawing.Point(1, 4)
         Me.Panel1.Name = "Panel1"
@@ -256,6 +258,18 @@ Partial Class RetirosPorFecha
         Me.BunifuThinButton22.TabIndex = 5
         Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'Button2
+        '
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button2.Location = New System.Drawing.Point(3, 3)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(54, 23)
+        Me.Button2.TabIndex = 35
+        Me.Button2.Text = "Atrás"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'RetirosPorFecha
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -301,4 +315,5 @@ Partial Class RetirosPorFecha
     Friend WithEvents MonoFlat_HeaderLabel2 As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents lbltotal As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents BackgroundCajas As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Button2 As Button
 End Class

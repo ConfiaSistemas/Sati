@@ -117,4 +117,9 @@ Public Class RetirosPorFecha
     Private Sub dtdatos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtdatos.CellContentClick
 
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Reportes.Panel1.Visible = False
+        Reportes.RadPanorama1.Visible = True
+    End Sub
 End Class

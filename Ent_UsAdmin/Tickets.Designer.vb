@@ -24,10 +24,10 @@ Partial Class Tickets
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim CheckBoxProperties2 As PresentationControls.CheckBoxProperties = New PresentationControls.CheckBoxProperties()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Tickets))
-        Dim CheckBoxProperties1 As PresentationControls.CheckBoxProperties = New PresentationControls.CheckBoxProperties()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.dtdatos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -50,13 +50,14 @@ Partial Class Tickets
         Me.MonoFlat_HeaderLabel2 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.lbltotal = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.BackgroundCajas = New System.ComponentModel.BackgroundWorker()
-        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BackgroundExcel = New System.ComponentModel.BackgroundWorker()
         Me.CheckedCajas = New PresentationControls.CheckBoxComboBox()
         Me.ContextMenuCancelar = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.CancelarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackgroundCancelar = New System.ComponentModel.BackgroundWorker()
+        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.dtdatos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.ContextMenuCancelar.SuspendLayout()
@@ -68,7 +69,7 @@ Partial Class Tickets
         Me.MonoFlat_HeaderLabel1.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel1.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(3, 3)
+        Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(71, 8)
         Me.MonoFlat_HeaderLabel1.Name = "MonoFlat_HeaderLabel1"
         Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(128, 20)
         Me.MonoFlat_HeaderLabel1.TabIndex = 1
@@ -78,8 +79,8 @@ Partial Class Tickets
         '
         Me.dtdatos.AllowUserToAddRows = False
         Me.dtdatos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dtdatos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -87,14 +88,14 @@ Partial Class Tickets
         Me.dtdatos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dtdatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.idCredito, Me.Nombre, Me.Monto, Me.Fecha, Me.Hora, Me.Tipo, Me.Caja, Me.Estado})
         Me.dtdatos.DoubleBuffered = True
@@ -177,6 +178,7 @@ Partial Class Tickets
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.Panel1.Location = New System.Drawing.Point(1, 4)
         Me.Panel1.Name = "Panel1"
@@ -286,6 +288,35 @@ Partial Class Tickets
         'BackgroundCajas
         '
         '
+        'BackgroundExcel
+        '
+        '
+        'CheckedCajas
+        '
+        CheckBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.CheckedCajas.CheckBoxProperties = CheckBoxProperties2
+        Me.CheckedCajas.DisplayMemberSingleItem = ""
+        Me.CheckedCajas.FormattingEnabled = True
+        Me.CheckedCajas.Location = New System.Drawing.Point(23, 77)
+        Me.CheckedCajas.Name = "CheckedCajas"
+        Me.CheckedCajas.Size = New System.Drawing.Size(256, 21)
+        Me.CheckedCajas.TabIndex = 35
+        '
+        'ContextMenuCancelar
+        '
+        Me.ContextMenuCancelar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CancelarToolStripMenuItem})
+        Me.ContextMenuCancelar.Name = "ContextMenuCancelar"
+        Me.ContextMenuCancelar.Size = New System.Drawing.Size(121, 26)
+        '
+        'CancelarToolStripMenuItem
+        '
+        Me.CancelarToolStripMenuItem.Name = "CancelarToolStripMenuItem"
+        Me.CancelarToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.CancelarToolStripMenuItem.Text = "Cancelar"
+        '
+        'BackgroundCancelar
+        '
+        '
         'BunifuThinButton21
         '
         Me.BunifuThinButton21.ActiveBorderThickness = 1
@@ -338,34 +369,17 @@ Partial Class Tickets
         Me.BunifuThinButton22.TabIndex = 5
         Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'BackgroundExcel
+        'Button1
         '
-        '
-        'CheckedCajas
-        '
-        CheckBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CheckedCajas.CheckBoxProperties = CheckBoxProperties1
-        Me.CheckedCajas.DisplayMemberSingleItem = ""
-        Me.CheckedCajas.FormattingEnabled = True
-        Me.CheckedCajas.Location = New System.Drawing.Point(23, 77)
-        Me.CheckedCajas.Name = "CheckedCajas"
-        Me.CheckedCajas.Size = New System.Drawing.Size(256, 21)
-        Me.CheckedCajas.TabIndex = 35
-        '
-        'ContextMenuCancelar
-        '
-        Me.ContextMenuCancelar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CancelarToolStripMenuItem})
-        Me.ContextMenuCancelar.Name = "ContextMenuCancelar"
-        Me.ContextMenuCancelar.Size = New System.Drawing.Size(121, 26)
-        '
-        'CancelarToolStripMenuItem
-        '
-        Me.CancelarToolStripMenuItem.Name = "CancelarToolStripMenuItem"
-        Me.CancelarToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
-        Me.CancelarToolStripMenuItem.Text = "Cancelar"
-        '
-        'BackgroundCancelar
-        '
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button1.Location = New System.Drawing.Point(11, 8)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(54, 23)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "Atrás"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Tickets
         '
@@ -428,4 +442,5 @@ Partial Class Tickets
     Friend WithEvents ContextMenuCancelar As ContextMenuStrip
     Friend WithEvents CancelarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BackgroundCancelar As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Button1 As Button
 End Class

@@ -662,4 +662,9 @@ else '0' end as MultasVencidas
     Private Sub CreditosEnMora_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         BunifuThinButton22.Location = New Point(ComboElección.Location.X + ComboElección.Width + 20, ComboElección.Location.Y)
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Reportes.Panel1.Visible = False
+        Reportes.RadPanorama1.Visible = True
+    End Sub
 End Class

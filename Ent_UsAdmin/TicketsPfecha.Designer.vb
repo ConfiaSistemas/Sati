@@ -48,6 +48,7 @@ Partial Class TicketsPfecha
         Me.dateDesde = New Bunifu.Framework.UI.BunifuDatepicker()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundCajas = New System.ComponentModel.BackgroundWorker()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -128,6 +129,7 @@ Partial Class TicketsPfecha
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.Panel1.Location = New System.Drawing.Point(2, 3)
         Me.Panel1.Name = "Panel1"
@@ -140,7 +142,7 @@ Partial Class TicketsPfecha
         Me.MonoFlat_HeaderLabel1.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel1.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(3, 3)
+        Me.MonoFlat_HeaderLabel1.Location = New System.Drawing.Point(63, 3)
         Me.MonoFlat_HeaderLabel1.Name = "MonoFlat_HeaderLabel1"
         Me.MonoFlat_HeaderLabel1.Size = New System.Drawing.Size(128, 20)
         Me.MonoFlat_HeaderLabel1.TabIndex = 1
@@ -274,6 +276,18 @@ Partial Class TicketsPfecha
         'BackgroundCajas
         '
         '
+        'Button2
+        '
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button2.Location = New System.Drawing.Point(3, 3)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(54, 23)
+        Me.Button2.TabIndex = 3
+        Me.Button2.Text = "Atrás"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'TicketsPfecha
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -325,4 +339,5 @@ Partial Class TicketsPfecha
     Friend WithEvents dateDesde As Bunifu.Framework.UI.BunifuDatepicker
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents BackgroundCajas As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Button2 As Button
 End Class
