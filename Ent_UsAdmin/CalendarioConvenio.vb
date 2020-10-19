@@ -14,6 +14,8 @@ Public Class CalendarioConvenio
     Public Moratorios As Double = 0
     Public personalizado As Boolean
     Public Capital As Double = 0
+    Public Autorizado As Boolean
+
     Private Sub CalendarioConvenioLegal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CheckForIllegalCrossThreadCalls = False
         Dim proporcionMoratorio As Double
@@ -160,10 +162,18 @@ Public Class CalendarioConvenio
     End Sub
 
     Private Sub btn_Procesar_Click(sender As Object, e As EventArgs) Handles btn_Procesar.Click
-        Cargando.Show()
-        Cargando.MonoFlat_Label1.Text = "Generando Convenio"
-        Cargando.TopMost = True
-        BackgroundConvenio.RunWorkerAsync()
+        Autorizacion.tipoAutorizacion = "SatiModCreditosCrearConvenio"
+        Autorizacion.ShowDialog()
+        If Autorizado Then
+            Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Generando Convenio"
+            Cargando.TopMost = True
+            BackgroundConvenio.RunWorkerAsync()
+        Else
+            MessageBox.Show("No fue autorizado")
+        End If
+
+
 
     End Sub
 

@@ -110,4 +110,10 @@ Public Class CreditosActivos
         CrearReestructura.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
         CrearReestructura.Show()
     End Sub
+
+    Private Sub PromesaDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PromesaDePagoToolStripMenuItem.Click
+        PromesaPago.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        PromesaPago.Show()
+
+    End Sub
 End Class

@@ -127,6 +127,11 @@ ConfiaAdmin
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ConfiaAdmin.My.Resources.Resources.images">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ConfiaAdmin.My.Resources.Resources.impuestos_mas">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.

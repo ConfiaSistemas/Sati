@@ -233,10 +233,11 @@ Partial Class PermisosGrupo
         '
         'FlowCreditos
         '
+        Me.FlowCreditos.AutoScroll = True
         Me.FlowCreditos.BackColor = System.Drawing.Color.White
         Me.FlowCreditos.Location = New System.Drawing.Point(217, 328)
         Me.FlowCreditos.Name = "FlowCreditos"
-        Me.FlowCreditos.Size = New System.Drawing.Size(102, 100)
+        Me.FlowCreditos.Size = New System.Drawing.Size(97, 100)
         Me.FlowCreditos.TabIndex = 20
         '
         'FlowSolicitudes

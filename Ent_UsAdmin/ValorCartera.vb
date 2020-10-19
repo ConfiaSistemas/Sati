@@ -561,7 +561,10 @@ else '0' end as MultasVencidas
         BackgroundExcel.RunWorkerAsync()
     End Sub
 
-
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Reportes.Panel1.Visible = False
+        Reportes.RadPanorama1.Visible = True
+    End Sub
 
     Private Sub BackgroundExcel_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundExcel.DoWork
         nuevolibro()
