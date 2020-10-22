@@ -18,6 +18,7 @@
     Public catPagosHoy As New PagosHoy
     Public CatMoraNiveles As New MoraPorNiveles
     Public CatListadoMaestro As New ListadoMaestro
+    Public CatReporteLegal As New ReporteLegal
 
 
     Private Sub inv_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
@@ -48,6 +49,8 @@
                 CatMoraNiveles.Size = Panel1.Size
             Case "ListadoMaestro"
                 CatMoraNiveles.Size = Panel1.Size
+            Case "ReporteLegal"
+                CatReporteLegal.Size = Panel1.Size
         End Select
         Panel1.Size = Me.Size
         RadPanorama1.Size = Me.Size
@@ -295,6 +298,7 @@
         catTicketsDetalle.Visible = True
         catTicketsDetalle.TopLevel = False
         CatListadoMaestro.Visible = False
+        CatReporteLegal.Visible = False
 
         catTicketsDetalle.Size = Panel1.Size
         catTicketsDetalle.Location = New System.Drawing.Point(0, 0)
@@ -322,6 +326,7 @@
         catRetiros.Visible = False
         catDesembolsos.Visible = True
         CatListadoMaestro.Visible = False
+        CatReporteLegal.Visible = False
 
         catDesembolsos.TopLevel = False
 
@@ -348,6 +353,7 @@
         catRetiros.Visible = False
         catPagosHoy.Visible = False
         CatMoraNiveles.Visible = False
+        CatReporteLegal.Visible = False
 
         CatListadoMaestro.Visible = True
         CatListadoMaestro.TopLevel = False
@@ -377,6 +383,7 @@
         catRetiros.Visible = True
         catRetiros.TopLevel = False
         CatListadoMaestro.Visible = False
+        CatReporteLegal.Visible = False
 
         catRetiros.Size = Panel1.Size
         catRetiros.Location = New System.Drawing.Point(0, 0)
@@ -406,6 +413,7 @@
         CatTickets.Visible = True
         CatTickets.TopLevel = False
         CatListadoMaestro.Visible = False
+        CatReporteLegal.Visible = False
 
         CatTickets.Size = Panel1.Size
         CatTickets.Location = New System.Drawing.Point(0, 0)
@@ -440,6 +448,7 @@
         catPagosHoy.Visible = True
         catPagosHoy.TopLevel = False
         CatListadoMaestro.Visible = False
+        CatReporteLegal.Visible = False
 
         catPagosHoy.Size = Panel1.Size
         catPagosHoy.Location = New System.Drawing.Point(0, 0)
@@ -462,6 +471,7 @@
         catPagosHoy.Visible = False
         catCreditosEnMora.Visible = True
         CatListadoMaestro.Visible = False
+        CatReporteLegal.Visible = False
 
         catCreditosEnMora.Visible = True
         catCreditosEnMora.Visible = True
@@ -488,6 +498,7 @@
         catValorCartera.Visible = True
         catCreditosEnMora.Visible = False
         CatListadoMaestro.Visible = False
+        CatReporteLegal.Visible = False
 
         catValorCartera.Visible = True
         catValorCartera.Visible = True
@@ -499,6 +510,29 @@
         catValorCartera.Visible = True
         ventanapanel = "ValorCartera"
         Panel1.Controls.Add(catValorCartera)
+        Panel1.Visible = True
+
+        RadPanorama1.Visible = False
+    End Sub
+
+    Private Sub RadTileElement4_Click(sender As Object, e As EventArgs) Handles RadTileElement4.Click
+        catDesembolsos.Visible = False
+        CatTickets.Visible = False
+        catTicketsDetalle.Visible = False
+        catValorCartera.Visible = False
+        catCreditosEnMora.Visible = False
+        catPagosHoy.Visible = False
+        CatMoraNiveles.Visible = False
+        catRetiros.Visible = False
+        CatListadoMaestro.Visible = False
+
+        CatReporteLegal.Size = Panel1.Size
+        CatReporteLegal.Location = New System.Drawing.Point(0, 0)
+        CatReporteLegal.WindowState = FormWindowState.Normal
+        CatReporteLegal.Visible = True
+        CatReporteLegal.TopLevel = False
+        ventanapanel = "ReporteLegal"
+        Panel1.Controls.Add(CatReporteLegal)
         Panel1.Visible = True
 
         RadPanorama1.Visible = False

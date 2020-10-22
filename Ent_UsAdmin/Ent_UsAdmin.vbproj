@@ -439,6 +439,12 @@
     <Compile Include="Configuraciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReporteLegal.Designer.vb">
+      <DependentUpon>ReporteLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PromesaPago.Designer.vb">
       <DependentUpon>PromesaPago.vb</DependentUpon>
     </Compile>
@@ -1031,6 +1037,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Configuraciones.resx">
       <DependentUpon>Configuraciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteLegal.resx">
+      <DependentUpon>ReporteLegal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PromesaPago.resx">
       <DependentUpon>PromesaPago.vb</DependentUpon>

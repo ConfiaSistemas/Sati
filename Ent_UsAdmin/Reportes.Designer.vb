@@ -56,8 +56,11 @@ Partial Class Reportes
         Me.LiveTileFrameElement8 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.TileGroupElement4 = New Telerik.WinControls.UI.TileGroupElement()
         Me.RadTileElement8 = New Telerik.WinControls.UI.RadTileElement()
+        Me.TileGroupElement6 = New Telerik.WinControls.UI.TileGroupElement()
+        Me.RadTileElement4 = New Telerik.WinControls.UI.RadTileElement()
         Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1 = New Telerik.WinControls.RootRadElement()
         Me.RadTileElement1 = New Telerik.WinControls.UI.RadTileElement()
+        Me.TileGroupElement5 = New Telerik.WinControls.UI.TileGroupElement()
         Me.FlowLayoutPanel1.SuspendLayout()
         CType(Me.RadPanorama1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -212,7 +215,7 @@ Partial Class Reportes
         '
         'RadPanorama1
         '
-        Me.RadPanorama1.Groups.AddRange(New Telerik.WinControls.RadItem() {Me.TileGroupElement1, Me.TileGroupElement2, Me.TileGroupElement3, Me.TileGroupElement4})
+        Me.RadPanorama1.Groups.AddRange(New Telerik.WinControls.RadItem() {Me.TileGroupElement1, Me.TileGroupElement2, Me.TileGroupElement3, Me.TileGroupElement4, Me.TileGroupElement6})
         Me.RadPanorama1.Location = New System.Drawing.Point(12, 66)
         Me.RadPanorama1.Name = "RadPanorama1"
         '
@@ -243,11 +246,12 @@ Partial Class Reportes
         CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(2), Telerik.WinControls.Layouts.StackLayoutPanel).Orientation = System.Windows.Forms.Orientation.Horizontal
         CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(2), Telerik.WinControls.Layouts.StackLayoutPanel).Alignment = System.Drawing.ContentAlignment.TopLeft
         CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(2), Telerik.WinControls.Layouts.StackLayoutPanel).RightToLeft = False
+        CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(2), Telerik.WinControls.Layouts.StackLayoutPanel).PositionOffset = New System.Drawing.SizeF(-270.0!, 0!)
         '
         'TileGroupElement1
         '
         Me.TileGroupElement1.AutoSize = False
-        Me.TileGroupElement1.Bounds = New System.Drawing.Rectangle(1, 0, 206, 227)
+        Me.TileGroupElement1.Bounds = New System.Drawing.Rectangle(1, 0, 206, 240)
         Me.TileGroupElement1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         Me.TileGroupElement1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadTileElement2, Me.RadLiveTileElement1})
         Me.TileGroupElement1.Name = "TileGroupElement1"
@@ -428,6 +432,21 @@ Partial Class Reportes
         Me.RadTileElement8.Text = "Retiros recibidos"
         Me.RadTileElement8.TextWrap = True
         '
+        'TileGroupElement6
+        '
+        Me.TileGroupElement6.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadTileElement4})
+        Me.TileGroupElement6.Name = "TileGroupElement6"
+        Me.TileGroupElement6.Text = "Legal"
+        '
+        'RadTileElement4
+        '
+        Me.RadTileElement4.Font = New System.Drawing.Font("Segoe UI Light", 12.0!)
+        Me.RadTileElement4.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.RadTileElement4.Name = "RadTileElement4"
+        Me.RadTileElement4.Text = "Reporte de Legal"
+        Me.RadTileElement4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.RadTileElement4.TextWrap = True
+        '
         'object_463b1597_0fcb_4548_89e9_00c7d5dddaf1
         '
         Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AccessibleDescription = "Reportes"
@@ -451,6 +470,14 @@ Partial Class Reportes
         Me.RadTileElement1.Text = "Tickets Detalle"
         Me.RadTileElement1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         Me.RadTileElement1.UseCompatibleTextRendering = False
+        '
+        'TileGroupElement5
+        '
+        Me.TileGroupElement5.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.TileGroupElement5.Name = "TileGroupElement5"
+        Me.TileGroupElement5.Text = "Legal"
+        Me.TileGroupElement5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.TileGroupElement5.UseCompatibleTextRendering = False
         '
         'Reportes
         '
@@ -506,4 +533,7 @@ Partial Class Reportes
     Friend WithEvents LiveTileFrameElement7 As Telerik.WinControls.UI.LiveTileFrameElement
     Friend WithEvents LiveTileFrameElement8 As Telerik.WinControls.UI.LiveTileFrameElement
     Friend WithEvents RadLiveTileElement5 As Telerik.WinControls.UI.RadLiveTileElement
+    Friend WithEvents TileGroupElement5 As Telerik.WinControls.UI.TileGroupElement
+    Friend WithEvents TileGroupElement6 As Telerik.WinControls.UI.TileGroupElement
+    Friend WithEvents RadTileElement4 As Telerik.WinControls.UI.RadTileElement
 End Class
