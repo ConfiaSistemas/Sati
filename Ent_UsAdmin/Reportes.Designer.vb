@@ -237,7 +237,7 @@ Partial Class Reportes
         CType(Me.RadPanorama1.GetChildAt(0), Telerik.WinControls.UI.RadPanoramaElement).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.[Auto]
         CType(Me.RadPanorama1.GetChildAt(0), Telerik.WinControls.UI.RadPanoramaElement).StretchVertically = True
         CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.RadScrollBarElement).ScrollType = Telerik.WinControls.UI.ScrollType.Horizontal
-        CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.RadScrollBarElement).TextOrientation = System.Windows.Forms.Orientation.Vertical
+        CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.RadScrollBarElement).TextOrientation = System.Windows.Forms.Orientation.Horizontal
         CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.RadScrollBarElement).Alignment = System.Drawing.ContentAlignment.MiddleLeft
         CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.RadScrollBarElement).Visibility = Telerik.WinControls.ElementVisibility.Visible
         CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.RadScrollBarElement).RightToLeft = False
