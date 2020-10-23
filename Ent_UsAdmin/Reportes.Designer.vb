@@ -24,16 +24,7 @@ Partial Class Reportes
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Reportes))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.MonoFlat_Button3 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
-        Me.MonoFlat_Button5 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.MonoFlat_Button1 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
-        Me.MonoFlat_Button2 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
-        Me.MonoFlat_Button4 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
-        Me.MonoFlat_Button6 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
-        Me.MonoFlat_Button7 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
-        Me.MonoFlat_Button8 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
-        Me.MonoFlat_Button9 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.RadPanorama1 = New Telerik.WinControls.UI.RadPanorama()
         Me.TileGroupElement1 = New Telerik.WinControls.UI.TileGroupElement()
         Me.RadTileElement2 = New Telerik.WinControls.UI.RadTileElement()
@@ -56,11 +47,18 @@ Partial Class Reportes
         Me.LiveTileFrameElement8 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.TileGroupElement4 = New Telerik.WinControls.UI.TileGroupElement()
         Me.RadTileElement8 = New Telerik.WinControls.UI.RadTileElement()
-        Me.TileGroupElement6 = New Telerik.WinControls.UI.TileGroupElement()
-        Me.RadTileElement4 = New Telerik.WinControls.UI.RadTileElement()
         Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1 = New Telerik.WinControls.RootRadElement()
         Me.RadTileElement1 = New Telerik.WinControls.UI.RadTileElement()
         Me.TileGroupElement5 = New Telerik.WinControls.UI.TileGroupElement()
+        Me.MonoFlat_Button5 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button3 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button1 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button2 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button4 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button6 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button7 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button8 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.MonoFlat_Button9 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.FlowLayoutPanel1.SuspendLayout()
         CType(Me.RadPanorama1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -75,32 +73,6 @@ Partial Class Reportes
         Me.Panel1.Size = New System.Drawing.Size(72, 143)
         Me.Panel1.TabIndex = 2
         Me.Panel1.Visible = False
-        '
-        'MonoFlat_Button3
-        '
-        Me.MonoFlat_Button3.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_Button3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MonoFlat_Button3.Image = Nothing
-        Me.MonoFlat_Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.MonoFlat_Button3.Location = New System.Drawing.Point(138, 3)
-        Me.MonoFlat_Button3.Name = "MonoFlat_Button3"
-        Me.MonoFlat_Button3.Size = New System.Drawing.Size(106, 24)
-        Me.MonoFlat_Button3.TabIndex = 3
-        Me.MonoFlat_Button3.Text = "Desembolsos"
-        Me.MonoFlat_Button3.TextAlignment = System.Drawing.StringAlignment.Center
-        '
-        'MonoFlat_Button5
-        '
-        Me.MonoFlat_Button5.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_Button5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MonoFlat_Button5.Image = Nothing
-        Me.MonoFlat_Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.MonoFlat_Button5.Location = New System.Drawing.Point(3, 3)
-        Me.MonoFlat_Button5.Name = "MonoFlat_Button5"
-        Me.MonoFlat_Button5.Size = New System.Drawing.Size(129, 24)
-        Me.MonoFlat_Button5.TabIndex = 5
-        Me.MonoFlat_Button5.Text = "Tickets"
-        Me.MonoFlat_Button5.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'FlowLayoutPanel1
         '
@@ -122,100 +94,9 @@ Partial Class Reportes
         Me.FlowLayoutPanel1.TabIndex = 3
         Me.FlowLayoutPanel1.Visible = False
         '
-        'MonoFlat_Button1
-        '
-        Me.MonoFlat_Button1.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_Button1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MonoFlat_Button1.Image = Nothing
-        Me.MonoFlat_Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.MonoFlat_Button1.Location = New System.Drawing.Point(250, 3)
-        Me.MonoFlat_Button1.Name = "MonoFlat_Button1"
-        Me.MonoFlat_Button1.Size = New System.Drawing.Size(119, 24)
-        Me.MonoFlat_Button1.TabIndex = 6
-        Me.MonoFlat_Button1.Text = "Tickets Detalle"
-        Me.MonoFlat_Button1.TextAlignment = System.Drawing.StringAlignment.Center
-        '
-        'MonoFlat_Button2
-        '
-        Me.MonoFlat_Button2.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_Button2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MonoFlat_Button2.Image = Nothing
-        Me.MonoFlat_Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.MonoFlat_Button2.Location = New System.Drawing.Point(375, 3)
-        Me.MonoFlat_Button2.Name = "MonoFlat_Button2"
-        Me.MonoFlat_Button2.Size = New System.Drawing.Size(134, 24)
-        Me.MonoFlat_Button2.TabIndex = 7
-        Me.MonoFlat_Button2.Text = "Créditos en Mora"
-        Me.MonoFlat_Button2.TextAlignment = System.Drawing.StringAlignment.Center
-        '
-        'MonoFlat_Button4
-        '
-        Me.MonoFlat_Button4.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_Button4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MonoFlat_Button4.Image = Nothing
-        Me.MonoFlat_Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.MonoFlat_Button4.Location = New System.Drawing.Point(515, 3)
-        Me.MonoFlat_Button4.Name = "MonoFlat_Button4"
-        Me.MonoFlat_Button4.Size = New System.Drawing.Size(119, 24)
-        Me.MonoFlat_Button4.TabIndex = 8
-        Me.MonoFlat_Button4.Text = "Valor Cartera"
-        Me.MonoFlat_Button4.TextAlignment = System.Drawing.StringAlignment.Center
-        '
-        'MonoFlat_Button6
-        '
-        Me.MonoFlat_Button6.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_Button6.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MonoFlat_Button6.Image = Nothing
-        Me.MonoFlat_Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.MonoFlat_Button6.Location = New System.Drawing.Point(3, 33)
-        Me.MonoFlat_Button6.Name = "MonoFlat_Button6"
-        Me.MonoFlat_Button6.Size = New System.Drawing.Size(143, 24)
-        Me.MonoFlat_Button6.TabIndex = 9
-        Me.MonoFlat_Button6.Text = "Retiros Recibidos"
-        Me.MonoFlat_Button6.TextAlignment = System.Drawing.StringAlignment.Center
-        '
-        'MonoFlat_Button7
-        '
-        Me.MonoFlat_Button7.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_Button7.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.MonoFlat_Button7.Image = Nothing
-        Me.MonoFlat_Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.MonoFlat_Button7.Location = New System.Drawing.Point(152, 33)
-        Me.MonoFlat_Button7.Name = "MonoFlat_Button7"
-        Me.MonoFlat_Button7.Size = New System.Drawing.Size(190, 24)
-        Me.MonoFlat_Button7.TabIndex = 10
-        Me.MonoFlat_Button7.Text = "Pagos programados para hoy"
-        Me.MonoFlat_Button7.TextAlignment = System.Drawing.StringAlignment.Center
-        '
-        'MonoFlat_Button8
-        '
-        Me.MonoFlat_Button8.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_Button8.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MonoFlat_Button8.Image = Nothing
-        Me.MonoFlat_Button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.MonoFlat_Button8.Location = New System.Drawing.Point(348, 33)
-        Me.MonoFlat_Button8.Name = "MonoFlat_Button8"
-        Me.MonoFlat_Button8.Size = New System.Drawing.Size(134, 24)
-        Me.MonoFlat_Button8.TabIndex = 11
-        Me.MonoFlat_Button8.Text = "Mora por niveles"
-        Me.MonoFlat_Button8.TextAlignment = System.Drawing.StringAlignment.Center
-        '
-        'MonoFlat_Button9
-        '
-        Me.MonoFlat_Button9.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_Button9.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MonoFlat_Button9.Image = Nothing
-        Me.MonoFlat_Button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.MonoFlat_Button9.Location = New System.Drawing.Point(488, 33)
-        Me.MonoFlat_Button9.Name = "MonoFlat_Button9"
-        Me.MonoFlat_Button9.Size = New System.Drawing.Size(134, 24)
-        Me.MonoFlat_Button9.TabIndex = 12
-        Me.MonoFlat_Button9.Text = "Listado Maestro"
-        Me.MonoFlat_Button9.TextAlignment = System.Drawing.StringAlignment.Center
-        '
         'RadPanorama1
         '
-        Me.RadPanorama1.Groups.AddRange(New Telerik.WinControls.RadItem() {Me.TileGroupElement1, Me.TileGroupElement2, Me.TileGroupElement3, Me.TileGroupElement4, Me.TileGroupElement6})
+        Me.RadPanorama1.Groups.AddRange(New Telerik.WinControls.RadItem() {Me.TileGroupElement1, Me.TileGroupElement2, Me.TileGroupElement3, Me.TileGroupElement4})
         Me.RadPanorama1.Location = New System.Drawing.Point(12, 66)
         Me.RadPanorama1.Name = "RadPanorama1"
         '
@@ -246,7 +127,7 @@ Partial Class Reportes
         CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(2), Telerik.WinControls.Layouts.StackLayoutPanel).Orientation = System.Windows.Forms.Orientation.Horizontal
         CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(2), Telerik.WinControls.Layouts.StackLayoutPanel).Alignment = System.Drawing.ContentAlignment.TopLeft
         CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(2), Telerik.WinControls.Layouts.StackLayoutPanel).RightToLeft = False
-        CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(2), Telerik.WinControls.Layouts.StackLayoutPanel).PositionOffset = New System.Drawing.SizeF(-270.0!, 0!)
+        CType(Me.RadPanorama1.GetChildAt(0).GetChildAt(2), Telerik.WinControls.Layouts.StackLayoutPanel).PositionOffset = New System.Drawing.SizeF(-145.0!, 0!)
         '
         'TileGroupElement1
         '
@@ -432,21 +313,6 @@ Partial Class Reportes
         Me.RadTileElement8.Text = "Retiros recibidos"
         Me.RadTileElement8.TextWrap = True
         '
-        'TileGroupElement6
-        '
-        Me.TileGroupElement6.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadTileElement4})
-        Me.TileGroupElement6.Name = "TileGroupElement6"
-        Me.TileGroupElement6.Text = "Legal"
-        '
-        'RadTileElement4
-        '
-        Me.RadTileElement4.Font = New System.Drawing.Font("Segoe UI Light", 12.0!)
-        Me.RadTileElement4.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.RadTileElement4.Name = "RadTileElement4"
-        Me.RadTileElement4.Text = "Reporte de Legal"
-        Me.RadTileElement4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.RadTileElement4.TextWrap = True
-        '
         'object_463b1597_0fcb_4548_89e9_00c7d5dddaf1
         '
         Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AccessibleDescription = "Reportes"
@@ -478,6 +344,123 @@ Partial Class Reportes
         Me.TileGroupElement5.Text = "Legal"
         Me.TileGroupElement5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         Me.TileGroupElement5.UseCompatibleTextRendering = False
+        '
+        'MonoFlat_Button5
+        '
+        Me.MonoFlat_Button5.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button5.Image = Nothing
+        Me.MonoFlat_Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button5.Location = New System.Drawing.Point(3, 3)
+        Me.MonoFlat_Button5.Name = "MonoFlat_Button5"
+        Me.MonoFlat_Button5.Size = New System.Drawing.Size(129, 24)
+        Me.MonoFlat_Button5.TabIndex = 5
+        Me.MonoFlat_Button5.Text = "Tickets"
+        Me.MonoFlat_Button5.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'MonoFlat_Button3
+        '
+        Me.MonoFlat_Button3.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button3.Image = Nothing
+        Me.MonoFlat_Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button3.Location = New System.Drawing.Point(138, 3)
+        Me.MonoFlat_Button3.Name = "MonoFlat_Button3"
+        Me.MonoFlat_Button3.Size = New System.Drawing.Size(106, 24)
+        Me.MonoFlat_Button3.TabIndex = 3
+        Me.MonoFlat_Button3.Text = "Desembolsos"
+        Me.MonoFlat_Button3.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'MonoFlat_Button1
+        '
+        Me.MonoFlat_Button1.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button1.Image = Nothing
+        Me.MonoFlat_Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button1.Location = New System.Drawing.Point(250, 3)
+        Me.MonoFlat_Button1.Name = "MonoFlat_Button1"
+        Me.MonoFlat_Button1.Size = New System.Drawing.Size(119, 24)
+        Me.MonoFlat_Button1.TabIndex = 6
+        Me.MonoFlat_Button1.Text = "Tickets Detalle"
+        Me.MonoFlat_Button1.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'MonoFlat_Button2
+        '
+        Me.MonoFlat_Button2.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button2.Image = Nothing
+        Me.MonoFlat_Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button2.Location = New System.Drawing.Point(375, 3)
+        Me.MonoFlat_Button2.Name = "MonoFlat_Button2"
+        Me.MonoFlat_Button2.Size = New System.Drawing.Size(134, 24)
+        Me.MonoFlat_Button2.TabIndex = 7
+        Me.MonoFlat_Button2.Text = "Créditos en Mora"
+        Me.MonoFlat_Button2.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'MonoFlat_Button4
+        '
+        Me.MonoFlat_Button4.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button4.Image = Nothing
+        Me.MonoFlat_Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button4.Location = New System.Drawing.Point(515, 3)
+        Me.MonoFlat_Button4.Name = "MonoFlat_Button4"
+        Me.MonoFlat_Button4.Size = New System.Drawing.Size(119, 24)
+        Me.MonoFlat_Button4.TabIndex = 8
+        Me.MonoFlat_Button4.Text = "Valor Cartera"
+        Me.MonoFlat_Button4.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'MonoFlat_Button6
+        '
+        Me.MonoFlat_Button6.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button6.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button6.Image = Nothing
+        Me.MonoFlat_Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button6.Location = New System.Drawing.Point(3, 33)
+        Me.MonoFlat_Button6.Name = "MonoFlat_Button6"
+        Me.MonoFlat_Button6.Size = New System.Drawing.Size(143, 24)
+        Me.MonoFlat_Button6.TabIndex = 9
+        Me.MonoFlat_Button6.Text = "Retiros Recibidos"
+        Me.MonoFlat_Button6.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'MonoFlat_Button7
+        '
+        Me.MonoFlat_Button7.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button7.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.MonoFlat_Button7.Image = Nothing
+        Me.MonoFlat_Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button7.Location = New System.Drawing.Point(152, 33)
+        Me.MonoFlat_Button7.Name = "MonoFlat_Button7"
+        Me.MonoFlat_Button7.Size = New System.Drawing.Size(190, 24)
+        Me.MonoFlat_Button7.TabIndex = 10
+        Me.MonoFlat_Button7.Text = "Pagos programados para hoy"
+        Me.MonoFlat_Button7.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'MonoFlat_Button8
+        '
+        Me.MonoFlat_Button8.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button8.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button8.Image = Nothing
+        Me.MonoFlat_Button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button8.Location = New System.Drawing.Point(348, 33)
+        Me.MonoFlat_Button8.Name = "MonoFlat_Button8"
+        Me.MonoFlat_Button8.Size = New System.Drawing.Size(134, 24)
+        Me.MonoFlat_Button8.TabIndex = 11
+        Me.MonoFlat_Button8.Text = "Mora por niveles"
+        Me.MonoFlat_Button8.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'MonoFlat_Button9
+        '
+        Me.MonoFlat_Button9.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_Button9.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MonoFlat_Button9.Image = Nothing
+        Me.MonoFlat_Button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.MonoFlat_Button9.Location = New System.Drawing.Point(488, 33)
+        Me.MonoFlat_Button9.Name = "MonoFlat_Button9"
+        Me.MonoFlat_Button9.Size = New System.Drawing.Size(134, 24)
+        Me.MonoFlat_Button9.TabIndex = 12
+        Me.MonoFlat_Button9.Text = "Listado Maestro"
+        Me.MonoFlat_Button9.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'Reportes
         '
@@ -534,6 +517,4 @@ Partial Class Reportes
     Friend WithEvents LiveTileFrameElement8 As Telerik.WinControls.UI.LiveTileFrameElement
     Friend WithEvents RadLiveTileElement5 As Telerik.WinControls.UI.RadLiveTileElement
     Friend WithEvents TileGroupElement5 As Telerik.WinControls.UI.TileGroupElement
-    Friend WithEvents TileGroupElement6 As Telerik.WinControls.UI.TileGroupElement
-    Friend WithEvents RadTileElement4 As Telerik.WinControls.UI.RadTileElement
 End Class
