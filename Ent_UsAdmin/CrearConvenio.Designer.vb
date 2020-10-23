@@ -60,6 +60,8 @@ Partial Class CrearConvenio
         Me.Label13 = New System.Windows.Forms.Label()
         Me.lblDiasAtraso = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.lblPagosVencidos = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -130,7 +132,7 @@ Partial Class CrearConvenio
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(52, 202)
+        Me.Label2.Location = New System.Drawing.Point(905, 129)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(68, 13)
         Me.Label2.TabIndex = 33
@@ -142,7 +144,7 @@ Partial Class CrearConvenio
         Me.lblParteCredito.BackColor = System.Drawing.Color.Transparent
         Me.lblParteCredito.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblParteCredito.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblParteCredito.Location = New System.Drawing.Point(51, 227)
+        Me.lblParteCredito.Location = New System.Drawing.Point(904, 154)
         Me.lblParteCredito.Name = "lblParteCredito"
         Me.lblParteCredito.Size = New System.Drawing.Size(21, 20)
         Me.lblParteCredito.TabIndex = 34
@@ -152,7 +154,7 @@ Partial Class CrearConvenio
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(305, 202)
+        Me.Label3.Location = New System.Drawing.Point(54, 202)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(84, 13)
         Me.Label3.TabIndex = 35
@@ -164,7 +166,7 @@ Partial Class CrearConvenio
         Me.lblParteMoratorios.BackColor = System.Drawing.Color.Transparent
         Me.lblParteMoratorios.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblParteMoratorios.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblParteMoratorios.Location = New System.Drawing.Point(304, 227)
+        Me.lblParteMoratorios.Location = New System.Drawing.Point(53, 227)
         Me.lblParteMoratorios.Name = "lblParteMoratorios"
         Me.lblParteMoratorios.Size = New System.Drawing.Size(21, 20)
         Me.lblParteMoratorios.TabIndex = 36
@@ -176,7 +178,7 @@ Partial Class CrearConvenio
         Me.lblTotal.BackColor = System.Drawing.Color.Transparent
         Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblTotal.Location = New System.Drawing.Point(533, 227)
+        Me.lblTotal.Location = New System.Drawing.Point(222, 227)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(21, 20)
         Me.lblTotal.TabIndex = 40
@@ -186,7 +188,7 @@ Partial Class CrearConvenio
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label5.Location = New System.Drawing.Point(534, 202)
+        Me.Label5.Location = New System.Drawing.Point(223, 202)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(66, 13)
         Me.Label5.TabIndex = 39
@@ -432,7 +434,7 @@ Partial Class CrearConvenio
         Me.lblAbonadoSmultas.BackColor = System.Drawing.Color.Transparent
         Me.lblAbonadoSmultas.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblAbonadoSmultas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblAbonadoSmultas.Location = New System.Drawing.Point(304, 154)
+        Me.lblAbonadoSmultas.Location = New System.Drawing.Point(222, 154)
         Me.lblAbonadoSmultas.Name = "lblAbonadoSmultas"
         Me.lblAbonadoSmultas.Size = New System.Drawing.Size(21, 20)
         Me.lblAbonadoSmultas.TabIndex = 158
@@ -442,7 +444,7 @@ Partial Class CrearConvenio
         '
         Me.Label11.AutoSize = True
         Me.Label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label11.Location = New System.Drawing.Point(305, 129)
+        Me.Label11.Location = New System.Drawing.Point(223, 129)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(102, 13)
         Me.Label11.TabIndex = 157
@@ -454,7 +456,7 @@ Partial Class CrearConvenio
         Me.lblmultas.BackColor = System.Drawing.Color.Transparent
         Me.lblmultas.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblmultas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblmultas.Location = New System.Drawing.Point(534, 154)
+        Me.lblmultas.Location = New System.Drawing.Point(437, 154)
         Me.lblmultas.Name = "lblmultas"
         Me.lblmultas.Size = New System.Drawing.Size(21, 20)
         Me.lblmultas.TabIndex = 160
@@ -464,7 +466,7 @@ Partial Class CrearConvenio
         '
         Me.Label12.AutoSize = True
         Me.Label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label12.Location = New System.Drawing.Point(535, 129)
+        Me.Label12.Location = New System.Drawing.Point(438, 129)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(93, 13)
         Me.Label12.TabIndex = 159
@@ -476,7 +478,7 @@ Partial Class CrearConvenio
         Me.lblMultasAbonadas.BackColor = System.Drawing.Color.Transparent
         Me.lblMultasAbonadas.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblMultasAbonadas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblMultasAbonadas.Location = New System.Drawing.Point(770, 154)
+        Me.lblMultasAbonadas.Location = New System.Drawing.Point(681, 154)
         Me.lblMultasAbonadas.Name = "lblMultasAbonadas"
         Me.lblMultasAbonadas.Size = New System.Drawing.Size(21, 20)
         Me.lblMultasAbonadas.TabIndex = 162
@@ -486,7 +488,7 @@ Partial Class CrearConvenio
         '
         Me.Label13.AutoSize = True
         Me.Label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label13.Location = New System.Drawing.Point(771, 129)
+        Me.Label13.Location = New System.Drawing.Point(682, 129)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(89, 13)
         Me.Label13.TabIndex = 161
@@ -498,7 +500,7 @@ Partial Class CrearConvenio
         Me.lblDiasAtraso.BackColor = System.Drawing.Color.Transparent
         Me.lblDiasAtraso.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblDiasAtraso.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblDiasAtraso.Location = New System.Drawing.Point(770, 227)
+        Me.lblDiasAtraso.Location = New System.Drawing.Point(437, 227)
         Me.lblDiasAtraso.Name = "lblDiasAtraso"
         Me.lblDiasAtraso.Size = New System.Drawing.Size(21, 20)
         Me.lblDiasAtraso.TabIndex = 164
@@ -508,11 +510,33 @@ Partial Class CrearConvenio
         '
         Me.Label4.AutoSize = True
         Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label4.Location = New System.Drawing.Point(771, 202)
+        Me.Label4.Location = New System.Drawing.Point(438, 202)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(177, 13)
         Me.Label4.TabIndex = 163
         Me.Label4.Text = "Días de atraso desde el último pago"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label14.Location = New System.Drawing.Point(682, 202)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(84, 13)
+        Me.Label14.TabIndex = 165
+        Me.Label14.Text = "Pagos Vencidos"
+        '
+        'lblPagosVencidos
+        '
+        Me.lblPagosVencidos.AutoSize = True
+        Me.lblPagosVencidos.BackColor = System.Drawing.Color.Transparent
+        Me.lblPagosVencidos.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblPagosVencidos.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.lblPagosVencidos.Location = New System.Drawing.Point(681, 227)
+        Me.lblPagosVencidos.Name = "lblPagosVencidos"
+        Me.lblPagosVencidos.Size = New System.Drawing.Size(21, 20)
+        Me.lblPagosVencidos.TabIndex = 166
+        Me.lblPagosVencidos.Text = "..."
         '
         'CrearConvenio
         '
@@ -520,6 +544,8 @@ Partial Class CrearConvenio
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1086, 557)
+        Me.Controls.Add(Me.lblPagosVencidos)
+        Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.lblDiasAtraso)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.lblMultasAbonadas)
@@ -590,4 +616,6 @@ Partial Class CrearConvenio
     Friend WithEvents Label13 As Label
     Friend WithEvents lblDiasAtraso As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents Label4 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents lblPagosVencidos As MonoFlat.MonoFlat_HeaderLabel
 End Class

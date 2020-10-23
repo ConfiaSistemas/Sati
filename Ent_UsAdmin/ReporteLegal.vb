@@ -4,12 +4,11 @@ Imports System.Data.SqlClient
 Public Class ReporteLegal
 
     Dim dataAbogados As DataSet
-    'Dim dataPromotores As DataSet
     Dim adapterAbogados As SqlDataAdapter
-
-    'Dim adapterPromotores As SqlDataAdapter
     Dim dataConsulta As DataTable
     Dim adapterConsulta As SqlDataAdapter
+    Dim totalPendiente As Double
+
     Private Sub ReporteLegal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CheckForIllegalCrossThreadCalls = False
         ComboFiltro.SelectedIndex = 0
@@ -30,28 +29,16 @@ Public Class ReporteLegal
     End Sub
 
     Private Sub BackgroundAbogados_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundAbogados.RunWorkerCompleted
-        'BackgroundPromotores.RunWorkerAsync()
         Cargando.Close()
-    End Sub
-
-    Private Sub BackgroundPromotores_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundPromotores.DoWork
-        'iniciarconexionempresa()
-        'Dim consulta As String
-        'consulta = "Select id,nombre from empleados where tipo = 'P'"
-        'adapterPromotores = New SqlDataAdapter(consulta, conexionempresa)
-        'dataPromotores = New DataSet
-        'adapterPromotores.Fill(dataPromotores)
     End Sub
 
     Private Sub ComboFiltro_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboFiltro.SelectedIndexChanged
         Select Case ComboFiltro.Text
             Case "Todos"
-                '  txtnombre.Enabled = False
                 ComboElección.Items.Clear()
                 ComboElección.Enabled = False
 
             Case "Abogado"
-                '  txtnombre.Enabled = True
                 ComboElección.Enabled = True
                 ComboElección.Items.Clear()
 
@@ -64,9 +51,6 @@ Public Class ReporteLegal
         End Select
     End Sub
 
-    Private Sub BackgroundPromotores_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundPromotores.RunWorkerCompleted
-        'Cargando.Close()
-    End Sub
 
     Private Function ConsultarId(nombre As String) As Integer
         Dim idEmpleado As Integer
@@ -91,45 +75,45 @@ Public Class ReporteLegal
         Select Case ComboFiltro.Text
             Case "Abogado"
                 If ComboElección.Text = "Todos" Then
-                    consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,Credito,Moratorios,DeudaAP,TotalDeuda,leg.Estado,
+                    consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
 	case when exists (select concepto from GestionesLegales where idCredito=leg.id)
 	then (select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc)
-	else '' end as UltimaGestion,
-Juzgado,NoExpediente,EtapaProcesal,Actuario,
-	ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0)Gastos
-,leg.Fecha,ISNULL(MontoConvenio,0)MontoConvenio,
-case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end as Abonado,
-case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end as Pendiente
+	else '' end as [Ultima Gestión],
+Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
+	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
+,leg.Fecha,format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
+format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente]
 from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
-where leg.Estado='A' or leg.Estado='C'"
+where leg.Estado='A' or leg.Estado='C' order by leg.Nombre"
 
                 Else
 
-                    consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,Credito,Moratorios,DeudaAP,TotalDeuda,leg.Estado,
+                    consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
 	case when exists (select concepto from GestionesLegales where idCredito=leg.id)
 	then (select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc)
-	else '' end as UltimaGestion,
-Juzgado,NoExpediente,EtapaProcesal,Actuario,
-	ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0)Gastos
-,leg.Fecha,ISNULL(MontoConvenio,0)MontoConvenio,
-case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end as Abonado,
-case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end as Pendiente
+	else '' end as [Ultima Gestión],
+Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
+	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
+,leg.Fecha,format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
+format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente]
 from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
-where (leg.Estado='A' or leg.Estado='C') and leg.idGestorLegal=" & idEmpleado & ""
+where (leg.Estado='A' or leg.Estado='C') and leg.idGestorLegal=" & idEmpleado & " order by leg.Nombre"
                 End If
 
             Case "Todos"
-                consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,Credito,Moratorios,DeudaAP,TotalDeuda,leg.Estado,
+                consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
 	case when exists (select concepto from GestionesLegales where idCredito=leg.id)
 	then (select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc)
-	else '' end as UltimaGestion,
-Juzgado,NoExpediente,EtapaProcesal,Actuario,
-	ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0)Gastos
-,leg.Fecha,ISNULL(MontoConvenio,0)MontoConvenio,
-case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end as Abonado,
-case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end as Pendiente
+	else '' end as [Ultima Gestión],
+Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
+	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
+,leg.Fecha,format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
+format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente]
 from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
-where leg.Estado='A' or leg.Estado='C'"
+where leg.Estado='A' or leg.Estado='C' order by leg.Nombre"
         End Select
 
 
@@ -148,6 +132,27 @@ where leg.Estado='A' or leg.Estado='C'"
 
     Private Sub BackgroundConsulta_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundConsulta.RunWorkerCompleted
         dtimpuestos.DataSource = dataConsulta
+        dtimpuestos.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        dtimpuestos.Columns(8).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        dtimpuestos.Columns(15).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        dtimpuestos.Columns(5).Width = 100
+        dtimpuestos.Columns(8).Width = 200
+        dtimpuestos.Columns(15).Width = 90
+        dtimpuestos.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns(13).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns(15).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns(16).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns(17).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        totalPendiente = 0
+        For Each row As DataGridViewRow In dtimpuestos.Rows
+            totalPendiente = totalPendiente + row.Cells(17).Value
+        Next
+        MonoFlat_HeaderLabel2.Visible = True
+        lblTotal.Text = FormatCurrency(totalPendiente)
+        lblTotal.Visible = True
         Cargando.Close()
         BunifuThinButton22.Enabled = True
     End Sub
