@@ -515,7 +515,7 @@
         RadPanorama1.Visible = False
     End Sub
 
-    Private Sub RadTileElement4_Click(sender As Object, e As EventArgs) Handles RadTileElement4.Click
+    Private Sub RadTileElement4_Click(sender As Object, e As EventArgs) 
         catDesembolsos.Visible = False
         CatTickets.Visible = False
         catTicketsDetalle.Visible = False
