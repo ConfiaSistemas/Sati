@@ -85,7 +85,7 @@ Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
 format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente]
 from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
-where leg.Estado='A' or leg.Estado='C' order by leg.Nombre"
+where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Text & "%' order by leg.Nombre"
 
                 Else
 
@@ -99,7 +99,7 @@ Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
 format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente]
 from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
-where (leg.Estado='A' or leg.Estado='C') and leg.idGestorLegal=" & idEmpleado & " order by leg.Nombre"
+where (leg.Estado='A' or leg.Estado='C') and leg.idGestorLegal=" & idEmpleado & " and leg.nombre like '%" & txtnombre.Text & "%' order by leg.Nombre"
                 End If
 
             Case "Todos"
@@ -113,7 +113,7 @@ Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
 format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente]
 from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
-where leg.Estado='A' or leg.Estado='C' order by leg.Nombre"
+where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Text & "%' order by leg.Nombre"
         End Select
 
 
@@ -182,5 +182,15 @@ where leg.Estado='A' or leg.Estado='C' order by leg.Nombre"
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Reportes.Panel1.Visible = False
         Reportes.RadPanorama1.Visible = True
+    End Sub
+
+    Private Sub txtnombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnombre.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            BunifuThinButton22.Enabled = False
+            Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Consultando"
+            Cargando.TopMost = True
+            BackgroundConsulta.RunWorkerAsync()
+        End If
     End Sub
 End Class

@@ -77,10 +77,10 @@
 
         catDesembolsos.TopLevel = False
 
-                catDesembolsos.Size = Panel1.Size
-                catDesembolsos.Location = New System.Drawing.Point(0, 0)
-                catDesembolsos.WindowState = FormWindowState.Normal
-                catDesembolsos.Visible = True
+        catDesembolsos.Size = Panel1.Size
+        catDesembolsos.Location = New System.Drawing.Point(0, 0)
+        catDesembolsos.WindowState = FormWindowState.Normal
+        catDesembolsos.Visible = True
         ventanapanel = "Desembolsos"
         Panel1.Controls.Add(catDesembolsos)
 
@@ -429,9 +429,15 @@
 
     Private Sub Reportes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.RadLiveTileElement1.TransitionType = Telerik.WinControls.UI.ContentTransitionType.SlideLeft
-
-
-
+        For Each row As DataRow In dataPermisos.Rows
+            If row("SatiModLegalModificar") Then
+                tile_group_legal.Enabled = True
+                tile_group_legal.Visibility = Telerik.WinControls.ElementVisibility.Visible
+            End If
+            If row("SacAcceso") Then
+                tile_group_retiros.Visibility = Telerik.WinControls.ElementVisibility.Visible
+            End If
+        Next
 
     End Sub
 
@@ -515,7 +521,7 @@
         RadPanorama1.Visible = False
     End Sub
 
-    Private Sub RadTileElement4_Click(sender As Object, e As EventArgs) 
+    Private Sub tile_btn_cartera_Click(sender As Object, e As EventArgs) Handles tile_btn_cartera_legal.Click
         catDesembolsos.Visible = False
         CatTickets.Visible = False
         catTicketsDetalle.Visible = False
@@ -526,10 +532,11 @@
         catRetiros.Visible = False
         CatListadoMaestro.Visible = False
 
+        CatReporteLegal.Visible = True
         CatReporteLegal.Size = Panel1.Size
         CatReporteLegal.Location = New System.Drawing.Point(0, 0)
         CatReporteLegal.WindowState = FormWindowState.Normal
-        CatReporteLegal.Visible = True
+
         CatReporteLegal.TopLevel = False
         ventanapanel = "ReporteLegal"
         Panel1.Controls.Add(CatReporteLegal)

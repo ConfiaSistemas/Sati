@@ -187,8 +187,8 @@ else '0' end as MultasVencidas
     End Sub
 
     Private Sub btnGenerarCalendario_Click(sender As Object, e As EventArgs) Handles btnGenerarCalendario.Click
-        If diasAtraso = "Nunca abonado" Then
-            CalendarioReestructura.Moratorios = ParteMoratorios
+        'If diasAtraso = "Nunca abonado" Then
+        CalendarioReestructura.Moratorios = ParteMoratorios
             CalendarioReestructura.Capital = ParteCredito
 
 
@@ -202,26 +202,26 @@ else '0' end as MultasVencidas
             CalendarioReestructura.deudaTotal = DeudaTotal
             CalendarioReestructura.gestor = gestor
             CalendarioReestructura.Show()
-        Else
-            If diasAtraso < 30 Then
-                MessageBox.Show("Para crear la reestructura el crédito debe tener por lo menos 30 días de atraso desde la última fecha de pago")
-            Else
-                CalendarioReestructura.Moratorios = ParteMoratorios
-                CalendarioReestructura.Capital = ParteCredito
+        'Else
+        'If diasAtraso < 30 Then
+        '        MessageBox.Show("Para crear la reestructura el crédito debe tener por lo menos 30 días de atraso desde la última fecha de pago")
+        '    Else
+        '        CalendarioReestructura.Moratorios = ParteMoratorios
+        '        CalendarioReestructura.Capital = ParteCredito
 
 
-                ' CalendarioConvenioLegal.personalizado = personalizado
-                CalendarioReestructura.idCredito = idCredito
-                CalendarioReestructura.deuda = DeudaTotal
-                CalendarioReestructura.cantPagos = txtCantPagos.Text
-                CalendarioReestructura.MontoPago = txtPago.Text
-                CalendarioReestructura.PrimerPago = Convert.ToDateTime(datePrimerPago.Value.ToShortDateString)
-                CalendarioReestructura.Modalidad = Modalidad
-                CalendarioReestructura.deudaTotal = DeudaTotal
-                CalendarioReestructura.gestor = gestor
-                CalendarioReestructura.Show()
-            End If
-        End If
+        '        ' CalendarioConvenioLegal.personalizado = personalizado
+        '        CalendarioReestructura.idCredito = idCredito
+        '        CalendarioReestructura.deuda = DeudaTotal
+        '        CalendarioReestructura.cantPagos = txtCantPagos.Text
+        '        CalendarioReestructura.MontoPago = txtPago.Text
+        '        CalendarioReestructura.PrimerPago = Convert.ToDateTime(datePrimerPago.Value.ToShortDateString)
+        '        CalendarioReestructura.Modalidad = Modalidad
+        '        CalendarioReestructura.deudaTotal = DeudaTotal
+        '        CalendarioReestructura.gestor = gestor
+        '        CalendarioReestructura.Show()
+        '    End If
+        'End If
 
     End Sub
 
