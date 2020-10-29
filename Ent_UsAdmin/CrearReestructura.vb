@@ -14,7 +14,8 @@ Public Class CrearReestructura
     Dim abonadoMultas As Double
     Dim multasPendientes As Double
     Dim gestor As Integer
-    Dim diasAtraso As String
+    Dim diasCancelado As Integer
+    Dim abonadoCancelado As Double
     Public DeudaAP As Double
     Public DeudaTotal As Double
     Public incluyePorcentaje As Boolean
@@ -58,7 +59,11 @@ else (case when carteratotal.Estado = 'C' then
 	datediff(day,fechadeatraso,GETDATE())
 	end)
 end as Diasdeatraso,
+FechaCancelacionConvenio,
+datediff(day,FechaCancelacionConvenio,GETDATE())DiasCancelado,
+isnull((select SUM(Total) from Ticket where TipoDoc=1 and idCredito=CarteraTotal.id and Fecha>FechaCancelacionConvenio),0)AbonadoEstadoI,
 ((Multas - (AbonadoMultasL+AbonadoMultasV)) + (pendiente - (Multas - (AbonadoMultasL+AbonadoMultasV))) ) as TotalPendiente,Gestor,Promotor,Estado,IdGestor,fechadeatraso from
+--<
 (select Cartera.nombre,Cartera.id,
 case when Cartera.Estado = 'C' then
  isnull((select SUM(Abonado - interes) as pagonormal from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where Abonado <> 0 and Abonado >= interes and convenios.id_credito = Cartera.id group by id_credito),0)
@@ -93,11 +98,12 @@ case when Cartera.Estado = 'C' then
 isnull((select SUM(calendarioconvenios.pendiente) from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where calendarioconvenios.Estado = 'V' and convenios.id_credito = Cartera.id),0)
 else
 isnull((select SUM(pendiente) from CalendarioNormal where Estado = 'V' and id_credito = Cartera.id),0) end as pendiente,
+isnull((select top 1 Ticket.fecha from Ticket inner join TipoDoc on TipoDoc.id=Ticket.TipoDoc where TipoDoc.Nombre='Cancelación de convenio' and Ticket.idCredito=Cartera.id and Ticket.Estado='A' order by Ticket.Fecha desc),'')FechaCancelacionConvenio,
 case when Cartera.Estado = 'C' then
 (select SUM(interes) as MultasVencidas from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where CalendarioConvenios.Estado ='V' and Convenios.id_credito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdGestor from
-(select credito.nombre,Credito.id,Credito.idgestor,Credito.IdPromotor,credito.Estado from Credito inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito where Credito.Estado <> 'L' and Credito.id = '" & idCredito & "'  group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado) Cartera inner join
+(select credito.nombre,Credito.id,Credito.idgestor,Credito.IdPromotor,credito.Estado from Credito inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito where Credito.Estado <> 'L' and Credito.id = " & idCredito & "  group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
 (select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal order by nombre asc"
         comandoCreditoLegal = New SqlCommand
@@ -117,7 +123,8 @@ else '0' end as MultasVencidas
                 'DeudaAP = readerCreditoLegal("deudaAP")
                 DeudaTotal = readerCreditoLegal("ValorCarteraConMultas")
                 lblnombre.Text = readerCreditoLegal("Nombre")
-                diasAtraso = readerCreditoLegal("Diasdeatraso")
+                diasCancelado = readerCreditoLegal("DiasCancelado")
+                abonadoCancelado = readerCreditoLegal("AbonadoEstadoI")
                 ' incluyePorcentaje = readerCreditoLegal("incluyeporcentaje")
             End While
         End If
@@ -126,11 +133,12 @@ else '0' end as MultasVencidas
         lblAbonadoSmultas.Text = FormatCurrency(abonadoSmultas)
         lblmultas.Text = FormatCurrency(multas)
         lblMultasAbonadas.Text = FormatCurrency(abonadoMultas)
-        lbldiasAtraso.Text = diasAtraso
+        lbldiasCancelado.Text = diasCancelado
         lblParteCredito.Text = FormatCurrency(ParteCredito)
         lblParteMoratorios.Text = FormatCurrency(ParteMoratorios)
         '  lblSubtotal.Text = FormatCurrency(DeudaAP)
         lblTotal.Text = FormatCurrency(DeudaTotal)
+        lblAbonadoCancelacion.Text = FormatCurrency(abonadoCancelado)
 
     End Sub
 
@@ -188,7 +196,25 @@ else '0' end as MultasVencidas
 
     Private Sub btnGenerarCalendario_Click(sender As Object, e As EventArgs) Handles btnGenerarCalendario.Click
         'If diasAtraso = "Nunca abonado" Then
-        CalendarioReestructura.Moratorios = ParteMoratorios
+        'CalendarioReestructura.Moratorios = ParteMoratorios
+        '    CalendarioReestructura.Capital = ParteCredito
+
+
+        '    ' CalendarioConvenioLegal.personalizado = personalizado
+        '    CalendarioReestructura.idCredito = idCredito
+        '    CalendarioReestructura.deuda = DeudaTotal
+        '    CalendarioReestructura.cantPagos = txtCantPagos.Text
+        '    CalendarioReestructura.MontoPago = txtPago.Text
+        '    CalendarioReestructura.PrimerPago = Convert.ToDateTime(datePrimerPago.Value.ToShortDateString)
+        '    CalendarioReestructura.Modalidad = Modalidad
+        '    CalendarioReestructura.deudaTotal = DeudaTotal
+        '    CalendarioReestructura.gestor = gestor
+        '    CalendarioReestructura.Show()
+        'Else
+        If diasCancelado < 15 Or abonadoCancelado < 1000 Then
+            MessageBox.Show("Para crear la reestructura, deben haber pasado por lo menos 15 días desde la cancelación del convenio, y tener abonados por lo menos $1,000.00 desde esa fecha.")
+        Else
+            CalendarioReestructura.Moratorios = ParteMoratorios
             CalendarioReestructura.Capital = ParteCredito
 
 
@@ -202,25 +228,7 @@ else '0' end as MultasVencidas
             CalendarioReestructura.deudaTotal = DeudaTotal
             CalendarioReestructura.gestor = gestor
             CalendarioReestructura.Show()
-        'Else
-        '    If diasAtraso < 30 Then
-        '        MessageBox.Show("Para crear la reestructura el crédito debe tener por lo menos 30 días de atraso desde la última fecha de pago")
-        '    Else
-        '        CalendarioReestructura.Moratorios = ParteMoratorios
-        '        CalendarioReestructura.Capital = ParteCredito
-
-
-        '        ' CalendarioConvenioLegal.personalizado = personalizado
-        '        CalendarioReestructura.idCredito = idCredito
-        '        CalendarioReestructura.deuda = DeudaTotal
-        '        CalendarioReestructura.cantPagos = txtCantPagos.Text
-        '        CalendarioReestructura.MontoPago = txtPago.Text
-        '        CalendarioReestructura.PrimerPago = Convert.ToDateTime(datePrimerPago.Value.ToShortDateString)
-        '        CalendarioReestructura.Modalidad = Modalidad
-        '        CalendarioReestructura.deudaTotal = DeudaTotal
-        '        CalendarioReestructura.gestor = gestor
-        '        CalendarioReestructura.Show()
-        '    End If
+        End If
         'End If
 
     End Sub
@@ -235,5 +243,11 @@ else '0' end as MultasVencidas
         End If
     End Sub
 
+    Private Sub lblmultas_Click(sender As Object, e As EventArgs) Handles lblmultas.Click
 
+    End Sub
+
+    Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
+
+    End Sub
 End Class

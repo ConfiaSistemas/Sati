@@ -58,8 +58,10 @@ Partial Class CrearReestructura
         Me.Label12 = New System.Windows.Forms.Label()
         Me.lblMultasAbonadas = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.lbldiasAtraso = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.lbldiasCancelado = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblAbonadoCancelacion = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -130,7 +132,7 @@ Partial Class CrearReestructura
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(52, 202)
+        Me.Label2.Location = New System.Drawing.Point(907, 129)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(68, 13)
         Me.Label2.TabIndex = 33
@@ -142,7 +144,7 @@ Partial Class CrearReestructura
         Me.lblParteCredito.BackColor = System.Drawing.Color.Transparent
         Me.lblParteCredito.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblParteCredito.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblParteCredito.Location = New System.Drawing.Point(51, 227)
+        Me.lblParteCredito.Location = New System.Drawing.Point(906, 154)
         Me.lblParteCredito.Name = "lblParteCredito"
         Me.lblParteCredito.Size = New System.Drawing.Size(21, 20)
         Me.lblParteCredito.TabIndex = 34
@@ -152,7 +154,7 @@ Partial Class CrearReestructura
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(305, 202)
+        Me.Label3.Location = New System.Drawing.Point(54, 202)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(84, 13)
         Me.Label3.TabIndex = 35
@@ -164,7 +166,7 @@ Partial Class CrearReestructura
         Me.lblParteMoratorios.BackColor = System.Drawing.Color.Transparent
         Me.lblParteMoratorios.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblParteMoratorios.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblParteMoratorios.Location = New System.Drawing.Point(304, 227)
+        Me.lblParteMoratorios.Location = New System.Drawing.Point(53, 227)
         Me.lblParteMoratorios.Name = "lblParteMoratorios"
         Me.lblParteMoratorios.Size = New System.Drawing.Size(21, 20)
         Me.lblParteMoratorios.TabIndex = 36
@@ -176,7 +178,7 @@ Partial Class CrearReestructura
         Me.lblTotal.BackColor = System.Drawing.Color.Transparent
         Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblTotal.Location = New System.Drawing.Point(533, 227)
+        Me.lblTotal.Location = New System.Drawing.Point(234, 227)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(21, 20)
         Me.lblTotal.TabIndex = 40
@@ -186,7 +188,7 @@ Partial Class CrearReestructura
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label5.Location = New System.Drawing.Point(534, 202)
+        Me.Label5.Location = New System.Drawing.Point(235, 202)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(66, 13)
         Me.Label5.TabIndex = 39
@@ -432,7 +434,7 @@ Partial Class CrearReestructura
         Me.lblAbonadoSmultas.BackColor = System.Drawing.Color.Transparent
         Me.lblAbonadoSmultas.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblAbonadoSmultas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblAbonadoSmultas.Location = New System.Drawing.Point(304, 154)
+        Me.lblAbonadoSmultas.Location = New System.Drawing.Point(234, 154)
         Me.lblAbonadoSmultas.Name = "lblAbonadoSmultas"
         Me.lblAbonadoSmultas.Size = New System.Drawing.Size(21, 20)
         Me.lblAbonadoSmultas.TabIndex = 158
@@ -442,7 +444,7 @@ Partial Class CrearReestructura
         '
         Me.Label11.AutoSize = True
         Me.Label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label11.Location = New System.Drawing.Point(305, 129)
+        Me.Label11.Location = New System.Drawing.Point(235, 129)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(102, 13)
         Me.Label11.TabIndex = 157
@@ -454,7 +456,7 @@ Partial Class CrearReestructura
         Me.lblmultas.BackColor = System.Drawing.Color.Transparent
         Me.lblmultas.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblmultas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblmultas.Location = New System.Drawing.Point(534, 154)
+        Me.lblmultas.Location = New System.Drawing.Point(457, 154)
         Me.lblmultas.Name = "lblmultas"
         Me.lblmultas.Size = New System.Drawing.Size(21, 20)
         Me.lblmultas.TabIndex = 160
@@ -464,7 +466,7 @@ Partial Class CrearReestructura
         '
         Me.Label12.AutoSize = True
         Me.Label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label12.Location = New System.Drawing.Point(535, 129)
+        Me.Label12.Location = New System.Drawing.Point(458, 129)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(93, 13)
         Me.Label12.TabIndex = 159
@@ -476,7 +478,7 @@ Partial Class CrearReestructura
         Me.lblMultasAbonadas.BackColor = System.Drawing.Color.Transparent
         Me.lblMultasAbonadas.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblMultasAbonadas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblMultasAbonadas.Location = New System.Drawing.Point(770, 154)
+        Me.lblMultasAbonadas.Location = New System.Drawing.Point(699, 154)
         Me.lblMultasAbonadas.Name = "lblMultasAbonadas"
         Me.lblMultasAbonadas.Size = New System.Drawing.Size(21, 20)
         Me.lblMultasAbonadas.TabIndex = 162
@@ -486,33 +488,55 @@ Partial Class CrearReestructura
         '
         Me.Label13.AutoSize = True
         Me.Label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label13.Location = New System.Drawing.Point(771, 129)
+        Me.Label13.Location = New System.Drawing.Point(700, 129)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(89, 13)
         Me.Label13.TabIndex = 161
         Me.Label13.Text = "Multas Abonadas"
         '
-        'lbldiasAtraso
+        'lbldiasCancelado
         '
-        Me.lbldiasAtraso.AutoSize = True
-        Me.lbldiasAtraso.BackColor = System.Drawing.Color.Transparent
-        Me.lbldiasAtraso.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.lbldiasAtraso.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lbldiasAtraso.Location = New System.Drawing.Point(770, 227)
-        Me.lbldiasAtraso.Name = "lbldiasAtraso"
-        Me.lbldiasAtraso.Size = New System.Drawing.Size(21, 20)
-        Me.lbldiasAtraso.TabIndex = 164
-        Me.lbldiasAtraso.Text = "..."
+        Me.lbldiasCancelado.AutoSize = True
+        Me.lbldiasCancelado.BackColor = System.Drawing.Color.Transparent
+        Me.lbldiasCancelado.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lbldiasCancelado.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.lbldiasCancelado.Location = New System.Drawing.Point(457, 227)
+        Me.lbldiasCancelado.Name = "lbldiasCancelado"
+        Me.lbldiasCancelado.Size = New System.Drawing.Size(21, 20)
+        Me.lbldiasCancelado.TabIndex = 164
+        Me.lbldiasCancelado.Text = "..."
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label4.Location = New System.Drawing.Point(771, 202)
+        Me.Label4.Location = New System.Drawing.Point(458, 202)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(177, 13)
+        Me.Label4.Size = New System.Drawing.Size(187, 13)
         Me.Label4.TabIndex = 163
-        Me.Label4.Text = "Días de atraso desde el último pago"
+        Me.Label4.Text = "Días desde cancelación del convenio"
+        '
+        'lblAbonadoCancelacion
+        '
+        Me.lblAbonadoCancelacion.AutoSize = True
+        Me.lblAbonadoCancelacion.BackColor = System.Drawing.Color.Transparent
+        Me.lblAbonadoCancelacion.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblAbonadoCancelacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.lblAbonadoCancelacion.Location = New System.Drawing.Point(699, 227)
+        Me.lblAbonadoCancelacion.Name = "lblAbonadoCancelacion"
+        Me.lblAbonadoCancelacion.Size = New System.Drawing.Size(21, 20)
+        Me.lblAbonadoCancelacion.TabIndex = 166
+        Me.lblAbonadoCancelacion.Text = "..."
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label14.Location = New System.Drawing.Point(700, 202)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(154, 13)
+        Me.Label14.TabIndex = 165
+        Me.Label14.Text = "Abonado desde la cancelación"
         '
         'CrearReestructura
         '
@@ -520,7 +544,9 @@ Partial Class CrearReestructura
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1086, 557)
-        Me.Controls.Add(Me.lbldiasAtraso)
+        Me.Controls.Add(Me.lblAbonadoCancelacion)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.lbldiasCancelado)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.lblMultasAbonadas)
         Me.Controls.Add(Me.Label13)
@@ -588,6 +614,8 @@ Partial Class CrearReestructura
     Friend WithEvents Label12 As Label
     Friend WithEvents lblMultasAbonadas As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents Label13 As Label
-    Friend WithEvents lbldiasAtraso As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents lbldiasCancelado As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents Label4 As Label
+    Friend WithEvents lblAbonadoCancelacion As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents Label14 As Label
 End Class
