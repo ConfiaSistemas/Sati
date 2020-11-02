@@ -595,6 +595,12 @@
     <Compile Include="PagosHoy.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PromPago.Designer.vb">
+      <DependentUpon>PromPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PromPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SolicitudesEmpeños.Designer.vb">
       <DependentUpon>SolicitudesEmpeños.vb</DependentUpon>
     </Compile>
@@ -1110,6 +1116,9 @@
     <EmbeddedResource Include="PagosHoy.resx">
       <DependentUpon>PagosHoy.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PromPago.resx">
+      <DependentUpon>PromPago.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SolicitudesEmpeños.resx">
       <DependentUpon>SolicitudesEmpeños.vb</DependentUpon>
     </EmbeddedResource>
@@ -1452,6 +1461,7 @@
     <None Include="Resources\kisspng-computer-icons-symbol-download-5ae1ab4e6c54d2.8156834015247388944437.jpg" />
     <None Include="Resources\9261.png" />
     <None Include="Resources\images.png" />
+    <None Include="Resources\SATI.png" />
     <Content Include="SATI.ico" />
     <None Include="Resources\Logo Confia.png" />
     <None Include="Resources\eaad3b05-c22d-49fb-ae4f-2d0e4ff7b0cb.jpg" />

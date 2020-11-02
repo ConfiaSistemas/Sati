@@ -34,6 +34,8 @@ Partial Class Reportes
         Me.MonoFlat_Button7 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button8 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button9 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1 = New Telerik.WinControls.RootRadElement()
+        Me.RadTileElement1 = New Telerik.WinControls.UI.RadTileElement()
         Me.RadPanorama1 = New Telerik.WinControls.UI.RadPanorama()
         Me.TileGroupElement1 = New Telerik.WinControls.UI.TileGroupElement()
         Me.RadTileElement2 = New Telerik.WinControls.UI.RadTileElement()
@@ -56,8 +58,6 @@ Partial Class Reportes
         Me.LiveTileFrameElement8 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.TileGroupElement4 = New Telerik.WinControls.UI.TileGroupElement()
         Me.RadTileElement8 = New Telerik.WinControls.UI.RadTileElement()
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1 = New Telerik.WinControls.RootRadElement()
-        Me.RadTileElement1 = New Telerik.WinControls.UI.RadTileElement()
         Me.FlowLayoutPanel1.SuspendLayout()
         CType(Me.RadPanorama1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -209,6 +209,30 @@ Partial Class Reportes
         Me.MonoFlat_Button9.TabIndex = 12
         Me.MonoFlat_Button9.Text = "Listado Maestro"
         Me.MonoFlat_Button9.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'object_463b1597_0fcb_4548_89e9_00c7d5dddaf1
+        '
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AccessibleDescription = "Reportes"
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AccessibleName = "Reportes"
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableBorderHighlight = True
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableElementShadow = True
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableRippleAnimation = True
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.Name = "object_463b1597_0fcb_4548_89e9_00c7d5dddaf1"
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.StretchHorizontally = True
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.StretchVertically = True
+        '
+        'RadTileElement1
+        '
+        Me.RadTileElement1.AutoSize = False
+        Me.RadTileElement1.Bounds = New System.Drawing.Rectangle(-1, 0, 161, 90)
+        Me.RadTileElement1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.RadTileElement1.Font = New System.Drawing.Font("Segoe UI Light", 8.0!)
+        Me.RadTileElement1.Name = "RadTileElement1"
+        Me.RadTileElement1.Row = 1
+        Me.RadTileElement1.Text = "Tickets Detalle"
+        Me.RadTileElement1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.RadTileElement1.UseCompatibleTextRendering = False
         '
         'RadPanorama1
         '
@@ -427,30 +451,6 @@ Partial Class Reportes
         Me.RadTileElement8.Name = "RadTileElement8"
         Me.RadTileElement8.Text = "Retiros recibidos"
         Me.RadTileElement8.TextWrap = True
-        '
-        'object_463b1597_0fcb_4548_89e9_00c7d5dddaf1
-        '
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AccessibleDescription = "Reportes"
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AccessibleName = "Reportes"
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableBorderHighlight = True
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableElementShadow = True
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableRippleAnimation = True
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.Name = "object_463b1597_0fcb_4548_89e9_00c7d5dddaf1"
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.StretchHorizontally = True
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.StretchVertically = True
-        '
-        'RadTileElement1
-        '
-        Me.RadTileElement1.AutoSize = False
-        Me.RadTileElement1.Bounds = New System.Drawing.Rectangle(-1, 0, 161, 90)
-        Me.RadTileElement1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.RadTileElement1.Font = New System.Drawing.Font("Segoe UI Light", 8.0!)
-        Me.RadTileElement1.Name = "RadTileElement1"
-        Me.RadTileElement1.Row = 1
-        Me.RadTileElement1.Text = "Tickets Detalle"
-        Me.RadTileElement1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.RadTileElement1.UseCompatibleTextRendering = False
         '
         'Reportes
         '

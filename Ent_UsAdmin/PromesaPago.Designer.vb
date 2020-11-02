@@ -51,6 +51,7 @@ Partial Class PromesaPago
         Me.txtPago = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.BackgroundCreaPromesa = New System.ComponentModel.BackgroundWorker()
+        Me.Windows8Theme1 = New Telerik.WinControls.Themes.Windows8Theme()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -418,4 +419,5 @@ Partial Class PromesaPago
     Friend WithEvents txtPago As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label6 As Label
     Friend WithEvents BackgroundCreaPromesa As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Windows8Theme1 As Telerik.WinControls.Themes.Windows8Theme
 End Class

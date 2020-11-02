@@ -112,8 +112,8 @@ Public Class CreditosActivos
     End Sub
 
     Private Sub PromesaDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PromesaDePagoToolStripMenuItem.Click
-        PromesaPago.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
-        PromesaPago.Show()
+        PromPago.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        PromPago.Show()
 
     End Sub
 End Class
