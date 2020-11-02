@@ -77,13 +77,14 @@ Public Class ReporteLegal
                 If ComboElección.Text = "Todos" Then
                     consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
 	case when exists (select concepto from GestionesLegales where idCredito=leg.id)
-	then (select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc)
-	else '' end as [Ultima Gestión],
+	then (select top 1 case when len(Concepto)<=50 then Concepto else left(concepto,47) + '...' end from GestionesLegales where idCredito=leg.id order by id desc)
+	else '' end as [Última Gestión],
 Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
 ,leg.Fecha,format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
 format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
-format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente]
+format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
+isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
 from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
 where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Text & "%' order by leg.Nombre"
 
@@ -91,13 +92,14 @@ where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Tex
 
                     consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
 	case when exists (select concepto from GestionesLegales where idCredito=leg.id)
-	then (select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc)
-	else '' end as [Ultima Gestión],
+	then (select top 1 case when len(Concepto)<=50 then Concepto else left(concepto,47) + '...' end from GestionesLegales where idCredito=leg.id order by id desc)
+	else '' end as [Última Gestión],
 Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
 ,leg.Fecha,format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
 format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
-format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente]
+format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
+isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
 from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
 where (leg.Estado='A' or leg.Estado='C') and leg.idGestorLegal=" & idEmpleado & " and leg.nombre like '%" & txtnombre.Text & "%' order by leg.Nombre"
                 End If
@@ -105,13 +107,14 @@ where (leg.Estado='A' or leg.Estado='C') and leg.idGestorLegal=" & idEmpleado & 
             Case "Todos"
                 consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
 	case when exists (select concepto from GestionesLegales where idCredito=leg.id)
-	then (select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc)
-	else '' end as [Ultima Gestión],
+	then (select top 1 case when len(Concepto)<=50 then Concepto else left(concepto,47) + '...' end from GestionesLegales where idCredito=leg.id order by id desc)
+	else '' end as [Última Gestión],
 Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
 ,leg.Fecha,format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
 format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
-format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente]
+format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
+isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
 from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
 where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Text & "%' order by leg.Nombre"
         End Select
@@ -132,11 +135,13 @@ where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Tex
 
     Private Sub BackgroundConsulta_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundConsulta.RunWorkerCompleted
         dtimpuestos.DataSource = dataConsulta
+
         dtimpuestos.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
         dtimpuestos.Columns(8).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
         dtimpuestos.Columns(15).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
         dtimpuestos.Columns(5).Width = 100
         dtimpuestos.Columns(8).Width = 200
+        dtimpuestos.Columns(8).Resizable = DataGridViewTriState.False
         dtimpuestos.Columns(15).Width = 90
         dtimpuestos.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
         dtimpuestos.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
@@ -146,6 +151,7 @@ where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Tex
         dtimpuestos.Columns(15).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
         dtimpuestos.Columns(16).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
         dtimpuestos.Columns(17).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("conceptoGestion").Visible = False
         totalPendiente = 0
         For Each row As DataGridViewRow In dtimpuestos.Rows
             totalPendiente = totalPendiente + row.Cells(17).Value
@@ -191,6 +197,19 @@ where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Tex
             Cargando.MonoFlat_Label1.Text = "Consultando"
             Cargando.TopMost = True
             BackgroundConsulta.RunWorkerAsync()
+        End If
+    End Sub
+
+    Private Sub dtimpuestos_CellToolTipTextNeeded(sender As Object, e As DataGridViewCellToolTipTextNeededEventArgs) Handles dtimpuestos.CellToolTipTextNeeded
+        If e.RowIndex > -1 And e.ColumnIndex = dtimpuestos.Columns("Última Gestión").Index Then
+            Dim dataGridViewRowHover As DataGridViewRow = dtimpuestos.Rows(e.RowIndex)
+            e.ToolTipText = dataGridViewRowHover.Cells("conceptoGestion").Value
+        End If
+    End Sub
+
+    Private Sub dtimpuestos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtimpuestos.CellDoubleClick
+        If e.ColumnIndex = dtimpuestos.Columns("Última Gestión").Index Then
+            MessageBox.Show("El id es: " & dtimpuestos.Rows(e.RowIndex).Cells(0).Value)
         End If
     End Sub
 End Class
