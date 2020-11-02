@@ -257,6 +257,11 @@ ConfiaAdmin
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ConfiaAdmin.My.Resources.Resources.SATI1">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ConfiaAdmin.My.Resources.Resources.usr">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.

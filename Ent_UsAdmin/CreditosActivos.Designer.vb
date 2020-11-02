@@ -24,8 +24,8 @@ Partial Class CreditosActivos
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreditosActivos))
         Me.dtimpuestos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -56,8 +56,8 @@ Partial Class CreditosActivos
         '
         Me.dtimpuestos.AllowUserToAddRows = False
         Me.dtimpuestos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me.dtimpuestos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -65,14 +65,14 @@ Partial Class CreditosActivos
         Me.dtimpuestos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtimpuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtimpuestos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.dtimpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtimpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Fecha, Me.Nombre, Me.Monto, Me.Plazo, Me.FechaEntrega, Me.Estado})
         Me.dtimpuestos.DoubleBuffered = True
@@ -140,7 +140,7 @@ Partial Class CreditosActivos
         '
         Me.ContextMenuEntregar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EntregarToolStripMenuItem, Me.InformacionToolStripMenuItem, Me.CrearConvenioToolStripMenuItem, Me.CrearReestructuraToolStripMenuItem, Me.EstadoDeCuentaToolStripMenuItem, Me.PromesaDePagoToolStripMenuItem})
         Me.ContextMenuEntregar.Name = "ContextMenuEntregar"
-        Me.ContextMenuEntregar.Size = New System.Drawing.Size(222, 136)
+        Me.ContextMenuEntregar.Size = New System.Drawing.Size(222, 158)
         '
         'EntregarToolStripMenuItem
         '
@@ -177,7 +177,6 @@ Partial Class CreditosActivos
         Me.PromesaDePagoToolStripMenuItem.Name = "PromesaDePagoToolStripMenuItem"
         Me.PromesaDePagoToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.PromesaDePagoToolStripMenuItem.Text = "Promesa de pago"
-        Me.PromesaDePagoToolStripMenuItem.Visible = False
         '
         'txtnombre
         '
