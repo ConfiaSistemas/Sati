@@ -53,7 +53,7 @@ Module Module1
     Public TipoEquipo As String
 
     Dim exApp As New Microsoft.Office.Interop.Excel.Application
-    Dim exLibro As Microsoft.Office.Interop.Excel.Workbook
+    Public exLibro As Microsoft.Office.Interop.Excel.Workbook
     Private WithEvents TestWorker As System.ComponentModel.BackgroundWorker
     Private Declare Function SetProcessWorkingSetSize Lib "kernel32.dll" (
 ByVal process As IntPtr,

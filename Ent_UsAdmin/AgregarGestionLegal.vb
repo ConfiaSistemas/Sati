@@ -13,7 +13,7 @@ Public Class AgregarGestionLegal
         Dim comandoGestion As SqlCommand
         Dim consultaGestion As String
         Dim tiempo As String = TimeOfDay.ToString("HH:mm:ss")
-        consultaGestion = "insert into GestionesLegales values('" & Now.ToString("yyyy-MM-dd") & "','" & idCredito & "','" & txtConcepto.Text & "')"
+        consultaGestion = "insert into GestionesLegales values('" & Now.ToString("yyyy-MM-dd") & "','" & idCredito & "','" & txtConcepto.Text & "','" & nm_completeusr & "')"
         comandoGestion = New SqlCommand
         comandoGestion.Connection = conexionempresa
         comandoGestion.CommandText = consultaGestion

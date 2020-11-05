@@ -7,7 +7,7 @@ Public Class ReporteLegal
     Dim adapterAbogados As SqlDataAdapter
     Dim dataConsulta As DataTable
     Dim adapterConsulta As SqlDataAdapter
-    Dim totalPendiente As Double
+    Dim totalPendiente, pendienteSin, pendienteCon As Double
 
     Private Sub ReporteLegal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CheckForIllegalCrossThreadCalls = False
@@ -81,7 +81,9 @@ Public Class ReporteLegal
 	else '' end as [Última Gestión],
 Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
-,leg.Fecha,format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
+format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
 format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
 format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
 isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
@@ -96,7 +98,9 @@ where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Tex
 	else '' end as [Última Gestión],
 Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
-,leg.Fecha,format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
+format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
 format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
 format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
 isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
@@ -111,7 +115,9 @@ where (leg.Estado='A' or leg.Estado='C') and leg.idGestorLegal=" & idEmpleado & 
 	else '' end as [Última Gestión],
 Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
-,leg.Fecha,format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
+format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
 format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
 format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
 isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
@@ -136,29 +142,48 @@ where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Tex
     Private Sub BackgroundConsulta_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundConsulta.RunWorkerCompleted
         dtimpuestos.DataSource = dataConsulta
 
-        dtimpuestos.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-        dtimpuestos.Columns(8).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-        dtimpuestos.Columns(15).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-        dtimpuestos.Columns(5).Width = 100
-        dtimpuestos.Columns(8).Width = 200
-        dtimpuestos.Columns(8).Resizable = DataGridViewTriState.False
-        dtimpuestos.Columns(15).Width = 90
-        dtimpuestos.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
-        dtimpuestos.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
-        dtimpuestos.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
-        dtimpuestos.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
-        dtimpuestos.Columns(13).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
-        dtimpuestos.Columns(15).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
-        dtimpuestos.Columns(16).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
-        dtimpuestos.Columns(17).DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("Deuda antes Porcentaje").AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        dtimpuestos.Columns("Última Gestión").AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        dtimpuestos.Columns("Monto Convenio").AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        dtimpuestos.Columns("Multas Generadas").AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        dtimpuestos.Columns("Multas Pendientes").AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        dtimpuestos.Columns("Deuda antes Porcentaje").Width = 100
+        dtimpuestos.Columns("Última Gestión").Width = 200
+        dtimpuestos.Columns("Última Gestión").Resizable = DataGridViewTriState.False
+        dtimpuestos.Columns("Monto Convenio").Width = 85
+        dtimpuestos.Columns("Multas Generadas").Width = 85
+        dtimpuestos.Columns("Multas Pendientes").Width = 85
+        dtimpuestos.Columns("Capital").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("Moratorios").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("Deuda antes Porcentaje").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("Total Deuda").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("Gastos").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("Monto Convenio").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("Multas Generadas").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("Multas Pendientes").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("Abonado").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        dtimpuestos.Columns("Pendiente").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
         dtimpuestos.Columns("conceptoGestion").Visible = False
+
         totalPendiente = 0
+        pendienteCon = 0
+        pendienteSin = 0
+
         For Each row As DataGridViewRow In dtimpuestos.Rows
-            totalPendiente = totalPendiente + row.Cells(17).Value
+            totalPendiente = totalPendiente + row.Cells("Pendiente").Value
+            Select Case row.Cells("Monto Convenio").Value
+                Case 0
+                    pendienteSin = pendienteSin + row.Cells("Pendiente").Value
+                Case Else
+                    pendienteCon = pendienteCon + row.Cells("Pendiente").Value
+            End Select
         Next
-        MonoFlat_HeaderLabel2.Visible = True
+
+        MonoFlat_HeaderLabel2.Visible = True : MonoFlat_HeaderLabel6.Visible = True : MonoFlat_HeaderLabel8.Visible = True
         lblTotal.Text = FormatCurrency(totalPendiente)
-        lblTotal.Visible = True
+        lblSinConvenio.Text = FormatCurrency(pendienteSin)
+        lblConConvenio.Text = FormatCurrency(pendienteCon)
+        lblTotal.Visible = True : lblConConvenio.Visible = True : lblSinConvenio.Visible = True
         Cargando.Close()
         BunifuThinButton22.Enabled = True
     End Sub
@@ -173,6 +198,11 @@ where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Tex
     Private Sub BackgroundExcel_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundExcel.DoWork
         nuevolibro()
         GridAExcel(dtimpuestos)
+        Dim hoja As New Microsoft.Office.Interop.Excel.Worksheet
+        hoja = exLibro.ActiveSheet
+        hoja.Range("O:O").EntireColumn.NumberFormat = "DD/MM/YYYY"
+        hoja.Range("U:U").Delete()
+        hoja = Nothing
     End Sub
 
     Private Sub BackgroundExcel_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundExcel.RunWorkerCompleted
@@ -208,8 +238,9 @@ where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Tex
     End Sub
 
     Private Sub dtimpuestos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtimpuestos.CellDoubleClick
-        If e.ColumnIndex = dtimpuestos.Columns("Última Gestión").Index Then
-            MessageBox.Show("El id es: " & dtimpuestos.Rows(e.RowIndex).Cells(0).Value)
+        If e.ColumnIndex = dtimpuestos.Columns("Última Gestión").Index And dtimpuestos.Rows(e.RowIndex).Cells("Última Gestión").Value <> "" Then
+            GestionesLegal.idLegal = dtimpuestos.Rows(e.RowIndex).Cells(0).Value
+            GestionesLegal.Show()
         End If
     End Sub
 End Class

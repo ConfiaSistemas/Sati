@@ -408,7 +408,7 @@ end"
     Private Sub BackgroundGestiones_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundGestiones.DoWork
         Dim consultaGestiones As String
         iniciarconexionempresa()
-        consultaGestiones = "select id,Fecha,Concepto from gestioneslegales where idcredito = '" & idCredito & "'"
+        consultaGestiones = "select id,Fecha,Concepto,NombreUsuario[Nombre Usuario] from gestioneslegales where idcredito = '" & idCredito & "'"
         adapterGestiones = New SqlDataAdapter(consultaGestiones, conexionempresa)
         dataGestiones = New Data.DataTable
         adapterGestiones.Fill(dataGestiones)
@@ -416,6 +416,9 @@ end"
 
     Private Sub BackgroundGestiones_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundGestiones.RunWorkerCompleted
         dtGestiones.DataSource = dataGestiones
+        dtGestiones.Columns("Nombre Usuario").AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        dtGestiones.Columns("Nombre Usuario").Width = 180
+        dtGestiones.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnsMode.Fill
         Cargando.MonoFlat_Label1.Text = "Cargando Actualizaciones"
         BackgroundActualizaciones.RunWorkerAsync()
 

@@ -601,6 +601,12 @@
     <Compile Include="PagosHoy.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GestionesLegal.Designer.vb">
+      <DependentUpon>GestionesLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GestionesLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SolicitudesEmpeños.Designer.vb">
       <DependentUpon>SolicitudesEmpeños.vb</DependentUpon>
     </Compile>
@@ -1118,6 +1124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PagosHoy.resx">
       <DependentUpon>PagosHoy.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionesLegal.resx">
+      <DependentUpon>GestionesLegal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SolicitudesEmpeños.resx">
       <DependentUpon>SolicitudesEmpeños.vb</DependentUpon>
