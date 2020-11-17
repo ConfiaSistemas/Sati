@@ -23,12 +23,12 @@ Partial Class DatosSolicitud
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DatosSolicitud))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnActivarLegal = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.btn_a_verificacion = New Bunifu.Framework.UI.BunifuThinButton2()
@@ -370,7 +370,7 @@ Partial Class DatosSolicitud
         Me.ComboColonia.Location = New System.Drawing.Point(332, 227)
         Me.ComboColonia.Name = "ComboColonia"
         Me.ComboColonia.Size = New System.Drawing.Size(237, 21)
-        Me.ComboColonia.TabIndex = 98
+        Me.ComboColonia.TabIndex = 10
         '
         'txtEntreCalles
         '
@@ -417,7 +417,7 @@ Partial Class DatosSolicitud
         Me.txtRelacionConyuge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRelacionConyuge.Name = "txtRelacionConyuge"
         Me.txtRelacionConyuge.Size = New System.Drawing.Size(248, 29)
-        Me.txtRelacionConyuge.TabIndex = 19
+        Me.txtRelacionConyuge.TabIndex = 18
         Me.txtRelacionConyuge.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label17
@@ -446,7 +446,7 @@ Partial Class DatosSolicitud
         Me.txtdatosConyuge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtdatosConyuge.Name = "txtdatosConyuge"
         Me.txtdatosConyuge.Size = New System.Drawing.Size(227, 29)
-        Me.txtdatosConyuge.TabIndex = 18
+        Me.txtdatosConyuge.TabIndex = 17
         Me.txtdatosConyuge.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label16
@@ -475,7 +475,7 @@ Partial Class DatosSolicitud
         Me.txtEstado.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.Size = New System.Drawing.Size(214, 29)
-        Me.txtEstado.TabIndex = 17
+        Me.txtEstado.TabIndex = 16
         Me.txtEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label15
@@ -504,7 +504,7 @@ Partial Class DatosSolicitud
         Me.txtCiudad.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCiudad.Name = "txtCiudad"
         Me.txtCiudad.Size = New System.Drawing.Size(237, 29)
-        Me.txtCiudad.TabIndex = 16
+        Me.txtCiudad.TabIndex = 15
         Me.txtCiudad.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label14
@@ -543,7 +543,7 @@ Partial Class DatosSolicitud
         Me.txtTiempoDomicilio.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTiempoDomicilio.Name = "txtTiempoDomicilio"
         Me.txtTiempoDomicilio.Size = New System.Drawing.Size(227, 29)
-        Me.txtTiempoDomicilio.TabIndex = 9
+        Me.txtTiempoDomicilio.TabIndex = 8
         Me.txtTiempoDomicilio.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label12
@@ -572,7 +572,7 @@ Partial Class DatosSolicitud
         Me.txtCodigoPostal.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodigoPostal.Name = "txtCodigoPostal"
         Me.txtCodigoPostal.Size = New System.Drawing.Size(248, 29)
-        Me.txtCodigoPostal.TabIndex = 13
+        Me.txtCodigoPostal.TabIndex = 9
         Me.txtCodigoPostal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label10
@@ -597,11 +597,11 @@ Partial Class DatosSolicitud
         Me.txtNoInterior.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNoInterior.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNoInterior.LineThickness = 3
-        Me.txtNoInterior.Location = New System.Drawing.Point(868, 219)
+        Me.txtNoInterior.Location = New System.Drawing.Point(994, 219)
         Me.txtNoInterior.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoInterior.Name = "txtNoInterior"
-        Me.txtNoInterior.Size = New System.Drawing.Size(102, 29)
-        Me.txtNoInterior.TabIndex = 12
+        Me.txtNoInterior.Size = New System.Drawing.Size(101, 29)
+        Me.txtNoInterior.TabIndex = 13
         Me.txtNoInterior.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label9
@@ -610,9 +610,9 @@ Partial Class DatosSolicitud
         Me.Label9.ForeColor = System.Drawing.Color.White
         Me.Label9.Location = New System.Drawing.Point(865, 202)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(58, 13)
+        Me.Label9.Size = New System.Drawing.Size(61, 13)
         Me.Label9.TabIndex = 80
-        Me.Label9.Text = "No. interior"
+        Me.Label9.Text = "No. exterior"
         '
         'txtNoExterior
         '
@@ -626,11 +626,11 @@ Partial Class DatosSolicitud
         Me.txtNoExterior.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNoExterior.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNoExterior.LineThickness = 3
-        Me.txtNoExterior.Location = New System.Drawing.Point(994, 219)
+        Me.txtNoExterior.Location = New System.Drawing.Point(868, 219)
         Me.txtNoExterior.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoExterior.Name = "txtNoExterior"
-        Me.txtNoExterior.Size = New System.Drawing.Size(93, 29)
-        Me.txtNoExterior.TabIndex = 11
+        Me.txtNoExterior.Size = New System.Drawing.Size(102, 29)
+        Me.txtNoExterior.TabIndex = 12
         Me.txtNoExterior.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label8
@@ -639,9 +639,9 @@ Partial Class DatosSolicitud
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(991, 202)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(61, 13)
+        Me.Label8.Size = New System.Drawing.Size(58, 13)
         Me.Label8.TabIndex = 78
-        Me.Label8.Text = "No. exterior"
+        Me.Label8.Text = "No. interior"
         '
         'txtCalle
         '
@@ -659,7 +659,7 @@ Partial Class DatosSolicitud
         Me.txtCalle.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCalle.Name = "txtCalle"
         Me.txtCalle.Size = New System.Drawing.Size(214, 29)
-        Me.txtCalle.TabIndex = 10
+        Me.txtCalle.TabIndex = 11
         Me.txtCalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label7
@@ -688,7 +688,7 @@ Partial Class DatosSolicitud
         Me.TxtCasaDondeVive.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtCasaDondeVive.Name = "TxtCasaDondeVive"
         Me.TxtCasaDondeVive.Size = New System.Drawing.Size(214, 29)
-        Me.TxtCasaDondeVive.TabIndex = 8
+        Me.TxtCasaDondeVive.TabIndex = 7
         Me.TxtCasaDondeVive.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label6
@@ -717,7 +717,7 @@ Partial Class DatosSolicitud
         Me.txtCelular.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCelular.Name = "txtCelular"
         Me.txtCelular.Size = New System.Drawing.Size(237, 29)
-        Me.txtCelular.TabIndex = 7
+        Me.txtCelular.TabIndex = 6
         Me.txtCelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label5
@@ -746,7 +746,7 @@ Partial Class DatosSolicitud
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(248, 29)
-        Me.txtTelefono.TabIndex = 6
+        Me.txtTelefono.TabIndex = 5
         Me.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label4
@@ -775,7 +775,7 @@ Partial Class DatosSolicitud
         Me.txtEdad.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEdad.Name = "txtEdad"
         Me.txtEdad.Size = New System.Drawing.Size(227, 29)
-        Me.txtEdad.TabIndex = 5
+        Me.txtEdad.TabIndex = 4
         Me.txtEdad.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label3
@@ -804,7 +804,7 @@ Partial Class DatosSolicitud
         Me.txtApellidoM.Margin = New System.Windows.Forms.Padding(4)
         Me.txtApellidoM.Name = "txtApellidoM"
         Me.txtApellidoM.Size = New System.Drawing.Size(214, 29)
-        Me.txtApellidoM.TabIndex = 4
+        Me.txtApellidoM.TabIndex = 3
         Me.txtApellidoM.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label2
@@ -833,7 +833,7 @@ Partial Class DatosSolicitud
         Me.txtApellidoP.Margin = New System.Windows.Forms.Padding(4)
         Me.txtApellidoP.Name = "txtApellidoP"
         Me.txtApellidoP.Size = New System.Drawing.Size(237, 29)
-        Me.txtApellidoP.TabIndex = 3
+        Me.txtApellidoP.TabIndex = 2
         Me.txtApellidoP.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label1
@@ -862,7 +862,7 @@ Partial Class DatosSolicitud
         Me.txtnombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnombre.Name = "txtnombre"
         Me.txtnombre.Size = New System.Drawing.Size(248, 29)
-        Me.txtnombre.TabIndex = 2
+        Me.txtnombre.TabIndex = 1
         Me.txtnombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label11
@@ -926,7 +926,7 @@ Partial Class DatosSolicitud
         Me.ComboColoniaTrabajo.Location = New System.Drawing.Point(293, 227)
         Me.ComboColoniaTrabajo.Name = "ComboColoniaTrabajo"
         Me.ComboColoniaTrabajo.Size = New System.Drawing.Size(237, 21)
-        Me.ComboColoniaTrabajo.TabIndex = 127
+        Me.ComboColoniaTrabajo.TabIndex = 28
         '
         'txtCodigoPostalTrabajo
         '
@@ -944,7 +944,7 @@ Partial Class DatosSolicitud
         Me.txtCodigoPostalTrabajo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodigoPostalTrabajo.Name = "txtCodigoPostalTrabajo"
         Me.txtCodigoPostalTrabajo.Size = New System.Drawing.Size(213, 29)
-        Me.txtCodigoPostalTrabajo.TabIndex = 31
+        Me.txtCodigoPostalTrabajo.TabIndex = 27
         Me.txtCodigoPostalTrabajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label38
@@ -973,7 +973,7 @@ Partial Class DatosSolicitud
         Me.txtNoInteriorTrabajo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoInteriorTrabajo.Name = "txtNoInteriorTrabajo"
         Me.txtNoInteriorTrabajo.Size = New System.Drawing.Size(101, 29)
-        Me.txtNoInteriorTrabajo.TabIndex = 30
+        Me.txtNoInteriorTrabajo.TabIndex = 31
         Me.txtNoInteriorTrabajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label37
@@ -1002,7 +1002,7 @@ Partial Class DatosSolicitud
         Me.txtNoExteriorTrabajo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoExteriorTrabajo.Name = "txtNoExteriorTrabajo"
         Me.txtNoExteriorTrabajo.Size = New System.Drawing.Size(101, 29)
-        Me.txtNoExteriorTrabajo.TabIndex = 29
+        Me.txtNoExteriorTrabajo.TabIndex = 30
         Me.txtNoExteriorTrabajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label36
@@ -1031,7 +1031,7 @@ Partial Class DatosSolicitud
         Me.txtObjetivo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtObjetivo.Name = "txtObjetivo"
         Me.txtObjetivo.Size = New System.Drawing.Size(607, 29)
-        Me.txtObjetivo.TabIndex = 35
+        Me.txtObjetivo.TabIndex = 34
         Me.txtObjetivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label22
@@ -1060,7 +1060,7 @@ Partial Class DatosSolicitud
         Me.txtFrecuenciaCobro.Margin = New System.Windows.Forms.Padding(4)
         Me.txtFrecuenciaCobro.Name = "txtFrecuenciaCobro"
         Me.txtFrecuenciaCobro.Size = New System.Drawing.Size(245, 29)
-        Me.txtFrecuenciaCobro.TabIndex = 27
+        Me.txtFrecuenciaCobro.TabIndex = 26
         Me.txtFrecuenciaCobro.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label23
@@ -1118,7 +1118,7 @@ Partial Class DatosSolicitud
         Me.txtTelefonoTrabajo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefonoTrabajo.Name = "txtTelefonoTrabajo"
         Me.txtTelefonoTrabajo.Size = New System.Drawing.Size(237, 29)
-        Me.txtTelefonoTrabajo.TabIndex = 34
+        Me.txtTelefonoTrabajo.TabIndex = 33
         Me.txtTelefonoTrabajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label25
@@ -1153,19 +1153,18 @@ Partial Class DatosSolicitud
         Me.txtCalleTrabajo.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCalleTrabajo.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCalleTrabajo.LineThickness = 3
-        Me.txtCalleTrabajo.Location = New System.Drawing.Point(574, 219)
+        Me.txtCalleTrabajo.Location = New System.Drawing.Point(574, 227)
         Me.txtCalleTrabajo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCalleTrabajo.Name = "txtCalleTrabajo"
-        Me.txtCalleTrabajo.Size = New System.Drawing.Size(203, 29)
-        Me.txtCalleTrabajo.TabIndex = 28
-        Me.txtCalleTrabajo.Text = "a"
+        Me.txtCalleTrabajo.Size = New System.Drawing.Size(203, 21)
+        Me.txtCalleTrabajo.TabIndex = 29
         Me.txtCalleTrabajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label27
         '
         Me.Label27.AutoSize = True
         Me.Label27.ForeColor = System.Drawing.Color.White
-        Me.Label27.Location = New System.Drawing.Point(571, 202)
+        Me.Label27.Location = New System.Drawing.Point(571, 210)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(98, 13)
         Me.Label27.TabIndex = 110
@@ -1187,7 +1186,7 @@ Partial Class DatosSolicitud
         Me.txtIngresoPromedio.Margin = New System.Windows.Forms.Padding(4)
         Me.txtIngresoPromedio.Name = "txtIngresoPromedio"
         Me.txtIngresoPromedio.Size = New System.Drawing.Size(203, 29)
-        Me.txtIngresoPromedio.TabIndex = 26
+        Me.txtIngresoPromedio.TabIndex = 25
         Me.txtIngresoPromedio.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label28
@@ -1216,7 +1215,7 @@ Partial Class DatosSolicitud
         Me.txtTipoEstablecimiento.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTipoEstablecimiento.Name = "txtTipoEstablecimiento"
         Me.txtTipoEstablecimiento.Size = New System.Drawing.Size(237, 29)
-        Me.txtTipoEstablecimiento.TabIndex = 25
+        Me.txtTipoEstablecimiento.TabIndex = 24
         Me.txtTipoEstablecimiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label29
@@ -1245,7 +1244,7 @@ Partial Class DatosSolicitud
         Me.txtHorariosTrabajo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtHorariosTrabajo.Name = "txtHorariosTrabajo"
         Me.txtHorariosTrabajo.Size = New System.Drawing.Size(213, 29)
-        Me.txtHorariosTrabajo.TabIndex = 24
+        Me.txtHorariosTrabajo.TabIndex = 23
         Me.txtHorariosTrabajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label30
@@ -1274,7 +1273,7 @@ Partial Class DatosSolicitud
         Me.txtAntiguedad.Margin = New System.Windows.Forms.Padding(4)
         Me.txtAntiguedad.Name = "txtAntiguedad"
         Me.txtAntiguedad.Size = New System.Drawing.Size(245, 29)
-        Me.txtAntiguedad.TabIndex = 23
+        Me.txtAntiguedad.TabIndex = 22
         Me.txtAntiguedad.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label31
@@ -1303,7 +1302,7 @@ Partial Class DatosSolicitud
         Me.txtVende.Margin = New System.Windows.Forms.Padding(4)
         Me.txtVende.Name = "txtVende"
         Me.txtVende.Size = New System.Drawing.Size(203, 29)
-        Me.txtVende.TabIndex = 22
+        Me.txtVende.TabIndex = 21
         Me.txtVende.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label32
@@ -1332,7 +1331,7 @@ Partial Class DatosSolicitud
         Me.txtSeDedica.Margin = New System.Windows.Forms.Padding(4)
         Me.txtSeDedica.Name = "txtSeDedica"
         Me.txtSeDedica.Size = New System.Drawing.Size(237, 29)
-        Me.txtSeDedica.TabIndex = 21
+        Me.txtSeDedica.TabIndex = 20
         Me.txtSeDedica.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label33
@@ -1361,7 +1360,7 @@ Partial Class DatosSolicitud
         Me.txtNombreLugarTrabajo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombreLugarTrabajo.Name = "txtNombreLugarTrabajo"
         Me.txtNombreLugarTrabajo.Size = New System.Drawing.Size(213, 29)
-        Me.txtNombreLugarTrabajo.TabIndex = 20
+        Me.txtNombreLugarTrabajo.TabIndex = 19
         Me.txtNombreLugarTrabajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label34
@@ -1417,7 +1416,7 @@ Partial Class DatosSolicitud
         Me.GroupBox2.Location = New System.Drawing.Point(27, 339)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(1050, 100)
-        Me.GroupBox2.TabIndex = 145
+        Me.GroupBox2.TabIndex = 46
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Dirección"
         '
@@ -1433,11 +1432,11 @@ Partial Class DatosSolicitud
         Me.txtNoIntR2.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNoIntR2.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNoIntR2.LineThickness = 3
-        Me.txtNoIntR2.Location = New System.Drawing.Point(647, 42)
+        Me.txtNoIntR2.Location = New System.Drawing.Point(773, 42)
         Me.txtNoIntR2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoIntR2.Name = "txtNoIntR2"
         Me.txtNoIntR2.Size = New System.Drawing.Size(102, 29)
-        Me.txtNoIntR2.TabIndex = 141
+        Me.txtNoIntR2.TabIndex = 50
         Me.txtNoIntR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label57
@@ -1446,9 +1445,9 @@ Partial Class DatosSolicitud
         Me.Label57.ForeColor = System.Drawing.Color.White
         Me.Label57.Location = New System.Drawing.Point(644, 25)
         Me.Label57.Name = "Label57"
-        Me.Label57.Size = New System.Drawing.Size(58, 13)
+        Me.Label57.Size = New System.Drawing.Size(61, 13)
         Me.Label57.TabIndex = 144
-        Me.Label57.Text = "No. interior"
+        Me.Label57.Text = "No. exterior"
         '
         'txtNoExtR2
         '
@@ -1462,11 +1461,11 @@ Partial Class DatosSolicitud
         Me.txtNoExtR2.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNoExtR2.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNoExtR2.LineThickness = 3
-        Me.txtNoExtR2.Location = New System.Drawing.Point(773, 42)
+        Me.txtNoExtR2.Location = New System.Drawing.Point(647, 42)
         Me.txtNoExtR2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoExtR2.Name = "txtNoExtR2"
         Me.txtNoExtR2.Size = New System.Drawing.Size(93, 29)
-        Me.txtNoExtR2.TabIndex = 140
+        Me.txtNoExtR2.TabIndex = 49
         Me.txtNoExtR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label58
@@ -1475,9 +1474,9 @@ Partial Class DatosSolicitud
         Me.Label58.ForeColor = System.Drawing.Color.White
         Me.Label58.Location = New System.Drawing.Point(770, 25)
         Me.Label58.Name = "Label58"
-        Me.Label58.Size = New System.Drawing.Size(61, 13)
+        Me.Label58.Size = New System.Drawing.Size(58, 13)
         Me.Label58.TabIndex = 143
-        Me.Label58.Text = "No. exterior"
+        Me.Label58.Text = "No. interior"
         '
         'txtCalleR2
         '
@@ -1495,7 +1494,7 @@ Partial Class DatosSolicitud
         Me.txtCalleR2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCalleR2.Name = "txtCalleR2"
         Me.txtCalleR2.Size = New System.Drawing.Size(214, 29)
-        Me.txtCalleR2.TabIndex = 139
+        Me.txtCalleR2.TabIndex = 48
         Me.txtCalleR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label59
@@ -1524,7 +1523,7 @@ Partial Class DatosSolicitud
         Me.txtCodigoPostalR2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodigoPostalR2.Name = "txtCodigoPostalR2"
         Me.txtCodigoPostalR2.Size = New System.Drawing.Size(89, 29)
-        Me.txtCodigoPostalR2.TabIndex = 135
+        Me.txtCodigoPostalR2.TabIndex = 46
         Me.txtCodigoPostalR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'ComboColoniaR2
@@ -1536,7 +1535,7 @@ Partial Class DatosSolicitud
         Me.ComboColoniaR2.Location = New System.Drawing.Point(128, 50)
         Me.ComboColoniaR2.Name = "ComboColoniaR2"
         Me.ComboColoniaR2.Size = New System.Drawing.Size(237, 21)
-        Me.ComboColoniaR2.TabIndex = 138
+        Me.ComboColoniaR2.TabIndex = 47
         '
         'Label60
         '
@@ -1574,7 +1573,7 @@ Partial Class DatosSolicitud
         Me.GroupBox1.Location = New System.Drawing.Point(27, 115)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1050, 100)
-        Me.GroupBox1.TabIndex = 139
+        Me.GroupBox1.TabIndex = 38
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Dirección"
         '
@@ -1590,11 +1589,11 @@ Partial Class DatosSolicitud
         Me.txtNoIntR1.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNoIntR1.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNoIntR1.LineThickness = 3
-        Me.txtNoIntR1.Location = New System.Drawing.Point(647, 42)
+        Me.txtNoIntR1.Location = New System.Drawing.Point(773, 42)
         Me.txtNoIntR1.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoIntR1.Name = "txtNoIntR1"
         Me.txtNoIntR1.Size = New System.Drawing.Size(102, 29)
-        Me.txtNoIntR1.TabIndex = 141
+        Me.txtNoIntR1.TabIndex = 42
         Me.txtNoIntR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label52
@@ -1603,9 +1602,9 @@ Partial Class DatosSolicitud
         Me.Label52.ForeColor = System.Drawing.Color.White
         Me.Label52.Location = New System.Drawing.Point(644, 25)
         Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(58, 13)
+        Me.Label52.Size = New System.Drawing.Size(61, 13)
         Me.Label52.TabIndex = 144
-        Me.Label52.Text = "No. interior"
+        Me.Label52.Text = "No. exterior"
         '
         'txtNoExtR1
         '
@@ -1619,11 +1618,11 @@ Partial Class DatosSolicitud
         Me.txtNoExtR1.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNoExtR1.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNoExtR1.LineThickness = 3
-        Me.txtNoExtR1.Location = New System.Drawing.Point(773, 42)
+        Me.txtNoExtR1.Location = New System.Drawing.Point(647, 42)
         Me.txtNoExtR1.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoExtR1.Name = "txtNoExtR1"
         Me.txtNoExtR1.Size = New System.Drawing.Size(93, 29)
-        Me.txtNoExtR1.TabIndex = 140
+        Me.txtNoExtR1.TabIndex = 41
         Me.txtNoExtR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label53
@@ -1632,9 +1631,9 @@ Partial Class DatosSolicitud
         Me.Label53.ForeColor = System.Drawing.Color.White
         Me.Label53.Location = New System.Drawing.Point(770, 25)
         Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(61, 13)
+        Me.Label53.Size = New System.Drawing.Size(58, 13)
         Me.Label53.TabIndex = 143
-        Me.Label53.Text = "No. exterior"
+        Me.Label53.Text = "No. interior"
         '
         'txtCalleR1
         '
@@ -1652,7 +1651,7 @@ Partial Class DatosSolicitud
         Me.txtCalleR1.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCalleR1.Name = "txtCalleR1"
         Me.txtCalleR1.Size = New System.Drawing.Size(214, 29)
-        Me.txtCalleR1.TabIndex = 139
+        Me.txtCalleR1.TabIndex = 40
         Me.txtCalleR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label54
@@ -1681,7 +1680,7 @@ Partial Class DatosSolicitud
         Me.txtCodigoPostalR1.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodigoPostalR1.Name = "txtCodigoPostalR1"
         Me.txtCodigoPostalR1.Size = New System.Drawing.Size(89, 29)
-        Me.txtCodigoPostalR1.TabIndex = 135
+        Me.txtCodigoPostalR1.TabIndex = 38
         Me.txtCodigoPostalR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'ComboColoniaR1
@@ -1693,7 +1692,7 @@ Partial Class DatosSolicitud
         Me.ComboColoniaR1.Location = New System.Drawing.Point(128, 50)
         Me.ComboColoniaR1.Name = "ComboColoniaR1"
         Me.ComboColoniaR1.Size = New System.Drawing.Size(237, 21)
-        Me.ComboColoniaR1.TabIndex = 138
+        Me.ComboColoniaR1.TabIndex = 39
         '
         'Label51
         '
@@ -1731,7 +1730,7 @@ Partial Class DatosSolicitud
         Me.txtRelacionR2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRelacionR2.Name = "txtRelacionR2"
         Me.txtRelacionR2.Size = New System.Drawing.Size(101, 29)
-        Me.txtRelacionR2.TabIndex = 41
+        Me.txtRelacionR2.TabIndex = 45
         Me.txtRelacionR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label18
@@ -1760,7 +1759,7 @@ Partial Class DatosSolicitud
         Me.txtTelefonoR2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefonoR2.Name = "txtTelefonoR2"
         Me.txtTelefonoR2.Size = New System.Drawing.Size(101, 29)
-        Me.txtTelefonoR2.TabIndex = 40
+        Me.txtTelefonoR2.TabIndex = 44
         Me.txtTelefonoR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label19
@@ -1789,7 +1788,7 @@ Partial Class DatosSolicitud
         Me.txtNombreR2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombreR2.Name = "txtNombreR2"
         Me.txtNombreR2.Size = New System.Drawing.Size(200, 29)
-        Me.txtNombreR2.TabIndex = 39
+        Me.txtNombreR2.TabIndex = 43
         Me.txtNombreR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label20
@@ -1850,7 +1849,7 @@ Partial Class DatosSolicitud
         Me.txtRelacionR1.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRelacionR1.Name = "txtRelacionR1"
         Me.txtRelacionR1.Size = New System.Drawing.Size(101, 29)
-        Me.txtRelacionR1.TabIndex = 38
+        Me.txtRelacionR1.TabIndex = 37
         Me.txtRelacionR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label41
@@ -1879,7 +1878,7 @@ Partial Class DatosSolicitud
         Me.txtTelefonoR1.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefonoR1.Name = "txtTelefonoR1"
         Me.txtTelefonoR1.Size = New System.Drawing.Size(101, 29)
-        Me.txtTelefonoR1.TabIndex = 37
+        Me.txtTelefonoR1.TabIndex = 36
         Me.txtTelefonoR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label42
@@ -1908,7 +1907,7 @@ Partial Class DatosSolicitud
         Me.txtNombreR1.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombreR1.Name = "txtNombreR1"
         Me.txtNombreR1.Size = New System.Drawing.Size(200, 29)
-        Me.txtNombreR1.TabIndex = 36
+        Me.txtNombreR1.TabIndex = 35
         Me.txtNombreR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label43
@@ -1961,7 +1960,7 @@ Partial Class DatosSolicitud
         Me.txtFrecuenciaInversion.Margin = New System.Windows.Forms.Padding(4)
         Me.txtFrecuenciaInversion.Name = "txtFrecuenciaInversion"
         Me.txtFrecuenciaInversion.Size = New System.Drawing.Size(101, 29)
-        Me.txtFrecuenciaInversion.TabIndex = 48
+        Me.txtFrecuenciaInversion.TabIndex = 57
         Me.txtFrecuenciaInversion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label40
@@ -1990,7 +1989,7 @@ Partial Class DatosSolicitud
         Me.txtEmpleados.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEmpleados.Name = "txtEmpleados"
         Me.txtEmpleados.Size = New System.Drawing.Size(101, 29)
-        Me.txtEmpleados.TabIndex = 47
+        Me.txtEmpleados.TabIndex = 56
         Me.txtEmpleados.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label44
@@ -2019,7 +2018,7 @@ Partial Class DatosSolicitud
         Me.txtPersonasDependientes.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPersonasDependientes.Name = "txtPersonasDependientes"
         Me.txtPersonasDependientes.Size = New System.Drawing.Size(101, 29)
-        Me.txtPersonasDependientes.TabIndex = 46
+        Me.txtPersonasDependientes.TabIndex = 55
         Me.txtPersonasDependientes.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label45
@@ -2048,7 +2047,7 @@ Partial Class DatosSolicitud
         Me.txtServicios.Margin = New System.Windows.Forms.Padding(4)
         Me.txtServicios.Name = "txtServicios"
         Me.txtServicios.Size = New System.Drawing.Size(374, 29)
-        Me.txtServicios.TabIndex = 45
+        Me.txtServicios.TabIndex = 54
         Me.txtServicios.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label46
@@ -2077,7 +2076,7 @@ Partial Class DatosSolicitud
         Me.txtDeudas.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDeudas.Name = "txtDeudas"
         Me.txtDeudas.Size = New System.Drawing.Size(101, 29)
-        Me.txtDeudas.TabIndex = 44
+        Me.txtDeudas.TabIndex = 53
         Me.txtDeudas.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label47
@@ -2106,7 +2105,7 @@ Partial Class DatosSolicitud
         Me.txtFamiliasEnCasa.Margin = New System.Windows.Forms.Padding(4)
         Me.txtFamiliasEnCasa.Name = "txtFamiliasEnCasa"
         Me.txtFamiliasEnCasa.Size = New System.Drawing.Size(101, 29)
-        Me.txtFamiliasEnCasa.TabIndex = 43
+        Me.txtFamiliasEnCasa.TabIndex = 52
         Me.txtFamiliasEnCasa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label48
@@ -2135,7 +2134,7 @@ Partial Class DatosSolicitud
         Me.txtEnfermedad.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEnfermedad.Name = "txtEnfermedad"
         Me.txtEnfermedad.Size = New System.Drawing.Size(101, 29)
-        Me.txtEnfermedad.TabIndex = 42
+        Me.txtEnfermedad.TabIndex = 51
         Me.txtEnfermedad.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label49
@@ -2193,22 +2192,22 @@ Partial Class DatosSolicitud
         '
         Me.dtdatosDocumentos.AllowUserToAddRows = False
         Me.dtdatosDocumentos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatosDocumentos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatosDocumentos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
         Me.dtdatosDocumentos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtdatosDocumentos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatosDocumentos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatosDocumentos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatosDocumentos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatosDocumentos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.dtdatosDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatosDocumentos.DoubleBuffered = True
         Me.dtdatosDocumentos.EnableHeadersVisualStyles = False
@@ -2237,22 +2236,22 @@ Partial Class DatosSolicitud
         '
         Me.dtdatosDocumentosNuevos.AllowUserToAddRows = False
         Me.dtdatosDocumentosNuevos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatosDocumentosNuevos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatosDocumentosNuevos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle15
         Me.dtdatosDocumentosNuevos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtdatosDocumentosNuevos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatosDocumentosNuevos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatosDocumentosNuevos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatosDocumentosNuevos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatosDocumentosNuevos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
         Me.dtdatosDocumentosNuevos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatosDocumentosNuevos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idTipoDocumento, Me.NombreDocumento, Me.Imagen})
         Me.dtdatosDocumentosNuevos.DoubleBuffered = True
@@ -2356,7 +2355,7 @@ Partial Class DatosSolicitud
         Me.txtObservacionesDomicilio.Multiline = True
         Me.txtObservacionesDomicilio.Name = "txtObservacionesDomicilio"
         Me.txtObservacionesDomicilio.Size = New System.Drawing.Size(222, 93)
-        Me.txtObservacionesDomicilio.TabIndex = 49
+        Me.txtObservacionesDomicilio.TabIndex = 58
         '
         'txtHorarioVerificacion
         '
@@ -2374,7 +2373,7 @@ Partial Class DatosSolicitud
         Me.txtHorarioVerificacion.Margin = New System.Windows.Forms.Padding(4)
         Me.txtHorarioVerificacion.Name = "txtHorarioVerificacion"
         Me.txtHorarioVerificacion.Size = New System.Drawing.Size(101, 29)
-        Me.txtHorarioVerificacion.TabIndex = 50
+        Me.txtHorarioVerificacion.TabIndex = 59
         Me.txtHorarioVerificacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label55
@@ -2401,22 +2400,22 @@ Partial Class DatosSolicitud
         '
         Me.dtdatos.AllowUserToAddRows = False
         Me.dtdatos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle17
         Me.dtdatos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtdatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dtdatos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle18
         Me.dtdatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.IdCliente, Me.Nombre, Me.Capturado})
         Me.dtdatos.DoubleBuffered = True
