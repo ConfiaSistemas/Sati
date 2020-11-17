@@ -147,7 +147,7 @@ Public Class DatosSolicitud
                 txtCalleR1.Text = row("CalleR1").ToString
                 txtNoExtR1.Text = row("NoExtR1").ToString
                 txtNoIntR1.Text = row("NoIntR1").ToString
-
+                ComboColoniaR1.Text = row("ColoniaR1").ToString
                 txtNombreR2.Text = row("NombreR2").ToString
                 txtTelefonoR2.Text = row("TelefonoR2").ToString
                 txtRelacionR2.Text = row("RelacionR2").ToString
@@ -156,6 +156,7 @@ Public Class DatosSolicitud
                 txtCalleR2.Text = row("CalleR2").ToString
                 txtNoExtR2.Text = row("NoExtR2").ToString
                 txtNoIntR2.Text = row("NoIntR2").ToString
+                ComboColoniaR2.Text = row("ColoniaR2").ToString
                 txtEnfermedad.Text = row("Enfermedad").ToString
                 txtFamiliasEnCasa.Text = row("FamiliasEnCasa").ToString
                 txtDeudas.Text = row("DeudasCon").ToString

@@ -4,6 +4,12 @@ Imports Telerik.WinControls.UI
 
 Public Class PromPago
     Public idCredito As Integer
+    Public estadoCredito As String
+    Dim descuentoTotal As Double
+    Dim TotalTotal As Double
+    Dim descuentoParcial As Double
+    Dim totalParcial As Double
+
     Dim dataVencidos As DataTable
     Dim adapterVencidos As SqlDataAdapter
     Dim dataTotal As DataTable
@@ -16,6 +22,7 @@ Public Class PromPago
     Dim ncargando As Cargando
     Private Sub PromPago_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
+        dateFechaLimite.Value = Now.Date.AddDays(7)
 
         Panel1.BackColor = Color.FromArgb(191, 219, 255)
         Panel2.BackColor = Color.FromArgb(191, 219, 255)
@@ -95,15 +102,15 @@ isnull((select SUM(CalendarioReestructurasSac.interes) as Multas from Calendario
 else
 isnull((select SUM(CalendarioNormal.interes) as Multas from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where  CalendarioNormal.id_credito = Cartera.id and fechapago <= '" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "' group by CalendarioNormal.id_credito),0) end as Multas,
 case when cartera.Estado = 'C' THEN 
-(select SUM(CalendarioConveniosSac.monto) from CalendarioConveniosSac inner join ConveniosSac on CalendarioConveniosSac.IdConvenio = ConveniosSac.id where ConveniosSac.idcredito = Cartera.id)
+(select SUM(CalendarioConveniosSac.monto) from CalendarioConveniosSac inner join ConveniosSac on CalendarioConveniosSac.IdConvenio = ConveniosSac.id where ConveniosSac.idcredito = Cartera.id and fechapago <= '" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "')
 when cartera.Estado = 'R' THEN 
-(select SUM(CalendarioReestructurasSac.monto) from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where ReestructurasSac.idcredito = Cartera.id)
+(select SUM(CalendarioReestructurasSac.monto) from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where ReestructurasSac.idcredito = Cartera.id and fechapago <= '" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "')
 else
-(select Pagare from credito where id = Cartera.id) end as pagare,
+(select SUM(CalendarioNormal.monto) from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where CalendarioNormal.id_credito = Cartera.id and fechapago <= '" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "') end as pagare,
 case when Cartera.Estado = 'C' then
 isnull((select SUM(CalendarioConveniosSac.pendiente) from CalendarioConveniosSac inner join ConveniosSac on CalendarioConveniosSac.IdConvenio = ConveniosSac.id where CalendarioConveniosSac.Estado = 'V' and ConveniosSac.idcredito = Cartera.id and fechapago <= '" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "'),0)
 when Cartera.Estado = 'R' then
-isnull((select SUM(CalendarioReestructurasSac.pendiente) from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado = 'V' and ReestructurasSac.idcredito = Cartera.id and and fechapago <= '" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "'),0)
+isnull((select SUM(CalendarioReestructurasSac.pendiente) from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado = 'V' and ReestructurasSac.idcredito = Cartera.id and fechapago <= '" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "'),0)
 else
 isnull((select SUM(pendiente) from CalendarioNormal where Estado = 'V' and id_credito = Cartera.id and fechapago <= '" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "'),0) end as pendiente,
 case when Cartera.Estado = 'C' then
@@ -123,19 +130,36 @@ else '0' end as MultasVencidas
         comandoDeudaParcial.CommandText = consultaDeudaTotal
         readerDeudaParcial = comandoDeudaParcial.ExecuteReader
         If readerDeudaParcial.HasRows Then
-            pagoNormalTotal = readerDeudaParcial("valorcarterasinmultas")
-            multasTotal = readerDeudaParcial("multaspendientes")
+            While readerDeudaParcial.Read
+                pagonormalParcial = readerDeudaParcial("valorcarterasinmultas")
+                multasParcial = readerDeudaParcial("multaspendientes")
+            End While
+
 
         End If
+        totalParcial = (pagonormalParcial + multasParcial) - descuentoParcial
         lblPagoNormalParcial.Text = FormatCurrency(pagonormalParcial, 2)
         lblMultasParcial.Text = FormatCurrency(multasParcial, 2)
+        lblDescuentoParcial.Text = FormatCurrency(descuentoParcial, 2)
+        lblTotalParcial.Text = FormatCurrency(totalParcial, 2)
 
 
 
 
 
         Dim consultaVencidos As String
-        consultaVencidos = "select idPago,Monto, interes as interés,Abonado,Pendiente,Estado,FechaUltimoPago from calendarionormal where id_credito ='" & idCredito & "' and estado <> 'L' and fechapago <='" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "'"
+        Select Case estadoCredito
+            Case "R"
+                consultaVencidos = "select idPago,Monto, interes as interés,Abonado,Pendiente,calendarioreestructurassac.Estado,fechapago,calendarioreestructurassac.fecha from calendarioreestructurassac inner join reestructurassac on calendarioreestructurassac.idconvenio = reestructurassac.id where idcredito ='" & idCredito & "' and calendarioreestructurassac.estado <> 'L' and fechapago <='" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "'"
+
+            Case "C"
+                consultaVencidos = "select idPago,Monto, interes as interés,Abonado,Pendiente,calendarioconveniossac.Estado,fechapago,calendarioconveniossac.fecha from calendarioconveniossac inner join conveniossac on calendarioconveniossac.idconvenio = conveniossac.id where idcredito ='" & idCredito & "' and calendarioconveniossac.estado <> 'L' and fechapago <='" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "'"
+
+            Case Else
+
+                consultaVencidos = "select idPago,Monto, interes as interés,Abonado,Pendiente,Estado,fechapago,fecha from calendarionormal where id_credito ='" & idCredito & "' and estado <> 'L' and fechapago <='" & dateFechaLimite.Value.ToString("yyyy-MM-dd") & "'"
+
+        End Select
 
         adapterVencidos = New SqlDataAdapter(consultaVencidos, conexionempresa)
         dataVencidos = New DataTable
@@ -217,14 +241,33 @@ else '0' end as MultasVencidas
         comandoDeudaTotal.CommandText = consultaDeudaTotal
         readerDeudaTotal = comandoDeudaTotal.ExecuteReader
         If readerDeudaTotal.HasRows Then
-            pagoNormalTotal = readerDeudaTotal("valorcarterasinmultas")
-            multasTotal = readerDeudaTotal("multaspendientes")
+            While readerDeudaTotal.Read
+                pagoNormalTotal = readerDeudaTotal("valorcarterasinmultas")
+                multasTotal = readerDeudaTotal("multaspendientes")
+            End While
+
 
         End If
+
+        TotalTotal = (pagoNormalTotal + multasTotal) - descuentoTotal
+
         lblPagoNormalTotal.Text = FormatCurrency(pagoNormalTotal, 2)
         lblMultasTotal.Text = FormatCurrency(multasTotal, 2)
+        lblDescuentoTotal.Text = FormatCurrency(descuentoTotal, 2)
+        lblTotalTotal.Text = FormatCurrency(TotalTotal, 2)
+
         Dim consultaTotal As String
-        consultaTotal = "select idPago,Monto, interes as interés,Abonado,Pendiente,Estado,FechaPago,FechaUltimoPago from calendarionormal where id_credito ='" & idCredito & "' and estado <> 'L' "
+        Select Case estadoCredito
+            Case "R"
+                consultaTotal = "select idPago,Monto, interes as interés,Abonado,Pendiente,calendarioreestructurassac.Estado,fechapago,calendarioreestructurassac.fecha from calendarioreestructurassac inner join reestructurassac on calendarioreestructurassac.idconvenio = reestructurassac.id where idcredito ='" & idCredito & "' and calendarioreestructurassac.estado <> 'L'"
+
+            Case "C"
+                consultaTotal = "select idPago,Monto, interes as interés,Abonado,Pendiente,calendarioconveniossac.Estado,fechapago,calendarioconveniossac.fecha from calendarioconveniossac inner join conveniossac on calendarioconveniossac.idconvenio = conveniossac.id where idcredito ='" & idCredito & "' and calendarioconveniossac.estado <> 'L' "
+
+            Case Else
+                consultaTotal = "select idPago,Monto, interes as interés,Abonado,Pendiente,Estado,FechaPago,FechaUltimoPago from calendarionormal where id_credito ='" & idCredito & "' and estado <> 'L' "
+
+        End Select
 
         adapterTotal = New SqlDataAdapter(consultaTotal, conexionempresa)
         dataTotal = New DataTable
@@ -252,5 +295,23 @@ else '0' end as MultasVencidas
     Private Sub BackgroundTotal_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundTotal.RunWorkerCompleted
         dtTotal.DataSource = dataTotal
         ncargando.Close()
+    End Sub
+
+    Private Sub RadWizard1_Help(sender As Object, e As EventArgs) Handles RadWizard1.Help
+
+    End Sub
+
+    Private Sub CheckTotal_CheckedChanged(sender As Object, e As EventArgs) Handles CheckTotal.CheckedChanged
+        If CheckTotal.CheckState = CheckState.Checked Then
+            CheckVencidos.CheckState = CheckState.Unchecked
+
+        End If
+    End Sub
+
+    Private Sub CheckVencidos_CheckedChanged(sender As Object, e As EventArgs) Handles CheckVencidos.CheckedChanged
+        If CheckVencidos.CheckState = CheckState.Checked Then
+            CheckTotal.CheckState = CheckState.Unchecked
+
+        End If
     End Sub
 End Class

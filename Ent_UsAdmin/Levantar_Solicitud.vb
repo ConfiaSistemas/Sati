@@ -310,6 +310,34 @@ end"
             consultadoCliente = False
             lblCliente.Text = "No se encontró"
         End If
+        If consultadoCliente Then
+            If tipocredito = "L" Then
+
+                btn_agregar.Visible = True
+                txtMoratorios.Visible = True
+                lblMoratorios.Visible = True
+                txtTotal.Visible = True
+                lblTotal.Visible = True
+                CheckNombre.Visible = True
+                ComboLegal.Visible = True
+                lblGestorLegal.Visible = True
+                txtTotalMoratorios.Visible = True
+                lblTotalMoratorios.Visible = True
+            Else
+                btn_agregar.Visible = True
+                txtMoratorios.Visible = False
+                lblMoratorios.Visible = False
+                txtTotal.Visible = False
+                lblTotal.Visible = False
+                CheckNombre.Visible = False
+                ComboLegal.Visible = False
+                lblGestorLegal.Visible = False
+                txtTotalMoratorios.Visible = False
+                lblTotalMoratorios.Visible = False
+            End If
+
+
+        End If
     End Sub
 
     Private Sub txtIdCliente_KeyDown(sender As Object, e As KeyEventArgs) Handles txtIdCliente.KeyDown

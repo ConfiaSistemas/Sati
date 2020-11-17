@@ -196,6 +196,7 @@
     <Reference Include="Telerik.WinControls.RadMarkupEditor, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.Scheduler, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.Themes.HighContrastBlack, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.Themes.Office2013Dark, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.UI, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.UI.Design, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
@@ -437,6 +438,12 @@
       <DependentUpon>Configuraciones.vb</DependentUpon>
     </Compile>
     <Compile Include="Configuraciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Renovacion.Designer.vb">
+      <DependentUpon>Renovacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Renovacion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReporteLegal.Designer.vb">
@@ -1043,6 +1050,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Configuraciones.resx">
       <DependentUpon>Configuraciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Renovacion.resx">
+      <DependentUpon>Renovacion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteLegal.resx">
       <DependentUpon>ReporteLegal.vb</DependentUpon>

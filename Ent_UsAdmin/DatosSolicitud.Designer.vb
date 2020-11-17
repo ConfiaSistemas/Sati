@@ -1153,18 +1153,19 @@ Partial Class DatosSolicitud
         Me.txtCalleTrabajo.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCalleTrabajo.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCalleTrabajo.LineThickness = 3
-        Me.txtCalleTrabajo.Location = New System.Drawing.Point(574, 227)
+        Me.txtCalleTrabajo.Location = New System.Drawing.Point(574, 219)
         Me.txtCalleTrabajo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCalleTrabajo.Name = "txtCalleTrabajo"
-        Me.txtCalleTrabajo.Size = New System.Drawing.Size(203, 21)
+        Me.txtCalleTrabajo.Size = New System.Drawing.Size(203, 29)
         Me.txtCalleTrabajo.TabIndex = 28
+        Me.txtCalleTrabajo.Text = "a"
         Me.txtCalleTrabajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label27
         '
         Me.Label27.AutoSize = True
         Me.Label27.ForeColor = System.Drawing.Color.White
-        Me.Label27.Location = New System.Drawing.Point(571, 210)
+        Me.Label27.Location = New System.Drawing.Point(571, 202)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(98, 13)
         Me.Label27.TabIndex = 110

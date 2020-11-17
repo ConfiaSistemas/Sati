@@ -525,7 +525,7 @@ select 'Reestructura' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente
 
 else if not exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
 begin
-select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,6FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' 
+select 'Normal' as TipoDePago,idPago,Npago,Monto,Interes,Abonado,Pendiente,FechaPago,FechaUltimoPago from CalendarioNormal where id_credito = '" & idCredito & "' 
 end
 "
 

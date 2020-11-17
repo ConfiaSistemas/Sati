@@ -33,7 +33,9 @@ Public Class BuscarClienteSolicitud
             If consultar Then
                 MessageBox.Show("Consultando espere...")
             Else
-                consulta = "select id,(nombre+' '+apellidoPaterno+' '+apellidoMaterno) as nombre from clientes where nombre like '%" & txtnombre.Text & "%' or apellidoPaterno like '%" & txtnombre.Text & "%' or apellidoMaterno like '%" & txtnombre.Text & "%'"
+                'consulta = "select id,(nombre+' '+apellidoPaterno+' '+apellidoMaterno) as nombre from clientes where nombre like '%" & txtnombre.Text & "%' or apellidoPaterno like '%" & txtnombre.Text & "%' or apellidoMaterno like '%" & txtnombre.Text & "%'"
+                consulta = "select * from (select id,(nombre+' '+apellidoPaterno+' '+apellidoMaterno) as nombre from clientes)CatCli where nombre like '%" & txtnombre.Text & "%' "
+
                 consultar = True
                 Cargando.Show()
                 Cargando.MonoFlat_Label1.Text = "Consultando"
