@@ -89,9 +89,6 @@ Public Class Solicitudes
         DatosVerificacion.Show()
     End Sub
 
-    Private Sub dtimpuestos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtimpuestos.CellContentClick
-
-    End Sub
 
     Private Sub dtimpuestos_SelectionChanged(sender As Object, e As EventArgs) Handles dtimpuestos.SelectionChanged
         If dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(8).Value = "E" Then
