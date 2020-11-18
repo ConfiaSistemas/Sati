@@ -415,6 +415,7 @@ end
     End Sub
 
     Private Sub btnGenerarCalendario_Click(sender As Object, e As EventArgs) Handles btnGenerarCalendario.Click
+        DocumentosCredito.frmNombre = Me.Text
         DocumentosCredito.idCredito = idCredito
         DocumentosCredito.Show()
     End Sub

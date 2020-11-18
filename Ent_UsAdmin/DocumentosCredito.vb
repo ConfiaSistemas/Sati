@@ -5,6 +5,7 @@ Imports System.IO
 
 Public Class DocumentosCredito
     Public idCredito As String
+    Public frmNombre As String
     Private Sub btn_agregar_Click(sender As Object, e As EventArgs) Handles btn_agregar.Click
         AgregarDocumentoCredito.ShowDialog()
     End Sub
@@ -59,11 +60,22 @@ Public Class DocumentosCredito
     End Sub
 
     Private Sub BackgroundDocumentos_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundDocumentos.RunWorkerCompleted
-        Me.Invoke(Sub()
-                      InformacionSolicitud.BackgroundClientes.RunWorkerAsync()
+        For Each frm As Form In Application.OpenForms
+            If frm.Text = frmNombre Then
+                Dim frmn As InformacionSolicitud
+                frmn = frm
 
-                  End Sub)
+                Me.Invoke(Sub()
+
+                              frmn.BackgroundDocumentos.RunWorkerAsync()
+
+                          End Sub)
+            End If
+        Next
+
+
         Cargando.Close()
+        'Cargando.Close()
         Me.Close()
     End Sub
 End Class

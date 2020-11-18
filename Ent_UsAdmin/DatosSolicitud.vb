@@ -666,7 +666,13 @@ Public Class DatosSolicitud
 
 
     Private Sub txtCodigoPostal_OnValueChanged(sender As Object, e As EventArgs) Handles txtCodigoPostal.OnValueChanged
-
+        ComboColonia.Items.Clear()
+        ComboColonia.Items.Add("")
+        For Each row As DataRow In dataColonias.Rows
+            If row("CP").ToString = txtCodigoPostal.Text Then
+                ComboColonia.Items.Add(row("Colonia").ToString)
+            End If
+        Next
     End Sub
 
 
@@ -837,9 +843,6 @@ Public Class DatosSolicitud
         End If
     End Sub
 
-    Private Sub txtCodigoPostal_Layout(sender As Object, e As LayoutEventArgs) Handles txtCodigoPostal.Layout
-
-    End Sub
 
     Private Sub ConsultaColoniasPersonal()
         ' If e.KeyCode = Keys.Enter Then
@@ -861,7 +864,14 @@ Public Class DatosSolicitud
     End Sub
 
     Private Sub txtCodigoPostalTrabajo_OnValueChanged(sender As Object, e As EventArgs) Handles txtCodigoPostalTrabajo.OnValueChanged
+        ComboColoniaTrabajo.Items.Clear()
+        ComboColoniaTrabajo.Items.Add("")
+        For Each row As DataRow In dataColonias.Rows
+            If row("CP").ToString = txtCodigoPostalTrabajo.Text Then
+                ComboColoniaTrabajo.Items.Add(row("Colonia").ToString)
+            End If
 
+        Next
     End Sub
 
     Private Sub ConsultaColoniasTrabajo()
@@ -907,9 +917,6 @@ Public Class DatosSolicitud
         Next
         'End If
     End Sub
-    Private Sub txtCodigoPostalTrabajo_PaddingChanged(sender As Object, e As EventArgs) Handles txtCodigoPostalTrabajo.PaddingChanged
-
-    End Sub
 
     Private Sub txtCodigoPostalTrabajo_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCodigoPostalTrabajo.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -935,7 +942,14 @@ Public Class DatosSolicitud
     End Sub
 
     Private Sub txtCodigoPostalR2_OnValueChanged(sender As Object, e As EventArgs) Handles txtCodigoPostalR2.OnValueChanged
+        ComboColoniaR2.Items.Clear()
+        ComboColoniaR2.Items.Add("")
+        For Each row As DataRow In dataColonias.Rows
+            If row("CP").ToString = txtCodigoPostalR2.Text Then
+                ComboColoniaR2.Items.Add(row("Colonia").ToString)
+            End If
 
+        Next
     End Sub
 
     Private Sub txtCodigoPostalR2_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCodigoPostalR2.KeyDown
@@ -954,7 +968,14 @@ Public Class DatosSolicitud
     End Sub
 
     Private Sub txtCodigoPostalR1_OnValueChanged(sender As Object, e As EventArgs) Handles txtCodigoPostalR1.OnValueChanged
+        ComboColoniaR1.Items.Clear()
+        ComboColoniaR1.Items.Add("")
+        For Each row As DataRow In dataColonias.Rows
+            If row("CP").ToString = txtCodigoPostalR1.Text Then
+                ComboColoniaR1.Items.Add(row("Colonia").ToString)
+            End If
 
+        Next
     End Sub
 
     Private Sub txtCodigoPostalR1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodigoPostalR1.KeyPress
@@ -987,5 +1008,15 @@ Public Class DatosSolicitud
                 e.Handled = True
             End If
         End If
+    End Sub
+
+    Private Sub ComboColonia_GotFocus(sender As Object, e As EventArgs) Handles ComboColonia.GotFocus
+        'ComboColonia.Items.Clear()
+        'ComboColonia.Items.Add("")
+        'For Each row As DataRow In dataColonias.Rows
+        '    If row("CP").ToString = txtCodigoPostal.Text Then
+        '        ComboColonia.Items.Add(row("Colonia").ToString)
+        '    End If
+        'Next
     End Sub
 End Class
