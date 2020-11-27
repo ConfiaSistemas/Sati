@@ -23,12 +23,20 @@ Partial Class ListadoMaestro
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListadoMaestro))
         Me.dtimpuestos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
+        Me.txtnombre = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.MonoFlat_Label1 = New ConfiaAdmin.MonoFlat.MonoFlat_Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Integrantes = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaEntrega = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Monto = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -38,13 +46,6 @@ Partial Class ListadoMaestro
         Me.Telefono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Celular = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Domicilio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.txtnombre = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.MonoFlat_Label1 = New ConfiaAdmin.MonoFlat.MonoFlat_Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -53,8 +54,8 @@ Partial Class ListadoMaestro
         '
         Me.dtimpuestos.AllowUserToAddRows = False
         Me.dtimpuestos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dtimpuestos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -62,16 +63,16 @@ Partial Class ListadoMaestro
         Me.dtimpuestos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtimpuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtimpuestos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dtimpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtimpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Integrantes, Me.Nombre, Me.Estado, Me.Monto, Me.Plazo, Me.Promotor, Me.Gestor, Me.Telefono, Me.Celular, Me.Domicilio})
+        Me.dtimpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Integrantes, Me.FechaEntrega, Me.Nombre, Me.Estado, Me.Monto, Me.Plazo, Me.Promotor, Me.Gestor, Me.Telefono, Me.Celular, Me.Domicilio})
         Me.dtimpuestos.DoubleBuffered = True
         Me.dtimpuestos.EnableHeadersVisualStyles = False
         Me.dtimpuestos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
@@ -83,83 +84,6 @@ Partial Class ListadoMaestro
         Me.dtimpuestos.RowHeadersVisible = False
         Me.dtimpuestos.Size = New System.Drawing.Size(969, 500)
         Me.dtimpuestos.TabIndex = 6
-        '
-        'Id
-        '
-        Me.Id.HeaderText = "Id"
-        Me.Id.Name = "Id"
-        Me.Id.ReadOnly = True
-        Me.Id.Width = 42
-        '
-        'Integrantes
-        '
-        Me.Integrantes.HeaderText = "Integrantes"
-        Me.Integrantes.Name = "Integrantes"
-        Me.Integrantes.ReadOnly = True
-        Me.Integrantes.Width = 99
-        '
-        'Nombre
-        '
-        Me.Nombre.HeaderText = "Nombre"
-        Me.Nombre.Name = "Nombre"
-        Me.Nombre.ReadOnly = True
-        Me.Nombre.Width = 79
-        '
-        'Estado
-        '
-        Me.Estado.HeaderText = "Estado"
-        Me.Estado.Name = "Estado"
-        Me.Estado.ReadOnly = True
-        Me.Estado.Width = 71
-        '
-        'Monto
-        '
-        Me.Monto.HeaderText = "Monto"
-        Me.Monto.Name = "Monto"
-        Me.Monto.ReadOnly = True
-        Me.Monto.Width = 70
-        '
-        'Plazo
-        '
-        Me.Plazo.HeaderText = "Plazo"
-        Me.Plazo.Name = "Plazo"
-        Me.Plazo.ReadOnly = True
-        Me.Plazo.Width = 62
-        '
-        'Promotor
-        '
-        Me.Promotor.HeaderText = "Promotor"
-        Me.Promotor.Name = "Promotor"
-        Me.Promotor.ReadOnly = True
-        Me.Promotor.Width = 86
-        '
-        'Gestor
-        '
-        Me.Gestor.HeaderText = "Gestor"
-        Me.Gestor.Name = "Gestor"
-        Me.Gestor.ReadOnly = True
-        Me.Gestor.Width = 71
-        '
-        'Telefono
-        '
-        Me.Telefono.HeaderText = "Teléfono"
-        Me.Telefono.Name = "Telefono"
-        Me.Telefono.ReadOnly = True
-        Me.Telefono.Width = 82
-        '
-        'Celular
-        '
-        Me.Celular.HeaderText = "Celular"
-        Me.Celular.Name = "Celular"
-        Me.Celular.ReadOnly = True
-        Me.Celular.Width = 73
-        '
-        'Domicilio
-        '
-        Me.Domicilio.HeaderText = "Domicilio"
-        Me.Domicilio.Name = "Domicilio"
-        Me.Domicilio.ReadOnly = True
-        Me.Domicilio.Width = 87
         '
         'txtnombre
         '
@@ -207,6 +131,18 @@ Partial Class ListadoMaestro
         Me.Panel1.Size = New System.Drawing.Size(992, 36)
         Me.Panel1.TabIndex = 11
         '
+        'Button2
+        '
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button2.Location = New System.Drawing.Point(0, 0)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(54, 23)
+        Me.Button2.TabIndex = 37
+        Me.Button2.Text = "Atrás"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'MonoFlat_HeaderLabel1
         '
         Me.MonoFlat_HeaderLabel1.AutoSize = True
@@ -248,17 +184,99 @@ Partial Class ListadoMaestro
         'BackgroundWorker1
         '
         '
-        'Button2
+        'Id
         '
-        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.White
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.ForeColor = System.Drawing.SystemColors.Control
-        Me.Button2.Location = New System.Drawing.Point(0, 0)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(54, 23)
-        Me.Button2.TabIndex = 37
-        Me.Button2.Text = "Atrás"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Id.HeaderText = "Id"
+        Me.Id.Name = "Id"
+        Me.Id.ReadOnly = True
+        Me.Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Id.Width = 23
+        '
+        'Integrantes
+        '
+        Me.Integrantes.HeaderText = "Integrantes"
+        Me.Integrantes.Name = "Integrantes"
+        Me.Integrantes.ReadOnly = True
+        Me.Integrantes.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Integrantes.Width = 80
+        '
+        'FechaEntrega
+        '
+        Me.FechaEntrega.HeaderText = "Fecha Entrega"
+        Me.FechaEntrega.Name = "FechaEntrega"
+        Me.FechaEntrega.ReadOnly = True
+        Me.FechaEntrega.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.FechaEntrega.Width = 98
+        '
+        'Nombre
+        '
+        Me.Nombre.HeaderText = "Nombre"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        Me.Nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Nombre.Width = 60
+        '
+        'Estado
+        '
+        Me.Estado.HeaderText = "Estado"
+        Me.Estado.Name = "Estado"
+        Me.Estado.ReadOnly = True
+        Me.Estado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Estado.Width = 52
+        '
+        'Monto
+        '
+        Me.Monto.HeaderText = "Monto"
+        Me.Monto.Name = "Monto"
+        Me.Monto.ReadOnly = True
+        Me.Monto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Monto.Width = 51
+        '
+        'Plazo
+        '
+        Me.Plazo.HeaderText = "Plazo"
+        Me.Plazo.Name = "Plazo"
+        Me.Plazo.ReadOnly = True
+        Me.Plazo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Plazo.Width = 43
+        '
+        'Promotor
+        '
+        Me.Promotor.HeaderText = "Promotor"
+        Me.Promotor.Name = "Promotor"
+        Me.Promotor.ReadOnly = True
+        Me.Promotor.Width = 86
+        '
+        'Gestor
+        '
+        Me.Gestor.HeaderText = "Gestor"
+        Me.Gestor.Name = "Gestor"
+        Me.Gestor.ReadOnly = True
+        Me.Gestor.Width = 71
+        '
+        'Telefono
+        '
+        Me.Telefono.HeaderText = "Teléfono"
+        Me.Telefono.Name = "Telefono"
+        Me.Telefono.ReadOnly = True
+        Me.Telefono.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Telefono.Width = 63
+        '
+        'Celular
+        '
+        Me.Celular.HeaderText = "Celular"
+        Me.Celular.Name = "Celular"
+        Me.Celular.ReadOnly = True
+        Me.Celular.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Celular.Width = 54
+        '
+        'Domicilio
+        '
+        Me.Domicilio.HeaderText = "Domicilio"
+        Me.Domicilio.Name = "Domicilio"
+        Me.Domicilio.ReadOnly = True
+        Me.Domicilio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Domicilio.Width = 68
         '
         'ListadoMaestro
         '
@@ -285,8 +303,11 @@ Partial Class ListadoMaestro
     Friend WithEvents MonoFlat_Label1 As MonoFlat.MonoFlat_Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents MonoFlat_HeaderLabel1 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Button2 As Button
     Friend WithEvents Id As DataGridViewTextBoxColumn
     Friend WithEvents Integrantes As DataGridViewTextBoxColumn
+    Friend WithEvents FechaEntrega As DataGridViewTextBoxColumn
     Friend WithEvents Nombre As DataGridViewTextBoxColumn
     Friend WithEvents Estado As DataGridViewTextBoxColumn
     Friend WithEvents Monto As DataGridViewTextBoxColumn
@@ -296,6 +317,4 @@ Partial Class ListadoMaestro
     Friend WithEvents Telefono As DataGridViewTextBoxColumn
     Friend WithEvents Celular As DataGridViewTextBoxColumn
     Friend WithEvents Domicilio As DataGridViewTextBoxColumn
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Friend WithEvents Button2 As Button
 End Class

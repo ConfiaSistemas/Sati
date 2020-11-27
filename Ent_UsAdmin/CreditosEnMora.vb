@@ -207,7 +207,7 @@ when Cartera.Estado = 'R' then
 (select SUM(interes) as MultasVencidas from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado ='V' and ReestructurasSac.idcredito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
+(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' and Credito.Nombre like '%" & txtnombre.Text & "%' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
 (select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc"
 
@@ -310,7 +310,7 @@ when Cartera.Estado = 'R' then
 (select SUM(interes) as MultasVencidas from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado ='V' and ReestructurasSac.idcredito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' and idgestor = '" & idEmpleado & "' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
+(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' and idgestor = '" & idEmpleado & "' and Credito.Nombre like '%" & txtnombre.Text & "%' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
 (select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc"
                 End If
@@ -413,7 +413,7 @@ when Cartera.Estado = 'R' then
 (select SUM(interes) as MultasVencidas from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado ='V' and ReestructurasSac.idcredito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
+(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' and Credito.Nombre like '%" & txtnombre.Text & "%' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
 (select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc"
                 Else
@@ -514,7 +514,7 @@ when Cartera.Estado = 'R' then
 (select SUM(interes) as MultasVencidas from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado ='V' and ReestructurasSac.idcredito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' and idpromotor = '" & idEmpleado & "' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
+(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' and idpromotor = '" & idEmpleado & "' and Credito.Nombre like '%" & txtnombre.Text & "%' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
 (select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc"
                 End If
@@ -616,7 +616,7 @@ when Cartera.Estado = 'R' then
 (select SUM(interes) as MultasVencidas from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where CalendarioReestructurasSac.Estado ='V' and ReestructurasSac.idcredito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdSolicitud from
-(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
+(select Credito.nombre,Credito.id,Credito.IdGestor,Credito.IdPromotor,Credito.Estado,Credito.IdSolicitud from CREDITO inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito  where CalendarioNormal.Estado = 'V'  and Credito.Estado <> 'L' and Credito.Estado <> 'T' and Credito.Nombre like '%" & txtnombre.Text & "%' group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado,Credito.monto,Credito.Interes,Credito.IdSolicitud) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
 (select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal) carteraVencida inner join Solicitud on carteraVencida.IdSolicitud = Solicitud.id inner join DatosSolicitud on solicitud.id = DatosSolicitud.IdSolicitud where VencidoNormal <> 0)creditos_en_mora order by creditos_en_mora.nombre asc"
         End Select
@@ -639,6 +639,8 @@ else '0' end as MultasVencidas
         dtimpuestos.DataSource = dataConsulta
         Cargando.Close()
         BunifuThinButton22.Enabled = True
+        'txtnombre.Enabled = True
+        'txtnombre.Select()
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
@@ -666,5 +668,20 @@ else '0' end as MultasVencidas
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Reportes.Panel1.Visible = False
         Reportes.RadPanorama1.Visible = True
+    End Sub
+
+    Private Sub txtnombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnombre.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            'txtnombre.Enabled = False
+            Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Consultando"
+            Cargando.TopMost = True
+            BackgroundConsulta.RunWorkerAsync()
+        End If
+    End Sub
+
+    Private Sub dtimpuestos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtimpuestos.CellDoubleClick
+        InformacionSolicitud.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        InformacionSolicitud.Show()
     End Sub
 End Class

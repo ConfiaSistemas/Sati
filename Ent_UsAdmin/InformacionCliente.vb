@@ -70,30 +70,10 @@ Public Class InformacionCliente
         BackgroundCreditos.RunWorkerAsync()
     End Sub
 
-
-
-
-
-
-
-
-
-    Private Sub dtSolicitud_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtSolicitud.CellContentDoubleClick
+    Private Sub dtSolicitud_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtSolicitud.CellDoubleClick
         DatosConsultaSolicitud.idSolicitud = dtSolicitud.Rows(dtSolicitud.CurrentRow.Index).Cells(0).Value
         '  DatosConsultaSolicitud.TipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(5).Value
         DatosConsultaSolicitud.Show()
-    End Sub
-
-
-
-
-
-
-
-
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
     End Sub
 
     Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
@@ -101,14 +81,6 @@ Public Class InformacionCliente
             MoveForm(Me)
         End If
     End Sub
-
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-
-
-
 
     Private Sub btnGenerarCalendario_Click(sender As Object, e As EventArgs)
         DocumentosCredito.idCredito = 1
@@ -181,15 +153,7 @@ Public Class InformacionCliente
         Cargando.Close()
     End Sub
 
-    Private Sub dtCredito_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtCredito.CellContentClick
-
-    End Sub
-
-    Private Sub dtSolicitud_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtSolicitud.CellContentClick
-
-    End Sub
-
-    Private Sub dtCredito_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtCredito.CellContentDoubleClick
+    Private Sub dtCredito_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtCredito.CellDoubleClick
         InformacionSolicitud.idCredito = dtCredito.Rows(dtCredito.CurrentRow.Index).Cells(0).Value
         '  DatosConsultaSolicitud.TipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(5).Value
         InformacionSolicitud.Show()

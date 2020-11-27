@@ -131,11 +131,7 @@ Public Class InformacionSolicitud
         'Cargando.Close()
     End Sub
 
-    Private Sub dtSolicitud_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtSolicitud.CellContentClick
-
-    End Sub
-
-    Private Sub dtSolicitud_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtSolicitud.CellContentDoubleClick
+    Private Sub dtSolicitud_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtSolicitud.CellDoubleClick
         DatosConsultaSolicitud.idSolicitud = dtSolicitud.Rows(dtSolicitud.CurrentRow.Index).Cells(0).Value
         '  DatosConsultaSolicitud.TipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(5).Value
         DatosConsultaSolicitud.Show()
@@ -143,7 +139,7 @@ Public Class InformacionSolicitud
 
 
 
-    Private Sub dtdatosDocumentos_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtdatosDocumentos.CellContentDoubleClick
+    Private Sub dtdatosDocumentos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtdatosDocumentos.CellDoubleClick
         VistaDocumento.PictureBox1.Image = dtdatosDocumentos.Rows(dtdatosDocumentos.CurrentRow.Index).Cells(1).FormattedValue
         VistaDocumento.ShowDialog()
     End Sub
