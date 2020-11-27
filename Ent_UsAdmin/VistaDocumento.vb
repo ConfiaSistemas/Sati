@@ -15,8 +15,9 @@
         SaveFileDialog1 = New SaveFileDialog
 
         SaveFileDialog1.Filter = "Archivo imagen (*.jpg*)|*.jpg"
-        If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK _
-         Then
+        If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+            PictureBox1.Image.Save(SaveFileDialog1.FileName)
+
 
         End If
     End Sub
@@ -32,5 +33,9 @@
             btmap.RotateFlip(RotateFlipType.Rotate90FlipY)
             PictureBox1.Image = btmap
         End If
+    End Sub
+
+    Private Sub VistaDocumento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

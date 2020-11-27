@@ -48,12 +48,12 @@ Partial Class VistaDocumento
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GuardarToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(153, 48)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(117, 26)
         '
         'GuardarToolStripMenuItem
         '
         Me.GuardarToolStripMenuItem.Name = "GuardarToolStripMenuItem"
-        Me.GuardarToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.GuardarToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.GuardarToolStripMenuItem.Text = "Guardar"
         '
         'VistaDocumento

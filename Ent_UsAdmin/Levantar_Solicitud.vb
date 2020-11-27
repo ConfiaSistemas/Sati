@@ -203,7 +203,8 @@ end"
         Try
             iniciarconexionempresa()
             Dim consulta As String
-            consulta = "Select id,nombre from empleados where tipo = 'G'"
+            consulta = " select '' as id, '' as nombre union all
+Select id,nombre from empleados where tipo = 'G'"
             adapterGestores = New SqlDataAdapter(consulta, conexionempresa)
             dataGestores = New DataSet
             adapterGestores.Fill(dataGestores)
@@ -221,7 +222,8 @@ end"
         Try
             iniciarconexionempresa()
             Dim consulta As String
-            consulta = "Select id,nombre from empleados where tipo = 'P'"
+            consulta = "select '' as id, '' as nombre union all 
+Select id,nombre from empleados where tipo = 'P'"
             adapterPromotores = New SqlDataAdapter(consulta, conexionempresa)
             dataPromotores = New DataSet
             adapterPromotores.Fill(dataPromotores)
@@ -502,16 +504,25 @@ end"
                     MessageBox.Show("No fue autorizado")
                 End If
             Else
-
-                Autorizacion.tipoAutorizacion = "SatiModSolicitudesAgregar"
-                Autorizacion.ShowDialog()
-                If autorizado Then
-                    Cargando.Show()
-                    Cargando.MonoFlat_Label1.Text = "Procesando"
-                    BackgroundWorker1.RunWorkerAsync()
+                If ComboGestor.Text = "" Then
+                    MessageBox.Show("Selecciona el gestor")
                 Else
-                    MessageBox.Show("No fue autorizado")
+                    If ComboPromotor.Text = "" Then
+                        MessageBox.Show("Selecciona el promotor")
+                    Else
+
+                        Autorizacion.tipoAutorizacion = "SatiModSolicitudesAgregar"
+                        Autorizacion.ShowDialog()
+                        If autorizado Then
+                            Cargando.Show()
+                            Cargando.MonoFlat_Label1.Text = "Procesando"
+                            BackgroundWorker1.RunWorkerAsync()
+                        Else
+                            MessageBox.Show("No fue autorizado")
+                        End If
+                    End If
                 End If
+
 
             End If
 
