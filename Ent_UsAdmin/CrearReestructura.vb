@@ -211,14 +211,24 @@ else '0' end as MultasVencidas
         '    CalendarioReestructura.gestor = gestor
         '    CalendarioReestructura.Show()
         'Else
-        If diasCancelado < 15 Or abonadoCancelado < 1000 Then
+        If idGrp = 1 Then
+            CalendarioReestructura.Moratorios = ParteMoratorios
+            CalendarioReestructura.Capital = ParteCredito
+            CalendarioReestructura.idCredito = idCredito
+            CalendarioReestructura.deuda = DeudaTotal
+            CalendarioReestructura.cantPagos = txtCantPagos.Text
+            CalendarioReestructura.MontoPago = txtPago.Text
+            CalendarioReestructura.PrimerPago = Convert.ToDateTime(datePrimerPago.Value.ToShortDateString)
+            CalendarioReestructura.Modalidad = Modalidad
+            CalendarioReestructura.deudaTotal = DeudaTotal
+            CalendarioReestructura.gestor = gestor
+            CalendarioReestructura.Show()
+
+        ElseIf diasCancelado < 15 Or abonadoCancelado < 1000 Then
             MessageBox.Show("Para crear la reestructura, deben haber pasado por lo menos 15 días desde la cancelación del convenio, y tener abonados por lo menos $1,000.00 desde esa fecha.")
         Else
             CalendarioReestructura.Moratorios = ParteMoratorios
             CalendarioReestructura.Capital = ParteCredito
-
-
-            ' CalendarioConvenioLegal.personalizado = personalizado
             CalendarioReestructura.idCredito = idCredito
             CalendarioReestructura.deuda = DeudaTotal
             CalendarioReestructura.cantPagos = txtCantPagos.Text
@@ -229,6 +239,7 @@ else '0' end as MultasVencidas
             CalendarioReestructura.gestor = gestor
             CalendarioReestructura.Show()
         End If
+
         'End If
 
     End Sub
