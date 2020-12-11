@@ -58,16 +58,6 @@ Partial Class InformacionLegal
         Me.dtdatosDocumentos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.TreeListView1 = New WinControls.ListView.TreeListView()
-        Me.ContainerColumnHeader1 = New WinControls.ListView.ContainerColumnHeader()
-        Me.ContainerColumnHeader2 = New WinControls.ListView.ContainerColumnHeader()
-        Me.ContainerColumnHeader3 = New WinControls.ListView.ContainerColumnHeader()
-        Me.ContainerColumnHeader10 = New WinControls.ListView.ContainerColumnHeader()
-        Me.ContainerColumnHeader9 = New WinControls.ListView.ContainerColumnHeader()
-        Me.ContainerColumnHeader4 = New WinControls.ListView.ContainerColumnHeader()
-        Me.ContainerColumnHeader5 = New WinControls.ListView.ContainerColumnHeader()
-        Me.ContainerColumnHeader6 = New WinControls.ListView.ContainerColumnHeader()
-        Me.ContainerColumnHeader7 = New WinControls.ListView.ContainerColumnHeader()
-        Me.ContainerColumnHeader8 = New WinControls.ListView.ContainerColumnHeader()
         Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.dtGestiones = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.TabPage7 = New System.Windows.Forms.TabPage()
@@ -140,7 +130,7 @@ Partial Class InformacionLegal
         Me.Panel1.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.Panel1.Location = New System.Drawing.Point(1, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1124, 36)
+        Me.Panel1.Size = New System.Drawing.Size(1130, 36)
         Me.Panel1.TabIndex = 4
         '
         'EvolveControlBox1
@@ -417,62 +407,11 @@ Partial Class InformacionLegal
         Me.TreeListView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TreeListView1.Columns.AddRange(New WinControls.ListView.ContainerColumnHeader() {Me.ContainerColumnHeader1, Me.ContainerColumnHeader2, Me.ContainerColumnHeader3, Me.ContainerColumnHeader10, Me.ContainerColumnHeader9, Me.ContainerColumnHeader4, Me.ContainerColumnHeader5, Me.ContainerColumnHeader6, Me.ContainerColumnHeader7, Me.ContainerColumnHeader8})
         Me.TreeListView1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.TreeListView1.Location = New System.Drawing.Point(0, 0)
         Me.TreeListView1.Name = "TreeListView1"
         Me.TreeListView1.Size = New System.Drawing.Size(1076, 411)
         Me.TreeListView1.TabIndex = 3
-        '
-        'ContainerColumnHeader1
-        '
-        Me.ContainerColumnHeader1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader1.Text = "ID"
-        '
-        'ContainerColumnHeader2
-        '
-        Me.ContainerColumnHeader2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader2.Text = "IdCrédito"
-        '
-        'ContainerColumnHeader3
-        '
-        Me.ContainerColumnHeader3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader3.Text = "Nombre"
-        '
-        'ContainerColumnHeader10
-        '
-        Me.ContainerColumnHeader10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader10.Text = "PagoNormal"
-        '
-        'ContainerColumnHeader9
-        '
-        Me.ContainerColumnHeader9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader9.Text = "Intereses"
-        '
-        'ContainerColumnHeader4
-        '
-        Me.ContainerColumnHeader4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader4.Text = "Monto"
-        '
-        'ContainerColumnHeader5
-        '
-        Me.ContainerColumnHeader5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader5.Text = "Fecha"
-        '
-        'ContainerColumnHeader6
-        '
-        Me.ContainerColumnHeader6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader6.Text = "Hora"
-        '
-        'ContainerColumnHeader7
-        '
-        Me.ContainerColumnHeader7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader7.Text = "Tipo"
-        '
-        'ContainerColumnHeader8
-        '
-        Me.ContainerColumnHeader8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContainerColumnHeader8.Text = "Caja"
         '
         'TabPage6
         '

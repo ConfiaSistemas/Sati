@@ -253,11 +253,8 @@ end"
         'Cargando.Close()
     End Sub
 
-    Private Sub dtSolicitud_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtSolicitud.CellContentClick
 
-    End Sub
-
-    Private Sub dtSolicitud_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtSolicitud.CellContentDoubleClick
+    Private Sub dtSolicitud_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtSolicitud.CellDoubleClick
         DatosConsultaSolicitud.idSolicitud = dtSolicitud.Rows(dtSolicitud.CurrentRow.Index).Cells(0).Value
         '  DatosConsultaSolicitud.TipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(5).Value
         DatosConsultaSolicitud.Show()
@@ -562,10 +559,6 @@ end"
         Cargando.MonoFlat_Label1.Text = "Generando Convenio"
         Cargando.TopMost = True
         BackgroundCalConvenio.RunWorkerAsync()
-    End Sub
-
-    Private Sub dtClientes_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtClientes.CellContentClick
-
     End Sub
 
     Private Sub BackgroundCalConvenio_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundCalConvenio.RunWorkerCompleted
