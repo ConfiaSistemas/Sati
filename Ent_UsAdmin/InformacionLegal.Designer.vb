@@ -139,7 +139,7 @@ Partial Class InformacionLegal
         Me.Panel1.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.Panel1.Location = New System.Drawing.Point(1, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1112, 36)
+        Me.Panel1.Size = New System.Drawing.Size(1118, 36)
         Me.Panel1.TabIndex = 4
         '
         'EvolveControlBox1

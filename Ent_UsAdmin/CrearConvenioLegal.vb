@@ -12,7 +12,7 @@ Public Class CrearConvenioLegal
     Public DeudaApCgastos As Double
     Public DeudaTotalCgastos As Double
     Public DeudaConvenio As Double
-
+    Public estado As String
     Public incluyePorcentaje As Boolean
     Private Sub ZeroitMetroSwitch1_CheckedChanged(sender As Object, e As EventArgs) Handles ZeroitMetroSwitch1.CheckedChanged
         If ZeroitMetroSwitch1.Checked Then
@@ -42,7 +42,7 @@ Public Class CrearConvenioLegal
         Dim consultaCreditoLegal As String
         Dim readerCreditoLegal As SqlDataReader
         consultaCreditoLegal = "select legal.*,ISNULL((select sum(monto) from gastoslegales where idCredito = legal.id),0) as gastos from
-(select id,nombre,credito,Moratorios,deudaAP,TotalDeuda,incluyeporcentaje from legales where id = '" & idCreditoLegal & "')legal"
+(select id,nombre,credito,Moratorios,deudaAP,TotalDeuda,incluyeporcentaje,estado from legales where id = '" & idCreditoLegal & "')legal"
         comandoCreditoLegal = New SqlCommand
         comandoCreditoLegal.Connection = conexionempresa
         comandoCreditoLegal.CommandText = consultaCreditoLegal
@@ -54,6 +54,7 @@ Public Class CrearConvenioLegal
                 DeudaAP = readerCreditoLegal("deudaAP")
                 DeudaTotal = readerCreditoLegal("TotalDeuda")
                 Gastos = readerCreditoLegal("Gastos")
+                estado = readerCreditoLegal("estado")
                 lblnombre.Text = readerCreditoLegal("Nombre")
 
                 incluyePorcentaje = readerCreditoLegal("incluyeporcentaje")
@@ -134,6 +135,7 @@ Public Class CrearConvenioLegal
         End If
 
         ' CalendarioConvenioLegal.personalizado = personalizado
+        CalendarioConvenioLegal.Estado = estado
         CalendarioConvenioLegal.idCredito = idCreditoLegal
         CalendarioConvenioLegal.deuda = DeudaConvenio
         CalendarioConvenioLegal.cantPagos = txtCantPagos.Text

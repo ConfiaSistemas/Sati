@@ -33,6 +33,7 @@ Partial Class inv
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.MonoFlat_Button7 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.btnEmpeños = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.btnLegalTerminal = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -137,6 +138,7 @@ Partial Class inv
         Me.FlowLayoutPanel1.Controls.Add(Me.MonoFlat_Button6)
         Me.FlowLayoutPanel1.Controls.Add(Me.MonoFlat_Button7)
         Me.FlowLayoutPanel1.Controls.Add(Me.btnEmpeños)
+        Me.FlowLayoutPanel1.Controls.Add(Me.btnLegalTerminal)
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(2, -2)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(765, 38)
@@ -168,6 +170,19 @@ Partial Class inv
         Me.btnEmpeños.Text = "Empeños Activos"
         Me.btnEmpeños.TextAlignment = System.Drawing.StringAlignment.Center
         '
+        'btnLegalTerminal
+        '
+        Me.btnLegalTerminal.BackColor = System.Drawing.Color.Transparent
+        Me.btnLegalTerminal.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnLegalTerminal.Image = Nothing
+        Me.btnLegalTerminal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnLegalTerminal.Location = New System.Drawing.Point(295, 33)
+        Me.btnLegalTerminal.Name = "btnLegalTerminal"
+        Me.btnLegalTerminal.Size = New System.Drawing.Size(140, 24)
+        Me.btnLegalTerminal.TabIndex = 9
+        Me.btnLegalTerminal.Text = "Legal Terminal"
+        Me.btnLegalTerminal.TextAlignment = System.Drawing.StringAlignment.Center
+        '
         'inv
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -195,4 +210,5 @@ Partial Class inv
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents MonoFlat_Button7 As MonoFlat.MonoFlat_Button
     Friend WithEvents btnEmpeños As MonoFlat.MonoFlat_Button
+    Friend WithEvents btnLegalTerminal As MonoFlat.MonoFlat_Button
 End Class

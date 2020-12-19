@@ -636,7 +636,8 @@ SacAplicarDescuento as 'Aplicar Descuento',
 SacCancelarTicket as Cancelar,
 SacDetalleCaja as Detalle,
 SacConsultarTicket as 'Consultar Ticket',
-SacModReportes as Reportes from permisosGrupo where idGrupo = '" & idgrupousuarios & "') p unpivot(valor for permiso in ( [Acceso],[Consultar],[Cobrar],[Cobrar Comisión],[Aplicar Descuento],[Cancelar],[Detalle],[Consultar Ticket],[Reportes])) unpvt"
+SacModReportes as Reportes,
+SacCobrarExtra as 'Cobrar Extra' from permisosGrupo where idGrupo = '" & idgrupousuarios & "') p unpivot(valor for permiso in ( [Acceso],[Consultar],[Cobrar],[Cobrar Comisión],[Aplicar Descuento],[Cancelar],[Detalle],[Consultar Ticket],[Reportes],[Cobrar Extra])) unpvt"
             comandosac.CommandText = sqlsac
             milectorsac = comandosac.ExecuteReader
             While milectorsac.Read
@@ -671,7 +672,7 @@ SacModReportes as Reportes from permisosGrupo where idGrupo = '" & idgrupousuari
         iniciarconexionR()
         'iniciarconexionempresa()
 
-        Dim SatiAcceso, SatiModUsuarios, SatiModUsuariosVer, SatiModUsuariosModificar, SatiModUsuariosAgregar, SatiModGrupos, SatiModGruposVer, SatiModGruposModificar, SatiModGruposAgregar, SatiModCatalogos, SatiModClientes, SatiModClientesVer, SatiModClientesModificar, SatiModClientesAgregar, SatiModDocumentos, SatiModDocumentosVer, SatiModDocumentosModificar, SatiModDocumentosAgregar, SatiModTipoDocumentos, SatiModTipoDocumentosVer, SatiModTipoDocumentosModificar, SatiModTipoDocumentosAgregar, SatiModSolicitudes, SatiModSolicitudesVer, SatiModSolicitudesModificar, SatiModSolicitudesAgregar, SatiModSolicitudesVerificar, SatiModSolicitudesAprobar, SatiModSolicitudesCancelar, SatiModSolicitudesAgregarRechazados, SatiModSolicitudesAgregarLegales, SatiModCreditos, SatiModCreditosVer, SatiModCreditosCrearConvenio, SatiModCreditosCrearReestructura, SatiModCreditosCrearPromesa, SatiModReportes, SatiModTiposCreditos, SatiModTiposCreditosVer, SatiModTiposCreditosModificar, SatiModTiposCreditosAgregar, SatiModEmpleados, SatiModEmpleadosVer, SatiModEmpleadosModificar, SatiModEmpleadosAgregar, SatiModCajas, SatiModCajasVer, SatiModCajasModificar, SatiModCajasAgregar, SacAcceso, SacConsultaCredito, SacCobrarCredito, SacCobrarComision, SacAplicarDescuento, SacCancelarTicket, SacDetalleCaja, SacConsultarTicket, SacModReportes, SatiModLegal, SatiModLegalVer, SatiModLegalGestionar, SatiModLegalConvenio As Boolean
+        Dim SatiAcceso, SatiModUsuarios, SatiModUsuariosVer, SatiModUsuariosModificar, SatiModUsuariosAgregar, SatiModGrupos, SatiModGruposVer, SatiModGruposModificar, SatiModGruposAgregar, SatiModCatalogos, SatiModClientes, SatiModClientesVer, SatiModClientesModificar, SatiModClientesAgregar, SatiModDocumentos, SatiModDocumentosVer, SatiModDocumentosModificar, SatiModDocumentosAgregar, SatiModTipoDocumentos, SatiModTipoDocumentosVer, SatiModTipoDocumentosModificar, SatiModTipoDocumentosAgregar, SatiModSolicitudes, SatiModSolicitudesVer, SatiModSolicitudesModificar, SatiModSolicitudesAgregar, SatiModSolicitudesVerificar, SatiModSolicitudesAprobar, SatiModSolicitudesCancelar, SatiModSolicitudesAgregarRechazados, SatiModSolicitudesAgregarLegales, SatiModCreditos, SatiModCreditosVer, SatiModCreditosCrearConvenio, SatiModCreditosCrearReestructura, SatiModCreditosCrearPromesa, SatiModReportes, SatiModTiposCreditos, SatiModTiposCreditosVer, SatiModTiposCreditosModificar, SatiModTiposCreditosAgregar, SatiModEmpleados, SatiModEmpleadosVer, SatiModEmpleadosModificar, SatiModEmpleadosAgregar, SatiModCajas, SatiModCajasVer, SatiModCajasModificar, SatiModCajasAgregar, SacAcceso, SacConsultaCredito, SacCobrarCredito, SacCobrarComision, SacAplicarDescuento, SacCancelarTicket, SacDetalleCaja, SacConsultarTicket, SacModReportes, SacCobrarExtra, SatiModLegal, SatiModLegalVer, SatiModLegalGestionar, SatiModLegalConvenio As Boolean
 
 
         For Each ctrl As Control In FlowAccesoSati.Controls
@@ -1025,7 +1026,9 @@ SacModReportes as Reportes from permisosGrupo where idGrupo = '" & idgrupousuari
                 If checkctrl.Name = "Reportes" Then
                     SacModReportes = checkctrl.CheckState
                 End If
-
+                If checkctrl.Name = "Cobrar Extra" Then
+                    SacCobrarExtra = checkctrl.CheckState
+                End If
 
             End If
         Next
@@ -1093,6 +1096,7 @@ SacCancelarTicket = '" & SacCancelarTicket & "',
 SacDetalleCaja = '" & SacDetalleCaja & "',
 SacConsultarTicket = '" & SacConsultarTicket & "',
 SacModReportes = '" & SacModReportes & "',
+SacCobrarExtra = '" & SacCobrarExtra & "',
 SatiModLegal = '" & SatiModLegal & "',
 SatiModLegalVer = '" & SatiModLegalVer & "',
 SatiModLegalGestionar = '" & SatiModLegalGestionar & "',

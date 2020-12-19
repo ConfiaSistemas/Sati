@@ -148,7 +148,11 @@ Public Class Run
                         MessageBox.Show("Get necesita más argumentos")
                         Exit For
                     End If
+                ElseIf tempArray(i).Equals("RESIZEimage", StringComparison.InvariantCultureIgnoreCase) Then
+                    ComprimirImagenes.Show()
+                    Exit For
                 Else
+
 
                     MessageBox.Show("No se reconoce el comando " & tempArray(i))
                     Exit For

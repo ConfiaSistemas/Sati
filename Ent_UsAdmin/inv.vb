@@ -9,6 +9,7 @@
     Public catCajas As New Cajas
     Public catLegal As New CreditosEnLegal
     Public catEmpeños As New EmpeñosActivos
+    Public catTerminal As New LegalTerminal
     Private Sub MonoFlat_Button2_Click(sender As Object, e As EventArgs) Handles MonoFlat_Button2.Click
         catimpuestos.Visible = False
         catLegal.Visible = False
@@ -17,7 +18,7 @@
         CatCreditosActivos.Visible = False
         catservicios.Visible = True
         catservicios.TopLevel = False
-
+        catTerminal.Visible = False
         catservicios.Size = Panel1.Size
         catservicios.Location = New System.Drawing.Point(0, 0)
         catservicios.WindowState = FormWindowState.Normal
@@ -44,6 +45,8 @@
                 catLegal.Size = Panel1.Size
             Case "Empeños"
                 catEmpeños.Size = Panel1.Size
+            Case "Terminal"
+                catTerminal.Size = Panel1.Size
         End Select
 
 
@@ -59,6 +62,7 @@
                 CatTiposdecreditos.Visible = False
                 CatCreditosActivos.Visible = False
                 catEmpeños.Visible = False
+                catTerminal.Visible = False
                 catimpuestos.Visible = True
 
                 catimpuestos.TopLevel = False
@@ -86,6 +90,7 @@
                 catLegal.Visible = False
                 CatCreditosActivos.Visible = False
                 catEmpeños.Visible = False
+                catTerminal.Visible = False
                 catTiposDocumentos.Visible = True
                 catTiposDocumentos.TopLevel = False
 
@@ -113,6 +118,7 @@
                 catTiposDocumentos.Visible = False
                 CatCreditosActivos.Visible = False
                 catEmpeños.Visible = False
+                catTerminal.Visible = False
                 CatTiposdecreditos.Visible = True
                 CatTiposdecreditos.TopLevel = False
 
@@ -140,6 +146,7 @@
                 catTiposDocumentos.Visible = False
                 catEmpeños.Visible = False
                 catCajas.Visible = False
+                catTerminal.Visible = False
                 CatCreditosActivos.Visible = True
                 CatCreditosActivos.TopLevel = False
 
@@ -166,6 +173,7 @@
                 catTiposDocumentos.Visible = False
                 CatCreditosActivos.Visible = False
                 catLegal.Visible = False
+                catTerminal.Visible = False
                 catCajas.Visible = True
                 catCajas.TopLevel = False
 
@@ -194,6 +202,7 @@
                 CatCreditosActivos.Visible = False
                 catEmpeños.Visible = False
                 catCajas.Visible = False
+                catTerminal.Visible = False
                 catLegal.Visible = True
                 catLegal.TopLevel = False
 
@@ -230,7 +239,7 @@
         CatCreditosActivos.Visible = False
         catCajas.Visible = False
         catLegal.Visible = False
-
+        catTerminal.Visible = False
         catEmpeños.Visible = True
         catEmpeños.TopLevel = False
 
@@ -240,5 +249,31 @@
         catEmpeños.Visible = True
         ventanapanel = "Empeños"
         Panel1.Controls.Add(catEmpeños)
+    End Sub
+
+    Private Sub btnLegalTerminal_Click(sender As Object, e As EventArgs) Handles btnLegalTerminal.Click
+        For Each row As DataRow In dataPermisos.Rows
+            If row("SatiModLegal") Then
+                catimpuestos.Visible = False
+                CatTiposdecreditos.Visible = False
+                catservicios.Visible = False
+                catTiposDocumentos.Visible = False
+                CatCreditosActivos.Visible = False
+                catEmpeños.Visible = False
+                catCajas.Visible = False
+                catLegal.Visible = False
+                catTerminal.Visible = True
+                catTerminal.TopLevel = False
+
+                catTerminal.Size = Panel1.Size
+                catTerminal.Location = New System.Drawing.Point(0, 0)
+                catTerminal.WindowState = FormWindowState.Normal
+                catTerminal.Visible = True
+                ventanapanel = "Terminal"
+                Panel1.Controls.Add(catTerminal)
+            Else
+
+            End If
+        Next
     End Sub
 End Class

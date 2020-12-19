@@ -10,7 +10,7 @@ Public Class CalendarioConvenioLegal
     Public Modalidad As String
     Public deudaTotal As Double
     Public gestor As Integer
-
+    Public Estado As String
     Public Moratorios As Double = 0
     Public personalizado As Boolean
     Public Capital As Double = 0
@@ -121,7 +121,7 @@ Public Class CalendarioConvenioLegal
             Dim comandoCalendario As SqlCommand
 
             Dim consultaCalendario As String
-            consultaCalendario = "Insert into calendariolegales values('" & row.Cells(0).Value & "','" & row.Cells(1).Value & "','0','" & row.Cells(1).Value & "','0','" & numero & "','" & idCredito & "','P','')"
+            consultaCalendario = "Insert into calendariolegales values('" & row.Cells(0).Value & "','" & row.Cells(2).Value & "','" & row.Cells(3).Value & "','" & row.Cells(1).Value & "','0','" & numero & "','" & idCredito & "','P','')"
             comandoCalendario = New SqlCommand
             comandoCalendario.Connection = conexionempresa
             comandoCalendario.CommandText = consultaCalendario
@@ -131,7 +131,13 @@ Public Class CalendarioConvenioLegal
 
         Dim comandoActCreditoLegal As SqlCommand
         Dim consultaActCreditoLegal As String
-        consultaActCreditoLegal = "update legales set estado = 'C', FechaInicio = '" & pagoprimero & "',FechaFin = '" & ultimopago & "',fechaConvenio = '" & Date.Now.ToString("yyyy-MM-dd") & "',plazo = '" & numero & "',montoconvenio = '" & deudaTotal & "' where id = '" & idCredito & "'"
+        If Estado = "X" Then
+            consultaActCreditoLegal = "update legales set estado = 'Y', FechaInicio = '" & pagoprimero & "',FechaFin = '" & ultimopago & "',fechaConvenio = '" & Date.Now.ToString("yyyy-MM-dd") & "',plazo = '" & numero & "',montoconvenio = '" & deudaTotal & "' where id = '" & idCredito & "'"
+
+        Else
+            consultaActCreditoLegal = "update legales set estado = 'C', FechaInicio = '" & pagoprimero & "',FechaFin = '" & ultimopago & "',fechaConvenio = '" & Date.Now.ToString("yyyy-MM-dd") & "',plazo = '" & numero & "',montoconvenio = '" & deudaTotal & "' where id = '" & idCredito & "'"
+
+        End If
         comandoActCreditoLegal = New SqlCommand
         comandoActCreditoLegal.Connection = conexionempresa
         comandoActCreditoLegal.CommandText = consultaActCreditoLegal

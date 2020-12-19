@@ -434,10 +434,22 @@
     <Compile Include="cmd.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ComprimirImagenes.Designer.vb">
+      <DependentUpon>ComprimirImagenes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ComprimirImagenes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Configuraciones.Designer.vb">
       <DependentUpon>Configuraciones.vb</DependentUpon>
     </Compile>
     <Compile Include="Configuraciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LegalTerminal.Designer.vb">
+      <DependentUpon>LegalTerminal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LegalTerminal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Renovacion.Designer.vb">
@@ -1048,8 +1060,14 @@
     <EmbeddedResource Include="cmd.resx">
       <DependentUpon>cmd.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ComprimirImagenes.resx">
+      <DependentUpon>ComprimirImagenes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Configuraciones.resx">
       <DependentUpon>Configuraciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LegalTerminal.resx">
+      <DependentUpon>LegalTerminal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Renovacion.resx">
       <DependentUpon>Renovacion.vb</DependentUpon>

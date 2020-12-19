@@ -457,7 +457,10 @@ end"
         dtGastos.DataSource = dataGastos
         If estado = "C" Then
             BunifuThinButton22.Enabled = True
+        ElseIf estado = "Y" Then
+            BunifuThinButton22.Enabled = True
         Else
+
             BunifuThinButton22.Enabled = False
         End If
         Cargando.Close()
