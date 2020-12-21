@@ -361,3 +361,16 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debu
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromPago.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.LegalTerminal.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ComprimirImagenes.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.mysql.resources
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\MySql.Data.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Google.Protobuf.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Zstandard.Net.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\BouncyCastle.Crypto.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Ubiety.Dns.Core.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Renci.SshNet.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\System.Buffers.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\K4os.Compression.LZ4.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\K4os.Hash.xxHash.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\MySql.Data.xml

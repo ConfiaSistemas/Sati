@@ -1,10 +1,10 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.OleDb
 Imports MadMilkman.Ini
-
+Imports MySql.Data.MySqlClient
 Public NotInheritable Class SplashScreen1
     Dim hayActualizaciones As Boolean
-
+    Friend conexionsql As MySqlConnection
     'TODO: Este formulario se puede establecer fácilmente como pantalla de presentación para la aplicación desde la pestaña "Aplicación"
     '  del Diseñador de proyectos ("Propiedades" bajo el menú "Proyecto").
 
@@ -33,7 +33,7 @@ Public NotInheritable Class SplashScreen1
         CheckForIllegalCrossThreadCalls = False
 
         Label1.Text = "Buscando Actualizaciones"
-        BackgroundWorker1.RunWorkerAsync()
+        Backgroundmysql.RunWorkerAsync()
 
     End Sub
 
@@ -95,6 +95,70 @@ Public NotInheritable Class SplashScreen1
     End Sub
 
     Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
+        If hayActualizaciones Then
+            If MessageBox.Show("Hay una actualización disponible ¿Desea actualizar ahora?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                Dim Proceso As Process = New Process
+                Dim ruta As String = "C:\ConfiaAdmin\Updater\Updater.exe"
+                Proceso.StartInfo.FileName = ruta
+                Proceso.StartInfo.Arguments = "/S SATI /T " & TipoEquipo
+                Proceso.Start()
+                Application.Exit()
+            Else
+                Timer1.Interval = 500
+                Timer1.Enabled = True
+            End If
+
+
+        Else
+            Timer1.Interval = 500
+            Timer1.Enabled = True
+        End If
+    End Sub
+
+    Private Sub Backgroundmysql_DoWork(sender As Object, e As DoWorkEventArgs) Handles Backgroundmysql.DoWork
+        Dim options As New IniOptions() With {.EncryptionPassword = "EntUs01pos"}
+        Dim iniFile As New IniFile(options)
+        iniFile.Load("C:\ConfiaAdmin\SATI\SetConfig.ini")
+        Dim bdAct As String
+        Dim serverAct As String
+
+        serverAct = iniFile.Sections(0).Keys(0).Value
+        bdAct = iniFile.Sections(0).Keys(1).Value
+        Try
+            TipoEquipo = iniFile.Sections(0).Keys("Tipo").Value
+        Catch ex As System.ArgumentOutOfRangeException
+            TipoEquipo = ""
+            'MessageBox.Show("No se encontró el valor leyenda configurado, se recomienda revisar la configuración")
+        Catch ex As NullReferenceException
+            TipoEquipo = ""
+            'MessageBox.Show("No se encontró el valor leyenda configurado, se recomienda revisar la configuración")
+        End Try
+
+        conexionsql = New MySqlConnection()
+        conexionsql.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=Versiones"
+        conexionsql.Open()
+
+        Dim mysqlcomando As MySqlCommand
+        Dim consulta As String
+
+        consulta = "select Nversion from Versiones where Sistema = 'SATI'"
+        mysqlcomando = New MySqlCommand
+        mysqlcomando.Connection = conexionsql
+        mysqlcomando.CommandText = consulta
+        Dim versionAct As String
+        versionAct = mysqlcomando.ExecuteScalar
+
+
+        conexionsql.Close()
+
+        If Application.ProductVersion <> versionAct Then
+            hayActualizaciones = True
+
+
+        End If
+    End Sub
+
+    Private Sub Backgroundmysql_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles Backgroundmysql.RunWorkerCompleted
         If hayActualizaciones Then
             If MessageBox.Show("Hay una actualización disponible ¿Desea actualizar ahora?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                 Dim Proceso As Process = New Process

@@ -151,6 +151,9 @@ Public Class Run
                 ElseIf tempArray(i).Equals("RESIZEimage", StringComparison.InvariantCultureIgnoreCase) Then
                     ComprimirImagenes.Show()
                     Exit For
+                ElseIf tempArray(i).Equals("mysql", StringComparison.InvariantCultureIgnoreCase) Then
+                    mysql.Show()
+                    Exit For
                 Else
 
 

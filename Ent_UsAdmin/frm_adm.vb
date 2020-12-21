@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
+Imports MySql.Data.MySqlClient
 
 Public Class frm_adm
     Dim ventana As New Form
@@ -16,7 +17,7 @@ Public Class frm_adm
     Public cerrandoEmpresa As Boolean
     Dim hayActualizacion As Boolean
     Dim actualizar As Boolean
-
+    Friend conexionsql As MySqlConnection
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         Timer1.Interval = 150
 
@@ -818,24 +819,26 @@ Public Class frm_adm
 
     Private Sub BackgroundActualizacion_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundActualizacion.DoWork
         Try
-            Dim cnActualizacion As String
-            cnActualizacion = "Data Source=  " & ipser & "\confia;" &
-                         "Initial Catalog=" & bdser & ";" &
-                         "User Id=sa;Password=BSi5t3Ma$CFAD;MultipleActiveResultSets=true"
-            Dim connectActualizacion As New SqlConnection(cnActualizacion)
-            connectActualizacion.Open()
-            Dim consultaActualizacion As String
-            Dim comandoActualizacion As SqlCommand
-            consultaActualizacion = "Select nversion from versiones where Sistema = 'SATI'"
-            comandoActualizacion = New SqlCommand
-            comandoActualizacion.Connection = connectActualizacion
-            comandoActualizacion.CommandText = consultaActualizacion
-            Dim versionActualizacion As String
-            versionActualizacion = comandoActualizacion.ExecuteScalar
-            connectActualizacion.Close()
+            conexionsql = New MySqlConnection()
+            conexionsql.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=Versiones"
+            conexionsql.Open()
 
-            If Application.ProductVersion <> versionActualizacion Then
+            Dim mysqlcomando As MySqlCommand
+            Dim consulta As String
+
+            consulta = "select Nversion from Versiones where Sistema = 'SATI'"
+            mysqlcomando = New MySqlCommand
+            mysqlcomando.Connection = conexionsql
+            mysqlcomando.CommandText = consulta
+            Dim versionAct As String
+            versionAct = mysqlcomando.ExecuteScalar
+
+
+            conexionsql.Close()
+
+            If Application.ProductVersion <> versionAct Then
                 hayActualizacion = True
+
 
             End If
         Catch ex As Exception

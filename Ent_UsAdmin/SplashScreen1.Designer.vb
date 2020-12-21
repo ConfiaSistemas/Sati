@@ -27,8 +27,9 @@ Partial Class SplashScreen1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SplashScreen1))
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.BunifuTransition1 = New BunifuAnimatorNS.BunifuTransition(Me.components)
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.Backgroundmysql = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'Timer1
@@ -55,9 +56,6 @@ Partial Class SplashScreen1
         Animation2.TransparencyCoeff = 0!
         Me.BunifuTransition1.DefaultAnimation = Animation2
         '
-        'BackgroundWorker1
-        '
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -67,6 +65,12 @@ Partial Class SplashScreen1
         Me.Label1.Size = New System.Drawing.Size(50, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Iniciando"
+        '
+        'BackgroundWorker1
+        '
+        '
+        'Backgroundmysql
+        '
         '
         'SplashScreen1
         '
@@ -94,4 +98,5 @@ Partial Class SplashScreen1
     Friend WithEvents BunifuTransition1 As BunifuAnimatorNS.BunifuTransition
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Label1 As Label
+    Friend WithEvents Backgroundmysql As System.ComponentModel.BackgroundWorker
 End Class
