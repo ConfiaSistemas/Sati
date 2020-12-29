@@ -75,54 +75,321 @@ Public Class ReporteLegal
         Select Case ComboFiltro.Text
             Case "Abogado"
                 If ComboElección.Text = "Todos" Then
-                    consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
+                    consulta = "DECLARE @Reporte TABLE (orden int NOT NULL IDENTITY(1,1),Id int,Nombre varchar(255),Abogado varchar(2525),Capital money,Moratorios money,[Deuda antes Porcentaje] money,
+	[Total Deuda] money,Estado char(1), Dirección varchar (MAX),Teléfono varchar(20),Celular varchar(20), [Última Gestión] varchar(100),
+	Juzgado varchar(50),[No. de Expediente]varchar(45),[Etapa Procesal]varchar(100),Actuario varchar(50),Gastos money,Fecha DATE,
+	[Monto Convenio]money,[Multas Generadas]money,[Multas Pendientes]money,Abonado money,Pendiente money, conceptoGestion varchar(MAX));
+DECLARE @idLegal int,@Integrantes int,@NombreLegal varchar(255),@NombreIntegrante varchar(255);
+DECLARE Nombres CURSOR LOCAL STATIC READ_ONLY FORWARD_ONLY FOR
+SELECT * FROM
+(SELECT L.id,L.Integrantes,L.Nombre,CASE WHEN L.idSolicitud=0 THEN DL.Nombre WHEN L.idSolicitud IS NULL THEN DL.Nombre ELSE CONCAT(Cl.Nombre,' ',ApellidoPaterno,' ',ApellidoMaterno) END AS NombreCliente
+FROM Legales L
+LEFT JOIN DireccionesLegales DL on L.id=DL.idLegal
+LEFT JOIN DatosSolicitud DS on DS.IdSolicitud=L.idSolicitud
+LEFT JOIN Clientes Cl on Cl.id=DS.IdCliente
+where (L.Estado='A' or L.Estado='C')
+)Listado
+WHERE Nombre LIKE '%" & txtnombre.Text & "%' OR NombreCliente LIKE '%" & txtnombre.Text & "%'
+order by Nombre,NombreCliente
+OPEN Nombres
+FETCH NEXT FROM Nombres INTO @idLegal,@Integrantes,@NombreLegal,@NombreIntegrante
+WHILE (@@FETCH_STATUS=0)
+BEGIN
+
+IF @Integrantes=1
+	begin
+	insert into @Reporte
+	--Aquí va la consulta del reporte
+	select top 1 leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
+	/* aquí van la dirección y el teléfono*/
+	case when idSolicitud=0 OR idSolicitud IS NULL
+	then (select CONCAT(Direccion,', ',Colonia,', ',Municipio) from DireccionesLegales where idLegal=leg.id)
+	else (select CONCAT(Calle,' ',Noext,', ',Noint,', ',CodigoPostal,', ',Colonia,', ',Ciudad) from DatosSolicitud where idSolicitud=leg.idSolicitud)end as Dirección,
+	case when idSolicitud=0 OR idSolicitud IS NULL
+	then (select Telefono from DireccionesLegales where idLegal=leg.id)
+	else (select Telefono from DatosSolicitud where idSolicitud=leg.idSolicitud)end as Teléfono,
+	case when idSolicitud=0 OR idSolicitud IS NULL
+	then (select Celular from DireccionesLegales where idLegal=leg.id)
+	else (select Celular from DatosSolicitud where idSolicitud=leg.idSolicitud)end as Celular,
 	case when exists (select concepto from GestionesLegales where idCredito=leg.id)
 	then (select top 1 case when len(Concepto)<=50 then Concepto else left(concepto,47) + '...' end from GestionesLegales where idCredito=leg.id order by id desc)
 	else '' end as [Última Gestión],
-Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
+	Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
-,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
-format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
-format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
-format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
-format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
-isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
-from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
-where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Text & "%' order by leg.Nombre"
+	,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+	format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
+	format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
+	format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
+	format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
+	isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
+	from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
+	where leg.id=@idLegal
+	end
+ELSE
+	begin
+	if not exists(select id from @Reporte where Id=@idLegal)
+		begin
+		--Ponemos el nombre y todos los datos del grupo
+		insert into @Reporte
+		select top 1 leg.id,CONCAT('(GRUPO) ',leg.Nombre),emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
+		'-' as Dirección,'-' as Teléfono,'-' as Celular,
+		case when exists (select concepto from GestionesLegales where idCredito=leg.id)
+		then (select top 1 case when len(Concepto)<=50 then Concepto else left(concepto,47) + '...' end from GestionesLegales where idCredito=leg.id order by id desc)
+		else '' end as [Última Gestión],
+		Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
+		format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
+		,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+		format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
+		format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
+		format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
+		format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
+		isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
+		from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
+		where leg.id=@idLegal
+		--Agregamos los integrantes del grupo, con su dirección y teléfono
+		insert into @Reporte
+		SELECT L.id,CASE WHEN L.idSolicitud=0 THEN DL.Nombre WHEN L.idSolicitud IS NULL THEN DL.Nombre ELSE CONCAT(Cl.Nombre,' ',ApellidoPaterno,' ',ApellidoMaterno) END AS NombreCliente ,emp.Nombre as Abogado,
+		0,0,0,0,L.Estado,
+		CASE WHEN L.idSolicitud=0 or L.idSolicitud IS NULL
+		THEN CONCAT(DL.Direccion,', ',DL.Colonia,', ',DL.Municipio)
+		ELSE CONCAT(DS.Calle,' ',DS.Noext,', ',DS.Noint,', ',DS.CodigoPostal,', ',DS.Colonia,', ',DS.Ciudad) END AS Dirección,
+		CASE WHEN L.idSolicitud=0 or L.idSolicitud IS NULL
+		THEN DL.Telefono ELSE DS.Telefono END AS Teléfono,
+		CASE WHEN L.idSolicitud=0 or L.idSolicitud IS NULL
+		THEN DL.Celular ELSE DS.Celular END AS Celular,
+		'','','','','',0,'',0,0,0,0,0,''
+		FROM Legales L
+		INNER JOIN Empleados emp on emp.id=L.idGestorLegal
+		LEFT JOIN DireccionesLegales DL on L.id=DL.idLegal
+		LEFT JOIN DatosSolicitud DS on DS.IdSolicitud=L.idSolicitud
+		LEFT JOIN Clientes Cl on Cl.id=DS.IdCliente
+		where L.id=@idLegal
+		order by L.Nombre,NombreCliente
+
+		end
+	end
+
+FETCH NEXT FROM Nombres INTO @idLegal,@Integrantes,@NombreLegal,@NombreIntegrante
+END
+CLOSE Nombres
+DEALLOCATE Nombres
+SELECT Id,Nombre,Abogado,Capital,Moratorios,[Deuda antes Porcentaje],[Total Deuda],Estado,Dirección,Teléfono,Celular,[Última Gestión],
+Juzgado,[No. de Expediente],[Etapa Procesal],Actuario,Gastos,Fecha,[Monto Convenio],[Multas Generadas],[Multas Pendientes],
+Abonado,Pendiente,conceptoGestion
+FROM @Reporte
+ORDER BY Orden"
 
                 Else
 
-                    consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
+                    consulta = "DECLARE @Reporte TABLE (orden int NOT NULL IDENTITY(1,1),Id int,Nombre varchar(255),Abogado varchar(2525),Capital money,Moratorios money,[Deuda antes Porcentaje] money,
+	[Total Deuda] money,Estado char(1), Dirección varchar (MAX),Teléfono varchar(20),Celular varchar(20), [Última Gestión] varchar(100),
+	Juzgado varchar(50),[No. de Expediente]varchar(45),[Etapa Procesal]varchar(100),Actuario varchar(50),Gastos money,Fecha DATE,
+	[Monto Convenio]money,[Multas Generadas]money,[Multas Pendientes]money,Abonado money,Pendiente money, conceptoGestion varchar(MAX));
+DECLARE @idLegal int,@Integrantes int,@NombreLegal varchar(255),@NombreIntegrante varchar(255);
+DECLARE Nombres CURSOR LOCAL STATIC READ_ONLY FORWARD_ONLY FOR
+SELECT * FROM
+(SELECT L.id,L.Integrantes,L.Nombre,CASE WHEN L.idSolicitud=0 THEN DL.Nombre WHEN L.idSolicitud IS NULL THEN DL.Nombre ELSE CONCAT(Cl.Nombre,' ',ApellidoPaterno,' ',ApellidoMaterno) END AS NombreCliente
+FROM Legales L
+LEFT JOIN DireccionesLegales DL on L.id=DL.idLegal
+LEFT JOIN DatosSolicitud DS on DS.IdSolicitud=L.idSolicitud
+LEFT JOIN Clientes Cl on Cl.id=DS.IdCliente
+where (L.Estado='A' or L.Estado='C') and L.idGestorLegal=" & idEmpleado & "
+)Listado
+WHERE Nombre LIKE '%" & txtnombre.Text & "%' OR NombreCliente LIKE '%" & txtnombre.Text & "%'
+order by Nombre,NombreCliente
+OPEN Nombres
+FETCH NEXT FROM Nombres INTO @idLegal,@Integrantes,@NombreLegal,@NombreIntegrante
+WHILE (@@FETCH_STATUS=0)
+BEGIN
+
+IF @Integrantes=1
+	begin
+	insert into @Reporte
+	--Aquí va la consulta del reporte
+	select top 1 leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
+	/* aquí van la dirección y el teléfono*/
+	case when idSolicitud=0 OR idSolicitud IS NULL
+	then (select CONCAT(Direccion,', ',Colonia,', ',Municipio) from DireccionesLegales where idLegal=leg.id)
+	else (select CONCAT(Calle,' ',Noext,', ',Noint,', ',CodigoPostal,', ',Colonia,', ',Ciudad) from DatosSolicitud where idSolicitud=leg.idSolicitud)end as Dirección,
+	case when idSolicitud=0 OR idSolicitud IS NULL
+	then (select Telefono from DireccionesLegales where idLegal=leg.id)
+	else (select Telefono from DatosSolicitud where idSolicitud=leg.idSolicitud)end as Teléfono,
+	case when idSolicitud=0 OR idSolicitud IS NULL
+	then (select Celular from DireccionesLegales where idLegal=leg.id)
+	else (select Celular from DatosSolicitud where idSolicitud=leg.idSolicitud)end as Celular,
 	case when exists (select concepto from GestionesLegales where idCredito=leg.id)
 	then (select top 1 case when len(Concepto)<=50 then Concepto else left(concepto,47) + '...' end from GestionesLegales where idCredito=leg.id order by id desc)
 	else '' end as [Última Gestión],
-Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
+	Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
-,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
-format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
-format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
-format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
-format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
-isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
-from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
-where (leg.Estado='A' or leg.Estado='C') and leg.idGestorLegal=" & idEmpleado & " and leg.nombre like '%" & txtnombre.Text & "%' order by leg.Nombre"
+	,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+	format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
+	format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
+	format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
+	format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
+	isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
+	from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
+	where leg.id=@idLegal
+	end
+ELSE
+	begin
+	if not exists(select id from @Reporte where Id=@idLegal)
+		begin
+		--Ponemos el nombre y todos los datos del grupo
+		insert into @Reporte
+		select top 1 leg.id,CONCAT('(GRUPO) ',leg.Nombre),emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
+		'-' as Dirección,'-' as Teléfono,'-' as Celular,
+		case when exists (select concepto from GestionesLegales where idCredito=leg.id)
+		then (select top 1 case when len(Concepto)<=50 then Concepto else left(concepto,47) + '...' end from GestionesLegales where idCredito=leg.id order by id desc)
+		else '' end as [Última Gestión],
+		Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
+		format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
+		,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+		format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
+		format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
+		format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
+		format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
+		isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
+		from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
+		where leg.id=@idLegal
+		--Agregamos los integrantes del grupo, con su dirección y teléfono
+		insert into @Reporte
+		SELECT L.id,CASE WHEN L.idSolicitud=0 THEN DL.Nombre WHEN L.idSolicitud IS NULL THEN DL.Nombre ELSE CONCAT(Cl.Nombre,' ',ApellidoPaterno,' ',ApellidoMaterno) END AS NombreCliente ,emp.Nombre as Abogado,
+		0,0,0,0,L.Estado,
+		CASE WHEN L.idSolicitud=0 or L.idSolicitud IS NULL
+		THEN CONCAT(DL.Direccion,', ',DL.Colonia,', ',DL.Municipio)
+		ELSE CONCAT(DS.Calle,' ',DS.Noext,', ',DS.Noint,', ',DS.CodigoPostal,', ',DS.Colonia,', ',DS.Ciudad) END AS Dirección,
+		CASE WHEN L.idSolicitud=0 or L.idSolicitud IS NULL
+		THEN DL.Telefono ELSE DS.Telefono END AS Teléfono,
+		CASE WHEN L.idSolicitud=0 or L.idSolicitud IS NULL
+		THEN DL.Celular ELSE DS.Celular END AS Celular,
+		'','','','','',0,'',0,0,0,0,0,''
+		FROM Legales L
+		INNER JOIN Empleados emp on emp.id=L.idGestorLegal
+		LEFT JOIN DireccionesLegales DL on L.id=DL.idLegal
+		LEFT JOIN DatosSolicitud DS on DS.IdSolicitud=L.idSolicitud
+		LEFT JOIN Clientes Cl on Cl.id=DS.IdCliente
+		where L.id=@idLegal
+		order by L.Nombre,NombreCliente
+
+		end
+	end
+
+FETCH NEXT FROM Nombres INTO @idLegal,@Integrantes,@NombreLegal,@NombreIntegrante
+END
+CLOSE Nombres
+DEALLOCATE Nombres
+SELECT Id,Nombre,Abogado,Capital,Moratorios,[Deuda antes Porcentaje],[Total Deuda],Estado,Dirección,Teléfono,Celular,[Última Gestión],
+Juzgado,[No. de Expediente],[Etapa Procesal],Actuario,Gastos,Fecha,[Monto Convenio],[Multas Generadas],[Multas Pendientes],
+Abonado,Pendiente,conceptoGestion
+FROM @Reporte
+ORDER BY Orden"
                 End If
 
             Case "Todos"
-                consulta = "select leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
+                consulta = "DECLARE @Reporte TABLE (orden int NOT NULL IDENTITY(1,1),Id int,Nombre varchar(255),Abogado varchar(2525),Capital money,Moratorios money,[Deuda antes Porcentaje] money,
+	[Total Deuda] money,Estado char(1), Dirección varchar (MAX),Teléfono varchar(20),Celular varchar(20), [Última Gestión] varchar(100),
+	Juzgado varchar(50),[No. de Expediente]varchar(45),[Etapa Procesal]varchar(100),Actuario varchar(50),Gastos money,Fecha DATE,
+	[Monto Convenio]money,[Multas Generadas]money,[Multas Pendientes]money,Abonado money,Pendiente money, conceptoGestion varchar(MAX));
+DECLARE @idLegal int,@Integrantes int,@NombreLegal varchar(255),@NombreIntegrante varchar(255);
+DECLARE Nombres CURSOR LOCAL STATIC READ_ONLY FORWARD_ONLY FOR
+SELECT * FROM
+(SELECT L.id,L.Integrantes,L.Nombre,CASE WHEN L.idSolicitud=0 THEN DL.Nombre WHEN L.idSolicitud IS NULL THEN DL.Nombre ELSE CONCAT(Cl.Nombre,' ',ApellidoPaterno,' ',ApellidoMaterno) END AS NombreCliente
+FROM Legales L
+LEFT JOIN DireccionesLegales DL on L.id=DL.idLegal
+LEFT JOIN DatosSolicitud DS on DS.IdSolicitud=L.idSolicitud
+LEFT JOIN Clientes Cl on Cl.id=DS.IdCliente
+where (L.Estado='A' or L.Estado='C')
+)Listado
+WHERE Nombre LIKE '%" & txtnombre.Text & "%' OR NombreCliente LIKE '%" & txtnombre.Text & "%'
+order by Nombre,NombreCliente
+OPEN Nombres
+FETCH NEXT FROM Nombres INTO @idLegal,@Integrantes,@NombreLegal,@NombreIntegrante
+WHILE (@@FETCH_STATUS=0)
+BEGIN
+
+IF @Integrantes=1
+	begin
+	insert into @Reporte
+	--Aquí va la consulta del reporte
+	select top 1 leg.id,leg.Nombre,emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
+	/* aquí van la dirección y el teléfono*/
+	case when idSolicitud=0 OR idSolicitud IS NULL
+	then (select CONCAT(Direccion,', ',Colonia,', ',Municipio) from DireccionesLegales where idLegal=leg.id)
+	else (select CONCAT(Calle,' ',Noext,', ',Noint,', ',CodigoPostal,', ',Colonia,', ',Ciudad) from DatosSolicitud where idSolicitud=leg.idSolicitud)end as Dirección,
+	case when idSolicitud=0 OR idSolicitud IS NULL
+	then (select Telefono from DireccionesLegales where idLegal=leg.id)
+	else (select Telefono from DatosSolicitud where idSolicitud=leg.idSolicitud)end as Teléfono,
+	case when idSolicitud=0 OR idSolicitud IS NULL
+	then (select Celular from DireccionesLegales where idLegal=leg.id)
+	else (select Celular from DatosSolicitud where idSolicitud=leg.idSolicitud)end as Celular,
 	case when exists (select concepto from GestionesLegales where idCredito=leg.id)
 	then (select top 1 case when len(Concepto)<=50 then Concepto else left(concepto,47) + '...' end from GestionesLegales where idCredito=leg.id order by id desc)
 	else '' end as [Última Gestión],
-Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
+	Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
 	format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
-,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
-format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
-format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
-format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
-format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
-isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
-from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
-where (leg.Estado='A' or leg.Estado='C') and leg.nombre like '%" & txtnombre.Text & "%' order by leg.Nombre"
+	,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+	format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
+	format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
+	format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
+	format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
+	isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
+	from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
+	where leg.id=@idLegal
+	end
+ELSE
+	begin
+	if not exists(select id from @Reporte where Id=@idLegal)
+		begin
+		--Ponemos el nombre y todos los datos del grupo
+		insert into @Reporte
+		select top 1 leg.id,CONCAT('(GRUPO) ',leg.Nombre),emp.Nombre as Abogado,format(Credito,'C','es-mx')[Capital],format(Moratorios,'C','es-mx')[Moratorios],format(DeudaAP,'C','es-mx')[Deuda antes Porcentaje],format(TotalDeuda,'C','es-mx')[Total Deuda],leg.Estado,
+		'-' as Dirección,'-' as Teléfono,'-' as Celular,
+		case when exists (select concepto from GestionesLegales where idCredito=leg.id)
+		then (select top 1 case when len(Concepto)<=50 then Concepto else left(concepto,47) + '...' end from GestionesLegales where idCredito=leg.id order by id desc)
+		else '' end as [Última Gestión],
+		Juzgado,NoExpediente[No. de Expediente],EtapaProcesal[Etapa Procesal],Actuario,
+		format(ISNULL((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0),'C','es-mx')Gastos
+		,Left(leg.Fecha,10)[Fecha],format(ISNULL(MontoConvenio,0),'C','es-mx')[Monto Convenio],
+		format(isnull((select SUM(interes) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Generadas],
+		format(isnull((select SUM(case when Estado='V' and Abonado<Interes then Interes-Abonado else 0 end) from CalendarioLegales where idCredito=leg.id),0),'C','es-mx')[Multas Pendientes],
+		format(case when leg.Estado='C' then (select SUM(Abonado) from CalendarioLegales where idCredito=Leg.id) else 0 end,'C','es-mx')Abonado,
+		format(case when leg.Estado='C' then (select SUM(Pendiente) from CalendarioLegales where idCredito=Leg.id) when Estado='A' then TotalDeuda+isnull((select SUM(gl.Monto) from Legales inner join GastosLegales gl on gl.idCredito=leg.id where Legales.id=leg.id),0) else 0 end,'C','es-mx')[Pendiente],
+		isnull((select top 1 concepto from GestionesLegales where idCredito=leg.id order by id desc),'')conceptoGestion
+		from Legales leg inner join Empleados emp on emp.id=leg.idGestorLegal
+		where leg.id=@idLegal
+		--Agregamos los integrantes del grupo, con su dirección y teléfono
+		insert into @Reporte
+		SELECT L.id,CASE WHEN L.idSolicitud=0 THEN DL.Nombre WHEN L.idSolicitud IS NULL THEN DL.Nombre ELSE CONCAT(Cl.Nombre,' ',ApellidoPaterno,' ',ApellidoMaterno) END AS NombreCliente ,emp.Nombre as Abogado,
+		0,0,0,0,L.Estado,
+		CASE WHEN L.idSolicitud=0 or L.idSolicitud IS NULL
+		THEN CONCAT(DL.Direccion,', ',DL.Colonia,', ',DL.Municipio)
+		ELSE CONCAT(DS.Calle,' ',DS.Noext,', ',DS.Noint,', ',DS.CodigoPostal,', ',DS.Colonia,', ',DS.Ciudad) END AS Dirección,
+		CASE WHEN L.idSolicitud=0 or L.idSolicitud IS NULL
+		THEN DL.Telefono ELSE DS.Telefono END AS Teléfono,
+		CASE WHEN L.idSolicitud=0 or L.idSolicitud IS NULL
+		THEN DL.Celular ELSE DS.Celular END AS Celular,
+		'','','','','',0,'',0,0,0,0,0,''
+		FROM Legales L
+		INNER JOIN Empleados emp on emp.id=L.idGestorLegal
+		LEFT JOIN DireccionesLegales DL on L.id=DL.idLegal
+		LEFT JOIN DatosSolicitud DS on DS.IdSolicitud=L.idSolicitud
+		LEFT JOIN Clientes Cl on Cl.id=DS.IdCliente
+		where L.id=@idLegal
+		order by L.Nombre,NombreCliente
+
+		end
+	end
+
+FETCH NEXT FROM Nombres INTO @idLegal,@Integrantes,@NombreLegal,@NombreIntegrante
+END
+CLOSE Nombres
+DEALLOCATE Nombres
+SELECT Id,Nombre,Abogado,Capital,Moratorios,[Deuda antes Porcentaje],[Total Deuda],Estado,Dirección,Teléfono,Celular,[Última Gestión],
+Juzgado,[No. de Expediente],[Etapa Procesal],Actuario,Gastos,Fecha,[Monto Convenio],[Multas Generadas],[Multas Pendientes],
+Abonado,Pendiente,conceptoGestion
+FROM @Reporte
+ORDER BY Orden"
         End Select
 
 
