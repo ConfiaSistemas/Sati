@@ -15,6 +15,7 @@ Public Class ReporteLegal
         Cargando.Show()
         Cargando.MonoFlat_Label1.Text = "Cargando Información"
         Cargando.TopMost = True
+        txtnombre.Select()
         BackgroundAbogados.RunWorkerAsync()
 
     End Sub
@@ -173,9 +174,9 @@ FETCH NEXT FROM Nombres INTO @idLegal,@Integrantes,@NombreLegal,@NombreIntegrant
 END
 CLOSE Nombres
 DEALLOCATE Nombres
-SELECT Id,Nombre,Abogado,Capital,Moratorios,[Deuda antes Porcentaje],[Total Deuda],Estado,Dirección,Teléfono,Celular,[Última Gestión],
-Juzgado,[No. de Expediente],[Etapa Procesal],Actuario,Gastos,Fecha,[Monto Convenio],[Multas Generadas],[Multas Pendientes],
-Abonado,Pendiente,conceptoGestion
+SELECT Id,Nombre,Abogado,format(Capital,'C','es-mx')Capital,format(Moratorios,'C','es-mx')Moratorios,format([Deuda antes Porcentaje],'C','es-mx')[Deuda antes Porcentaje],format([Total Deuda],'C','es-mx')[Total Deuda],Estado,Dirección,Teléfono,Celular,[Última Gestión],
+Juzgado,[No. de Expediente],[Etapa Procesal],Actuario,format(Gastos,'C','es-mx')Gastos,CAST(CONVERT(date,Fecha,102) AS char(10))Fecha,format([Monto Convenio],'C','es-mx')[Monto Convenio],format([Multas Generadas],'C','es-mx')[Multas Generadas],format([Multas Pendientes],'C','es-mx')[Multas Pendientes],
+format(Abonado,'C','es-mx')Abonado,format(Pendiente,'C','es-mx')Pendiente,conceptoGestion
 FROM @Reporte
 ORDER BY Orden"
 
@@ -279,9 +280,9 @@ FETCH NEXT FROM Nombres INTO @idLegal,@Integrantes,@NombreLegal,@NombreIntegrant
 END
 CLOSE Nombres
 DEALLOCATE Nombres
-SELECT Id,Nombre,Abogado,Capital,Moratorios,[Deuda antes Porcentaje],[Total Deuda],Estado,Dirección,Teléfono,Celular,[Última Gestión],
-Juzgado,[No. de Expediente],[Etapa Procesal],Actuario,Gastos,Fecha,[Monto Convenio],[Multas Generadas],[Multas Pendientes],
-Abonado,Pendiente,conceptoGestion
+SELECT Id,Nombre,Abogado,format(Capital,'C','es-mx')Capital,format(Moratorios,'C','es-mx')Moratorios,format([Deuda antes Porcentaje],'C','es-mx')[Deuda antes Porcentaje],format([Total Deuda],'C','es-mx')[Total Deuda],Estado,Dirección,Teléfono,Celular,[Última Gestión],
+Juzgado,[No. de Expediente],[Etapa Procesal],Actuario,format(Gastos,'C','es-mx')Gastos,CAST(CONVERT(date,Fecha,102) AS char(10))Fecha,format([Monto Convenio],'C','es-mx')[Monto Convenio],format([Multas Generadas],'C','es-mx')[Multas Generadas],format([Multas Pendientes],'C','es-mx')[Multas Pendientes],
+format(Abonado,'C','es-mx')Abonado,format(Pendiente,'C','es-mx')Pendiente,conceptoGestion
 FROM @Reporte
 ORDER BY Orden"
                 End If
@@ -385,9 +386,9 @@ FETCH NEXT FROM Nombres INTO @idLegal,@Integrantes,@NombreLegal,@NombreIntegrant
 END
 CLOSE Nombres
 DEALLOCATE Nombres
-SELECT Id,Nombre,Abogado,Capital,Moratorios,[Deuda antes Porcentaje],[Total Deuda],Estado,Dirección,Teléfono,Celular,[Última Gestión],
-Juzgado,[No. de Expediente],[Etapa Procesal],Actuario,Gastos,Fecha,[Monto Convenio],[Multas Generadas],[Multas Pendientes],
-Abonado,Pendiente,conceptoGestion
+SELECT Id,Nombre,Abogado,format(Capital,'C','es-mx')Capital,format(Moratorios,'C','es-mx')Moratorios,format([Deuda antes Porcentaje],'C','es-mx')[Deuda antes Porcentaje],format([Total Deuda],'C','es-mx')[Total Deuda],Estado,Dirección,Teléfono,Celular,[Última Gestión],
+Juzgado,[No. de Expediente],[Etapa Procesal],Actuario,format(Gastos,'C','es-mx')Gastos,CAST(CONVERT(date,Fecha,102) AS char(10))Fecha,format([Monto Convenio],'C','es-mx')[Monto Convenio],format([Multas Generadas],'C','es-mx')[Multas Generadas],format([Multas Pendientes],'C','es-mx')[Multas Pendientes],
+format(Abonado,'C','es-mx')Abonado,format(Pendiente,'C','es-mx')Pendiente,conceptoGestion
 FROM @Reporte
 ORDER BY Orden"
         End Select
@@ -431,6 +432,10 @@ ORDER BY Orden"
         dtimpuestos.Columns("Abonado").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
         dtimpuestos.Columns("Pendiente").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
         dtimpuestos.Columns("conceptoGestion").Visible = False
+        For col As Integer = 0 To dtimpuestos.Columns.GetColumnCount(DataGridViewElementStates.Visible) - 1
+            dtimpuestos.Columns(col).SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
+
 
         totalPendiente = 0
         pendienteCon = 0
@@ -464,11 +469,14 @@ ORDER BY Orden"
 
     Private Sub BackgroundExcel_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundExcel.DoWork
         nuevolibro()
-        GridAExcel(dtimpuestos)
+        GridAExcelLegal(dtimpuestos, "X")
         Dim hoja As New Microsoft.Office.Interop.Excel.Worksheet
         hoja = exLibro.ActiveSheet
-        hoja.Range("O:O").EntireColumn.NumberFormat = "DD/MM/YYYY"
-        hoja.Range("U:U").Delete()
+        hoja.Range("R:R").NumberFormat = "DD-MM-YYYY"
+        hoja.Range("X:X").Delete()
+        hoja.Range("C2:C2").Select()
+        hoja.Application.ActiveWindow.FreezePanes = True
+        hoja.Range("A2:A2").Select()
         hoja = Nothing
     End Sub
 
@@ -505,9 +513,12 @@ ORDER BY Orden"
     End Sub
 
     Private Sub dtimpuestos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtimpuestos.CellDoubleClick
-        If e.ColumnIndex = dtimpuestos.Columns("Última Gestión").Index And dtimpuestos.Rows(e.RowIndex).Cells("Última Gestión").Value <> "" Then
-            GestionesLegal.idLegal = dtimpuestos.Rows(e.RowIndex).Cells(0).Value
-            GestionesLegal.Show()
+        If e.RowIndex.ToString() <> "-1" Then
+            If e.ColumnIndex = dtimpuestos.Columns("Última Gestión").Index And dtimpuestos.Rows(e.RowIndex).Cells("Última Gestión").Value <> "" Then
+                'MessageBox.Show("Aquí aparecería la última gestión de " & dtimpuestos.Rows(e.RowIndex).Cells("Nombre").Value)
+                GestionesLegal.idLegal = dtimpuestos.Rows(e.RowIndex).Cells(0).Value
+                GestionesLegal.Show()
+            End If
         End If
     End Sub
 End Class
