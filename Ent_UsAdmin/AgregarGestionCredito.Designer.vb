@@ -30,6 +30,9 @@ Partial Class AgregarGestionCredito
         Me.Label11 = New System.Windows.Forms.Label()
         Me.btn_actualizar = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BackgroundGestion = New System.ComponentModel.BackgroundWorker()
+        Me.MonoFlat_HeaderLabel4 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel3 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel2 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -117,12 +120,51 @@ Partial Class AgregarGestionCredito
         'BackgroundGestion
         '
         '
+        'MonoFlat_HeaderLabel4
+        '
+        Me.MonoFlat_HeaderLabel4.AutoSize = True
+        Me.MonoFlat_HeaderLabel4.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel4.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel4.Location = New System.Drawing.Point(580, 50)
+        Me.MonoFlat_HeaderLabel4.Name = "MonoFlat_HeaderLabel4"
+        Me.MonoFlat_HeaderLabel4.Size = New System.Drawing.Size(70, 20)
+        Me.MonoFlat_HeaderLabel4.TabIndex = 70
+        Me.MonoFlat_HeaderLabel4.Text = "de 1,000"
+        '
+        'MonoFlat_HeaderLabel3
+        '
+        Me.MonoFlat_HeaderLabel3.AutoSize = True
+        Me.MonoFlat_HeaderLabel3.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel3.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel3.Location = New System.Drawing.Point(381, 50)
+        Me.MonoFlat_HeaderLabel3.Name = "MonoFlat_HeaderLabel3"
+        Me.MonoFlat_HeaderLabel3.Size = New System.Drawing.Size(159, 20)
+        Me.MonoFlat_HeaderLabel3.TabIndex = 69
+        Me.MonoFlat_HeaderLabel3.Text = "Caracteres restantes: "
+        '
+        'MonoFlat_HeaderLabel2
+        '
+        Me.MonoFlat_HeaderLabel2.AutoSize = True
+        Me.MonoFlat_HeaderLabel2.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel2.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel2.Location = New System.Drawing.Point(536, 50)
+        Me.MonoFlat_HeaderLabel2.Name = "MonoFlat_HeaderLabel2"
+        Me.MonoFlat_HeaderLabel2.Size = New System.Drawing.Size(49, 20)
+        Me.MonoFlat_HeaderLabel2.TabIndex = 68
+        Me.MonoFlat_HeaderLabel2.Text = "1,000"
+        '
         'AgregarGestionCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(665, 329)
+        Me.Controls.Add(Me.MonoFlat_HeaderLabel4)
+        Me.Controls.Add(Me.MonoFlat_HeaderLabel3)
+        Me.Controls.Add(Me.MonoFlat_HeaderLabel2)
         Me.Controls.Add(Me.btn_actualizar)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.txtConcepto)
@@ -145,4 +187,7 @@ Partial Class AgregarGestionCredito
     Friend WithEvents Label11 As Label
     Friend WithEvents btn_actualizar As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents BackgroundGestion As System.ComponentModel.BackgroundWorker
+    Friend WithEvents MonoFlat_HeaderLabel4 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents MonoFlat_HeaderLabel3 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents MonoFlat_HeaderLabel2 As MonoFlat.MonoFlat_HeaderLabel
 End Class

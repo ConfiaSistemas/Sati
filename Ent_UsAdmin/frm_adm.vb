@@ -350,6 +350,8 @@ Public Class frm_adm
     End Sub
 
     Private Sub BunifuFlatButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BunifuFlatButton2.Click
+        BunifuFlatButton2.Textcolor = Color.White
+
         For Each row As DataRow In dataPermisos.Rows
             If row("SatiModCatalogos") Then
                 For Each frmForm As Form In My.Application.OpenForms
@@ -387,13 +389,18 @@ Public Class frm_adm
             End If
         Next
 
-
-
+        BunifuFlatButton1.Textcolor = Color.Black
+        BunifuFlatButton3.Textcolor = Color.Black
+        BunifuFlatButton4.Textcolor = Color.Black
+        BunifuFlatButton8.Textcolor = Color.Black
+        BunifuFlatButton5.Textcolor = Color.Black
 
 
     End Sub
 
     Private Sub BunifuFlatButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BunifuFlatButton1.Click
+        BunifuFlatButton1.Textcolor = Color.White
+
         For Each frmForm As Form In My.Application.OpenForms
 
 
@@ -423,7 +430,11 @@ Public Class frm_adm
 
         End If
 
-
+        BunifuFlatButton2.Textcolor = Color.Black
+        BunifuFlatButton3.Textcolor = Color.Black
+        BunifuFlatButton4.Textcolor = Color.Black
+        BunifuFlatButton8.Textcolor = Color.Black
+        BunifuFlatButton5.Textcolor = Color.Black
     End Sub
 
     Private Sub BunifuImageButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BunifuImageButton1.Click
@@ -601,6 +612,8 @@ Public Class frm_adm
     End Sub
 
     Private Sub BunifuFlatButton3_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton3.Click
+        BunifuFlatButton3.Textcolor = Color.White
+
         For Each row As DataRow In dataPermisos.Rows
             If row("SatiModSolicitudes") Then
                 inicio.Close()
@@ -633,10 +646,16 @@ Public Class frm_adm
             End If
         Next
 
-
+        BunifuFlatButton1.Textcolor = Color.Black
+        BunifuFlatButton2.Textcolor = Color.Black
+        BunifuFlatButton4.Textcolor = Color.Black
+        BunifuFlatButton8.Textcolor = Color.Black
+        BunifuFlatButton5.Textcolor = Color.Black
     End Sub
 
     Private Sub BunifuFlatButton4_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton4.Click
+        BunifuFlatButton4.Textcolor = Color.White
+
         For Each frmForm As Form In My.Application.OpenForms
 
 
@@ -668,10 +687,15 @@ Public Class frm_adm
 
         End If
         CreditosPorEntregar.Update()
-
+        BunifuFlatButton1.Textcolor = Color.Black
+        BunifuFlatButton2.Textcolor = Color.Black
+        BunifuFlatButton3.Textcolor = Color.Black
+        BunifuFlatButton8.Textcolor = Color.Black
+        BunifuFlatButton5.Textcolor = Color.Black
     End Sub
 
     Private Sub BunifuFlatButton5_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton5.Click
+        BunifuFlatButton5.Textcolor = Color.White
         Try
             cerrarEmpresa = True
             'Empresas.ShowDialog()
@@ -679,7 +703,12 @@ Public Class frm_adm
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-
+        BunifuFlatButton5.Textcolor = Color.Black
+        BunifuFlatButton1.Textcolor = Color.Black
+        BunifuFlatButton2.Textcolor = Color.Black
+        BunifuFlatButton3.Textcolor = Color.Black
+        BunifuFlatButton4.Textcolor = Color.Black
+        BunifuFlatButton8.Textcolor = Color.Black
     End Sub
 
     Private Sub frm_adm_ImeModeChanged(sender As Object, e As EventArgs) Handles Me.ImeModeChanged
@@ -695,7 +724,7 @@ Public Class frm_adm
     End Sub
 
     Private Sub BunifuFlatButton8_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton8.Click
-
+        BunifuFlatButton8.Textcolor = Color.White
         For Each row As DataRow In dataPermisos.Rows
             If row("SatiModSolicitudes") Then
                 For Each frmForm As Form In My.Application.OpenForms
@@ -732,8 +761,11 @@ Public Class frm_adm
             End If
         Next
 
-
-
+        BunifuFlatButton1.Textcolor = Color.Black
+        BunifuFlatButton2.Textcolor = Color.Black
+        BunifuFlatButton3.Textcolor = Color.Black
+        BunifuFlatButton4.Textcolor = Color.Black
+        BunifuFlatButton5.Textcolor = Color.Black
 
     End Sub
 
@@ -776,6 +808,17 @@ Public Class frm_adm
 
         End If
         EmpeñosPorEntregar.Update()
+        BunifuFlatButton1.Textcolor = Color.Black
+        BunifuFlatButton1.selected = False
+        BunifuFlatButton2.Textcolor = Color.Black
+        BunifuFlatButton2.selected = False
+        BunifuFlatButton3.Textcolor = Color.Black
+        BunifuFlatButton3.selected = False
+        BunifuFlatButton4.Textcolor = Color.Black
+        BunifuFlatButton4.selected = False
+        BunifuFlatButton8.Textcolor = Color.Black
+        BunifuFlatButton8.selected = False
+        BunifuFlatButton5.Textcolor = Color.Black
     End Sub
 
     Private Sub MonoFlat_Button2_Click(sender As Object, e As EventArgs) Handles MonoFlat_Button2.Click
@@ -810,6 +853,17 @@ Public Class frm_adm
 
         End If
         SolicitudesEmpeños.Update()
+        BunifuFlatButton1.Textcolor = Color.Black
+        BunifuFlatButton1.selected = False
+        BunifuFlatButton2.Textcolor = Color.Black
+        BunifuFlatButton2.selected = False
+        BunifuFlatButton3.Textcolor = Color.Black
+        BunifuFlatButton3.selected = False
+        BunifuFlatButton4.Textcolor = Color.Black
+        BunifuFlatButton4.selected = False
+        BunifuFlatButton8.Textcolor = Color.Black
+        BunifuFlatButton8.selected = False
+        BunifuFlatButton5.Textcolor = Color.Black
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)

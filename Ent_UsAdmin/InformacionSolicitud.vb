@@ -247,9 +247,9 @@ end
                 With liItem.SubItems
                     .Add(readerTicket("idcredito"))
                     .Add(readerTicket("nombre"))
-                    .Add(readerTicket("pagonormal"))
-                    .Add(readerTicket("Intereses"))
-                    .Add(readerTicket("total"))
+                    .Add(FormatCurrency(readerTicket("pagonormal")))
+                    .Add(FormatCurrency(readerTicket("Intereses")))
+                    .Add(FormatCurrency(readerTicket("total")))
                     .Add(readerTicket("Fecha"))
                     .Add(readerTicket("Hora").ToString)
                     .Add(readerTicket("Tipo"))
@@ -363,9 +363,9 @@ end
         With aObj.SubItems
             .Add("")
             .Add("")
-            .Add(pagonormal)
-            .Add(intereses)
-            .Add(total)
+            .Add(FormatCurrency(pagonormal))
+            .Add(FormatCurrency(intereses))
+            .Add(FormatCurrency(total))
         End With
     End Sub
 
@@ -541,10 +541,10 @@ end
                     .Add(readerTicket("idpago"))
 
                     .Add(readerTicket("Npago"))
-                    .Add(readerTicket("Monto"))
-                    .Add(readerTicket("Interes"))
-                    .Add(readerTicket("Abonado"))
-                    .Add(readerTicket("Pendiente"))
+                    .Add(FormatCurrency(readerTicket("Monto")))
+                    .Add(FormatCurrency(readerTicket("Interes")))
+                    .Add(FormatCurrency(readerTicket("Abonado")))
+                    .Add(FormatCurrency(readerTicket("Pendiente")))
                     .Add(readerTicket("FechaPago"))
 
                     .Add(readerTicket("FechaUltimoPago"))
@@ -623,8 +623,8 @@ end
         With aObj.SubItems
             .Add(id)
             .Add(Npago)
-            .Add(pagonormal)
-            .Add(intereses)
+            .Add(FormatCurrency(pagonormal))
+            .Add(FormatCurrency(intereses))
             .Add(Abonado)
             .Add(Pendiente)
             .Add(fechaPago)

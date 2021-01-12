@@ -36,6 +36,7 @@ Public Class InformacionLegal
     Dim Celular, telefono As String
     Dim montoConvenio As Double
     Dim gastos As Double
+    Dim multas As Double
     Private Sub InformacionSolicitud_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size
         For Each row As DataRow In dataPermisos.Rows
@@ -52,7 +53,7 @@ Public Class InformacionLegal
             End If
         Next
 
-        Panel2.Size = New Size(51, 85)
+        Panel2.Size = New Size(51, 79)
         Panel2.Location = New Drawing.Point(Me.Width - Panel2.Width, TabControl1.Location.Y - Panel2.Height)
         Cargando.Show()
         Cargando.MonoFlat_Label1.Text = "Cargando Información"
@@ -67,8 +68,9 @@ Public Class InformacionLegal
         Dim comandoCredito As SqlCommand
         Dim readerCredito As SqlDataReader
 
-        consultaCredito = " select credlegal.*, isnull((select sum(monto) from gastoslegales where idcredito = credlegal.id),0) as gastos  from
-(select id,Fecha,Nombre,Credito,Moratorios,DeudaAP,TotalDeuda,Estado,FechaInicio,FechaFin,FechaConvenio,plazo,montoconvenio from legales where id = '" & idCredito & "') credlegal"
+        consultaCredito = " select credlegal.*, isnull((select sum(monto) from gastoslegales where idcredito = credlegal.id),0) as gastos,
+isnull((select sum(Interes) from CalendarioLegales where idcredito = credlegal.id),0)multas
+from (select id,Fecha,Nombre,Credito,Moratorios,DeudaAP,TotalDeuda,Estado,FechaInicio,FechaFin,FechaConvenio,plazo,montoconvenio from legales where id = '" & idCredito & "') credlegal"
         comandoCredito = New SqlCommand
         comandoCredito.Connection = conexionempresa
         comandoCredito.CommandText = consultaCredito
@@ -87,6 +89,7 @@ Public Class InformacionLegal
             fechaFin = readerCredito("FechaFin")
             plazo = readerCredito("Plazo")
             gastos = readerCredito("gastos")
+            multas = readerCredito("multas")
             If IsDBNull(readerCredito("montoconvenio")) Then
                 montoConvenio = 0
             Else
@@ -114,10 +117,10 @@ Public Class InformacionLegal
         If montoConvenio = 0 Then
             restante = DeudaTotal - Pagado
         Else
-            restante = montoConvenio - Pagado
+            restante = montoConvenio + multas - Pagado
         End If
         ' restante = DeudaTotal - Pagado
-
+        lblMultas.Text = FormatCurrency(multas)
         lblRestante.Text = FormatCurrency(restante)
         lblAbonado.Text = FormatCurrency(Pagado)
         lblgastos.Text = FormatCurrency(gastos, 2)
@@ -297,9 +300,9 @@ end"
                 With liItem.SubItems
                     .Add(readerTicket("idcredito"))
                     .Add(readerTicket("nombre"))
-                    .Add(readerTicket("pagonormal"))
-                    .Add(readerTicket("Intereses"))
-                    .Add(readerTicket("total"))
+                    .Add(FormatCurrency(readerTicket("pagonormal")))
+                    .Add(FormatCurrency(readerTicket("Intereses")))
+                    .Add(FormatCurrency(readerTicket("total")))
                     .Add(readerTicket("Fecha"))
                     .Add(readerTicket("Hora").ToString)
                     .Add(readerTicket("Tipo"))
@@ -327,9 +330,9 @@ end"
         With aObj.SubItems
             .Add("")
             .Add("")
-            .Add(pagonormal)
-            .Add(intereses)
-            .Add(total)
+            .Add(FormatCurrency(pagonormal))
+            .Add(FormatCurrency(intereses))
+            .Add(FormatCurrency(total))
         End With
     End Sub
 
@@ -346,18 +349,6 @@ end"
         If e.Button = MouseButtons.Left Then
             MoveForm(Me)
         End If
-    End Sub
-
-    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
-
-    End Sub
-
-    Private Sub Panel2_MouseHover(sender As Object, e As EventArgs) Handles Panel2.MouseHover
-
-    End Sub
-
-    Private Sub Panel2_MouseLeave(sender As Object, e As EventArgs) Handles Panel2.MouseLeave
-
     End Sub
 
     Private Sub InformacionLegal_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
@@ -398,6 +389,7 @@ end"
 
     Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click
         AgregarGestionLegal.idCredito = idCredito
+        AgregarGestionLegal.frmNombre = Me.Text
         AgregarGestionLegal.Show()
 
     End Sub
