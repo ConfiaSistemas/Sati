@@ -386,3 +386,14 @@ D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
 D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CentroDeNotificaciones.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CancelarTicket.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActualizadorUpdater.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Alertas.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AutorizacionNotificacion.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CancelarTicket.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CentroDeNotificaciones.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SesionesActivas.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarSesion.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ComprimirImagenes.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacion.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.LegalTerminal.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.mysql.resources
