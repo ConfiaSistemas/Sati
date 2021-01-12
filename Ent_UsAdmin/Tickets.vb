@@ -112,14 +112,14 @@ Public Class Tickets
             If recibido > totalPago Then
                 Select Case reader("tipo")
                     Case "Convenio"
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, reader("Total"), reader("Fecha"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
                     Case "Legal"
 
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, reader("Total"), reader("Fecha"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
                     Case "Extra"
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), reader("concepto"), reader("Total"), reader("Fecha"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), reader("concepto"), FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
                     Case Else
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, reader("Total"), reader("Fecha"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
                 End Select
 
 
@@ -128,14 +128,14 @@ Public Class Tickets
                 Select Case reader("tipo")
 
                     Case "Convenio"
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, reader("recibido"), reader("Fecha"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
                     Case "Legal"
 
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, reader("recibido"), reader("Fecha"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
                     Case "Extra"
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), reader("concepto"), reader("recibido"), reader("Fecha"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), reader("concepto"), FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
                     Case Else
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, reader("recibido"), reader("Fecha"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
                 End Select
 
 
@@ -209,6 +209,7 @@ Public Class Tickets
     End Sub
 
     Private Sub Tickets_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dtdatos.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         dateDesde.Value = Now
         dateHasta.Value = Now
         CheckForIllegalCrossThreadCalls = False

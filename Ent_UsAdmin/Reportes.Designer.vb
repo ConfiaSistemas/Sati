@@ -54,8 +54,10 @@ Partial Class Reportes
         Me.RadLiveTileElement4 = New Telerik.WinControls.UI.RadLiveTileElement()
         Me.LiveTileFrameElement7 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.LiveTileFrameElement8 = New Telerik.WinControls.UI.LiveTileFrameElement()
-        Me.TileGroupElement4 = New Telerik.WinControls.UI.TileGroupElement()
+        Me.tile_group_retiros = New Telerik.WinControls.UI.TileGroupElement()
         Me.RadTileElement8 = New Telerik.WinControls.UI.RadTileElement()
+        Me.tile_group_legal = New Telerik.WinControls.UI.TileGroupElement()
+        Me.tile_btn_cartera_legal = New Telerik.WinControls.UI.RadTileElement()
         Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1 = New Telerik.WinControls.RootRadElement()
         Me.RadTileElement1 = New Telerik.WinControls.UI.RadTileElement()
         Me.TileGroupElement5 = New Telerik.WinControls.UI.TileGroupElement()
@@ -213,7 +215,7 @@ Partial Class Reportes
         '
         'RadPanorama1
         '
-        Me.RadPanorama1.Groups.AddRange(New Telerik.WinControls.RadItem() {Me.TileGroupElement1, Me.TileGroupElement2, Me.TileGroupElement3, Me.TileGroupElement4})
+        Me.RadPanorama1.Groups.AddRange(New Telerik.WinControls.RadItem() {Me.TileGroupElement1, Me.TileGroupElement2, Me.TileGroupElement3, Me.tile_group_retiros, Me.tile_group_legal})
         Me.RadPanorama1.Location = New System.Drawing.Point(12, 66)
         Me.RadPanorama1.Name = "RadPanorama1"
         '
@@ -417,11 +419,12 @@ Partial Class Reportes
         Me.LiveTileFrameElement8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         Me.LiveTileFrameElement8.TextWrap = True
         '
-        'TileGroupElement4
+        'tile_group_retiros
         '
-        Me.TileGroupElement4.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadTileElement8})
-        Me.TileGroupElement4.Name = "TileGroupElement4"
-        Me.TileGroupElement4.Text = "Retiros"
+        Me.tile_group_retiros.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadTileElement8})
+        Me.tile_group_retiros.Name = "tile_group_retiros"
+        Me.tile_group_retiros.Text = "Retiros"
+        Me.tile_group_retiros.Visibility = Telerik.WinControls.ElementVisibility.Hidden
         '
         'RadTileElement8
         '
@@ -429,6 +432,27 @@ Partial Class Reportes
         Me.RadTileElement8.Name = "RadTileElement8"
         Me.RadTileElement8.Text = "Retiros recibidos"
         Me.RadTileElement8.TextWrap = True
+        '
+        'tile_group_legal
+        '
+        Me.tile_group_legal.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.tile_group_legal.Enabled = False
+        Me.tile_group_legal.Font = New System.Drawing.Font("Segoe UI Light", 20.25!)
+        Me.tile_group_legal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.tile_group_legal.Items.AddRange(New Telerik.WinControls.RadItem() {Me.tile_btn_cartera_legal})
+        Me.tile_group_legal.Name = "tile_group_legal"
+        Me.tile_group_legal.Text = "Legal"
+        Me.tile_group_legal.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.tile_group_legal.UseCompatibleTextRendering = False
+        Me.tile_group_legal.Visibility = Telerik.WinControls.ElementVisibility.Hidden
+        CType(Me.tile_group_legal.GetChildAt(0), Telerik.WinControls.Layouts.GridLayout).Enabled = True
+        '
+        'tile_btn_cartera_legal
+        '
+        Me.tile_btn_cartera_legal.Font = New System.Drawing.Font("Segoe UI Light", 11.0!)
+        Me.tile_btn_cartera_legal.Name = "tile_btn_cartera_legal"
+        Me.tile_btn_cartera_legal.Text = "Cartera Legal"
+        Me.tile_btn_cartera_legal.TextWrap = True
         '
         'object_463b1597_0fcb_4548_89e9_00c7d5dddaf1
         '
@@ -499,7 +523,7 @@ Partial Class Reportes
     Friend WithEvents RadTileElement3 As Telerik.WinControls.UI.RadTileElement
     Friend WithEvents RadTileElement6 As Telerik.WinControls.UI.RadTileElement
     Friend WithEvents TileGroupElement3 As Telerik.WinControls.UI.TileGroupElement
-    Friend WithEvents TileGroupElement4 As Telerik.WinControls.UI.TileGroupElement
+    Friend WithEvents tile_group_retiros As Telerik.WinControls.UI.TileGroupElement
     Friend WithEvents RadTileElement8 As Telerik.WinControls.UI.RadTileElement
     Friend WithEvents object_463b1597_0fcb_4548_89e9_00c7d5dddaf1 As Telerik.WinControls.RootRadElement
     Friend WithEvents RadLiveTileElement1 As Telerik.WinControls.UI.RadLiveTileElement
@@ -517,4 +541,6 @@ Partial Class Reportes
     Friend WithEvents LiveTileFrameElement8 As Telerik.WinControls.UI.LiveTileFrameElement
     Friend WithEvents RadLiveTileElement5 As Telerik.WinControls.UI.RadLiveTileElement
     Friend WithEvents TileGroupElement5 As Telerik.WinControls.UI.TileGroupElement
+    Friend WithEvents tile_group_legal As Telerik.WinControls.UI.TileGroupElement
+    Friend WithEvents tile_btn_cartera_legal As Telerik.WinControls.UI.RadTileElement
 End Class

@@ -53,7 +53,7 @@ Module Module1
     Public TipoEquipo As String
 
     Dim exApp As New Microsoft.Office.Interop.Excel.Application
-    Dim exLibro As Microsoft.Office.Interop.Excel.Workbook
+    Public exLibro As Microsoft.Office.Interop.Excel.Workbook
     Private WithEvents TestWorker As System.ComponentModel.BackgroundWorker
     Private Declare Function SetProcessWorkingSetSize Lib "kernel32.dll" (
 ByVal process As IntPtr,
@@ -347,7 +347,6 @@ ByVal maximumWorkingSetSize As Integer) As Integer
         exLibro = exApp.Workbooks.Add
     End Sub
 
-
     Function GridAExcel(ByVal ElGrid As DataGridView) As Boolean
 
         'Creamos las variables
@@ -395,6 +394,64 @@ ByVal maximumWorkingSetSize As Integer) As Integer
 
     End Function
 
+    Function GridAExcelLegal(ByVal ElGrid As DataGridView, ByVal LetraColumna As Char) As Boolean
+
+        'Creamos las variables
+
+        Dim exHoja As Microsoft.Office.Interop.Excel.Worksheet
+        Dim ExportArray(ElGrid.Rows.Count - 1, ElGrid.Columns.Count - 1) As Object
+
+        Try
+            'Añadimos el Libro al programa, y la hoja al libro
+
+            exHoja = exLibro.Worksheets.Add()
+
+            ' ¿Cuantas columnas y cuantas filas?
+            Dim NCol As Integer = ElGrid.ColumnCount
+            Dim NRow As Integer = ElGrid.RowCount
+
+            'Aqui recorremos todas las filas, y por cada fila todas las columnas y vamos escribiendo.
+            For i As Integer = 1 To NCol
+                exHoja.Cells.Item(1, i) = ElGrid.Columns(i - 1).HeaderText.ToString
+                'exHoja.Cells.Item(1, i).HorizontalAlignment = 3
+            Next
+
+            For Fila As Integer = 0 To NRow - 1
+                For Col As Integer = 0 To NCol - 1
+                    'exHoja.Cells.Item(Fila + 2, Col + 1) = ElGrid.Rows(Fila).Cells(Col).Value.ToString
+                    ExportArray(Fila, Col) = ElGrid.Rows(Fila).Cells(Col).Value.ToString
+                Next
+            Next
+            'Ponemos toda la información del array, en el excel, a partir de la fila 2
+            exHoja.Range("A2:" & LetraColumna & NRow + 1).Value = ExportArray
+
+            'Titulo en negrita, Alineado al centro y que el tamaño de la columna se ajuste al texto
+            exHoja.Rows.Item(1).Font.Bold = 1
+            exHoja.Rows.Item(1).HorizontalAlignment = 3
+            exHoja.Columns.AutoFit()
+
+            For i As Integer = 0 To NRow - 1
+                If ExportArray(i, 23) IsNot "" Then
+                    exHoja.Range("L" & i + 2 & ":L" & i + 2).AddComment((ExportArray(i, 23).ToString))
+                    exHoja.Range("L" & i + 2 & ":L" & i + 2).Cells.Comment.Shape.Height = 118.5
+                    exHoja.Range("L" & i + 2 & ":L" & i + 2).Cells.Comment.Shape.Width = 162
+                End If
+            Next
+            exHoja.Columns.AutoFit()
+            'Aplicación visible
+
+            exHoja = Nothing
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error al exportar a Excel")
+
+            Return False
+        End Try
+
+        Return True
+
+    End Function
 
     Public Sub cerrarlibro()
         Try

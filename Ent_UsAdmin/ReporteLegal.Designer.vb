@@ -23,8 +23,8 @@ Partial Class ReporteLegal
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReporteLegal))
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.dtimpuestos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
@@ -42,6 +42,10 @@ Partial Class ReporteLegal
         Me.lblTotal = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.txtnombre = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.MonoFlat_Label1 = New ConfiaAdmin.MonoFlat.MonoFlat_Label()
+        Me.lblConConvenio = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel6 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.lblSinConvenio = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel8 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -62,8 +66,8 @@ Partial Class ReporteLegal
         '
         Me.dtimpuestos.AllowUserToAddRows = False
         Me.dtimpuestos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dtimpuestos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -71,20 +75,20 @@ Partial Class ReporteLegal
         Me.dtimpuestos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtimpuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtimpuestos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dtimpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtimpuestos.DoubleBuffered = True
         Me.dtimpuestos.EnableHeadersVisualStyles = False
         Me.dtimpuestos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
         Me.dtimpuestos.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        Me.dtimpuestos.Location = New System.Drawing.Point(1, 122)
+        Me.dtimpuestos.Location = New System.Drawing.Point(1, 130)
         Me.dtimpuestos.Name = "dtimpuestos"
         Me.dtimpuestos.ReadOnly = True
         Me.dtimpuestos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
@@ -214,7 +218,7 @@ Partial Class ReporteLegal
         Me.MonoFlat_HeaderLabel2.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel2.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel2.Location = New System.Drawing.Point(803, 94)
+        Me.MonoFlat_HeaderLabel2.Location = New System.Drawing.Point(803, 103)
         Me.MonoFlat_HeaderLabel2.Name = "MonoFlat_HeaderLabel2"
         Me.MonoFlat_HeaderLabel2.Size = New System.Drawing.Size(122, 20)
         Me.MonoFlat_HeaderLabel2.TabIndex = 33
@@ -228,7 +232,7 @@ Partial Class ReporteLegal
         Me.lblTotal.BackColor = System.Drawing.Color.Transparent
         Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblTotal.Location = New System.Drawing.Point(935, 94)
+        Me.lblTotal.Location = New System.Drawing.Point(935, 103)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(13, 20)
         Me.lblTotal.TabIndex = 34
@@ -266,12 +270,72 @@ Partial Class ReporteLegal
         Me.MonoFlat_Label1.TabIndex = 36
         Me.MonoFlat_Label1.Text = "Buscar"
         '
+        'lblConConvenio
+        '
+        Me.lblConConvenio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblConConvenio.AutoSize = True
+        Me.lblConConvenio.BackColor = System.Drawing.Color.Transparent
+        Me.lblConConvenio.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblConConvenio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.lblConConvenio.Location = New System.Drawing.Point(935, 76)
+        Me.lblConConvenio.Name = "lblConConvenio"
+        Me.lblConConvenio.Size = New System.Drawing.Size(13, 20)
+        Me.lblConConvenio.TabIndex = 40
+        Me.lblConConvenio.Text = "."
+        Me.lblConConvenio.Visible = False
+        '
+        'MonoFlat_HeaderLabel6
+        '
+        Me.MonoFlat_HeaderLabel6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.MonoFlat_HeaderLabel6.AutoSize = True
+        Me.MonoFlat_HeaderLabel6.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel6.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel6.Location = New System.Drawing.Point(746, 76)
+        Me.MonoFlat_HeaderLabel6.Name = "MonoFlat_HeaderLabel6"
+        Me.MonoFlat_HeaderLabel6.Size = New System.Drawing.Size(179, 20)
+        Me.MonoFlat_HeaderLabel6.TabIndex = 39
+        Me.MonoFlat_HeaderLabel6.Text = "Pendiente con convenio:"
+        Me.MonoFlat_HeaderLabel6.Visible = False
+        '
+        'lblSinConvenio
+        '
+        Me.lblSinConvenio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblSinConvenio.AutoSize = True
+        Me.lblSinConvenio.BackColor = System.Drawing.Color.Transparent
+        Me.lblSinConvenio.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblSinConvenio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.lblSinConvenio.Location = New System.Drawing.Point(935, 56)
+        Me.lblSinConvenio.Name = "lblSinConvenio"
+        Me.lblSinConvenio.Size = New System.Drawing.Size(13, 20)
+        Me.lblSinConvenio.TabIndex = 42
+        Me.lblSinConvenio.Text = "."
+        Me.lblSinConvenio.Visible = False
+        '
+        'MonoFlat_HeaderLabel8
+        '
+        Me.MonoFlat_HeaderLabel8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.MonoFlat_HeaderLabel8.AutoSize = True
+        Me.MonoFlat_HeaderLabel8.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel8.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel8.Location = New System.Drawing.Point(751, 56)
+        Me.MonoFlat_HeaderLabel8.Name = "MonoFlat_HeaderLabel8"
+        Me.MonoFlat_HeaderLabel8.Size = New System.Drawing.Size(174, 20)
+        Me.MonoFlat_HeaderLabel8.TabIndex = 41
+        Me.MonoFlat_HeaderLabel8.Text = "Pendiente sin convenio:"
+        Me.MonoFlat_HeaderLabel8.Visible = False
+        '
         'ReporteLegal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1069, 581)
+        Me.Controls.Add(Me.lblSinConvenio)
+        Me.Controls.Add(Me.MonoFlat_HeaderLabel8)
+        Me.Controls.Add(Me.lblConConvenio)
+        Me.Controls.Add(Me.MonoFlat_HeaderLabel6)
         Me.Controls.Add(Me.txtnombre)
         Me.Controls.Add(Me.MonoFlat_Label1)
         Me.Controls.Add(Me.lblTotal)
@@ -310,4 +374,8 @@ Partial Class ReporteLegal
     Friend WithEvents lblTotal As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents txtnombre As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents MonoFlat_Label1 As MonoFlat.MonoFlat_Label
+    Friend WithEvents lblConConvenio As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents MonoFlat_HeaderLabel6 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents lblSinConvenio As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents MonoFlat_HeaderLabel8 As MonoFlat.MonoFlat_HeaderLabel
 End Class

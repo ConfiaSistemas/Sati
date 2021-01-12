@@ -23,9 +23,13 @@ Public Class AgregarGestionCredito
     End Sub
 
     Private Sub btn_actualizar_Click(sender As Object, e As EventArgs) Handles btn_actualizar.Click
-        Cargando.Show()
-        Cargando.MonoFlat_Label1.Text = "Ejecutando"
-        BackgroundGestion.RunWorkerAsync()
+        If txtConcepto.Text.Length > 1000 Then
+            MessageBox.Show("La gestión excede el límite de caracteres. Si es necesario, el texto restante se puede introducir en otra gestión.")
+        Else
+            Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Ejecutando"
+            BackgroundGestion.RunWorkerAsync()
+        End If
 
     End Sub
 
@@ -37,5 +41,24 @@ Public Class AgregarGestionCredito
         Cargando.Close()
         Me.Close()
 
+    End Sub
+
+    Private Sub txtConcepto_TextChanged(sender As Object, e As EventArgs) Handles txtConcepto.TextChanged
+        MonoFlat_HeaderLabel2.Text = 1000 - txtConcepto.TextLength
+        If txtConcepto.TextLength > 1000 Then
+            MonoFlat_HeaderLabel2.ForeColor = Color.Red
+            MonoFlat_HeaderLabel3.ForeColor = Color.Red
+            MonoFlat_HeaderLabel4.ForeColor = Color.Red
+        Else
+            MonoFlat_HeaderLabel2.ForeColor = Color.White
+            MonoFlat_HeaderLabel3.ForeColor = Color.White
+            MonoFlat_HeaderLabel4.ForeColor = Color.White
+        End If
+    End Sub
+
+    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
+        If e.Button = MouseButtons.Left Then
+            MoveForm(Me)
+        End If
     End Sub
 End Class

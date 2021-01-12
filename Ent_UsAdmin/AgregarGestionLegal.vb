@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 
 Public Class AgregarGestionLegal
     Public idCredito As String
+    Public frmNombre As String
 
     Private Sub AgregarGestionLegal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -13,7 +14,7 @@ Public Class AgregarGestionLegal
         Dim comandoGestion As SqlCommand
         Dim consultaGestion As String
         Dim tiempo As String = TimeOfDay.ToString("HH:mm:ss")
-        consultaGestion = "insert into GestionesLegales values('" & Now.ToString("yyyy-MM-dd") & "','" & idCredito & "','" & txtConcepto.Text & "')"
+        consultaGestion = "insert into GestionesLegales values('" & Now.ToString("yyyy-MM-dd") & "','" & idCredito & "','" & txtConcepto.Text & "','" & nm_completeusr & "')"
         comandoGestion = New SqlCommand
         comandoGestion.Connection = conexionempresa
         comandoGestion.CommandText = consultaGestion
@@ -22,19 +23,50 @@ Public Class AgregarGestionLegal
     End Sub
 
     Private Sub btn_actualizar_Click(sender As Object, e As EventArgs) Handles btn_actualizar.Click
-        Cargando.Show()
-        Cargando.MonoFlat_Label1.Text = "Ejecutando"
-        BackgroundGestion.RunWorkerAsync()
+        If txtConcepto.Text.Length > 1000 Then
+            MessageBox.Show("La gestión excede el límite de caracteres. Si es necesario, el texto restante se puede introducir en otra gestión.")
+        Else
+            Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Ejecutando"
+            BackgroundGestion.RunWorkerAsync()
+        End If
 
     End Sub
 
     Private Sub BackgroundGestion_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundGestion.RunWorkerCompleted
-        Me.Invoke(Sub()
-                      InformacionLegal.BackgroundClientes.RunWorkerAsync()
 
-                  End Sub)
+        For Each frm As Form In Application.OpenForms
+            If frm.Text = frmNombre Then
+                Dim frmn As InformacionLegal
+                frmn = frm
+
+                Me.Invoke(Sub()
+
+                              frmn.BackgroundGestiones.RunWorkerAsync()
+
+                          End Sub)
+            End If
+        Next
         Cargando.Close()
         Me.Close()
+    End Sub
 
+    Private Sub txtConcepto_TextChanged(sender As Object, e As EventArgs) Handles txtConcepto.TextChanged
+        MonoFlat_HeaderLabel2.Text = 1000 - txtConcepto.TextLength
+        If txtConcepto.TextLength > 1000 Then
+            MonoFlat_HeaderLabel2.ForeColor = Color.Red
+            MonoFlat_HeaderLabel3.ForeColor = Color.Red
+            MonoFlat_HeaderLabel4.ForeColor = Color.Red
+        Else
+            MonoFlat_HeaderLabel2.ForeColor = Color.White
+            MonoFlat_HeaderLabel3.ForeColor = Color.White
+            MonoFlat_HeaderLabel4.ForeColor = Color.White
+        End If
+    End Sub
+
+    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
+        If e.Button = MouseButtons.Left Then
+            MoveForm(Me)
+        End If
     End Sub
 End Class
