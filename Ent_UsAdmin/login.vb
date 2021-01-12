@@ -9,6 +9,7 @@ Imports MadMilkman.Ini
 Imports System.IO
 Imports System.Threading.Tasks
 Imports System.ComponentModel
+Imports MySql.Data.MySqlClient
 
 Public Class login
     Public bloqueado As Boolean
@@ -134,11 +135,30 @@ Public Class login
 
                                                         'frm_adm.Show()
 
+                                                        Try
+                                                            Dim conexionLogin As MySqlConnection
+                                                            conexionLogin = New MySqlConnection()
+                                                            conexionLogin.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+                                                            conexionLogin.Open()
+                                                            Dim comandoLogin As MySqlCommand
+                                                            Dim consultaLogin As String
+                                                            consultaLogin = "insert into Sesiones values(null,'" & nmusr & "','','" & Date.Now.ToString("yyyy-MM-dd") & "','" & Date.Now.ToString("HH:mm:ss") & "','1','" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "','SATI'); SELECT LAST_INSERT_ID();"
+                                                            comandoLogin = New MySqlCommand
+                                                            comandoLogin.Connection = conexionLogin
+                                                            comandoLogin.CommandText = consultaLogin
+                                                            idSesion = comandoLogin.ExecuteScalar
+                                                            conexionLogin.Close()
 
+                                                        Catch ex As Exception
+                                                            IO.File.AppendAllText("C:\ConfiaAdmin\SATI\Log.txt", String.Format("{0}{1}", Environment.NewLine, ex.ToString()))
+                                                        End Try
                                                     End Sub)
                         Empresas.Show()
                         connexio.Close()
                         Cargando.Close()
+
+
+
                         Me.Close()
                     End If
 

@@ -111,6 +111,7 @@
     <Reference Include="ComponentFactory.Krypton.Toolkit">
       <HintPath>C:\DLL JAIRO\KryptonWinFormControls.4.4.1.0\lib\net40\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="CustomMarshalers" />
     <Reference Include="DotNetZip, Version=1.13.3.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.13.3\lib\net40\DotNetZip.dll</HintPath>
     </Reference>
@@ -153,9 +154,6 @@
     <Reference Include="Gnostice.XtremeImageEngine">
       <HintPath>..\XtremeDocumentStudio.NETFree.19.1.1\lib\net40\Gnostice.XtremeImageEngine.dll</HintPath>
     </Reference>
-    <Reference Include="Ionic.Zip.Reduced">
-      <HintPath>..\XtremeDocumentStudio.NETFree.19.1.1\lib\net40\Ionic.Zip.Reduced.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -164,13 +162,25 @@
     <Reference Include="MetroFramework">
       <HintPath>..\..\..\Mora Uruapan\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.4.0, Culture=neutral, PublicKeyToken=8985beaab7ea3f04, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft-WindowsAPICodePack-Core.1.1.4\lib\net452\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.4.0, Culture=neutral, PublicKeyToken=8985beaab7ea3f04, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft-WindowsAPICodePack-Shell.1.1.4\lib\net452\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.4.0, Culture=neutral, PublicKeyToken=8985beaab7ea3f04, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft-WindowsAPICodePack-ShellExtensions.1.1.4\lib\net452\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 8.0.22\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="Spire.Doc">
       <HintPath>C:\Program Files (x86)\e-iceblue\Spire.Doc-FE\Bin\NET4.0\Spire.Doc.dll</HintPath>
     </Reference>
@@ -186,6 +196,7 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -199,6 +210,7 @@
     <Reference Include="Telerik.WinControls.RadMap, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.RadMarkupEditor, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.Scheduler, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.Themes.Breeze, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.Themes.HighContrastBlack, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.Themes.Office2013Dark, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
@@ -212,6 +224,8 @@
     <Reference Include="WinControls.ListView">
       <HintPath>C:\Users\SVRCONFIAUPN\Downloads\WinControls.TreeListViewSample\TreeListViewSample\TreeListViewSample\bin\Release\WinControls.ListView.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
     <Reference Include="Xceed.Words.NET">
       <HintPath>C:\Users\SVRCONFIAUPN\Downloads\Sistema Confia\Sistema Confia\Sistema Confia\packages\DocX.1.1.0\lib\Xceed.Words.NET.dll</HintPath>
     </Reference>
@@ -252,6 +266,12 @@
       <DependentUpon>ActInformacionLegal.vb</DependentUpon>
     </Compile>
     <Compile Include="ActInformacionLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizadorUpdater.Designer.vb">
+      <DependentUpon>ActualizadorUpdater.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ActualizadorUpdater.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AgregarCaja.Designer.vb">
@@ -344,7 +364,19 @@
     <Compile Include="Agregar_Impuestos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Alertas.Designer.vb">
+      <DependentUpon>Alertas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Alertas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="AutorizacionNotificacion.Designer.vb">
+      <DependentUpon>AutorizacionNotificacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AutorizacionNotificacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AutorizacionRetiro.Designer.vb">
       <DependentUpon>AutorizacionRetiro.vb</DependentUpon>
     </Compile>
@@ -355,6 +387,30 @@
       <DependentUpon>Autorizacion.vb</DependentUpon>
     </Compile>
     <Compile Include="Autorizacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CancelarTicket.Designer.vb">
+      <DependentUpon>CancelarTicket.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CancelarTicket.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CentroDeNotificaciones.Designer.vb">
+      <DependentUpon>CentroDeNotificaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CentroDeNotificaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SesionesActivas.Designer.vb">
+      <DependentUpon>SesionesActivas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SesionesActivas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarSesion.Designer.vb">
+      <DependentUpon>BuscarSesion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarSesion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BuscarClienteEmpeño.Designer.vb">
@@ -450,6 +506,12 @@
     <Compile Include="Configuraciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CrearNotificacion.Designer.vb">
+      <DependentUpon>CrearNotificacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CrearNotificacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LegalTerminal.Designer.vb">
       <DependentUpon>LegalTerminal.vb</DependentUpon>
     </Compile>
@@ -462,6 +524,7 @@
     <Compile Include="mysql.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Notificaciones.vb" />
     <Compile Include="Renovacion.Designer.vb">
       <DependentUpon>Renovacion.vb</DependentUpon>
     </Compile>
@@ -496,12 +559,6 @@
       <DependentUpon>CrearConvenioLegal.vb</DependentUpon>
     </Compile>
     <Compile Include="CrearConvenioLegal.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListadoMaestro.Designer.vb">
@@ -983,6 +1040,9 @@
     <EmbeddedResource Include="ActInformacionLegal.resx">
       <DependentUpon>ActInformacionLegal.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ActualizadorUpdater.resx">
+      <DependentUpon>ActualizadorUpdater.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarCaja.resx">
       <DependentUpon>AgregarCaja.vb</DependentUpon>
     </EmbeddedResource>
@@ -1031,11 +1091,29 @@
     <EmbeddedResource Include="Agregar_Usuario.resx">
       <DependentUpon>Agregar_Usuario.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Alertas.resx">
+      <DependentUpon>Alertas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutorizacionNotificacion.resx">
+      <DependentUpon>AutorizacionNotificacion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AutorizacionRetiro.resx">
       <DependentUpon>AutorizacionRetiro.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Autorizacion.resx">
       <DependentUpon>Autorizacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CancelarTicket.resx">
+      <DependentUpon>CancelarTicket.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CentroDeNotificaciones.resx">
+      <DependentUpon>CentroDeNotificaciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SesionesActivas.resx">
+      <DependentUpon>SesionesActivas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarSesion.resx">
+      <DependentUpon>BuscarSesion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BuscarClienteEmpeño.resx">
       <DependentUpon>BuscarClienteEmpeño.vb</DependentUpon>
@@ -1076,6 +1154,9 @@
     <EmbeddedResource Include="Configuraciones.resx">
       <DependentUpon>Configuraciones.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrearNotificacion.resx">
+      <DependentUpon>CrearNotificacion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LegalTerminal.resx">
       <DependentUpon>LegalTerminal.vb</DependentUpon>
     </EmbeddedResource>
@@ -1099,9 +1180,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrearConvenioLegal.resx">
       <DependentUpon>CrearConvenioLegal.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoMaestro.resx">
       <DependentUpon>ListadoMaestro.vb</DependentUpon>
@@ -1512,6 +1590,10 @@
     <None Include="Resources\9261.png" />
     <None Include="Resources\images.png" />
     <None Include="Resources\SATI.png" />
+    <None Include="Resources\boton-de-quitar-cuadrado.png" />
+    <None Include="Resources\minimizar-pestana.png" />
+    <None Include="Resources\16606.png" />
+    <None Include="Resources\notificacion.png" />
     <Content Include="SATI.ico" />
     <None Include="Resources\Logo Confia.png" />
     <None Include="Resources\eaad3b05-c22d-49fb-ae4f-2d0e4ff7b0cb.jpg" />

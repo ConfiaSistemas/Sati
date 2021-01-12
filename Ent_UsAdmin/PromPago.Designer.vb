@@ -22,12 +22,12 @@ Partial Class PromPago
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.RadWizard1 = New Telerik.WinControls.UI.RadWizard()
         Me.WizardCompletionPage1 = New Telerik.WinControls.UI.WizardCompletionPage()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -36,14 +36,22 @@ Partial Class PromPago
         Me.dateFechaLimite = New Bunifu.Framework.UI.BunifuDatepicker()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupTotal = New System.Windows.Forms.GroupBox()
+        Me.lblTotalTotal = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.CheckTotal = New System.Windows.Forms.CheckBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
+        Me.lblDescuentoTotal = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.lblPagoNormalTotal = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.lblDescuentoTotaltext = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lblMultasTotal = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.RadCollapsiblePanel1 = New Telerik.WinControls.UI.RadCollapsiblePanel()
         Me.dtTotal = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.GroupVencidos = New System.Windows.Forms.GroupBox()
+        Me.lblTotalParcial = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblDescuentoParcial = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.CheckVencidos = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblPagoNormalParcial = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
@@ -55,14 +63,6 @@ Partial Class PromPago
         Me.WizardPage1 = New Telerik.WinControls.UI.WizardPage()
         Me.BackgroundVencidos = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundTotal = New System.ComponentModel.BackgroundWorker()
-        Me.lblDescuentoParcial = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.lblTotalParcial = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.lblTotalTotal = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblDescuentoTotal = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.lblDescuentoTotaltext = New System.Windows.Forms.Label()
         CType(Me.RadWizard1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadWizard1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -107,6 +107,7 @@ Partial Class PromPago
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(2), Telerik.WinControls.UI.WizardCommandAreaButtonElement).Text = "Siguiente >"
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(3), Telerik.WinControls.UI.BaseWizardElement).Text = "<html><u>Ayuda</u></html>"
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(3), Telerik.WinControls.UI.BaseWizardElement).Visibility = Telerik.WinControls.ElementVisibility.Hidden
+        CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(4).GetChildAt(0), Telerik.WinControls.UI.WizardAeroButtonElement).Enabled = False
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(4).GetChildAt(0), Telerik.WinControls.UI.WizardAeroButtonElement).Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'WizardCompletionPage1
@@ -188,6 +189,18 @@ Partial Class PromPago
         Me.GroupTotal.TabStop = False
         Me.GroupTotal.Text = "Deuda total"
         '
+        'lblTotalTotal
+        '
+        Me.lblTotalTotal.AutoSize = True
+        Me.lblTotalTotal.BackColor = System.Drawing.Color.Transparent
+        Me.lblTotalTotal.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblTotalTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lblTotalTotal.Location = New System.Drawing.Point(634, 11)
+        Me.lblTotalTotal.Name = "lblTotalTotal"
+        Me.lblTotalTotal.Size = New System.Drawing.Size(21, 20)
+        Me.lblTotalTotal.TabIndex = 184
+        Me.lblTotalTotal.Text = "..."
+        '
         'CheckTotal
         '
         Me.CheckTotal.AutoSize = True
@@ -196,6 +209,16 @@ Partial Class PromPago
         Me.CheckTotal.Size = New System.Drawing.Size(15, 14)
         Me.CheckTotal.TabIndex = 174
         Me.CheckTotal.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.Label3.Location = New System.Drawing.Point(598, 18)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(34, 13)
+        Me.Label3.TabIndex = 185
+        Me.Label3.Text = "Total:"
         '
         'Label16
         '
@@ -206,6 +229,18 @@ Partial Class PromPago
         Me.Label16.Size = New System.Drawing.Size(71, 13)
         Me.Label16.TabIndex = 169
         Me.Label16.Text = "Pago Normal:"
+        '
+        'lblDescuentoTotal
+        '
+        Me.lblDescuentoTotal.AutoSize = True
+        Me.lblDescuentoTotal.BackColor = System.Drawing.Color.Transparent
+        Me.lblDescuentoTotal.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblDescuentoTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lblDescuentoTotal.Location = New System.Drawing.Point(488, 11)
+        Me.lblDescuentoTotal.Name = "lblDescuentoTotal"
+        Me.lblDescuentoTotal.Size = New System.Drawing.Size(21, 20)
+        Me.lblDescuentoTotal.TabIndex = 182
+        Me.lblDescuentoTotal.Text = "..."
         '
         'lblPagoNormalTotal
         '
@@ -218,6 +253,16 @@ Partial Class PromPago
         Me.lblPagoNormalTotal.Size = New System.Drawing.Size(21, 20)
         Me.lblPagoNormalTotal.TabIndex = 170
         Me.lblPagoNormalTotal.Text = "..."
+        '
+        'lblDescuentoTotaltext
+        '
+        Me.lblDescuentoTotaltext.AutoSize = True
+        Me.lblDescuentoTotaltext.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lblDescuentoTotaltext.Location = New System.Drawing.Point(421, 18)
+        Me.lblDescuentoTotaltext.Name = "lblDescuentoTotaltext"
+        Me.lblDescuentoTotaltext.Size = New System.Drawing.Size(62, 13)
+        Me.lblDescuentoTotaltext.TabIndex = 183
+        Me.lblDescuentoTotaltext.Text = "Descuento:"
         '
         'Label4
         '
@@ -259,8 +304,8 @@ Partial Class PromPago
         '
         Me.dtTotal.AllowUserToAddRows = False
         Me.dtTotal.AllowUserToDeleteRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(158, Byte), Integer), CType(CType(185, Byte), Integer), CType(CType(220, Byte), Integer))
-        Me.dtTotal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(158, Byte), Integer), CType(CType(185, Byte), Integer), CType(CType(220, Byte), Integer))
+        Me.dtTotal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dtTotal.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -269,23 +314,23 @@ Partial Class PromPago
         Me.dtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtTotal.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.dtTotal.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtTotal.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtTotal.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dtTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dtTotal.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dtTotal.DefaultCellStyle = DataGridViewCellStyle3
         Me.dtTotal.DoubleBuffered = True
         Me.dtTotal.EnableHeadersVisualStyles = False
         Me.dtTotal.GridColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -316,6 +361,50 @@ Partial Class PromPago
         Me.GroupVencidos.TabIndex = 178
         Me.GroupVencidos.TabStop = False
         Me.GroupVencidos.Text = "Pagos vencidos"
+        '
+        'lblTotalParcial
+        '
+        Me.lblTotalParcial.AutoSize = True
+        Me.lblTotalParcial.BackColor = System.Drawing.Color.Transparent
+        Me.lblTotalParcial.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblTotalParcial.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lblTotalParcial.Location = New System.Drawing.Point(635, 11)
+        Me.lblTotalParcial.Name = "lblTotalParcial"
+        Me.lblTotalParcial.Size = New System.Drawing.Size(21, 20)
+        Me.lblTotalParcial.TabIndex = 180
+        Me.lblTotalParcial.Text = "..."
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.Label2.Location = New System.Drawing.Point(599, 18)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(34, 13)
+        Me.Label2.TabIndex = 181
+        Me.Label2.Text = "Total:"
+        '
+        'lblDescuentoParcial
+        '
+        Me.lblDescuentoParcial.AutoSize = True
+        Me.lblDescuentoParcial.BackColor = System.Drawing.Color.Transparent
+        Me.lblDescuentoParcial.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblDescuentoParcial.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lblDescuentoParcial.Location = New System.Drawing.Point(489, 11)
+        Me.lblDescuentoParcial.Name = "lblDescuentoParcial"
+        Me.lblDescuentoParcial.Size = New System.Drawing.Size(21, 20)
+        Me.lblDescuentoParcial.TabIndex = 178
+        Me.lblDescuentoParcial.Text = "..."
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.Label1.Location = New System.Drawing.Point(422, 18)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(62, 13)
+        Me.Label1.TabIndex = 179
+        Me.Label1.Text = "Descuento:"
         '
         'CheckVencidos
         '
@@ -388,8 +477,8 @@ Partial Class PromPago
         '
         Me.dtVencidos.AllowUserToAddRows = False
         Me.dtVencidos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(158, Byte), Integer), CType(CType(185, Byte), Integer), CType(CType(220, Byte), Integer))
-        Me.dtVencidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(158, Byte), Integer), CType(CType(185, Byte), Integer), CType(CType(220, Byte), Integer))
+        Me.dtVencidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dtVencidos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -398,23 +487,23 @@ Partial Class PromPago
         Me.dtVencidos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtVencidos.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.dtVencidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtVencidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtVencidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dtVencidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dtVencidos.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dtVencidos.DefaultCellStyle = DataGridViewCellStyle6
         Me.dtVencidos.DoubleBuffered = True
         Me.dtVencidos.EnableHeadersVisualStyles = False
         Me.dtVencidos.GridColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -447,94 +536,6 @@ Partial Class PromPago
         '
         'BackgroundTotal
         '
-        '
-        'lblDescuentoParcial
-        '
-        Me.lblDescuentoParcial.AutoSize = True
-        Me.lblDescuentoParcial.BackColor = System.Drawing.Color.Transparent
-        Me.lblDescuentoParcial.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.lblDescuentoParcial.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lblDescuentoParcial.Location = New System.Drawing.Point(489, 11)
-        Me.lblDescuentoParcial.Name = "lblDescuentoParcial"
-        Me.lblDescuentoParcial.Size = New System.Drawing.Size(21, 20)
-        Me.lblDescuentoParcial.TabIndex = 178
-        Me.lblDescuentoParcial.Text = "..."
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(422, 18)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(62, 13)
-        Me.Label1.TabIndex = 179
-        Me.Label1.Text = "Descuento:"
-        '
-        'lblTotalParcial
-        '
-        Me.lblTotalParcial.AutoSize = True
-        Me.lblTotalParcial.BackColor = System.Drawing.Color.Transparent
-        Me.lblTotalParcial.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.lblTotalParcial.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lblTotalParcial.Location = New System.Drawing.Point(635, 11)
-        Me.lblTotalParcial.Name = "lblTotalParcial"
-        Me.lblTotalParcial.Size = New System.Drawing.Size(21, 20)
-        Me.lblTotalParcial.TabIndex = 180
-        Me.lblTotalParcial.Text = "..."
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(599, 18)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(34, 13)
-        Me.Label2.TabIndex = 181
-        Me.Label2.Text = "Total:"
-        '
-        'lblTotalTotal
-        '
-        Me.lblTotalTotal.AutoSize = True
-        Me.lblTotalTotal.BackColor = System.Drawing.Color.Transparent
-        Me.lblTotalTotal.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.lblTotalTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lblTotalTotal.Location = New System.Drawing.Point(634, 11)
-        Me.lblTotalTotal.Name = "lblTotalTotal"
-        Me.lblTotalTotal.Size = New System.Drawing.Size(21, 20)
-        Me.lblTotalTotal.TabIndex = 184
-        Me.lblTotalTotal.Text = "..."
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.Label3.Location = New System.Drawing.Point(598, 18)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(34, 13)
-        Me.Label3.TabIndex = 185
-        Me.Label3.Text = "Total:"
-        '
-        'lblDescuentoTotal
-        '
-        Me.lblDescuentoTotal.AutoSize = True
-        Me.lblDescuentoTotal.BackColor = System.Drawing.Color.Transparent
-        Me.lblDescuentoTotal.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.lblDescuentoTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lblDescuentoTotal.Location = New System.Drawing.Point(488, 11)
-        Me.lblDescuentoTotal.Name = "lblDescuentoTotal"
-        Me.lblDescuentoTotal.Size = New System.Drawing.Size(21, 20)
-        Me.lblDescuentoTotal.TabIndex = 182
-        Me.lblDescuentoTotal.Text = "..."
-        '
-        'lblDescuentoTotaltext
-        '
-        Me.lblDescuentoTotaltext.AutoSize = True
-        Me.lblDescuentoTotaltext.ForeColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lblDescuentoTotaltext.Location = New System.Drawing.Point(421, 18)
-        Me.lblDescuentoTotaltext.Name = "lblDescuentoTotaltext"
-        Me.lblDescuentoTotaltext.Size = New System.Drawing.Size(62, 13)
-        Me.lblDescuentoTotaltext.TabIndex = 183
-        Me.lblDescuentoTotaltext.Text = "Descuento:"
         '
         'PromPago
         '

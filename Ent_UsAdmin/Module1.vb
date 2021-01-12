@@ -10,6 +10,10 @@ Module Module1
     Public cn As String
     Public cnempresa As String
     Public cnEmpresasR As String
+    Public cnEmpresaMysql As String
+    Public ipMysql As String
+    Public bdMysql As String
+    Public ipMysqlHamachi As String
     Public ipser As String
     Public bdser As String
     Public ipconsultas As String
@@ -51,6 +55,7 @@ Module Module1
     Public dataColonias As DataTable
     Public adapterColonias As SqlDataAdapter
     Public TipoEquipo As String
+    Public idSesion As String
 
     Dim exApp As New Microsoft.Office.Interop.Excel.Application
     Dim exLibro As Microsoft.Office.Interop.Excel.Workbook
@@ -85,6 +90,29 @@ ByVal maximumWorkingSetSize As Integer) As Integer
         conexionempresaR = New OleDbConnection(cnEmpresasR)
         conexionempresaR.Open()
     End Sub
+
+    Public Function iniciarconexionRMysql(ip As String, bd As String) As String
+        Dim constring As String = "Data Source=  " & ip & "\confia;" &
+                     "Initial Catalog=" & bd & ";" &
+                     "User Id=sa;Password=BSi5t3Ma$CFAD;MultipleActiveResultSets=true"
+        Return constring
+    End Function
+
+
+    Public Function ProbarConexionEmpresa(ip As String, bd As String) As Boolean
+        Dim constring As String = "Data Source=  " & ip & "\confia;" &
+                     "Initial Catalog=" & bd & ";" &
+                     "User Id=sa;Password=BSi5t3Ma$CFAD;MultipleActiveResultSets=true"
+        Dim conex As SqlConnection
+        Try
+            conex = New SqlConnection(constring)
+            conex.Open()
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
 
     Public Sub cargarperfil()
         Dim strconf As String = ("select x1.nm,x2.nm as grp,x1.nm_complete,x1.addr,x1.tlf,x1.imgstr,x1.activo,x1.grp as idgrp from usr x1 inner join grp x2 on x1.grp = x2.id where x1.idusr = '" & idusr & "'")

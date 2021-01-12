@@ -1460,7 +1460,14 @@ Namespace MonoFlat
                         AutorizacionRetiro.MonoFlat_Button1.Enabled = False
                         AutorizacionRetiro.MonoFlat_Button2.Enabled = False
                         AutorizacionRetiro.BackgroundWorker1.RunWorkerAsync()
+                    ElseIf FindForm.Name = "AutorizacionNotificacion" Then
+                        AutorizacionNotificacion.FlowEspere.Visible = True
+                        AutorizacionNotificacion.txtcontra.Enabled = False
+                        AutorizacionNotificacion.MonoFlat_Button1.Enabled = False
+                        AutorizacionNotificacion.MonoFlat_Button2.Enabled = False
+                        AutorizacionNotificacion.BackgroundWorker1.RunWorkerAsync()
                     Else
+
 
 
                     End If
@@ -1950,7 +1957,7 @@ Namespace MonoFlat
             Else
                 IsOverClose = False
             End If
-            ' Updates the control
+            ' Updates the control   
             Invalidate()
         End Sub
         Protected Overrides Sub OnMouseDown(ByVal e As System.Windows.Forms.MouseEventArgs)

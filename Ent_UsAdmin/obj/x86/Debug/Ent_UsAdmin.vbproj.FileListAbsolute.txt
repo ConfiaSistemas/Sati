@@ -349,7 +349,6 @@ D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.cmd.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Verificar.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirReestructura.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirReestructura.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Form1.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromesaPago.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromesaPago.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Form1.resources
@@ -374,3 +373,16 @@ D:\Repos\SATI\Ent_UsAdmin\bin\Debug\K4os.Compression.LZ4.dll
 D:\Repos\SATI\Ent_UsAdmin\bin\Debug\K4os.Hash.xxHash.dll
 D:\Repos\SATI\Ent_UsAdmin\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\Repos\SATI\Ent_UsAdmin\bin\Debug\MySql.Data.xml
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarSesion.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacion.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActualizadorUpdater.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SesionesActivas.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Alertas.resources
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.dll
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.xml
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CentroDeNotificaciones.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CancelarTicket.resources

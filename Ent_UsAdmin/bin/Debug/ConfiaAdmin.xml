@@ -27,6 +27,11 @@ ConfiaAdmin
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ConfiaAdmin.My.Resources.Resources._16606">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ConfiaAdmin.My.Resources.Resources._196766_200">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -53,6 +58,11 @@ ConfiaAdmin
 </summary>
 </member>
 <member name="P:ConfiaAdmin.My.Resources.Resources.background_1">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ConfiaAdmin.My.Resources.Resources.boton_de_quitar_cuadrado">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -187,6 +197,11 @@ ConfiaAdmin
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ConfiaAdmin.My.Resources.Resources.minimizar_pestana">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ConfiaAdmin.My.Resources.Resources.modificar">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -208,6 +223,11 @@ ConfiaAdmin
 </summary>
 </member>
 <member name="P:ConfiaAdmin.My.Resources.Resources.new_seo2_38_512">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ConfiaAdmin.My.Resources.Resources.notificacion">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>

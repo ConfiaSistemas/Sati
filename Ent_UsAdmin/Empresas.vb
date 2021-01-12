@@ -1,6 +1,7 @@
 ﻿Imports System.Data.OleDb
 Imports System.Data.SqlClient
 Imports System.Threading.Tasks
+Imports MySql.Data.MySqlClient
 
 Public Class Empresas
     Dim conectado As Boolean
@@ -9,48 +10,53 @@ Public Class Empresas
     End Sub
 
     Private Sub Empresas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim acceso As Boolean
-        For Each row As DataRow In dataPermisos.Rows
-            acceso = row("SatiAcceso")
-        Next
-        CheckForIllegalCrossThreadCalls = False
-        If acceso Then
-            Try
-                '
-                iniciarconexion()
-                Dim sql As String
-                Dim comando As OleDb.OleDbCommand
-                Dim milector As OleDb.OleDbDataReader
+        Try
+            Dim acceso As Boolean
+            For Each row As DataRow In dataPermisos.Rows
+                acceso = row("SatiAcceso")
+            Next
+            CheckForIllegalCrossThreadCalls = False
+            If acceso Then
+                Try
+                    '
+                    iniciarconexion()
+                    Dim sql As String
+                    Dim comando As OleDb.OleDbCommand
+                    Dim milector As OleDb.OleDbDataReader
 
-                comando = New OleDb.OleDbCommand
+                    comando = New OleDb.OleDbCommand
 
-                comando.Connection = conexion
-                sql = "select rs,ip,bd,nombre from empresas"
-                comando.CommandText = sql
-                milector = comando.ExecuteReader
-                While milector.Read
-                    Dim botonempresa As New Bunifu.Framework.UI.BunifuFlatButton
+                    comando.Connection = conexion
+                    sql = "select rs,ip,bd,nombre from empresas"
+                    comando.CommandText = sql
+                    milector = comando.ExecuteReader
+                    While milector.Read
+                        Dim botonempresa As New Bunifu.Framework.UI.BunifuFlatButton
 
-                    botonempresa.Normalcolor = Color.FromArgb(48, 55, 76)
-                    botonempresa.Iconimage = My.Resources.empresa_azul
-                    botonempresa.Size = New Size(390, 48)
-                    botonempresa.Name = milector("bd")
-                    botonempresa.Text = milector("nombre")
-                    botonempresa.Tag = milector("ip")
-                    AddHandler botonempresa.Click, AddressOf clickevenntAsync
-                    FlowLayoutPanel1.Controls.Add(botonempresa)
-                End While
-                milector.Close()
+                        botonempresa.Normalcolor = Color.FromArgb(48, 55, 76)
+                        botonempresa.Iconimage = My.Resources.empresa_azul
+                        botonempresa.Size = New Size(390, 48)
+                        botonempresa.Name = milector("bd")
+                        botonempresa.Text = milector("nombre")
+                        botonempresa.Tag = milector("ip")
+                        AddHandler botonempresa.Click, AddressOf clickevenntAsync
+                        FlowLayoutPanel1.Controls.Add(botonempresa)
+                    End While
+                    milector.Close()
 
 
-                'Timer1.Enabled = True
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-            End Try
-        Else
-            MessageBox.Show("El usuario no tiene acceso al sistema")
-            Me.Close()
-        End If
+                    'Timer1.Enabled = True
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            Else
+                MessageBox.Show("El usuario no tiene acceso al sistema")
+                Me.Close()
+            End If
+        Catch ex As Exception
+
+        End Try
+
 
 
     End Sub
@@ -116,6 +122,22 @@ end"
                                                     EmpleadoAsignado = comandoEmpleado.ExecuteScalar
                                                     Docs()
                                                     Colonias()
+                                                    Dim conexionLogin As MySqlConnection
+                                                    conexionLogin = New MySqlConnection()
+                                                    conexionLogin.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+                                                    conexionLogin.Open()
+                                                    Try
+                                                        Dim comandoEmpresaLogin As MySqlCommand
+                                                        Dim consultaEmpresaLogin As String
+                                                        consultaEmpresaLogin = "update Sesiones set Empresa = '" & nombreAmostrar & "' where id = '" & idSesion & "'"
+                                                        comandoEmpresaLogin = New MySqlCommand
+                                                        comandoEmpresaLogin.Connection = conexionLogin
+                                                        comandoEmpresaLogin.CommandText = consultaEmpresaLogin
+                                                        comandoEmpresaLogin.ExecuteNonQuery()
+                                                    Catch ex As Exception
+                                                        IO.File.AppendAllText("C:\ConfiaAdmin\SATI\Log.txt", String.Format("{0}{1}", Environment.NewLine, ex.ToString()))
+                                                    End Try
+
 
                                                     conectado = True
                                                 Else

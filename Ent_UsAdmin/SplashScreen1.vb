@@ -133,29 +133,34 @@ Public NotInheritable Class SplashScreen1
             TipoEquipo = ""
             'MessageBox.Show("No se encontró el valor leyenda configurado, se recomienda revisar la configuración")
         End Try
-
-        conexionsql = New MySqlConnection()
-        conexionsql.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=Versiones"
-        conexionsql.Open()
-
-        Dim mysqlcomando As MySqlCommand
-        Dim consulta As String
-
-        consulta = "select Nversion from Versiones where Sistema = 'SATI'"
-        mysqlcomando = New MySqlCommand
-        mysqlcomando.Connection = conexionsql
-        mysqlcomando.CommandText = consulta
         Dim versionAct As String
-        versionAct = mysqlcomando.ExecuteScalar
+        Try
+            conexionsql = New MySqlConnection()
+            conexionsql.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=Versiones"
+            conexionsql.Open()
+
+            Dim mysqlcomando As MySqlCommand
+            Dim consulta As String
+
+            consulta = "select Nversion from Versiones where Sistema = 'SATI'"
+            mysqlcomando = New MySqlCommand
+            mysqlcomando.Connection = conexionsql
+            mysqlcomando.CommandText = consulta
+
+            versionAct = mysqlcomando.ExecuteScalar
+            If Application.ProductVersion <> versionAct Then
+                hayActualizaciones = True
 
 
-        conexionsql.Close()
+            End If
 
-        If Application.ProductVersion <> versionAct Then
-            hayActualizaciones = True
+            conexionsql.Close()
+        Catch ex As Exception
+            hayActualizaciones = False
+        End Try
 
 
-        End If
+
     End Sub
 
     Private Sub Backgroundmysql_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles Backgroundmysql.RunWorkerCompleted
