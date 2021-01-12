@@ -151,9 +151,21 @@ Public Class Run
                 ElseIf tempArray(i).Equals("RESIZEimage", StringComparison.InvariantCultureIgnoreCase) Then
                     ComprimirImagenes.Show()
                     Exit For
+                    Me.Close()
                 ElseIf tempArray(i).Equals("mysql", StringComparison.InvariantCultureIgnoreCase) Then
                     mysql.Show()
+                    Me.Close()
                     Exit For
+
+                ElseIf tempArray(i).Equals("Notificacion", StringComparison.InvariantCultureIgnoreCase) Then
+                    CrearNotificacion.Show()
+                    Me.Close()
+                    Exit For
+                ElseIf tempArray(i).Equals("Sesiones", StringComparison.InvariantCultureIgnoreCase) Then
+                    SesionesActivas.Show()
+                    Me.Close()
+                    Exit For
+
                 Else
 
 

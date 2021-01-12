@@ -17,7 +17,9 @@ Public Class frm_adm
     Public cerrandoEmpresa As Boolean
     Dim hayActualizacion As Boolean
     Dim actualizar As Boolean
+    Public array As ArrayList = New ArrayList
     Friend conexionsql As MySqlConnection
+    Public CantNotificaciones As Integer = 0
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         Timer1.Interval = 150
 
@@ -64,13 +66,17 @@ Public Class frm_adm
                         perfilalt.TopMost = False
 
                         'Application.ExitThread()
+                        Me.Invoke(Sub()
+                                      Empresas.Show()
+                                  End Sub
+                            )
 
-                        Empresas.Show()
                         'System.Threading.Thread.Sleep(1000)
                         ' System.Threading.Thread.Sleep(1000)
                         'cerrarSesion = False
                         cerrarEmpresa = False
                         cerrandoEmpresa = True
+                        cerrandoSesion = True
                         'cerrandoSesion = True
                         ' Dim i As Integer = 0
                         'i = Application.OpenForms.Count
@@ -83,19 +89,10 @@ Public Class frm_adm
                         'End If
                         'Next
 
-                        Dim num_controles As Integer = Application.OpenForms.Count - 1
-                        For n As Integer = num_controles To 0 Step -1
-                            Dim ctrl As Form = Application.OpenForms.Item(n)
-                            If ctrl.Name <> "Empresas" Or ctrl.Name <> Me.Name Then
-                                'MessageBox.Show(ctrl.Name)
-                                ctrl.Close()
-                            End If
 
-                            ' ctrl.Dispose()
-                        Next
                         'MessageBox.Show("hola")
-                        Empresas.Show()
-                        Me.Close()
+
+                        'Me.Close()
 
                     Else
                         cerrarEmpresa = False
@@ -106,7 +103,7 @@ Public Class frm_adm
 
                 Else
                     If cerrandoEmpresa Then
-                        MessageBox.Show("hola")
+
                         'Me.Close()
 
 
@@ -116,7 +113,18 @@ Public Class frm_adm
 
                             If MessageBox.Show("¿Está seguro que desea cerrar sesión?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                                 perfilalt.TopMost = False
-
+                                Dim conexionSesion As MySqlConnection
+                                conexionSesion = New MySqlConnection()
+                                conexionSesion.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+                                conexionSesion.Open()
+                                Dim comandoActSesion As MySqlCommand
+                                Dim consultaActSesion As String
+                                consultaActSesion = "update Sesiones set Activo = 0 where id = '" & idSesion & "'"
+                                comandoActSesion = New MySqlCommand
+                                comandoActSesion.Connection = conexionSesion
+                                comandoActSesion.CommandText = consultaActSesion
+                                comandoActSesion.ExecuteNonQuery()
+                                conexionSesion.Close()
                                 'Application.ExitThread()
                                 login.Show()
                                 cerrarSesion = False
@@ -157,7 +165,18 @@ Public Class frm_adm
                                 'MessageBox.Show("hola")
                                 If MessageBox.Show("¿Está seguro que desea salir?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                                     perfilalt.TopMost = False
-
+                                    Dim conexionSesion As MySqlConnection
+                                    conexionSesion = New MySqlConnection()
+                                    conexionSesion.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+                                    conexionSesion.Open()
+                                    Dim comandoActSesion As MySqlCommand
+                                    Dim consultaActSesion As String
+                                    consultaActSesion = "update Sesiones set Activo = 0 where id = '" & idSesion & "'"
+                                    comandoActSesion = New MySqlCommand
+                                    comandoActSesion.Connection = conexionSesion
+                                    comandoActSesion.CommandText = consultaActSesion
+                                    comandoActSesion.ExecuteNonQuery()
+                                    conexionSesion.Close()
                                     Application.ExitThread()
 
 
@@ -176,7 +195,7 @@ Public Class frm_adm
             End If
 
         Catch ex As Exception
-
+            MessageBox.Show(ex.Message)
         End Try
 
 
@@ -200,7 +219,12 @@ Public Class frm_adm
         TimerActualizacion.Interval = 60000
         TimerActualizacion.Enabled = True
         TimerActualizacion.Start()
-
+        TimerNotificaciones.Interval = 60000
+        TimerNotificaciones.Enabled = True
+        TimerNotificaciones.Start()
+        TimerActSesion.Interval = 60000
+        TimerActSesion.Enabled = True
+        TimerActSesion.Start()
         DoubleBuffered = True
 
         TimerLiberar.Enabled = True
@@ -912,8 +936,11 @@ Public Class frm_adm
     End Sub
 
     Private Sub TimerActualizacion_Tick(sender As Object, e As EventArgs) Handles TimerActualizacion.Tick
+        If BackgroundActualizacion.IsBusy = True Then
+        Else
+            BackgroundActualizacion.RunWorkerAsync()
+        End If
 
-        BackgroundActualizacion.RunWorkerAsync()
 
     End Sub
 
@@ -934,7 +961,371 @@ Public Class frm_adm
 
     End Sub
 
-    Private Sub frm_adm_MaximizedBoundsChanged(sender As Object, e As EventArgs) Handles Me.MaximizedBoundsChanged
+
+
+    Private Sub BackgroundNotificaciones_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundNotificaciones.DoWork
+        'Try
+
+
+
+        Dim conexionNotificaciones As MySqlConnection
+            conexionNotificaciones = New MySqlConnection()
+            conexionNotificaciones.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+            conexionNotificaciones.Open()
+
+            Dim mysqlcomando As MySqlCommand
+            Dim consulta As String
+            Dim readerNotificacion As MySqlDataReader
+
+            consulta = "select * from Notificaciones where UsuarioDestino = '" & nmusr & "' and Aplicado = 0 and idSesion='" & idSesion & "'"
+            mysqlcomando = New MySqlCommand
+            mysqlcomando.Connection = conexionNotificaciones
+            mysqlcomando.CommandText = consulta
+            readerNotificacion = mysqlcomando.ExecuteReader
+            Dim existe As Boolean
+            While readerNotificacion.Read
+                Dim Nnotificacion As New Notificaciones
+                Nnotificacion.id = readerNotificacion("id")
+                Nnotificacion.Tipo = readerNotificacion("tipo")
+                Nnotificacion.Usuario = readerNotificacion("Usuario")
+                Nnotificacion.UsuarioDestino = readerNotificacion("usuariodestino")
+                Nnotificacion.Notificacion = readerNotificacion("notificacion")
+                Nnotificacion.Mensaje = readerNotificacion("Mensaje")
+                Nnotificacion.Fecha = readerNotificacion("Fecha")
+                Nnotificacion.Hora = readerNotificacion("Hora")
+                For a As Integer = array.Count - 1 To 0 Step -1
+                    If array(a).id = Nnotificacion.id Then
+                        existe = True
+                        MessageBox.Show("existe")
+                        Exit For
+                    Else
+                        MessageBox.Show("No existe")
+                        existe = False
+
+                    End If
+
+                Next
+                If existe = False Then
+                    array.Add(Nnotificacion)
+                End If
+
+            End While
+            readerNotificacion.Close()
+
+            Dim mysqlcomandoConNotificacion As MySqlCommand
+            Dim consultaConNotificacion As String
+            Dim readerConNotificacion As MySqlDataReader
+
+            consultaConNotificacion = "select * from Notificaciones where UsuarioDestino = '" & nmusr & "' and Notificacion = 1 and Aplicado = 0 "
+            mysqlcomandoConNotificacion = New MySqlCommand
+            mysqlcomandoConNotificacion.Connection = conexionNotificaciones
+            mysqlcomandoConNotificacion.CommandText = consultaConNotificacion
+            readerConNotificacion = mysqlcomandoConNotificacion.ExecuteReader
+            Dim existeConNotificacion As Boolean
+            While readerConNotificacion.Read
+                Dim Nnotificacion As New Notificaciones
+                Nnotificacion.id = readerConNotificacion("id")
+                Nnotificacion.Tipo = readerConNotificacion("tipo")
+                Nnotificacion.Usuario = readerConNotificacion("Usuario")
+                Nnotificacion.UsuarioDestino = readerConNotificacion("usuariodestino")
+                Nnotificacion.Notificacion = readerConNotificacion("notificacion")
+                Nnotificacion.Mensaje = readerConNotificacion("Mensaje")
+                Nnotificacion.Fecha = readerConNotificacion("Fecha")
+            Nnotificacion.Hora = readerConNotificacion("Hora").ToString
+            Nnotificacion.Valor = readerConNotificacion("valor")
+            For a As Integer = array.Count - 1 To 0 Step -1
+                    If array(a).id = Nnotificacion.id Then
+                        existeConNotificacion = True
+
+                        Exit For
+                    Else
+
+                        existeConNotificacion = False
+
+                    End If
+
+                Next
+                If existeConNotificacion = False Then
+                    CantNotificaciones += 1
+                    array.Add(Nnotificacion)
+                End If
+
+            End While
+            readerConNotificacion.Close()
+
+
+            Dim mysqlcomandoConNotificacionAplicado As MySqlCommand
+            Dim consultaConNotificacionAplicado As String
+            Dim readerConNotificacionAplicado As MySqlDataReader
+
+            consultaConNotificacionAplicado = "select * from Notificaciones where Usuario = '" & nmusr & "' and Notificacion = 1 and Aplicado = 1 and Visto = 0"
+            mysqlcomandoConNotificacionAplicado = New MySqlCommand
+            mysqlcomandoConNotificacionAplicado.Connection = conexionNotificaciones
+            mysqlcomandoConNotificacionAplicado.CommandText = consultaConNotificacionAplicado
+            readerConNotificacionAplicado = mysqlcomandoConNotificacionAplicado.ExecuteReader
+            Dim existeConNotificacionAplicado As Boolean
+            While readerConNotificacionAplicado.Read
+                Dim Nnotificacion As New Notificaciones
+                Nnotificacion.id = readerConNotificacionAplicado("id")
+                Nnotificacion.Tipo = readerConNotificacionAplicado("tipo")
+                Nnotificacion.Usuario = readerConNotificacionAplicado("Usuario")
+                Nnotificacion.UsuarioDestino = readerConNotificacionAplicado("usuariodestino")
+                Nnotificacion.Notificacion = readerConNotificacionAplicado("notificacion")
+                Nnotificacion.Mensaje = readerConNotificacionAplicado("Mensaje")
+                For a As Integer = array.Count - 1 To 0 Step -1
+                    If array(a).id = Nnotificacion.id Then
+                        existeConNotificacionAplicado = True
+
+                        Exit For
+                    Else
+
+                        existeConNotificacionAplicado = False
+
+                    End If
+
+                Next
+                If existeConNotificacion = False Then
+                    CantNotificaciones += 1
+                    array.Add(Nnotificacion)
+                End If
+
+            End While
+            readerConNotificacionAplicado.Close()
+
+
+
+
+
+            notificaciones.Text = "Tienes " & CantNotificaciones & " notificaciones"
+            ' conexionNotificaciones.Close()
+
+            For a As Integer = array.Count - 1 To 0 Step -1
+
+
+                If array(a).Notificacion = "0" Then
+                    If array(a).Tipo = "Logout" Then
+                        Dim comandoActNotificacion As MySqlCommand
+                        Dim consultaActNotificacion As String
+                        comandoActNotificacion = New MySqlCommand
+                        consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
+                        comandoActNotificacion.Connection = conexionNotificaciones
+                        comandoActNotificacion.CommandText = consultaActNotificacion
+                        comandoActNotificacion.ExecuteNonQuery()
+                        If array(a).Mensaje <> "" Then
+
+                            Me.Invoke(Sub()
+                                          Dim nAlertas As New Alertas
+                                          nAlertas.cadena = array(a).Mensaje
+                                          nAlertas.ShowDialog()
+                                          nAlertas.TopMost = True
+                                      End Sub)
+                        End If
+                        Me.actualizar = True
+                        Dim num_controles As Integer = Application.OpenForms.Count - 1
+                        For n As Integer = num_controles To 0 Step -1
+                            Dim ctrl As Form = Application.OpenForms.Item(n)
+                            If ctrl.Name <> "login" And ctrl.Name <> Me.Name Then
+                                ctrl.Close()
+                            End If
+
+                            'ctrl.Dispose()
+                        Next
+                        Me.Invoke(Sub()
+                                      login.Show()
+                                  End Sub)
+
+
+                        Me.Close()
+                    End If
+                    If array(a).Tipo = "Message" Then
+                        Dim comandoActNotificacion As MySqlCommand
+                        Dim consultaActNotificacion As String
+                        comandoActNotificacion = New MySqlCommand
+                        consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
+                        comandoActNotificacion.Connection = conexionNotificaciones
+                        comandoActNotificacion.CommandText = consultaActNotificacion
+                        comandoActNotificacion.ExecuteNonQuery()
+
+                        Me.Invoke(Sub()
+                                      Dim nAlertas As New Alertas
+
+
+                                      nAlertas.cadena = array(a).Mensaje
+                                      array.RemoveAt(a)
+                                      nAlertas.ShowDialog()
+                                      nAlertas.TopMost = True
+
+                                  End Sub)
+
+
+                    End If
+                    If array(a).Tipo = "CargarPermisos" Then
+                        If array(a).Mensaje <> "" Then
+
+                            Me.Invoke(Sub()
+                                          Dim nAlertas As New Alertas
+                                          nAlertas.cadena = array(a).Mensaje
+                                          nAlertas.ShowDialog()
+                                          nAlertas.TopMost = True
+                                      End Sub)
+                        End If
+                        cargarperfil()
+                        Dim comandoActNotificacion As MySqlCommand
+                        Dim consultaActNotificacion As String
+                        comandoActNotificacion = New MySqlCommand
+                        consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
+                        comandoActNotificacion.Connection = conexionNotificaciones
+                        comandoActNotificacion.CommandText = consultaActNotificacion
+                        comandoActNotificacion.ExecuteNonQuery()
+                        array.RemoveAt(a)
+                    End If
+                    If array(a).Tipo = "Update" Then
+                        If array(a).Mensaje <> "" Then
+
+                            Me.Invoke(Sub()
+                                          Dim nAlertas As New Alertas
+                                          nAlertas.cadena = array(a).Mensaje
+                                          nAlertas.ShowDialog()
+                                          nAlertas.TopMost = True
+                                      End Sub)
+                        End If
+
+                        Dim comandoActNotificacion As MySqlCommand
+                        Dim consultaActNotificacion As String
+                        comandoActNotificacion = New MySqlCommand
+                        consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
+                        comandoActNotificacion.Connection = conexionNotificaciones
+                        comandoActNotificacion.CommandText = consultaActNotificacion
+                        comandoActNotificacion.ExecuteNonQuery()
+                        actualizar = True
+
+                        Dim ruta As String = "C:\ConfiaAdmin\Updater\Updater.exe"
+                        Dim Proceso As Process = New Process
+                        Proceso.StartInfo.FileName = ruta
+                        Proceso.StartInfo.Arguments = "/S SATI /T " & TipoEquipo
+                        Proceso.Start()
+
+                        Application.Exit()
+                    End If
+                    If array(a).Tipo = "UpdateUpdater" Then
+                        If array(a).Mensaje <> "" Then
+
+                            Dim nAlertas As New Alertas
+                            nAlertas.cadena = array(a).Mensaje
+                            nAlertas.ShowDialog()
+                            nAlertas.TopMost = True
+                        End If
+
+                        Dim comandoActNotificacion As MySqlCommand
+                        Dim consultaActNotificacion As String
+                        comandoActNotificacion = New MySqlCommand
+                        consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
+                        comandoActNotificacion.Connection = conexionNotificaciones
+                        comandoActNotificacion.CommandText = consultaActNotificacion
+                        comandoActNotificacion.ExecuteNonQuery()
+                        Me.Invoke(Sub()
+                                      ActualizadorUpdater.Show()
+                                  End Sub)
+
+                        array.RemoveAt(a)
+                    End If
+                End If
+
+
+
+            Next
+
+            '  Catch ex As Exception
+
+        '   End Try
+    End Sub
+
+    Private Sub TimerNotificaciones_Tick(sender As Object, e As EventArgs) Handles TimerNotificaciones.Tick
+        If BackgroundNotificaciones.IsBusy = True Then
+        Else
+            BackgroundNotificaciones.RunWorkerAsync()
+        End If
+
+
+    End Sub
+
+    Private Sub BackgroundActSesion_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundActSesion.DoWork
+        Try
+            Dim conexionSesion As MySqlConnection
+            conexionSesion = New MySqlConnection()
+            conexionSesion.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+            conexionSesion.Open()
+
+            Dim mysqlcomando As MySqlCommand
+            Dim consulta As String
+            Dim sesionActiva As Boolean
+
+            consulta = "select Activo from Sesiones where Usuario = '" & nmusr & "' and id='" & idSesion & "'"
+            mysqlcomando = New MySqlCommand
+            mysqlcomando.Connection = conexionSesion
+            mysqlcomando.CommandText = consulta
+            sesionActiva = mysqlcomando.ExecuteScalar
+
+            If sesionActiva Then
+                Dim comandoActSesion As MySqlCommand
+                Dim consultaActSesion As String
+                consultaActSesion = "update Sesiones set UltimoAcceso = '" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' where id = '" & idSesion & "'"
+                comandoActSesion = New MySqlCommand
+                comandoActSesion.Connection = conexionSesion
+                comandoActSesion.CommandText = consultaActSesion
+                comandoActSesion.ExecuteNonQuery()
+                conexionSesion.Close()
+            Else
+                Me.Invoke(Sub()
+
+                              Dim nAlertas As New Alertas
+                              nAlertas.cadena = "Han pasado más de 5 minutos sin conexión, la sesión se cerrará"
+
+                              nAlertas.ShowDialog()
+                              nAlertas.TopMost = True
+                          End Sub)
+
+                Me.actualizar = True
+
+                ' login.Show()
+                Dim num_controles As Integer = Application.OpenForms.Count - 1
+                For n As Integer = num_controles To 0 Step -1
+                    Dim ctrl As Form = Application.OpenForms.Item(n)
+                    If ctrl.Name <> "login" And ctrl.Name <> Me.Name Then
+                        ctrl.Close()
+                    End If
+
+                    'ctrl.Dispose()
+                Next
+                Me.Invoke(Sub()
+                              login.Show()
+                          End Sub)
+                Me.Close()
+
+
+            End If
+
+        Catch ex As Exception
+
+        End Try
+
+
+    End Sub
+
+    Private Sub TimerActSesion_Tick(sender As Object, e As EventArgs) Handles TimerActSesion.Tick
+        If BackgroundActSesion.IsBusy Then
+        Else
+            BackgroundActSesion.RunWorkerAsync()
+
+        End If
+    End Sub
+
+    Private Sub frm_adm_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+
+    End Sub
+
+    Private Sub notificaciones_Click(sender As Object, e As EventArgs) Handles notificaciones.Click
+        CentroDeNotificaciones.Show()
 
     End Sub
 End Class

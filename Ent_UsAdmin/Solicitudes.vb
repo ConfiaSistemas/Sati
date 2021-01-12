@@ -285,4 +285,8 @@ Public Class Solicitudes
         BackgroundExcel.RunWorkerAsync()
 
     End Sub
+
+    Private Sub dtimpuestos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtimpuestos.CellContentClick
+
+    End Sub
 End Class

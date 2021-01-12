@@ -54,7 +54,15 @@ case when pendiente = 0 then '0' else
 (pendiente - (MultasVencidas - (AbonadoMultasV)))end
 else(pendiente - (Multas - (AbonadoMultasL+AbonadoMultasV))) end as VencidoNormal,
 case when FechaDeAtraso = 'Nunca' then
-	'Nunca abonado'
+	case when CarteraTotal.Estado = 'C' then
+	DATEDIFF(day,(select fechapago from calendarioconveniossac inner join ConveniosSac on CalendarioConveniosSac.idConvenio = ConveniosSac.id where ConveniosSac.idCredito = CarteraTotal.id and Npago = 1),GETDATE())
+	when CarteraTotal.Estado = 'R' then
+		DATEDIFF(day,(select fechapago from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.idConvenio = ReestructurasSac.id where ReestructurasSac.idCredito = CarteraTotal.id and Npago = 1),GETDATE())
+
+	else
+		DATEDIFF(day,(select fechapago from CalendarioNormal  where CalendarioNormal.id_Credito = CarteraTotal.id and Npago = 1),GETDATE())
+
+	end
 else (case when carteratotal.Estado = 'C' then
 	datediff(day,fechadeatraso,GETDATE())
 	when carteratotal.Estado = 'R' then
@@ -103,7 +111,7 @@ case when Cartera.Estado = 'C' then
 (select SUM(interes) as MultasVencidas from CalendarioConvenios inner join Convenios on CalendarioConvenios.Id_Convenio = Convenios.id where CalendarioConvenios.Estado ='V' and Convenios.id_credito = Cartera.id)
 else '0' end as MultasVencidas
 ,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado,Cartera.IdGestor from
-(select credito.nombre,Credito.id,Credito.idgestor,Credito.IdPromotor,credito.Estado, Credito.Tipo from Credito inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito where Credito.Estado <> 'L' and Credito.id = " & idCredito & "  group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado, Credito.Tipo) Cartera inner join
+(select credito.nombre,Credito.id,Credito.idgestor,Credito.IdPromotor,credito.Estado, Credito.Tipo from Credito inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito where Credito.Estado <> 'L' and Credito.id = '" & idCredito & "'  group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado, Credito.Tipo) Cartera inner join
 (select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join
 (select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal order by nombre asc"
         comandoCreditoLegal = New SqlCommand
