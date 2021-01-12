@@ -109,6 +109,7 @@ Partial Class InformacionLegal
         Me.MonoFlat_HeaderLabel9 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.lblgastos = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.MonoFlat_HeaderLabel11 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.lblMultas = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -1023,6 +1024,17 @@ Partial Class InformacionLegal
         Me.MonoFlat_HeaderLabel11.TabIndex = 159
         Me.MonoFlat_HeaderLabel11.Text = "Gastos"
         '
+        'lblMultas
+        '
+        Me.lblMultas.AutoSize = True
+        Me.lblMultas.BackColor = System.Drawing.Color.Transparent
+        Me.lblMultas.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblMultas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.lblMultas.Location = New System.Drawing.Point(11, 233)
+        Me.lblMultas.Name = "lblMultas"
+        Me.lblMultas.Size = New System.Drawing.Size(13, 20)
+        Me.lblMultas.TabIndex = 162
+        Me.lblMultas.Text = "."
         'InformacionLegal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1031,6 +1043,7 @@ Partial Class InformacionLegal
         Me.AutoScrollMargin = New System.Drawing.Size(10, 10)
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1096, 781)
+        Me.Controls.Add(Me.lblMultas)
         Me.Controls.Add(Me.lblgastos)
         Me.Controls.Add(Me.MonoFlat_HeaderLabel11)
         Me.Controls.Add(Me.lblConvenio)
@@ -1155,4 +1168,5 @@ Partial Class InformacionLegal
     Friend WithEvents MonoFlat_HeaderLabel9 As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents lblgastos As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents MonoFlat_HeaderLabel11 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents lblMultas As MonoFlat.MonoFlat_HeaderLabel
 End Class
