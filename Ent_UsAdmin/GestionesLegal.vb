@@ -1,6 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
-'texto de prueba
+'texto de prueb
 Public Class GestionesLegal
     Public idLegal As Integer
     Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
