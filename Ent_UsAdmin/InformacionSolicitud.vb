@@ -407,6 +407,7 @@ end
 
     Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click
         AgregarGestionCredito.idCredito = idCredito
+        AgregarGestionCredito.frmNombre = Me.Text
         AgregarGestionCredito.Show()
     End Sub
 

@@ -4,6 +4,7 @@ Imports System.Data.SqlClient
 Public Class AgregarGestionCredito
 
     Public idCredito As String
+    Public frmNombre As String
 
     Private Sub AgregarGestionLegal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -34,10 +35,19 @@ Public Class AgregarGestionCredito
     End Sub
 
     Private Sub BackgroundGestion_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundGestion.RunWorkerCompleted
-        Me.Invoke(Sub()
-                      InformacionSolicitud.BackgroundClientes.RunWorkerAsync()
 
-                  End Sub)
+        For Each frm As Form In Application.OpenForms
+            If frm.Text = frmNombre Then
+                Dim frmn As InformacionSolicitud
+                frmn = frm
+
+                Me.Invoke(Sub()
+
+                              frmn.BackgroundGestiones.RunWorkerAsync()
+
+                          End Sub)
+            End If
+        Next
         Cargando.Close()
         Me.Close()
 
