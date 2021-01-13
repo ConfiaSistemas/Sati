@@ -9,7 +9,9 @@
     Private _Comentario As String
     Private _Fecha As String
     Private _Hora As String
-
+    Private _HoraAplicacion As String
+    Private _FechaAplicacion As String
+    Private _Estado As String
     Public Property id As Integer
         Get
             Return _id
@@ -100,5 +102,34 @@
             _Hora = value
         End Set
     End Property
+
+
+    Public Property FechaAplicacion As String
+        Get
+            Return _FechaAplicacion
+        End Get
+        Set(value As String)
+            _FechaAplicacion = value
+        End Set
+    End Property
+
+    Public Property HoraAplicacion As String
+        Get
+            Return _HoraAplicacion
+        End Get
+        Set(value As String)
+            _HoraAplicacion = value
+        End Set
+    End Property
+
+    Public Property Estado As String
+        Get
+            Return _Estado
+        End Get
+        Set(value As String)
+            _Estado = value
+        End Set
+    End Property
+
 
 End Class

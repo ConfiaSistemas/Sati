@@ -15,120 +15,241 @@ Public Class CentroDeNotificaciones
         DoubleBuffered = True
 
         For Each n As Notificaciones In frm_adm.array
-            Dim botonNotificacion As New Panel
-            botonNotificacion.BackColor = Color.FromArgb(48, 55, 76)
-            '   botonNotificacion.Iconimage = My.Resources.notificacion
-            botonNotificacion.Size = New Size(792, 146)
-            botonNotificacion.Text = ""
-            botonNotificacion.Cursor = Cursors.Hand
-            botonNotificacion.Name = n.id
-            botonNotificacion.Tag = n.Valor
-
-            AddHandler botonNotificacion.MouseEnter, AddressOf Panel_MouseHover
-            AddHandler botonNotificacion.MouseLeave, AddressOf Panel_MouseLeave
-            AddHandler botonNotificacion.Click, AddressOf Panel_Click
-
-            FlowLayoutPanel1.PerformLayout()
-            Me.Invoke(Sub()
-                          FlowLayoutPanel1.Controls.Add(botonNotificacion)
-                      End Sub)
+            If n.Estado <> "" Then
+                Dim botonNotificacion As New Panel
+                botonNotificacion.BackColor = Color.FromArgb(48, 55, 76)
+                '   botonNotificacion.Iconimage = My.Resources.notificacion
+                botonNotificacion.Size = New Size(792, 146)
+                botonNotificacion.Text = ""
+                botonNotificacion.Cursor = Cursors.Hand
+                botonNotificacion.Name = n.id
+                botonNotificacion.Tag = n.Valor
 
 
+                AddHandler botonNotificacion.MouseEnter, AddressOf Panel_MouseHover
+                AddHandler botonNotificacion.MouseLeave, AddressOf Panel_MouseLeave
+                AddHandler botonNotificacion.Click, AddressOf Panel_Click
 
-            Dim lblFecha As New MonoFlat_HeaderLabel
-
-            lblFecha.Location = New Point(158, 14)
-            lblFecha.Text = n.Fecha
-
-            lblFecha.AutoSize = True
-
-            lblFecha.BringToFront()
-            ' lblFecha.BackColor = Color.White
-            lblFecha.ForeColor = Color.FromArgb(255, 255, 255)
-            Me.Invoke(Sub()
-                          botonNotificacion.Controls.Add(lblFecha)
-                      End Sub)
-
-
-            Dim lblHora As New MonoFlat_HeaderLabel
-
-            lblHora.Location = New Point(413, 14)
-            lblHora.Text = n.Hora
-
-            lblHora.AutoSize = True
-            lblHora.BringToFront()
-            ' lblFecha.BackColor = Color.White
-            lblHora.ForeColor = Color.FromArgb(255, 255, 255)
-            Me.Invoke(Sub()
-                          botonNotificacion.Controls.Add(lblHora)
-                      End Sub)
+                FlowLayoutPanel1.PerformLayout()
+                Me.Invoke(Sub()
+                              FlowLayoutPanel1.Controls.Add(botonNotificacion)
+                          End Sub)
 
 
 
+                Dim lblFecha As New MonoFlat_HeaderLabel
 
-            Dim lblLabelTipo As MonoFlat_HeaderLabel
-            lblLabelTipo = New MonoFlat_HeaderLabel
+                lblFecha.Location = New Point(158, 14)
+                lblFecha.Text = n.FechaAplicacion
 
-            lblLabelTipo.Parent = botonNotificacion
-            lblLabelTipo.Location = New Point(158, 72)
-            lblLabelTipo.Text = "Tipo:"
-            lblLabelTipo.AutoSize = True
+                lblFecha.AutoSize = True
 
-            lblLabelTipo.BringToFront()
-            ' lblFecha.BackColor = Color.White
-            lblLabelTipo.ForeColor = Color.FromArgb(255, 255, 255)
+                lblFecha.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                lblFecha.ForeColor = Color.FromArgb(255, 255, 255)
+                Me.Invoke(Sub()
+                              botonNotificacion.Controls.Add(lblFecha)
+                          End Sub)
 
-            botonNotificacion.Controls.Add(lblLabelTipo)
+
+                Dim lblHora As New MonoFlat_HeaderLabel
+
+                lblHora.Location = New Point(413, 14)
+                lblHora.Text = n.HoraAplicacion
+
+                lblHora.AutoSize = True
+                lblHora.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                lblHora.ForeColor = Color.FromArgb(255, 255, 255)
+                Me.Invoke(Sub()
+                              botonNotificacion.Controls.Add(lblHora)
+                          End Sub)
 
 
 
 
+                Dim lblLabelTipo As MonoFlat_HeaderLabel
+                lblLabelTipo = New MonoFlat_HeaderLabel
 
-            Dim lblTipo As New MonoFlat_HeaderLabel
+                lblLabelTipo.Parent = botonNotificacion
+                lblLabelTipo.Location = New Point(158, 72)
+                lblLabelTipo.Text = "Respuesta de tu solicitud de " & n.Tipo
+                lblLabelTipo.AutoSize = True
 
-            lblTipo.Location = New Point(218, 72)
-            lblTipo.Text = n.Tipo
-            lblTipo.AutoSize = True
-            lblTipo.Name = "Tipo"
-            lblTipo.BringToFront()
-            ' lblFecha.BackColor = Color.White
-            lblTipo.ForeColor = Color.FromArgb(255, 255, 255)
-            Me.Invoke(Sub()
-                          botonNotificacion.Controls.Add(lblTipo)
-                      End Sub)
+                lblLabelTipo.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                lblLabelTipo.ForeColor = Color.FromArgb(255, 255, 255)
 
-
-
-
-            Dim lblLabelUsuario As New MonoFlat_HeaderLabel
-
-            lblLabelUsuario.Location = New Point(413, 72)
-            lblLabelUsuario.Text = "Usuario:"
-            lblLabelUsuario.AutoSize = True
-
-            lblLabelUsuario.BringToFront()
-            ' lblFecha.BackColor = Color.White
-            lblLabelUsuario.ForeColor = Color.FromArgb(255, 255, 255)
-            Me.Invoke(Sub()
-                          botonNotificacion.Controls.Add(lblLabelUsuario)
-                      End Sub)
+                botonNotificacion.Controls.Add(lblLabelTipo)
 
 
 
 
-            Dim lblUsuario As New MonoFlat_HeaderLabel
 
-            lblUsuario.Location = New Point(497, 72)
-            lblUsuario.Text = n.Usuario
-            lblUsuario.AutoSize = True
+                Dim lblTipo As New MonoFlat_HeaderLabel
 
-            lblUsuario.BringToFront()
-            ' lblFecha.BackColor = Color.White
-            lblUsuario.ForeColor = Color.FromArgb(255, 255, 255)
-            Me.Invoke(Sub()
-                          botonNotificacion.Controls.Add(lblUsuario)
-                      End Sub)
+                lblTipo.Location = New Point(218, 72)
+                lblTipo.Text = "Respuesta"
+                lblTipo.AutoSize = True
+                lblTipo.Name = "Tipo"
+                lblTipo.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                lblTipo.ForeColor = Color.FromArgb(255, 255, 255)
+                Me.Invoke(Sub()
+                              botonNotificacion.Controls.Add(lblTipo)
+                          End Sub)
 
+
+
+
+                'Dim lblLabelUsuario As New MonoFlat_HeaderLabel
+
+                'lblLabelUsuario.Location = New Point(413, 72)
+                'lblLabelUsuario.Text = "Usuario:"
+                'lblLabelUsuario.AutoSize = True
+
+                'lblLabelUsuario.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                'lblLabelUsuario.ForeColor = Color.FromArgb(255, 255, 255)
+                'Me.Invoke(Sub()
+                'botonNotificacion.Controls.Add(lblLabelUsuario)
+                'End Sub)
+
+
+
+
+                ' Dim lblUsuario As New MonoFlat_HeaderLabel
+
+                'lblUsuario.Location = New Point(497, 72)
+                'lblUsuario.Text = n.UsuarioDestino
+                'lblUsuario.AutoSize = True
+
+                'lblUsuario.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                'lblUsuario.ForeColor = Color.FromArgb(255, 255, 255)
+                'Me.Invoke(Sub()
+                'botonNotificacion.Controls.Add(lblUsuario)
+                'End Sub)
+
+
+            Else
+                Dim botonNotificacion As New Panel
+                botonNotificacion.BackColor = Color.FromArgb(48, 55, 76)
+                '   botonNotificacion.Iconimage = My.Resources.notificacion
+                botonNotificacion.Size = New Size(792, 146)
+                botonNotificacion.Text = ""
+                botonNotificacion.Cursor = Cursors.Hand
+                botonNotificacion.Name = n.id
+                botonNotificacion.Tag = n.Valor
+
+                AddHandler botonNotificacion.MouseEnter, AddressOf Panel_MouseHover
+                AddHandler botonNotificacion.MouseLeave, AddressOf Panel_MouseLeave
+                AddHandler botonNotificacion.Click, AddressOf Panel_Click
+
+                FlowLayoutPanel1.PerformLayout()
+                Me.Invoke(Sub()
+                              FlowLayoutPanel1.Controls.Add(botonNotificacion)
+                          End Sub)
+
+
+
+                Dim lblFecha As New MonoFlat_HeaderLabel
+
+                lblFecha.Location = New Point(158, 14)
+                lblFecha.Text = n.Fecha
+
+                lblFecha.AutoSize = True
+
+                lblFecha.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                lblFecha.ForeColor = Color.FromArgb(255, 255, 255)
+                Me.Invoke(Sub()
+                              botonNotificacion.Controls.Add(lblFecha)
+                          End Sub)
+
+
+                Dim lblHora As New MonoFlat_HeaderLabel
+
+                lblHora.Location = New Point(413, 14)
+                lblHora.Text = n.Hora
+
+                lblHora.AutoSize = True
+                lblHora.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                lblHora.ForeColor = Color.FromArgb(255, 255, 255)
+                Me.Invoke(Sub()
+                              botonNotificacion.Controls.Add(lblHora)
+                          End Sub)
+
+
+
+
+                Dim lblLabelTipo As MonoFlat_HeaderLabel
+                lblLabelTipo = New MonoFlat_HeaderLabel
+
+                lblLabelTipo.Parent = botonNotificacion
+                lblLabelTipo.Location = New Point(158, 72)
+                lblLabelTipo.Text = "El usuario " & n.Usuario & " solicita " & n.Tipo
+                lblLabelTipo.AutoSize = True
+
+                lblLabelTipo.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                lblLabelTipo.ForeColor = Color.FromArgb(255, 255, 255)
+
+                botonNotificacion.Controls.Add(lblLabelTipo)
+
+
+
+
+
+                Dim lblTipo As New MonoFlat_HeaderLabel
+
+                lblTipo.Location = New Point(218, 72)
+                lblTipo.Text = n.Tipo
+                lblTipo.AutoSize = True
+                lblTipo.Name = "Tipo"
+                lblTipo.BringToFront()
+                lblTipo.Visible = False
+                lblTipo.BackColor = Color.White
+                'lblTipo.ForeColor = Color.FromArgb(255, 255, 255)
+                Me.Invoke(Sub()
+                              botonNotificacion.Controls.Add(lblTipo)
+                          End Sub)
+
+
+
+
+                'Dim lblLabelUsuario As New MonoFlat_HeaderLabel
+
+                'lblLabelUsuario.Location = New Point(413, 72)
+                'lblLabelUsuario.Text = "Usuario:"
+                'lblLabelUsuario.AutoSize = True
+
+                'lblLabelUsuario.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                'lblLabelUsuario.ForeColor = Color.FromArgb(255, 255, 255)
+                'Me.Invoke(Sub()
+                'botonNotificacion.Controls.Add(lblLabelUsuario)
+                'End Sub)
+
+
+
+
+                'Dim lblUsuario As New MonoFlat_HeaderLabel
+
+                'lblUsuario.Location = New Point(497, 72)
+                'lblUsuario.Text = n.Usuario
+                'lblUsuario.AutoSize = True
+
+                'lblUsuario.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                'lblUsuario.ForeColor = Color.FromArgb(255, 255, 255)
+                'Me.Invoke(Sub()
+                'botonNotificacion.Controls.Add(lblUsuario)
+                'End Sub)
+
+
+            End If
 
         Next
     End Sub
@@ -159,9 +280,40 @@ Public Class CentroDeNotificaciones
                         Exit For
                     End If
                 End If
+
+
+
             End If
 
+
+            For a As Integer = frm_adm.array.Count - 1 To 0 Step -1
+
+                If sender.name = frm_adm.array(a).id Then
+                    If frm_adm.array(a).Estado <> "" Then
+                        Me.Invoke(Sub()
+                                      Dim nAlertas As New Alertas
+                                      If frm_adm.array(a).Estado = "R" Then
+                                          nAlertas.cadena = "El usuario la rechazó y agregó el comentario " & frm_adm.array(a).Comentario
+                                      Else
+                                          nAlertas.cadena = "El usuario la autorizó y agregó el comentario " & frm_adm.array(a).Comentario
+                                      End If
+                                      frm_adm.array.RemoveAt(a)
+                                      nAlertas.ShowDialog()
+                                      nAlertas.TopMost = True
+                                      Dim ctr As Control = sender
+                                      Me.FlowLayoutPanel1.Controls.Remove(ctr)
+                                      frm_adm.CantNotificaciones -= 1
+                                      frm_adm.notificaciones.Text = "Tienes " & frm_adm.array.Count & " notificaciones"
+                                      frm_adm.notificaciones.Refresh()
+                                  End Sub)
+                        Exit For
+                    End If
+                End If
+            Next
+
         Next
+
+
 
 
     End Sub

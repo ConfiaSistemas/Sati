@@ -15,6 +15,7 @@ Public Class CancelarTicket
     Dim estadoNotificacion As String
     Dim tipoDoc As String
     Dim nCargando As Cargando
+    Dim conectado As Boolean
     Private Sub CancelarTicket_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtComentario.BackColor = Me.BackColor
         nCargando = New Cargando
@@ -45,7 +46,7 @@ Public Class CancelarTicket
                 nombreRemoto = readerComentarioMysql("Empresa")
             End While
         End If
-
+        readerComentarioMysql.Close()
 
         Dim comandoEmpresaMysql As MySqlCommand
         Dim consultaEmpresaMysql As String
@@ -72,9 +73,22 @@ Public Class CancelarTicket
         conexionLogin.Close()
 
         If ProbarConexionEmpresa(ipLocalTicket, bdTicket) Then
+            conectado = True
             cnsEmpresaMysql = iniciarconexionRMysql(ipLocalTicket, bdTicket)
         Else
-            cnsEmpresaMysql = iniciarconexionRMysql(ipRemotoTicket, bdTicket)
+            conectado = ProbarConexionEmpresa(ipRemotoTicket, bdTicket)
+            If conectado = True Then
+                cnsEmpresaMysql = iniciarconexionRMysql(ipRemotoTicket, bdTicket)
+            Else
+
+            End If
+
+        End If
+
+
+        If conectado Then
+        Else
+
         End If
 
         Dim conex As SqlConnection
@@ -222,7 +236,11 @@ when 'Reestructura' then
         AutorizacionNotificacion.tipoAutorizacion = "SacCancelarTicket"
         AutorizacionNotificacion.ShowDialog()
         If Autorizado Then
-
+            estadoNotificacion = "A"
+            nCargando = New Cargando
+            nCargando.Show()
+            nCargando.MonoFlat_Label1.Text = "Actualizando notificación"
+            BackgroundActNotificacion.RunWorkerAsync()
         Else
             MessageBox.Show("No fue autorizado")
         End If
@@ -232,7 +250,11 @@ when 'Reestructura' then
         AutorizacionNotificacion.tipoAutorizacion = "SacCancelarTicket"
         AutorizacionNotificacion.ShowDialog()
         If Autorizado Then
-
+            estadoNotificacion = "R"
+            nCargando = New Cargando
+            nCargando.Show()
+            nCargando.MonoFlat_Label1.Text = "Actualizando notificación"
+            BackgroundActNotificacion.RunWorkerAsync()
         Else
             MessageBox.Show("No fue autorizado")
         End If
@@ -245,31 +267,45 @@ when 'Reestructura' then
         conexionLogin.Open()
 
         If ProbarConexionEmpresa(ipLocalTicket, bdTicket) Then
+            conectado = True
             cnsEmpresaMysql = iniciarconexionRMysql(ipLocalTicket, bdTicket)
         Else
-            cnsEmpresaMysql = iniciarconexionRMysql(ipRemotoTicket, bdTicket)
-        End If
+            conectado = ProbarConexionEmpresa(ipRemotoTicket, bdTicket)
+            If conectado Then
+                cnsEmpresaMysql = iniciarconexionRMysql(ipRemotoTicket, bdTicket)
+            Else
 
+            End If
+
+        End If
         Dim conex As SqlConnection
-        conex = New SqlConnection(cnsEmpresaMysql)
-        conex.Open()
+        Try
+
+            conex = New SqlConnection(cnsEmpresaMysql)
+            conex.Open()
+            conectado = True
+        Catch ex As Exception
+            conectado = False
+        End Try
+
 
 
         If estadoNotificacion = "A" Then
-            If tipoDoc = "Refrendo" Then
-                Dim comandoFechaUpagoTicket As SqlCommand
-                Dim fechaUpagoTicket As Date
-                Dim consultaUfechaTicket As String
-                consultaUfechaTicket = "select fecha from ticket where id = '" & idTicket & "'"
-                comandoFechaUpagoTicket = New SqlCommand
-                comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
-                comandoFechaUpagoTicket.Connection = conex
-                fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
+            If conectado Then
+                If tipoDoc = "Refrendo" Then
+                    Dim comandoFechaUpagoTicket As SqlCommand
+                    Dim fechaUpagoTicket As Date
+                    Dim consultaUfechaTicket As String
+                    consultaUfechaTicket = "select fecha from ticket where id = '" & idTicket & "'"
+                    comandoFechaUpagoTicket = New SqlCommand
+                    comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
+                    comandoFechaUpagoTicket.Connection = conex
+                    fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
 
-                Dim fechaPosterior As String
-                Dim comandoFechaPosterior As SqlCommand
-                Dim consultaFechaPosterior As String
-                consultaFechaPosterior = "if exists (select top 1 fecha from ticket where fecha > '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
+                    Dim fechaPosterior As String
+                    Dim comandoFechaPosterior As SqlCommand
+                    Dim consultaFechaPosterior As String
+                    consultaFechaPosterior = "if exists (select top 1 fecha from ticket where fecha > '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
                                            begin
                                            select 'Sí hay' as ss
                                            end
@@ -278,12 +314,59 @@ when 'Reestructura' then
                                            select 'No hay' as ss
                                            end"
 
-                comandoFechaPosterior = New SqlCommand
-                comandoFechaPosterior.Connection = conex
-                comandoFechaPosterior.CommandText = consultaFechaPosterior
-                fechaPosterior = comandoFechaPosterior.ExecuteScalar
+                    comandoFechaPosterior = New SqlCommand
+                    comandoFechaPosterior.Connection = conex
+                    comandoFechaPosterior.CommandText = consultaFechaPosterior
+                    fechaPosterior = comandoFechaPosterior.ExecuteScalar
 
-                If fechaPosterior = "No hay" Then
+                    If fechaPosterior = "No hay" Then
+                        Dim fechaUpago As Date
+                        Dim comandoFechaUpago As SqlCommand
+                        Dim consultaFechaUpago As String
+                        consultaFechaUpago = "if exists (select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
+                                           begin
+                                           select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc
+                                           end
+                                           else 
+                                           begin
+                                           select '1900-01-01' as fecha
+                                           end"
+                        comandoFechaUpago = New SqlCommand
+                        comandoFechaUpago.Connection = conex
+                        comandoFechaUpago.CommandText = consultaFechaUpago
+                        fechaUpago = comandoFechaUpago.ExecuteScalar
+
+                        Dim comandoConsultaTicketDetalle As SqlCommand
+                        Dim consultaTicketDetalle As String
+                        Dim readerTicketDetalle As SqlDataReader
+                        consultaTicketDetalle = "CancelarTicket"
+                        comandoConsultaTicketDetalle = New SqlCommand
+                        comandoConsultaTicketDetalle.Connection = conex
+                        comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
+                        comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
+                        comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", idTicket)
+                        comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", tipoDoc)
+                        comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
+                        comandoConsultaTicketDetalle.ExecuteNonQuery()
+                    Else
+                        MessageBox.Show("No se puede cancelar éste ticket, existen tickets activos con fechas posteriores")
+                    End If
+
+
+
+                ElseIf tipoDoc = "Desempeño" Then
+                    Dim comandoFechaUpagoTicket As SqlCommand
+                    Dim fechaUpagoTicket As Date
+                    Dim consultaUfechaTicket As String
+                    consultaUfechaTicket = "select fecha from ticket where id = '" & idTicket & "'"
+                    comandoFechaUpagoTicket = New SqlCommand
+                    comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
+                    comandoFechaUpagoTicket.Connection = conex
+                    fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
+
+
+
+
                     Dim fechaUpago As Date
                     Dim comandoFechaUpago As SqlCommand
                     Dim consultaFechaUpago As String
@@ -312,69 +395,22 @@ when 'Reestructura' then
                     comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", tipoDoc)
                     comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
                     comandoConsultaTicketDetalle.ExecuteNonQuery()
-                Else
-                    MessageBox.Show("No se puede cancelar éste ticket, existen tickets activos con fechas posteriores")
-                End If
 
 
+                ElseIf tipoDoc = "Comisión por avalúo" Then
+                    Dim comandoFechaUpagoTicket As SqlCommand
+                    Dim fechaUpagoTicket As Date
+                    Dim consultaUfechaTicket As String
+                    consultaUfechaTicket = "select fecha from ticket where id = '" & idTicket & "'"
+                    comandoFechaUpagoTicket = New SqlCommand
+                    comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
+                    comandoFechaUpagoTicket.Connection = conex
+                    fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
 
-            ElseIf tipoDoc = "Desempeño" Then
-                Dim comandoFechaUpagoTicket As SqlCommand
-                Dim fechaUpagoTicket As Date
-                Dim consultaUfechaTicket As String
-                consultaUfechaTicket = "select fecha from ticket where id = '" & idTicket & "'"
-                comandoFechaUpagoTicket = New SqlCommand
-                comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
-                comandoFechaUpagoTicket.Connection = conex
-                fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
-
-
-
-
-                Dim fechaUpago As Date
-                Dim comandoFechaUpago As SqlCommand
-                Dim consultaFechaUpago As String
-                consultaFechaUpago = "if exists (select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
-                                           begin
-                                           select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc
-                                           end
-                                           else 
-                                           begin
-                                           select '1900-01-01' as fecha
-                                           end"
-                comandoFechaUpago = New SqlCommand
-                comandoFechaUpago.Connection = conex
-                comandoFechaUpago.CommandText = consultaFechaUpago
-                fechaUpago = comandoFechaUpago.ExecuteScalar
-
-                Dim comandoConsultaTicketDetalle As SqlCommand
-                Dim consultaTicketDetalle As String
-                Dim readerTicketDetalle As SqlDataReader
-                consultaTicketDetalle = "CancelarTicket"
-                comandoConsultaTicketDetalle = New SqlCommand
-                comandoConsultaTicketDetalle.Connection = conex
-                comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
-                comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
-                comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", idTicket)
-                comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", tipoDoc)
-                comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
-                comandoConsultaTicketDetalle.ExecuteNonQuery()
-
-
-            ElseIf tipoDoc = "Comisión por avalúo" Then
-                Dim comandoFechaUpagoTicket As SqlCommand
-                Dim fechaUpagoTicket As Date
-                Dim consultaUfechaTicket As String
-                consultaUfechaTicket = "select fecha from ticket where id = '" & idTicket & "'"
-                comandoFechaUpagoTicket = New SqlCommand
-                comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
-                comandoFechaUpagoTicket.Connection = conex
-                fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
-
-                Dim fechaPosterior As String
-                Dim comandoFechaPosterior As SqlCommand
-                Dim consultaFechaPosterior As String
-                consultaFechaPosterior = "if exists (select top 1 fecha from ticket where fecha >= '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
+                    Dim fechaPosterior As String
+                    Dim comandoFechaPosterior As SqlCommand
+                    Dim consultaFechaPosterior As String
+                    consultaFechaPosterior = "if exists (select top 1 fecha from ticket where fecha >= '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
                                            begin
                                            select 'Sí hay' as ss
                                            end
@@ -383,16 +419,16 @@ when 'Reestructura' then
                                            select 'No hay' as ss
                                            end"
 
-                comandoFechaPosterior = New SqlCommand
-                comandoFechaPosterior.Connection = conex
-                comandoFechaPosterior.CommandText = consultaFechaPosterior
-                fechaPosterior = comandoFechaPosterior.ExecuteScalar
+                    comandoFechaPosterior = New SqlCommand
+                    comandoFechaPosterior.Connection = conex
+                    comandoFechaPosterior.CommandText = consultaFechaPosterior
+                    fechaPosterior = comandoFechaPosterior.ExecuteScalar
 
-                If fechaPosterior = "No hay" Then
-                    Dim fechaUpago As Date
-                    Dim comandoFechaUpago As SqlCommand
-                    Dim consultaFechaUpago As String
-                    consultaFechaUpago = "if exists (select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
+                    If fechaPosterior = "No hay" Then
+                        Dim fechaUpago As Date
+                        Dim comandoFechaUpago As SqlCommand
+                        Dim consultaFechaUpago As String
+                        consultaFechaUpago = "if exists (select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc)
                                            begin
                                            select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Refrendo') order by fecha desc
                                            end
@@ -400,40 +436,40 @@ when 'Reestructura' then
                                            begin
                                            select '1900-01-01' as fecha
                                            end"
-                    comandoFechaUpago = New SqlCommand
-                    comandoFechaUpago.Connection = conex
-                    comandoFechaUpago.CommandText = consultaFechaUpago
-                    fechaUpago = comandoFechaUpago.ExecuteScalar
+                        comandoFechaUpago = New SqlCommand
+                        comandoFechaUpago.Connection = conex
+                        comandoFechaUpago.CommandText = consultaFechaUpago
+                        fechaUpago = comandoFechaUpago.ExecuteScalar
 
-                    Dim comandoConsultaTicketDetalle As SqlCommand
-                    Dim consultaTicketDetalle As String
-                    Dim readerTicketDetalle As SqlDataReader
-                    consultaTicketDetalle = "CancelarTicket"
-                    comandoConsultaTicketDetalle = New SqlCommand
-                    comandoConsultaTicketDetalle.Connection = conex
-                    comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
-                    comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
-                    comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", idTicket)
-                    comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", tipoDoc)
-                    comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
-                    comandoConsultaTicketDetalle.ExecuteNonQuery()
-                Else
-                    MessageBox.Show("No se puede cancelar éste ticket, existen tickets activos con fechas posteriores")
-                End If
-            ElseIf tipoDoc = "Promesa de pago" Then
-                Dim comandoFechaUpagoTicket As SqlCommand
-                Dim fechaUpagoTicket As Date
-                Dim consultaUfechaTicket As String
-                consultaUfechaTicket = "select fecha from ticket where id = '" & idTicket & "'"
-                comandoFechaUpagoTicket = New SqlCommand
-                comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
-                comandoFechaUpagoTicket.Connection = conex
-                fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
+                        Dim comandoConsultaTicketDetalle As SqlCommand
+                        Dim consultaTicketDetalle As String
+                        Dim readerTicketDetalle As SqlDataReader
+                        consultaTicketDetalle = "CancelarTicket"
+                        comandoConsultaTicketDetalle = New SqlCommand
+                        comandoConsultaTicketDetalle.Connection = conex
+                        comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
+                        comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
+                        comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", idTicket)
+                        comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", tipoDoc)
+                        comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
+                        comandoConsultaTicketDetalle.ExecuteNonQuery()
+                    Else
+                        MessageBox.Show("No se puede cancelar éste ticket, existen tickets activos con fechas posteriores")
+                    End If
+                ElseIf tipoDoc = "Promesa de pago" Then
+                    Dim comandoFechaUpagoTicket As SqlCommand
+                    Dim fechaUpagoTicket As Date
+                    Dim consultaUfechaTicket As String
+                    consultaUfechaTicket = "select fecha from ticket where id = '" & idTicket & "'"
+                    comandoFechaUpagoTicket = New SqlCommand
+                    comandoFechaUpagoTicket.CommandText = consultaUfechaTicket
+                    comandoFechaUpagoTicket.Connection = conex
+                    fechaUpagoTicket = comandoFechaUpagoTicket.ExecuteScalar
 
-                Dim fechaPosterior As String
-                Dim comandoFechaPosterior As SqlCommand
-                Dim consultaFechaPosterior As String
-                consultaFechaPosterior = "if exists (select top 1 fecha from ticket where fecha > '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Promesa de pago') order by fecha desc)
+                    Dim fechaPosterior As String
+                    Dim comandoFechaPosterior As SqlCommand
+                    Dim consultaFechaPosterior As String
+                    consultaFechaPosterior = "if exists (select top 1 fecha from ticket where fecha > '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Promesa de pago') order by fecha desc)
                                            begin
                                            select 'Sí hay' as ss
                                            end
@@ -442,15 +478,15 @@ when 'Reestructura' then
                                            select 'No hay' as ss
                                            end"
 
-                comandoFechaPosterior = New SqlCommand
-                comandoFechaPosterior.Connection = conex
-                comandoFechaPosterior.CommandText = consultaFechaPosterior
-                fechaPosterior = comandoFechaPosterior.ExecuteScalar
-                If fechaPosterior = "No hay" Then
-                    Dim fechaUpago As Date
-                    Dim comandoFechaUpago As SqlCommand
-                    Dim consultaFechaUpago As String
-                    consultaFechaUpago = "if exists (select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Promesa de pago') order by fecha desc)
+                    comandoFechaPosterior = New SqlCommand
+                    comandoFechaPosterior.Connection = conex
+                    comandoFechaPosterior.CommandText = consultaFechaPosterior
+                    fechaPosterior = comandoFechaPosterior.ExecuteScalar
+                    If fechaPosterior = "No hay" Then
+                        Dim fechaUpago As Date
+                        Dim comandoFechaUpago As SqlCommand
+                        Dim consultaFechaUpago As String
+                        consultaFechaUpago = "if exists (select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Promesa de pago') order by fecha desc)
                                            begin
                                            select top 1 fecha from ticket where fecha < '" & fechaUpagoTicket.Date.ToString("yyyy-MM-dd") & "' and estado = 'A' and tipodoc = (select id from tipodoc where nombre = 'Promesa de pago') order by fecha desc
                                            end
@@ -458,10 +494,30 @@ when 'Reestructura' then
                                            begin
                                            select '1900-01-01' as fecha
                                            end"
-                    comandoFechaUpago = New SqlCommand
-                    comandoFechaUpago.Connection = conex
-                    comandoFechaUpago.CommandText = consultaFechaUpago
-                    fechaUpago = comandoFechaUpago.ExecuteScalar
+                        comandoFechaUpago = New SqlCommand
+                        comandoFechaUpago.Connection = conex
+                        comandoFechaUpago.CommandText = consultaFechaUpago
+                        fechaUpago = comandoFechaUpago.ExecuteScalar
+
+                        Dim comandoConsultaTicketDetalle As SqlCommand
+                        Dim consultaTicketDetalle As String
+                        Dim readerTicketDetalle As SqlDataReader
+                        consultaTicketDetalle = "CancelarTicket"
+                        comandoConsultaTicketDetalle = New SqlCommand
+                        comandoConsultaTicketDetalle.Connection = conex
+                        comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
+                        comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
+                        comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", idTicket)
+                        comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", tipoDoc)
+                        comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
+                        comandoConsultaTicketDetalle.ExecuteNonQuery()
+                    Else
+                        MessageBox.Show("No se puede cancelar éste ticket, existen tickets activos con fechas posteriores")
+                    End If
+
+                Else
+
+
 
                     Dim comandoConsultaTicketDetalle As SqlCommand
                     Dim consultaTicketDetalle As String
@@ -473,39 +529,60 @@ when 'Reestructura' then
                     comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
                     comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", idTicket)
                     comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", tipoDoc)
-                    comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", fechaUpago.Date.ToString("yyyy-MM-dd"))
+                    comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", "")
                     comandoConsultaTicketDetalle.ExecuteNonQuery()
-                Else
-                    MessageBox.Show("No se puede cancelar éste ticket, existen tickets activos con fechas posteriores")
+
                 End If
+                Dim comandoComentarioMysql As MySqlCommand
+                Dim consultaComentarioMysql As String
+                Dim readerComentarioMysql As MySqlDataReader
+                consultaComentarioMysql = "update Notificaciones set Aplicado=1, FechaAplicacion= '" & Date.Now.ToString("yyyy-MM-dd") & "',HoraAplicacion='" & Date.Now.ToString("HH:mm:ss") & "',ComentarioUsuarioDestino='" & txtAddComentario.Text & "',Estado = '" & estadoNotificacion & "' where id = '" & idNotificacion & "'"
+                comandoComentarioMysql = New MySqlCommand
+                comandoComentarioMysql.Connection = conexionLogin
+                comandoComentarioMysql.CommandText = consultaComentarioMysql
+                comandoComentarioMysql.ExecuteNonQuery()
 
             Else
-
-
-
-                Dim comandoConsultaTicketDetalle As SqlCommand
-                Dim consultaTicketDetalle As String
-                Dim readerTicketDetalle As SqlDataReader
-                consultaTicketDetalle = "CancelarTicket"
-                comandoConsultaTicketDetalle = New SqlCommand
-                comandoConsultaTicketDetalle.Connection = conex
-                comandoConsultaTicketDetalle.CommandText = consultaTicketDetalle
-                comandoConsultaTicketDetalle.CommandType = CommandType.StoredProcedure
-                comandoConsultaTicketDetalle.Parameters.AddWithValue("idTicket", idTicket)
-                comandoConsultaTicketDetalle.Parameters.AddWithValue("Tipo", tipoDoc)
-                comandoConsultaTicketDetalle.Parameters.AddWithValue("FechaUPago", "")
-                comandoConsultaTicketDetalle.ExecuteNonQuery()
-
+                MessageBox.Show("Ha habido un error, inténtelo de nuevo")
             End If
-        Else
 
+        Else
+            Dim comandoComentarioMysql As MySqlCommand
+            Dim consultaComentarioMysql As String
+            Dim readerComentarioMysql As MySqlDataReader
+            consultaComentarioMysql = "update Notificaciones set Aplicado = 1, FechaAplicacion= '" & Date.Now.ToString("yyyy-MM-dd") & "',HoraAplicacion='" & Date.Now.ToString("HH:mm:ss") & "',ComentarioUsuarioDestino='" & txtAddComentario.Text & "',Estado = '" & estadoNotificacion & "' where id = '" & idNotificacion & "'"
+            comandoComentarioMysql = New MySqlCommand
+            comandoComentarioMysql.Connection = conexionLogin
+            comandoComentarioMysql.CommandText = consultaComentarioMysql
+            comandoComentarioMysql.ExecuteNonQuery()
         End If
-        Dim comandoComentarioMysql As MySqlCommand
-        Dim consultaComentarioMysql As String
-        Dim readerComentarioMysql As MySqlDataReader
-        consultaComentarioMysql = "select Comentario,Empresa from Notificaciones where id = '" & idNotificacion & "'"
-        comandoComentarioMysql = New MySqlCommand
-        comandoComentarioMysql.Connection = conexionLogin
-        comandoComentarioMysql.CommandText = consultaComentarioMysql
+
+    End Sub
+
+    Private Sub BackgroundActNotificacion_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundActNotificacion.RunWorkerCompleted
+        For i As Integer = CentroDeNotificaciones.FlowLayoutPanel1.Controls.Count - 1 To 0 Step -1
+            If TypeOf CentroDeNotificaciones.FlowLayoutPanel1.Controls(i) Is Panel Then
+                Dim ctr As Panel = CentroDeNotificaciones.FlowLayoutPanel1.Controls(i)
+                If ctr.Name = idNotificacion Then
+                    Me.Invoke(Sub()
+                                  For a As Integer = frm_adm.array.Count - 1 To 0 Step -1
+                                      If ctr.Name = frm_adm.array(a).id Then
+                                          frm_adm.array.RemoveAt(a)
+                                          frm_adm.CantNotificaciones -= 1
+                                          frm_adm.notificaciones.Text = "Tienes " & frm_adm.array.Count & " notificaciones"
+                                          frm_adm.notificaciones.Refresh()
+
+                                          Exit For
+                                      End If
+                                  Next
+                              End Sub)
+
+                    CentroDeNotificaciones.FlowLayoutPanel1.Controls.RemoveAt(i)
+
+                End If
+            End If
+        Next
+        nCargando.Close()
+
     End Sub
 End Class

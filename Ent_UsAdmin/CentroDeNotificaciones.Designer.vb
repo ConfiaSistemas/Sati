@@ -70,6 +70,7 @@ Partial Class CentroDeNotificaciones
         '
         'FlowLayoutPanel1
         '
+        Me.FlowLayoutPanel1.AutoScroll = True
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(12, 68)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(795, 436)

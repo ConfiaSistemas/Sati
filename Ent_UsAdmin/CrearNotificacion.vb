@@ -27,7 +27,7 @@ Public Class CrearNotificacion
             conexionLogin.Open()
             Dim comandoLogin As MySqlCommand
             Dim consultaLogin As String
-            consultaLogin = "insert into Notificaciones values(null,'" & ComboTipo.Text & "',0,'" & nmusr & "','" & txtUsuario.Text & "','','" & txtMensaje.Text & "','',0,'" & txtIdSesion.Text & "','" & Date.Now.ToString("yyyy-MM-dd") & "','" & Date.Now.ToString("HH:mm:ss") & "'); "
+            consultaLogin = "insert into Notificaciones values(null,'" & ComboTipo.Text & "',0,'" & nmusr & "','" & txtUsuario.Text & "','','" & txtMensaje.Text & "','',0,'" & txtIdSesion.Text & "','" & Date.Now.ToString("yyyy-MM-dd") & "','" & Date.Now.ToString("HH:mm:ss") & "','0','','','','',''); "
             comandoLogin = New MySqlCommand
             comandoLogin.Connection = conexionLogin
             comandoLogin.CommandText = consultaLogin

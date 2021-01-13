@@ -360,7 +360,7 @@ Public Class AutorizacionNotificacion
 
                     txtcontra.Text = ""
                 Else
-                    Tickets.autorizado = False
+                    CancelarTicket.Autorizado = False
                     autorizado = False
 
                     txtcontra.Text = ""
