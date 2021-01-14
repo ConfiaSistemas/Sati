@@ -33,6 +33,8 @@ Partial Class perfilalt
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lbltlf = New System.Windows.Forms.Label()
         Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblSesion = New System.Windows.Forms.Label()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -157,11 +159,31 @@ Partial Class perfilalt
         Me.BunifuThinButton22.TabIndex = 16
         Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'Label3
+        '
+        Me.Label3.Location = New System.Drawing.Point(0, 31)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(61, 24)
+        Me.Label3.TabIndex = 17
+        Me.Label3.Text = "Sesión"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'lblSesion
+        '
+        Me.lblSesion.Location = New System.Drawing.Point(0, 55)
+        Me.lblSesion.Name = "lblSesion"
+        Me.lblSesion.Size = New System.Drawing.Size(61, 24)
+        Me.lblSesion.TabIndex = 18
+        Me.lblSesion.Text = "..."
+        Me.lblSesion.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
         'perfilalt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(299, 538)
+        Me.Controls.Add(Me.lblSesion)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.BunifuThinButton22)
         Me.Controls.Add(Me.lbltlf)
         Me.Controls.Add(Me.Label2)
@@ -191,4 +213,6 @@ Partial Class perfilalt
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents lbltlf As System.Windows.Forms.Label
     Friend WithEvents BunifuThinButton22 As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents Label3 As Label
+    Friend WithEvents lblSesion As Label
 End Class

@@ -16,13 +16,14 @@ Public Class CancelarTicket
     Dim tipoDoc As String
     Dim nCargando As Cargando
     Dim conectado As Boolean
+    Dim aplicado As Boolean
     Private Sub CancelarTicket_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtComentario.BackColor = Me.BackColor
         nCargando = New Cargando
         nCargando.Show()
-        nCargando.MonoFlat_Label1.Text = "Consultando"
+        nCargando.MonoFlat_Label1.Text = "Consultando estado de notificación"
         nCargando.TopMost = True
-        BackgroundWorker1.RunWorkerAsync()
+        BackgroundVerificaNotificacion.RunWorkerAsync()
 
     End Sub
 
@@ -583,6 +584,87 @@ when 'Reestructura' then
             End If
         Next
         nCargando.Close()
+        Me.Close()
 
+    End Sub
+
+    Private Sub BackgroundVerificaNotificacion_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundVerificaNotificacion.DoWork
+        Dim conexionNotificaciones As MySqlConnection
+        conexionNotificaciones = New MySqlConnection()
+        conexionNotificaciones.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+        conexionNotificaciones.Open()
+
+        'Revisar notificaciones no aplicadas
+
+
+        Dim mysqlcomandoexiste As MySqlCommand
+                Dim consultaExiste As String
+
+
+        consultaExiste = "select Aplicado from Notificaciones where id = '" & idNotificacion & "'"
+        mysqlcomandoexiste = New MySqlCommand
+                mysqlcomandoexiste.Connection = conexionNotificaciones
+                mysqlcomandoexiste.CommandText = consultaExiste
+                aplicado = mysqlcomandoexiste.ExecuteScalar
+
+
+
+    End Sub
+
+    Private Sub BackgroundVerificaNotificacion_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundVerificaNotificacion.RunWorkerCompleted
+        If aplicado Then
+            nCargando.Close()
+            Me.Invoke(Sub()
+                          Dim nAlertas As New Alertas
+
+
+                          nAlertas.cadena = "La notificación ya fue eliminada"
+                          For i As Integer = CentroDeNotificaciones.FlowLayoutPanel1.Controls.Count - 1 To 0 Step -1
+                              If TypeOf CentroDeNotificaciones.FlowLayoutPanel1.Controls(i) Is Panel Then
+                                  Dim ctr As Panel = CentroDeNotificaciones.FlowLayoutPanel1.Controls(i)
+                                  If ctr.Name = idNotificacion Then
+                                      Me.Invoke(Sub()
+                                                    For a As Integer = frm_adm.array.Count - 1 To 0 Step -1
+                                                        If ctr.Name = frm_adm.array(a).id Then
+                                                            frm_adm.array.RemoveAt(a)
+                                                            frm_adm.CantNotificaciones -= 1
+                                                            frm_adm.notificaciones.Text = "Tienes " & frm_adm.array.Count & " notificaciones"
+                                                            frm_adm.notificaciones.Refresh()
+
+                                                            Exit For
+                                                        End If
+                                                    Next
+                                                End Sub)
+
+                                      CentroDeNotificaciones.FlowLayoutPanel1.Controls.RemoveAt(i)
+
+                                  End If
+                              End If
+                          Next
+
+
+
+                          ' frm_adm.array.RemoveAt(a)
+                          nAlertas.ShowDialog()
+                          nAlertas.TopMost = True
+                      End Sub)
+
+
+            Me.Close()
+        Else
+
+            BackgroundWorker1.RunWorkerAsync()
+
+        End If
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
+        If e.Button = MouseButtons.Left Then
+            MoveForm(Me)
+        End If
     End Sub
 End Class

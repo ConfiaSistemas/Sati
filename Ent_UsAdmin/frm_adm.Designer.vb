@@ -219,7 +219,7 @@ Partial Class frm_adm
         Me.notificaciones.ShowCloseButton = False
         Me.notificaciones.Size = New System.Drawing.Size(157, 52)
         Me.notificaciones.TabIndex = 3
-        Me.notificaciones.Text = "MonoFlat_NotificationBox1"
+        Me.notificaciones.Text = "."
         '
         'Panelconfiguracion
         '

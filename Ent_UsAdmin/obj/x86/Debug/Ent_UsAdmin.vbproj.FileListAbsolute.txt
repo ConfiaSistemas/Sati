@@ -417,3 +417,4 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Mi
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\MySql.Data.xml
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AutorizacionNotificacion.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.GestionesLegal.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacionCancelarTicket.resources

@@ -12,6 +12,7 @@
     Private _HoraAplicacion As String
     Private _FechaAplicacion As String
     Private _Estado As String
+    Private _ComentarioUsuarioDestino As String
     Public Property id As Integer
         Get
             Return _id
@@ -131,5 +132,14 @@
         End Set
     End Property
 
+
+    Public Property ComentarioUsuarioDestino As String
+        Get
+            Return _ComentarioUsuarioDestino
+        End Get
+        Set(value As String)
+            _ComentarioUsuarioDestino = value
+        End Set
+    End Property
 
 End Class

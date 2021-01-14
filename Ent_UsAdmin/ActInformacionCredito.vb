@@ -188,4 +188,6 @@ Public Class ActInformacionCredito
         Next
         Return retorno
     End Function
+
+
 End Class

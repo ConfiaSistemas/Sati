@@ -1,4 +1,5 @@
 ﻿Imports ConfiaAdmin.MonoFlat
+Imports MySql.Data.MySqlClient
 
 Public Class CentroDeNotificaciones
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
@@ -291,12 +292,33 @@ Public Class CentroDeNotificaciones
                 If sender.name = frm_adm.array(a).id Then
                     If frm_adm.array(a).Estado <> "" Then
                         Me.Invoke(Sub()
+                                      Dim conexionNotificaciones As MySqlConnection
+                                      conexionNotificaciones = New MySqlConnection()
+                                      conexionNotificaciones.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+                                      conexionNotificaciones.Open()
+                                      Dim comandoActNotificacion As MySqlCommand
+                                      Dim consultaActNotificacion As String
+                                      comandoActNotificacion = New MySqlCommand
+                                      consultaActNotificacion = "update Notificaciones set Visto = 1 where id = '" & frm_adm.array(a).id & "'"
+                                      comandoActNotificacion.Connection = conexionNotificaciones
+                                      comandoActNotificacion.CommandText = consultaActNotificacion
+                                      comandoActNotificacion.ExecuteNonQuery()
                                       Dim nAlertas As New Alertas
                                       If frm_adm.array(a).Estado = "R" Then
-                                          nAlertas.cadena = "El usuario la rechazó y agregó el comentario " & frm_adm.array(a).Comentario
+                                          If frm_adm.array(a).comentarioUsuarioDestino <> "" Then
+                                              nAlertas.cadena = "El usuario rechazó su solicitud de " & frm_adm.array(a).tipo & " con valor " & frm_adm.array(a).valor & " y agregó el comentario " & frm_adm.array(a).Comentariousuariodestino
+                                          Else
+                                              nAlertas.cadena = "El usuario rechazó su solicitud de " & frm_adm.array(a).tipo & " con valor " & frm_adm.array(a).valor & " sin dejar comentario"
+                                          End If
+
                                       Else
-                                          nAlertas.cadena = "El usuario la autorizó y agregó el comentario " & frm_adm.array(a).Comentario
+                                          If frm_adm.array(a).comentarioUsuarioDestino <> "" Then
+                                              nAlertas.cadena = "El usuario autorizó su solicitud de " & frm_adm.array(a).tipo & " con valor " & frm_adm.array(a).valor & " y agregó el comentario " & frm_adm.array(a).Comentariousuariodestino
+                                          Else
+                                              nAlertas.cadena = "El usuario autorizó su solicitud de " & frm_adm.array(a).tipo & " con valor " & frm_adm.array(a).valor & " sin dejar comentario"
+                                          End If
                                       End If
+
                                       frm_adm.array.RemoveAt(a)
                                       nAlertas.ShowDialog()
                                       nAlertas.TopMost = True

@@ -50,8 +50,11 @@ Public Class SesionesActivas
             Else
                 consulta = "select  id,Usuario as Usuario,Empresa,Fecha,Hora,UltimoAcceso,Sistema  from Sesiones where Activo = 1 and usuario like '%" & txtnombre.Text & "%'"
                 consultar = True
-                Cargando.Show()
-                Cargando.MonoFlat_Label1.Text = "Consultando"
+                ncargando = New Cargando
+                ncargando.MonoFlat_Label1.Text = "Consultando"
+                ncargando.Show()
+                ncargando.TopMost = True
+
                 If BackgroundWorker1.IsBusy = True Then
                 Else
                     BackgroundWorker1.RunWorkerAsync()
@@ -72,9 +75,7 @@ Public Class SesionesActivas
         End If
     End Sub
 
-    Private Sub txtnombre_OnValueChanged(sender As Object, e As EventArgs) Handles txtnombre.OnValueChanged
 
-    End Sub
 
 
 

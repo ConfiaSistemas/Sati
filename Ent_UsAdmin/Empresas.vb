@@ -138,6 +138,10 @@ end"
                                                         IO.File.AppendAllText("C:\ConfiaAdmin\SATI\Log.txt", String.Format("{0}{1}", Environment.NewLine, ex.ToString()))
                                                     End Try
 
+                                                    Me.Invoke(Sub()
+                                                                  frm_adm.BackgroundNotificaciones.RunWorkerAsync()
+
+                                                              End Sub)
 
                                                     conectado = True
                                                 Else

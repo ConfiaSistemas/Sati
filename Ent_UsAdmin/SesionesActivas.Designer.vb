@@ -74,7 +74,7 @@ Partial Class SesionesActivas
         Me.dtdatos.ReadOnly = True
         Me.dtdatos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.dtdatos.RowHeadersVisible = False
-        Me.dtdatos.Size = New System.Drawing.Size(427, 303)
+        Me.dtdatos.Size = New System.Drawing.Size(556, 303)
         Me.dtdatos.TabIndex = 25
         '
         'Panel1
@@ -86,7 +86,7 @@ Partial Class SesionesActivas
         Me.Panel1.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.Panel1.Location = New System.Drawing.Point(3, 1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(429, 36)
+        Me.Panel1.Size = New System.Drawing.Size(558, 36)
         Me.Panel1.TabIndex = 26
         '
         'EvolveControlBox1
@@ -95,7 +95,7 @@ Partial Class SesionesActivas
         Me.EvolveControlBox1.Customization = ""
         Me.EvolveControlBox1.Font = New System.Drawing.Font("Verdana", 8.0!)
         Me.EvolveControlBox1.Image = Nothing
-        Me.EvolveControlBox1.Location = New System.Drawing.Point(388, 4)
+        Me.EvolveControlBox1.Location = New System.Drawing.Point(514, 4)
         Me.EvolveControlBox1.MaxButton = False
         Me.EvolveControlBox1.MinButton = False
         Me.EvolveControlBox1.Name = "EvolveControlBox1"
@@ -169,7 +169,7 @@ Partial Class SesionesActivas
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(433, 463)
+        Me.ClientSize = New System.Drawing.Size(562, 463)
         Me.Controls.Add(Me.txtnombre)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)

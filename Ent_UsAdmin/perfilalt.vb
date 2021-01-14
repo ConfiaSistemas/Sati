@@ -35,6 +35,11 @@
         If nmusr <> "" Then
             lblnm.Text = nmusr
         End If
+
+        If idSesion <> "" Then
+            lblSesion.Text = idSesion
+        End If
+
     End Sub
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click

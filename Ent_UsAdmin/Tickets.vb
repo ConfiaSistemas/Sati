@@ -247,15 +247,28 @@ Public Class Tickets
     End Sub
 
     Private Sub CancelarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CancelarToolStripMenuItem.Click
-        Autorizacion.tipoAutorizacion = "SacCancelarTicket"
-        Autorizacion.ShowDialog()
-        If autorizado Then
-            Cargando.Show()
-            Cargando.MonoFlat_Label1.Text = "Cancelando Ticket"
-            BackgroundCancelar.RunWorkerAsync()
-        Else
-            MessageBox.Show("No fue autorizado")
-        End If
+        For Each row As DataRow In dataPermisos.Rows
+            If row("SacCancelarTicket") Then
+                Autorizacion.tipoAutorizacion = "SacCancelarTicket"
+                Autorizacion.ShowDialog()
+                If autorizado Then
+                    Cargando.Show()
+                    Cargando.MonoFlat_Label1.Text = "Cancelando Ticket"
+                    BackgroundCancelar.RunWorkerAsync()
+                Else
+                    MessageBox.Show("No fue autorizado")
+                End If
+                Exit For
+            Else
+                If MessageBox.Show("¿No cuenta con los permisos, desea notificar a un usuario?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                    CrearNotificacionCancelarTicket.idTicket = dtdatos.Rows(dtdatos.CurrentRow.Index).Cells(0).Value
+                    CrearNotificacionCancelarTicket.Show()
+
+                End If
+            End If
+        Next
+
+
 
 
     End Sub

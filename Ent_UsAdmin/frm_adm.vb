@@ -216,10 +216,11 @@ Public Class frm_adm
     Private sqlDependency As SqlDependency
     Private Sub frm_login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+
         TimerActualizacion.Interval = 60000
         TimerActualizacion.Enabled = True
         TimerActualizacion.Start()
-        TimerNotificaciones.Interval = 60000
+        TimerNotificaciones.Interval = 10000
         TimerNotificaciones.Enabled = True
         TimerNotificaciones.Start()
         TimerActSesion.Interval = 60000
@@ -272,7 +273,8 @@ Public Class frm_adm
             imgperfil.Image = bitmapimgusr
         End If
 
-        notificaciones.Text = "Tiene n notificaciones"
+        notificaciones.Text = "Tienes " & array.Count & " notificaciones"
+        notificaciones.Refresh()
 
         Timer1.Enabled = True
         Timer2.Enabled = True
@@ -964,343 +966,352 @@ Public Class frm_adm
 
 
     Private Sub BackgroundNotificaciones_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundNotificaciones.DoWork
-        'Try
+        Try
 
 
 
-        Dim conexionNotificaciones As MySqlConnection
-        conexionNotificaciones = New MySqlConnection()
-        conexionNotificaciones.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
-        conexionNotificaciones.Open()
+            Dim conexionNotificaciones As MySqlConnection
+            conexionNotificaciones = New MySqlConnection()
+            conexionNotificaciones.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+            conexionNotificaciones.Open()
 
-        'Revisar notificaciones no aplicadas
+            'Revisar notificaciones no aplicadas
 
-        For a As Integer = array.Count - 1 To 0 Step -1
-            If array(a).estado = "" Then
-                Dim mysqlcomandoexiste As MySqlCommand
-                Dim consultaExiste As String
-                Dim aplicado As Boolean
-
-                consultaExiste = "select Aplicado from Notificaciones where id = '" & array(a).id & "'"
-                mysqlcomandoexiste = New MySqlCommand
-                mysqlcomandoexiste.Connection = conexionNotificaciones
-                mysqlcomandoexiste.CommandText = consultaExiste
-                aplicado = mysqlcomandoexiste.ExecuteScalar
-                If aplicado Then
-                    array.RemoveAt(a)
-
-                End If
-
-            End If
-        Next
-
-
-        'Revisar notificaciones aplicadas
-
-        For a As Integer = array.Count - 1 To 0 Step -1
-            If array(a).estado <> "" Then
-                Dim mysqlcomandoexiste As MySqlCommand
-                Dim consultaExiste As String
-                Dim Visto As Boolean
-
-                consultaExiste = "select Visto from Notificaciones where id = '" & array(a).id & "'"
-                mysqlcomandoexiste = New MySqlCommand
-                mysqlcomandoexiste.Connection = conexionNotificaciones
-                mysqlcomandoexiste.CommandText = consultaExiste
-                Visto = mysqlcomandoexiste.ExecuteScalar
-                If Visto Then
-                    array.RemoveAt(a)
-
-                End If
-
-            End If
-        Next
-
-
-
-
-
-        Dim mysqlcomando As MySqlCommand
-        Dim consulta As String
-        Dim readerNotificacion As MySqlDataReader
-
-        consulta = "select * from Notificaciones where UsuarioDestino = '" & nmusr & "' and Aplicado = 0 and idSesion='" & idSesion & "'"
-        mysqlcomando = New MySqlCommand
-        mysqlcomando.Connection = conexionNotificaciones
-        mysqlcomando.CommandText = consulta
-        readerNotificacion = mysqlcomando.ExecuteReader
-        Dim existe As Boolean
-        While readerNotificacion.Read
-            Dim Nnotificacion As New Notificaciones
-            Nnotificacion.id = readerNotificacion("id")
-            Nnotificacion.Tipo = readerNotificacion("tipo")
-            Nnotificacion.Usuario = readerNotificacion("Usuario")
-            Nnotificacion.UsuarioDestino = readerNotificacion("usuariodestino")
-            Nnotificacion.Notificacion = readerNotificacion("notificacion")
-            Nnotificacion.Mensaje = readerNotificacion("Mensaje")
-            Nnotificacion.Fecha = readerNotificacion("Fecha")
-            Nnotificacion.Hora = readerNotificacion("Hora").ToString
             For a As Integer = array.Count - 1 To 0 Step -1
-                If array(a).id = Nnotificacion.id Then
-                    existe = True
-                    MessageBox.Show("existe")
-                    Exit For
-                Else
-                    MessageBox.Show("No existe")
-                    existe = False
+                If array(a).estado = "" Then
+                    Dim mysqlcomandoexiste As MySqlCommand
+                    Dim consultaExiste As String
+                    Dim aplicado As Boolean
+
+                    consultaExiste = "select Aplicado from Notificaciones where id = '" & array(a).id & "'"
+                    mysqlcomandoexiste = New MySqlCommand
+                    mysqlcomandoexiste.Connection = conexionNotificaciones
+                    mysqlcomandoexiste.CommandText = consultaExiste
+                    aplicado = mysqlcomandoexiste.ExecuteScalar
+                    If aplicado Then
+                        array.RemoveAt(a)
+
+                    End If
 
                 End If
-
             Next
-            If existe = False Then
-                array.Add(Nnotificacion)
-            End If
-
-        End While
-        readerNotificacion.Close()
 
 
+            'Revisar notificaciones aplicadas
 
-
-
-
-
-
-        Dim mysqlcomandoConNotificacion As MySqlCommand
-        Dim consultaConNotificacion As String
-        Dim readerConNotificacion As MySqlDataReader
-
-        consultaConNotificacion = "select * from Notificaciones where UsuarioDestino = '" & nmusr & "' and Notificacion = 1 and Aplicado = 0 "
-        mysqlcomandoConNotificacion = New MySqlCommand
-        mysqlcomandoConNotificacion.Connection = conexionNotificaciones
-        mysqlcomandoConNotificacion.CommandText = consultaConNotificacion
-        readerConNotificacion = mysqlcomandoConNotificacion.ExecuteReader
-        Dim existeConNotificacion As Boolean
-        While readerConNotificacion.Read
-            Dim Nnotificacion As New Notificaciones
-            Nnotificacion.id = readerConNotificacion("id")
-            Nnotificacion.Tipo = readerConNotificacion("tipo")
-            Nnotificacion.Usuario = readerConNotificacion("Usuario")
-            Nnotificacion.UsuarioDestino = readerConNotificacion("usuariodestino")
-            Nnotificacion.Notificacion = readerConNotificacion("notificacion")
-            Nnotificacion.Mensaje = readerConNotificacion("Mensaje")
-            Nnotificacion.Fecha = readerConNotificacion("Fecha")
-            Nnotificacion.Hora = readerConNotificacion("Hora").ToString
-            Nnotificacion.Valor = readerConNotificacion("valor")
-            Nnotificacion.Estado = readerConNotificacion("Estado")
             For a As Integer = array.Count - 1 To 0 Step -1
-                If array(a).id = Nnotificacion.id And array(a).estado = Nnotificacion.Estado Then
-                    existeConNotificacion = True
+                If array(a).estado <> "" Then
+                    Dim mysqlcomandoexiste As MySqlCommand
+                    Dim consultaExiste As String
+                    Dim Visto As Boolean
 
-                    Exit For
-                Else
+                    consultaExiste = "select Visto from Notificaciones where id = '" & array(a).id & "'"
+                    mysqlcomandoexiste = New MySqlCommand
+                    mysqlcomandoexiste.Connection = conexionNotificaciones
+                    mysqlcomandoexiste.CommandText = consultaExiste
+                    Visto = mysqlcomandoexiste.ExecuteScalar
+                    If Visto Then
+                        array.RemoveAt(a)
 
-                    existeConNotificacion = False
+                    End If
 
                 End If
-
             Next
-            If existeConNotificacion = False Then
-                CantNotificaciones += 1
-                array.Add(Nnotificacion)
-            End If
-
-        End While
-        readerConNotificacion.Close()
 
 
-        Dim mysqlcomandoConNotificacionAplicado As MySqlCommand
-        Dim consultaConNotificacionAplicado As String
-        Dim readerConNotificacionAplicado As MySqlDataReader
 
-        consultaConNotificacionAplicado = "select * from Notificaciones where Usuario = '" & nmusr & "' and Notificacion = 1 and Aplicado = 1 and Visto = 0"
-        mysqlcomandoConNotificacionAplicado = New MySqlCommand
-        mysqlcomandoConNotificacionAplicado.Connection = conexionNotificaciones
-        mysqlcomandoConNotificacionAplicado.CommandText = consultaConNotificacionAplicado
-        readerConNotificacionAplicado = mysqlcomandoConNotificacionAplicado.ExecuteReader
-        Dim existeConNotificacionAplicado As Boolean
-        While readerConNotificacionAplicado.Read
-            Dim Nnotificacion As New Notificaciones
-            Nnotificacion.id = readerConNotificacionAplicado("id")
-            Nnotificacion.Tipo = readerConNotificacionAplicado("tipo")
-            Nnotificacion.Usuario = readerConNotificacionAplicado("Usuario")
-            Nnotificacion.UsuarioDestino = readerConNotificacionAplicado("usuariodestino")
-            Nnotificacion.Notificacion = readerConNotificacionAplicado("notificacion")
-            Nnotificacion.Mensaje = readerConNotificacionAplicado("Mensaje")
-            Nnotificacion.FechaAplicacion = readerConNotificacionAplicado("FechaAplicacion")
-            Nnotificacion.HoraAplicacion = readerConNotificacionAplicado("HoraAplicacion").ToString
-            Nnotificacion.Estado = readerConNotificacionAplicado("Estado")
+
+
+            Dim mysqlcomando As MySqlCommand
+            Dim consulta As String
+            Dim readerNotificacion As MySqlDataReader
+
+            consulta = "select * from Notificaciones where UsuarioDestino = '" & nmusr & "' and Aplicado = 0 and idSesion='" & idSesion & "'"
+            mysqlcomando = New MySqlCommand
+            mysqlcomando.Connection = conexionNotificaciones
+            mysqlcomando.CommandText = consulta
+            readerNotificacion = mysqlcomando.ExecuteReader
+            Dim existe As Boolean
+            While readerNotificacion.Read
+                Dim Nnotificacion As New Notificaciones
+                Nnotificacion.id = readerNotificacion("id")
+                Nnotificacion.Tipo = readerNotificacion("tipo")
+                Nnotificacion.Usuario = readerNotificacion("Usuario")
+                Nnotificacion.UsuarioDestino = readerNotificacion("usuariodestino")
+                Nnotificacion.Notificacion = readerNotificacion("notificacion")
+                Nnotificacion.Mensaje = readerNotificacion("Mensaje")
+                Nnotificacion.Fecha = readerNotificacion("Fecha")
+                Nnotificacion.Hora = readerNotificacion("Hora").ToString
+                For a As Integer = array.Count - 1 To 0 Step -1
+                    If array(a).id = Nnotificacion.id Then
+                        existe = True
+                        MessageBox.Show("existe")
+                        Exit For
+                    Else
+                        MessageBox.Show("No existe")
+                        existe = False
+
+                    End If
+
+                Next
+                If existe = False Then
+                    array.Add(Nnotificacion)
+                End If
+
+            End While
+            readerNotificacion.Close()
+
+
+
+
+
+
+
+
+            Dim mysqlcomandoConNotificacion As MySqlCommand
+            Dim consultaConNotificacion As String
+            Dim readerConNotificacion As MySqlDataReader
+
+            consultaConNotificacion = "select * from Notificaciones where UsuarioDestino = '" & nmusr & "' and Notificacion = 1 and Aplicado = 0 "
+            mysqlcomandoConNotificacion = New MySqlCommand
+            mysqlcomandoConNotificacion.Connection = conexionNotificaciones
+            mysqlcomandoConNotificacion.CommandText = consultaConNotificacion
+            readerConNotificacion = mysqlcomandoConNotificacion.ExecuteReader
+            Dim existeConNotificacion As Boolean
+            While readerConNotificacion.Read
+                Dim Nnotificacion As New Notificaciones
+                Nnotificacion.id = readerConNotificacion("id")
+                Nnotificacion.Tipo = readerConNotificacion("tipo")
+                Nnotificacion.Usuario = readerConNotificacion("Usuario")
+                Nnotificacion.UsuarioDestino = readerConNotificacion("usuariodestino")
+                Nnotificacion.Notificacion = readerConNotificacion("notificacion")
+                Nnotificacion.Mensaje = readerConNotificacion("Mensaje")
+                Nnotificacion.Fecha = readerConNotificacion("Fecha")
+                Nnotificacion.Hora = readerConNotificacion("Hora").ToString
+                Nnotificacion.Valor = readerConNotificacion("valor")
+                Nnotificacion.Estado = readerConNotificacion("Estado")
+                For a As Integer = array.Count - 1 To 0 Step -1
+                    If array(a).id = Nnotificacion.id And array(a).estado = Nnotificacion.Estado Then
+                        existeConNotificacion = True
+
+                        Exit For
+                    Else
+
+                        existeConNotificacion = False
+
+                    End If
+
+                Next
+                If existeConNotificacion = False Then
+                    CantNotificaciones += 1
+                    array.Add(Nnotificacion)
+                End If
+
+            End While
+            readerConNotificacion.Close()
+
+
+            Dim mysqlcomandoConNotificacionAplicado As MySqlCommand
+            Dim consultaConNotificacionAplicado As String
+            Dim readerConNotificacionAplicado As MySqlDataReader
+
+            consultaConNotificacionAplicado = "select * from Notificaciones where Usuario = '" & nmusr & "' and Notificacion = 1 and Aplicado = 1 and Visto = 0"
+            mysqlcomandoConNotificacionAplicado = New MySqlCommand
+            mysqlcomandoConNotificacionAplicado.Connection = conexionNotificaciones
+            mysqlcomandoConNotificacionAplicado.CommandText = consultaConNotificacionAplicado
+            readerConNotificacionAplicado = mysqlcomandoConNotificacionAplicado.ExecuteReader
+            Dim existeConNotificacionAplicado As Boolean
+            While readerConNotificacionAplicado.Read
+                Dim Nnotificacion As New Notificaciones
+                Nnotificacion.id = readerConNotificacionAplicado("id")
+                Nnotificacion.Tipo = readerConNotificacionAplicado("tipo")
+                Nnotificacion.Usuario = readerConNotificacionAplicado("Usuario")
+                Nnotificacion.UsuarioDestino = readerConNotificacionAplicado("usuariodestino")
+                Nnotificacion.Notificacion = readerConNotificacionAplicado("notificacion")
+                Nnotificacion.Mensaje = readerConNotificacionAplicado("Mensaje")
+                Nnotificacion.FechaAplicacion = readerConNotificacionAplicado("FechaAplicacion")
+                Nnotificacion.HoraAplicacion = readerConNotificacionAplicado("HoraAplicacion").ToString
+                Nnotificacion.Valor = readerConNotificacionAplicado("valor")
+                Nnotificacion.Estado = readerConNotificacionAplicado("Estado")
+                Nnotificacion.ComentarioUsuarioDestino = readerConNotificacionAplicado("ComentarioUsuarioDestino")
+                For a As Integer = array.Count - 1 To 0 Step -1
+                    If array(a).id = Nnotificacion.id And array(a).Estado = Nnotificacion.Estado Then
+
+                        existeConNotificacionAplicado = True
+
+                        Exit For
+                    Else
+
+                        existeConNotificacionAplicado = False
+
+                    End If
+
+                Next
+                If existeConNotificacionAplicado = False Then
+                    CantNotificaciones += 1
+                    array.Add(Nnotificacion)
+                End If
+
+            End While
+            readerConNotificacionAplicado.Close()
+
+
+
+
+            Me.Invoke(Sub()
+                          notificaciones.Text = "Tienes " & array.Count & " notificaciones"
+                          notificaciones.Refresh()
+
+                      End Sub)
+
+            ' conexionNotificaciones.Close()
+
             For a As Integer = array.Count - 1 To 0 Step -1
-                If array(a).id = Nnotificacion.id And array(a).Estado = Nnotificacion.Estado Then
-
-                    existeConNotificacionAplicado = True
-
-                    Exit For
-                Else
-
-                    existeConNotificacionAplicado = False
-
-                End If
-
-            Next
-            If existeConNotificacionAplicado = False Then
-                CantNotificaciones += 1
-                array.Add(Nnotificacion)
-            End If
-
-        End While
-        readerConNotificacionAplicado.Close()
 
 
+                If array(a).Notificacion = "0" Then
+                    If array(a).Tipo = "Logout" Then
+                        Dim comandoActNotificacion As MySqlCommand
+                        Dim consultaActNotificacion As String
+                        comandoActNotificacion = New MySqlCommand
+                        consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
+                        comandoActNotificacion.Connection = conexionNotificaciones
+                        comandoActNotificacion.CommandText = consultaActNotificacion
+                        comandoActNotificacion.ExecuteNonQuery()
+                        If array(a).Mensaje <> "" Then
+
+                            Me.Invoke(Sub()
+                                          Dim nAlertas As New Alertas
+                                          nAlertas.cadena = array(a).Mensaje
+                                          nAlertas.ShowDialog()
+                                          nAlertas.TopMost = True
+                                      End Sub)
+                        End If
+                        Me.actualizar = True
+                        Dim num_controles As Integer = Application.OpenForms.Count - 1
+                        For n As Integer = num_controles To 0 Step -1
+                            Dim ctrl As Form = Application.OpenForms.Item(n)
+                            If ctrl.Name <> "login" And ctrl.Name <> Me.Name Then
+                                ctrl.Close()
+                            End If
+
+                            'ctrl.Dispose()
+                        Next
+                        Me.Invoke(Sub()
+                                      login.Show()
+                                  End Sub)
 
 
-        Me.Invoke(Sub()
-                      notificaciones.Text = "Tienes " & array.Count & " notificaciones"
-                      notificaciones.Refresh()
-
-                  End Sub)
-
-        ' conexionNotificaciones.Close()
-
-        For a As Integer = array.Count - 1 To 0 Step -1
-
-
-            If array(a).Notificacion = "0" Then
-                If array(a).Tipo = "Logout" Then
-                    Dim comandoActNotificacion As MySqlCommand
-                    Dim consultaActNotificacion As String
-                    comandoActNotificacion = New MySqlCommand
-                    consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
-                    comandoActNotificacion.Connection = conexionNotificaciones
-                    comandoActNotificacion.CommandText = consultaActNotificacion
-                    comandoActNotificacion.ExecuteNonQuery()
-                    If array(a).Mensaje <> "" Then
+                        Me.Close()
+                    End If
+                    If array(a).Tipo = "Message" Then
+                        Dim comandoActNotificacion As MySqlCommand
+                        Dim consultaActNotificacion As String
+                        comandoActNotificacion = New MySqlCommand
+                        consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
+                        comandoActNotificacion.Connection = conexionNotificaciones
+                        comandoActNotificacion.CommandText = consultaActNotificacion
+                        comandoActNotificacion.ExecuteNonQuery()
 
                         Me.Invoke(Sub()
                                       Dim nAlertas As New Alertas
+
+
                                       nAlertas.cadena = array(a).Mensaje
+                                      array.RemoveAt(a)
                                       nAlertas.ShowDialog()
                                       nAlertas.TopMost = True
+
                                   End Sub)
+                        If array.Count = 0 Then
+                            Exit For
+                        End If
                     End If
-                    Me.actualizar = True
-                    Dim num_controles As Integer = Application.OpenForms.Count - 1
-                    For n As Integer = num_controles To 0 Step -1
-                        Dim ctrl As Form = Application.OpenForms.Item(n)
-                        If ctrl.Name <> "login" And ctrl.Name <> Me.Name Then
-                            ctrl.Close()
+                    If array(a).Tipo = "CargarPermisos" Then
+                        If array(a).Mensaje <> "" Then
+
+                            Me.Invoke(Sub()
+                                          Dim nAlertas As New Alertas
+                                          nAlertas.cadena = array(a).Mensaje
+                                          nAlertas.ShowDialog()
+                                          nAlertas.TopMost = True
+                                      End Sub)
+                        End If
+                        cargarperfil()
+                        Dim comandoActNotificacion As MySqlCommand
+                        Dim consultaActNotificacion As String
+                        comandoActNotificacion = New MySqlCommand
+                        consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
+                        comandoActNotificacion.Connection = conexionNotificaciones
+                        comandoActNotificacion.CommandText = consultaActNotificacion
+                        comandoActNotificacion.ExecuteNonQuery()
+                        array.RemoveAt(a)
+                        If array.Count = 0 Then
+                            Exit For
+                        End If
+                    End If
+                    If array(a).Tipo = "Update" Then
+                        If array(a).Mensaje <> "" Then
+
+                            Me.Invoke(Sub()
+                                          Dim nAlertas As New Alertas
+                                          nAlertas.cadena = array(a).Mensaje
+                                          nAlertas.ShowDialog()
+                                          nAlertas.TopMost = True
+                                      End Sub)
                         End If
 
-                        'ctrl.Dispose()
-                    Next
-                    Me.Invoke(Sub()
-                                  login.Show()
-                              End Sub)
+                        Dim comandoActNotificacion As MySqlCommand
+                        Dim consultaActNotificacion As String
+                        comandoActNotificacion = New MySqlCommand
+                        consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
+                        comandoActNotificacion.Connection = conexionNotificaciones
+                        comandoActNotificacion.CommandText = consultaActNotificacion
+                        comandoActNotificacion.ExecuteNonQuery()
+                        actualizar = True
 
+                        Dim ruta As String = "C:\ConfiaAdmin\Updater\Updater.exe"
+                        Dim Proceso As Process = New Process
+                        Proceso.StartInfo.FileName = ruta
+                        Proceso.StartInfo.Arguments = "/S SATI /T " & TipoEquipo
+                        Proceso.Start()
 
-                    Me.Close()
-                End If
-                If array(a).Tipo = "Message" Then
-                    Dim comandoActNotificacion As MySqlCommand
-                    Dim consultaActNotificacion As String
-                    comandoActNotificacion = New MySqlCommand
-                    consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
-                    comandoActNotificacion.Connection = conexionNotificaciones
-                    comandoActNotificacion.CommandText = consultaActNotificacion
-                    comandoActNotificacion.ExecuteNonQuery()
+                        Application.Exit()
+                    End If
+                    If array(a).Tipo = "UpdateUpdater" Then
+                        If array(a).Mensaje <> "" Then
 
-                    Me.Invoke(Sub()
-                                  Dim nAlertas As New Alertas
+                            Dim nAlertas As New Alertas
+                            nAlertas.cadena = array(a).Mensaje
+                            nAlertas.ShowDialog()
+                            nAlertas.TopMost = True
+                        End If
 
-
-                                  nAlertas.cadena = array(a).Mensaje
-                                  array.RemoveAt(a)
-                                  nAlertas.ShowDialog()
-                                  nAlertas.TopMost = True
-
-                              End Sub)
-
-
-                End If
-                If array(a).Tipo = "CargarPermisos" Then
-                    If array(a).Mensaje <> "" Then
-
+                        Dim comandoActNotificacion As MySqlCommand
+                        Dim consultaActNotificacion As String
+                        comandoActNotificacion = New MySqlCommand
+                        consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
+                        comandoActNotificacion.Connection = conexionNotificaciones
+                        comandoActNotificacion.CommandText = consultaActNotificacion
+                        comandoActNotificacion.ExecuteNonQuery()
                         Me.Invoke(Sub()
-                                      Dim nAlertas As New Alertas
-                                      nAlertas.cadena = array(a).Mensaje
-                                      nAlertas.ShowDialog()
-                                      nAlertas.TopMost = True
+                                      ActualizadorUpdater.Show()
                                   End Sub)
+
+                        array.RemoveAt(a)
+                        If array.Count = 0 Then
+                            Exit For
+                        End If
                     End If
-                    cargarperfil()
-                    Dim comandoActNotificacion As MySqlCommand
-                    Dim consultaActNotificacion As String
-                    comandoActNotificacion = New MySqlCommand
-                    consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
-                    comandoActNotificacion.Connection = conexionNotificaciones
-                    comandoActNotificacion.CommandText = consultaActNotificacion
-                    comandoActNotificacion.ExecuteNonQuery()
-                    array.RemoveAt(a)
                 End If
-                If array(a).Tipo = "Update" Then
-                    If array(a).Mensaje <> "" Then
-
-                        Me.Invoke(Sub()
-                                      Dim nAlertas As New Alertas
-                                      nAlertas.cadena = array(a).Mensaje
-                                      nAlertas.ShowDialog()
-                                      nAlertas.TopMost = True
-                                  End Sub)
-                    End If
-
-                    Dim comandoActNotificacion As MySqlCommand
-                    Dim consultaActNotificacion As String
-                    comandoActNotificacion = New MySqlCommand
-                    consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
-                    comandoActNotificacion.Connection = conexionNotificaciones
-                    comandoActNotificacion.CommandText = consultaActNotificacion
-                    comandoActNotificacion.ExecuteNonQuery()
-                    actualizar = True
-
-                    Dim ruta As String = "C:\ConfiaAdmin\Updater\Updater.exe"
-                    Dim Proceso As Process = New Process
-                    Proceso.StartInfo.FileName = ruta
-                    Proceso.StartInfo.Arguments = "/S SATI /T " & TipoEquipo
-                    Proceso.Start()
-
-                    Application.Exit()
-                End If
-                If array(a).Tipo = "UpdateUpdater" Then
-                    If array(a).Mensaje <> "" Then
-
-                        Dim nAlertas As New Alertas
-                        nAlertas.cadena = array(a).Mensaje
-                        nAlertas.ShowDialog()
-                        nAlertas.TopMost = True
-                    End If
-
-                    Dim comandoActNotificacion As MySqlCommand
-                    Dim consultaActNotificacion As String
-                    comandoActNotificacion = New MySqlCommand
-                    consultaActNotificacion = "update Notificaciones set Aplicado = 1 where id = '" & array(a).id & "'"
-                    comandoActNotificacion.Connection = conexionNotificaciones
-                    comandoActNotificacion.CommandText = consultaActNotificacion
-                    comandoActNotificacion.ExecuteNonQuery()
-                    Me.Invoke(Sub()
-                                  ActualizadorUpdater.Show()
-                              End Sub)
-
-                    array.RemoveAt(a)
-                End If
-            End If
 
 
 
-        Next
+            Next
 
-        '  Catch ex As Exception
+        Catch ex As Exception
 
-        '   End Try
+        End Try
     End Sub
 
 
