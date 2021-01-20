@@ -19,17 +19,27 @@
     Private Sub DescuentoPromesa_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If Total Then
             If txtcantidad.Text = "" Then
+
                 PromPago.descuentoTotal = 0
             Else
-                PromPago.descuentoTotal = txtcantidad.Text
+                If txtcantidad.Text > Maximo Then
+                    PromPago.descuentoTotal = 0
+                Else
+                    PromPago.descuentoTotal = txtcantidad.Text
+                End If
+
             End If
 
         Else
             If txtcantidad.Text = "" Then
                 PromPago.descuentoParcial = 0
             Else
+                If txtcantidad.Text > Maximo Then
+                    PromPago.descuentoParcial = 0
+                Else
+                    PromPago.descuentoParcial = txtcantidad.Text
+                End If
 
-                PromPago.descuentoParcial = txtcantidad.Text
             End If
 
 
