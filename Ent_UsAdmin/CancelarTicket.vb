@@ -157,6 +157,14 @@ when 'Reestructura' then
                 adapterDetalle.Fill(dataDetalle)
 
                 dtDetalle.DataSource = dataDetalle
+            Case "Legal"
+                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendariolegales.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendariolegales on ticketdetalle.idpago = calendariolegales.idpago where  idTicket = '" & idTicket & "'"
+
+                adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
+                dataDetalle = New DataTable
+                adapterDetalle.Fill(dataDetalle)
+
+                dtDetalle.DataSource = dataDetalle
 
                        ' TreeListView1.Nodes.Add(liItem)
             Case "Apertura"

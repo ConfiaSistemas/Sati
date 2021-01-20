@@ -6,7 +6,13 @@ Public Class CreditosActivos
         CheckForIllegalCrossThreadCalls = False
         cargarSolicitudes()
         txtnombre.Select()
-
+        For Each row As DataRow In dataPermisos.Rows
+            If row("SatiModCreditosCrearPromesa") Then
+                PromesaDePagoToolStripMenuItem.Visible = True
+            Else
+                PromesaDePagoToolStripMenuItem.Visible = False
+            End If
+        Next
     End Sub
     Public Sub cargarSolicitudes()
         dtimpuestos.Rows.Clear()

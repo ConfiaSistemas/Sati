@@ -13,6 +13,7 @@
     Private _FechaAplicacion As String
     Private _Estado As String
     Private _ComentarioUsuarioDestino As String
+    Private _Empresa As String
     Public Property id As Integer
         Get
             Return _id
@@ -139,6 +140,16 @@
         End Get
         Set(value As String)
             _ComentarioUsuarioDestino = value
+        End Set
+    End Property
+
+
+    Public Property Empresa As String
+        Get
+            Return _Empresa
+        End Get
+        Set(value As String)
+            _Empresa = value
         End Set
     End Property
 

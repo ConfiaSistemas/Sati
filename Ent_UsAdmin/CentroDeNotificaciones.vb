@@ -41,7 +41,7 @@ Public Class CentroDeNotificaciones
                 Dim lblFecha As New MonoFlat_HeaderLabel
 
                 lblFecha.Location = New Point(158, 14)
-                lblFecha.Text = n.FechaAplicacion
+                lblFecha.Text = "El " & n.FechaAplicacion & " a las " & n.HoraAplicacion
 
                 lblFecha.AutoSize = True
 
@@ -53,18 +53,18 @@ Public Class CentroDeNotificaciones
                           End Sub)
 
 
-                Dim lblHora As New MonoFlat_HeaderLabel
+                ' Dim lblHora As New MonoFlat_HeaderLabel
 
-                lblHora.Location = New Point(413, 14)
-                lblHora.Text = n.HoraAplicacion
+                'lblHora.Location = New Point(413, 14)
+                'lblHora.Text = n.HoraAplicacion
 
-                lblHora.AutoSize = True
-                lblHora.BringToFront()
+                'lblHora.AutoSize = True
+                'lblHora.BringToFront()
                 ' lblFecha.BackColor = Color.White
-                lblHora.ForeColor = Color.FromArgb(255, 255, 255)
-                Me.Invoke(Sub()
-                              botonNotificacion.Controls.Add(lblHora)
-                          End Sub)
+                'lblHora.ForeColor = Color.FromArgb(255, 255, 255)
+                'Me.Invoke(Sub()
+                'botonNotificacion.Controls.Add(lblHora)
+                'End Sub)
 
 
 
@@ -100,6 +100,20 @@ Public Class CentroDeNotificaciones
                               botonNotificacion.Controls.Add(lblTipo)
                           End Sub)
 
+
+                Dim lblEmpresa As MonoFlat_HeaderLabel
+                lblEmpresa = New MonoFlat_HeaderLabel
+
+                lblEmpresa.Parent = botonNotificacion
+                lblEmpresa.Location = New Point(158, 120)
+                lblEmpresa.Text = "En " & n.Empresa
+                lblEmpresa.AutoSize = True
+
+                lblEmpresa.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                lblEmpresa.ForeColor = Color.FromArgb(255, 255, 255)
+
+                botonNotificacion.Controls.Add(lblEmpresa)
 
 
 
@@ -157,7 +171,7 @@ Public Class CentroDeNotificaciones
                 Dim lblFecha As New MonoFlat_HeaderLabel
 
                 lblFecha.Location = New Point(158, 14)
-                lblFecha.Text = n.Fecha
+                lblFecha.Text = "El " & n.Fecha & " a las " & n.Hora
 
                 lblFecha.AutoSize = True
 
@@ -169,18 +183,18 @@ Public Class CentroDeNotificaciones
                           End Sub)
 
 
-                Dim lblHora As New MonoFlat_HeaderLabel
+                ' Dim lblHora As New MonoFlat_HeaderLabel
 
-                lblHora.Location = New Point(413, 14)
-                lblHora.Text = n.Hora
+                'lblHora.Location = New Point(413, 14)
+                'lblHora.Text = n.Hora
 
-                lblHora.AutoSize = True
-                lblHora.BringToFront()
+                'lblHora.AutoSize = True
+                'lblHora.BringToFront()
                 ' lblFecha.BackColor = Color.White
-                lblHora.ForeColor = Color.FromArgb(255, 255, 255)
-                Me.Invoke(Sub()
-                              botonNotificacion.Controls.Add(lblHora)
-                          End Sub)
+                'lblHora.ForeColor = Color.FromArgb(255, 255, 255)
+                'Me.Invoke(Sub()
+                'botonNotificacion.Controls.Add(lblHora)
+                'End Sub)
 
 
 
@@ -218,6 +232,21 @@ Public Class CentroDeNotificaciones
                           End Sub)
 
 
+
+
+                Dim lblEmpresa As MonoFlat_HeaderLabel
+                lblEmpresa = New MonoFlat_HeaderLabel
+
+                lblEmpresa.Parent = botonNotificacion
+                lblEmpresa.Location = New Point(158, 120)
+                lblEmpresa.Text = "En " & n.Empresa
+                lblEmpresa.AutoSize = True
+
+                lblEmpresa.BringToFront()
+                ' lblFecha.BackColor = Color.White
+                lblEmpresa.ForeColor = Color.FromArgb(255, 255, 255)
+
+                botonNotificacion.Controls.Add(lblEmpresa)
 
 
                 'Dim lblLabelUsuario As New MonoFlat_HeaderLabel
@@ -279,6 +308,13 @@ Public Class CentroDeNotificaciones
                         CancelarTicket.idTicket = sender.tag
                         CancelarTicket.Show()
                         Exit For
+                    End If
+                    If lblTipo.Text = "DescuentoPromesa" Then
+                        AplicarDescuentoPromesa.idPromesa = sender.tag
+                        AplicarDescuentoPromesa.idNotificacion = sender.name
+                        AplicarDescuentoPromesa.Show()
+                        Exit For
+
                     End If
                 End If
 

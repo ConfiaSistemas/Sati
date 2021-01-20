@@ -120,6 +120,9 @@ Public Class AutorizacionNotificacion
             Case "SatiModEmpeñosAgregarSolicitud"
                 Solicitud_Boleta.autorizado = False
                 Me.Close()
+            Case "SatiModCreditosDescuentoPromesa"
+                AplicarDescuentoPromesa.Autorizado = False
+                Me.Close()
 
         End Select
     End Sub
@@ -377,6 +380,18 @@ Public Class AutorizacionNotificacion
 
                     txtcontra.Text = ""
                 End If
+            Case "SatiModCreditosDescuentoPromesa"
+                If autorizado Then
+                    AplicarDescuentoPromesa.Autorizado = True
+                    autorizado = False
+
+                    txtcontra.Text = ""
+                Else
+                    AplicarDescuentoPromesa.Autorizado = False
+                    autorizado = False
+
+                    txtcontra.Text = ""
+                End If
 
         End Select
     End Sub
@@ -566,6 +581,9 @@ Public Class AutorizacionNotificacion
                     Me.Close()
                 Case "SatiModEmpeñosAgregarSolicitud"
                     Solicitud_Boleta.autorizado = True
+                    Me.Close()
+                Case "SatiModCreditosDescuentoPromesa"
+                    AplicarDescuentoPromesa.Autorizado = True
                     Me.Close()
             End Select
         Else

@@ -1042,6 +1042,7 @@ Public Class frm_adm
                 Nnotificacion.Mensaje = readerNotificacion("Mensaje")
                 Nnotificacion.Fecha = readerNotificacion("Fecha")
                 Nnotificacion.Hora = readerNotificacion("Hora").ToString
+                Nnotificacion.Empresa = readerNotificacion("Empresa")
                 For a As Integer = array.Count - 1 To 0 Step -1
                     If array(a).id = Nnotificacion.id Then
                         existe = True
@@ -1090,6 +1091,7 @@ Public Class frm_adm
                 Nnotificacion.Hora = readerConNotificacion("Hora").ToString
                 Nnotificacion.Valor = readerConNotificacion("valor")
                 Nnotificacion.Estado = readerConNotificacion("Estado")
+                Nnotificacion.Empresa = readerConNotificacion("Empresa")
                 For a As Integer = array.Count - 1 To 0 Step -1
                     If array(a).id = Nnotificacion.id And array(a).estado = Nnotificacion.Estado Then
                         existeConNotificacion = True
@@ -1134,6 +1136,7 @@ Public Class frm_adm
                 Nnotificacion.Valor = readerConNotificacionAplicado("valor")
                 Nnotificacion.Estado = readerConNotificacionAplicado("Estado")
                 Nnotificacion.ComentarioUsuarioDestino = readerConNotificacionAplicado("ComentarioUsuarioDestino")
+                Nnotificacion.Empresa = readerConNotificacionAplicado("Empresa")
                 For a As Integer = array.Count - 1 To 0 Step -1
                     If array(a).id = Nnotificacion.id And array(a).Estado = Nnotificacion.Estado Then
 

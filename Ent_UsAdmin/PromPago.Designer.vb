@@ -31,6 +31,7 @@ Partial Class PromPago
         Me.RadWizard1 = New Telerik.WinControls.UI.RadWizard()
         Me.WizardCompletionPage1 = New Telerik.WinControls.UI.WizardCompletionPage()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.dateFechaLimite = New Bunifu.Framework.UI.BunifuDatepicker()
@@ -63,8 +64,13 @@ Partial Class PromPago
         Me.WizardPage1 = New Telerik.WinControls.UI.WizardPage()
         Me.BackgroundVencidos = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundTotal = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundCrearPromesa = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundConsultarPromesa = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundPromesaNotificacion = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundConsultaPromesaPendiente = New System.ComponentModel.BackgroundWorker()
         CType(Me.RadWizard1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadWizard1.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.GroupTotal.SuspendLayout()
@@ -86,6 +92,7 @@ Partial Class PromPago
         Me.RadWizard1.Controls.Add(Me.Panel2)
         Me.RadWizard1.Controls.Add(Me.Panel3)
         Me.RadWizard1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RadWizard1.HideCompletionImage = True
         Me.RadWizard1.HideWelcomeImage = True
         Me.RadWizard1.Location = New System.Drawing.Point(0, 0)
         Me.RadWizard1.Mode = Telerik.WinControls.UI.WizardMode.Aero
@@ -98,7 +105,7 @@ Partial Class PromPago
         Me.RadWizard1.TabIndex = 0
         Me.RadWizard1.WelcomePage = Me.WizardWelcomePage1
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.WizardAeroView).HideWelcomeImage = True
-        CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.WizardAeroView).HideCompletionImage = False
+        CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.WizardAeroView).HideCompletionImage = True
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3), Telerik.WinControls.UI.WizardCommandArea).IsWelcomePage = False
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3), Telerik.WinControls.UI.WizardCommandArea).IsCompletionPage = False
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(1), Telerik.WinControls.UI.WizardCommandAreaButtonElement).IsFocusedWizardButton = False
@@ -107,23 +114,39 @@ Partial Class PromPago
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(2), Telerik.WinControls.UI.WizardCommandAreaButtonElement).Text = "Siguiente >"
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(3), Telerik.WinControls.UI.BaseWizardElement).Text = "<html><u>Ayuda</u></html>"
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(3), Telerik.WinControls.UI.BaseWizardElement).Visibility = Telerik.WinControls.ElementVisibility.Hidden
-        CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(4).GetChildAt(0), Telerik.WinControls.UI.WizardAeroButtonElement).Enabled = False
+        CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(4).GetChildAt(0), Telerik.WinControls.UI.WizardAeroButtonElement).Enabled = True
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(4).GetChildAt(0), Telerik.WinControls.UI.WizardAeroButtonElement).Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'WizardCompletionPage1
         '
         Me.WizardCompletionPage1.ContentArea = Me.Panel3
         Me.WizardCompletionPage1.Header = "Page header"
+        Me.WizardCompletionPage1.HeaderVisibility = Telerik.WinControls.ElementVisibility.Visible
         Me.WizardCompletionPage1.Name = "WizardCompletionPage1"
         Me.WizardCompletionPage1.Title = "Generar promesa de pago"
+        Me.WizardCompletionPage1.TitleVisibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.White
-        Me.Panel3.Location = New System.Drawing.Point(150, 41)
+        Me.Panel3.Controls.Add(Me.TextBox1)
+        Me.Panel3.Location = New System.Drawing.Point(0, 41)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(789, 428)
+        Me.Panel3.Size = New System.Drawing.Size(939, 428)
         Me.Panel3.TabIndex = 2
+        '
+        'TextBox1
+        '
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI Light", 22.0!)
+        Me.TextBox1.ForeColor = System.Drawing.Color.White
+        Me.TextBox1.Location = New System.Drawing.Point(120, 103)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(706, 186)
+        Me.TextBox1.TabIndex = 5
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Panel1
         '
@@ -537,6 +560,18 @@ Partial Class PromPago
         'BackgroundTotal
         '
         '
+        'BackgroundCrearPromesa
+        '
+        '
+        'BackgroundConsultarPromesa
+        '
+        '
+        'BackgroundPromesaNotificacion
+        '
+        '
+        'BackgroundConsultaPromesaPendiente
+        '
+        '
         'PromPago
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -544,10 +579,16 @@ Partial Class PromPago
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(939, 517)
         Me.Controls.Add(Me.RadWizard1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
+        Me.KeyPreview = True
+        Me.MaximumSize = New System.Drawing.Size(955, 556)
+        Me.MinimumSize = New System.Drawing.Size(955, 556)
         Me.Name = "PromPago"
-        Me.Text = "PromPago"
+        Me.Text = "Promesa de pago"
         CType(Me.RadWizard1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadWizard1.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
@@ -602,4 +643,9 @@ Partial Class PromPago
     Friend WithEvents Label2 As Label
     Friend WithEvents lblDescuentoParcial As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents Label1 As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents BackgroundCrearPromesa As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BackgroundConsultarPromesa As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BackgroundPromesaNotificacion As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BackgroundConsultaPromesaPendiente As System.ComponentModel.BackgroundWorker
 End Class

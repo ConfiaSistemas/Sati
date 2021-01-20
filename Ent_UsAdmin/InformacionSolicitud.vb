@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports WinControls.ListView
+Imports Xceed.Words.NET
 
 Public Class InformacionSolicitud
     Public idCredito As Integer
@@ -16,6 +17,8 @@ Public Class InformacionSolicitud
     Dim dataActualizaciones As Data.DataTable
     Dim adapterActualizaciones As SqlDataAdapter
     Dim estado As String
+    Dim adapterPromesas As SqlDataAdapter
+    Dim dataPromesas As DataTable
     Private Sub InformacionSolicitud_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Panel2.Size = New Size(51, 85)
         Panel2.Location = New Drawing.Point(Me.Width - Panel2.Width, TabControl1.Location.Y - Panel2.Height)
@@ -194,7 +197,13 @@ select id,Recibido,(case when tipo = 'Legal' then Concepto
 							  
 							   else ISNULL((select nombre from Credito inner join ReestructurasSac on credito.id = ReestructurasSac.idCredito where ReestructurasSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
 (select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from reestructurassac where idcredito = '" & idCredito & "') and TipoDoc = (select id from tipodoc where nombre = 'Reestructura') )pagos
+union
 
+select id,Recibido,(case when tipo = 'Legal' then Concepto
+							   when tipo = 'Extra' then Concepto
+							  
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Promesa de Pago') or  tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Convenio') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Reestructura') or  tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Convenio') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada Reestructura') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada')) )pagos 
 order by Fecha,Hora asc
 end
 else if  exists(select * from ConveniosSac where idCredito = '" & idCredito & "' and Estado = 'A')
@@ -216,6 +225,12 @@ select id,Recibido,(case when tipo = 'Legal' then Concepto
 							  
 							   else ISNULL((select nombre from Credito inner join ConveniosSac on Credito.id = ConveniosSac.idCredito where ConveniosSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
 (select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from ConveniosSac where idCredito ='" & idCredito & "') and TipoDoc = (select id from tipodoc where nombre = 'Convenio') )pagos
+union
+select id,Recibido,(case when tipo = 'Legal' then Concepto
+							   when tipo = 'Extra' then Concepto
+							  
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Promesa de Pago') or  tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Convenio') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Reestructura') or  tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Convenio') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada Reestructura') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada')) )pagos 
 end
 else if not exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
 begin
@@ -229,7 +244,14 @@ select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
 							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "'  and (tipodoc = (select id from tipodoc where nombre = 'Pago') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto') or tipodoc =(select id from tipodoc where nombre = 'Liquidación Promoción 90%')))pagos order by Fecha,Hora asc
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "'  and (tipodoc = (select id from tipodoc where nombre = 'Pago') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto') or tipodoc =(select id from tipodoc where nombre = 'Liquidación Promoción 90%')))pagos
+union 
+select id,Recibido,(case when tipo = 'Legal' then Concepto
+							   when tipo = 'Extra' then Concepto
+							  
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Promesa de Pago') or  tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Convenio') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Reestructura') or  tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Convenio') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada Reestructura') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada')) )pagos 
+order by Fecha,Hora asc
 end
 "
 
@@ -282,6 +304,40 @@ end
                        ' TreeListView1.Nodes.Add(liItem)
                     Case "Apertura"
                         ' TreeListView1.Nodes.Add(liItem)
+                    Case "Promesa de Pago"
+                    Case "Cancelación de Promesa", "Promesa Aplicada"
+                        consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & readerTicket("id") & "'"
+                        COMANDOdetalle = New SqlCommand
+                        COMANDOdetalle.Connection = conexionempresa
+                        COMANDOdetalle.CommandText = consultaDetalle
+                        readerDetalle = COMANDOdetalle.ExecuteReader
+                        If readerDetalle.HasRows Then
+                            While readerDetalle.Read
+                                Me._addSubItems(liItem.Nodes.Add(readerDetalle("pago")), readerDetalle("pagonormal"), readerDetalle("intereses"), readerDetalle("monto"))
+                            End While
+                        End If
+                    Case "Cancelación de Promesa Convenio", "Promesa Aplicada Convenio"
+                        consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioconveniossac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarioconveniossac on ticketdetalle.idpago = calendarioconveniossac.idpago where  idTicket = '" & readerTicket("id") & "'"
+                        COMANDOdetalle = New SqlCommand
+                        COMANDOdetalle.Connection = conexionempresa
+                        COMANDOdetalle.CommandText = consultaDetalle
+                        readerDetalle = COMANDOdetalle.ExecuteReader
+                        If readerDetalle.HasRows Then
+                            While readerDetalle.Read
+                                Me._addSubItems(liItem.Nodes.Add(readerDetalle("pago")), readerDetalle("pagonormal"), readerDetalle("intereses"), readerDetalle("monto"))
+                            End While
+                        End If
+                    Case "Cancelación de Promesa Reestructura", "Promesa Aplicada Reestructura"
+                        consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioreestructurassac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarioreestructurassac on ticketdetalle.idpago = calendarioreestructurassac.idpago where  idTicket = '" & readerTicket("id") & "'"
+                        COMANDOdetalle = New SqlCommand
+                        COMANDOdetalle.Connection = conexionempresa
+                        COMANDOdetalle.CommandText = consultaDetalle
+                        readerDetalle = COMANDOdetalle.ExecuteReader
+                        If readerDetalle.HasRows Then
+                            While readerDetalle.Read
+                                Me._addSubItems(liItem.Nodes.Add(readerDetalle("pago")), readerDetalle("pagonormal"), readerDetalle("intereses"), readerDetalle("monto"))
+                            End While
+                        End If
                     Case "Renovación Insoluto"
                         consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & readerTicket("id") & "'"
                         COMANDOdetalle = New SqlCommand
@@ -553,7 +609,7 @@ end
                         Dim COMANDOdetalle As SqlCommand
                         Dim consultaDetalle As String
                         Dim readerDetalle As SqlDataReader
-                        consultaDetalle = "select Ticket.id,TicketDetalle.Monto,TicketDetalle.PagoNormal,TicketDetalle.Intereses,Ticket.Fecha,Ticket.Hora from TicketDetalle inner join Ticket on TicketDetalle.idTicket =  Ticket.id and TicketDetalle.idPago = '" & readerTicket("idpago") & "' and ticket.tipodoc = 1 order by Ticket.Fecha,Ticket.Hora asc"
+                        consultaDetalle = "select Ticket.id,TicketDetalle.Monto,TicketDetalle.PagoNormal,TicketDetalle.Intereses,Ticket.Fecha,Ticket.Hora from TicketDetalle inner join Ticket on TicketDetalle.idTicket =  Ticket.id and TicketDetalle.idPago = '" & readerTicket("idpago") & "' and (ticket.tipodoc = 1 or ticket.tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa') or ticket.tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada')) order by Ticket.Fecha,Ticket.Hora asc"
                         COMANDOdetalle = New SqlCommand
                         COMANDOdetalle.Connection = conexionempresa
                         COMANDOdetalle.CommandText = consultaDetalle
@@ -583,7 +639,7 @@ end
                         Dim COMANDOdetalle As SqlCommand
                         Dim consultaDetalle As String
                         Dim readerDetalle As SqlDataReader
-                        consultaDetalle = "select Ticket.id,TicketDetalle.Monto,TicketDetalle.PagoNormal,TicketDetalle.Intereses,Ticket.Fecha,Ticket.Hora from TicketDetalle inner join Ticket on TicketDetalle.idTicket =  Ticket.id and TicketDetalle.idPago = '" & readerTicket("idpago") & "' and ticket.tipodoc = (select id from tipodoc where nombre = 'Convenio') order by Ticket.Fecha,Ticket.Hora asc"
+                        consultaDetalle = "select Ticket.id,TicketDetalle.Monto,TicketDetalle.PagoNormal,TicketDetalle.Intereses,Ticket.Fecha,Ticket.Hora from TicketDetalle inner join Ticket on TicketDetalle.idTicket =  Ticket.id and TicketDetalle.idPago = '" & readerTicket("idpago") & "' and (ticket.tipodoc = (select id from tipodoc where nombre = 'Convenio') or ticket.tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Convenio') or ticket.tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Convenio')) order by Ticket.Fecha,Ticket.Hora asc"
                         COMANDOdetalle = New SqlCommand
                         COMANDOdetalle.Connection = conexionempresa
                         COMANDOdetalle.CommandText = consultaDetalle
@@ -598,7 +654,7 @@ end
                         Dim COMANDOdetalle As SqlCommand
                         Dim consultaDetalle As String
                         Dim readerDetalle As SqlDataReader
-                        consultaDetalle = "select Ticket.id,TicketDetalle.Monto,TicketDetalle.PagoNormal,TicketDetalle.Intereses,Ticket.Fecha,Ticket.Hora from TicketDetalle inner join Ticket on TicketDetalle.idTicket =  Ticket.id and TicketDetalle.idPago = '" & readerTicket("idpago") & "' and ticket.tipodoc = (select id from tipodoc where nombre = 'Reestructura') order by Ticket.Fecha,Ticket.Hora asc"
+                        consultaDetalle = "select Ticket.id,TicketDetalle.Monto,TicketDetalle.PagoNormal,TicketDetalle.Intereses,Ticket.Fecha,Ticket.Hora from TicketDetalle inner join Ticket on TicketDetalle.idTicket =  Ticket.id and TicketDetalle.idPago = '" & readerTicket("idpago") & "' and (ticket.tipodoc = (select id from tipodoc where nombre = 'Reestructura') or ticket.tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Reestructura') or ticket.tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Reestructura')) order by Ticket.Fecha,Ticket.Hora asc"
                         COMANDOdetalle = New SqlCommand
                         COMANDOdetalle.Connection = conexionempresa
                         COMANDOdetalle.CommandText = consultaDetalle
@@ -632,6 +688,58 @@ end
     End Sub
 
     Private Sub BackgroundComportamiento_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundComportamiento.RunWorkerCompleted
-        Cargando.Close
+        Cargando.MonoFlat_Label1.Text = "Consultando Promesas"
+        BackgroundPromesas.RunWorkerAsync()
+
+    End Sub
+
+    Private Sub BackgroundPromesas_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundPromesas.DoWork
+        Dim consultaPromesas As String
+        consultaPromesas = "select credito.nombre,format(MontoPromesa,'C','es-mx') as 'Monto Promesa',format(Capital,'C','es-mx') as Capital, format(Moratorios,'C','es-mx') as Moratorios,format(Pendiente,'C','es-mx') as Pendiente, format(Abonado,'C','es-mx') as Abonado,FechaLimite as 'Fecha Límite',FechaUltimoPago as 'Fecha último Pago',promesadepago.Fecha,promesadepago.Hora,promesadepago.Usuario,promesadepago.Estado,TipoCredito as 'Tipo de Crédito' from PromesaDePago inner join credito on promesadepago.idcredito = credito.id where promesadepago.idcredito = '" & idCredito & "'"
+        adapterPromesas = New SqlDataAdapter(consultaPromesas, conexionempresa)
+        dataPromesas = New DataTable
+        adapterPromesas.Fill(dataPromesas)
+
+    End Sub
+
+    Private Sub BackgroundPromesas_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundPromesas.RunWorkerCompleted
+        dtPromesas.DataSource = dataPromesas
+        Cargando.Close()
+
+    End Sub
+
+    Private Sub dtPromesas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtPromesas.CellContentClick
+
+    End Sub
+
+    Private Sub dtPromesas_SelectionChanged(sender As Object, e As EventArgs) Handles dtPromesas.SelectionChanged
+        If dtPromesas.Rows(dtPromesas.CurrentRow.Index).Cells(11).Value <> "" Then
+            dtPromesas.ContextMenuStrip = ContextMenuPromesa
+        Else
+            dtPromesas.ContextMenuStrip = Nothing
+
+        End If
+    End Sub
+
+    Private Sub ReimprimirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReimprimirToolStripMenuItem.Click
+        Me.Invoke(Sub()
+                      Cargando.Show()
+                      Cargando.MonoFlat_Label1.Text = "Generando Promesa"
+                  End Sub)
+
+
+        FileCopy("C:\ConfiaAdmin\SATI\Promesa.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempPromesa.docx")
+        Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempPromesa.docx")
+        documento.ReplaceText("%%FECHAPROMESA%%", dtPromesas.Rows(dtPromesas.CurrentRow.Index).Cells(8).Value)
+        documento.ReplaceText("%%NOMBRECLIENTE%%", dtPromesas.Rows(dtPromesas.CurrentRow.Index).Cells(0).Value)
+
+        documento.ReplaceText("%%TOTALDEUDA%%", dtPromesas.Rows(dtPromesas.CurrentRow.Index).Cells(1).Value)
+
+        documento.ReplaceText("%%FECHALIMITE%%", dtPromesas.Rows(dtPromesas.CurrentRow.Index).Cells(6).Value)
+        documento.Save()
+        documento.Dispose()
+        VistaPreviaDocumento.ruta = "C:\ConfiaAdmin\SATI\TEMPDOCS\TempPromesa.docx"
+        VistaPreviaDocumento.Show()
+        Cargando.Close()
     End Sub
 End Class

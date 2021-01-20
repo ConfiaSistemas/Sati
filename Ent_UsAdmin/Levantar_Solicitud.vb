@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports System.Threading.Tasks
+Imports MySql.Data.MySqlClient
 
 Public Class Levantar_Solicitud
     Dim idtipo, tipo, nombreTipo, Modalidad, tipocredito As String
@@ -69,11 +70,11 @@ else if exists(select Credito.id from Credito inner join Solicitud on Credito.Id
 begin
 select concat('Credito con Número ',Credito.id) as credito from Credito inner join Solicitud on Credito.IdSolicitud = Solicitud.id inner join DatosSolicitud on Solicitud.id = DatosSolicitud.IdSolicitud where DatosSolicitud.IdCliente = '" & txtIdCliente.Text & "' and (credito.estado = 'A' or credito.estado = 'C' or credito.estado = 'L' or credito.estado = 'E' or credito.estado = 'P')
 end
-else if exists(select Solicitud.id,Fecha,Solicitud.Estado from Solicitud inner join DatosSolicitud on Solicitud.id = DatosSolicitud.IdSolicitud where DatosSolicitud.IdCliente = '" & txtIdCliente.Text & "' and Solicitud.Estado = 'R' and Solicitud.Fecha >= DATEADD(MONTH,-4,GETDATE()) AND Solicitud.Fecha <= GETDATE())
+else if exists(select Solicitud.id,Fecha,Solicitud.Estado from Solicitud inner join DatosSolicitud on Solicitud.id = DatosSolicitud.IdSolicitud where DatosSolicitud.IdCliente = '" & txtIdCliente.Text & "' and Solicitud.Estado = 'R')
 begin
 select 'R'
 end
-else if exists(select Solicitud.id,Fecha,Solicitud.Estado from Solicitud inner join DatosSolicitud on Solicitud.id = DatosSolicitud.IdSolicitud where DatosSolicitud.IdCliente = '" & txtIdCliente.Text & "' and DatosSolicitud.Estado = 'R' and Solicitud.Fecha >= DATEADD(MONTH,-4,GETDATE()) AND Solicitud.Fecha <= GETDATE())
+else if exists(select Solicitud.id,Fecha,Solicitud.Estado from Solicitud inner join DatosSolicitud on Solicitud.id = DatosSolicitud.IdSolicitud where DatosSolicitud.IdCliente = '" & txtIdCliente.Text & "' and DatosSolicitud.Estado = 'R' )
 begin 
 select 'DSR'
 end
@@ -95,7 +96,7 @@ end"
                             txtNombreSolicitud.Enabled = False
                             btn_agregar.Visible = False
                         Case "R"
-                            MessageBox.Show("El cliente tiene solicitudes rechazadas con fecha menor a 4 meses")
+                            MessageBox.Show("El cliente tiene solicitudes rechazadas")
                             SolicitudesRechazadasCliente.tipoRechazo = "R"
                             SolicitudesRechazadasCliente.Idcliente = txtIdCliente.Text
                             SolicitudesRechazadasCliente.ShowDialog()
@@ -121,7 +122,7 @@ end"
 
                             End If
                         Case "DSR"
-                            MessageBox.Show("El cliente fue rechazado de algunas solicitudes con fecha menor a 4 meses")
+                            MessageBox.Show("El cliente fue rechazado de algunas solicitudes")
                             SolicitudesRechazadasCliente.tipoRechazo = "DSR"
                             SolicitudesRechazadasCliente.Idcliente = txtIdCliente.Text
                             SolicitudesRechazadasCliente.ShowDialog()
@@ -487,6 +488,8 @@ Select id,nombre from empleados where tipo = 'P'"
             comandoDatosSolicitud.ExecuteNonQuery()
 
         Next
+
+
 
     End Sub
 

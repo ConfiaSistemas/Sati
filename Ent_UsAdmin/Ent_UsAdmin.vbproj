@@ -389,6 +389,12 @@
     <Compile Include="Autorizacion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AplicarDescuentoPromesa.Designer.vb">
+      <DependentUpon>AplicarDescuentoPromesa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AplicarDescuentoPromesa.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CancelarTicket.Designer.vb">
       <DependentUpon>CancelarTicket.vb</DependentUpon>
     </Compile>
@@ -401,10 +407,22 @@
     <Compile Include="CentroDeNotificaciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CrearNotificacionDescuentoPromesa.Designer.vb">
+      <DependentUpon>CrearNotificacionDescuentoPromesa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CrearNotificacionDescuentoPromesa.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CrearNotificacionCancelarTicket.Designer.vb">
       <DependentUpon>CrearNotificacionCancelarTicket.vb</DependentUpon>
     </Compile>
     <Compile Include="CrearNotificacionCancelarTicket.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DescuentoPromesa.Designer.vb">
+      <DependentUpon>DescuentoPromesa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DescuentoPromesa.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GestionesLegal.Designer.vb">
@@ -1115,14 +1133,23 @@
     <EmbeddedResource Include="Autorizacion.resx">
       <DependentUpon>Autorizacion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AplicarDescuentoPromesa.resx">
+      <DependentUpon>AplicarDescuentoPromesa.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CancelarTicket.resx">
       <DependentUpon>CancelarTicket.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CentroDeNotificaciones.resx">
       <DependentUpon>CentroDeNotificaciones.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrearNotificacionDescuentoPromesa.resx">
+      <DependentUpon>CrearNotificacionDescuentoPromesa.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrearNotificacionCancelarTicket.resx">
       <DependentUpon>CrearNotificacionCancelarTicket.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DescuentoPromesa.resx">
+      <DependentUpon>DescuentoPromesa.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionesLegal.resx">
       <DependentUpon>GestionesLegal.vb</DependentUpon>

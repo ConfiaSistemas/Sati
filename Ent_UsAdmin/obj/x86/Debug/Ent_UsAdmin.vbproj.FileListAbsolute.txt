@@ -418,3 +418,6 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\My
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AutorizacionNotificacion.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.GestionesLegal.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacionCancelarTicket.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DescuentoPromesa.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AplicarDescuentoPromesa.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacionDescuentoPromesa.resources
