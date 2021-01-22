@@ -6,15 +6,18 @@ Public Class ValorCartera
     Dim dataGestores As DataSet
     Dim dataPromotores As DataSet
     Dim adapterGestores As SqlDataAdapter
-
+    Dim rs As New Resizer
     Dim adapterPromotores As SqlDataAdapter
     Dim dataConsulta As DataTable
     Dim adapterConsulta As SqlDataAdapter
     Dim totalSmultas, totalCmultas, totalNormal, totalVCmultas As Double
     Dim porcentajeSmultas As Double
     Dim porcentajeCmultas As Double
+    Dim formancho As Integer = 1197
+    Dim formalto As Integer = 581
     Private Sub Desembolsos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CheckForIllegalCrossThreadCalls = False
+
         ComboFiltro.SelectedIndex = 0
         Cargando.Show()
         Cargando.MonoFlat_Label1.Text = "Cargando Información"
@@ -22,7 +25,28 @@ Public Class ValorCartera
         BackgroundGestores.RunWorkerAsync()
 
     End Sub
-
+    Sub escalar1()
+        Dim f As New System.Drawing.SizeF
+        f.Height = ((100 / formalto) * Me.Height) / 100
+        f.Width = ((100 / formancho) * Me.Width) / 100
+        For Each ctrl As Control In Me.Controls
+            ctrl.Scale(f)
+            Try
+                'controlo el error por si no tiene propiedad font
+                ctrl.Font = New Font(ctrl.Font.OriginalFontName, ctrl.Font.Size * f.Height, ctrl.Font.Style, GraphicsUnit.Point)
+            Catch ex As Exception
+            End Try
+            If (TypeOf (ctrl) Is FlowLayoutPanel) Then 'si el control es un groupbox escalo sus controles internos
+                For Each ctrlAUX As Control In ctrl.Controls
+                    ctrlAUX.Scale(f)
+                    Try
+                        ctrlAUX.Font = New Font(ctrlAUX.Font.OriginalFontName, ctrlAUX.Font.Size * f.Height, ctrlAUX.Font.Style, GraphicsUnit.Point)
+                    Catch ex As Exception
+                    End Try
+                Next
+            End If
+        Next
+    End Sub
     Private Sub BackgroundGestores_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundGestores.DoWork
         iniciarconexionempresa()
         Dim consulta As String
@@ -552,6 +576,7 @@ else '0' end as MultasVencidas
 
         Cargando.Close()
         BunifuThinButton22.Enabled = True
+
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click

@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Threading.Tasks
 
 Public Class CreditosActivos
     Dim strimpuestos As String
@@ -14,27 +15,32 @@ Public Class CreditosActivos
             End If
         Next
     End Sub
-    Public Sub cargarSolicitudes()
+    Public Async Sub cargarSolicitudes()
         dtimpuestos.Rows.Clear()
+        dtimpuestos.ScrollBars = ScrollBars.None
         Try
+            Await Task.Factory.StartNew(Sub()
+                                            iniciarconexionempresa()
 
-            iniciarconexionempresa()
+                                            strimpuestos = "select id,Fecha,Nombre,Monto,Plazo,format(fechaEntrega,'dd/MM/yyyy') as FechaEntrega,estado from credito where (estado = 'A' or estado = 'C' or estado = 'I' or estado = 'R') and nombre like '%" & txtnombre.Text & "%' order by nombre asc"
 
-            strimpuestos = "select id,Fecha,Nombre,Monto,Plazo,format(fechaEntrega,'dd/MM/yyyy') as FechaEntrega,estado from credito where (estado = 'A' or estado = 'C' or estado = 'I' or estado = 'R') and nombre like '%" & txtnombre.Text & "%' order by nombre asc"
+                                            Dim ejec = New SqlCommand(strimpuestos)
+                                            ejec.Connection = conexionempresa
+                                            Dim id, nombre As String
 
-            Dim ejec = New SqlCommand(strimpuestos)
-            ejec.Connection = conexionempresa
-            Dim id, nombre As String
+                                            Dim myreaderimpuestos As SqlDataReader = ejec.ExecuteReader()
+                                            While myreaderimpuestos.Read
+                                                id = myreaderimpuestos("id")
+                                                nombre = myreaderimpuestos("nombre")
 
-            Dim myreaderimpuestos As SqlDataReader = ejec.ExecuteReader()
-            While myreaderimpuestos.Read
-                id = myreaderimpuestos("id")
-                nombre = myreaderimpuestos("nombre")
+                                                dtimpuestos.Rows.Add(id, myreaderimpuestos("fecha"), nombre, FormatCurrency(myreaderimpuestos("Monto"), 2), myreaderimpuestos("Plazo"), myreaderimpuestos("FechaEntrega"), myreaderimpuestos("Estado"))
+                                            End While
+                                            myreaderimpuestos.Close()
+                                        End Sub)
 
-                dtimpuestos.Rows.Add(id, myreaderimpuestos("fecha"), nombre, FormatCurrency(myreaderimpuestos("Monto"), 2), myreaderimpuestos("Plazo"), myreaderimpuestos("FechaEntrega"), myreaderimpuestos("Estado"))
-            End While
-            myreaderimpuestos.Close()
+            dtimpuestos.ScrollBars = ScrollBars.Both
         Catch ex As Exception
+            dtimpuestos.ScrollBars = ScrollBars.Both
             MessageBox.Show(ex.Message)
         End Try
 

@@ -657,7 +657,22 @@ else '0' end as MultasVencidas
                 comandoDetallePromesa.Connection = conexionempresa
                 comandoDetallePromesa.CommandText = consultaDetallePromesa
                 comandoDetallePromesa.ExecuteNonQuery()
+                Dim consultaActualizaCalConvenio As String
+                Dim comandoActualizaCalConvenios As SqlCommand
+                Select Case estadoCredito
+                    Case "C"
+                        consultaActualizaCalConvenio = "Update calendarioConveniossac set convenio = 1 where idpago = '" & row.Cells(0).Value & "'"
 
+
+                    Case "R"
+                        consultaActualizaCalConvenio = "Update calendarioReestructurasSac set convenio = 1 where idpago = '" & row.Cells(0).Value & "'"
+                    Case Else
+                        consultaActualizaCalConvenio = "Update calendarioNormal set convenio = 1 where idpago = '" & row.Cells(0).Value & "'"
+                End Select
+                comandoActualizaCalConvenios = New SqlCommand
+                comandoActualizaCalConvenios.Connection = conexionempresa
+                comandoActualizaCalConvenios.CommandText = consultaActualizaCalConvenio
+                comandoActualizaCalConvenios.ExecuteNonQuery()
 
 
             Next

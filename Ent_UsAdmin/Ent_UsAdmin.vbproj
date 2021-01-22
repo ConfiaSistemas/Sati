@@ -431,6 +431,8 @@
     <Compile Include="GestionesLegal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ResizeForm.vb" />
+    <Compile Include="Resizer.vb" />
     <Compile Include="SesionesActivas.Designer.vb">
       <DependentUpon>SesionesActivas.vb</DependentUpon>
     </Compile>
