@@ -122,7 +122,7 @@ end"
                                                     EmpleadoAsignado = comandoEmpleado.ExecuteScalar
                                                     Docs()
                                                     Colonias()
-
+                                                    conectado = True
                                                     Try
                                                         Dim conexionLogin As MySqlConnection
                                                         conexionLogin = New MySqlConnection()
@@ -136,7 +136,7 @@ end"
                                                         comandoEmpresaLogin.CommandText = consultaEmpresaLogin
                                                         comandoEmpresaLogin.ExecuteNonQuery()
                                                     Catch ex As Exception
-                                                        IO.File.AppendAllText("C:\ConfiaAdmin\SATI\Log.txt", String.Format("{0}{1}", Environment.NewLine, ex.ToString()))
+                                                        ' IO.File.AppendAllText("C:\ConfiaAdmin\SATI\Log.txt", String.Format("{0}{1}", Environment.NewLine, ex.ToString()))
                                                     End Try
 
                                                     Me.Invoke(Sub()
@@ -144,7 +144,7 @@ end"
 
                                                               End Sub)
 
-                                                    conectado = True
+
                                                 Else
                                                     MessageBox.Show("Pruebe de nuevo o verifique su configuración")
                                                     FlowLayoutPanel1.Enabled = True
