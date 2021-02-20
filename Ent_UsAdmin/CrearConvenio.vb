@@ -223,14 +223,9 @@ else '0' end as MultasVencidas
                     CalendarioConvenio.gestor = gestor
                     CalendarioConvenio.Show()
                 Else
-                    If diasAtraso < 30 Then
-                        MessageBox.Show("Para crear el convenio, el crédito debe tener por lo menos 4 pagos vencidos, o 30 días de atraso desde la última fecha de pago.")
-                    Else
+                    If idGrp = 1 Then
                         CalendarioConvenio.Moratorios = ParteMoratorios
                         CalendarioConvenio.Capital = ParteCredito
-
-
-                        ' CalendarioConvenioLegal.personalizado = personalizado
                         CalendarioConvenio.idCredito = idCredito
                         CalendarioConvenio.deuda = DeudaTotal
                         CalendarioConvenio.cantPagos = txtCantPagos.Text
@@ -240,10 +235,27 @@ else '0' end as MultasVencidas
                         CalendarioConvenio.deudaTotal = DeudaTotal
                         CalendarioConvenio.gestor = gestor
                         CalendarioConvenio.Show()
-                    End If
-                End If
+                    ElseIf diasAtraso < 30 Then
+                        MessageBox.Show("Para crear el convenio, el crédito debe tener por lo menos 4 pagos vencidos, o 30 días de atraso desde la última fecha de pago.")
+                    Else
+                        CalendarioConvenio.Moratorios = ParteMoratorios
+                            CalendarioConvenio.Capital = ParteCredito
 
-            Case "Q"
+
+                            ' CalendarioConvenioLegal.personalizado = personalizado
+                            CalendarioConvenio.idCredito = idCredito
+                            CalendarioConvenio.deuda = DeudaTotal
+                            CalendarioConvenio.cantPagos = txtCantPagos.Text
+                            CalendarioConvenio.MontoPago = txtPago.Text
+                            CalendarioConvenio.PrimerPago = Convert.ToDateTime(datePrimerPago.Value.ToShortDateString)
+                            CalendarioConvenio.Modalidad = Modalidad
+                            CalendarioConvenio.deudaTotal = DeudaTotal
+                            CalendarioConvenio.gestor = gestor
+                            CalendarioConvenio.Show()
+                        End If
+                    End If
+
+                    Case "Q"
                 If pagosVencidos > 1 Then
                     CalendarioConvenio.Moratorios = ParteMoratorios
                     CalendarioConvenio.Capital = ParteCredito
@@ -260,9 +272,7 @@ else '0' end as MultasVencidas
                     CalendarioConvenio.gestor = gestor
                     CalendarioConvenio.Show()
                 Else
-                    If diasAtraso < 30 Then
-                        MessageBox.Show("Para crear el convenio, el crédito debe tener por lo menos 2 pagos vencidos (quincenal), o 30 días de atraso desde la última fecha de pago.")
-                    Else
+                    If idGrp = 1 Then
                         CalendarioConvenio.Moratorios = ParteMoratorios
                         CalendarioConvenio.Capital = ParteCredito
 
@@ -277,8 +287,25 @@ else '0' end as MultasVencidas
                         CalendarioConvenio.deudaTotal = DeudaTotal
                         CalendarioConvenio.gestor = gestor
                         CalendarioConvenio.Show()
+                    ElseIf diasAtraso < 30 Then
+                        MessageBox.Show("Para crear el convenio, el crédito debe tener por lo menos 2 pagos vencidos (quincenal), o 30 días de atraso desde la última fecha de pago.")
+                    Else
+                        CalendarioConvenio.Moratorios = ParteMoratorios
+                            CalendarioConvenio.Capital = ParteCredito
+
+
+                            ' CalendarioConvenioLegal.personalizado = personalizado
+                            CalendarioConvenio.idCredito = idCredito
+                            CalendarioConvenio.deuda = DeudaTotal
+                            CalendarioConvenio.cantPagos = txtCantPagos.Text
+                            CalendarioConvenio.MontoPago = txtPago.Text
+                            CalendarioConvenio.PrimerPago = Convert.ToDateTime(datePrimerPago.Value.ToShortDateString)
+                            CalendarioConvenio.Modalidad = Modalidad
+                            CalendarioConvenio.deudaTotal = DeudaTotal
+                            CalendarioConvenio.gestor = gestor
+                            CalendarioConvenio.Show()
+                        End If
                     End If
-                End If
 
         End Select
 

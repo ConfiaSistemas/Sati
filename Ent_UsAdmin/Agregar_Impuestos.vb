@@ -57,15 +57,41 @@ SELECT 'existe'"
                         If (result = DialogResult.Yes) Then
                             Dim comandoAgregarAunAsi As SqlCommand
                             Dim consultaAgregarAunAsi As String
-                            consultaAgregarAunAsi = "insert into Clientes(Nombre,ApellidoPaterno,ApellidoMaterno,FechaNacimiento,fechaAlta,horaAlta,Telefono,Celular) values('" & txtnombre.Text & "', '" & txtApellidoP.Text & "', '" & txtApellidoM.Text & "', '" & Format(DateNacimiento.Value, "yyyy-MM-dd") & "','" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & txtTelefono.Text & "','" & txtCelular.Text & "')"
+                            consultaAgregarAunAsi = "insert into Clientes(Nombre,ApellidoPaterno,ApellidoMaterno,FechaNacimiento,fechaAlta,horaAlta,Telefono,Celular) values('" & txtnombre.Text & "', '" & txtApellidoP.Text & "', '" & txtApellidoM.Text & "', '" & Format(DateNacimiento.Value, "yyyy-MM-dd") & "','" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & txtTelefono.Text & "','" & txtCelular.Text & "') Select SCOPE_IDENTITY()"
                             comandoAgregarAunAsi = New SqlCommand
                             comandoAgregarAunAsi.Connection = conexionempresa
                             comandoAgregarAunAsi.CommandText = consultaAgregarAunAsi
-                            comandoAgregarAunAsi.ExecuteNonQuery()
+                            respuesta = comandoAgregarAunAsi.ExecuteScalar()
+
+                            Dim idCli As Integer
+                            idCli = respuesta
+                            Dim comandoIdStr As SqlCommand
+                            Dim consultaIdStr As String
+                            consultaIdStr = "update clientes set idstr = 'CF-" & prefijoEmpresa & "-" & idCli.ToString("00000.##") & "' where id = '" & respuesta & "'"
+                            comandoIdStr = New SqlCommand
+                            comandoIdStr.Connection = conexionempresa
+                            comandoIdStr.CommandText = consultaIdStr
+                            comandoIdStr.ExecuteNonQuery()
+                            actualizar = True
+                            MessageBox.Show("Listo")
+                            txtnombre.Text = ""
+                            txtApellidoP.Text = ""
+                            txtApellidoM.Text = ""
+                            txtCelular.Text = ""
+                            txtTelefono.Text = ""
                         Else
                             MessageBox.Show("No fue agregado el cliente")
                         End If
                     Else
+                        Dim idCli As Integer
+                        idCli = respuesta
+                        Dim comandoIdStr As SqlCommand
+                        Dim consultaIdStr As String
+                        consultaIdStr = "update clientes set idstr = 'CF-" & prefijoEmpresa & "-" & idCli.ToString("00000.##") & "' where id = '" & respuesta & "'"
+                        comandoIdStr = New SqlCommand
+                        comandoIdStr.Connection = conexionempresa
+                        comandoIdStr.CommandText = consultaIdStr
+                        comandoIdStr.ExecuteNonQuery()
                         actualizar = True
                         MessageBox.Show("Listo")
                         txtnombre.Text = ""

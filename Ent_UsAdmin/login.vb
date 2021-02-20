@@ -334,5 +334,7 @@ Public Class login
         End Try
     End Sub
 
+    Private Sub txtcontra_TextChanged(sender As Object, e As EventArgs) Handles txtcontra.TextChanged
 
+    End Sub
 End Class

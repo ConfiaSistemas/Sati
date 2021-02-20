@@ -26,6 +26,8 @@ Public Class PromPago
     Dim existePromesa As String
     Dim ncargando As Cargando
     Dim idPromesa As String
+    Public TipoCredito As String
+
     Private Sub PromPago_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         creada = False
         DoubleBuffered = True
@@ -66,12 +68,17 @@ Public Class PromPago
 
     Private Sub RadWizard1_Next(sender As Object, e As WizardCancelEventArgs) Handles RadWizard1.[Next]
         If RadWizard1.Pages.Item(0) Is RadWizard1.SelectedPage Then
-            ncargando = New Cargando
-            ncargando.Show()
+            If TipoCredito = "Legal" Then
 
-            ncargando.MonoFlat_Label1.Text = "Consultando información"
-            ncargando.TopMost = True
-            BackgroundVencidos.RunWorkerAsync()
+            Else
+                ncargando = New Cargando
+                ncargando.Show()
+
+                ncargando.MonoFlat_Label1.Text = "Consultando información"
+                ncargando.TopMost = True
+                BackgroundVencidos.RunWorkerAsync()
+            End If
+
         End If
         If RadWizard1.Pages.Item(1) Is RadWizard1.SelectedPage Then
             If CheckVencidos.CheckState = CheckState.Checked Then
@@ -791,5 +798,9 @@ else '0' end as MultasVencidas
             End If
 
         End If
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
     End Sub
 End Class

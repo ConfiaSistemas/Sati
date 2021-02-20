@@ -82,4 +82,10 @@ Public Class impuestos
             cargarimpuestos()
         End If
     End Sub
+
+    Private Sub ImprimirTarjetaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImprimirTarjetaToolStripMenuItem.Click
+        ImprimirTarjeta.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+
+        ImprimirTarjeta.Show()
+    End Sub
 End Class

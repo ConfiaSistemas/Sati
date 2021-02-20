@@ -268,4 +268,8 @@ ISNULL((select nombre from Empeños where id = pagos.idEmpeño),0) 		end) as nom
             MessageBox.Show("No hay artículos para mostrar en este empeño.")
         End Try
     End Sub
+
+    Private Sub dtArticulos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtArticulos.CellContentClick
+
+    End Sub
 End Class

@@ -13,7 +13,10 @@ Imports ZXing
 Imports Gma.QrCodeNet.Encoding
 Imports Gma.QrCodeNet.Encoding.Windows
 Imports Gma.QrCodeNet.Encoding.Windows.Render
-
+Imports System
+Imports System.Collections.Generic
+Imports System.Linq
+Imports System.Text
 Public Class EntregarDocumentacion
     Public NombreCreditoAentregar As String
     Public MontoAentregar As Double
@@ -754,24 +757,44 @@ Sábado 09:00 a.m. a 02:00 p.m."
         FileCopy("C:\ConfiaAdmin\SATI\Tarjeta.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempTarjeta.docx")
         Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempTarjeta.docx")
         documento.ReplaceText("%%NOMBRECLIENTE%%", NombreClienteAentregar)
-        documento.ReplaceText("%%QR%%", "")
         documento.Save()
         documento.Dispose()
+
+        Dim document As New Spire.Doc.Document
+        document.LoadFromFile("C:\ConfiaAdmin\SATI\TEMPDOCS\TempTarjeta.docx")
+        Dim selections As TextSelection() = document.FindAllString("%%QR%%", True, True)
+        Dim index As Integer = 0
+        Dim range As TextRange = Nothing
+        gen_qr_file("C:\ConfiaAdmin\SATI\TEMPDOCS\QR", "CF-URP-0001", 50)
+        Dim qr As New Bitmap("C:\ConfiaAdmin\SATI\TEMPDOCS\QR.png")
+
+        For Each selection As TextSelection In selections
+            Dim pic As DocPicture = New DocPicture(document)
+            pic.LoadImage(qr)
+            range = selection.GetAsOneRange()
+            index = range.OwnerParagraph.ChildObjects.IndexOf(range)
+            range.OwnerParagraph.ChildObjects.Insert(index, pic)
+            range.OwnerParagraph.ChildObjects.Remove(range)
+        Next
+
+        document.SaveToFile("C:\ConfiaAdmin\SATI\TEMPDOCS\TempTarjeta.docx", FileFormat.Doc)
+        '  System.Diagnostics.Process.Start("Sample.doc")
+
         'Dim GENERADOR As BarcodeWriter = New BarcodeWriter 'INICIALIZA EL GENERADOR
         'GENERADOR.Format = BarcodeFormat.QR_CODE
         ' Dim IMAGEN As Bitmap = New Bitmap(GENERADOR.Write("CF-URP-0001"), 50, 50)
         'IMAGEN.Save("C:\ConfiaAdmin\SATI\TEMPDOCS\QR.png")
-        gen_qr_file("C:\ConfiaAdmin\SATI\TEMPDOCS\QR", "CF-URP-0001", 50)
-        Dim Word As Application
-        Dim Doc As Word.Document
-        Word = CreateObject("Word.Application")
-        Doc = Word.Documents.Open("C:\ConfiaAdmin\SATI\TEMPDOCS\TempTarjeta.docx")
-        Dim para As Word.Paragraph = Doc.Paragraphs.Add()
+        '  gen_qr_file("C:\ConfiaAdmin\SATI\TEMPDOCS\QR", "CF-URP-0001", 50)
+        ' Dim Word As Application
+        ' Dim Doc As Word.Document
+        'Word = CreateObject("Word.Application")
+        'Doc = Word.Documents.Open("C:\ConfiaAdmin\SATI\TEMPDOCS\TempTarjeta.docx")
+        'Dim para As Word.Paragraph = Doc.Paragraphs.Add()
         ' para.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
-        With para.Range.InlineShapes.AddPicture("C:\ConfiaAdmin\SATI\TEMPDOCS\QR.png").ConvertToShape
-            .WrapFormat.Type = Word.WdWrapType.wdWrapBehind
-        End With
-        para.Range.InsertParagraphAfter()
+        ' With para.Range.InlineShapes.AddPicture("C:\ConfiaAdmin\SATI\TEMPDOCS\QR.png").ConvertToShape
+        '.WrapFormat.Type = Word.WdWrapType.wdWrapBehind
+        ' End With
+        ' para.Range.InsertParagraphAfter()
         'para.Range.ShapeRange.Item(1).WrapFormat.Type = WdWrapType.wdWrapInline
         'para.Range.InsertParagraph()
         'Word.ActiveDocument.InlineShapes(1).Range.ShapeRange.Item(0).WrapFormat.Type = WdWrapType.wdWrapInline
@@ -782,10 +805,10 @@ Sábado 09:00 a.m. a 02:00 p.m."
         '.WrapFormat.Type = WdWrapType.wdWrapInline
         ' End With
 
-        Doc.Save()
-        Doc.Close()
+        ' Doc.Save()
+        ' Doc.Close()
         ' Word = Nothing
-        Word.Application.Quit()
+        ' Word.Application.Quit()
     End Sub
 
     Private Sub BackgroundTarjeta_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundTarjeta.RunWorkerCompleted

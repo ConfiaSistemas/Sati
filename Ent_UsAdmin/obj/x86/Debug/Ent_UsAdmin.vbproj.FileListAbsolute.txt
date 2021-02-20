@@ -421,3 +421,7 @@ D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacionCancelarTic
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DescuentoPromesa.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AplicarDescuentoPromesa.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacionDescuentoPromesa.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.IngresarDepositoLegal.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AplicarDepositoLegal.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CierraEmpresa.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirTarjeta.resources

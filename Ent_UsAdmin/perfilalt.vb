@@ -44,6 +44,13 @@
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
         frm_adm.cerrarSesion = True
+        frm_adm.cerrarEmpresa = False
+        frm_adm.Close()
+    End Sub
+
+    Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click
+        frm_adm.cerrarSesion = True
+        frm_adm.cerrarEmpresa = True
         frm_adm.Close()
     End Sub
 End Class

@@ -370,6 +370,12 @@
     <Compile Include="Alertas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AplicarDepositoLegal.Designer.vb">
+      <DependentUpon>AplicarDepositoLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AplicarDepositoLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="AutorizacionNotificacion.Designer.vb">
       <DependentUpon>AutorizacionNotificacion.vb</DependentUpon>
@@ -407,6 +413,12 @@
     <Compile Include="CentroDeNotificaciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CierraEmpresa.Designer.vb">
+      <DependentUpon>CierraEmpresa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CierraEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CrearNotificacionDescuentoPromesa.Designer.vb">
       <DependentUpon>CrearNotificacionDescuentoPromesa.vb</DependentUpon>
     </Compile>
@@ -429,6 +441,18 @@
       <DependentUpon>GestionesLegal.vb</DependentUpon>
     </Compile>
     <Compile Include="GestionesLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImprimirTarjeta.Designer.vb">
+      <DependentUpon>ImprimirTarjeta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImprimirTarjeta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IngresarDepositoLegal.Designer.vb">
+      <DependentUpon>IngresarDepositoLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IngresarDepositoLegal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ResizeForm.vb" />
@@ -1126,6 +1150,9 @@
     <EmbeddedResource Include="Alertas.resx">
       <DependentUpon>Alertas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AplicarDepositoLegal.resx">
+      <DependentUpon>AplicarDepositoLegal.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AutorizacionNotificacion.resx">
       <DependentUpon>AutorizacionNotificacion.vb</DependentUpon>
     </EmbeddedResource>
@@ -1144,6 +1171,9 @@
     <EmbeddedResource Include="CentroDeNotificaciones.resx">
       <DependentUpon>CentroDeNotificaciones.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CierraEmpresa.resx">
+      <DependentUpon>CierraEmpresa.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrearNotificacionDescuentoPromesa.resx">
       <DependentUpon>CrearNotificacionDescuentoPromesa.vb</DependentUpon>
     </EmbeddedResource>
@@ -1155,6 +1185,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GestionesLegal.resx">
       <DependentUpon>GestionesLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImprimirTarjeta.resx">
+      <DependentUpon>ImprimirTarjeta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IngresarDepositoLegal.resx">
+      <DependentUpon>IngresarDepositoLegal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SesionesActivas.resx">
       <DependentUpon>SesionesActivas.vb</DependentUpon>

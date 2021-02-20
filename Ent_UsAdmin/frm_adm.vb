@@ -54,113 +54,106 @@ Public Class frm_adm
     End Sub
 
     Private Sub frm_adm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        Timer2.Stop()
 
-        perfilalt.Close()
-        abierto = False
         Try
+            Timer2.Stop()
+            CierraEmpresa.Close()
+            perfilalt.Close()
+            abierto = False
             If actualizar Then
             Else
-                If cerrarEmpresa Then
-                    If MessageBox.Show("¿Está seguro que desea cerrar la empresa?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                        perfilalt.TopMost = False
 
-                        'Application.ExitThread()
-                        Me.Invoke(Sub()
-                                      Empresas.Show()
-                                  End Sub
-                            )
+                If cerrarSesion Then
+                            If cerrarEmpresa Then
+                                If MessageBox.Show("¿Está seguro que desea cerrar la empresa?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                                    perfilalt.TopMost = False
 
-                        'System.Threading.Thread.Sleep(1000)
-                        ' System.Threading.Thread.Sleep(1000)
-                        'cerrarSesion = False
-                        cerrarEmpresa = False
-                        cerrandoEmpresa = True
-                        cerrandoSesion = True
-                        'cerrandoSesion = True
-                        ' Dim i As Integer = 0
-                        'i = Application.OpenForms.Count
-                        ' For a As Integer = 0 To i
-                        'Dim frm As Form
-                        'frm = New Form
-                        'frm = Application.OpenForms.Item(a)
-                        'If frm.Name <> "login" And frm.Name <> Me.Name Then
-                        'frm.Close()
-                        'End If
-                        'Next
+                            'Application.ExitThread()
+                            Empresas.Show()
+                                    cerrarSesion = False
+                                    cerrandoSesion = True
+                                    ' Dim i As Integer = 0
+                                    'i = Application.OpenForms.Count
+                                    ' For a As Integer = 0 To i
+                                    'Dim frm As Form
+                                    'frm = New Form
+                                    'frm = Application.OpenForms.Item(a)
+                                    'If frm.Name <> "login" And frm.Name <> Me.Name Then
+                                    'frm.Close()
+                                    'End If
+                                    'Next
 
+                                    Dim num_controles As Integer = Application.OpenForms.Count - 1
+                                    For n As Integer = num_controles To 0 Step -1
+                                        Dim ctrl As Form = Application.OpenForms.Item(n)
+                                        If ctrl.Name <> "Empresas" And ctrl.Name <> Me.Name Then
+                                            ctrl.Close()
+                                        End If
 
-                        'MessageBox.Show("hola")
+                                        'ctrl.Dispose()
+                                    Next
 
-                        'Me.Close()
+                                    Me.Close()
 
-                    Else
-                        cerrarEmpresa = False
+                                Else
+                                    cerrarSesion = False
 
-                        e.Cancel = True
+                                    e.Cancel = True
 
-                    End If
-
-                Else
-                    If cerrandoEmpresa Then
-
-                        'Me.Close()
-
-
-                    Else
-
-                        If cerrarSesion Then
-
-                            If MessageBox.Show("¿Está seguro que desea cerrar sesión?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                                perfilalt.TopMost = False
-                                Dim conexionSesion As MySqlConnection
-                                conexionSesion = New MySqlConnection()
-                                conexionSesion.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
-                                conexionSesion.Open()
-                                Dim comandoActSesion As MySqlCommand
-                                Dim consultaActSesion As String
-                                consultaActSesion = "update Sesiones set Activo = 0 where id = '" & idSesion & "'"
-                                comandoActSesion = New MySqlCommand
-                                comandoActSesion.Connection = conexionSesion
-                                comandoActSesion.CommandText = consultaActSesion
-                                comandoActSesion.ExecuteNonQuery()
-                                conexionSesion.Close()
-                                'Application.ExitThread()
-                                login.Show()
-                                cerrarSesion = False
-                                cerrandoSesion = True
-                                ' Dim i As Integer = 0
-                                'i = Application.OpenForms.Count
-                                ' For a As Integer = 0 To i
-                                'Dim frm As Form
-                                'frm = New Form
-                                'frm = Application.OpenForms.Item(a)
-                                'If frm.Name <> "login" And frm.Name <> Me.Name Then
-                                'frm.Close()
-                                'End If
-                                'Next
-
-                                Dim num_controles As Integer = Application.OpenForms.Count - 1
-                                For n As Integer = num_controles To 0 Step -1
-                                    Dim ctrl As Form = Application.OpenForms.Item(n)
-                                    If ctrl.Name <> "login" And ctrl.Name <> Me.Name Then
-                                        ctrl.Close()
-                                    End If
-
-                                    'ctrl.Dispose()
-                                Next
-
-                                Me.Close()
-
+                                End If
                             Else
-                                cerrarSesion = False
+                                If MessageBox.Show("¿Está seguro que desea cerrar sesión?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                                    perfilalt.TopMost = False
+                                    Dim conexionSesion As MySqlConnection
+                                    conexionSesion = New MySqlConnection()
+                                    conexionSesion.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+                                    conexionSesion.Open()
+                                    Dim comandoActSesion As MySqlCommand
+                                    Dim consultaActSesion As String
+                                    consultaActSesion = "update Sesiones set Activo = 0 where id = '" & idSesion & "'"
+                                    comandoActSesion = New MySqlCommand
+                                    comandoActSesion.Connection = conexionSesion
+                                    comandoActSesion.CommandText = consultaActSesion
+                                    comandoActSesion.ExecuteNonQuery()
+                                    conexionSesion.Close()
+                                    'Application.ExitThread()
+                                    login.Show()
+                                    cerrarSesion = False
+                                    cerrandoSesion = True
+                                    ' Dim i As Integer = 0
+                                    'i = Application.OpenForms.Count
+                                    ' For a As Integer = 0 To i
+                                    'Dim frm As Form
+                                    'frm = New Form
+                                    'frm = Application.OpenForms.Item(a)
+                                    'If frm.Name <> "login" And frm.Name <> Me.Name Then
+                                    'frm.Close()
+                                    'End If
+                                    'Next
 
-                                e.Cancel = True
+                                    Dim num_controles As Integer = Application.OpenForms.Count - 1
+                                    For n As Integer = num_controles To 0 Step -1
+                                        Dim ctrl As Form = Application.OpenForms.Item(n)
+                                        If ctrl.Name <> "login" And ctrl.Name <> Me.Name Then
+                                            ctrl.Close()
+                                        End If
 
+                                        'ctrl.Dispose()
+                                    Next
+
+                                    Me.Close()
+
+                                Else
+                                    cerrarSesion = False
+
+                                    e.Cancel = True
+
+                                End If
                             End If
+
                         Else
                             If cerrandoSesion Then
-
+                                'MessageBox.Show("hola")
                             Else
                                 'MessageBox.Show("hola")
                                 If MessageBox.Show("¿Está seguro que desea salir?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
@@ -190,9 +183,6 @@ Public Class frm_adm
                         End If
                     End If
 
-
-                End If
-            End If
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -724,9 +714,8 @@ Public Class frm_adm
     Private Sub BunifuFlatButton5_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton5.Click
         BunifuFlatButton5.Textcolor = Color.White
         Try
-            cerrarEmpresa = True
-            'Empresas.ShowDialog()
-            Me.Close()
+            CierraEmpresa.Show()
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try

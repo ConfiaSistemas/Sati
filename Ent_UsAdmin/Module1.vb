@@ -56,7 +56,7 @@ Module Module1
     Public adapterColonias As SqlDataAdapter
     Public TipoEquipo As String
     Public idSesion As String
-
+    Public prefijoEmpresa As String
     Dim exApp As New Microsoft.Office.Interop.Excel.Application
     Public exLibro As Microsoft.Office.Interop.Excel.Workbook
     Private WithEvents TestWorker As System.ComponentModel.BackgroundWorker

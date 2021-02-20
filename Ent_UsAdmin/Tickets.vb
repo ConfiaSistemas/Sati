@@ -51,7 +51,7 @@ Public Class Tickets
             Dim nombrecredito As String
 
             Select Case reader("tipo")
-                Case "Convenio"
+                Case "Convenio", "Transferencia Convenio", "Depósito Convenio"
                     Dim comandonombre As SqlCommand
                     comandonombre = New SqlCommand
 
@@ -60,7 +60,7 @@ Public Class Tickets
                     comandonombre.Connection = conexionempresa
                     comandonombre.CommandText = consultaNombre
                     nombrecredito = comandonombre.ExecuteScalar
-                Case "Legal"
+                Case "Legal", "Depósito Legal"
                     Dim comandonombre As SqlCommand
                     comandonombre = New SqlCommand
 
@@ -78,7 +78,7 @@ Public Class Tickets
                     comandonombre.Connection = conexionempresa
                     comandonombre.CommandText = consultaNombre
                     nombrecredito = comandonombre.ExecuteScalar
-                Case "Reestructura"
+                Case "Reestructura", "Transferencia Reestructura", "Depósito Reestructura"
                     Dim comandonombre As SqlCommand
                     comandonombre = New SqlCommand
 

@@ -443,6 +443,7 @@ Partial Class frm_adm
         Me.BunifuFlatButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BunifuFlatButton5.Textcolor = System.Drawing.Color.Black
         Me.BunifuFlatButton5.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuFlatButton5.Visible = False
         '
         'BunifuFlatButton4
         '

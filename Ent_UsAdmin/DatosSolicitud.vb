@@ -1071,4 +1071,8 @@ Public Class DatosSolicitud
         '    End If
         'Next
     End Sub
+
+    Private Sub txtTelefonoTrabajo_OnValueChanged(sender As Object, e As EventArgs) Handles txtTelefonoTrabajo.OnValueChanged
+
+    End Sub
 End Class

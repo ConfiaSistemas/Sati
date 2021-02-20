@@ -283,11 +283,11 @@ end"
 
 
 
-        consulta = "select id,Recibido,(case when tipo = 'Legal' then  ISNULL((select nombre from Legales where id = pagos.idCredito),0) 		
+        consulta = "select id,Recibido,(case when tipo = 'Legal' or tipo = 'Depósito Legal' then  ISNULL((select nombre from Legales where id = pagos.idCredito),0) 		
 							   when tipo = 'Extra' then Concepto
 							  
 							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and Ticket.TipoDoc = '" & tipoDocLegal & "'  )pagos order by Fecha,Hora asc"
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (Ticket.TipoDoc = '" & tipoDocLegal & "' or ticket.tipodoc = (select id from tipodoc where nombre = 'Depósito Legal') ))pagos order by Fecha,Hora asc"
 
 
         comandoTicket = New SqlCommand
@@ -431,8 +431,17 @@ end"
     End Sub
 
     Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs) Handles BunifuThinButton24.Click
-        AgregarGastosLegales.idCredito = idCredito
-        AgregarGastosLegales.Show()
+        If estado = "C" Then
+            IngresarDepositoLegal.idCredito = idCredito
+            IngresarDepositoLegal.Show()
+
+        ElseIf estado = "Y" Then
+        Else
+
+            AgregarGastosLegales.idCredito = idCredito
+            AgregarGastosLegales.Show()
+        End If
+
 
     End Sub
 
@@ -449,7 +458,8 @@ end"
         dtGastos.DataSource = dataGastos
         If estado = "C" Then
             BunifuThinButton22.Enabled = True
-            BunifuThinButton24.Enabled = False
+            BunifuThinButton24.Enabled = True
+            BunifuThinButton24.ButtonText = "Ingresar Depósito"
 
         ElseIf estado = "Y" Then
             BunifuThinButton22.Enabled = True
@@ -458,6 +468,7 @@ end"
         Else
             BunifuThinButton24.Enabled = True
             BunifuThinButton22.Enabled = False
+            BunifuThinButton24.ButtonText = "Agregar Gastos"
         End If
         Cargando.Close()
     End Sub
@@ -473,9 +484,9 @@ end"
         consultaCalendario = "select t1.[Número de pago], t1.[Fecha de pago], t1.Monto,
         ISNULL((convert(varchar(3),t2.[Número de pago])),'-')as 'Número de pago ', ISNULL(t2.[Fecha de pago],'-')as 'Fecha de pago ',ISNULL(t2.Monto,'-')as 'Monto '
         from (select format(Fechapago,'dd/MM/yyyy') as 'Fecha de pago',npago as 'Número de pago',
-        format(Monto+interes,'C','es-mx') as Monto from calendarioLegales where idcredito ='" & idCredito & "')t1
+        format(Monto+multas,'C','es-mx') as Monto from calendarioLegales where idcredito ='" & idCredito & "')t1
         left join (select format(Fechapago,'dd/MM/yyyy') as 'Fecha de pago',npago as 'Número de pago',
-        format(Monto+interes,'C','es-mx') as Monto from calendarioLegales where idcredito ='" & idCredito & "')t2
+        format(Monto+multas,'C','es-mx') as Monto from calendarioLegales where idcredito ='" & idCredito & "')t2
         on t1.[Número de pago]=(t2.[Número de pago]-1) where t1.[Número de pago] % 2 <>0"
         adapterCalConvenio = New SqlDataAdapter(consultaCalendario, conexionempresa)
         dataCalConvenio = New Data.DataTable

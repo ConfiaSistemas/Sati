@@ -153,7 +153,9 @@ when Cartera.Estado = 'R' then
 else
 isnull((select SUM(Abonado - interes) as pagonormal from CalendarioNormal where Abonado <> 0 and Abonado >= interes and id_credito = Cartera.id group by id_credito),0) end as AbonadoSinMultas,
 case when Cartera.Estado = 'C' then
-isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = Cartera.id group by Conveniossac.idcredito),0) 
+isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = 3485 group by Conveniossac.idcredito),0)
++
+isnull((select SUM( ((((abonado -(abonado -calendarioconveniossac.Interes) ))) )) as AbonadoInteres from calendarioconveniossac inner join conveniossac on calendarioconveniossac.idconvenio = conveniossac.id where calendarioconveniossac.estado = 'V' and Abonado >=calendarioconveniossac.Interes and conveniossac.idcredito =3485 group by conveniossac.idcredito),0) 
 when Cartera.Estado = 'R' then
 isnull((select SUM( Abonado) as AbonadoInteres from CalendarioReestructurasSac inner join ReestructurasSac on ReestructurasSac.id = CalendarioReestructurasSac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioReestructurasSac.estado = 'V' and ReestructurasSac.idcredito = Cartera.id group by ReestructurasSac.idcredito),0) 
 else
@@ -212,7 +214,9 @@ when Cartera.Estado = 'R' then
 else
 isnull((select SUM(Abonado - interes) as pagonormal from CalendarioNormal where Abonado <> 0 and Abonado >= interes and id_credito = Cartera.id group by id_credito),0) end as AbonadoSinMultas,
 case when Cartera.Estado = 'C' then
-isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = Cartera.id group by Conveniossac.idcredito),0) 
+isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = 3485 group by Conveniossac.idcredito),0)
++
+isnull((select SUM( ((((abonado -(abonado -calendarioconveniossac.Interes) ))) )) as AbonadoInteres from calendarioconveniossac inner join conveniossac on calendarioconveniossac.idconvenio = conveniossac.id where calendarioconveniossac.estado = 'V' and Abonado >=calendarioconveniossac.Interes and conveniossac.idcredito =3485 group by conveniossac.idcredito),0) 
 when Cartera.Estado = 'R' then
 isnull((select SUM( Abonado) as AbonadoInteres from CalendarioReestructurasSac inner join ReestructurasSac on ReestructurasSac.id = CalendarioReestructurasSac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioReestructurasSac.estado = 'V' and ReestructurasSac.idcredito = Cartera.id group by ReestructurasSac.idcredito),0) 
 else
@@ -271,7 +275,9 @@ when Cartera.Estado = 'R' then
 else
 isnull((select SUM(Abonado - interes) as pagonormal from CalendarioNormal where Abonado <> 0 and Abonado >= interes and id_credito = Cartera.id group by id_credito),0) end as AbonadoSinMultas,
 case when Cartera.Estado = 'C' then
-isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = Cartera.id group by Conveniossac.idcredito),0) 
+isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = 3485 group by Conveniossac.idcredito),0)
++
+isnull((select SUM( ((((abonado -(abonado -calendarioconveniossac.Interes) ))) )) as AbonadoInteres from calendarioconveniossac inner join conveniossac on calendarioconveniossac.idconvenio = conveniossac.id where calendarioconveniossac.estado = 'V' and Abonado >=calendarioconveniossac.Interes and conveniossac.idcredito =3485 group by conveniossac.idcredito),0) 
 when Cartera.Estado = 'R' then
 isnull((select SUM( Abonado) as AbonadoInteres from CalendarioReestructurasSac inner join ReestructurasSac on ReestructurasSac.id = CalendarioReestructurasSac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioReestructurasSac.estado = 'V' and ReestructurasSac.idcredito = Cartera.id group by ReestructurasSac.idcredito),0) 
 else
@@ -328,7 +334,9 @@ when Cartera.Estado = 'R' then
 else
 isnull((select SUM(Abonado - interes) as pagonormal from CalendarioNormal where Abonado <> 0 and Abonado >= interes and id_credito = Cartera.id group by id_credito),0) end as AbonadoSinMultas,
 case when Cartera.Estado = 'C' then
-isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = Cartera.id group by Conveniossac.idcredito),0) 
+isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = 3485 group by Conveniossac.idcredito),0)
++
+isnull((select SUM( ((((abonado -(abonado -calendarioconveniossac.Interes) ))) )) as AbonadoInteres from calendarioconveniossac inner join conveniossac on calendarioconveniossac.idconvenio = conveniossac.id where calendarioconveniossac.estado = 'V' and Abonado >=calendarioconveniossac.Interes and conveniossac.idcredito =3485 group by conveniossac.idcredito),0) 
 when Cartera.Estado = 'R' then
 isnull((select SUM( Abonado) as AbonadoInteres from CalendarioReestructurasSac inner join ReestructurasSac on ReestructurasSac.id = CalendarioReestructurasSac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioReestructurasSac.estado = 'V' and ReestructurasSac.idcredito = Cartera.id group by ReestructurasSac.idcredito),0) 
 else
@@ -386,7 +394,9 @@ when Cartera.Estado = 'R' then
 else
 isnull((select SUM(Abonado - interes) as pagonormal from CalendarioNormal where Abonado <> 0 and Abonado >= interes and id_credito = Cartera.id group by id_credito),0) end as AbonadoSinMultas,
 case when Cartera.Estado = 'C' then
-isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = Cartera.id group by Conveniossac.idcredito),0) 
+isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = 3485 group by Conveniossac.idcredito),0)
++
+isnull((select SUM( ((((abonado -(abonado -calendarioconveniossac.Interes) ))) )) as AbonadoInteres from calendarioconveniossac inner join conveniossac on calendarioconveniossac.idconvenio = conveniossac.id where calendarioconveniossac.estado = 'V' and Abonado >=calendarioconveniossac.Interes and conveniossac.idcredito =3485 group by conveniossac.idcredito),0) 
 when Cartera.Estado = 'R' then
 isnull((select SUM( Abonado) as AbonadoInteres from CalendarioReestructurasSac inner join ReestructurasSac on ReestructurasSac.id = CalendarioReestructurasSac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioReestructurasSac.estado = 'V' and ReestructurasSac.idcredito = Cartera.id group by ReestructurasSac.idcredito),0) 
 else

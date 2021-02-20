@@ -121,7 +121,7 @@ Public Class CalendarioConvenioLegal
             Dim comandoCalendario As SqlCommand
 
             Dim consultaCalendario As String
-            consultaCalendario = "Insert into calendariolegales values('" & row.Cells(0).Value & "','" & row.Cells(2).Value & "','" & row.Cells(3).Value & "','" & row.Cells(1).Value & "','0','" & numero & "','" & idCredito & "','P','')"
+            consultaCalendario = "Insert into calendariolegales values('" & row.Cells(0).Value & "','" & row.Cells(2).Value & "','" & row.Cells(3).Value & "','" & row.Cells(1).Value & "','0','" & numero & "','" & idCredito & "','P','','0','" & row.Cells(3).Value & "')"
             comandoCalendario = New SqlCommand
             comandoCalendario.Connection = conexionempresa
             comandoCalendario.CommandText = consultaCalendario

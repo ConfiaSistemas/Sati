@@ -316,6 +316,13 @@ Public Class CentroDeNotificaciones
                         Exit For
 
                     End If
+                    If lblTipo.Text = "DepositoLegal" Then
+                        AplicarDepositoLegal.idDeposito = sender.tag
+                        AplicarDepositoLegal.idNotificacion = sender.name
+                        AplicarDepositoLegal.Show()
+                        Exit For
+
+                    End If
                 End If
 
 

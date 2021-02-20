@@ -88,7 +88,7 @@ Public Class Empresas
                                                     Dim consulta As String
                                                     Dim reader As OleDb.OleDbDataReader
                                                     comando = New OleDb.OleDbCommand
-                                                    consulta = "select id,rs,RFC,Calle,Nex,Col,Ciudad,Estado,CP,nombre,telefono FROM empresas where BD = '" & bdconsultas & "' and ip = '" & ipconsultas & "'"
+                                                    consulta = "select id,rs,RFC,Calle,Nex,Col,Ciudad,Estado,CP,nombre,telefono,prefijo FROM empresas where BD = '" & bdconsultas & "' and ip = '" & ipconsultas & "'"
                                                     comando.Connection = conexion
                                                     comando.CommandText = consulta
                                                     reader = comando.ExecuteReader
@@ -104,6 +104,7 @@ Public Class Empresas
                                                         nombreAmostrar = reader("Nombre")
                                                         idEmpresa = reader("id")
                                                         telEmpresa = reader("Telefono")
+                                                        prefijoEmpresa = reader("prefijo")
                                                     End While
                                                     iniciarconexionempresa()
 
