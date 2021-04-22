@@ -142,7 +142,7 @@ Public Class login
                                                             conexionLogin.Open()
                                                             Dim comandoLogin As MySqlCommand
                                                             Dim consultaLogin As String
-                                                            consultaLogin = "insert into Sesiones values(null,'" & nmusr & "','','" & Date.Now.ToString("yyyy-MM-dd") & "','" & Date.Now.ToString("HH:mm:ss") & "','1','" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "','SATI'); SELECT LAST_INSERT_ID();"
+                                                            consultaLogin = "insert into Sesiones values(null,'" & nmusr & "','','" & Date.Now.ToString("yyyy-MM-dd") & "','" & Date.Now.ToString("HH:mm:ss") & "','1','" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "','SATI','',''); SELECT LAST_INSERT_ID();"
                                                             comandoLogin = New MySqlCommand
                                                             comandoLogin.Connection = conexionLogin
                                                             comandoLogin.CommandText = consultaLogin

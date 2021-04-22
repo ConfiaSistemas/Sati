@@ -1,5 +1,6 @@
 ﻿Imports System.Data.OleDb
 Imports System.Data.SqlClient
+Imports System.Net.NetworkInformation
 Imports System.Threading.Tasks
 Imports MySql.Data.MySqlClient
 
@@ -61,6 +62,9 @@ Public Class Empresas
 
     End Sub
     Private Async Sub clickevenntAsync(ByVal sender As Object, ByVal e As System.EventArgs)
+        If Control.ModifierKeys = Keys.Control Then
+
+        End If
         If usuarioActivo Then
             Try
                 '  Dim iniFile As New IniFile()
@@ -125,13 +129,17 @@ end"
                                                     Colonias()
                                                     conectado = True
                                                     Try
+                                                        Dim ip As System.Net.IPHostEntry
+                                                        ip = System.Net.Dns.GetHostEntry(My.Computer.Name)
+                                                        ' MessageBox.Show(ip.AddressList(4).ToString)
+                                                        ' MessageBox.Show(My.Computer.Name.ToString)
                                                         Dim conexionLogin As MySqlConnection
                                                         conexionLogin = New MySqlConnection()
                                                         conexionLogin.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;password=123456;persistsecurityinfo=True;port=3306;database=USRS"
                                                         conexionLogin.Open()
                                                         Dim comandoEmpresaLogin As MySqlCommand
                                                         Dim consultaEmpresaLogin As String
-                                                        consultaEmpresaLogin = "update Sesiones set Empresa = '" & nombreAmostrar & "' where id = '" & idSesion & "'"
+                                                        consultaEmpresaLogin = "update Sesiones set Empresa = '" & nombreAmostrar & "',ip='" & ip.AddressList(4).ToString & "',Equipo='" & My.Computer.Name.ToString & "' where id = '" & idSesion & "'"
                                                         comandoEmpresaLogin = New MySqlCommand
                                                         comandoEmpresaLogin.Connection = conexionLogin
                                                         comandoEmpresaLogin.CommandText = consultaEmpresaLogin
@@ -157,6 +165,8 @@ end"
 
 
                 If conectado Then
+
+
                     Cargando.Close()
                     frm_adm.Show()
                     Me.Close()
@@ -200,7 +210,10 @@ end"
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
-
+    Function getMacAddress()
+        Dim nics() As NetworkInterface = NetworkInterface.GetAllNetworkInterfaces()
+        Return nics(1).GetPhysicalAddress.ToString
+    End Function
     Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
         If e.Button = MouseButtons.Left Then
             MoveForm(Me)

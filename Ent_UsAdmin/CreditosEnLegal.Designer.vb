@@ -46,6 +46,7 @@ Partial Class CreditosEnLegal
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.txtnombre = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.MonoFlat_Label1 = New ConfiaAdmin.MonoFlat.MonoFlat_Label()
+        Me.CrearPromesaDePagoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuEntregar.SuspendLayout()
         Me.ContextMenuInformacion.SuspendLayout()
@@ -138,20 +139,20 @@ Partial Class CreditosEnLegal
         '
         'ContextMenuEntregar
         '
-        Me.ContextMenuEntregar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EntregarToolStripMenuItem, Me.InformacionToolStripMenuItem})
+        Me.ContextMenuEntregar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EntregarToolStripMenuItem, Me.InformacionToolStripMenuItem, Me.CrearPromesaDePagoToolStripMenuItem})
         Me.ContextMenuEntregar.Name = "ContextMenuEntregar"
-        Me.ContextMenuEntregar.Size = New System.Drawing.Size(159, 48)
+        Me.ContextMenuEntregar.Size = New System.Drawing.Size(198, 92)
         '
         'EntregarToolStripMenuItem
         '
         Me.EntregarToolStripMenuItem.Name = "EntregarToolStripMenuItem"
-        Me.EntregarToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.EntregarToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
         Me.EntregarToolStripMenuItem.Text = "Crear Convenio"
         '
         'InformacionToolStripMenuItem
         '
         Me.InformacionToolStripMenuItem.Name = "InformacionToolStripMenuItem"
-        Me.InformacionToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.InformacionToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
         Me.InformacionToolStripMenuItem.Text = "Ver Información"
         '
         'ContextMenuInformacion
@@ -249,6 +250,12 @@ Partial Class CreditosEnLegal
         Me.MonoFlat_Label1.TabIndex = 10
         Me.MonoFlat_Label1.Text = "Filtrar por nombre"
         '
+        'CrearPromesaDePagoToolStripMenuItem
+        '
+        Me.CrearPromesaDePagoToolStripMenuItem.Name = "CrearPromesaDePagoToolStripMenuItem"
+        Me.CrearPromesaDePagoToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
+        Me.CrearPromesaDePagoToolStripMenuItem.Text = "Crear Promesa de Pago"
+        '
         'CreditosEnLegal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -288,4 +295,5 @@ Partial Class CreditosEnLegal
     Friend WithEvents txtnombre As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents MonoFlat_Label1 As MonoFlat.MonoFlat_Label
     Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents CrearPromesaDePagoToolStripMenuItem As ToolStripMenuItem
 End Class

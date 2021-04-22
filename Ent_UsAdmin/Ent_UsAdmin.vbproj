@@ -419,6 +419,18 @@
     <Compile Include="CierraEmpresa.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ConfigEmpresa.Designer.vb">
+      <DependentUpon>ConfigEmpresa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigurarEmpresa.Designer.vb">
+      <DependentUpon>ConfigurarEmpresa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurarEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CrearNotificacionDescuentoPromesa.Designer.vb">
       <DependentUpon>CrearNotificacionDescuentoPromesa.vb</DependentUpon>
     </Compile>
@@ -429,6 +441,12 @@
       <DependentUpon>CrearNotificacionCancelarTicket.vb</DependentUpon>
     </Compile>
     <Compile Include="CrearNotificacionCancelarTicket.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DescuentoPromesaLegal.Designer.vb">
+      <DependentUpon>DescuentoPromesaLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DescuentoPromesaLegal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DescuentoPromesa.Designer.vb">
@@ -453,6 +471,12 @@
       <DependentUpon>IngresarDepositoLegal.vb</DependentUpon>
     </Compile>
     <Compile Include="IngresarDepositoLegal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PromPagoLegal.Designer.vb">
+      <DependentUpon>PromPagoLegal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PromPagoLegal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ResizeForm.vb" />
@@ -1174,11 +1198,20 @@
     <EmbeddedResource Include="CierraEmpresa.resx">
       <DependentUpon>CierraEmpresa.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConfigEmpresa.resx">
+      <DependentUpon>ConfigEmpresa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurarEmpresa.resx">
+      <DependentUpon>ConfigurarEmpresa.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrearNotificacionDescuentoPromesa.resx">
       <DependentUpon>CrearNotificacionDescuentoPromesa.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearNotificacionCancelarTicket.resx">
       <DependentUpon>CrearNotificacionCancelarTicket.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DescuentoPromesaLegal.resx">
+      <DependentUpon>DescuentoPromesaLegal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DescuentoPromesa.resx">
       <DependentUpon>DescuentoPromesa.vb</DependentUpon>
@@ -1191,6 +1224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IngresarDepositoLegal.resx">
       <DependentUpon>IngresarDepositoLegal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PromPagoLegal.resx">
+      <DependentUpon>PromPagoLegal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SesionesActivas.resx">
       <DependentUpon>SesionesActivas.vb</DependentUpon>

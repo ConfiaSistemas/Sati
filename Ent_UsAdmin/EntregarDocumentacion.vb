@@ -72,7 +72,7 @@ Public Class EntregarDocumentacion
         End While
         reader.Close()
         Dim consultaIntegrantes As String
-        consultaIntegrantes = "select IdCliente,Clientes.Nombre+' '+Clientes.ApellidoPaterno +' '+ Clientes.ApellidoMaterno as nombreCliente from DatosSolicitud inner join Clientes on DatosSolicitud.IdCliente = Clientes.id where datossolicitud.idsolicitud = '" & idSolicitudAentregar & "'"
+        consultaIntegrantes = "select IdCliente,Clientes.Nombre+' '+Clientes.ApellidoPaterno +' '+ Clientes.ApellidoMaterno as nombreCliente,montoAutorizado from DatosSolicitud inner join Clientes on DatosSolicitud.IdCliente = Clientes.id where datossolicitud.idsolicitud = '" & idSolicitudAentregar & "' and datossolicitud.estado = 'A'"
         adapterIntegrantes = New SqlDataAdapter(consultaIntegrantes, conexionempresa)
         dataIntegrantes = New Data.DataTable
         adapterIntegrantes.Fill(dataIntegrantes)
@@ -835,7 +835,27 @@ Sábado 09:00 a.m. a 02:00 p.m."
     End Sub
 
     Private Sub btnTarjeta_Click(sender As Object, e As EventArgs) Handles btnTarjeta.Click
-        BackgroundTarjeta.RunWorkerAsync()
+        Dim Word As Application
+        Dim Doc As Word.Document
+        Word = CreateObject("Word.Application")
+        FileCopy("C:\ConfiaAdmin\SATI\SolicitudGrupal.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempSolicitudGrupal.docx.docx")
+        Doc = Word.Documents.Open("C:\ConfiaAdmin\SATI\TEMPDOCS\TempSolicitudGrupal.docx.docx")
+        For Each row As DataRow In dataIntegrantes.Rows
+            Doc.Tables(1).Rows.Add()
+
+        Next
+
+        ' Doc.Tables(1).Rows(1).Select()
+
+        'If Doc.Tables.Count >= 1 Then
+        '    With Doc.Tables(1).Cell(Row:=1, Column:=1).Range
+        '        .Delete()
+        '        .InsertBefore(Text:="Cell 1,1")
+        '    End With
+        'End If
+        Doc.Save()
+        Doc.Close()
+
     End Sub
     Private Sub gen_qr_file(ByVal file_name As String, ByVal content As String, ByVal image_size As Integer)
         Dim new_file_name As String = file_name

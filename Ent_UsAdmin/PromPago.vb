@@ -69,14 +69,25 @@ Public Class PromPago
     Private Sub RadWizard1_Next(sender As Object, e As WizardCancelEventArgs) Handles RadWizard1.[Next]
         If RadWizard1.Pages.Item(0) Is RadWizard1.SelectedPage Then
             If TipoCredito = "Legal" Then
+                If dateFechaLimite.Value > Date.Now.AddMonths(2) Then
+                    MessageBox.Show("La fecha límite no puede ser mayor a 2 meses", "SATI", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    e.Cancel = True
+                Else
 
+                End If
             Else
-                ncargando = New Cargando
-                ncargando.Show()
+                If dateFechaLimite.Value > Date.Now.AddMonths(1) Then
+                    MessageBox.Show("La fecha límite no puede ser mayor a 1 mes", "SATI", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    e.Cancel = True
+                Else
+                    ncargando = New Cargando
+                    ncargando.Show()
 
-                ncargando.MonoFlat_Label1.Text = "Consultando información"
-                ncargando.TopMost = True
-                BackgroundVencidos.RunWorkerAsync()
+                    ncargando.MonoFlat_Label1.Text = "Consultando información"
+                    ncargando.TopMost = True
+                    BackgroundVencidos.RunWorkerAsync()
+                End If
+
             End If
 
         End If
@@ -113,7 +124,7 @@ Public Class PromPago
         iniciarconexionempresa()
 
         Dim consultaDeudaTotal As String
-        consultaDeudaTotal = "select nombre,id,pagare,AbonadoSinMultas,(pagare-AbonadoSinMultas) as valorCarteraSinMultas,Multas,(AbonadoMultasL + AbonadoMultasV) as AbonadoMultas,(Multas - (AbonadoMultasL+AbonadoMultasV)) as multasPendientes,((Multas-(AbonadoMultasL+AbonadoMultasV))+(pagare-AbonadoSinMultas)) as ValorCarteraConMultas, case when carteratotal.Estado = 'C' then
+        consultaDeudaTotal = "select nombre, id, pagare, AbonadoSinMultas, (pagare - AbonadoSinMultas) As valorCarteraSinMultas, Multas, (AbonadoMultasL + AbonadoMultasV) As AbonadoMultas, (Multas - (AbonadoMultasL + AbonadoMultasV)) As multasPendientes, ((Multas - (AbonadoMultasL + AbonadoMultasV)) + (pagare - AbonadoSinMultas)) As ValorCarteraConMultas, case when carteratotal.Estado = 'C' then
 case when pendiente = 0 then '0' else
 (pendiente - (MultasVencidas - (AbonadoMultasV)))end
 when CarteraTotal.Estado = 'R' then
@@ -690,6 +701,7 @@ else '0' end as MultasVencidas
     Private Sub BackgroundPromesaNotificacion_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundPromesaNotificacion.RunWorkerCompleted
         ncargando.Close()
         CrearNotificacionDescuentoPromesa.idPromesa = idPromesa
+        CrearNotificacionDescuentoPromesa.tipoCredito = TipoCredito
         CrearNotificacionDescuentoPromesa.ShowDialog()
 
         If creada Then
@@ -708,6 +720,7 @@ else '0' end as MultasVencidas
         Else
             If MessageBox.Show("¿La notificación no fue creada, desea volver a intentarlo?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                 CrearNotificacionDescuentoPromesa.idPromesa = idPromesa
+                CrearNotificacionDescuentoPromesa.tipoCredito = TipoCredito
                 CrearNotificacionDescuentoPromesa.ShowDialog()
                 If creada Then
                     Task.Factory.StartNew(Sub()
@@ -756,6 +769,7 @@ else '0' end as MultasVencidas
     Private Sub BackgroundConsultaPromesaPendiente_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundConsultaPromesaPendiente.RunWorkerCompleted
         ncargando.Close()
         CrearNotificacionDescuentoPromesa.idPromesa = idPromesa
+        CrearNotificacionDescuentoPromesa.tipoCredito = TipoCredito
         CrearNotificacionDescuentoPromesa.ShowDialog()
 
         If creada Then
@@ -774,6 +788,7 @@ else '0' end as MultasVencidas
         Else
             If MessageBox.Show("¿La notificación no fue creada, desea volver a intentarlo?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                 CrearNotificacionDescuentoPromesa.idPromesa = idPromesa
+                CrearNotificacionDescuentoPromesa.tipoCredito = TipoCredito
                 CrearNotificacionDescuentoPromesa.ShowDialog()
                 If creada Then
                     Task.Factory.StartNew(Sub()
@@ -800,7 +815,5 @@ else '0' end as MultasVencidas
         End If
     End Sub
 
-    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
 
-    End Sub
 End Class

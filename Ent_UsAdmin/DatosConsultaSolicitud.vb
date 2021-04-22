@@ -34,6 +34,7 @@ Public Class DatosConsultaSolicitud
         'Me.Width = 1600
         Cargando.Show()
         Cargando.MonoFlat_Label1.Text = "Cargando Datos"
+        dtdatos.ScrollBars = ScrollBars.None
         BackgroundWorker1.RunWorkerAsync()
     End Sub
     Public Function calcularEdad(ByVal nacimiento As Date) As Integer
@@ -189,6 +190,7 @@ Public Class DatosConsultaSolicitud
     End Sub
 
     Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
+        dtdatos.ScrollBars = ScrollBars.Both
         BackgroundDatosSolicitud.RunWorkerAsync()
     End Sub
 

@@ -7,6 +7,7 @@ Public Class CrearNotificacionDescuentoPromesa
     Dim adapterUsuarios As MySqlDataAdapter
     Dim nCargando As Cargando
     Dim creada As Boolean
+    Public tipoCredito As String
 
     Private Sub CrearNotificacionCancelarTicket_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         creada = False
@@ -120,9 +121,19 @@ Public Class CrearNotificacionDescuentoPromesa
 
     Private Sub CrearNotificacionDescuentoPromesa_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If creada Then
-            PromPago.creada = True
+            If tipoCredito = "L" Then
+                PromPagoLegal.creada = True
+            Else
+                PromPago.creada = True
+            End If
+
         Else
-            PromPago.creada = False
+            If tipoCredito = "L" Then
+                PromPagoLegal.creada = False
+            Else
+                PromPago.creada = False
+            End If
+
         End If
     End Sub
 End Class

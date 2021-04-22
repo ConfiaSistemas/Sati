@@ -695,7 +695,7 @@ end
 
     Private Sub BackgroundPromesas_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundPromesas.DoWork
         Dim consultaPromesas As String
-        consultaPromesas = "select credito.nombre,format(MontoPromesa,'C','es-mx') as 'Monto Promesa',format(Capital,'C','es-mx') as Capital, format(Moratorios,'C','es-mx') as Moratorios,format(Pendiente,'C','es-mx') as Pendiente, format(Abonado,'C','es-mx') as Abonado,FechaLimite as 'Fecha Límite',FechaUltimoPago as 'Fecha último Pago',promesadepago.Fecha,promesadepago.Hora,promesadepago.Usuario,promesadepago.Estado,TipoCredito as 'Tipo de Crédito' from PromesaDePago inner join credito on promesadepago.idcredito = credito.id where promesadepago.idcredito = '" & idCredito & "'"
+        consultaPromesas = "select credito.nombre,format(MontoPromesa,'C','es-mx') as 'Monto Promesa',format(Capital,'C','es-mx') as Capital, format(Moratorios,'C','es-mx') as Moratorios,format(Pendiente,'C','es-mx') as Pendiente, format(Abonado,'C','es-mx') as Abonado,FechaLimite as 'Fecha Límite',FechaUltimoPago as 'Fecha último Pago',promesadepago.Fecha,promesadepago.Hora,promesadepago.Usuario,promesadepago.Estado,TipoCredito as 'Tipo de Crédito' from PromesaDePago inner join credito on promesadepago.idcredito = credito.id where promesadepago.idcredito = '" & idCredito & "' and promesadepago.tipocredito = '" & estado & "'"
         adapterPromesas = New SqlDataAdapter(consultaPromesas, conexionempresa)
         dataPromesas = New DataTable
         adapterPromesas.Fill(dataPromesas)

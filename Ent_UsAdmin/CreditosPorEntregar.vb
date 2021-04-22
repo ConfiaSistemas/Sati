@@ -11,8 +11,8 @@ Public Class CreditosPorEntregar
             iniciarconexionempresa()
 
             strimpuestos = "select * from
-(select SinEntregar.*,isnull((select count(id) from ticket where idCredito = SinEntregar.id and TipoDoc = '2' and estado = 'A'),0) as Cobrado from
-(select id,Fecha,Nombre,Monto,Plazo,fechaEntrega,estado from credito where (Estado = 'E' or estado = 'P')) SinEntregar) ComisionCobrada where Cobrado = 1 "
+(select SinEntregar.*,case when sinentregar.ciudad <> '" & CiudadEmpresa & "' and Ciudad <> '' and Ciudad <> '0' and Ciudad <> '-' then 1 else  isnull((select count(id) from ticket where idCredito = SinEntregar.id and TipoDoc = '2' and estado = 'A'),0) END as Cobrado from
+(select credito.id,credito.Fecha,credito.Nombre,credito.Monto,credito.Plazo,credito.fechaEntrega,credito.estado,ISNULL((select Ciudad from DatosSolicitud where DatosSolicitud.IdSolicitud = Credito.IdSolicitud and DatosSolicitud.IdCliente = Credito.IdCliente),0) as Ciudad from credito  where (credito.Estado = 'E' or credito.estado = 'P') ) SinEntregar) ComisionCobrada where Cobrado = 1 "
 
             Dim ejec = New SqlCommand(strimpuestos)
             ejec.Connection = conexionempresa
@@ -23,7 +23,7 @@ Public Class CreditosPorEntregar
                 id = myreaderimpuestos("id")
                 nombre = myreaderimpuestos("nombre")
 
-                dtimpuestos.Rows.Add(id, myreaderimpuestos("fecha"), nombre, FormatCurrency(myreaderimpuestos("Monto"), 2), myreaderimpuestos("Plazo"), myreaderimpuestos("Cobrado"), myreaderimpuestos("Estado"))
+                dtimpuestos.Rows.Add(id, myreaderimpuestos("fecha"), nombre, FormatCurrency(myreaderimpuestos("Monto"), 2), myreaderimpuestos("Plazo"), myreaderimpuestos("Cobrado"), myreaderimpuestos("Estado"), myreaderimpuestos("ciudad"))
             End While
             myreaderimpuestos.Close()
         Catch ex As Exception

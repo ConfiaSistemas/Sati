@@ -65,10 +65,20 @@ Public Class CreditosEnLegal
     Private Sub dtimpuestos_SelectionChanged(sender As Object, e As EventArgs) Handles dtimpuestos.SelectionChanged
         If dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value = "A" Then
             dtimpuestos.ContextMenuStrip = ContextMenuEntregar
-
+            CrearPromesaDePagoToolStripMenuItem.Visible = False
+            EntregarToolStripMenuItem.Visible = True
         ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value = "C" Then
-            dtimpuestos.ContextMenuStrip = ContextMenuInformacion
+            ' dtimpuestos.ContextMenuStrip = ContextMenuInformacion
+            dtimpuestos.ContextMenuStrip = ContextMenuEntregar
+            CrearPromesaDePagoToolStripMenuItem.Visible = True
+            EntregarToolStripMenuItem.Visible = False
+        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value = "T" Then
+            dtimpuestos.ContextMenuStrip = ContextMenuEntregar
+            CrearPromesaDePagoToolStripMenuItem.Visible = False
+
+            EntregarToolStripMenuItem.Visible = False
         Else
+
 
 
             dtimpuestos.ContextMenuStrip = Nothing
@@ -119,4 +129,9 @@ Public Class CreditosEnLegal
         End If
     End Sub
 
+    Private Sub CrearPromesaDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CrearPromesaDePagoToolStripMenuItem.Click
+        PromPagoLegal.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        PromPagoLegal.estadoCredito = "L"
+        PromPagoLegal.Show()
+    End Sub
 End Class

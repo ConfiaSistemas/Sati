@@ -169,11 +169,11 @@ when 'Reestructura' then
                        ' TreeListView1.Nodes.Add(liItem)
             Case "Apertura"
 
-                adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
-                dataDetalle = New DataTable
-                adapterDetalle.Fill(dataDetalle)
+                'adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
+                'dataDetalle = New DataTable
+                'adapterDetalle.Fill(dataDetalle)
 
-                dtDetalle.DataSource = dataDetalle
+                'dtDetalle.DataSource = dataDetalle
 
                         ' TreeListView1.Nodes.Add(liItem)
             Case "Renovación Insoluto"

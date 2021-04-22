@@ -2,10 +2,12 @@
 Imports System.Data.SqlClient
 Imports System.Drawing.Imaging
 Imports System.IO
+Imports System.Text
 
 Public Class DatosSolicitud
     Public idSolicitud As Integer
     Public idDatosSolicitud As Integer
+    Public nombreSolicitud As String
     Dim edad As Integer
     Dim dataCliente As DataTable
     Dim adapterCliente As SqlDataAdapter
@@ -22,6 +24,7 @@ Public Class DatosSolicitud
 
         Cargando.Show()
         Cargando.MonoFlat_Label1.Text = "Cargando Datos"
+        dtdatos.ScrollBars = ScrollBars.None
         BackgroundWorker1.RunWorkerAsync()
     End Sub
     Public Function calcularEdad(ByVal nacimiento As Date) As Integer
@@ -187,6 +190,7 @@ Public Class DatosSolicitud
     End Sub
 
     Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
+        dtdatos.ScrollBars = ScrollBars.Both
         BackgroundDatosSolicitud.RunWorkerAsync()
 
     End Sub
@@ -455,10 +459,77 @@ Public Class DatosSolicitud
         insertCronogramaSolicitud.Connection = conexionempresa
         insertCronogramaSolicitud.CommandText = consultaInsertCronogramaSolicitud
         insertCronogramaSolicitud.ExecuteNonQuery()
+        Dim dataDocumentosCorreo As DataTable
+        Dim adapterDocumentosCorreo As SqlDataAdapter
+        Dim consultaDocumentosCorreo As String
+        consultaDocumentosCorreo = "select documentossolicitud.IdDatosSolicitud,DocumentosSolicitud.Imagen from DocumentosSolicitud inner join DatosSolicitud on DocumentosSolicitud.IdDatosSolicitud = DatosSolicitud.Id where DatosSolicitud.IdSolicitud = '" & idSolicitud & "' and DocumentosSolicitud.Tipo =5"
+        adapterDocumentosCorreo = New SqlDataAdapter(consultaDocumentosCorreo, conexionempresa)
+        dataDocumentosCorreo = New DataTable
+        adapterDocumentosCorreo.Fill(dataDocumentosCorreo)
+
+        'Creamos un nuevo objeto MailMessage donde especificamos el "From" y el "To"
+        Dim correo As New System.Net.Mail.MailMessage("sistemas@prestamosconfia.com", "jjah.jairo@gmail.com")
+        correo.Subject = nombreSolicitud
+        correo.To.Add("danielafernandez@prestamosconfia.com")
+        correo.To.Add("opaniahua@prestamosconfia.com")
+        Dim sb As New StringBuilder
+        For Each row As DataGridViewRow In dtdatos.Rows
+
+            For Each rowDocumento As DataRow In dataDocumentosCorreo.Rows
+                If rowDocumento("IdDatosSolicitud").ToString = row.Cells(0).Value Then
+
+                    Dim byteArray = CType(rowDocumento("Imagen"), Byte())
+                    Dim stream As MemoryStream = New MemoryStream(byteArray, 0, byteArray.Length)
+                    stream.Write(byteArray, 0, byteArray.Length)
+                    Dim bitmapDocumento As Bitmap
+                    bitmapDocumento = New Bitmap(stream)
+                    bitmapDocumento.Save("C:\ConfiaAdmin\SATI\TempPhotos\" & row.Cells(2).Value & ".jpg")
+                    correo.Attachments.Add(New Net.Mail.Attachment("C:\ConfiaAdmin\SATI\TempPhotos\" & row.Cells(2).Value & ".jpg"))
+
+                    Exit For
+                Else
+
+                End If
+            Next
+
+            For Each rowcliente As DataRow In dataDatos.Rows
+
+                If rowcliente("idCliente").ToString = row.Cells(1).Value Then
+                    sb.AppendLine("Nombre: " & row.Cells(2).Value)
+                    sb.AppendLine("Teléfono: " & rowcliente("Telefono").ToString)
+                    sb.AppendLine("Celular: " & rowcliente("Celular").ToString)
+                    sb.AppendLine("Tiempo en el domicilio: " & rowcliente("TiempoEnDomicilio").ToString)
+                    sb.AppendLine("Domicilio: " & rowcliente("Calle").ToString & " ext " & rowcliente("Noext").ToString & " Int " & rowcliente("NoInt").ToString & " C.P. " & rowcliente("CodigoPostal").ToString & " " & rowcliente("Colonia").ToString)
+                    sb.AppendLine("Ciudad: " & rowcliente("Ciudad").ToString)
+                    sb.AppendLine("Estado: " & rowcliente("EstadoCliente").ToString)
+                    sb.AppendLine("Entre calles: " & rowcliente("EntreCalles").ToString)
+                    sb.AppendLine("Conyuge: " & rowcliente("Conyuge").ToString)
+                    sb.AppendLine("Relación con el conyuge: " & rowcliente("RelacionConyuge").ToString)
+                    sb.AppendLine("  ")
+                    sb.AppendLine("------------------------------------")
+                    sb.AppendLine("  ")
+                End If
+
+            Next
+
+        Next
+        correo.Body = sb.ToString
+        Dim cliente As New System.Net.Mail.SmtpClient()
+        'Creamos el objeto que va a "preparar" la autentificación
+        Dim autentificacion As New System.Net.NetworkCredential("sistemas@prestamosconfia.com", "Si5t3Ma$CFIA")
+        Dim smtp As New System.Net.Mail.SmtpClient
+        'Incluimos esta información a la hora de logarnos en el servidor
+        smtp.Host = "p3plcpnl0962.prod.phx3.secureserver.net"
+        smtp.UseDefaultCredentials = False
+        smtp.Credentials = autentificacion
+        smtp.Port = 587
+        smtp.Send(correo)
+
 
     End Sub
 
     Private Sub BackgroundVerificacion_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundVerificacion.RunWorkerCompleted
+
         Cargando.Close()
         Me.Invoke(Sub()
                       Solicitudes.cargarSolicitudes()

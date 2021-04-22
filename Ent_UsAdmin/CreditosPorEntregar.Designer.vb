@@ -27,6 +27,10 @@ Partial Class CreditosPorEntregar
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreditosPorEntregar))
         Me.dtimpuestos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
+        Me.ContextMenuEntregar = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.EntregarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -34,10 +38,7 @@ Partial Class CreditosPorEntregar
         Me.Plazo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cobrado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ContextMenuEntregar = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.EntregarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.Ciudad = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuEntregar.SuspendLayout()
         Me.SuspendLayout()
@@ -64,7 +65,7 @@ Partial Class CreditosPorEntregar
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dtimpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtimpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Fecha, Me.Nombre, Me.Monto, Me.Plazo, Me.Cobrado, Me.Estado})
+        Me.dtimpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Fecha, Me.Nombre, Me.Monto, Me.Plazo, Me.Cobrado, Me.Estado, Me.Ciudad})
         Me.dtimpuestos.DoubleBuffered = True
         Me.dtimpuestos.EnableHeadersVisualStyles = False
         Me.dtimpuestos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
@@ -76,55 +77,6 @@ Partial Class CreditosPorEntregar
         Me.dtimpuestos.RowHeadersVisible = False
         Me.dtimpuestos.Size = New System.Drawing.Size(969, 475)
         Me.dtimpuestos.TabIndex = 6
-        '
-        'Id
-        '
-        Me.Id.HeaderText = "Id"
-        Me.Id.Name = "Id"
-        Me.Id.ReadOnly = True
-        Me.Id.Width = 42
-        '
-        'Fecha
-        '
-        Me.Fecha.HeaderText = "Fecha"
-        Me.Fecha.Name = "Fecha"
-        Me.Fecha.ReadOnly = True
-        Me.Fecha.Width = 68
-        '
-        'Nombre
-        '
-        Me.Nombre.HeaderText = "Nombre"
-        Me.Nombre.Name = "Nombre"
-        Me.Nombre.ReadOnly = True
-        Me.Nombre.Width = 79
-        '
-        'Monto
-        '
-        Me.Monto.HeaderText = "Monto"
-        Me.Monto.Name = "Monto"
-        Me.Monto.ReadOnly = True
-        Me.Monto.Width = 70
-        '
-        'Plazo
-        '
-        Me.Plazo.HeaderText = "Plazo"
-        Me.Plazo.Name = "Plazo"
-        Me.Plazo.ReadOnly = True
-        Me.Plazo.Width = 62
-        '
-        'Cobrado
-        '
-        Me.Cobrado.HeaderText = "Cobrado"
-        Me.Cobrado.Name = "Cobrado"
-        Me.Cobrado.ReadOnly = True
-        Me.Cobrado.Width = 84
-        '
-        'Estado
-        '
-        Me.Estado.HeaderText = "Estado"
-        Me.Estado.Name = "Estado"
-        Me.Estado.ReadOnly = True
-        Me.Estado.Width = 71
         '
         'ContextMenuEntregar
         '
@@ -176,6 +128,62 @@ Partial Class CreditosPorEntregar
         Me.MonoFlat_HeaderLabel1.TabIndex = 9
         Me.MonoFlat_HeaderLabel1.Text = "Créditos por Entregar"
         '
+        'Id
+        '
+        Me.Id.HeaderText = "Id"
+        Me.Id.Name = "Id"
+        Me.Id.ReadOnly = True
+        Me.Id.Width = 42
+        '
+        'Fecha
+        '
+        Me.Fecha.HeaderText = "Fecha"
+        Me.Fecha.Name = "Fecha"
+        Me.Fecha.ReadOnly = True
+        Me.Fecha.Width = 68
+        '
+        'Nombre
+        '
+        Me.Nombre.HeaderText = "Nombre"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        Me.Nombre.Width = 79
+        '
+        'Monto
+        '
+        Me.Monto.HeaderText = "Monto"
+        Me.Monto.Name = "Monto"
+        Me.Monto.ReadOnly = True
+        Me.Monto.Width = 70
+        '
+        'Plazo
+        '
+        Me.Plazo.HeaderText = "Plazo"
+        Me.Plazo.Name = "Plazo"
+        Me.Plazo.ReadOnly = True
+        Me.Plazo.Width = 62
+        '
+        'Cobrado
+        '
+        Me.Cobrado.HeaderText = "Cobrado"
+        Me.Cobrado.Name = "Cobrado"
+        Me.Cobrado.ReadOnly = True
+        Me.Cobrado.Width = 84
+        '
+        'Estado
+        '
+        Me.Estado.HeaderText = "Estado"
+        Me.Estado.Name = "Estado"
+        Me.Estado.ReadOnly = True
+        Me.Estado.Width = 71
+        '
+        'Ciudad
+        '
+        Me.Ciudad.HeaderText = "Ciudad"
+        Me.Ciudad.Name = "Ciudad"
+        Me.Ciudad.ReadOnly = True
+        Me.Ciudad.Width = 74
+        '
         'CreditosPorEntregar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -199,6 +207,8 @@ Partial Class CreditosPorEntregar
     Friend WithEvents dtimpuestos As Bunifu.Framework.UI.BunifuCustomDataGrid
     Friend WithEvents ContextMenuEntregar As ContextMenuStrip
     Friend WithEvents EntregarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents MonoFlat_HeaderLabel1 As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents Id As DataGridViewTextBoxColumn
     Friend WithEvents Fecha As DataGridViewTextBoxColumn
     Friend WithEvents Nombre As DataGridViewTextBoxColumn
@@ -206,6 +216,5 @@ Partial Class CreditosPorEntregar
     Friend WithEvents Plazo As DataGridViewTextBoxColumn
     Friend WithEvents Cobrado As DataGridViewTextBoxColumn
     Friend WithEvents Estado As DataGridViewTextBoxColumn
-    Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
-    Friend WithEvents MonoFlat_HeaderLabel1 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents Ciudad As DataGridViewTextBoxColumn
 End Class

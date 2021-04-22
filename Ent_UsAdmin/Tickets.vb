@@ -9,156 +9,161 @@ Public Class Tickets
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         dtdatos.Rows.Clear()
+        Try
+            iniciarconexionempresa()
+            Dim comando As SqlCommand
 
-        iniciarconexionempresa()
-        Dim comando As SqlCommand
+            Dim reader As SqlDataReader
+            Dim consulta As String
+            Dim fechainserciondesde As String
+            fechainserciondesde = dateDesde.Value.ToShortDateString
 
-        Dim reader As SqlDataReader
-        Dim consulta As String
-        Dim fechainserciondesde As String
-        fechainserciondesde = dateDesde.Value.ToShortDateString
-
-        Dim fechasqldesde As Date
-        fechasqldesde = fechainserciondesde
-        fechainserciondesde = Format(fechasqldesde, "yyyy-MM-dd")
-
-
-        Dim fechainsercionhasta As String
-        fechainsercionhasta = dateHasta.Value.ToShortDateString
-
-        Dim fechasqlhasta As Date
-        fechasqlhasta = fechainsercionhasta
-        fechainsercionhasta = Format(fechasqlhasta, "yyyy-MM-dd")
-
-        Dim cajaConsultar As String
-
-        'consulta = "select Ticket.id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id where Ticket.fecha >= convert(date,'" & fechainserciondesde & "',102) and Ticket.fecha <= convert(date,'" & fechainsercionhasta & "',102)  order by Ticket.fecha,Ticket.hora asc "
-
-        cajaConsultar = CheckedCajas.Text
-        consulta = "select Ticket.id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id where Ticket.fecha >= convert(date,'" & fechainserciondesde & "',102) and Ticket.fecha <= convert(date,'" & fechainsercionhasta & "',102) and ticket.caja in (" & cajaConsultar & ")  order by Ticket.fecha,Ticket.hora asc "
-
-        'End Select
+            Dim fechasqldesde As Date
+            fechasqldesde = fechainserciondesde
+            fechainserciondesde = Format(fechasqldesde, "yyyy-MM-dd")
 
 
-        comando = New SqlCommand
-        comando.Connection = conexionempresa
-        comando.CommandTimeout = 120
-        comando.CommandText = consulta
-        reader = comando.ExecuteReader
-        Dim recibido As Double = 0
-        Dim totalPago As Double = 0
-        While reader.Read
-            Dim nombrecredito As String
+            Dim fechainsercionhasta As String
+            fechainsercionhasta = dateHasta.Value.ToShortDateString
 
-            Select Case reader("tipo")
-                Case "Convenio", "Transferencia Convenio", "Depósito Convenio"
-                    Dim comandonombre As SqlCommand
-                    comandonombre = New SqlCommand
+            Dim fechasqlhasta As Date
+            fechasqlhasta = fechainsercionhasta
+            fechainsercionhasta = Format(fechasqlhasta, "yyyy-MM-dd")
 
-                    Dim consultaNombre As String
-                    consultaNombre = "select credito.nombre from conveniossac inner join credito on credito.id = conveniossac.idcredito where conveniossac.id = '" & reader("idcredito") & "'"
-                    comandonombre.Connection = conexionempresa
-                    comandonombre.CommandText = consultaNombre
-                    nombrecredito = comandonombre.ExecuteScalar
-                Case "Legal", "Depósito Legal"
-                    Dim comandonombre As SqlCommand
-                    comandonombre = New SqlCommand
+            Dim cajaConsultar As String
 
-                    Dim consultaNombre As String
-                    consultaNombre = "select nombre from legales  where id = '" & reader("idcredito") & "'"
-                    comandonombre.Connection = conexionempresa
-                    comandonombre.CommandText = consultaNombre
-                    nombrecredito = comandonombre.ExecuteScalar
-                Case "Refrendo", "Comisión por avalúo", "Desempeño"
-                    Dim comandonombre As SqlCommand
-                    comandonombre = New SqlCommand
+            'consulta = "select Ticket.id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id where Ticket.fecha >= convert(date,'" & fechainserciondesde & "',102) and Ticket.fecha <= convert(date,'" & fechainsercionhasta & "',102)  order by Ticket.fecha,Ticket.hora asc "
 
-                    Dim consultaNombre As String
-                    consultaNombre = "select nombre from empeños  where id = '" & reader("idcredito") & "'"
-                    comandonombre.Connection = conexionempresa
-                    comandonombre.CommandText = consultaNombre
-                    nombrecredito = comandonombre.ExecuteScalar
-                Case "Reestructura", "Transferencia Reestructura", "Depósito Reestructura"
-                    Dim comandonombre As SqlCommand
-                    comandonombre = New SqlCommand
+            cajaConsultar = CheckedCajas.Text
+            consulta = "select Ticket.id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id where Ticket.fecha >= convert(date,'" & fechainserciondesde & "',102) and Ticket.fecha <= convert(date,'" & fechainsercionhasta & "',102) and ticket.caja in (" & cajaConsultar & ")  order by Ticket.fecha,Ticket.hora asc "
 
-                    Dim consultaNombre As String
-                    consultaNombre = "select credito.nombre from reestructurassac inner join credito on credito.id = reestructurassac.idcredito where reestructurassac.id = '" & reader("idcredito") & "'"
-                    comandonombre.Connection = conexionempresa
-                    comandonombre.CommandText = consultaNombre
-                    nombrecredito = comandonombre.ExecuteScalar
-                Case "Liquidación Convenio 90%"
-                    Dim comandonombre As SqlCommand
-                    comandonombre = New SqlCommand
+            'End Select
 
-                    Dim consultaNombre As String
-                    consultaNombre = "select credito.nombre from conveniossac inner join credito on credito.id = conveniossac.idcredito where conveniossac.id = '" & reader("idcredito") & "'"
-                    comandonombre.Connection = conexionempresa
-                    comandonombre.CommandText = consultaNombre
-                    nombrecredito = comandonombre.ExecuteScalar
-                Case Else
-                    Dim comandonombre As SqlCommand
-                    comandonombre = New SqlCommand
 
-                    Dim consultaNombre As String
-                    consultaNombre = "select nombre from credito  where id = '" & reader("idcredito") & "'"
-                    comandonombre.Connection = conexionempresa
-                    comandonombre.CommandText = consultaNombre
-                    nombrecredito = comandonombre.ExecuteScalar
-            End Select
+            comando = New SqlCommand
+            comando.Connection = conexionempresa
+            ' comando.CommandTimeout = 120
+            comando.CommandText = consulta
+            reader = comando.ExecuteReader
+            Dim recibido As Double = 0
+            Dim totalPago As Double = 0
+            While reader.Read
 
-            recibido = reader("recibido")
-            totalPago = reader("total")
-            If recibido > totalPago Then
+                Dim nombrecredito As String
+
                 Select Case reader("tipo")
-                    Case "Convenio"
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
-                    Case "Legal"
+                    Case "Convenio", "Transferencia Convenio", "Depósito Convenio"
+                        Dim comandonombre As SqlCommand
+                        comandonombre = New SqlCommand
 
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
-                    Case "Extra"
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), reader("concepto"), FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        Dim consultaNombre As String
+                        consultaNombre = "select credito.nombre from conveniossac inner join credito on credito.id = conveniossac.idcredito where conveniossac.id = '" & reader("idcredito") & "'"
+                        comandonombre.Connection = conexionempresa
+                        comandonombre.CommandText = consultaNombre
+                        nombrecredito = comandonombre.ExecuteScalar
+                    Case "Legal", "Depósito Legal"
+                        Dim comandonombre As SqlCommand
+                        comandonombre = New SqlCommand
+
+                        Dim consultaNombre As String
+                        consultaNombre = "select nombre from legales  where id = '" & reader("idcredito") & "'"
+                        comandonombre.Connection = conexionempresa
+                        comandonombre.CommandText = consultaNombre
+                        nombrecredito = comandonombre.ExecuteScalar
+                    Case "Refrendo", "Comisión por avalúo", "Desempeño"
+                        Dim comandonombre As SqlCommand
+                        comandonombre = New SqlCommand
+
+                        Dim consultaNombre As String
+                        consultaNombre = "select nombre from empeños  where id = '" & reader("idcredito") & "'"
+                        comandonombre.Connection = conexionempresa
+                        comandonombre.CommandText = consultaNombre
+                        nombrecredito = comandonombre.ExecuteScalar
+                    Case "Reestructura", "Transferencia Reestructura", "Depósito Reestructura"
+                        Dim comandonombre As SqlCommand
+                        comandonombre = New SqlCommand
+
+                        Dim consultaNombre As String
+                        consultaNombre = "select credito.nombre from reestructurassac inner join credito on credito.id = reestructurassac.idcredito where reestructurassac.id = '" & reader("idcredito") & "'"
+                        comandonombre.Connection = conexionempresa
+                        comandonombre.CommandText = consultaNombre
+                        nombrecredito = comandonombre.ExecuteScalar
+                    Case "Liquidación Convenio 90%"
+                        Dim comandonombre As SqlCommand
+                        comandonombre = New SqlCommand
+
+                        Dim consultaNombre As String
+                        consultaNombre = "select credito.nombre from conveniossac inner join credito on credito.id = conveniossac.idcredito where conveniossac.id = '" & reader("idcredito") & "'"
+                        comandonombre.Connection = conexionempresa
+                        comandonombre.CommandText = consultaNombre
+                        nombrecredito = comandonombre.ExecuteScalar
                     Case Else
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        Dim comandonombre As SqlCommand
+                        comandonombre = New SqlCommand
+
+                        Dim consultaNombre As String
+                        consultaNombre = "select nombre from credito  where id = '" & reader("idcredito") & "'"
+                        comandonombre.Connection = conexionempresa
+                        comandonombre.CommandText = consultaNombre
+                        nombrecredito = comandonombre.ExecuteScalar
                 End Select
 
+                recibido = reader("recibido")
+                totalPago = reader("total")
+                If recibido > totalPago Then
+                    Select Case reader("tipo")
+                        Case "Convenio"
+                            dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        Case "Legal"
 
-
-            Else
-                Select Case reader("tipo")
-
-                    Case "Convenio"
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
-                    Case "Legal"
-
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
-                    Case "Extra"
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), reader("concepto"), FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
-                    Case Else
-                        dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
-                End Select
-
-
-            End If
+                            dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        Case "Extra"
+                            dtdatos.Rows.Add(reader("id"), reader("idcredito"), reader("concepto"), FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        Case Else
+                            dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("Total")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                    End Select
 
 
 
-        End While
+                Else
+                    Select Case reader("tipo")
 
-        Dim total As Double
-        total = 0
-        Dim afecta As Boolean
-        For Each row As DataGridViewRow In dtdatos.Rows
-            afecta = AfectaCaja(row.Cells(6).Value)
-            If afecta And row.Cells(8).Value <> "C" Then
-                total = total + row.Cells(3).Value
-            Else
+                        Case "Convenio"
+                            dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        Case "Legal"
 
-            End If
+                            dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        Case "Extra"
+                            dtdatos.Rows.Add(reader("id"), reader("idcredito"), reader("concepto"), FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                        Case Else
+                            dtdatos.Rows.Add(reader("id"), reader("idcredito"), nombrecredito, FormatCurrency(reader("recibido")), Format(reader("Fecha"), "yyyy-MM-dd"), reader("hora"), reader("tipo"), reader("Caja"), reader("Estado"))
+                    End Select
 
 
-        Next
-        lbltotal.Text = FormatCurrency(total)
+                End If
+
+
+
+            End While
+
+            Dim total As Double
+            total = 0
+            Dim afecta As Boolean
+            For Each row As DataGridViewRow In dtdatos.Rows
+                afecta = AfectaCaja(row.Cells(6).Value)
+                If afecta And row.Cells(8).Value <> "C" Then
+                    total = total + row.Cells(3).Value
+                Else
+
+                End If
+
+
+            Next
+            lbltotal.Text = FormatCurrency(total)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
     End Sub
 
     Private Sub MonoFlat_HeaderLabel3_Click(sender As Object, e As EventArgs) Handles lbltotal.Click

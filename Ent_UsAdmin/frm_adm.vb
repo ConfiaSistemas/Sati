@@ -1035,10 +1035,10 @@ Public Class frm_adm
                 For a As Integer = array.Count - 1 To 0 Step -1
                     If array(a).id = Nnotificacion.id Then
                         existe = True
-                        MessageBox.Show("existe")
+                        '  MessageBox.Show("existe")
                         Exit For
                     Else
-                        MessageBox.Show("No existe")
+                        'MessageBox.Show("No existe")
                         existe = False
 
                     End If
@@ -1350,6 +1350,7 @@ Public Class frm_adm
                 comandoActSesion.ExecuteNonQuery()
                 conexionSesion.Close()
             Else
+                'quitar comentarios
                 Me.Invoke(Sub()
 
                               Dim nAlertas As New Alertas
@@ -1361,7 +1362,7 @@ Public Class frm_adm
 
                 Me.actualizar = True
 
-                ' login.Show()
+                login.Show()
                 Dim num_controles As Integer = Application.OpenForms.Count - 1
                 For n As Integer = num_controles To 0 Step -1
                     Dim ctrl As Form = Application.OpenForms.Item(n)
@@ -1369,7 +1370,7 @@ Public Class frm_adm
                         ctrl.Close()
                     End If
 
-                    'ctrl.Dispose()
+                    ctrl.Dispose()
                 Next
                 Me.Invoke(Sub()
                               login.Show()

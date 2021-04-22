@@ -118,6 +118,7 @@ Public Class Solicitudes
     Private Sub SeguimientoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SeguimientoToolStripMenuItem.Click
         DatosSolicitud.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
         DatosSolicitud.tipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(9).Value
+        DatosSolicitud.nombreSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(1).Value
         DatosSolicitud.Show()
     End Sub
 

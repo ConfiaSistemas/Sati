@@ -425,3 +425,7 @@ D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.IngresarDepositoLegal.resour
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AplicarDepositoLegal.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CierraEmpresa.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirTarjeta.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromPagoLegal.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DescuentoPromesaLegal.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ConfigEmpresa.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ConfigurarEmpresa.resources

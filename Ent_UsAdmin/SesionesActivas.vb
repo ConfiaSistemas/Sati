@@ -26,7 +26,7 @@ Public Class SesionesActivas
     End Sub
 
     Private Sub BuscarClienteSolicitud_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        consulta = "select id,Usuario as Usuario,Empresa,Fecha,Hora,UltimoAcceso,Sistema  from Sesiones where Activo = 1"
+        consulta = "select id,Usuario as Usuario,Empresa,Fecha,Hora,UltimoAcceso,Sistema,ip,Equipo  from Sesiones where Activo = 1"
         ncargando = New Cargando
         ncargando.Show()
 
@@ -48,7 +48,7 @@ Public Class SesionesActivas
             If consultar Then
                 MessageBox.Show("Consultando espere...")
             Else
-                consulta = "select  id,Usuario as Usuario,Empresa,Fecha,Hora,UltimoAcceso,Sistema  from Sesiones where Activo = 1 and usuario like '%" & txtnombre.Text & "%'"
+                consulta = "select  id,Usuario as Usuario,Empresa,Fecha,Hora,UltimoAcceso,Sistema,ip,Equipo  from Sesiones where Activo = 1 and usuario like '%" & txtnombre.Text & "%'"
                 consultar = True
                 ncargando = New Cargando
                 ncargando.MonoFlat_Label1.Text = "Consultando"

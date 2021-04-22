@@ -80,13 +80,13 @@ Public Class Migrar
     End Sub
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+        Try
+            iniciarconexionempresa()
+            Dim canregistros As Integer
+            canregistros = dtimpuestos.Rows.Count
+            Dim numero As Integer = 1
 
-        iniciarconexionempresa()
-        Dim canregistros As Integer
-        canregistros = dtimpuestos.Rows.Count
-        Dim numero As Integer = 1
-
-        For Each row As DataGridViewRow In dtimpuestos.Rows
+            For Each row As DataGridViewRow In dtimpuestos.Rows
                 Cargando.MonoFlat_Label1.Text = numero & " registros de '" & canregistros & "'"
                 Dim comandoCalendario As SqlCommand
                 Dim consultaCalendario As String
@@ -99,21 +99,21 @@ Public Class Migrar
                 If readerCalendario.HasRows Then
                     While readerCalendario.Read
                         Dim consultaCalendarioSac As String
-                    Dim comandoCalendarioSac As SqlCommand
-                    Dim fechapago, monto, interes, pendiente, abonado, npago, id_credito, estado, convenio, fechaupago As String
-                    fechapago = readerCalendario("fechapago")
-                    monto = readerCalendario("monto")
-                    interes = readerCalendario("interes")
-                    pendiente = readerCalendario("pendiente")
-                    abonado = readerCalendario("abonado")
-                    npago = readerCalendario("npago")
-                    id_credito = row.Cells(2).Value
-                    estado = readerCalendario("estado")
-                    convenio = readerCalendario("convenio")
-                    fechaupago = readerCalendario("fecha")
+                        Dim comandoCalendarioSac As SqlCommand
+                        Dim fechapago, monto, interes, pendiente, abonado, npago, id_credito, estado, convenio, fechaupago As String
+                        fechapago = readerCalendario("fechapago")
+                        monto = readerCalendario("monto")
+                        interes = readerCalendario("interes")
+                        pendiente = readerCalendario("pendiente")
+                        abonado = readerCalendario("abonado")
+                        npago = readerCalendario("npago")
+                        id_credito = row.Cells(2).Value
+                        estado = readerCalendario("estado")
+                        convenio = readerCalendario("convenio")
+                        fechaupago = readerCalendario("fecha")
 
-                    consultaCalendarioSac = "insert into calendarionormal values('" & fechapago & "','" & monto & "','" & interes & "','" & pendiente & "','" & abonado & "','" & readerCalendario("npago") & "','" & id_credito & "','" & estado & "','" & convenio & "','" & fechaupago & "')"
-                    comandoCalendarioSac = New SqlCommand
+                        consultaCalendarioSac = "insert into calendarionormal values('" & fechapago & "','" & monto & "','" & interes & "','" & pendiente & "','" & abonado & "','" & readerCalendario("npago") & "','" & id_credito & "','" & estado & "','" & convenio & "','" & fechaupago & "')"
+                        comandoCalendarioSac = New SqlCommand
                         comandoCalendarioSac.Connection = conexionempresa
                         comandoCalendarioSac.CommandText = consultaCalendarioSac
                         comandoCalendarioSac.ExecuteNonQuery()
@@ -132,6 +132,10 @@ Public Class Migrar
                 numero += 1
 
             Next
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
 
 
     End Sub

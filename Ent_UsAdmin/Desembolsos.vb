@@ -111,33 +111,58 @@ Public Class Desembolsos
         Select Case ComboFiltro.Text
             Case "Gestor"
                 If ComboElección.Text = "Todos" Then
-                    consulta = "select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor from
-(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdGestor from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id  where FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
-(select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id
-"
+                    '                    consulta = "select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor from
+                    '(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdGestor from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id  where FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
+                    '(select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id
+                    '"
+                    consulta = "select FechaEntrega,id,Nombre,Monto,Pagaré,Tipo,Gestor,Promotor,case when CanCreditos > 1 then 'Renovación' else 'Nuevo' end as 'Nuevo o Renovación' from
+(select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,isnull((select COUNT(id) from Credito where IdCliente = cred.IdCliente and cred.Estado <> 'E'),0) as CanCreditos from
+(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor,IdGestor,IdCliente,Estado from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id  where FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
+(select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id inner join
+(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id) desembolsos"
 
                 Else
 
-                    consulta = "select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor from
-(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdGestor from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id where credito.idgestor = '" & idEmpleado & "' and FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
-(select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id
-  "
+                    '                    consulta = "select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor from
+                    '(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdGestor from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id where credito.idgestor = '" & idEmpleado & "' and FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
+                    '(select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id
+                    '  "
+                    consulta = "select FechaEntrega,id,Nombre,Monto,Pagaré,Tipo,Gestor,Promotor,case when CanCreditos > 1 then 'Renovación' else 'Nuevo' end as 'Nuevo o Renovación' from
+(select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,isnull((select COUNT(id) from Credito where IdCliente = cred.IdCliente and cred.Estado <> 'E'),0) as CanCreditos from
+(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor,IdGestor,IdCliente,Estado from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id  where credito.idgestor = '" & idEmpleado & "' and FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
+(select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id inner join
+(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id) desembolsos"
                 End If
             Case "Promotor"
                 If ComboElección.Text = "Todos" Then
-                    consulta = "select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Promotores.Nombre as Promotor from
-(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id where FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
-(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id "
+                    '                    consulta = "select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Promotores.Nombre as Promotor from
+                    '(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id where FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
+                    '(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id "
+                    consulta = "select FechaEntrega,id,Nombre,Monto,Pagaré,Tipo,Gestor,Promotor,case when CanCreditos > 1 then 'Renovación' else 'Nuevo' end as 'Nuevo o Renovación' from
+(select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,isnull((select COUNT(id) from Credito where IdCliente = cred.IdCliente and cred.Estado <> 'E'),0) as CanCreditos from
+(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor,IdGestor,IdCliente,Estado from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id  where FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
+(select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id inner join
+(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id) desembolsos"
                 Else
-                    consulta = "select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Promotores.Nombre as Promotor from
-(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id where credito.idpromotor = '" & idEmpleado & "' and FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
-(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id "
+                    '                    consulta = "select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Promotores.Nombre as Promotor from
+                    '(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id where credito.idpromotor = '" & idEmpleado & "' and FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
+                    '(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id "
+                    consulta = "select FechaEntrega,id,Nombre,Monto,Pagaré,Tipo,Gestor,Promotor,case when CanCreditos > 1 then 'Renovación' else 'Nuevo' end as 'Nuevo o Renovación' from
+(select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,isnull((select COUNT(id) from Credito where IdCliente = cred.IdCliente and cred.Estado <> 'E'),0) as CanCreditos from
+(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor,IdGestor,IdCliente,Estado from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id  where credito.idpromotor = '" & idEmpleado & "' and  FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
+(select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id inner join
+(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id) desembolsos"
                 End If
             Case "Todos"
-                consulta = "select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor from
-(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor,IdGestor from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id  where FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
+                '                consulta = "select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor from
+                '(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor,IdGestor from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id  where FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
+                '(select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id"
+                consulta = "select FechaEntrega,id,Nombre,Monto,Pagaré,Tipo,Gestor,Promotor,case when CanCreditos > 1 then 'Renovación' else 'Nuevo' end as 'Nuevo o Renovación' from
+(select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,isnull((select COUNT(id) from Credito where IdCliente = cred.IdCliente and cred.Estado <> 'E'),0) as CanCreditos from
+(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor,IdGestor,IdCliente,Estado from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id  where FechaEntrega is not null and (FechaEntrega >= '" & Format(dateDesde.Value, "yyyy-MM-dd") & "' and FechaEntrega <= '" & Format(dateHasta.Value, "yyyy-MM-dd") & "')) cred inner join
 (select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id inner join
-(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id"
+(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id) desembolsos"
         End Select
 
 
@@ -156,6 +181,16 @@ Public Class Desembolsos
 
     Private Sub BackgroundConsulta_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundConsulta.RunWorkerCompleted
         dtimpuestos.DataSource = dataConsulta
+        Dim totalEntregado As Double = 0
+        Dim totalPagare As Double = 0
+
+        For Each row As DataGridViewRow In dtimpuestos.Rows
+            totalEntregado = totalEntregado + row.Cells(3).Value
+            totalPagare = totalPagare + row.Cells(4).Value
+
+        Next
+        lblEntregado.Text = FormatCurrency(totalEntregado, 2)
+        lblPagare.Text = FormatCurrency(totalPagare, 2)
         Cargando.Close()
         BunifuThinButton22.Enabled = True
     End Sub
