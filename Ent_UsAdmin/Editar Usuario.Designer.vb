@@ -49,6 +49,7 @@ Partial Class Editar_Usuario
         Me.lblempleado = New System.Windows.Forms.Label()
         Me.txtempleado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -364,12 +365,24 @@ Partial Class Editar_Usuario
         Me.Label6.TabIndex = 23
         Me.Label6.Text = "Empleado"
         '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.White
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Location = New System.Drawing.Point(222, 318)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 26
+        Me.Button2.Text = "Empresas"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
         'Editar_Usuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(463, 463)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.lblempleado)
         Me.Controls.Add(Me.txtempleado)
         Me.Controls.Add(Me.Label6)
@@ -428,4 +441,5 @@ Partial Class Editar_Usuario
     Friend WithEvents lblempleado As Label
     Friend WithEvents txtempleado As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label6 As Label
+    Friend WithEvents Button2 As Button
 End Class

@@ -61,6 +61,7 @@ Partial Class Reportes
         Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1 = New Telerik.WinControls.RootRadElement()
         Me.RadTileElement1 = New Telerik.WinControls.UI.RadTileElement()
         Me.TileGroupElement5 = New Telerik.WinControls.UI.TileGroupElement()
+        Me.LiveTileFrameElement9 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.FlowLayoutPanel1.SuspendLayout()
         CType(Me.RadPanorama1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -322,6 +323,7 @@ Partial Class Reportes
         '
         Me.RadTileElement6.AutoSize = True
         Me.RadTileElement6.Column = 2
+        Me.RadTileElement6.EnableRippleAnimation = False
         Me.RadTileElement6.Font = New System.Drawing.Font("Segoe UI Light", 10.0!)
         Me.RadTileElement6.Name = "RadTileElement6"
         Me.RadTileElement6.Row = 1
@@ -385,10 +387,14 @@ Partial Class Reportes
         '
         'RadLiveTileElement5
         '
+        Me.RadLiveTileElement5.Alignment = System.Drawing.ContentAlignment.TopCenter
         Me.RadLiveTileElement5.ColSpan = 2
+        Me.RadLiveTileElement5.Items.AddRange(New Telerik.WinControls.RadItem() {Me.LiveTileFrameElement9})
         Me.RadLiveTileElement5.Name = "RadLiveTileElement5"
         Me.RadLiveTileElement5.Row = 2
-        Me.RadLiveTileElement5.Text = "Promesas de pago"
+        Me.RadLiveTileElement5.Text = "Solicitudes"
+        Me.RadLiveTileElement5.TextAlignment = System.Drawing.ContentAlignment.TopCenter
+        Me.RadLiveTileElement5.TransitionType = Telerik.WinControls.UI.ContentTransitionType.SlideLeft
         '
         'TileGroupElement3
         '
@@ -486,6 +492,13 @@ Partial Class Reportes
         Me.TileGroupElement5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         Me.TileGroupElement5.UseCompatibleTextRendering = False
         '
+        'LiveTileFrameElement9
+        '
+        Me.LiveTileFrameElement9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.LiveTileFrameElement9.Name = "LiveTileFrameElement9"
+        Me.LiveTileFrameElement9.Text = "Consulta las solicitudes ingresadas en una determinada fecha"
+        Me.LiveTileFrameElement9.TextWrap = True
+        '
         'Reportes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -543,4 +556,5 @@ Partial Class Reportes
     Friend WithEvents TileGroupElement5 As Telerik.WinControls.UI.TileGroupElement
     Friend WithEvents tile_group_legal As Telerik.WinControls.UI.TileGroupElement
     Friend WithEvents tile_btn_cartera_legal As Telerik.WinControls.UI.RadTileElement
+    Friend WithEvents LiveTileFrameElement9 As Telerik.WinControls.UI.LiveTileFrameElement
 End Class

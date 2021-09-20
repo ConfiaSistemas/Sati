@@ -22,12 +22,18 @@ Partial Class Empresas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Empresas))
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'FlowLayoutPanel1
@@ -75,22 +81,48 @@ Partial Class Empresas
         Me.EvolveControlBox1.Text = "EvolveControlBox1"
         Me.EvolveControlBox1.Transparent = False
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(3, 3)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(98, 23)
+        Me.Button1.TabIndex = 3
+        Me.Button1.Text = "Agregar Empresa"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Timer1
+        '
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Button1)
+        Me.Panel2.Location = New System.Drawing.Point(350, 44)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(103, 30)
+        Me.Panel2.TabIndex = 4
+        '
+        'Timer2
+        '
+        '
         'Empresas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(456, 658)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.Name = "Empresas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Empresas"
         Me.TransparencyKey = System.Drawing.Color.Fuchsia
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -99,4 +131,8 @@ Partial Class Empresas
     Friend WithEvents Panel1 As Panel
     Friend WithEvents MonoFlat_HeaderLabel1 As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents EvolveControlBox1 As EvolveControlBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Timer2 As Timer
 End Class

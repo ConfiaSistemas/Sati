@@ -439,6 +439,64 @@ when 'Q' then
 
 
     End Sub
+    Private Sub dataTableToWordGrupal(ByVal dt As System.Data.DataTable)
+        Dim Word As Application
+        Dim Doc As Word.Document
+        Dim Table As Word.Table
+        Dim Rng As Range
+        Dim Prf1 As Word.Paragraph
+        Dim Prf2 As Word.Paragraph
+        Dim Prf3 As Word.Paragraph
+
+        Word = CreateObject("Word.Application")
+
+        FileCopy("C:\ConfiaAdmin\SATI\CalendarioGrupal.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempCalendarioGrupal.docx")
+        Doc = Word.Documents.Open("C:\ConfiaAdmin\SATI\TEMPDOCS\TempCalendarioGrupal.docx")
+        Dim NCol As Integer = dt.Columns.Count
+        Dim NRow As Integer = dt.Rows.Count
+        'alternativo
+
+        Table = Doc.Tables.Add(Doc.Bookmarks.Item("\endofdoc").Range, dt.Rows.Count + 1, dt.Columns.Count)
+
+        'Agregando Los Campos De La Grilla
+        For i As Integer = 1 To NCol
+            Table.Cell(1, i).Range.Text = dt.Columns(i - 1).ColumnName.ToString
+
+        Next
+        'Agregando Los Registros A La Tabla
+        For Fila As Integer = 0 To NRow - 1
+            For Col As Integer = 0 To NCol - 1
+                If dt.Rows(NRow - 1)(Col).ToString IsNot DBNull.Value Then
+                    Table.Cell(Fila + 2, Col + 1).Range.Text = dt.Rows(Fila)(Col).ToString
+
+                End If
+            Next
+            'Incremento
+
+        Next
+        'Negrita y Kursiva Para Los Nombres De Los Campos
+        Table.Rows.Item(1).Range.Font.Bold = True
+        Table.Rows.Item(1).Range.Font.Italic = False
+        For i As Integer = 1 To Table.Rows.Count
+            Table.Rows.Item(i).Range.Font.Size = 14
+        Next
+        Table.AllowAutoFit = True
+        Table.AutoFitBehavior(WdAutoFitBehavior.wdAutoFitContent)
+
+        'Boder De La Tabla
+        Table.Borders.InsideLineStyle = WdLineStyle.wdLineStyleEngrave3D
+        Table.Borders.OutsideLineStyle = WdLineStyle.wdLineStyleEngrave3D
+        Table.Borders.InsideColor = WdColor.wdColorBlack
+        Rng = Doc.Bookmarks.Item("\endofdoc").Range
+        Rng.InsertParagraphAfter()
+
+        Doc.Save()
+        Doc.Close()
+        ' Word = Nothing
+        Word.Application.Quit()
+
+
+    End Sub
 
     Private Sub BackgroundCalendario_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundCalendario.DoWork
         iniciarconexionempresa()
@@ -868,5 +926,61 @@ Sábado 09:00 a.m. a 02:00 p.m."
         Dim imageTemp = New Bitmap(ms)
         Dim image = New Bitmap(imageTemp, New Size(New System.Drawing.Point(image_size, image_size)))
         image.Save(new_file_name & ".png", ImageFormat.Png)
+    End Sub
+
+    Private Sub BackgroundGrupal_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundGrupal.DoWork
+        Dim dataCalendario As System.Data.DataTable
+        Dim adapterCalendario As SqlDataAdapter
+        Dim consultaCalendario As String
+
+        consultaCalendario = "declare @cols nvarchar(max), @sql nvarchar(max)
+set @cols = STUFF((select ',' + QUOTENAME(Npago) from CalendarioNormal where id_credito =" & idCreditoAentregar & " FOR XML PATH('')),1,1,'')
+set @sql = 'select row_number() over(order by integrante) as Numero,Integrante,format(Monto,'+ char(39) + 'C' + char(39) +','+ char(39) + 'es-mx' + char(39) +') as Monto,format(pago,'+ char(39) + 'C' + char(39) +','+ char(39) + 'es-mx' + char(39) +') as Pago,' + @cols + ' from 
+(select credito.id,credito.nombre,concat(clientes.nombre,'+ char(39) + ' ' + char(39) + ',clientes.apellidopaterno,'+ char(39) + ' ' + char(39) + ',clientes.apellidomaterno) as Integrante,Npago,'+ char(39) + char(39) + ' as re,datossolicitud.montoautorizado as Monto,((datossolicitud.montoautorizado/ 1000) * credito.interes) as Pago from Credito inner join Solicitud on Credito.IdSolicitud = Solicitud.id inner join DatosSolicitud on DatosSolicitud.IdSolicitud = Solicitud.id inner join Clientes on DatosSolicitud.IdCliente = Clientes.id inner join calendarionormal on credito.id = calendarionormal.id_credito where Credito.id = " & idCreditoAentregar & " and datossolicitud.estado = '+ char(39) + 'A' + char(39) + ' ) s 
+ pivot
+ (
+ max(re) FOR Npago in ('+ @cols +')
+ )p'
+
+ execute (@sql)"
+        adapterCalendario = New SqlDataAdapter(consultaCalendario, conexionempresa)
+        dataCalendario = New Data.DataTable
+        adapterCalendario.Fill(dataCalendario)
+        dataTableToWordGrupal(dataCalendario)
+    End Sub
+
+    Private Sub BackgroundGrupal_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundGrupal.RunWorkerCompleted
+        Dim documento As DocX = DocX.Load("C:\ConfiaAdmin\SATI\TEMPDOCS\TempCalendarioGrupal.docx")
+        documento.ReplaceText("%%GRUPO%%", NombreCreditoAentregar)
+        documento.ReplaceText("%%MONTO%%", FormatCurrency(MontoAentregar, 2))
+        documento.Save()
+        documento.Dispose()
+
+
+        Dim spDoc As New Spire.Doc.Document
+        spDoc.LoadFromFile("C:\ConfiaAdmin\SATI\TEMPDOCS\TempCalendarioGrupal.docx")
+        Dim dialog As New PrintPreviewDialog
+
+        ' dialog.AllowCurrentPage = True
+        ' dialog.AllowSomePages = True
+        ' dialog.UseEXDialog = True
+        Cargando.Close()
+
+        Try
+            '  spDoc.PrintDialog = dialog.
+            spDoc.PrintDocument.PrinterSettings.PrinterName = ImpresoraPredeterminada
+
+            dialog.Document = spDoc.PrintDocument
+            dialog.ShowDialog()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub btnGrupal_Click(sender As Object, e As EventArgs) Handles btnGrupal.Click
+        Cargando.Show()
+        Cargando.MonoFlat_Label1.Text = "Generando Calendario Grupal"
+        BackgroundGrupal.RunWorkerAsync()
+
     End Sub
 End Class

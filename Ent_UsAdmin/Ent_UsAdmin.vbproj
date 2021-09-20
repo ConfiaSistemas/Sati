@@ -443,6 +443,12 @@
     <Compile Include="CrearNotificacionCancelarTicket.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DatosSolicitudReenviarCorreo.Designer.vb">
+      <DependentUpon>DatosSolicitudReenviarCorreo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DatosSolicitudReenviarCorreo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DescuentoPromesaLegal.Designer.vb">
       <DependentUpon>DescuentoPromesaLegal.vb</DependentUpon>
     </Compile>
@@ -453,6 +459,49 @@
       <DependentUpon>DescuentoPromesa.vb</DependentUpon>
     </Compile>
     <Compile Include="DescuentoPromesa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpresaConectada.vb" />
+    <Compile Include="EmpresasDestinoDocSolicitud.Designer.vb">
+      <DependentUpon>EmpresasDestinoDocSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmpresasDestinoDocSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpresasOrigenDocSolicitud.Designer.vb">
+      <DependentUpon>EmpresasOrigenDocSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmpresasOrigenDocSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpresasPermitidas.Designer.vb">
+      <DependentUpon>EmpresasPermitidas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmpresasPermitidas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportarExcelTraspaso.Designer.vb">
+      <DependentUpon>ImportarExcelTraspaso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImportarExcelTraspaso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarEmpresa.Designer.vb">
+      <DependentUpon>AgregarEmpresa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarEmpresa.Designer.vb">
+      <DependentUpon>ModificarEmpresa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SolicitudPorFecha.Designer.vb">
+      <DependentUpon>SolicitudPorFecha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudPorFecha.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GestionesLegal.Designer.vb">
@@ -472,6 +521,9 @@
     </Compile>
     <Compile Include="IngresarDepositoLegal.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="paneltransparente.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PromPagoLegal.Designer.vb">
       <DependentUpon>PromPagoLegal.vb</DependentUpon>
@@ -819,6 +871,12 @@
       <DependentUpon>TiposDeEmpeños.vb</DependentUpon>
     </Compile>
     <Compile Include="TiposDeEmpeños.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraspasarDocumentosSolicitud.Designer.vb">
+      <DependentUpon>TraspasarDocumentosSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TraspasarDocumentosSolicitud.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ValorCartera.Designer.vb">
@@ -1210,11 +1268,35 @@
     <EmbeddedResource Include="CrearNotificacionCancelarTicket.resx">
       <DependentUpon>CrearNotificacionCancelarTicket.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DatosSolicitudReenviarCorreo.resx">
+      <DependentUpon>DatosSolicitudReenviarCorreo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DescuentoPromesaLegal.resx">
       <DependentUpon>DescuentoPromesaLegal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DescuentoPromesa.resx">
       <DependentUpon>DescuentoPromesa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpresasDestinoDocSolicitud.resx">
+      <DependentUpon>EmpresasDestinoDocSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpresasOrigenDocSolicitud.resx">
+      <DependentUpon>EmpresasOrigenDocSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpresasPermitidas.resx">
+      <DependentUpon>EmpresasPermitidas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportarExcelTraspaso.resx">
+      <DependentUpon>ImportarExcelTraspaso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarEmpresa.resx">
+      <DependentUpon>AgregarEmpresa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarEmpresa.resx">
+      <DependentUpon>ModificarEmpresa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SolicitudPorFecha.resx">
+      <DependentUpon>SolicitudPorFecha.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionesLegal.resx">
       <DependentUpon>GestionesLegal.vb</DependentUpon>
@@ -1390,6 +1472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TiposDeEmpeños.resx">
       <DependentUpon>TiposDeEmpeños.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraspasarDocumentosSolicitud.resx">
+      <DependentUpon>TraspasarDocumentosSolicitud.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ValorCartera.resx">
       <DependentUpon>ValorCartera.vb</DependentUpon>
@@ -1713,6 +1798,7 @@
     <None Include="Resources\minimizar-pestana.png" />
     <None Include="Resources\16606.png" />
     <None Include="Resources\notificacion.png" />
+    <None Include="Resources\164531372_453725909175899_8573093330485258261_n.png" />
     <Content Include="SATI.ico" />
     <None Include="Resources\Logo Confia.png" />
     <None Include="Resources\eaad3b05-c22d-49fb-ae4f-2d0e4ff7b0cb.jpg" />

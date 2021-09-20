@@ -86,6 +86,9 @@ Public Class DatosConsultaSolicitud
             modalidadSolicitud = readerSolicitud("Modalidad")
         End While
 
+
+
+
     End Sub
 
     Private Sub ConsultarCliente(idCliente As String)

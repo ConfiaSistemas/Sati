@@ -20,6 +20,9 @@ Public Class frm_adm
     Public array As ArrayList = New ArrayList
     Friend conexionsql As MySqlConnection
     Public CantNotificaciones As Integer = 0
+    Dim music As String = "C:\ConfiaAdmin\NOTIFICACION.wav" ' *.wav file location
+    Dim media As New Media.SoundPlayer(music)
+
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         Timer1.Interval = 150
 
@@ -889,7 +892,7 @@ Public Class frm_adm
     Private Sub BackgroundActualizacion_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundActualizacion.DoWork
         Try
             conexionsql = New MySqlConnection()
-            conexionsql.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=Versiones"
+            conexionsql.ConnectionString = "server=www.prestamosconfia.com;user id=SATIVersiones;pwd=123456;port=3306;database=Versiones"
             conexionsql.Open()
 
             Dim mysqlcomando As MySqlCommand
@@ -961,7 +964,7 @@ Public Class frm_adm
 
             Dim conexionNotificaciones As MySqlConnection
             conexionNotificaciones = New MySqlConnection()
-            conexionNotificaciones.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+            conexionNotificaciones.ConnectionString = "server=www.prestamosconfia.com;user id=SatiNotificacion;pwd=123456;port=3306;database=USRS"
             conexionNotificaciones.Open()
 
             'Revisar notificaciones no aplicadas
@@ -1045,6 +1048,7 @@ Public Class frm_adm
 
                 Next
                 If existe = False Then
+                    ' media.Play() ' Async, creates a new thread
                     array.Add(Nnotificacion)
                 End If
 
@@ -1095,6 +1099,7 @@ Public Class frm_adm
                 Next
                 If existeConNotificacion = False Then
                     CantNotificaciones += 1
+                    ' media.Play() ' Async, creates a new thread
                     array.Add(Nnotificacion)
                 End If
 
@@ -1141,6 +1146,7 @@ Public Class frm_adm
                 Next
                 If existeConNotificacionAplicado = False Then
                     CantNotificaciones += 1
+                    '   media.Play() ' Async, creates a new thread
                     array.Add(Nnotificacion)
                 End If
 
@@ -1300,6 +1306,8 @@ Public Class frm_adm
 
 
             Next
+            conexionNotificaciones.Close()
+
 
         Catch ex As Exception
 
@@ -1327,7 +1335,7 @@ Public Class frm_adm
         Try
             Dim conexionSesion As MySqlConnection
             conexionSesion = New MySqlConnection()
-            conexionSesion.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+            conexionSesion.ConnectionString = "server=www.prestamosconfia.com;user id=confia1;pwd=123456;port=3306;database=USRS"
             conexionSesion.Open()
 
             Dim mysqlcomando As MySqlCommand

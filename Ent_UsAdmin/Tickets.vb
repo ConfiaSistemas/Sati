@@ -61,7 +61,7 @@ Public Class Tickets
                         comandonombre.Connection = conexionempresa
                         comandonombre.CommandText = consultaNombre
                         nombrecredito = comandonombre.ExecuteScalar
-                    Case "Legal", "Depósito Legal"
+                    Case "Legal", "Depósito Legal", "Promesa de pago legal", "Promesa Aplicada Legal", "Cancelación de Promesa Legal"
                         Dim comandonombre As SqlCommand
                         comandonombre = New SqlCommand
 
@@ -97,6 +97,7 @@ Public Class Tickets
                         comandonombre.Connection = conexionempresa
                         comandonombre.CommandText = consultaNombre
                         nombrecredito = comandonombre.ExecuteScalar
+
                     Case Else
                         Dim comandonombre As SqlCommand
                         comandonombre = New SqlCommand

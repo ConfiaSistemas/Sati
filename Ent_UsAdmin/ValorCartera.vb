@@ -450,6 +450,7 @@ else '0' end as MultasVencidas
         Cargando.MonoFlat_Label1.Text = "Consultando"
         Cargando.TopMost = True
         BackgroundConsulta.RunWorkerAsync()
+
     End Sub
 
     Private Sub BackgroundConsulta_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundConsulta.RunWorkerCompleted
@@ -582,8 +583,8 @@ else '0' end as MultasVencidas
         Me.Chart2.Series(0).Points.Clear()
         Me.Chart2.Series(0).Points.AddXY("Créditos Morosos (" & totalCreditosMorosos & ")", totalCreditosMorosos)
         Me.Chart2.Series(0).Points.AddXY("Créditos Sanos (" & totalCreditosSanos & ")", totalCreditosSanos)
-
-
+        'WebBrowser1.ScriptErrorsSuppressed = True
+        ' WebBrowser1.Navigate("192.168.0.190/Otros/index.html")
         Cargando.Close()
         BunifuThinButton22.Enabled = True
 

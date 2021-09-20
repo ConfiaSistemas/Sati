@@ -32,10 +32,21 @@ Public Class ActInformacionCredito
                 PanelDomicilio.Location = New Point(41, 124)
                 PanelDomicilio.Visible = True
                 PanelValor.Visible = False
+            Case "Referencia 1"
+                PanelR.Location = New Point(41, 124)
+                PanelR.Visible = True
+                PanelValor.Visible = False
+                PanelDomicilio.Visible = False
+            Case "Referencia 2"
+                PanelR.Location = New Point(41, 124)
+                PanelR.Visible = True
+                PanelValor.Visible = False
+                PanelDomicilio.Visible = False
             Case Else
                 PanelValor.Location = New Point(41, 124)
                 PanelValor.Visible = True
                 PanelDomicilio.Visible = False
+                PanelR.Visible = False
         End Select
     End Sub
 
@@ -54,7 +65,7 @@ Public Class ActInformacionCredito
 
         Dim consultaInformacion As String
 
-        consultaInformacion = "select CONCAT(Clientes.Nombre,' ',Clientes.ApellidoPaterno,' ',Clientes.ApellidoMaterno) as nombre,concat('Calle ',DatosSolicitud.Calle,' Número Exterior ',DatosSolicitud.Noext,' Número Interior ',DatosSolicitud.Noint,' Colonia ',DatosSolicitud.Colonia,' Código Postal ',DatosSolicitud.CodigoPostal) as Domicilio,concat('Calle ',CalleTrabajo,' Número exterior ',NoextTrabajo,' Número Interior ',NointTrabajo,' Colonia ',ColoniaTrabajo,' Código postal ',CodigoPostalTrabajo) as domicilioTrabajo,DatosSolicitud.Telefono,DatosSolicitud.Celular,DatosSolicitud.TelefonoTrabajo,DatosSolicitud.id as idDatosSolicitud from credito inner join Solicitud on Credito.idSolicitud = Solicitud.id inner join DatosSolicitud on Solicitud.id = DatosSolicitud.IdSolicitud inner join Clientes on DatosSolicitud.IdCliente = Clientes.id where Credito.id = '" & idCredito & "'"
+        consultaInformacion = "select CONCAT(Clientes.Nombre,' ',Clientes.ApellidoPaterno,' ',Clientes.ApellidoMaterno) as nombre,concat('Calle ',DatosSolicitud.Calle,' Número Exterior ',DatosSolicitud.Noext,' Número Interior ',DatosSolicitud.Noint,' Colonia ',DatosSolicitud.Colonia,' Código Postal ',DatosSolicitud.CodigoPostal) as Domicilio,concat('Calle ',CalleTrabajo,' Número exterior ',NoextTrabajo,' Número Interior ',NointTrabajo,' Colonia ',ColoniaTrabajo,' Código postal ',CodigoPostalTrabajo) as domicilioTrabajo,DatosSolicitud.Telefono,DatosSolicitud.Celular,DatosSolicitud.TelefonoTrabajo,DatosSolicitud.id as idDatosSolicitud,concat('Nombre ',datossolicitud.NombreR1,' Teléfono ',datossolicitud.TelefonoR1,' Relación ',datossolicitud.RelacionR1,' Domicilio ',datossolicitud.CalleR1,' No. Ext. ',datossolicitud.NoExtR1,' No. Int. ',datossolicitud.NoIntR1,' Colonia ',datossolicitud.ColoniaR1,' C.P. ',datossolicitud.CodigoPostalR1) as Referencia1,concat('Nombre ',datossolicitud.NombreR2,' Teléfono ',datossolicitud.TelefonoR2,' Relación ',datossolicitud.RelacionR2,' Domicilio ',datossolicitud.CalleR2,' No. Ext. ',datossolicitud.NoExtR2,' No. Int. ',datossolicitud.NoIntR2,' Colonia ',datossolicitud.ColoniaR2,' C.P. ',datossolicitud.CodigoPostalR2) as Referencia2 from credito inner join Solicitud on Credito.idSolicitud = Solicitud.id inner join DatosSolicitud on Solicitud.id = DatosSolicitud.IdSolicitud inner join Clientes on DatosSolicitud.IdCliente = Clientes.id where Credito.id = '" & idCredito & "'"
 
 
         adapterDatosSolicitud = New SqlDataAdapter(consultaInformacion, conexionempresa)
@@ -87,6 +98,11 @@ Public Class ActInformacionCredito
                 consultaActualizacion = "update datosSolicitud set calletrabajo = '" & txtCalle.Text & "',noextTrabajo = '" & txtNoExt.Text & "',nointTrabajo = '" & txtNoInt.Text & "',codigopostalTrabajo = '" & txtCodigoPostal.Text & "',coloniaTrabajo = '" & txtColonia.Text & "' where id = '" & idDatosSolicitud & "'"
             Case "Teléfono de Trabajo"
                 consultaActualizacion = "update datosSolicitud set telefonoTrabajo = '" & txtValor.Text & "' where id = '" & idDatosSolicitud & "'"
+            Case "Referencia 1"
+                consultaActualizacion = "update datossolicitud set NombreR1 = '" & txtNombreR.Text & "',TelefonoR1 = '" & txtTelefonoR.Text & "',RelacionR1 = '" & txtRelacionR.Text & "',CodigoPostalR1 = '" & txtCPR.Text & "',ColoniaR1 = '" & ComboColoniaR.selectedValue & "',calleR1 ='" & txtCalleR.Text & "',NoExtR1 = '" & txtNoExtR.Text & "',NoIntR1 = '" & txtNoIntR.Text & "' where id = '" & idDatosSolicitud & "'"
+            Case "Referencia 2"
+                consultaActualizacion = "update datossolicitud set NombreR2 = '" & txtNombreR.Text & "',TelefonoR2 = '" & txtTelefonoR.Text & "',RelacionR2 = '" & txtRelacionR.Text & "',CodigoPostalR2 = '" & txtCPR.Text & "',ColoniaR2 = '" & ComboColoniaR.selectedValue & "',calleR2 ='" & txtCalleR.Text & "',NoExtR2 = '" & txtNoExtR.Text & "',NoIntR2 = '" & txtNoIntR.Text & "' where id = '" & idDatosSolicitud & "'"
+
         End Select
         Dim comandoLegalAnterior As SqlCommand
         Dim consultaLegalAnterior As String
@@ -110,6 +126,16 @@ Public Class ActInformacionCredito
             Case "Teléfono de Trabajo"
                 valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, idDatosSolicitud)
                 consultaLegalAnterior = "insert into ActualizacionesCredito values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" & valorAnteriorStr & "','" & txtValor.Text & "','" & txtMotivo.Text & "','" & idCredito & "')"
+            Case "Referencia 1"
+                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, idDatosSolicitud)
+                NuevoDomicilio = "Nombre " & txtNombreR.Text & " Teléfono " & txtTelefonoR.Text & " Relación " & txtRelacionR.Text & " Domicilio " & txtCalleR.Text & " No. Ext. " & txtNoExtR.Text & " No. Int. " & txtNoIntR.Text & " Colonia " & ComboColoniaR.selectedValue & " C.P. " & txtCPR.Text
+
+                consultaLegalAnterior = "insert into ActualizacionesCredito values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" & valorAnteriorStr & "','" & NuevoDomicilio & "','" & txtMotivo.Text & "','" & idCredito & "')"
+            Case "Referencia 2"
+                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, idDatosSolicitud)
+                NuevoDomicilio = "Nombre " & txtNombreR.Text & " Teléfono " & txtTelefonoR.Text & " Relación " & txtRelacionR.Text & " Domicilio " & txtCalleR.Text & " No. Ext. " & txtNoExtR.Text & " No. Int. " & txtNoIntR.Text & " Colonia " & ComboColoniaR.selectedValue & " C.P. " & txtCPR.Text
+
+                consultaLegalAnterior = "insert into ActualizacionesCredito values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" & valorAnteriorStr & "','" & NuevoDomicilio & "','" & txtMotivo.Text & "','" & idCredito & "')"
         End Select
         'consultaLegalAnterior = "insert into ActualizacionLegal values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" &  & "')"
         comandoLegalAnterior = New SqlCommand
@@ -184,10 +210,29 @@ Public Class ActInformacionCredito
                         retorno = row("TelefonoTrabajo").ToString
                         Exit For
                     End If
+                Case "Referencia 1"
+                    If row("idDatosSolicitud").ToString = aquien Then
+                        retorno = row("Referencia1").ToString
+                        Exit For
+                    End If
+                Case "Referencia 2"
+                    If row("idDatosSolicitud").ToString = aquien Then
+                        retorno = row("Referencia2").ToString
+                        Exit For
+                    End If
             End Select
         Next
         Return retorno
     End Function
 
+    Private Sub txtCPR_OnValueChanged(sender As Object, e As EventArgs) Handles txtCPR.OnValueChanged
 
+        ComboColoniaR.Clear()
+
+        For Each row As DataRow In dataColonias.Rows
+            If row("CP").ToString = txtCPR.Text Then
+                ComboColoniaR.AddItem(row("Colonia").ToString)
+            End If
+        Next
+    End Sub
 End Class

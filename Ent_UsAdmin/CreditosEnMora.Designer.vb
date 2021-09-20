@@ -23,12 +23,12 @@ Partial Class CreditosEnMora
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreditosEnMora))
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.dtimpuestos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblFiltro = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -41,8 +41,18 @@ Partial Class CreditosEnMora
         Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.txtnombre = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.MonoFlat_Label1 = New ConfiaAdmin.MonoFlat.MonoFlat_Label()
-        CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FlowEmpresas = New System.Windows.Forms.FlowLayoutPanel()
+        Me.BackgroundEmpresas = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundConectarEmpresas = New System.ComponentModel.BackgroundWorker()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.MonoFlat_HeaderLabel2 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.TimerGrande = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerChico = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MonoFlat_HeaderLabel1
@@ -57,45 +67,13 @@ Partial Class CreditosEnMora
         Me.MonoFlat_HeaderLabel1.TabIndex = 1
         Me.MonoFlat_HeaderLabel1.Text = "Créditos en Mora"
         '
-        'dtimpuestos
-        '
-        Me.dtimpuestos.AllowUserToAddRows = False
-        Me.dtimpuestos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
-        Me.dtimpuestos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dtimpuestos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.dtimpuestos.BackgroundColor = System.Drawing.Color.Gainsboro
-        Me.dtimpuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dtimpuestos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
-        Me.dtimpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtimpuestos.DoubleBuffered = True
-        Me.dtimpuestos.EnableHeadersVisualStyles = False
-        Me.dtimpuestos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
-        Me.dtimpuestos.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        Me.dtimpuestos.Location = New System.Drawing.Point(1, 122)
-        Me.dtimpuestos.Name = "dtimpuestos"
-        Me.dtimpuestos.ReadOnly = True
-        Me.dtimpuestos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dtimpuestos.RowHeadersVisible = False
-        Me.dtimpuestos.Size = New System.Drawing.Size(1194, 447)
-        Me.dtimpuestos.TabIndex = 7
-        '
         'Panel1
         '
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.lblFiltro)
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.BunifuThinButton21)
         Me.Panel1.Controls.Add(Me.MonoFlat_HeaderLabel1)
@@ -103,6 +81,28 @@ Partial Class CreditosEnMora
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1194, 36)
         Me.Panel1.TabIndex = 8
+        '
+        'lblFiltro
+        '
+        Me.lblFiltro.AutoSize = True
+        Me.lblFiltro.BackColor = System.Drawing.Color.Transparent
+        Me.lblFiltro.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblFiltro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.lblFiltro.Location = New System.Drawing.Point(292, 3)
+        Me.lblFiltro.Name = "lblFiltro"
+        Me.lblFiltro.Size = New System.Drawing.Size(317, 20)
+        Me.lblFiltro.TabIndex = 36
+        Me.lblFiltro.Text = "¡El filtro sólo se aplicará a la empresa activa!"
+        Me.lblFiltro.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(677, 8)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 35
+        Me.Button1.Text = "Empresas"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
@@ -240,34 +240,102 @@ Partial Class CreditosEnMora
         Me.MonoFlat_Label1.TabIndex = 38
         Me.MonoFlat_Label1.Text = "Buscar"
         '
+        'FlowEmpresas
+        '
+        Me.FlowEmpresas.AutoScroll = True
+        Me.FlowEmpresas.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.FlowEmpresas.Location = New System.Drawing.Point(678, 46)
+        Me.FlowEmpresas.Name = "FlowEmpresas"
+        Me.FlowEmpresas.Size = New System.Drawing.Size(507, 68)
+        Me.FlowEmpresas.TabIndex = 39
+        '
+        'BackgroundEmpresas
+        '
+        '
+        'BackgroundConectarEmpresas
+        '
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TabControl1.Location = New System.Drawing.Point(12, 138)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(1173, 431)
+        Me.TabControl1.TabIndex = 40
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.MonoFlat_HeaderLabel2)
+        Me.Panel2.Controls.Add(Me.PictureBox1)
+        Me.Panel2.Location = New System.Drawing.Point(472, 186)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(252, 208)
+        Me.Panel2.TabIndex = 41
+        Me.Panel2.Visible = False
+        '
+        'MonoFlat_HeaderLabel2
+        '
+        Me.MonoFlat_HeaderLabel2.AutoSize = True
+        Me.MonoFlat_HeaderLabel2.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel2.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel2.Location = New System.Drawing.Point(84, 148)
+        Me.MonoFlat_HeaderLabel2.Name = "MonoFlat_HeaderLabel2"
+        Me.MonoFlat_HeaderLabel2.Size = New System.Drawing.Size(99, 20)
+        Me.MonoFlat_HeaderLabel2.TabIndex = 11
+        Me.MonoFlat_HeaderLabel2.Text = "Trabajando..."
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Image = Global.ConfiaAdmin.My.Resources.Resources._164531372_453725909175899_8573093330485258261_n
+        Me.PictureBox1.Location = New System.Drawing.Point(47, 11)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(174, 134)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'TimerGrande
+        '
+        '
+        'TimerChico
+        '
+        '
         'CreditosEnMora
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1197, 581)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.TabControl1)
+        Me.Controls.Add(Me.FlowEmpresas)
         Me.Controls.Add(Me.txtnombre)
         Me.Controls.Add(Me.MonoFlat_Label1)
         Me.Controls.Add(Me.BunifuThinButton22)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ComboElección)
         Me.Controls.Add(Me.ComboFiltro)
-        Me.Controls.Add(Me.dtimpuestos)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CreditosEnMora"
         Me.Text = "Créditos en mora"
-        CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents MonoFlat_HeaderLabel1 As MonoFlat.MonoFlat_HeaderLabel
-    Friend WithEvents dtimpuestos As Bunifu.Framework.UI.BunifuCustomDataGrid
     Friend WithEvents Panel1 As Panel
     Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents Label6 As Label
@@ -281,4 +349,15 @@ Partial Class CreditosEnMora
     Friend WithEvents Button2 As Button
     Friend WithEvents txtnombre As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents MonoFlat_Label1 As MonoFlat.MonoFlat_Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents FlowEmpresas As FlowLayoutPanel
+    Friend WithEvents BackgroundEmpresas As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BackgroundConectarEmpresas As System.ComponentModel.BackgroundWorker
+    Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents MonoFlat_HeaderLabel2 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents lblFiltro As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents TimerGrande As Timer
+    Friend WithEvents TimerChico As Timer
 End Class

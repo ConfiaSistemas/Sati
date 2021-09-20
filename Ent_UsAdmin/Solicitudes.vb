@@ -36,6 +36,19 @@ Public Class Solicitudes
     Public Async Sub cargarSolicitudes()
         dtimpuestos.Rows.Clear()
         dtimpuestos.ScrollBars = ScrollBars.None
+        BunifuMaterialTextbox1.Enabled = False
+        BunifuThinButton22.Enabled = False
+        BunifuThinButton21.Enabled = False
+        Combofiltro.Enabled = False
+        Panel2.Visible = True
+        Panel2.BringToFront()
+        ' TransparentPanel1.Location = dtimpuestos.Location
+        dtimpuestos.Visible = False
+
+        '  TransparentPanel1.Size = dtimpuestos.Size
+
+        Panel2.Location = New Point((Me.Size.Width / 2) + (Panel2.Width / 2) - 200, (Me.Height / 2) + (Panel2.Height / 2) - 200)
+
         Await Task.Factory.StartNew(Sub()
                                         Dim strimpuestos As String
                                         iniciarconexionempresa()
@@ -81,6 +94,12 @@ Public Class Solicitudes
                                         myreaderimpuestos.Close()
                                     End Sub)
         'Try
+        BunifuMaterialTextbox1.Enabled = True
+        BunifuThinButton22.Enabled = True
+        BunifuThinButton21.Enabled = True
+        Combofiltro.Enabled = True
+        dtimpuestos.Visible = True
+        Panel2.Visible = False
         dtimpuestos.ScrollBars = ScrollBars.Both
         ' Catch ex As Exception
         '  MessageBox.Show(ex.Message)
@@ -294,5 +313,11 @@ Public Class Solicitudes
 
     Private Sub dtimpuestos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtimpuestos.CellContentClick
 
+    End Sub
+
+    Private Sub ReenviarCorreoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReenviarCorreoToolStripMenuItem.Click
+        DatosSolicitudReenviarCorreo.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        '  DatosConsultaSolicitud.TipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(5).Value
+        DatosSolicitudReenviarCorreo.Show()
     End Sub
 End Class

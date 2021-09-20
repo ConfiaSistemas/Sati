@@ -138,7 +138,7 @@ Public Class login
                                                         Try
                                                             Dim conexionLogin As MySqlConnection
                                                             conexionLogin = New MySqlConnection()
-                                                            conexionLogin.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS"
+                                                            conexionLogin.ConnectionString = "server=www.prestamosconfia.com;user id=SATISesiones;pwd=123456;port=3306;database=USRS"
                                                             conexionLogin.Open()
                                                             Dim comandoLogin As MySqlCommand
                                                             Dim consultaLogin As String

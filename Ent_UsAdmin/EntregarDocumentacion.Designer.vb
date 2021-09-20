@@ -44,6 +44,8 @@ Partial Class EntregarDocumentacion
         Me.BackgroundCatatula = New System.ComponentModel.BackgroundWorker()
         Me.btnTarjeta = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BackgroundTarjeta = New System.ComponentModel.BackgroundWorker()
+        Me.btnGrupal = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.BackgroundGrupal = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
         CType(Me.BunifuImageButton1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -335,8 +337,37 @@ Partial Class EntregarDocumentacion
         Me.btnTarjeta.Size = New System.Drawing.Size(216, 38)
         Me.btnTarjeta.TabIndex = 43
         Me.btnTarjeta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btnTarjeta.Visible = False
         '
         'BackgroundTarjeta
+        '
+        '
+        'btnGrupal
+        '
+        Me.btnGrupal.ActiveBorderThickness = 1
+        Me.btnGrupal.ActiveCornerRadius = 20
+        Me.btnGrupal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnGrupal.ActiveForecolor = System.Drawing.Color.White
+        Me.btnGrupal.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btnGrupal.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btnGrupal.BackgroundImage = CType(resources.GetObject("btnGrupal.BackgroundImage"), System.Drawing.Image)
+        Me.btnGrupal.ButtonText = "..."
+        Me.btnGrupal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnGrupal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGrupal.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btnGrupal.IdleBorderThickness = 1
+        Me.btnGrupal.IdleCornerRadius = 20
+        Me.btnGrupal.IdleFillColor = System.Drawing.Color.White
+        Me.btnGrupal.IdleForecolor = System.Drawing.Color.Gray
+        Me.btnGrupal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnGrupal.Location = New System.Drawing.Point(384, 265)
+        Me.btnGrupal.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnGrupal.Name = "btnGrupal"
+        Me.btnGrupal.Size = New System.Drawing.Size(39, 38)
+        Me.btnGrupal.TabIndex = 44
+        Me.btnGrupal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'BackgroundGrupal
         '
         '
         'EntregarDocumentacion
@@ -346,6 +377,7 @@ Partial Class EntregarDocumentacion
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(602, 707)
+        Me.Controls.Add(Me.btnGrupal)
         Me.Controls.Add(Me.btnTarjeta)
         Me.Controls.Add(Me.BunifuThinButton24)
         Me.Controls.Add(Me.btn_activar)
@@ -391,4 +423,6 @@ Partial Class EntregarDocumentacion
     Friend WithEvents BackgroundCatatula As System.ComponentModel.BackgroundWorker
     Friend WithEvents btnTarjeta As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents BackgroundTarjeta As System.ComponentModel.BackgroundWorker
+    Friend WithEvents btnGrupal As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents BackgroundGrupal As System.ComponentModel.BackgroundWorker
 End Class

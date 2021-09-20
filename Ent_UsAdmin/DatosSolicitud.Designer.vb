@@ -22,16 +22,14 @@ Partial Class DatosSolicitud
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DatosSolicitud))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DatosSolicitud))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnActivarLegal = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.btn_a_verificacion = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -170,7 +168,6 @@ Partial Class DatosSolicitud
         Me.Label39 = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btn_agregar = New System.Windows.Forms.Button()
-        Me.btn_Procesar = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.txtObservacionesDomicilio = New System.Windows.Forms.TextBox()
         Me.txtHorarioVerificacion = New Bunifu.Framework.UI.BunifuMaterialTextbox()
@@ -191,6 +188,11 @@ Partial Class DatosSolicitud
         Me.BackgroundCargaDocumentos = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundVerificaDocumentos = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundActivarLegal = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundCorreo = New System.ComponentModel.BackgroundWorker()
+        Me.btn_Procesar = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.btnActivarLegal = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.btn_a_verificacion = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.CheckCorreo = New ConfiaAdmin.MonoFlat.MonoFlat_CheckBox()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -213,6 +215,7 @@ Partial Class DatosSolicitud
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.CheckCorreo)
         Me.Panel1.Controls.Add(Me.btnActivarLegal)
         Me.Panel1.Controls.Add(Me.btn_a_verificacion)
         Me.Panel1.Controls.Add(Me.EvolveControlBox1)
@@ -221,58 +224,6 @@ Partial Class DatosSolicitud
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1158, 36)
         Me.Panel1.TabIndex = 3
-        '
-        'btnActivarLegal
-        '
-        Me.btnActivarLegal.ActiveBorderThickness = 1
-        Me.btnActivarLegal.ActiveCornerRadius = 20
-        Me.btnActivarLegal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnActivarLegal.ActiveForecolor = System.Drawing.Color.White
-        Me.btnActivarLegal.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btnActivarLegal.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnActivarLegal.BackgroundImage = CType(resources.GetObject("btnActivarLegal.BackgroundImage"), System.Drawing.Image)
-        Me.btnActivarLegal.ButtonText = "Activar Solicitud"
-        Me.btnActivarLegal.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnActivarLegal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActivarLegal.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btnActivarLegal.IdleBorderThickness = 1
-        Me.btnActivarLegal.IdleCornerRadius = 20
-        Me.btnActivarLegal.IdleFillColor = System.Drawing.Color.White
-        Me.btnActivarLegal.IdleForecolor = System.Drawing.Color.Gray
-        Me.btnActivarLegal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnActivarLegal.Location = New System.Drawing.Point(493, -1)
-        Me.btnActivarLegal.Margin = New System.Windows.Forms.Padding(5)
-        Me.btnActivarLegal.Name = "btnActivarLegal"
-        Me.btnActivarLegal.Size = New System.Drawing.Size(173, 38)
-        Me.btnActivarLegal.TabIndex = 153
-        Me.btnActivarLegal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btnActivarLegal.Visible = False
-        '
-        'btn_a_verificacion
-        '
-        Me.btn_a_verificacion.ActiveBorderThickness = 1
-        Me.btn_a_verificacion.ActiveCornerRadius = 20
-        Me.btn_a_verificacion.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_a_verificacion.ActiveForecolor = System.Drawing.Color.White
-        Me.btn_a_verificacion.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btn_a_verificacion.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_a_verificacion.BackgroundImage = CType(resources.GetObject("btn_a_verificacion.BackgroundImage"), System.Drawing.Image)
-        Me.btn_a_verificacion.ButtonText = "Enviar A Verificación"
-        Me.btn_a_verificacion.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn_a_verificacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_a_verificacion.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btn_a_verificacion.IdleBorderThickness = 1
-        Me.btn_a_verificacion.IdleCornerRadius = 20
-        Me.btn_a_verificacion.IdleFillColor = System.Drawing.Color.White
-        Me.btn_a_verificacion.IdleForecolor = System.Drawing.Color.Gray
-        Me.btn_a_verificacion.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_a_verificacion.Location = New System.Drawing.Point(779, -2)
-        Me.btn_a_verificacion.Margin = New System.Windows.Forms.Padding(5)
-        Me.btn_a_verificacion.Name = "btn_a_verificacion"
-        Me.btn_a_verificacion.Size = New System.Drawing.Size(173, 38)
-        Me.btn_a_verificacion.TabIndex = 152
-        Me.btn_a_verificacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btn_a_verificacion.Visible = False
         '
         'EvolveControlBox1
         '
@@ -2154,12 +2105,12 @@ Partial Class DatosSolicitud
         Me.TabPage5.Controls.Add(Me.Label39)
         Me.TabPage5.Controls.Add(Me.FlowLayoutPanel1)
         Me.TabPage5.Controls.Add(Me.btn_agregar)
-        Me.TabPage5.Controls.Add(Me.btn_Procesar)
         Me.TabPage5.Controls.Add(Me.Label21)
         Me.TabPage5.Controls.Add(Me.txtObservacionesDomicilio)
         Me.TabPage5.Controls.Add(Me.txtHorarioVerificacion)
         Me.TabPage5.Controls.Add(Me.Label55)
         Me.TabPage5.Controls.Add(Me.Label56)
+        Me.TabPage5.Controls.Add(Me.btn_Procesar)
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
@@ -2314,31 +2265,6 @@ Partial Class DatosSolicitud
         Me.btn_agregar.Text = "+"
         Me.btn_agregar.UseVisualStyleBackColor = True
         '
-        'btn_Procesar
-        '
-        Me.btn_Procesar.ActiveBorderThickness = 1
-        Me.btn_Procesar.ActiveCornerRadius = 20
-        Me.btn_Procesar.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_Procesar.ActiveForecolor = System.Drawing.Color.White
-        Me.btn_Procesar.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btn_Procesar.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.btn_Procesar.BackgroundImage = CType(resources.GetObject("btn_Procesar.BackgroundImage"), System.Drawing.Image)
-        Me.btn_Procesar.ButtonText = "Registrar Captura"
-        Me.btn_Procesar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn_Procesar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Procesar.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btn_Procesar.IdleBorderThickness = 1
-        Me.btn_Procesar.IdleCornerRadius = 20
-        Me.btn_Procesar.IdleFillColor = System.Drawing.Color.White
-        Me.btn_Procesar.IdleForecolor = System.Drawing.Color.Gray
-        Me.btn_Procesar.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_Procesar.Location = New System.Drawing.Point(469, 373)
-        Me.btn_Procesar.Margin = New System.Windows.Forms.Padding(5)
-        Me.btn_Procesar.Name = "btn_Procesar"
-        Me.btn_Procesar.Size = New System.Drawing.Size(216, 38)
-        Me.btn_Procesar.TabIndex = 53
-        Me.btn_Procesar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'Label21
         '
         Me.Label21.AutoSize = True
@@ -2487,6 +2413,96 @@ Partial Class DatosSolicitud
         '
         'BackgroundActivarLegal
         '
+        '
+        'BackgroundCorreo
+        '
+        '
+        'btn_Procesar
+        '
+        Me.btn_Procesar.ActiveBorderThickness = 1
+        Me.btn_Procesar.ActiveCornerRadius = 20
+        Me.btn_Procesar.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btn_Procesar.ActiveForecolor = System.Drawing.Color.White
+        Me.btn_Procesar.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btn_Procesar.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btn_Procesar.BackgroundImage = CType(resources.GetObject("btn_Procesar.BackgroundImage"), System.Drawing.Image)
+        Me.btn_Procesar.ButtonText = "Registrar Captura"
+        Me.btn_Procesar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_Procesar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Procesar.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btn_Procesar.IdleBorderThickness = 1
+        Me.btn_Procesar.IdleCornerRadius = 20
+        Me.btn_Procesar.IdleFillColor = System.Drawing.Color.White
+        Me.btn_Procesar.IdleForecolor = System.Drawing.Color.Gray
+        Me.btn_Procesar.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btn_Procesar.Location = New System.Drawing.Point(458, 312)
+        Me.btn_Procesar.Margin = New System.Windows.Forms.Padding(5)
+        Me.btn_Procesar.Name = "btn_Procesar"
+        Me.btn_Procesar.Size = New System.Drawing.Size(216, 38)
+        Me.btn_Procesar.TabIndex = 53
+        Me.btn_Procesar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnActivarLegal
+        '
+        Me.btnActivarLegal.ActiveBorderThickness = 1
+        Me.btnActivarLegal.ActiveCornerRadius = 20
+        Me.btnActivarLegal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnActivarLegal.ActiveForecolor = System.Drawing.Color.White
+        Me.btnActivarLegal.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btnActivarLegal.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnActivarLegal.BackgroundImage = CType(resources.GetObject("btnActivarLegal.BackgroundImage"), System.Drawing.Image)
+        Me.btnActivarLegal.ButtonText = "Activar Solicitud"
+        Me.btnActivarLegal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnActivarLegal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActivarLegal.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btnActivarLegal.IdleBorderThickness = 1
+        Me.btnActivarLegal.IdleCornerRadius = 20
+        Me.btnActivarLegal.IdleFillColor = System.Drawing.Color.White
+        Me.btnActivarLegal.IdleForecolor = System.Drawing.Color.Gray
+        Me.btnActivarLegal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnActivarLegal.Location = New System.Drawing.Point(493, -1)
+        Me.btnActivarLegal.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnActivarLegal.Name = "btnActivarLegal"
+        Me.btnActivarLegal.Size = New System.Drawing.Size(173, 38)
+        Me.btnActivarLegal.TabIndex = 153
+        Me.btnActivarLegal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btnActivarLegal.Visible = False
+        '
+        'btn_a_verificacion
+        '
+        Me.btn_a_verificacion.ActiveBorderThickness = 1
+        Me.btn_a_verificacion.ActiveCornerRadius = 20
+        Me.btn_a_verificacion.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btn_a_verificacion.ActiveForecolor = System.Drawing.Color.White
+        Me.btn_a_verificacion.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btn_a_verificacion.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btn_a_verificacion.BackgroundImage = CType(resources.GetObject("btn_a_verificacion.BackgroundImage"), System.Drawing.Image)
+        Me.btn_a_verificacion.ButtonText = "Enviar A Verificación"
+        Me.btn_a_verificacion.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_a_verificacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_a_verificacion.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btn_a_verificacion.IdleBorderThickness = 1
+        Me.btn_a_verificacion.IdleCornerRadius = 20
+        Me.btn_a_verificacion.IdleFillColor = System.Drawing.Color.White
+        Me.btn_a_verificacion.IdleForecolor = System.Drawing.Color.Gray
+        Me.btn_a_verificacion.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btn_a_verificacion.Location = New System.Drawing.Point(779, -2)
+        Me.btn_a_verificacion.Margin = New System.Windows.Forms.Padding(5)
+        Me.btn_a_verificacion.Name = "btn_a_verificacion"
+        Me.btn_a_verificacion.Size = New System.Drawing.Size(173, 38)
+        Me.btn_a_verificacion.TabIndex = 152
+        Me.btn_a_verificacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btn_a_verificacion.Visible = False
+        '
+        'CheckCorreo
+        '
+        Me.CheckCorreo.Checked = False
+        Me.CheckCorreo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.CheckCorreo.Location = New System.Drawing.Point(177, 11)
+        Me.CheckCorreo.Name = "CheckCorreo"
+        Me.CheckCorreo.Size = New System.Drawing.Size(148, 16)
+        Me.CheckCorreo.TabIndex = 154
+        Me.CheckCorreo.Text = "Enviar Correo"
         '
         'DatosSolicitud
         '
@@ -2690,4 +2706,6 @@ Partial Class DatosSolicitud
     Friend WithEvents Label53 As Label
     Friend WithEvents txtCalleR1 As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label54 As Label
+    Friend WithEvents BackgroundCorreo As System.ComponentModel.BackgroundWorker
+    Friend WithEvents CheckCorreo As MonoFlat.MonoFlat_CheckBox
 End Class

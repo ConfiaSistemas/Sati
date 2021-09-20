@@ -19,7 +19,10 @@ Public Class DatosSolicitud
     Public tipoSolicitud As Integer
     Dim tipoSolicitudString As String
     Public DocumentosCapturados As Boolean
+    Public correoGestor As String
+    Public idGestor As String
     Dim DatosCapturados As Boolean
+    Dim errorCorreo As Boolean
     Private Sub DatosSolicitud_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Cargando.Show()
@@ -68,8 +71,48 @@ Public Class DatosSolicitud
         dataCliente = New DataTable
         adapterCliente.Fill(dataCliente)
 
+        If idGestor = "" Then
+            Dim comandoIdGestor As SqlCommand
+            Dim consultaIdGestor As String
+            consultaIdGestor = "select idgestor from solicitud where id = '" & idSolicitud & "'"
+            comandoIdGestor = New SqlCommand
+            comandoIdGestor.Connection = conexionempresa
+            comandoIdGestor.CommandText = consultaIdGestor
 
+            idGestor = comandoIdGestor.ExecuteScalar
 
+        End If
+
+        If correoGestor = "" Then
+            Dim comandoCorreoGestor As SqlCommand
+            Dim consultaCorreoGestor As String
+
+            consultaCorreoGestor = "select correo from empleados where id = '" & idGestor & "'"
+            comandoCorreoGestor = New SqlCommand
+            comandoCorreoGestor.Connection = conexionempresa
+            comandoCorreoGestor.CommandText = consultaCorreoGestor
+            correoGestor = comandoCorreoGestor.ExecuteScalar
+
+        End If
+
+        Dim comandoRen As SqlCommand
+        Dim consultaRen As String
+        Dim readerRen As SqlDataReader
+        consultaRen = "select FechaEntrega,id,Nombre,Monto,Pagaré,Tipo,Gestor,Promotor,case when CanCreditos > 1 then 'Renovación' else 'Nuevo' end as 'Nuevo o Renovación' from
+(select FechaEntrega,cred.id,cred.Nombre,format(cred.Monto,'C','es-mx') as Monto,format(cred.Pagare,'C','es-mx') as Pagaré,cred.Tipo,Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,isnull((select COUNT(credito.id) from Credito inner join Solicitud on Credito.IdSolicitud = Solicitud.id inner join DatosSolicitud on DatosSolicitud.IdSolicitud = Solicitud.id where DatosSolicitud.IdCliente = cred.IdCliente and Credito.Estado <> 'E'),0) as CanCreditos from
+(select FechaEntrega,Credito.id,credito.Nombre,Monto,Pagare,TiposDeCredito.Nombre as tipo,IdPromotor,IdGestor,IdCliente,Estado from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id  where Credito.Nombre = '" & nombreSolicitud & "') cred inner join
+(select * from Empleados where Tipo = 'G') Gestores on cred.IdGestor = Gestores.id inner join
+(select * from Empleados where Tipo = 'P') Promotores on cred.IdPromotor = Promotores.id) desembolsos"
+
+        comandoRen = New SqlCommand
+        comandoRen.Connection = conexionempresa
+        comandoRen.CommandText = consultaRen
+        readerRen = comandoRen.ExecuteReader
+        If readerRen.HasRows Then
+            CheckCorreo.Checked = False
+        Else
+            CheckCorreo.Checked = True
+        End If
     End Sub
 
     Private Sub ConsultarCliente(idCliente As String)
@@ -424,14 +467,25 @@ Public Class DatosSolicitud
     End Sub
 
     Private Sub btn_a_verificacion_Click(sender As Object, e As EventArgs) Handles btn_a_verificacion.Click
-        Cargando.Show()
-        Cargando.MonoFlat_Label1.Text = "Enviando a verificación"
-        BackgroundVerificacion.RunWorkerAsync()
+        If CheckCorreo.Checked Then
+            Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Enviando correo"
+
+            BackgroundCorreo.RunWorkerAsync()
+        Else
+            Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Enviando a verificación"
+
+            BackgroundVerificacion.RunWorkerAsync()
+        End If
+
 
     End Sub
 
     Private Sub BackgroundVerificacion_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundVerificacion.DoWork
-        iniciarconexionempresa()
+
+
+
         Dim tiempo As String = TimeOfDay.ToString("HH:mm:ss")
         Dim comandoActEstado As SqlCommand
         Dim consultaActEstado As String
@@ -459,71 +513,8 @@ Public Class DatosSolicitud
         insertCronogramaSolicitud.Connection = conexionempresa
         insertCronogramaSolicitud.CommandText = consultaInsertCronogramaSolicitud
         insertCronogramaSolicitud.ExecuteNonQuery()
-        Dim dataDocumentosCorreo As DataTable
-        Dim adapterDocumentosCorreo As SqlDataAdapter
-        Dim consultaDocumentosCorreo As String
-        consultaDocumentosCorreo = "select documentossolicitud.IdDatosSolicitud,DocumentosSolicitud.Imagen from DocumentosSolicitud inner join DatosSolicitud on DocumentosSolicitud.IdDatosSolicitud = DatosSolicitud.Id where DatosSolicitud.IdSolicitud = '" & idSolicitud & "' and DocumentosSolicitud.Tipo =5"
-        adapterDocumentosCorreo = New SqlDataAdapter(consultaDocumentosCorreo, conexionempresa)
-        dataDocumentosCorreo = New DataTable
-        adapterDocumentosCorreo.Fill(dataDocumentosCorreo)
 
-        'Creamos un nuevo objeto MailMessage donde especificamos el "From" y el "To"
-        Dim correo As New System.Net.Mail.MailMessage("sistemas@prestamosconfia.com", "jjah.jairo@gmail.com")
-        correo.Subject = nombreSolicitud
-        correo.To.Add("danielafernandez@prestamosconfia.com")
-        correo.To.Add("opaniahua@prestamosconfia.com")
-        Dim sb As New StringBuilder
-        For Each row As DataGridViewRow In dtdatos.Rows
 
-            For Each rowDocumento As DataRow In dataDocumentosCorreo.Rows
-                If rowDocumento("IdDatosSolicitud").ToString = row.Cells(0).Value Then
-
-                    Dim byteArray = CType(rowDocumento("Imagen"), Byte())
-                    Dim stream As MemoryStream = New MemoryStream(byteArray, 0, byteArray.Length)
-                    stream.Write(byteArray, 0, byteArray.Length)
-                    Dim bitmapDocumento As Bitmap
-                    bitmapDocumento = New Bitmap(stream)
-                    bitmapDocumento.Save("C:\ConfiaAdmin\SATI\TempPhotos\" & row.Cells(2).Value & ".jpg")
-                    correo.Attachments.Add(New Net.Mail.Attachment("C:\ConfiaAdmin\SATI\TempPhotos\" & row.Cells(2).Value & ".jpg"))
-
-                    Exit For
-                Else
-
-                End If
-            Next
-
-            For Each rowcliente As DataRow In dataDatos.Rows
-
-                If rowcliente("idCliente").ToString = row.Cells(1).Value Then
-                    sb.AppendLine("Nombre: " & row.Cells(2).Value)
-                    sb.AppendLine("Teléfono: " & rowcliente("Telefono").ToString)
-                    sb.AppendLine("Celular: " & rowcliente("Celular").ToString)
-                    sb.AppendLine("Tiempo en el domicilio: " & rowcliente("TiempoEnDomicilio").ToString)
-                    sb.AppendLine("Domicilio: " & rowcliente("Calle").ToString & " ext " & rowcliente("Noext").ToString & " Int " & rowcliente("NoInt").ToString & " C.P. " & rowcliente("CodigoPostal").ToString & " " & rowcliente("Colonia").ToString)
-                    sb.AppendLine("Ciudad: " & rowcliente("Ciudad").ToString)
-                    sb.AppendLine("Estado: " & rowcliente("EstadoCliente").ToString)
-                    sb.AppendLine("Entre calles: " & rowcliente("EntreCalles").ToString)
-                    sb.AppendLine("Conyuge: " & rowcliente("Conyuge").ToString)
-                    sb.AppendLine("Relación con el conyuge: " & rowcliente("RelacionConyuge").ToString)
-                    sb.AppendLine("  ")
-                    sb.AppendLine("------------------------------------")
-                    sb.AppendLine("  ")
-                End If
-
-            Next
-
-        Next
-        correo.Body = sb.ToString
-        Dim cliente As New System.Net.Mail.SmtpClient()
-        'Creamos el objeto que va a "preparar" la autentificación
-        Dim autentificacion As New System.Net.NetworkCredential("sistemas@prestamosconfia.com", "Si5t3Ma$CFIA")
-        Dim smtp As New System.Net.Mail.SmtpClient
-        'Incluimos esta información a la hora de logarnos en el servidor
-        smtp.Host = "p3plcpnl0962.prod.phx3.secureserver.net"
-        smtp.UseDefaultCredentials = False
-        smtp.Credentials = autentificacion
-        smtp.Port = 587
-        smtp.Send(correo)
 
 
     End Sub
@@ -1145,5 +1136,145 @@ Public Class DatosSolicitud
 
     Private Sub txtTelefonoTrabajo_OnValueChanged(sender As Object, e As EventArgs) Handles txtTelefonoTrabajo.OnValueChanged
 
+    End Sub
+
+    Private Sub BackgroundCorreo_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundCorreo.DoWork
+        iniciarconexionempresa()
+        Try
+            Dim dataDocumentosCorreo As DataTable
+            Dim adapterDocumentosCorreo As SqlDataAdapter
+            Dim consultaDocumentosCorreo As String
+            consultaDocumentosCorreo = "select documentossolicitud.IdDatosSolicitud,DocumentosSolicitud.Imagen,td.nombre from DocumentosSolicitud inner join DatosSolicitud on DocumentosSolicitud.IdDatosSolicitud = DatosSolicitud.Id inner join tiposdedocumentossolicitud td on documentossolicitud.tipo = td.id where DatosSolicitud.IdSolicitud = '" & idSolicitud & "' "
+            adapterDocumentosCorreo = New SqlDataAdapter(consultaDocumentosCorreo, conexionempresa)
+            dataDocumentosCorreo = New DataTable
+            adapterDocumentosCorreo.Fill(dataDocumentosCorreo)
+            'Creamos un nuevo objeto MailMessage donde especificamos el "From" y el "To"
+            Dim correo As New System.Net.Mail.MailMessage(correoEmpresa, correoGestor)
+            correo.Subject = nombreSolicitud
+            For Each row As DataRow In dataCorreos.Rows
+                correo.To.Add(row("Correo").ToString)
+            Next
+            ' correo.To.Add("danielafernandez@prestamosconfia.com")
+            ' correo.To.Add("opaniahua@prestamosconfia.com")
+            Dim sb As New StringBuilder
+            For Each row As DataGridViewRow In dtdatos.Rows
+
+                For Each rowDocumento As DataRow In dataDocumentosCorreo.Rows
+                    If rowDocumento("IdDatosSolicitud").ToString = row.Cells(0).Value Then
+
+                        Dim byteArray = CType(rowDocumento("Imagen"), Byte())
+                        Dim stream As MemoryStream = New MemoryStream(byteArray, 0, byteArray.Length)
+                        stream.Write(byteArray, 0, byteArray.Length)
+                        Dim bitmapDocumento As Bitmap
+                        bitmapDocumento = New Bitmap(stream)
+                        bitmapDocumento.Save("C:\ConfiaAdmin\SATI\TempPhotos\" & rowDocumento("nombre") & " " & row.Cells(2).Value & ".jpg")
+                        correo.Attachments.Add(New Net.Mail.Attachment("C:\ConfiaAdmin\SATI\TempPhotos\" & rowDocumento("nombre") & " " & row.Cells(2).Value & ".jpg"))
+
+                        ' Exit For
+                    Else
+
+                    End If
+                Next
+
+                For Each rowcliente As DataRow In dataDatos.Rows
+
+                    If rowcliente("idCliente").ToString = row.Cells(1).Value Then
+                        sb.AppendLine("Nombre: " & row.Cells(2).Value)
+                        sb.AppendLine("Teléfono: " & rowcliente("Telefono").ToString)
+                        sb.AppendLine("Celular: " & rowcliente("Celular").ToString)
+                        sb.AppendLine("Casa donde vive es: " & rowcliente("CasaDondeViveEs").ToString)
+                        sb.AppendLine("Tiempo en el domicilio: " & rowcliente("TiempoEnDomicilio").ToString)
+                        sb.AppendLine("Domicilio: " & rowcliente("Calle").ToString & " ext " & rowcliente("Noext").ToString & " Int " & rowcliente("NoInt").ToString & " C.P. " & rowcliente("CodigoPostal").ToString & " " & rowcliente("Colonia").ToString)
+                        sb.AppendLine("Ciudad: " & rowcliente("Ciudad").ToString)
+                        sb.AppendLine("Estado: " & rowcliente("EstadoCliente").ToString)
+                        sb.AppendLine("Entre calles: " & rowcliente("EntreCalles").ToString)
+                        sb.AppendLine("Conyuge: " & rowcliente("Conyuge").ToString)
+                        sb.AppendLine("Relación con el conyuge: " & rowcliente("RelacionConyuge").ToString)
+                        sb.AppendLine("Donde Trabaja: " & rowcliente("DondeTrabaja").ToString)
+                        sb.AppendLine("Se dedica a: " & rowcliente("SeDedica").ToString)
+                        sb.AppendLine("Qué vende: " & rowcliente("QueVende").ToString)
+                        sb.AppendLine("Antigüedad: " & rowcliente("Antiguedad").ToString)
+                        sb.AppendLine("Horarios: " & rowcliente("Horarios").ToString)
+                        sb.AppendLine("Tipo de Establecimiento: " & rowcliente("TipoEstablecimiento").ToString)
+                        sb.AppendLine("Ingreso: " & rowcliente("IngresoPmensual").ToString)
+                        sb.AppendLine("Frecuencia: " & rowcliente("FrecuenciaCobro").ToString)
+                        sb.AppendLine("Domicilio del trabajo: " & rowcliente("CalleTrabajo").ToString & " ext " & rowcliente("NoextTrabajo").ToString & " Int " & rowcliente("NoIntTrabajo").ToString & " C.P. " & rowcliente("CodigoPostalTrabajo").ToString & " " & rowcliente("ColoniaTrabajo").ToString)
+                        sb.AppendLine("Teléfono del trabajo: " & rowcliente("TelefonoTrabajo").ToString)
+                        sb.AppendLine("Objetivo: " & rowcliente("Objetivo").ToString)
+                        sb.AppendLine("Nombre Referencia 1: " & rowcliente("NombreR1").ToString)
+                        sb.AppendLine("Teléfono Referencia 1: " & rowcliente("TelefonoR1").ToString)
+                        sb.AppendLine("Domicilio de Referencia 1: " & rowcliente("CalleR1").ToString & " ext " & rowcliente("NoExtR1").ToString & " Int " & rowcliente("NoIntR1").ToString & " C.P. " & rowcliente("CodigoPostalR1").ToString & " " & rowcliente("ColoniaR1").ToString)
+                        sb.AppendLine("Relación R1: " & rowcliente("RelacionR1").ToString)
+                        sb.AppendLine("Nombre Referencia 2: " & rowcliente("NombreR2").ToString)
+                        sb.AppendLine("Teléfono Referencia 2: " & rowcliente("TelefonoR2").ToString)
+                        sb.AppendLine("Domicilio de Referencia 2: " & rowcliente("CalleR2").ToString & " ext " & rowcliente("NoExtR2").ToString & " Int " & rowcliente("NoIntR2").ToString & " C.P. " & rowcliente("CodigoPostalR2").ToString & " " & rowcliente("ColoniaR2").ToString)
+                        sb.AppendLine("Relación R2: " & rowcliente("RelacionR2").ToString)
+                        sb.AppendLine("Enfermedad: " & rowcliente("Enfermedad").ToString)
+                        sb.AppendLine("Familias en casa: " & rowcliente("FamiliasEnCasa").ToString)
+                        sb.AppendLine("Deudas con: " & rowcliente("DeudasCon").ToString)
+                        sb.AppendLine("Servicios con los que cuenta: " & rowcliente("Servicios").ToString)
+                        sb.AppendLine("Personas dependientes: " & rowcliente("PersonasDependientes").ToString)
+                        sb.AppendLine("Empleados: " & rowcliente("Empleados").ToString)
+                        sb.AppendLine("Frecuencia Inversión: " & rowcliente("FrecuenciaInversion").ToString)
+                        sb.AppendLine("Observaciones en el domicilio: " & rowcliente("ObservacionesDomicilio").ToString)
+                        sb.AppendLine("Horario Verificación: " & rowcliente("HorarioVerificacion").ToString)
+                        sb.AppendLine("  ")
+                        sb.AppendLine("------------------------------------")
+                        sb.AppendLine("  ")
+                    End If
+
+                Next
+
+            Next
+            correo.Body = sb.ToString
+            Dim cliente As New System.Net.Mail.SmtpClient()
+            'Creamos el objeto que va a "preparar" la autentificación
+            Dim autentificacion As New System.Net.NetworkCredential(correoEmpresa, passwordCorreoEmpresa)
+            Dim smtp As New System.Net.Mail.SmtpClient
+            'Incluimos esta información a la hora de loguearnos en el servidor
+            smtp.Host = "p3plcpnl0962.prod.phx3.secureserver.net"
+            smtp.UseDefaultCredentials = False
+            smtp.Credentials = autentificacion
+            smtp.Port = 587
+            smtp.Send(correo)
+
+            Dim comandoCorreoEnviado As SqlCommand
+            Dim consultaCorreoEnviado As String
+            consultaCorreoEnviado = "update solicitud set correo = 1 where id = '" & idSolicitud & "'"
+            comandoCorreoEnviado = New SqlCommand
+            comandoCorreoEnviado.Connection = conexionempresa
+            comandoCorreoEnviado.CommandText = consultaCorreoEnviado
+            comandoCorreoEnviado.ExecuteNonQuery()
+
+
+            errorCorreo = False
+
+
+
+        Catch ex As Exception
+            errorCorreo = True
+            MessageBox.Show(ex.Message)
+
+        End Try
+    End Sub
+
+    Private Sub BackgroundCorreo_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundCorreo.RunWorkerCompleted
+
+        If errorCorreo Then
+            If MessageBox.Show("El correo no pudo ser enviado satisfactoriamente, ¿deseas cambiar el estado de todos modos?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                Cargando.MonoFlat_Label1.Text = "Enviando a verificación"
+                BackgroundVerificacion.RunWorkerAsync()
+            Else
+                Cargando.Close()
+
+            End If
+        Else
+            For Each fichero As String In Directory.GetFiles("C:\ConfiaAdmin\SATI\TempPhotos", "*.jpg")
+                File.Delete(fichero)
+            Next
+            Cargando.MonoFlat_Label1.Text = "Enviando a verificación"
+            BackgroundVerificacion.RunWorkerAsync()
+
+        End If
     End Sub
 End Class

@@ -165,8 +165,35 @@ Public Class Run
                     SesionesActivas.Show()
                     Me.Close()
                     Exit For
+                ElseIf tempArray(i).Equals("TraspasoDocumentos", StringComparison.InvariantCultureIgnoreCase) Then
+                    TraspasarDocumentosSolicitud.Show()
+                    Me.Close()
+                    Exit For
+                ElseIf tempArray(i).Equals("EmpresasPermitidas", StringComparison.InvariantCultureIgnoreCase) Then
+                    EmpresasPermitidas.Show()
+                    Me.Close()
+                    Exit For
+                ElseIf tempArray(i).Equals("DisableSession", StringComparison.InvariantCultureIgnoreCase) Then
+                    frm_adm.TimerActSesion.Stop()
 
+                    frm_adm.TimerActSesion.Enabled = False
+                    MessageBox.Show("Sesión deshabilitada")
+                    Exit For
+
+                ElseIf tempArray(i).Equals("EnableSession", StringComparison.InvariantCultureIgnoreCase) Then
+                    frm_adm.TimerActSesion.Enabled = True
+                    frm_adm.TimerActSesion.Start()
+                    MessageBox.Show("Sesión habilitada")
+                    Exit For
+
+
+                ElseIf tempArray(i).Equals("La-niña-mas-hermosa-del-mundo-mundial", StringComparison.InvariantCultureIgnoreCase) Then
+                    VistaDocumento.PictureBox1.Image = Image.FromFile("C:\Users\SVRCONFIAUPN\Downloads\WhatsApp Image 2021-05-20 at 12.41.42 AM.jpeg")
+                    VistaDocumento.ShowDialog()
+                    Me.Close()
+                    Exit For
                 Else
+
 
 
                     MessageBox.Show("No se reconoce el comando " & tempArray(i))

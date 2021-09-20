@@ -54,9 +54,16 @@ Module Module1
     Public adapterDocs As SqlDataAdapter
     Public dataColonias As DataTable
     Public adapterColonias As SqlDataAdapter
+    Public dataCorreos As DataTable
+    Public adapterCorreos As OleDbDataAdapter
     Public TipoEquipo As String
     Public idSesion As String
     Public prefijoEmpresa As String
+    Public correoEmpresa As String
+    Public passwordCorreoEmpresa As String
+    Public dataEmpresas As DataTable
+
+
     Dim exApp As New Microsoft.Office.Interop.Excel.Application
     Public exLibro As Microsoft.Office.Interop.Excel.Workbook
     Private WithEvents TestWorker As System.ComponentModel.BackgroundWorker
@@ -111,6 +118,23 @@ ByVal maximumWorkingSetSize As Integer) As Integer
         Catch ex As Exception
             Return False
         End Try
+    End Function
+
+
+    Public Function CrearConexionEmpresa(ip As String, bd As String) As OleDbConnection
+        Dim constring As String = "Provider=sqloledb;" &
+            "Data Source=  " & ip & "\confia;" &
+                  "Initial Catalog=" & bd & ";" &
+                  "User Id=sa;Password=BSi5t3Ma$CFAD;MultipleActiveResultSets=true"
+        Dim conex As OleDbConnection
+        Try
+            conex = New OleDbConnection(constring)
+            conex.Open()
+            Return conex
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
     End Function
 
 
@@ -391,6 +415,9 @@ ByVal maximumWorkingSetSize As Integer) As Integer
             Dim NRow As Integer = ElGrid.RowCount
 
             'Aqui recorremos todas las filas, y por cada fila todas las columnas y vamos escribiendo.
+            MessageBox.Show(NRow & " filas")
+            MessageBox.Show(NCol & " Columnas")
+
             For i As Integer = 1 To NCol
                 exHoja.Cells.Item(1, i) = ElGrid.Columns(i - 1).HeaderText.ToString
                 'exHoja.Cells.Item(1, i).HorizontalAlignment = 3

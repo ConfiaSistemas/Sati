@@ -23,6 +23,7 @@ Public Class Levantar_Solicitud
     Dim esta As String
     Dim usarNombre As Boolean
     Public autorizado As Boolean
+    Dim correoEmpleado As String
     Private Sub txtTipo_OnValueChanged(sender As Object, e As EventArgs) Handles txtTipo.OnValueChanged
 
     End Sub
@@ -204,8 +205,8 @@ end"
         Try
             iniciarconexionempresa()
             Dim consulta As String
-            consulta = " select '' as id, '' as nombre union all
-Select id,nombre from empleados where tipo = 'G'"
+            consulta = " select '' as id, '' as nombre,'' as correo union all
+Select id,nombre,correo from empleados where tipo = 'G'"
             adapterGestores = New SqlDataAdapter(consulta, conexionempresa)
             dataGestores = New DataSet
             adapterGestores.Fill(dataGestores)
@@ -388,6 +389,8 @@ Select id,nombre from empleados where tipo = 'P'"
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         iniciarconexionempresa()
+
+        correoEmpleado = ConsultarCorreoGestor(ComboGestor.Text)
         Dim comandoSolicitud As SqlCommand
         Dim consultaSolicitud As String
 
@@ -395,8 +398,8 @@ Select id,nombre from empleados where tipo = 'P'"
         Dim idgestor As Integer
         idpromotor = ConsultarIdPromotor(ComboPromotor.Text)
         idgestor = ConsultarIdGestor(ComboGestor.Text)
-        consultaSolicitud = "Insert into Solicitud(Fecha,Nombre,Monto,Tipo,Plazo,Interes,PagoIndividual,Integrantes,IDcliente,IdPromotor,IdGestor,Estado)
-                             values('" & Now.ToString("yyyy-MM-dd") & "','" & txtNombreSolicitud.Text & "','" & txtMontoTotal.Text & "', '" & txtTipo.Text & "','" & txtplazo.Text & "','" & txtInteres.Text & "','" & (Val(txtMontoTotal.Text) / 1000) * Val(txtInteres.Text) & "','" & txtIntegrantes.Text & "','" & txtResponsable.Text & "','" & idpromotor & "','" & idgestor & "','I') 
+        consultaSolicitud = "Insert into Solicitud(Fecha,Nombre,Monto,Tipo,Plazo,Interes,PagoIndividual,Integrantes,IDcliente,IdPromotor,IdGestor,Estado,correo)
+                             values('" & Now.ToString("yyyy-MM-dd") & "','" & txtNombreSolicitud.Text & "','" & txtMontoTotal.Text & "', '" & txtTipo.Text & "','" & txtplazo.Text & "','" & txtInteres.Text & "','" & (Val(txtMontoTotal.Text) / 1000) * Val(txtInteres.Text) & "','" & txtIntegrantes.Text & "','" & txtResponsable.Text & "','" & idpromotor & "','" & idgestor & "','I','0') 
                              SELECT SCOPE_IDENTITY()"
         comandoSolicitud = New SqlCommand
         comandoSolicitud.Connection = conexionempresa
@@ -478,7 +481,7 @@ Select id,nombre from empleados where tipo = 'P'"
            ,[CalleR2]
            ,[NoExtR2]
            ,[NoIntR2]
-            
+          
 )
      VALUES
            ('" & idSolicitud & "','" & row.Cells(2).Value & "','" & row.Cells(0).Value & "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','P','','','','','','','','','','')"
@@ -719,6 +722,20 @@ Select id,nombre from empleados where tipo = 'P'"
 
         Return idEmpleado
     End Function
+    Private Function ConsultarCorreoGestor(nombre As String) As String
+        Dim CorreoEmpleado As String
+
+        For Each row As DataRow In dataGestores.Tables(0).Rows
+            If row("nombre").ToString = nombre Then
+                CorreoEmpleado = Val(row("Correo").ToString)
+                Exit For
+            End If
+        Next
+
+
+
+        Return CorreoEmpleado
+    End Function
 
     Private Function ConsultarIdGestorLegal(nombre As String) As Integer
         Dim idEmpleado As Integer
@@ -746,6 +763,7 @@ Select id,nombre from empleados where tipo = 'P'"
         Cargando.Close()
         DatosSolicitud.idSolicitud = idSolicitud
         DatosSolicitud.tipoSolicitud = txtTipo.Text
+        DatosSolicitud.correoGestor = correoEmpleado
         DatosSolicitud.Show()
         Me.Close()
     End Sub

@@ -23,8 +23,8 @@ Partial Class Solicitudes
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Solicitudes))
         Me.dtimpuestos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -47,6 +47,7 @@ Partial Class Solicitudes
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.ContextMenuVerificar = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.VerificarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReenviarCorreoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuIncompleto = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.SeguimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuAprobacion = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -57,20 +58,25 @@ Partial Class Solicitudes
         Me.VerSolicitudToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btn_agregar = New System.Windows.Forms.Button()
         Me.BackgroundExcel = New System.ComponentModel.BackgroundWorker()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.MonoFlat_HeaderLabel2 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         CType(Me.dtimpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.ContextMenuVerificar.SuspendLayout()
         Me.ContextMenuIncompleto.SuspendLayout()
         Me.ContextMenuAprobacion.SuspendLayout()
         Me.ContextMenuAprobado.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'dtimpuestos
         '
         Me.dtimpuestos.AllowUserToAddRows = False
         Me.dtimpuestos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
         Me.dtimpuestos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -78,14 +84,14 @@ Partial Class Solicitudes
         Me.dtimpuestos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtimpuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtimpuestos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.dtimpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtimpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Nombre, Me.Fecha, Me.Monto, Me.MontoAutorizado, Me.TipoCredito, Me.Gestor, Me.Promotor, Me.Estado, Me.Tipo})
         Me.dtimpuestos.DoubleBuffered = True
@@ -298,15 +304,21 @@ Partial Class Solicitudes
         'ContextMenuVerificar
         '
         Me.ContextMenuVerificar.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.ContextMenuVerificar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerificarToolStripMenuItem})
+        Me.ContextMenuVerificar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerificarToolStripMenuItem, Me.ReenviarCorreoToolStripMenuItem})
         Me.ContextMenuVerificar.Name = "ContextMenuVerificar"
-        Me.ContextMenuVerificar.Size = New System.Drawing.Size(117, 26)
+        Me.ContextMenuVerificar.Size = New System.Drawing.Size(159, 48)
         '
         'VerificarToolStripMenuItem
         '
         Me.VerificarToolStripMenuItem.Name = "VerificarToolStripMenuItem"
-        Me.VerificarToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.VerificarToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
         Me.VerificarToolStripMenuItem.Text = "Verificar"
+        '
+        'ReenviarCorreoToolStripMenuItem
+        '
+        Me.ReenviarCorreoToolStripMenuItem.Name = "ReenviarCorreoToolStripMenuItem"
+        Me.ReenviarCorreoToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.ReenviarCorreoToolStripMenuItem.Text = "Reenviar Correo"
         '
         'ContextMenuIncompleto
         '
@@ -376,12 +388,46 @@ Partial Class Solicitudes
         'BackgroundExcel
         '
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Image = Global.ConfiaAdmin.My.Resources.Resources._164531372_453725909175899_8573093330485258261_n
+        Me.PictureBox1.Location = New System.Drawing.Point(47, 11)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(174, 134)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'MonoFlat_HeaderLabel2
+        '
+        Me.MonoFlat_HeaderLabel2.AutoSize = True
+        Me.MonoFlat_HeaderLabel2.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel2.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel2.Location = New System.Drawing.Point(84, 148)
+        Me.MonoFlat_HeaderLabel2.Name = "MonoFlat_HeaderLabel2"
+        Me.MonoFlat_HeaderLabel2.Size = New System.Drawing.Size(99, 20)
+        Me.MonoFlat_HeaderLabel2.TabIndex = 11
+        Me.MonoFlat_HeaderLabel2.Text = "Trabajando..."
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.MonoFlat_HeaderLabel2)
+        Me.Panel2.Controls.Add(Me.PictureBox1)
+        Me.Panel2.Location = New System.Drawing.Point(206, 200)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(252, 208)
+        Me.Panel2.TabIndex = 8
+        Me.Panel2.Visible = False
+        '
         'Solicitudes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(946, 493)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.btn_agregar)
         Me.Controls.Add(Me.dtimpuestos)
         Me.Controls.Add(Me.Panel1)
@@ -396,6 +442,9 @@ Partial Class Solicitudes
         Me.ContextMenuIncompleto.ResumeLayout(False)
         Me.ContextMenuAprobacion.ResumeLayout(False)
         Me.ContextMenuAprobado.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -431,4 +480,8 @@ Partial Class Solicitudes
     Friend WithEvents Tipo As DataGridViewTextBoxColumn
     Friend WithEvents BunifuThinButton22 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents BackgroundExcel As System.ComponentModel.BackgroundWorker
+    Friend WithEvents ReenviarCorreoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents MonoFlat_HeaderLabel2 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents Panel2 As Panel
 End Class

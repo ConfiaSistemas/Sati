@@ -184,6 +184,14 @@ Public Class Editar_Usuario
             End If
         Next
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        EmpresasPermitidas.idUsuario = idusuario
+        EmpresasPermitidas.ShowDialog()
+
+
+    End Sub
+
     Public Sub clickevent(ByVal sender As Object, ByVal e As EventArgs)
 
         ' Dim label = DirectCast(sender, Label)

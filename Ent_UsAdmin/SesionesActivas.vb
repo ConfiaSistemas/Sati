@@ -14,11 +14,14 @@ Public Class SesionesActivas
         Try
             Dim conexionSesiones As MySqlConnection
             conexionSesiones = New MySqlConnection()
-            conexionSesiones.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS;Convert Zero Datetime=True"
+            conexionSesiones.ConnectionString = "server=www.prestamosconfia.com;user id=SATISesiones;pwd=123456;port=3306;database=USRS;Convert Zero Datetime=True"
             conexionSesiones.Open()
             adapterConsulta = New MySqlDataAdapter(consulta, conexionSesiones)
             dataConsulta = New DataTable
             adapterConsulta.Fill(dataConsulta)
+            conexionSesiones.Close()
+
+
         Catch ex As MySqlException
             MessageBox.Show(ex.Message)
         End Try
@@ -92,7 +95,7 @@ Public Class SesionesActivas
         Try
             Dim conexionSesiones As MySqlConnection
             conexionSesiones = New MySqlConnection()
-            conexionSesiones.ConnectionString = "server=www.prestamosconfia.com;user id=ajas;pwd=123456;port=3306;database=USRS;Convert Zero Datetime=True"
+            conexionSesiones.ConnectionString = "server=www.prestamosconfia.com;user id=SATISesiones;pwd=123456;port=3306;database=USRS;Convert Zero Datetime=True"
             conexionSesiones.Open()
 
             Dim comandoCerrarSesion As MySqlCommand

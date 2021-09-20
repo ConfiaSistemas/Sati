@@ -429,3 +429,12 @@ D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromPagoLegal.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DescuentoPromesaLegal.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ConfigEmpresa.resources
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ConfigurarEmpresa.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosSolicitudReenviarCorreo.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SolicitudPorFecha.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpresasDestinoDocSolicitud.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpresasOrigenDocSolicitud.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TraspasarDocumentosSolicitud.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImportarExcelTraspaso.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpresasPermitidas.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ModificarEmpresa.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarEmpresa.resources
