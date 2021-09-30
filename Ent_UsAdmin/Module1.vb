@@ -415,8 +415,7 @@ ByVal maximumWorkingSetSize As Integer) As Integer
             Dim NRow As Integer = ElGrid.RowCount
 
             'Aqui recorremos todas las filas, y por cada fila todas las columnas y vamos escribiendo.
-            MessageBox.Show(NRow & " filas")
-            MessageBox.Show(NCol & " Columnas")
+
 
             For i As Integer = 1 To NCol
                 exHoja.Cells.Item(1, i) = ElGrid.Columns(i - 1).HeaderText.ToString

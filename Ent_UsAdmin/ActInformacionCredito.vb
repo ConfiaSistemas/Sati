@@ -10,11 +10,18 @@ Public Class ActInformacionCredito
     Dim EtapaProcesalActual As String
     Dim ActuarioActual As String
     Dim consultaActualizacion As String
+    Dim datoscliente As String
     Dim idSolicitud As String
     Dim idDatosSolicitud As String
+    Dim datosSolicitudId As String
     Dim NuevoDomicilio As String
+    Dim consul As String
+    Dim sol As String
+    Dim retorno As String
     Dim datosSolicitud As DataTable
+    Dim dom As DataTable
     Dim adapterDatosSolicitud As SqlDataAdapter
+
 
     Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
         If e.Button = MouseButtons.Left Then
@@ -72,67 +79,70 @@ Public Class ActInformacionCredito
         datosSolicitud = New DataTable
         adapterDatosSolicitud.Fill(datosSolicitud)
 
+        For Each row1 As DataRow In datosSolicitud.Rows
+
+            datosSolicitudId = row1("idDatosSolicitud")
+
+            Exit For
+
+        Next
+
+        ''sol = SOLUCION remplazo de "idDatosSolicitud"
     End Sub
 
     Private Sub BackgroundConsultaInformacion_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundConsultaInformacion.RunWorkerCompleted
         ComboCliente.Clear()
+
+
         For Each row As DataRow In datosSolicitud.Rows
             ComboCliente.AddItem(row("nombre").ToString)
+
+
         Next
+
         ComboCliente.selectedIndex = 0
+
+
         Cargando.Close()
     End Sub
 
     Private Sub BackgroundActualizacion_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundActualizacion.DoWork
 
+
         Dim tiempo As String = TimeOfDay.ToString("HH:mm:ss")
         idDatosSolicitud = ObteneridDatosSolicitud(ComboCliente.selectedValue)
-        Select Case ComboTipo.selectedValue
-            Case "Domicilio"
-                consultaActualizacion = "update datosSolicitud set calle = '" & txtCalle.Text & "',noext = '" & txtNoExt.Text & "',noint = '" & txtNoInt.Text & "',codigopostal = '" & txtCodigoPostal.Text & "',colonia = '" & txtColonia.Text & "' where id = '" & idDatosSolicitud & "'"
-            Case "Número de Teléfono"
-                consultaActualizacion = "update datosSolicitud set telefono = '" & txtValor.Text & "' where id = '" & idDatosSolicitud & "'"
-            Case "Número de Celular"
-                consultaActualizacion = "update datosSolicitud set celular = '" & txtValor.Text & "' where id = '" & idDatosSolicitud & "'"
-            Case "Domicilio de Trabajo"
-                consultaActualizacion = "update datosSolicitud set calletrabajo = '" & txtCalle.Text & "',noextTrabajo = '" & txtNoExt.Text & "',nointTrabajo = '" & txtNoInt.Text & "',codigopostalTrabajo = '" & txtCodigoPostal.Text & "',coloniaTrabajo = '" & txtColonia.Text & "' where id = '" & idDatosSolicitud & "'"
-            Case "Teléfono de Trabajo"
-                consultaActualizacion = "update datosSolicitud set telefonoTrabajo = '" & txtValor.Text & "' where id = '" & idDatosSolicitud & "'"
-            Case "Referencia 1"
-                consultaActualizacion = "update datossolicitud set NombreR1 = '" & txtNombreR.Text & "',TelefonoR1 = '" & txtTelefonoR.Text & "',RelacionR1 = '" & txtRelacionR.Text & "',CodigoPostalR1 = '" & txtCPR.Text & "',ColoniaR1 = '" & ComboColoniaR.selectedValue & "',calleR1 ='" & txtCalleR.Text & "',NoExtR1 = '" & txtNoExtR.Text & "',NoIntR1 = '" & txtNoIntR.Text & "' where id = '" & idDatosSolicitud & "'"
-            Case "Referencia 2"
-                consultaActualizacion = "update datossolicitud set NombreR2 = '" & txtNombreR.Text & "',TelefonoR2 = '" & txtTelefonoR.Text & "',RelacionR2 = '" & txtRelacionR.Text & "',CodigoPostalR2 = '" & txtCPR.Text & "',ColoniaR2 = '" & ComboColoniaR.selectedValue & "',calleR2 ='" & txtCalleR.Text & "',NoExtR2 = '" & txtNoExtR.Text & "',NoIntR2 = '" & txtNoIntR.Text & "' where id = '" & idDatosSolicitud & "'"
-
-        End Select
         Dim comandoLegalAnterior As SqlCommand
         Dim consultaLegalAnterior As String
         Dim valorAnteriorStr As String
+
+
         Select Case ComboTipo.selectedValue
             Case "Domicilio"
-                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, idDatosSolicitud)
+                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, datosSolicitudId)
+
                 NuevoDomicilio = "Calle " & txtCalle.Text & " Número Exterior " & txtNoExt.Text & " Número Interior " & txtNoInt.Text & " Colonia " & txtColonia.Text & " Código Postal " & txtCodigoPostal.Text
                 consultaLegalAnterior = "insert into ActualizacionesCredito values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" & valorAnteriorStr & "','" & NuevoDomicilio & "','" & txtMotivo.Text & "','" & idCredito & "')"
             Case "Número de Teléfono"
-                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, idDatosSolicitud)
+                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, datosSolicitudId)
                 consultaLegalAnterior = "insert into ActualizacionesCredito values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" & valorAnteriorStr & "','" & txtValor.Text & "','" & txtMotivo.Text & "','" & idCredito & "')"
             Case "Número de Celular"
-                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, idDatosSolicitud)
+                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, datosSolicitudId)
                 consultaLegalAnterior = "insert into ActualizacionesCredito values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" & valorAnteriorStr & "','" & txtValor.Text & "','" & txtMotivo.Text & "','" & idCredito & "')"
             Case "Domicilio de Trabajo"
-                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, idDatosSolicitud)
+                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, datosSolicitudId)
                 NuevoDomicilio = "Calle " & txtCalle.Text & " Número Exterior " & txtNoExt.Text & " Número Interior " & txtNoInt.Text & " Colonia " & txtColonia.Text & " Código Postal " & txtCodigoPostal.Text
 
                 consultaLegalAnterior = "insert into ActualizacionesCredito values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" & valorAnteriorStr & "','" & NuevoDomicilio & "','" & txtMotivo.Text & "','" & idCredito & "')"
             Case "Teléfono de Trabajo"
-                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, idDatosSolicitud)
+                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, datosSolicitudId)
                 consultaLegalAnterior = "insert into ActualizacionesCredito values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" & valorAnteriorStr & "','" & txtValor.Text & "','" & txtMotivo.Text & "','" & idCredito & "')"
             Case "Referencia 1"
-                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, idDatosSolicitud)
+                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, datosSolicitudId)
                 NuevoDomicilio = "Nombre " & txtNombreR.Text & " Teléfono " & txtTelefonoR.Text & " Relación " & txtRelacionR.Text & " Domicilio " & txtCalleR.Text & " No. Ext. " & txtNoExtR.Text & " No. Int. " & txtNoIntR.Text & " Colonia " & ComboColoniaR.selectedValue & " C.P. " & txtCPR.Text
 
                 consultaLegalAnterior = "insert into ActualizacionesCredito values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" & valorAnteriorStr & "','" & NuevoDomicilio & "','" & txtMotivo.Text & "','" & idCredito & "')"
             Case "Referencia 2"
-                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, idDatosSolicitud)
+                valorAnteriorStr = ValorAnterior(ComboTipo.selectedValue, datosSolicitudId)
                 NuevoDomicilio = "Nombre " & txtNombreR.Text & " Teléfono " & txtTelefonoR.Text & " Relación " & txtRelacionR.Text & " Domicilio " & txtCalleR.Text & " No. Ext. " & txtNoExtR.Text & " No. Int. " & txtNoIntR.Text & " Colonia " & ComboColoniaR.selectedValue & " C.P. " & txtCPR.Text
 
                 consultaLegalAnterior = "insert into ActualizacionesCredito values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & ComboTipo.selectedValue & "','" & valorAnteriorStr & "','" & NuevoDomicilio & "','" & txtMotivo.Text & "','" & idCredito & "')"
@@ -144,11 +154,41 @@ Public Class ActInformacionCredito
         comandoLegalAnterior.ExecuteNonQuery()
 
 
+        Select Case ComboTipo.selectedValue
+            Case "Domicilio"
+                Cargando.Show()
+                consultaActualizacion = "update datosSolicitud set calle = '" & txtCalle.Text & "',noext = '" & txtNoExt.Text & "',noint = '" & txtNoInt.Text & "',codigopostal = '" & txtCodigoPostal.Text & "',colonia = '" & txtColonia.Text & "' where id = '" & datosSolicitudId & "'"
+                Cargando.Close()
+            Case "Número de Teléfono"
+                Cargando.Show()
+                consultaActualizacion = "update datosSolicitud set telefono = '" & txtValor.Text & "' where id = '" & datosSolicitudId & "'"
+                Cargando.Close()
+            Case "Número de Celular"
+                consultaActualizacion = "update datosSolicitud set celular = '" & txtValor.Text & "' where id = '" & datosSolicitudId & "'"
+            Case "Domicilio de Trabajo"
+                consultaActualizacion = "update datosSolicitud set calletrabajo = '" & txtCalle.Text & "',noextTrabajo = '" & txtNoExt.Text & "',nointTrabajo = '" & txtNoInt.Text & "',codigopostalTrabajo = '" & txtCodigoPostal.Text & "',coloniaTrabajo = '" & txtColonia.Text & "' where id = '" & sol & "'"
+            Case "Teléfono de Trabajo"
+                consultaActualizacion = "update datosSolicitud set telefonoTrabajo = '" & txtValor.Text & "' where id = '" & datosSolicitudId & "'"
+            Case "Referencia 1"
+                consultaActualizacion = "update datossolicitud set NombreR1 = '" & txtNombreR.Text & "',TelefonoR1 = '" & txtTelefonoR.Text & "',RelacionR1 = '" & txtRelacionR.Text & "',CodigoPostalR1 = '" & txtCPR.Text & "',ColoniaR1 = '" & ComboColoniaR.selectedValue & "',calleR1 ='" & txtCalleR.Text & "',NoExtR1 = '" & txtNoExtR.Text & "',NoIntR1 = '" & txtNoIntR.Text & "' where id = '" & datosSolicitudId & "'"
+            Case "Referencia 2"
+                consultaActualizacion = "update datossolicitud set NombreR2 = '" & txtNombreR.Text & "',TelefonoR2 = '" & txtTelefonoR.Text & "',RelacionR2 = '" & txtRelacionR.Text & "',CodigoPostalR2 = '" & txtCPR.Text & "',ColoniaR2 = '" & ComboColoniaR.selectedValue & "',calleR2 ='" & txtCalleR.Text & "',NoExtR2 = '" & txtNoExtR.Text & "',NoIntR2 = '" & txtNoIntR.Text & "' where id = '" & datosSolicitudId & "'"
+
+        End Select
+
+
+
+
+
         Dim comandoAct As SqlCommand
         comandoAct = New SqlCommand
         comandoAct.Connection = conexionempresa
         comandoAct.CommandText = consultaActualizacion
         comandoAct.ExecuteNonQuery()
+
+
+
+
 
 
 
@@ -169,25 +209,32 @@ Public Class ActInformacionCredito
     End Sub
 
     Private Function ObteneridDatosSolicitud(Nombre As String) As String
-        Dim datosSolicitudId As String
+
         For Each row As DataRow In datosSolicitud.Rows
             If row("nombre").ToString = Nombre Then
                 datosSolicitudId = row("idDatosSolicitud")
                 Exit For
             End If
         Next
-        Return datosSolicitudId
+
     End Function
 
 
     Private Function ValorAnterior(campo As String, aquien As String) As String
-        Dim retorno As String
+
+
+
         For Each row As DataRow In datosSolicitud.Rows
+
+
             Select Case campo
 
                 Case "Domicilio"
                     If row("idDatosSolicitud").ToString = aquien Then
                         retorno = row("Domicilio").ToString
+
+                        MessageBox.Show(retorno)
+
                         Exit For
                     End If
                 Case "Número de Teléfono"

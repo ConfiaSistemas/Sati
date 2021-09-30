@@ -1,181 +1,5 @@
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\Ent_UsAdmin.vbprojResolveAssemblyReference.cache
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\Ent_UsAdmin.vbproj.ResolveComReference.cache
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActInformacionCredito.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActInformacionLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarCaja.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoCredito.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoDatosSolicitudBoleta.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoVerificacion.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoDatosSolicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarGastosLegales.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarGestionCredito.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarGestionLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.agregargrupos.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.agregarservicio.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarTipoCredito.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarTipoDocumentoSolicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Agregar_Impuestos.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Agregar_Usuario.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AutorizacionRetiro.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Autorizacion.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarClienteEmpeño.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarEmpleadoUsuarioActualizar.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarEmpleadoUsuario.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarClienteSolicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Cajas.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CalendarioConvenio.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CalendarioConvenioLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Cargando.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CatTiposdeCredito.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Configuraciones.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearConvenio.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearConvenioLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpeñosPorEntregar.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpeñosActivos.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CreditosEnLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CreditosActivos.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosSolicitudBoletaVerificar.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosSolicitudBoleta.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DetalleCaja.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DocumentosCreditoLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DocumentosCredito.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EntregarDocumentacionEmpeño.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EstadoDeCuenta.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImportarExcel.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirConvenio.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.InformacionLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.InformacionCliente.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.InformacionEmpeño.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PagosHoy.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SolicitudesEmpeños.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Solicitud_Boleta.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Migrar.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.RecibirRetiro.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Retiros.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.RetirosPorFecha.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Run.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TiposDeEmpeños.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ValorCartera.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CreditosPorEntregar.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosConsultaSolicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosAprobacion.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosVerificacion.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosSolicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CreditosEnMora.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Tickets.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Desembolsos.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DocumentosNecesarios.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Editar_Usuario.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.editarperfil.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Empresas.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EntregarDocumentacion.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.grupos.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Historia_de_Solicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.impuestos.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.InformacionSolicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Reportes.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Levantar_Solicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.nombregrupo.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.perfil.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.inv.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.inicio.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.login.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.frm_adm.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Resources.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.perfilalt.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PermisosGrupo.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Productos.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.servicios.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.slider.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Solicitudes.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SolicitudesRechazadasCliente.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SplashScreen1.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TicketsPfecha.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TiposDeCreditos.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TiposDocumentosSolicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.usuarios.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Verificacion.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.VistaDocumento.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.VistaPreviaDocumento.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.webcamEmpeño.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.webcamCredito.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.webcam.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\Ent_UsAdmin.vbproj.GenerateResource.Cache
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.exe.licenses
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\ConfiaAdmin.exe.config
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\ConfiaAdmin.exe
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\AngleSharp.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\ComponentFactory.Krypton.Toolkit.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\DotNetZip.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gma.QrCodeNet.Encoding.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.Controls.WinForms.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.Core.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.Documents.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.Free.Documents.Controls.WinForms.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.Graphics.GDIPlus.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.Graphics.Skia.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.ImageEngine.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.PageManager.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.XtremeFontEngine.4.0.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.XtremeImageEngine.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Ionic.Zip.Reduced.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\log4net.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\MadMilkman.Ini.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Spire.Doc.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\VB.Windows.Forms.ControlExt.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Zeroit.Framework.Metro.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\zxing.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\AForge.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\AForge.Imaging.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gnostice.Free.Documents.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Spire.License.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Spire.Pdf.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\WebKit.Interop.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\AForge.Math.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.mshtml.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\stdole.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\AForge.Controls.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\AngleSharp.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\CheckBoxComboBox.pdb
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\DotNetZip.pdb
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\DotNetZip.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gma.QrCodeNet.Encoding.pdb
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Gma.QrCodeNet.Encoding.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\log4net.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\MadMilkman.Ini.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\MetalYoutubeUtils.pdb
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\MetalYoutubeUtils.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Spire.Doc.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\WinControls.ListView.pdb
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\WinControls.ListView.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\AForge.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\AForge.Imaging.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Spire.License.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\AForge.Math.xml
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.exe
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.xml
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.pdb
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\ConfiaAdmin.pdb
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\ConfiaAdmin.xml
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActInformacionEmpeño.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoEmpeño.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DocumentosEmpeño.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.MoraPorNiveles.resources
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Newtonsoft.Json.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.MSXML.dll
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ListadoMaestro.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CalendarioReestructura.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearReestructura.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\ConfiaAdmin.exe.config
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\ConfiaAdmin.exe
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\ConfiaAdmin.pdb
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\ConfiaAdmin.xml
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\AngleSharp.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\DotNetZip.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Gma.QrCodeNet.Encoding.dll
@@ -189,11 +13,14 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Gn
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Gnostice.PageManager.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Gnostice.XtremeFontEngine.4.0.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Gnostice.XtremeImageEngine.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Ionic.Zip.Reduced.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\log4net.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\MadMilkman.Ini.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\MySql.Data.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Spire.Doc.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\AForge.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\AForge.Imaging.dll
@@ -201,13 +28,24 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Gn
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Google.Protobuf.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Zstandard.Net.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Renci.SshNet.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Spire.License.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Spire.Pdf.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.mshtml.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\WebKit.Interop.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\AForge.Math.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Ionic.Zip.Reduced.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.MSXML.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\System.Buffers.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\K4os.Hash.xxHash.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\stdole.dll
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\AForge.Controls.xml
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\AngleSharp.xml
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\CheckBoxComboBox.pdb
@@ -219,6 +57,10 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\lo
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\MadMilkman.Ini.xml
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\MetalYoutubeUtils.pdb
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\MetalYoutubeUtils.xml
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\MySql.Data.xml
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Spire.Doc.xml
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\VB.Windows.Forms.ControlExt.pdb
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\VB.Windows.Forms.ControlExt.xml
@@ -233,6 +75,7 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debu
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActInformacionEmpeño.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActInformacionCredito.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActInformacionLegal.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActualizadorUpdater.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarCaja.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoEmpeño.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarDocumentoCredito.resources
@@ -249,8 +92,35 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debu
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarTipoDocumentoSolicitud.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Agregar_Impuestos.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Agregar_Usuario.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Alertas.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AplicarDepositoLegal.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AutorizacionNotificacion.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AutorizacionRetiro.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Autorizacion.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AplicarDescuentoPromesa.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CancelarTicket.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CentroDeNotificaciones.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CierraEmpresa.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ConfigEmpresa.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ConfigurarEmpresa.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacionDescuentoPromesa.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacionCancelarTicket.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosSolicitudReenviarCorreo.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DescuentoPromesaLegal.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DescuentoPromesa.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpresasDestinoDocSolicitud.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpresasOrigenDocSolicitud.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpresasPermitidas.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImportarExcelTraspaso.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarEmpresa.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ModificarEmpresa.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SolicitudPorFecha.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.GestionesLegal.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirTarjeta.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.IngresarDepositoLegal.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromPagoLegal.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SesionesActivas.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarSesion.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarClienteEmpeño.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarEmpleadoUsuarioActualizar.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarEmpleadoUsuario.resources
@@ -261,11 +131,20 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debu
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CalendarioConvenioLegal.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Cargando.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CatTiposdeCredito.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.cmd.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ComprimirImagenes.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Configuraciones.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacion.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.LegalTerminal.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.mysql.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Renovacion.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ReporteLegal.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromesaPago.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearReestructura.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearConvenio.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearConvenioLegal.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ListadoMaestro.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirReestructura.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.MoraPorNiveles.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DocumentosEmpeño.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpeñosPorEntregar.resources
@@ -285,6 +164,7 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debu
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.InformacionCliente.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.InformacionEmpeño.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PagosHoy.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromPago.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SolicitudesEmpeños.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Solicitud_Boleta.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Migrar.resources
@@ -293,6 +173,7 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debu
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.RetirosPorFecha.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Run.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TiposDeEmpeños.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TraspasarDocumentosSolicitud.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ValorCartera.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CreditosPorEntregar.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosConsultaSolicitud.resources
@@ -333,6 +214,7 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debu
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TiposDocumentosSolicitud.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.usuarios.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Verificacion.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Verificar.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.VistaDocumento.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.VistaPreviaDocumento.resources
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.webcamEmpeño.resources
@@ -343,98 +225,5 @@ C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debu
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.exe
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.xml
 C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.pdb
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.cmd.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Verificar.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.cmd.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Verificar.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirReestructura.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirReestructura.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromesaPago.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromesaPago.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ReporteLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ReporteLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromPago.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Renovacion.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Renovacion.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromPago.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.LegalTerminal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ComprimirImagenes.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.mysql.resources
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\MySql.Data.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Google.Protobuf.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Zstandard.Net.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\K4os.Compression.LZ4.Streams.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\BouncyCastle.Crypto.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Ubiety.Dns.Core.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Renci.SshNet.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\System.Buffers.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\K4os.Compression.LZ4.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\K4os.Hash.xxHash.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\MySql.Data.xml
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarSesion.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacion.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActualizadorUpdater.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SesionesActivas.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Alertas.resources
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.dll
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
-D:\Repos\SATI\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CentroDeNotificaciones.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CancelarTicket.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ActualizadorUpdater.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.Alertas.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AutorizacionNotificacion.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CancelarTicket.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CentroDeNotificaciones.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SesionesActivas.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.BuscarSesion.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ComprimirImagenes.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacion.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.LegalTerminal.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.mysql.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.GestionesLegal.resources
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\MySql.Data.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Google.Protobuf.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Zstandard.Net.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\K4os.Compression.LZ4.Streams.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\BouncyCastle.Crypto.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Ubiety.Dns.Core.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Renci.SshNet.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\System.Buffers.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\K4os.Compression.LZ4.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\K4os.Hash.xxHash.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.xml
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
-C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\MySql.Data.xml
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AutorizacionNotificacion.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.GestionesLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacionCancelarTicket.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DescuentoPromesa.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AplicarDescuentoPromesa.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacionDescuentoPromesa.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.IngresarDepositoLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AplicarDepositoLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CierraEmpresa.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImprimirTarjeta.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromPagoLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DescuentoPromesaLegal.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ConfigEmpresa.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ConfigurarEmpresa.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.DatosSolicitudReenviarCorreo.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.SolicitudPorFecha.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpresasDestinoDocSolicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpresasOrigenDocSolicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.TraspasarDocumentosSolicitud.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ImportarExcelTraspaso.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.EmpresasPermitidas.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.ModificarEmpresa.resources
-D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AgregarEmpresa.resources
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\ConfiaAdmin.pdb
+C:\Users\Gestores\Documents\Códigos Fuente\SATI_CONFIA\Ent_UsAdmin\bin\Debug\ConfiaAdmin.xml

@@ -45,6 +45,10 @@ Partial Class CancelarTicket
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BackgroundActNotificacion = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundVerificaNotificacion = New System.ComponentModel.BackgroundWorker()
+        Me.MonoFlat_HeaderLabel3 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel5 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel10 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel11 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Panel1.SuspendLayout()
         CType(Me.dtDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -93,7 +97,7 @@ Partial Class CancelarTicket
         Me.MonoFlat_HeaderLabel2.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel2.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel2.Location = New System.Drawing.Point(12, 51)
+        Me.MonoFlat_HeaderLabel2.Location = New System.Drawing.Point(6, 51)
         Me.MonoFlat_HeaderLabel2.Name = "MonoFlat_HeaderLabel2"
         Me.MonoFlat_HeaderLabel2.Size = New System.Drawing.Size(61, 20)
         Me.MonoFlat_HeaderLabel2.TabIndex = 2
@@ -105,7 +109,7 @@ Partial Class CancelarTicket
         Me.lblNombre.BackColor = System.Drawing.Color.Transparent
         Me.lblNombre.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblNombre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblNombre.Location = New System.Drawing.Point(79, 51)
+        Me.lblNombre.Location = New System.Drawing.Point(72, 51)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(21, 20)
         Me.lblNombre.TabIndex = 3
@@ -117,7 +121,7 @@ Partial Class CancelarTicket
         Me.lblNoTicket.BackColor = System.Drawing.Color.Transparent
         Me.lblNoTicket.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblNoTicket.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblNoTicket.Location = New System.Drawing.Point(120, 82)
+        Me.lblNoTicket.Location = New System.Drawing.Point(114, 82)
         Me.lblNoTicket.Name = "lblNoTicket"
         Me.lblNoTicket.Size = New System.Drawing.Size(21, 20)
         Me.lblNoTicket.TabIndex = 5
@@ -129,7 +133,7 @@ Partial Class CancelarTicket
         Me.MonoFlat_HeaderLabel4.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel4.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel4.Location = New System.Drawing.Point(12, 82)
+        Me.MonoFlat_HeaderLabel4.Location = New System.Drawing.Point(6, 82)
         Me.MonoFlat_HeaderLabel4.Name = "MonoFlat_HeaderLabel4"
         Me.MonoFlat_HeaderLabel4.Size = New System.Drawing.Size(102, 20)
         Me.MonoFlat_HeaderLabel4.TabIndex = 4
@@ -141,7 +145,7 @@ Partial Class CancelarTicket
         Me.lblMonto.BackColor = System.Drawing.Color.Transparent
         Me.lblMonto.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblMonto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lblMonto.Location = New System.Drawing.Point(79, 112)
+        Me.lblMonto.Location = New System.Drawing.Point(72, 112)
         Me.lblMonto.Name = "lblMonto"
         Me.lblMonto.Size = New System.Drawing.Size(21, 20)
         Me.lblMonto.TabIndex = 7
@@ -153,7 +157,7 @@ Partial Class CancelarTicket
         Me.MonoFlat_HeaderLabel6.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel6.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel6.Location = New System.Drawing.Point(12, 112)
+        Me.MonoFlat_HeaderLabel6.Location = New System.Drawing.Point(6, 112)
         Me.MonoFlat_HeaderLabel6.Name = "MonoFlat_HeaderLabel6"
         Me.MonoFlat_HeaderLabel6.Size = New System.Drawing.Size(60, 20)
         Me.MonoFlat_HeaderLabel6.TabIndex = 6
@@ -187,7 +191,7 @@ Partial Class CancelarTicket
         Me.dtDetalle.EnableHeadersVisualStyles = False
         Me.dtDetalle.HeaderBgColor = System.Drawing.Color.DarkSlateGray
         Me.dtDetalle.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        Me.dtDetalle.Location = New System.Drawing.Point(17, 217)
+        Me.dtDetalle.Location = New System.Drawing.Point(9, 256)
         Me.dtDetalle.Name = "dtDetalle"
         Me.dtDetalle.ReadOnly = True
         Me.dtDetalle.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
@@ -200,7 +204,7 @@ Partial Class CancelarTicket
         Me.txtComentario.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtComentario.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.txtComentario.ForeColor = System.Drawing.Color.White
-        Me.txtComentario.Location = New System.Drawing.Point(114, 149)
+        Me.txtComentario.Location = New System.Drawing.Point(106, 175)
         Me.txtComentario.Multiline = True
         Me.txtComentario.Name = "txtComentario"
         Me.txtComentario.ReadOnly = True
@@ -213,7 +217,7 @@ Partial Class CancelarTicket
         Me.MonoFlat_HeaderLabel7.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel7.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel7.Location = New System.Drawing.Point(13, 149)
+        Me.MonoFlat_HeaderLabel7.Location = New System.Drawing.Point(5, 175)
         Me.MonoFlat_HeaderLabel7.Name = "MonoFlat_HeaderLabel7"
         Me.MonoFlat_HeaderLabel7.Size = New System.Drawing.Size(95, 20)
         Me.MonoFlat_HeaderLabel7.TabIndex = 10
@@ -225,7 +229,7 @@ Partial Class CancelarTicket
         Me.MonoFlat_HeaderLabel8.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel8.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel8.Location = New System.Drawing.Point(13, 194)
+        Me.MonoFlat_HeaderLabel8.Location = New System.Drawing.Point(6, 221)
         Me.MonoFlat_HeaderLabel8.Name = "MonoFlat_HeaderLabel8"
         Me.MonoFlat_HeaderLabel8.Size = New System.Drawing.Size(62, 20)
         Me.MonoFlat_HeaderLabel8.TabIndex = 11
@@ -233,7 +237,7 @@ Partial Class CancelarTicket
         '
         'txtAddComentario
         '
-        Me.txtAddComentario.Location = New System.Drawing.Point(16, 335)
+        Me.txtAddComentario.Location = New System.Drawing.Point(9, 364)
         Me.txtAddComentario.Multiline = True
         Me.txtAddComentario.Name = "txtAddComentario"
         Me.txtAddComentario.Size = New System.Drawing.Size(400, 46)
@@ -245,7 +249,7 @@ Partial Class CancelarTicket
         Me.MonoFlat_HeaderLabel9.BackColor = System.Drawing.Color.Transparent
         Me.MonoFlat_HeaderLabel9.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.MonoFlat_HeaderLabel9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel9.Location = New System.Drawing.Point(13, 312)
+        Me.MonoFlat_HeaderLabel9.Location = New System.Drawing.Point(5, 331)
         Me.MonoFlat_HeaderLabel9.Name = "MonoFlat_HeaderLabel9"
         Me.MonoFlat_HeaderLabel9.Size = New System.Drawing.Size(144, 20)
         Me.MonoFlat_HeaderLabel9.TabIndex = 13
@@ -269,7 +273,7 @@ Partial Class CancelarTicket
         Me.BunifuThinButton22.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton22.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton22.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton22.Location = New System.Drawing.Point(306, 407)
+        Me.BunifuThinButton22.Location = New System.Drawing.Point(303, 427)
         Me.BunifuThinButton22.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton22.Name = "BunifuThinButton22"
         Me.BunifuThinButton22.Size = New System.Drawing.Size(100, 41)
@@ -294,7 +298,7 @@ Partial Class CancelarTicket
         Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.Location = New System.Drawing.Point(156, 407)
+        Me.BunifuThinButton21.Location = New System.Drawing.Point(156, 427)
         Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton21.Name = "BunifuThinButton21"
         Me.BunifuThinButton21.Size = New System.Drawing.Size(102, 41)
@@ -307,12 +311,62 @@ Partial Class CancelarTicket
         'BackgroundVerificaNotificacion
         '
         '
+        'MonoFlat_HeaderLabel3
+        '
+        Me.MonoFlat_HeaderLabel3.AutoSize = True
+        Me.MonoFlat_HeaderLabel3.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel3.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel3.Location = New System.Drawing.Point(368, 51)
+        Me.MonoFlat_HeaderLabel3.Name = "MonoFlat_HeaderLabel3"
+        Me.MonoFlat_HeaderLabel3.Size = New System.Drawing.Size(0, 20)
+        Me.MonoFlat_HeaderLabel3.TabIndex = 16
+        '
+        'MonoFlat_HeaderLabel5
+        '
+        Me.MonoFlat_HeaderLabel5.AutoSize = True
+        Me.MonoFlat_HeaderLabel5.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel5.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel5.Location = New System.Drawing.Point(434, 51)
+        Me.MonoFlat_HeaderLabel5.Name = "MonoFlat_HeaderLabel5"
+        Me.MonoFlat_HeaderLabel5.Size = New System.Drawing.Size(0, 20)
+        Me.MonoFlat_HeaderLabel5.TabIndex = 17
+        '
+        'MonoFlat_HeaderLabel10
+        '
+        Me.MonoFlat_HeaderLabel10.AutoSize = True
+        Me.MonoFlat_HeaderLabel10.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel10.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel10.Location = New System.Drawing.Point(72, 144)
+        Me.MonoFlat_HeaderLabel10.Name = "MonoFlat_HeaderLabel10"
+        Me.MonoFlat_HeaderLabel10.Size = New System.Drawing.Size(21, 20)
+        Me.MonoFlat_HeaderLabel10.TabIndex = 18
+        Me.MonoFlat_HeaderLabel10.Text = "..."
+        '
+        'MonoFlat_HeaderLabel11
+        '
+        Me.MonoFlat_HeaderLabel11.AutoSize = True
+        Me.MonoFlat_HeaderLabel11.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel11.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel11.Location = New System.Drawing.Point(6, 144)
+        Me.MonoFlat_HeaderLabel11.Name = "MonoFlat_HeaderLabel11"
+        Me.MonoFlat_HeaderLabel11.Size = New System.Drawing.Size(60, 20)
+        Me.MonoFlat_HeaderLabel11.TabIndex = 19
+        Me.MonoFlat_HeaderLabel11.Text = "Estado:"
+        '
         'CancelarTicket
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(561, 462)
+        Me.ClientSize = New System.Drawing.Size(561, 482)
+        Me.Controls.Add(Me.MonoFlat_HeaderLabel11)
+        Me.Controls.Add(Me.MonoFlat_HeaderLabel10)
+        Me.Controls.Add(Me.MonoFlat_HeaderLabel5)
+        Me.Controls.Add(Me.MonoFlat_HeaderLabel3)
         Me.Controls.Add(Me.BunifuThinButton22)
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.MonoFlat_HeaderLabel9)
@@ -359,4 +413,8 @@ Partial Class CancelarTicket
     Friend WithEvents BunifuThinButton22 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents BackgroundActNotificacion As System.ComponentModel.BackgroundWorker
     Friend WithEvents BackgroundVerificaNotificacion As System.ComponentModel.BackgroundWorker
+    Friend WithEvents MonoFlat_HeaderLabel3 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents MonoFlat_HeaderLabel5 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents MonoFlat_HeaderLabel10 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents MonoFlat_HeaderLabel11 As MonoFlat.MonoFlat_HeaderLabel
 End Class

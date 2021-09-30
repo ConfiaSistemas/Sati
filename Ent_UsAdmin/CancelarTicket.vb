@@ -14,7 +14,9 @@ Public Class CancelarTicket
     Dim bdTicket As String
     Dim estadoNotificacion As String
     Dim tipoDoc As String
+    Dim estado As String
     Dim nCargando As Cargando
+    Dim nCargando1 As Cargando
     Dim conectado As Boolean
     Dim aplicado As Boolean
     Private Sub CancelarTicket_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -26,6 +28,7 @@ Public Class CancelarTicket
         BackgroundVerificaNotificacion.RunWorkerAsync()
 
     End Sub
+
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         Dim conexionLogin As MySqlConnection
@@ -134,6 +137,9 @@ when 'Reestructura' then
         End While
         readerTicket.Close()
 
+
+
+
         Dim comandoDetalle As SqlCommand
         Dim consultaDetalle As String
         Dim adapterDetalle As SqlDataAdapter
@@ -141,31 +147,70 @@ when 'Reestructura' then
 
         Select Case tipoDoc
             Case "Pago"
-                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & idTicket & "'"
+                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto,ticketdetalle.Estado from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & idTicket & "'"
 
                 adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
                 dataDetalle = New DataTable
                 adapterDetalle.Fill(dataDetalle)
 
                 dtDetalle.DataSource = dataDetalle
+
+                For Each drFila As DataRow In dataDetalle.Rows
+                    estado = drFila("Estado").ToString()
+                    Exit For
+
+                Next
+                If estado = "C" Then
+
+                    MonoFlat_HeaderLabel10.Text = ("CANCELADO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Red
+                Else
+                    MonoFlat_HeaderLabel10.Text = ("ACTIVO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Green
+                End If
 
             Case "Convenio"
-                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioconveniossac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarioconveniossac on ticketdetalle.idpago = calendarioconveniossac.idpago where  idTicket = '" & idTicket & "'"
+                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioconveniossac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto,ticketdetalle.Estado  from ticketdetalle inner join calendarioconveniossac on ticketdetalle.idpago = calendarioconveniossac.idpago where  idTicket = '" & idTicket & "'"
 
                 adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
                 dataDetalle = New DataTable
                 adapterDetalle.Fill(dataDetalle)
 
                 dtDetalle.DataSource = dataDetalle
+                For Each drFila As DataRow In dataDetalle.Rows
+                    estado = drFila("Estado").ToString()
+                    Exit For
+
+                Next
+                If estado = "C" Then
+
+                    MonoFlat_HeaderLabel10.Text = ("CANCELADO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Red
+                Else
+                    MonoFlat_HeaderLabel10.Text = ("ACTIVO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Green
+                End If
             Case "Legal"
-                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendariolegales.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendariolegales on ticketdetalle.idpago = calendariolegales.idpago where  idTicket = '" & idTicket & "'"
+                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendariolegales.NPago) as pago,pagonormal,intereses,ticketdetalle.monto,ticketdetalle.Estado  from ticketdetalle inner join calendariolegales on ticketdetalle.idpago = calendariolegales.idpago where  idTicket = '" & idTicket & "'"
 
                 adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
                 dataDetalle = New DataTable
                 adapterDetalle.Fill(dataDetalle)
 
                 dtDetalle.DataSource = dataDetalle
+                For Each drFila As DataRow In dataDetalle.Rows
+                    estado = drFila("Estado").ToString()
+                    Exit For
 
+                Next
+                If estado = "C" Then
+
+                    MonoFlat_HeaderLabel10.Text = ("CANCELADO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Red
+                Else
+                    MonoFlat_HeaderLabel10.Text = ("ACTIVO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Green
+                End If
                        ' TreeListView1.Nodes.Add(liItem)
             Case "Apertura"
 
@@ -177,58 +222,135 @@ when 'Reestructura' then
 
                         ' TreeListView1.Nodes.Add(liItem)
             Case "Renovación Insoluto"
-                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & idTicket & "'"
+                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto,ticketdetalle.Estado  from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & idTicket & "'"
 
                 adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
                 dataDetalle = New DataTable
                 adapterDetalle.Fill(dataDetalle)
 
                 dtDetalle.DataSource = dataDetalle
+                For Each drFila As DataRow In dataDetalle.Rows
+                    estado = drFila("Estado").ToString()
+                    Exit For
+
+                Next
+                If estado = "C" Then
+
+                    MonoFlat_HeaderLabel10.Text = ("CANCELADO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Red
+                Else
+                    MonoFlat_HeaderLabel10.Text = ("ACTIVO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Green
+                End If
 
             Case "Liquidación Insoluto"
-                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & idTicket & "'"
+                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto,ticketdetalle.Estado  from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & idTicket & "'"
 
                 adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
                 dataDetalle = New DataTable
                 adapterDetalle.Fill(dataDetalle)
 
                 dtDetalle.DataSource = dataDetalle
+                For Each drFila As DataRow In dataDetalle.Rows
+                    estado = drFila("Estado").ToString()
+                    Exit For
 
+                Next
+                If estado = "C" Then
+
+                    MonoFlat_HeaderLabel10.Text = ("CANCELADO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Red
+                Else
+                    MonoFlat_HeaderLabel10.Text = ("ACTIVO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Green
+                End If
             Case "Cancelación de Convenio"
-                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & idTicket & "'"
+                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto,ticketdetalle.Estado  from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & idTicket & "'"
 
                 adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
                 dataDetalle = New DataTable
                 adapterDetalle.Fill(dataDetalle)
 
                 dtDetalle.DataSource = dataDetalle
+                For Each drFila As DataRow In dataDetalle.Rows
+                    estado = drFila("Estado").ToString()
+                    Exit For
+
+                Next
+                If estado = "C" Then
+
+                    MonoFlat_HeaderLabel10.Text = ("CANCELADO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Red
+                Else
+                    MonoFlat_HeaderLabel10.Text = ("ACTIVO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Green
+                End If
 
             Case "Reestructura"
-                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioreestructurassac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarioreestructurassac on ticketdetalle.idpago = calendarioreestructurassac.idpago where  idTicket = '" & idTicket & "'"
+                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioreestructurassac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto,ticketdetalle.Estado  from ticketdetalle inner join calendarioreestructurassac on ticketdetalle.idpago = calendarioreestructurassac.idpago where  idTicket = '" & idTicket & "'"
 
                 adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
                 dataDetalle = New DataTable
                 adapterDetalle.Fill(dataDetalle)
 
                 dtDetalle.DataSource = dataDetalle
+                For Each drFila As DataRow In dataDetalle.Rows
+                    estado = drFila("Estado").ToString()
+                    Exit For
+
+                Next
+                If estado = "C" Then
+
+                    MonoFlat_HeaderLabel10.Text = ("CANCELADO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Red
+                Else
+                    MonoFlat_HeaderLabel10.Text = ("ACTIVO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Green
+                End If
 
             Case "Liquidación Promoción 90%"
-                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & idTicket & "'"
+                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarionormal.NPago) as pago,pagonormal,intereses,ticketdetalle.monto,ticketdetalle.Estado  from ticketdetalle inner join calendarionormal on ticketdetalle.idpago = calendarionormal.idpago where  idTicket = '" & idTicket & "'"
 
                 adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
                 dataDetalle = New DataTable
                 adapterDetalle.Fill(dataDetalle)
 
                 dtDetalle.DataSource = dataDetalle
+                For Each drFila As DataRow In dataDetalle.Rows
+                    estado = drFila("Estado").ToString()
+                    Exit For
+
+                Next
+                If estado = "C" Then
+
+                    MonoFlat_HeaderLabel10.Text = ("CANCELADO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Red
+                Else
+                    MonoFlat_HeaderLabel10.Text = ("ACTIVO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Green
+                End If
 
             Case "Liquidación Convenio 90%"
-                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioconveniossac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto from ticketdetalle inner join calendarioconveniossac on ticketdetalle.idpago = calendarioconveniossac.idpago where  idTicket = '" & idTicket & "'"
+                consultaDetalle = "select concat(ticketdetalle.concepto,' de ','Pago ', calendarioconveniossac.NPago) as pago,pagonormal,intereses,ticketdetalle.monto,ticketdetalle.Estado  from ticketdetalle inner join calendarioconveniossac on ticketdetalle.idpago = calendarioconveniossac.idpago where  idTicket = '" & idTicket & "'"
 
                 adapterDetalle = New SqlDataAdapter(consultaDetalle, conex)
                 dataDetalle = New DataTable
                 adapterDetalle.Fill(dataDetalle)
 
                 dtDetalle.DataSource = dataDetalle
+                For Each drFila As DataRow In dataDetalle.Rows
+                    estado = drFila("Estado").ToString()
+                    Exit For
+
+                Next
+                If estado = "C" Then
+
+                    MonoFlat_HeaderLabel10.Text = ("CANCELADO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Red
+                Else
+                    MonoFlat_HeaderLabel10.Text = ("ACTIVO")
+                    MonoFlat_HeaderLabel10.ForeColor = Color.Green
+                End If
 
         End Select
 
@@ -674,5 +796,13 @@ when 'Reestructura' then
         If e.Button = MouseButtons.Left Then
             MoveForm(Me)
         End If
+    End Sub
+
+    Private Sub MonoFlat_HeaderLabel3_Click(sender As Object, e As EventArgs) Handles MonoFlat_HeaderLabel3.Click
+
+    End Sub
+
+    Private Sub MonoFlat_HeaderLabel11_Click(sender As Object, e As EventArgs) Handles MonoFlat_HeaderLabel11.Click
+
     End Sub
 End Class

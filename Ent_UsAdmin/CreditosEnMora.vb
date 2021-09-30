@@ -722,14 +722,15 @@ else '0' end as MultasVencidas
     End Sub
 
     Private Sub BackgroundEmpresas_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundEmpresas.DoWork
-        iniciarconexionR()
+        iniciarconexion()
+
         Dim comandoEmpresasPermitidas As OleDbCommand
 
         Dim consultaEmpresasPermitidas As String
         Dim readerEmpresasPermitidas As OleDbDataReader
         consultaEmpresasPermitidas = "select id,nombre from empresas where id in (select idempresa from empresaspermitidas where idusuario = '" & idusr & "')"
         comandoEmpresasPermitidas = New OleDbCommand
-        comandoEmpresasPermitidas.Connection = conexionempresaR
+        comandoEmpresasPermitidas.Connection = conexion
         comandoEmpresasPermitidas.CommandText = consultaEmpresasPermitidas
         readerEmpresasPermitidas = comandoEmpresasPermitidas.ExecuteReader
         If readerEmpresasPermitidas.HasRows Then
