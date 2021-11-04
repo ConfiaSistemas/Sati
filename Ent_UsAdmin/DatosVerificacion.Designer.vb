@@ -198,6 +198,18 @@ Partial Class DatosVerificacion
         Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundCargaDocumentos = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundVerificaDocumentos = New System.ComponentModel.BackgroundWorker()
+        Me.txtHijos = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label65 = New System.Windows.Forms.Label()
+        Me.txtColoniaReal = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label66 = New System.Windows.Forms.Label()
+        Me.txtDomicilioAlterno = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label67 = New System.Windows.Forms.Label()
+        Me.txtTelefonoConyuge = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label68 = New System.Windows.Forms.Label()
+        Me.txtOcupacionConyuge = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label69 = New System.Windows.Forms.Label()
+        Me.txtMontoMaximoAutorizado = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label70 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -299,6 +311,16 @@ Partial Class DatosVerificacion
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.TabPage1.Controls.Add(Me.txtOcupacionConyuge)
+        Me.TabPage1.Controls.Add(Me.Label69)
+        Me.TabPage1.Controls.Add(Me.txtTelefonoConyuge)
+        Me.TabPage1.Controls.Add(Me.Label68)
+        Me.TabPage1.Controls.Add(Me.txtDomicilioAlterno)
+        Me.TabPage1.Controls.Add(Me.Label67)
+        Me.TabPage1.Controls.Add(Me.txtColoniaReal)
+        Me.TabPage1.Controls.Add(Me.Label66)
+        Me.TabPage1.Controls.Add(Me.txtHijos)
+        Me.TabPage1.Controls.Add(Me.Label65)
         Me.TabPage1.Controls.Add(Me.txtEntreCalles)
         Me.TabPage1.Controls.Add(Me.Label35)
         Me.TabPage1.Controls.Add(Me.txtRelacionConyuge)
@@ -355,10 +377,10 @@ Partial Class DatosVerificacion
         Me.txtEntreCalles.LineIdleColor = System.Drawing.Color.Gray
         Me.txtEntreCalles.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtEntreCalles.LineThickness = 3
-        Me.txtEntreCalles.Location = New System.Drawing.Point(45, 287)
+        Me.txtEntreCalles.Location = New System.Drawing.Point(664, 223)
         Me.txtEntreCalles.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEntreCalles.Name = "txtEntreCalles"
-        Me.txtEntreCalles.Size = New System.Drawing.Size(213, 29)
+        Me.txtEntreCalles.Size = New System.Drawing.Size(185, 29)
         Me.txtEntreCalles.TabIndex = 97
         Me.txtEntreCalles.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -366,7 +388,7 @@ Partial Class DatosVerificacion
         '
         Me.Label35.AutoSize = True
         Me.Label35.ForeColor = System.Drawing.Color.White
-        Me.Label35.Location = New System.Drawing.Point(42, 270)
+        Me.Label35.Location = New System.Drawing.Point(661, 206)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(62, 13)
         Me.Label35.TabIndex = 96
@@ -385,10 +407,10 @@ Partial Class DatosVerificacion
         Me.txtRelacionConyuge.LineIdleColor = System.Drawing.Color.Gray
         Me.txtRelacionConyuge.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtRelacionConyuge.LineThickness = 3
-        Me.txtRelacionConyuge.Location = New System.Drawing.Point(266, 353)
+        Me.txtRelacionConyuge.Location = New System.Drawing.Point(45, 352)
         Me.txtRelacionConyuge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRelacionConyuge.Name = "txtRelacionConyuge"
-        Me.txtRelacionConyuge.Size = New System.Drawing.Size(199, 29)
+        Me.txtRelacionConyuge.Size = New System.Drawing.Size(213, 29)
         Me.txtRelacionConyuge.TabIndex = 95
         Me.txtRelacionConyuge.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -396,7 +418,7 @@ Partial Class DatosVerificacion
         '
         Me.Label17.AutoSize = True
         Me.Label17.ForeColor = System.Drawing.Color.White
-        Me.Label17.Location = New System.Drawing.Point(263, 336)
+        Me.Label17.Location = New System.Drawing.Point(42, 335)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(131, 13)
         Me.Label17.TabIndex = 94
@@ -415,7 +437,7 @@ Partial Class DatosVerificacion
         Me.txtdatosConyuge.LineIdleColor = System.Drawing.Color.Gray
         Me.txtdatosConyuge.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtdatosConyuge.LineThickness = 3
-        Me.txtdatosConyuge.Location = New System.Drawing.Point(45, 353)
+        Me.txtdatosConyuge.Location = New System.Drawing.Point(853, 287)
         Me.txtdatosConyuge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtdatosConyuge.Name = "txtdatosConyuge"
         Me.txtdatosConyuge.Size = New System.Drawing.Size(213, 29)
@@ -426,7 +448,7 @@ Partial Class DatosVerificacion
         '
         Me.Label16.AutoSize = True
         Me.Label16.ForeColor = System.Drawing.Color.White
-        Me.Label16.Location = New System.Drawing.Point(42, 336)
+        Me.Label16.Location = New System.Drawing.Point(850, 270)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(219, 13)
         Me.Label16.TabIndex = 92
@@ -445,7 +467,7 @@ Partial Class DatosVerificacion
         Me.txtEstado.LineIdleColor = System.Drawing.Color.Gray
         Me.txtEstado.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtEstado.LineThickness = 3
-        Me.txtEstado.Location = New System.Drawing.Point(664, 287)
+        Me.txtEstado.Location = New System.Drawing.Point(660, 287)
         Me.txtEstado.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.Size = New System.Drawing.Size(185, 29)
@@ -456,7 +478,7 @@ Partial Class DatosVerificacion
         '
         Me.Label15.AutoSize = True
         Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(661, 270)
+        Me.Label15.Location = New System.Drawing.Point(657, 270)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(40, 13)
         Me.Label15.TabIndex = 90
@@ -475,7 +497,7 @@ Partial Class DatosVerificacion
         Me.txtCiudad.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCiudad.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCiudad.LineThickness = 3
-        Me.txtCiudad.Location = New System.Drawing.Point(475, 287)
+        Me.txtCiudad.Location = New System.Drawing.Point(471, 287)
         Me.txtCiudad.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCiudad.Name = "txtCiudad"
         Me.txtCiudad.Size = New System.Drawing.Size(181, 29)
@@ -486,7 +508,7 @@ Partial Class DatosVerificacion
         '
         Me.Label14.AutoSize = True
         Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(472, 270)
+        Me.Label14.Location = New System.Drawing.Point(468, 270)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(40, 13)
         Me.Label14.TabIndex = 88
@@ -505,7 +527,7 @@ Partial Class DatosVerificacion
         Me.txtColonia.LineIdleColor = System.Drawing.Color.Gray
         Me.txtColonia.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtColonia.LineThickness = 3
-        Me.txtColonia.Location = New System.Drawing.Point(266, 287)
+        Me.txtColonia.Location = New System.Drawing.Point(857, 223)
         Me.txtColonia.Margin = New System.Windows.Forms.Padding(4)
         Me.txtColonia.Name = "txtColonia"
         Me.txtColonia.Size = New System.Drawing.Size(199, 29)
@@ -516,7 +538,7 @@ Partial Class DatosVerificacion
         '
         Me.Label13.AutoSize = True
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(263, 270)
+        Me.Label13.Location = New System.Drawing.Point(854, 206)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(42, 13)
         Me.Label13.TabIndex = 86
@@ -565,7 +587,7 @@ Partial Class DatosVerificacion
         Me.txtCodigoPostal.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCodigoPostal.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCodigoPostal.LineThickness = 3
-        Me.txtCodigoPostal.Location = New System.Drawing.Point(664, 223)
+        Me.txtCodigoPostal.Location = New System.Drawing.Point(471, 223)
         Me.txtCodigoPostal.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodigoPostal.Name = "txtCodigoPostal"
         Me.txtCodigoPostal.Size = New System.Drawing.Size(185, 29)
@@ -576,7 +598,7 @@ Partial Class DatosVerificacion
         '
         Me.Label10.AutoSize = True
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(661, 206)
+        Me.Label10.Location = New System.Drawing.Point(468, 206)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(72, 13)
         Me.Label10.TabIndex = 82
@@ -595,10 +617,10 @@ Partial Class DatosVerificacion
         Me.txtNoInterior.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNoInterior.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNoInterior.LineThickness = 3
-        Me.txtNoInterior.Location = New System.Drawing.Point(473, 223)
+        Me.txtNoInterior.Location = New System.Drawing.Point(266, 223)
         Me.txtNoInterior.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoInterior.Name = "txtNoInterior"
-        Me.txtNoInterior.Size = New System.Drawing.Size(183, 29)
+        Me.txtNoInterior.Size = New System.Drawing.Size(199, 29)
         Me.txtNoInterior.TabIndex = 81
         Me.txtNoInterior.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -606,7 +628,7 @@ Partial Class DatosVerificacion
         '
         Me.Label9.AutoSize = True
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(470, 206)
+        Me.Label9.Location = New System.Drawing.Point(263, 206)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(58, 13)
         Me.Label9.TabIndex = 80
@@ -625,10 +647,10 @@ Partial Class DatosVerificacion
         Me.txtNoExterior.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNoExterior.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNoExterior.LineThickness = 3
-        Me.txtNoExterior.Location = New System.Drawing.Point(266, 223)
+        Me.txtNoExterior.Location = New System.Drawing.Point(45, 223)
         Me.txtNoExterior.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoExterior.Name = "txtNoExterior"
-        Me.txtNoExterior.Size = New System.Drawing.Size(199, 29)
+        Me.txtNoExterior.Size = New System.Drawing.Size(213, 29)
         Me.txtNoExterior.TabIndex = 79
         Me.txtNoExterior.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -636,7 +658,7 @@ Partial Class DatosVerificacion
         '
         Me.Label8.AutoSize = True
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(263, 206)
+        Me.Label8.Location = New System.Drawing.Point(42, 206)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(61, 13)
         Me.Label8.TabIndex = 78
@@ -655,7 +677,7 @@ Partial Class DatosVerificacion
         Me.txtCalle.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCalle.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCalle.LineThickness = 3
-        Me.txtCalle.Location = New System.Drawing.Point(45, 223)
+        Me.txtCalle.Location = New System.Drawing.Point(857, 146)
         Me.txtCalle.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCalle.Name = "txtCalle"
         Me.txtCalle.Size = New System.Drawing.Size(213, 29)
@@ -666,7 +688,7 @@ Partial Class DatosVerificacion
         '
         Me.Label7.AutoSize = True
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(42, 206)
+        Me.Label7.Location = New System.Drawing.Point(854, 129)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(30, 13)
         Me.Label7.TabIndex = 76
@@ -685,10 +707,10 @@ Partial Class DatosVerificacion
         Me.TxtCasaDondeVive.LineIdleColor = System.Drawing.Color.Gray
         Me.TxtCasaDondeVive.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.TxtCasaDondeVive.LineThickness = 3
-        Me.TxtCasaDondeVive.Location = New System.Drawing.Point(473, 146)
+        Me.TxtCasaDondeVive.Location = New System.Drawing.Point(266, 146)
         Me.TxtCasaDondeVive.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtCasaDondeVive.Name = "TxtCasaDondeVive"
-        Me.TxtCasaDondeVive.Size = New System.Drawing.Size(183, 29)
+        Me.TxtCasaDondeVive.Size = New System.Drawing.Size(199, 29)
         Me.TxtCasaDondeVive.TabIndex = 75
         Me.TxtCasaDondeVive.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -696,7 +718,7 @@ Partial Class DatosVerificacion
         '
         Me.Label6.AutoSize = True
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(470, 129)
+        Me.Label6.Location = New System.Drawing.Point(263, 129)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(118, 13)
         Me.Label6.TabIndex = 74
@@ -715,10 +737,10 @@ Partial Class DatosVerificacion
         Me.txtCelular.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCelular.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCelular.LineThickness = 3
-        Me.txtCelular.Location = New System.Drawing.Point(266, 146)
+        Me.txtCelular.Location = New System.Drawing.Point(45, 146)
         Me.txtCelular.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCelular.Name = "txtCelular"
-        Me.txtCelular.Size = New System.Drawing.Size(199, 29)
+        Me.txtCelular.Size = New System.Drawing.Size(213, 29)
         Me.txtCelular.TabIndex = 73
         Me.txtCelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -726,7 +748,7 @@ Partial Class DatosVerificacion
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(263, 129)
+        Me.Label5.Location = New System.Drawing.Point(42, 129)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(39, 13)
         Me.Label5.TabIndex = 72
@@ -745,7 +767,7 @@ Partial Class DatosVerificacion
         Me.txtTelefono.LineIdleColor = System.Drawing.Color.Gray
         Me.txtTelefono.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtTelefono.LineThickness = 3
-        Me.txtTelefono.Location = New System.Drawing.Point(45, 146)
+        Me.txtTelefono.Location = New System.Drawing.Point(857, 71)
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(213, 29)
@@ -756,7 +778,7 @@ Partial Class DatosVerificacion
         '
         Me.Label4.AutoSize = True
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(42, 129)
+        Me.Label4.Location = New System.Drawing.Point(854, 54)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 13)
         Me.Label4.TabIndex = 70
@@ -2411,6 +2433,8 @@ Partial Class DatosVerificacion
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txtMontoMaximoAutorizado)
+        Me.GroupBox1.Controls.Add(Me.Label70)
         Me.GroupBox1.Controls.Add(Me.txtMontoVerificacion)
         Me.GroupBox1.Controls.Add(Me.Label52)
         Me.GroupBox1.Controls.Add(Me.Label39)
@@ -2440,7 +2464,7 @@ Partial Class DatosVerificacion
         Me.txtMontoVerificacion.LineIdleColor = System.Drawing.Color.Gray
         Me.txtMontoVerificacion.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtMontoVerificacion.LineThickness = 3
-        Me.txtMontoVerificacion.Location = New System.Drawing.Point(871, 58)
+        Me.txtMontoVerificacion.Location = New System.Drawing.Point(769, 58)
         Me.txtMontoVerificacion.Margin = New System.Windows.Forms.Padding(4)
         Me.txtMontoVerificacion.Name = "txtMontoVerificacion"
         Me.txtMontoVerificacion.Size = New System.Drawing.Size(101, 29)
@@ -2451,7 +2475,7 @@ Partial Class DatosVerificacion
         '
         Me.Label52.AutoSize = True
         Me.Label52.ForeColor = System.Drawing.Color.White
-        Me.Label52.Location = New System.Drawing.Point(868, 41)
+        Me.Label52.Location = New System.Drawing.Point(766, 41)
         Me.Label52.Name = "Label52"
         Me.Label52.Size = New System.Drawing.Size(90, 13)
         Me.Label52.TabIndex = 158
@@ -2461,7 +2485,7 @@ Partial Class DatosVerificacion
         '
         Me.Label39.AutoSize = True
         Me.Label39.ForeColor = System.Drawing.Color.White
-        Me.Label39.Location = New System.Drawing.Point(323, 32)
+        Me.Label39.Location = New System.Drawing.Point(212, 32)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(105, 13)
         Me.Label39.TabIndex = 155
@@ -2469,7 +2493,7 @@ Partial Class DatosVerificacion
         '
         'txtComentarios
         '
-        Me.txtComentarios.Location = New System.Drawing.Point(326, 58)
+        Me.txtComentarios.Location = New System.Drawing.Point(215, 58)
         Me.txtComentarios.Multiline = True
         Me.txtComentarios.Name = "txtComentarios"
         Me.txtComentarios.Size = New System.Drawing.Size(526, 133)
@@ -2478,7 +2502,7 @@ Partial Class DatosVerificacion
         'RadioRechazado
         '
         Me.RadioRechazado.AutoSize = True
-        Me.RadioRechazado.Location = New System.Drawing.Point(152, 32)
+        Me.RadioRechazado.Location = New System.Drawing.Point(114, 32)
         Me.RadioRechazado.Margin = New System.Windows.Forms.Padding(2)
         Me.RadioRechazado.Name = "RadioRechazado"
         Me.RadioRechazado.Size = New System.Drawing.Size(80, 17)
@@ -2505,7 +2529,7 @@ Partial Class DatosVerificacion
         Me.btn_Procesar.IdleFillColor = System.Drawing.Color.White
         Me.btn_Procesar.IdleForecolor = System.Drawing.Color.Gray
         Me.btn_Procesar.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_Procesar.Location = New System.Drawing.Point(860, 110)
+        Me.btn_Procesar.Location = New System.Drawing.Point(769, 106)
         Me.btn_Procesar.Margin = New System.Windows.Forms.Padding(5)
         Me.btn_Procesar.Name = "btn_Procesar"
         Me.btn_Procesar.Size = New System.Drawing.Size(216, 38)
@@ -2681,6 +2705,186 @@ Partial Class DatosVerificacion
         '
         'BackgroundVerificaDocumentos
         '
+        '
+        'txtHijos
+        '
+        Me.txtHijos.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtHijos.Enabled = False
+        Me.txtHijos.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtHijos.ForeColor = System.Drawing.Color.White
+        Me.txtHijos.HintForeColor = System.Drawing.Color.White
+        Me.txtHijos.HintText = ""
+        Me.txtHijos.isPassword = False
+        Me.txtHijos.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtHijos.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtHijos.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtHijos.LineThickness = 3
+        Me.txtHijos.Location = New System.Drawing.Point(471, 146)
+        Me.txtHijos.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtHijos.Name = "txtHijos"
+        Me.txtHijos.Size = New System.Drawing.Size(185, 29)
+        Me.txtHijos.TabIndex = 99
+        Me.txtHijos.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label65
+        '
+        Me.Label65.AutoSize = True
+        Me.Label65.ForeColor = System.Drawing.Color.White
+        Me.Label65.Location = New System.Drawing.Point(468, 129)
+        Me.Label65.Name = "Label65"
+        Me.Label65.Size = New System.Drawing.Size(30, 13)
+        Me.Label65.TabIndex = 98
+        Me.Label65.Text = "Hijos"
+        '
+        'txtColoniaReal
+        '
+        Me.txtColoniaReal.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtColoniaReal.Enabled = False
+        Me.txtColoniaReal.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtColoniaReal.ForeColor = System.Drawing.Color.White
+        Me.txtColoniaReal.HintForeColor = System.Drawing.Color.White
+        Me.txtColoniaReal.HintText = ""
+        Me.txtColoniaReal.isPassword = False
+        Me.txtColoniaReal.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtColoniaReal.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtColoniaReal.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtColoniaReal.LineThickness = 3
+        Me.txtColoniaReal.Location = New System.Drawing.Point(45, 287)
+        Me.txtColoniaReal.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtColoniaReal.Name = "txtColoniaReal"
+        Me.txtColoniaReal.Size = New System.Drawing.Size(213, 29)
+        Me.txtColoniaReal.TabIndex = 101
+        Me.txtColoniaReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label66
+        '
+        Me.Label66.AutoSize = True
+        Me.Label66.ForeColor = System.Drawing.Color.White
+        Me.Label66.Location = New System.Drawing.Point(42, 270)
+        Me.Label66.Name = "Label66"
+        Me.Label66.Size = New System.Drawing.Size(67, 13)
+        Me.Label66.TabIndex = 100
+        Me.Label66.Text = "Colonia Real"
+        '
+        'txtDomicilioAlterno
+        '
+        Me.txtDomicilioAlterno.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtDomicilioAlterno.Enabled = False
+        Me.txtDomicilioAlterno.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtDomicilioAlterno.ForeColor = System.Drawing.Color.White
+        Me.txtDomicilioAlterno.HintForeColor = System.Drawing.Color.White
+        Me.txtDomicilioAlterno.HintText = ""
+        Me.txtDomicilioAlterno.isPassword = False
+        Me.txtDomicilioAlterno.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtDomicilioAlterno.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtDomicilioAlterno.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtDomicilioAlterno.LineThickness = 3
+        Me.txtDomicilioAlterno.Location = New System.Drawing.Point(266, 287)
+        Me.txtDomicilioAlterno.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDomicilioAlterno.Name = "txtDomicilioAlterno"
+        Me.txtDomicilioAlterno.Size = New System.Drawing.Size(199, 29)
+        Me.txtDomicilioAlterno.TabIndex = 103
+        Me.txtDomicilioAlterno.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label67
+        '
+        Me.Label67.AutoSize = True
+        Me.Label67.ForeColor = System.Drawing.Color.White
+        Me.Label67.Location = New System.Drawing.Point(263, 270)
+        Me.Label67.Name = "Label67"
+        Me.Label67.Size = New System.Drawing.Size(85, 13)
+        Me.Label67.TabIndex = 102
+        Me.Label67.Text = "Domicilio Alterno"
+        '
+        'txtTelefonoConyuge
+        '
+        Me.txtTelefonoConyuge.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtTelefonoConyuge.Enabled = False
+        Me.txtTelefonoConyuge.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtTelefonoConyuge.ForeColor = System.Drawing.Color.White
+        Me.txtTelefonoConyuge.HintForeColor = System.Drawing.Color.White
+        Me.txtTelefonoConyuge.HintText = ""
+        Me.txtTelefonoConyuge.isPassword = False
+        Me.txtTelefonoConyuge.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtTelefonoConyuge.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtTelefonoConyuge.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtTelefonoConyuge.LineThickness = 3
+        Me.txtTelefonoConyuge.Location = New System.Drawing.Point(266, 352)
+        Me.txtTelefonoConyuge.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtTelefonoConyuge.Name = "txtTelefonoConyuge"
+        Me.txtTelefonoConyuge.Size = New System.Drawing.Size(199, 29)
+        Me.txtTelefonoConyuge.TabIndex = 105
+        Me.txtTelefonoConyuge.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label68
+        '
+        Me.Label68.AutoSize = True
+        Me.Label68.ForeColor = System.Drawing.Color.White
+        Me.Label68.Location = New System.Drawing.Point(263, 335)
+        Me.Label68.Name = "Label68"
+        Me.Label68.Size = New System.Drawing.Size(94, 13)
+        Me.Label68.TabIndex = 104
+        Me.Label68.Text = "Teléfono Cónyuge"
+        Me.Label68.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'txtOcupacionConyuge
+        '
+        Me.txtOcupacionConyuge.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtOcupacionConyuge.Enabled = False
+        Me.txtOcupacionConyuge.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtOcupacionConyuge.ForeColor = System.Drawing.Color.White
+        Me.txtOcupacionConyuge.HintForeColor = System.Drawing.Color.White
+        Me.txtOcupacionConyuge.HintText = ""
+        Me.txtOcupacionConyuge.isPassword = False
+        Me.txtOcupacionConyuge.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtOcupacionConyuge.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtOcupacionConyuge.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtOcupacionConyuge.LineThickness = 3
+        Me.txtOcupacionConyuge.Location = New System.Drawing.Point(471, 352)
+        Me.txtOcupacionConyuge.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtOcupacionConyuge.Name = "txtOcupacionConyuge"
+        Me.txtOcupacionConyuge.Size = New System.Drawing.Size(185, 29)
+        Me.txtOcupacionConyuge.TabIndex = 107
+        Me.txtOcupacionConyuge.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label69
+        '
+        Me.Label69.AutoSize = True
+        Me.Label69.ForeColor = System.Drawing.Color.White
+        Me.Label69.Location = New System.Drawing.Point(468, 335)
+        Me.Label69.Name = "Label69"
+        Me.Label69.Size = New System.Drawing.Size(104, 13)
+        Me.Label69.TabIndex = 106
+        Me.Label69.Text = "Ocupación Cónyuge"
+        '
+        'txtMontoMaximoAutorizado
+        '
+        Me.txtMontoMaximoAutorizado.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtMontoMaximoAutorizado.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoMaximoAutorizado.ForeColor = System.Drawing.Color.White
+        Me.txtMontoMaximoAutorizado.HintForeColor = System.Drawing.Color.White
+        Me.txtMontoMaximoAutorizado.HintText = ""
+        Me.txtMontoMaximoAutorizado.isPassword = False
+        Me.txtMontoMaximoAutorizado.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtMontoMaximoAutorizado.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtMontoMaximoAutorizado.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtMontoMaximoAutorizado.LineThickness = 3
+        Me.txtMontoMaximoAutorizado.Location = New System.Drawing.Point(896, 58)
+        Me.txtMontoMaximoAutorizado.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMontoMaximoAutorizado.Name = "txtMontoMaximoAutorizado"
+        Me.txtMontoMaximoAutorizado.Size = New System.Drawing.Size(101, 29)
+        Me.txtMontoMaximoAutorizado.TabIndex = 161
+        Me.txtMontoMaximoAutorizado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label70
+        '
+        Me.Label70.AutoSize = True
+        Me.Label70.ForeColor = System.Drawing.Color.White
+        Me.Label70.Location = New System.Drawing.Point(893, 41)
+        Me.Label70.Name = "Label70"
+        Me.Label70.Size = New System.Drawing.Size(129, 13)
+        Me.Label70.TabIndex = 160
+        Me.Label70.Text = "Monto Máximo Autorizado"
         '
         'DatosVerificacion
         '
@@ -2893,4 +3097,16 @@ Partial Class DatosVerificacion
     Friend WithEvents Label64 As Label
     Friend WithEvents txtColoniaR2 As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents txtColoniaR1 As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents txtHijos As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label65 As Label
+    Friend WithEvents txtOcupacionConyuge As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label69 As Label
+    Friend WithEvents txtTelefonoConyuge As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label68 As Label
+    Friend WithEvents txtDomicilioAlterno As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label67 As Label
+    Friend WithEvents txtColoniaReal As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label66 As Label
+    Friend WithEvents txtMontoMaximoAutorizado As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label70 As Label
 End Class

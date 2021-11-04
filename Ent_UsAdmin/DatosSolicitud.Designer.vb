@@ -22,14 +22,17 @@ Partial Class DatosSolicitud
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DatosSolicitud))
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.CheckCorreo = New ConfiaAdmin.MonoFlat.MonoFlat_CheckBox()
+        Me.btnActivarLegal = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.btn_a_verificacion = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -173,6 +176,7 @@ Partial Class DatosSolicitud
         Me.txtHorarioVerificacion = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label55 = New System.Windows.Forms.Label()
         Me.Label56 = New System.Windows.Forms.Label()
+        Me.btn_Procesar = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.dtdatos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -189,10 +193,16 @@ Partial Class DatosSolicitud
         Me.BackgroundVerificaDocumentos = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundActivarLegal = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundCorreo = New System.ComponentModel.BackgroundWorker()
-        Me.btn_Procesar = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.btnActivarLegal = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.btn_a_verificacion = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.CheckCorreo = New ConfiaAdmin.MonoFlat.MonoFlat_CheckBox()
+        Me.txtColoniaReal = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label62 = New System.Windows.Forms.Label()
+        Me.txtTelefonoConyuge = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label63 = New System.Windows.Forms.Label()
+        Me.txtOcupacionConyuge = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.lblOcupacionConyuge = New System.Windows.Forms.Label()
+        Me.txtHijos = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label64 = New System.Windows.Forms.Label()
+        Me.txtDomicilioAlterno = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label65 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -224,6 +234,68 @@ Partial Class DatosSolicitud
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1158, 36)
         Me.Panel1.TabIndex = 3
+        '
+        'CheckCorreo
+        '
+        Me.CheckCorreo.Checked = False
+        Me.CheckCorreo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.CheckCorreo.Location = New System.Drawing.Point(177, 11)
+        Me.CheckCorreo.Name = "CheckCorreo"
+        Me.CheckCorreo.Size = New System.Drawing.Size(148, 16)
+        Me.CheckCorreo.TabIndex = 154
+        Me.CheckCorreo.Text = "Enviar Correo"
+        '
+        'btnActivarLegal
+        '
+        Me.btnActivarLegal.ActiveBorderThickness = 1
+        Me.btnActivarLegal.ActiveCornerRadius = 20
+        Me.btnActivarLegal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnActivarLegal.ActiveForecolor = System.Drawing.Color.White
+        Me.btnActivarLegal.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btnActivarLegal.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnActivarLegal.BackgroundImage = CType(resources.GetObject("btnActivarLegal.BackgroundImage"), System.Drawing.Image)
+        Me.btnActivarLegal.ButtonText = "Activar Solicitud"
+        Me.btnActivarLegal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnActivarLegal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActivarLegal.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btnActivarLegal.IdleBorderThickness = 1
+        Me.btnActivarLegal.IdleCornerRadius = 20
+        Me.btnActivarLegal.IdleFillColor = System.Drawing.Color.White
+        Me.btnActivarLegal.IdleForecolor = System.Drawing.Color.Gray
+        Me.btnActivarLegal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnActivarLegal.Location = New System.Drawing.Point(493, -1)
+        Me.btnActivarLegal.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnActivarLegal.Name = "btnActivarLegal"
+        Me.btnActivarLegal.Size = New System.Drawing.Size(173, 38)
+        Me.btnActivarLegal.TabIndex = 153
+        Me.btnActivarLegal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btnActivarLegal.Visible = False
+        '
+        'btn_a_verificacion
+        '
+        Me.btn_a_verificacion.ActiveBorderThickness = 1
+        Me.btn_a_verificacion.ActiveCornerRadius = 20
+        Me.btn_a_verificacion.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btn_a_verificacion.ActiveForecolor = System.Drawing.Color.White
+        Me.btn_a_verificacion.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btn_a_verificacion.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btn_a_verificacion.BackgroundImage = CType(resources.GetObject("btn_a_verificacion.BackgroundImage"), System.Drawing.Image)
+        Me.btn_a_verificacion.ButtonText = "Enviar A Verificación"
+        Me.btn_a_verificacion.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_a_verificacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_a_verificacion.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btn_a_verificacion.IdleBorderThickness = 1
+        Me.btn_a_verificacion.IdleCornerRadius = 20
+        Me.btn_a_verificacion.IdleFillColor = System.Drawing.Color.White
+        Me.btn_a_verificacion.IdleForecolor = System.Drawing.Color.Gray
+        Me.btn_a_verificacion.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btn_a_verificacion.Location = New System.Drawing.Point(779, -2)
+        Me.btn_a_verificacion.Margin = New System.Windows.Forms.Padding(5)
+        Me.btn_a_verificacion.Name = "btn_a_verificacion"
+        Me.btn_a_verificacion.Size = New System.Drawing.Size(173, 38)
+        Me.btn_a_verificacion.TabIndex = 152
+        Me.btn_a_verificacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btn_a_verificacion.Visible = False
         '
         'EvolveControlBox1
         '
@@ -269,6 +341,16 @@ Partial Class DatosSolicitud
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.TabPage1.Controls.Add(Me.txtDomicilioAlterno)
+        Me.TabPage1.Controls.Add(Me.Label65)
+        Me.TabPage1.Controls.Add(Me.txtHijos)
+        Me.TabPage1.Controls.Add(Me.Label64)
+        Me.TabPage1.Controls.Add(Me.txtOcupacionConyuge)
+        Me.TabPage1.Controls.Add(Me.lblOcupacionConyuge)
+        Me.TabPage1.Controls.Add(Me.txtTelefonoConyuge)
+        Me.TabPage1.Controls.Add(Me.Label63)
+        Me.TabPage1.Controls.Add(Me.txtColoniaReal)
+        Me.TabPage1.Controls.Add(Me.Label62)
         Me.TabPage1.Controls.Add(Me.ComboColonia)
         Me.TabPage1.Controls.Add(Me.txtEntreCalles)
         Me.TabPage1.Controls.Add(Me.Label35)
@@ -318,9 +400,9 @@ Partial Class DatosSolicitud
         Me.ComboColonia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboColonia.ForeColor = System.Drawing.SystemColors.Control
         Me.ComboColonia.FormattingEnabled = True
-        Me.ComboColonia.Location = New System.Drawing.Point(332, 227)
+        Me.ComboColonia.Location = New System.Drawing.Point(604, 182)
         Me.ComboColonia.Name = "ComboColonia"
-        Me.ComboColonia.Size = New System.Drawing.Size(237, 21)
+        Me.ComboColonia.Size = New System.Drawing.Size(214, 21)
         Me.ComboColonia.TabIndex = 10
         '
         'txtEntreCalles
@@ -335,10 +417,10 @@ Partial Class DatosSolicitud
         Me.txtEntreCalles.LineIdleColor = System.Drawing.Color.Gray
         Me.txtEntreCalles.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtEntreCalles.LineThickness = 3
-        Me.txtEntreCalles.Location = New System.Drawing.Point(45, 287)
+        Me.txtEntreCalles.Location = New System.Drawing.Point(868, 246)
         Me.txtEntreCalles.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEntreCalles.Name = "txtEntreCalles"
-        Me.txtEntreCalles.Size = New System.Drawing.Size(248, 29)
+        Me.txtEntreCalles.Size = New System.Drawing.Size(214, 29)
         Me.txtEntreCalles.TabIndex = 14
         Me.txtEntreCalles.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -346,7 +428,7 @@ Partial Class DatosSolicitud
         '
         Me.Label35.AutoSize = True
         Me.Label35.ForeColor = System.Drawing.Color.White
-        Me.Label35.Location = New System.Drawing.Point(42, 270)
+        Me.Label35.Location = New System.Drawing.Point(865, 229)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(62, 13)
         Me.Label35.TabIndex = 96
@@ -364,10 +446,10 @@ Partial Class DatosSolicitud
         Me.txtRelacionConyuge.LineIdleColor = System.Drawing.Color.Gray
         Me.txtRelacionConyuge.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtRelacionConyuge.LineThickness = 3
-        Me.txtRelacionConyuge.Location = New System.Drawing.Point(45, 356)
+        Me.txtRelacionConyuge.Location = New System.Drawing.Point(868, 319)
         Me.txtRelacionConyuge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRelacionConyuge.Name = "txtRelacionConyuge"
-        Me.txtRelacionConyuge.Size = New System.Drawing.Size(248, 29)
+        Me.txtRelacionConyuge.Size = New System.Drawing.Size(214, 29)
         Me.txtRelacionConyuge.TabIndex = 18
         Me.txtRelacionConyuge.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -375,7 +457,7 @@ Partial Class DatosSolicitud
         '
         Me.Label17.AutoSize = True
         Me.Label17.ForeColor = System.Drawing.Color.White
-        Me.Label17.Location = New System.Drawing.Point(42, 339)
+        Me.Label17.Location = New System.Drawing.Point(865, 302)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(131, 13)
         Me.Label17.TabIndex = 94
@@ -393,10 +475,10 @@ Partial Class DatosSolicitud
         Me.txtdatosConyuge.LineIdleColor = System.Drawing.Color.Gray
         Me.txtdatosConyuge.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtdatosConyuge.LineThickness = 3
-        Me.txtdatosConyuge.Location = New System.Drawing.Point(868, 287)
+        Me.txtdatosConyuge.Location = New System.Drawing.Point(604, 319)
         Me.txtdatosConyuge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtdatosConyuge.Name = "txtdatosConyuge"
-        Me.txtdatosConyuge.Size = New System.Drawing.Size(227, 29)
+        Me.txtdatosConyuge.Size = New System.Drawing.Size(216, 29)
         Me.txtdatosConyuge.TabIndex = 17
         Me.txtdatosConyuge.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -404,7 +486,7 @@ Partial Class DatosSolicitud
         '
         Me.Label16.AutoSize = True
         Me.Label16.ForeColor = System.Drawing.Color.White
-        Me.Label16.Location = New System.Drawing.Point(865, 270)
+        Me.Label16.Location = New System.Drawing.Point(601, 302)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(219, 13)
         Me.Label16.TabIndex = 92
@@ -422,10 +504,10 @@ Partial Class DatosSolicitud
         Me.txtEstado.LineIdleColor = System.Drawing.Color.Gray
         Me.txtEstado.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtEstado.LineThickness = 3
-        Me.txtEstado.Location = New System.Drawing.Point(604, 287)
+        Me.txtEstado.Location = New System.Drawing.Point(334, 319)
         Me.txtEstado.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEstado.Name = "txtEstado"
-        Me.txtEstado.Size = New System.Drawing.Size(214, 29)
+        Me.txtEstado.Size = New System.Drawing.Size(248, 29)
         Me.txtEstado.TabIndex = 16
         Me.txtEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -433,7 +515,7 @@ Partial Class DatosSolicitud
         '
         Me.Label15.AutoSize = True
         Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(601, 270)
+        Me.Label15.Location = New System.Drawing.Point(330, 302)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(40, 13)
         Me.Label15.TabIndex = 90
@@ -451,10 +533,10 @@ Partial Class DatosSolicitud
         Me.txtCiudad.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCiudad.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCiudad.LineThickness = 3
-        Me.txtCiudad.Location = New System.Drawing.Point(332, 287)
+        Me.txtCiudad.Location = New System.Drawing.Point(45, 319)
         Me.txtCiudad.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCiudad.Name = "txtCiudad"
-        Me.txtCiudad.Size = New System.Drawing.Size(237, 29)
+        Me.txtCiudad.Size = New System.Drawing.Size(248, 29)
         Me.txtCiudad.TabIndex = 15
         Me.txtCiudad.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -462,7 +544,7 @@ Partial Class DatosSolicitud
         '
         Me.Label14.AutoSize = True
         Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(329, 270)
+        Me.Label14.Location = New System.Drawing.Point(42, 302)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(40, 13)
         Me.Label14.TabIndex = 88
@@ -472,11 +554,11 @@ Partial Class DatosSolicitud
         '
         Me.Label13.AutoSize = True
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(329, 202)
+        Me.Label13.Location = New System.Drawing.Point(601, 157)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(42, 13)
+        Me.Label13.Size = New System.Drawing.Size(79, 13)
         Me.Label13.TabIndex = 86
-        Me.Label13.Text = "Colonia"
+        Me.Label13.Text = "Colonia Recibo"
         '
         'txtTiempoDomicilio
         '
@@ -490,10 +572,10 @@ Partial Class DatosSolicitud
         Me.txtTiempoDomicilio.LineIdleColor = System.Drawing.Color.Gray
         Me.txtTiempoDomicilio.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtTiempoDomicilio.LineThickness = 3
-        Me.txtTiempoDomicilio.Location = New System.Drawing.Point(868, 146)
+        Me.txtTiempoDomicilio.Location = New System.Drawing.Point(45, 174)
         Me.txtTiempoDomicilio.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTiempoDomicilio.Name = "txtTiempoDomicilio"
-        Me.txtTiempoDomicilio.Size = New System.Drawing.Size(227, 29)
+        Me.txtTiempoDomicilio.Size = New System.Drawing.Size(248, 29)
         Me.txtTiempoDomicilio.TabIndex = 8
         Me.txtTiempoDomicilio.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -501,7 +583,7 @@ Partial Class DatosSolicitud
         '
         Me.Label12.AutoSize = True
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(865, 129)
+        Me.Label12.Location = New System.Drawing.Point(42, 157)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(154, 13)
         Me.Label12.TabIndex = 84
@@ -519,10 +601,10 @@ Partial Class DatosSolicitud
         Me.txtCodigoPostal.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCodigoPostal.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCodigoPostal.LineThickness = 3
-        Me.txtCodigoPostal.Location = New System.Drawing.Point(45, 219)
+        Me.txtCodigoPostal.Location = New System.Drawing.Point(332, 174)
         Me.txtCodigoPostal.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodigoPostal.Name = "txtCodigoPostal"
-        Me.txtCodigoPostal.Size = New System.Drawing.Size(248, 29)
+        Me.txtCodigoPostal.Size = New System.Drawing.Size(237, 29)
         Me.txtCodigoPostal.TabIndex = 9
         Me.txtCodigoPostal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -530,7 +612,7 @@ Partial Class DatosSolicitud
         '
         Me.Label10.AutoSize = True
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(42, 202)
+        Me.Label10.Location = New System.Drawing.Point(329, 157)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(72, 13)
         Me.Label10.TabIndex = 82
@@ -548,10 +630,10 @@ Partial Class DatosSolicitud
         Me.txtNoInterior.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNoInterior.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNoInterior.LineThickness = 3
-        Me.txtNoInterior.Location = New System.Drawing.Point(994, 219)
+        Me.txtNoInterior.Location = New System.Drawing.Point(733, 246)
         Me.txtNoInterior.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoInterior.Name = "txtNoInterior"
-        Me.txtNoInterior.Size = New System.Drawing.Size(101, 29)
+        Me.txtNoInterior.Size = New System.Drawing.Size(87, 29)
         Me.txtNoInterior.TabIndex = 13
         Me.txtNoInterior.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -559,7 +641,7 @@ Partial Class DatosSolicitud
         '
         Me.Label9.AutoSize = True
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(865, 202)
+        Me.Label9.Location = New System.Drawing.Point(604, 229)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(61, 13)
         Me.Label9.TabIndex = 80
@@ -577,7 +659,7 @@ Partial Class DatosSolicitud
         Me.txtNoExterior.LineIdleColor = System.Drawing.Color.Gray
         Me.txtNoExterior.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtNoExterior.LineThickness = 3
-        Me.txtNoExterior.Location = New System.Drawing.Point(868, 219)
+        Me.txtNoExterior.Location = New System.Drawing.Point(607, 246)
         Me.txtNoExterior.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoExterior.Name = "txtNoExterior"
         Me.txtNoExterior.Size = New System.Drawing.Size(102, 29)
@@ -588,7 +670,7 @@ Partial Class DatosSolicitud
         '
         Me.Label8.AutoSize = True
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(991, 202)
+        Me.Label8.Location = New System.Drawing.Point(730, 229)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(58, 13)
         Me.Label8.TabIndex = 78
@@ -606,10 +688,10 @@ Partial Class DatosSolicitud
         Me.txtCalle.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCalle.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCalle.LineThickness = 3
-        Me.txtCalle.Location = New System.Drawing.Point(604, 219)
+        Me.txtCalle.Location = New System.Drawing.Point(334, 246)
         Me.txtCalle.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCalle.Name = "txtCalle"
-        Me.txtCalle.Size = New System.Drawing.Size(214, 29)
+        Me.txtCalle.Size = New System.Drawing.Size(235, 29)
         Me.txtCalle.TabIndex = 11
         Me.txtCalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -617,7 +699,7 @@ Partial Class DatosSolicitud
         '
         Me.Label7.AutoSize = True
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(601, 202)
+        Me.Label7.Location = New System.Drawing.Point(331, 229)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(30, 13)
         Me.Label7.TabIndex = 76
@@ -635,7 +717,7 @@ Partial Class DatosSolicitud
         Me.TxtCasaDondeVive.LineIdleColor = System.Drawing.Color.Gray
         Me.TxtCasaDondeVive.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.TxtCasaDondeVive.LineThickness = 3
-        Me.TxtCasaDondeVive.Location = New System.Drawing.Point(604, 146)
+        Me.TxtCasaDondeVive.Location = New System.Drawing.Point(604, 106)
         Me.TxtCasaDondeVive.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtCasaDondeVive.Name = "TxtCasaDondeVive"
         Me.TxtCasaDondeVive.Size = New System.Drawing.Size(214, 29)
@@ -646,7 +728,7 @@ Partial Class DatosSolicitud
         '
         Me.Label6.AutoSize = True
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(601, 129)
+        Me.Label6.Location = New System.Drawing.Point(601, 89)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(118, 13)
         Me.Label6.TabIndex = 74
@@ -664,7 +746,7 @@ Partial Class DatosSolicitud
         Me.txtCelular.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCelular.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCelular.LineThickness = 3
-        Me.txtCelular.Location = New System.Drawing.Point(332, 146)
+        Me.txtCelular.Location = New System.Drawing.Point(332, 106)
         Me.txtCelular.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCelular.Name = "txtCelular"
         Me.txtCelular.Size = New System.Drawing.Size(237, 29)
@@ -675,7 +757,7 @@ Partial Class DatosSolicitud
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(329, 129)
+        Me.Label5.Location = New System.Drawing.Point(329, 89)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(39, 13)
         Me.Label5.TabIndex = 72
@@ -693,7 +775,7 @@ Partial Class DatosSolicitud
         Me.txtTelefono.LineIdleColor = System.Drawing.Color.Gray
         Me.txtTelefono.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtTelefono.LineThickness = 3
-        Me.txtTelefono.Location = New System.Drawing.Point(45, 146)
+        Me.txtTelefono.Location = New System.Drawing.Point(45, 106)
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(248, 29)
@@ -704,7 +786,7 @@ Partial Class DatosSolicitud
         '
         Me.Label4.AutoSize = True
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(42, 129)
+        Me.Label4.Location = New System.Drawing.Point(42, 89)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 13)
         Me.Label4.TabIndex = 70
@@ -722,10 +804,10 @@ Partial Class DatosSolicitud
         Me.txtEdad.LineIdleColor = System.Drawing.Color.Gray
         Me.txtEdad.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtEdad.LineThickness = 3
-        Me.txtEdad.Location = New System.Drawing.Point(868, 71)
+        Me.txtEdad.Location = New System.Drawing.Point(868, 31)
         Me.txtEdad.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEdad.Name = "txtEdad"
-        Me.txtEdad.Size = New System.Drawing.Size(227, 29)
+        Me.txtEdad.Size = New System.Drawing.Size(214, 29)
         Me.txtEdad.TabIndex = 4
         Me.txtEdad.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -733,7 +815,7 @@ Partial Class DatosSolicitud
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(865, 54)
+        Me.Label3.Location = New System.Drawing.Point(865, 14)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(32, 13)
         Me.Label3.TabIndex = 68
@@ -751,7 +833,7 @@ Partial Class DatosSolicitud
         Me.txtApellidoM.LineIdleColor = System.Drawing.Color.Gray
         Me.txtApellidoM.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtApellidoM.LineThickness = 3
-        Me.txtApellidoM.Location = New System.Drawing.Point(604, 71)
+        Me.txtApellidoM.Location = New System.Drawing.Point(604, 31)
         Me.txtApellidoM.Margin = New System.Windows.Forms.Padding(4)
         Me.txtApellidoM.Name = "txtApellidoM"
         Me.txtApellidoM.Size = New System.Drawing.Size(214, 29)
@@ -762,7 +844,7 @@ Partial Class DatosSolicitud
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(601, 54)
+        Me.Label2.Location = New System.Drawing.Point(601, 14)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(86, 13)
         Me.Label2.TabIndex = 66
@@ -780,7 +862,7 @@ Partial Class DatosSolicitud
         Me.txtApellidoP.LineIdleColor = System.Drawing.Color.Gray
         Me.txtApellidoP.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtApellidoP.LineThickness = 3
-        Me.txtApellidoP.Location = New System.Drawing.Point(332, 71)
+        Me.txtApellidoP.Location = New System.Drawing.Point(332, 31)
         Me.txtApellidoP.Margin = New System.Windows.Forms.Padding(4)
         Me.txtApellidoP.Name = "txtApellidoP"
         Me.txtApellidoP.Size = New System.Drawing.Size(237, 29)
@@ -791,7 +873,7 @@ Partial Class DatosSolicitud
         '
         Me.Label1.AutoSize = True
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(329, 54)
+        Me.Label1.Location = New System.Drawing.Point(329, 14)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(84, 13)
         Me.Label1.TabIndex = 64
@@ -809,7 +891,7 @@ Partial Class DatosSolicitud
         Me.txtnombre.LineIdleColor = System.Drawing.Color.Gray
         Me.txtnombre.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtnombre.LineThickness = 3
-        Me.txtnombre.Location = New System.Drawing.Point(45, 71)
+        Me.txtnombre.Location = New System.Drawing.Point(45, 31)
         Me.txtnombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnombre.Name = "txtnombre"
         Me.txtnombre.Size = New System.Drawing.Size(248, 29)
@@ -820,7 +902,7 @@ Partial Class DatosSolicitud
         '
         Me.Label11.AutoSize = True
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(42, 54)
+        Me.Label11.Location = New System.Drawing.Point(42, 14)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(55, 13)
         Me.Label11.TabIndex = 62
@@ -2143,22 +2225,22 @@ Partial Class DatosSolicitud
         '
         Me.dtdatosDocumentos.AllowUserToAddRows = False
         Me.dtdatosDocumentos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatosDocumentos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatosDocumentos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.dtdatosDocumentos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtdatosDocumentos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatosDocumentos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatosDocumentos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatosDocumentos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatosDocumentos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.dtdatosDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatosDocumentos.DoubleBuffered = True
         Me.dtdatosDocumentos.EnableHeadersVisualStyles = False
@@ -2187,22 +2269,22 @@ Partial Class DatosSolicitud
         '
         Me.dtdatosDocumentosNuevos.AllowUserToAddRows = False
         Me.dtdatosDocumentosNuevos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatosDocumentosNuevos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatosDocumentosNuevos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
         Me.dtdatosDocumentosNuevos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtdatosDocumentosNuevos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatosDocumentosNuevos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatosDocumentosNuevos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatosDocumentosNuevos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatosDocumentosNuevos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.dtdatosDocumentosNuevos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatosDocumentosNuevos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idTipoDocumento, Me.NombreDocumento, Me.Imagen})
         Me.dtdatosDocumentosNuevos.DoubleBuffered = True
@@ -2322,26 +2404,51 @@ Partial Class DatosSolicitud
         Me.Label56.TabIndex = 122
         Me.Label56.Text = "Observaciones del domicilio"
         '
+        'btn_Procesar
+        '
+        Me.btn_Procesar.ActiveBorderThickness = 1
+        Me.btn_Procesar.ActiveCornerRadius = 20
+        Me.btn_Procesar.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btn_Procesar.ActiveForecolor = System.Drawing.Color.White
+        Me.btn_Procesar.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btn_Procesar.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btn_Procesar.BackgroundImage = CType(resources.GetObject("btn_Procesar.BackgroundImage"), System.Drawing.Image)
+        Me.btn_Procesar.ButtonText = "Registrar Captura"
+        Me.btn_Procesar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_Procesar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Procesar.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btn_Procesar.IdleBorderThickness = 1
+        Me.btn_Procesar.IdleCornerRadius = 20
+        Me.btn_Procesar.IdleFillColor = System.Drawing.Color.White
+        Me.btn_Procesar.IdleForecolor = System.Drawing.Color.Gray
+        Me.btn_Procesar.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btn_Procesar.Location = New System.Drawing.Point(458, 312)
+        Me.btn_Procesar.Margin = New System.Windows.Forms.Padding(5)
+        Me.btn_Procesar.Name = "btn_Procesar"
+        Me.btn_Procesar.Size = New System.Drawing.Size(216, 38)
+        Me.btn_Procesar.TabIndex = 53
+        Me.btn_Procesar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'dtdatos
         '
         Me.dtdatos.AllowUserToAddRows = False
         Me.dtdatos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
         Me.dtdatos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtdatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dtdatos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.dtdatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.IdCliente, Me.Nombre, Me.Capturado})
         Me.dtdatos.DoubleBuffered = True
@@ -2417,92 +2524,150 @@ Partial Class DatosSolicitud
         'BackgroundCorreo
         '
         '
-        'btn_Procesar
+        'txtColoniaReal
         '
-        Me.btn_Procesar.ActiveBorderThickness = 1
-        Me.btn_Procesar.ActiveCornerRadius = 20
-        Me.btn_Procesar.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_Procesar.ActiveForecolor = System.Drawing.Color.White
-        Me.btn_Procesar.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btn_Procesar.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.btn_Procesar.BackgroundImage = CType(resources.GetObject("btn_Procesar.BackgroundImage"), System.Drawing.Image)
-        Me.btn_Procesar.ButtonText = "Registrar Captura"
-        Me.btn_Procesar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn_Procesar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Procesar.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btn_Procesar.IdleBorderThickness = 1
-        Me.btn_Procesar.IdleCornerRadius = 20
-        Me.btn_Procesar.IdleFillColor = System.Drawing.Color.White
-        Me.btn_Procesar.IdleForecolor = System.Drawing.Color.Gray
-        Me.btn_Procesar.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_Procesar.Location = New System.Drawing.Point(458, 312)
-        Me.btn_Procesar.Margin = New System.Windows.Forms.Padding(5)
-        Me.btn_Procesar.Name = "btn_Procesar"
-        Me.btn_Procesar.Size = New System.Drawing.Size(216, 38)
-        Me.btn_Procesar.TabIndex = 53
-        Me.btn_Procesar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.txtColoniaReal.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtColoniaReal.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtColoniaReal.ForeColor = System.Drawing.Color.White
+        Me.txtColoniaReal.HintForeColor = System.Drawing.Color.White
+        Me.txtColoniaReal.HintText = ""
+        Me.txtColoniaReal.isPassword = False
+        Me.txtColoniaReal.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtColoniaReal.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtColoniaReal.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtColoniaReal.LineThickness = 3
+        Me.txtColoniaReal.Location = New System.Drawing.Point(868, 174)
+        Me.txtColoniaReal.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtColoniaReal.Name = "txtColoniaReal"
+        Me.txtColoniaReal.Size = New System.Drawing.Size(214, 29)
+        Me.txtColoniaReal.TabIndex = 97
+        Me.txtColoniaReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
-        'btnActivarLegal
+        'Label62
         '
-        Me.btnActivarLegal.ActiveBorderThickness = 1
-        Me.btnActivarLegal.ActiveCornerRadius = 20
-        Me.btnActivarLegal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnActivarLegal.ActiveForecolor = System.Drawing.Color.White
-        Me.btnActivarLegal.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btnActivarLegal.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnActivarLegal.BackgroundImage = CType(resources.GetObject("btnActivarLegal.BackgroundImage"), System.Drawing.Image)
-        Me.btnActivarLegal.ButtonText = "Activar Solicitud"
-        Me.btnActivarLegal.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnActivarLegal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActivarLegal.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btnActivarLegal.IdleBorderThickness = 1
-        Me.btnActivarLegal.IdleCornerRadius = 20
-        Me.btnActivarLegal.IdleFillColor = System.Drawing.Color.White
-        Me.btnActivarLegal.IdleForecolor = System.Drawing.Color.Gray
-        Me.btnActivarLegal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnActivarLegal.Location = New System.Drawing.Point(493, -1)
-        Me.btnActivarLegal.Margin = New System.Windows.Forms.Padding(5)
-        Me.btnActivarLegal.Name = "btnActivarLegal"
-        Me.btnActivarLegal.Size = New System.Drawing.Size(173, 38)
-        Me.btnActivarLegal.TabIndex = 153
-        Me.btnActivarLegal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btnActivarLegal.Visible = False
+        Me.Label62.AutoSize = True
+        Me.Label62.ForeColor = System.Drawing.Color.White
+        Me.Label62.Location = New System.Drawing.Point(865, 157)
+        Me.Label62.Name = "Label62"
+        Me.Label62.Size = New System.Drawing.Size(67, 13)
+        Me.Label62.TabIndex = 98
+        Me.Label62.Text = "Colonia Real"
         '
-        'btn_a_verificacion
+        'txtTelefonoConyuge
         '
-        Me.btn_a_verificacion.ActiveBorderThickness = 1
-        Me.btn_a_verificacion.ActiveCornerRadius = 20
-        Me.btn_a_verificacion.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_a_verificacion.ActiveForecolor = System.Drawing.Color.White
-        Me.btn_a_verificacion.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btn_a_verificacion.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_a_verificacion.BackgroundImage = CType(resources.GetObject("btn_a_verificacion.BackgroundImage"), System.Drawing.Image)
-        Me.btn_a_verificacion.ButtonText = "Enviar A Verificación"
-        Me.btn_a_verificacion.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn_a_verificacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_a_verificacion.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btn_a_verificacion.IdleBorderThickness = 1
-        Me.btn_a_verificacion.IdleCornerRadius = 20
-        Me.btn_a_verificacion.IdleFillColor = System.Drawing.Color.White
-        Me.btn_a_verificacion.IdleForecolor = System.Drawing.Color.Gray
-        Me.btn_a_verificacion.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_a_verificacion.Location = New System.Drawing.Point(779, -2)
-        Me.btn_a_verificacion.Margin = New System.Windows.Forms.Padding(5)
-        Me.btn_a_verificacion.Name = "btn_a_verificacion"
-        Me.btn_a_verificacion.Size = New System.Drawing.Size(173, 38)
-        Me.btn_a_verificacion.TabIndex = 152
-        Me.btn_a_verificacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btn_a_verificacion.Visible = False
+        Me.txtTelefonoConyuge.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtTelefonoConyuge.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtTelefonoConyuge.ForeColor = System.Drawing.Color.White
+        Me.txtTelefonoConyuge.HintForeColor = System.Drawing.Color.White
+        Me.txtTelefonoConyuge.HintText = ""
+        Me.txtTelefonoConyuge.isPassword = False
+        Me.txtTelefonoConyuge.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtTelefonoConyuge.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtTelefonoConyuge.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtTelefonoConyuge.LineThickness = 3
+        Me.txtTelefonoConyuge.Location = New System.Drawing.Point(45, 375)
+        Me.txtTelefonoConyuge.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtTelefonoConyuge.Name = "txtTelefonoConyuge"
+        Me.txtTelefonoConyuge.Size = New System.Drawing.Size(248, 29)
+        Me.txtTelefonoConyuge.TabIndex = 99
+        Me.txtTelefonoConyuge.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
-        'CheckCorreo
+        'Label63
         '
-        Me.CheckCorreo.Checked = False
-        Me.CheckCorreo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.CheckCorreo.Location = New System.Drawing.Point(177, 11)
-        Me.CheckCorreo.Name = "CheckCorreo"
-        Me.CheckCorreo.Size = New System.Drawing.Size(148, 16)
-        Me.CheckCorreo.TabIndex = 154
-        Me.CheckCorreo.Text = "Enviar Correo"
+        Me.Label63.AutoSize = True
+        Me.Label63.ForeColor = System.Drawing.Color.White
+        Me.Label63.Location = New System.Drawing.Point(42, 358)
+        Me.Label63.Name = "Label63"
+        Me.Label63.Size = New System.Drawing.Size(94, 13)
+        Me.Label63.TabIndex = 100
+        Me.Label63.Text = "Teléfono Conyuge"
+        '
+        'txtOcupacionConyuge
+        '
+        Me.txtOcupacionConyuge.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtOcupacionConyuge.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtOcupacionConyuge.ForeColor = System.Drawing.Color.White
+        Me.txtOcupacionConyuge.HintForeColor = System.Drawing.Color.White
+        Me.txtOcupacionConyuge.HintText = ""
+        Me.txtOcupacionConyuge.isPassword = False
+        Me.txtOcupacionConyuge.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtOcupacionConyuge.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtOcupacionConyuge.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtOcupacionConyuge.LineThickness = 3
+        Me.txtOcupacionConyuge.Location = New System.Drawing.Point(334, 375)
+        Me.txtOcupacionConyuge.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtOcupacionConyuge.Name = "txtOcupacionConyuge"
+        Me.txtOcupacionConyuge.Size = New System.Drawing.Size(248, 29)
+        Me.txtOcupacionConyuge.TabIndex = 101
+        Me.txtOcupacionConyuge.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'lblOcupacionConyuge
+        '
+        Me.lblOcupacionConyuge.AutoSize = True
+        Me.lblOcupacionConyuge.ForeColor = System.Drawing.Color.White
+        Me.lblOcupacionConyuge.Location = New System.Drawing.Point(331, 358)
+        Me.lblOcupacionConyuge.Name = "lblOcupacionConyuge"
+        Me.lblOcupacionConyuge.Size = New System.Drawing.Size(104, 13)
+        Me.lblOcupacionConyuge.TabIndex = 102
+        Me.lblOcupacionConyuge.Text = "Ocupación Conyuge"
+        '
+        'txtHijos
+        '
+        Me.txtHijos.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtHijos.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtHijos.ForeColor = System.Drawing.Color.White
+        Me.txtHijos.HintForeColor = System.Drawing.Color.White
+        Me.txtHijos.HintText = ""
+        Me.txtHijos.isPassword = False
+        Me.txtHijos.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtHijos.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtHijos.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtHijos.LineThickness = 3
+        Me.txtHijos.Location = New System.Drawing.Point(868, 106)
+        Me.txtHijos.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtHijos.Name = "txtHijos"
+        Me.txtHijos.Size = New System.Drawing.Size(214, 29)
+        Me.txtHijos.TabIndex = 103
+        Me.txtHijos.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label64
+        '
+        Me.Label64.AutoSize = True
+        Me.Label64.ForeColor = System.Drawing.Color.White
+        Me.Label64.Location = New System.Drawing.Point(865, 89)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(30, 13)
+        Me.Label64.TabIndex = 104
+        Me.Label64.Text = "Hijos"
+        '
+        'txtDomicilioAlterno
+        '
+        Me.txtDomicilioAlterno.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtDomicilioAlterno.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtDomicilioAlterno.ForeColor = System.Drawing.Color.White
+        Me.txtDomicilioAlterno.HintForeColor = System.Drawing.Color.White
+        Me.txtDomicilioAlterno.HintText = ""
+        Me.txtDomicilioAlterno.isPassword = False
+        Me.txtDomicilioAlterno.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtDomicilioAlterno.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtDomicilioAlterno.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtDomicilioAlterno.LineThickness = 3
+        Me.txtDomicilioAlterno.Location = New System.Drawing.Point(45, 246)
+        Me.txtDomicilioAlterno.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDomicilioAlterno.Name = "txtDomicilioAlterno"
+        Me.txtDomicilioAlterno.Size = New System.Drawing.Size(248, 29)
+        Me.txtDomicilioAlterno.TabIndex = 105
+        Me.txtDomicilioAlterno.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label65
+        '
+        Me.Label65.AutoSize = True
+        Me.Label65.ForeColor = System.Drawing.Color.White
+        Me.Label65.Location = New System.Drawing.Point(42, 229)
+        Me.Label65.Name = "Label65"
+        Me.Label65.Size = New System.Drawing.Size(85, 13)
+        Me.Label65.TabIndex = 106
+        Me.Label65.Text = "Domicilio Alterno"
         '
         'DatosSolicitud
         '
@@ -2708,4 +2873,14 @@ Partial Class DatosSolicitud
     Friend WithEvents Label54 As Label
     Friend WithEvents BackgroundCorreo As System.ComponentModel.BackgroundWorker
     Friend WithEvents CheckCorreo As MonoFlat.MonoFlat_CheckBox
+    Friend WithEvents txtOcupacionConyuge As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents lblOcupacionConyuge As Label
+    Friend WithEvents txtTelefonoConyuge As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label63 As Label
+    Friend WithEvents txtColoniaReal As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label62 As Label
+    Friend WithEvents txtHijos As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label64 As Label
+    Friend WithEvents txtDomicilioAlterno As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label65 As Label
 End Class

@@ -170,40 +170,40 @@ begin
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Apertura')) )pagos 
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Apertura')) )pagos 
 union
 
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Pago') or tipodoc = (select id from tipodoc where nombre = 'Transferencia') or tipodoc = (select id from tipodoc where nombre = 'Depósito') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto') or tipodoc =(select id from tipodoc where nombre = 'Liquidación Promoción 90%') ) )pagos 
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Pago') or tipodoc = (select id from tipodoc where nombre = 'Transferencia') or tipodoc = (select id from tipodoc where nombre = 'Depósito') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto') or tipodoc =(select id from tipodoc where nombre = 'Liquidación Promoción 90%') ) )pagos 
 union
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito inner join ConveniosSac on Credito.id = ConveniosSac.idCredito where ConveniosSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from ConveniosSac where idCredito ='" & idCredito & "') and (TipoDoc = (select id from tipodoc where nombre = 'Convenio') or TipoDoc = (select id from tipodoc where nombre = 'Transferencia Convenio') or TipoDoc = (select id from tipodoc where nombre = 'Depósito Convenio')))pagos
+							   else ISNULL((select nombre from Credito inner join ConveniosSac on Credito.id = ConveniosSac.idCredito where ConveniosSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from ConveniosSac where idCredito ='" & idCredito & "') and (TipoDoc = (select id from tipodoc where nombre = 'Convenio') or TipoDoc = (select id from tipodoc where nombre = 'Transferencia Convenio') or TipoDoc = (select id from tipodoc where nombre = 'Depósito Convenio')))pagos
 union
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and TipoDoc = (select id from tipodoc where nombre = 'Cancelación de convenio') )pagos
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and TipoDoc = (select id from tipodoc where nombre = 'Cancelación de convenio') )pagos
 union
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito inner join ReestructurasSac on credito.id = ReestructurasSac.idCredito where ReestructurasSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from reestructurassac where idcredito = '" & idCredito & "') and (TipoDoc = (select id from tipodoc where nombre = 'Reestructura') or TipoDoc = (select id from tipodoc where nombre = 'Transferencia Reestructura') or TipoDoc = (select id from tipodoc where nombre = 'Depósito Reestructura')) )pagos
+							   else ISNULL((select nombre from Credito inner join ReestructurasSac on credito.id = ReestructurasSac.idCredito where ReestructurasSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from reestructurassac where idcredito = '" & idCredito & "') and (TipoDoc = (select id from tipodoc where nombre = 'Reestructura') or TipoDoc = (select id from tipodoc where nombre = 'Transferencia Reestructura') or TipoDoc = (select id from tipodoc where nombre = 'Depósito Reestructura')) )pagos
 union
 
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Promesa de Pago') or  tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Convenio') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Reestructura') or  tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Convenio') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada Reestructura') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada')) )pagos 
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Promesa de Pago') or  tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Convenio') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Reestructura') or  tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Convenio') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada Reestructura') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada')) )pagos 
 order by Fecha,Hora asc
 end
 else if  exists(select * from ConveniosSac where idCredito = '" & idCredito & "' and Estado = 'A')
@@ -211,46 +211,46 @@ begin
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Apertura')) )pagos 
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Apertura')) )pagos 
 union
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Pago') or tipodoc = (select id from tipodoc where nombre = 'Transferencia') or tipodoc = (select id from tipodoc where nombre = 'Depósito') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto')) )pagos 
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Pago') or tipodoc = (select id from tipodoc where nombre = 'Transferencia') or tipodoc = (select id from tipodoc where nombre = 'Depósito') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto')) )pagos 
 union
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito inner join ConveniosSac on Credito.id = ConveniosSac.idCredito where ConveniosSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from ConveniosSac where idCredito ='" & idCredito & "') and (TipoDoc = (select id from tipodoc where nombre = 'Convenio') or TipoDoc = (select id from tipodoc where nombre = 'Transferencia Convenio') or TipoDoc = (select id from tipodoc where nombre = 'Depósito Convenio') ))pagos
+							   else ISNULL((select nombre from Credito inner join ConveniosSac on Credito.id = ConveniosSac.idCredito where ConveniosSac.id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = (select id from ConveniosSac where idCredito ='" & idCredito & "') and (TipoDoc = (select id from tipodoc where nombre = 'Convenio') or TipoDoc = (select id from tipodoc where nombre = 'Transferencia Convenio') or TipoDoc = (select id from tipodoc where nombre = 'Depósito Convenio') ))pagos
 union
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Promesa de Pago') or  tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Convenio') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Reestructura') or  tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Convenio') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada Reestructura') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada')) )pagos 
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Promesa de Pago') or  tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Convenio') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Reestructura') or  tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Convenio') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada Reestructura') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada')) )pagos 
 end
 else if not exists(select * from ConveniosSac where idCredito = '" & idCredito & "')
 begin
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Apertura')) )pagos 
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Apertura')) )pagos 
 union
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "'  and (tipodoc = (select id from tipodoc where nombre = 'Pago') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Transferencia') or tipodoc = (select id from tipodoc where nombre = 'Depósito') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto') or tipodoc =(select id from tipodoc where nombre = 'Liquidación Promoción 90%')))pagos
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "'  and (tipodoc = (select id from tipodoc where nombre = 'Pago') or  tipodoc = (select id from tipodoc where nombre = 'Liquidación Insoluto') or tipodoc = (select id from tipodoc where nombre = 'Transferencia') or tipodoc = (select id from tipodoc where nombre = 'Depósito') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Renovación') or tipodoc = (select id from tipodoc where nombre = 'Liquidación Normal') or  tipodoc = (select id from tipodoc where nombre = 'Renovación Insoluto') or tipodoc =(select id from tipodoc where nombre = 'Liquidación Promoción 90%')))pagos
 union 
 select id,Recibido,(case when tipo = 'Legal' then Concepto
 							   when tipo = 'Extra' then Concepto
 							  
-							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja from
-(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Promesa de Pago') or  tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Convenio') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Reestructura') or  tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Convenio') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada Reestructura') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada')) )pagos 
+							   else ISNULL((select nombre from Credito where id = pagos.idCredito),0) 		end) as nombre,idCredito,Fecha,Hora,PagoNormal,Intereses,Total,tipo,Caja,estado from
+(select Ticket.Id,Ticket.Recibido,Ticket.IdCredito,Ticket.Fecha,Ticket.hora,Ticket.PagoNormal,Ticket.Intereses,Ticket.total,tipodoc.Nombre as tipo,Ticket.concepto,Ticket.caja,ticket.estado from Ticket  inner join TipoDoc on Ticket.tipodoc = TipoDoc.id  where  ticket.idcredito = '" & idCredito & "' and (tipodoc = (select id from tipodoc where nombre = 'Promesa de Pago') or  tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Convenio') or tipodoc = (select id from tipodoc where nombre = 'Cancelación de Promesa Reestructura') or  tipodoc = (select id from tipodoc where nombre = 'Promesa Aplicada Convenio') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada Reestructura') or tipodoc =(select id from tipodoc where nombre = 'Promesa Aplicada')) )pagos 
 order by Fecha,Hora asc
 end
 "
@@ -272,6 +272,7 @@ end
                     .Add(readerTicket("Hora").ToString)
                     .Add(readerTicket("Tipo"))
                     .Add(readerTicket("Caja"))
+                    .Add(readerTicket("estado"))
                 End With
 
                 Dim COMANDOdetalle As SqlCommand
@@ -704,7 +705,9 @@ end
 
     Private Sub BackgroundPromesas_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundPromesas.RunWorkerCompleted
         dtPromesas.DataSource = dataPromesas
-        Cargando.Close()
+        Cargando.MonoFlat_Label1.Text = "Cargando Concentrado"
+        BackgroundConcentrado.RunWorkerAsync()
+
 
     End Sub
 
@@ -741,5 +744,88 @@ end
         VistaPreviaDocumento.ruta = "C:\ConfiaAdmin\SATI\TEMPDOCS\TempPromesa.docx"
         VistaPreviaDocumento.Show()
         Cargando.Close()
+    End Sub
+
+    Private Sub BackgroundConcentrado_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundConcentrado.DoWork
+        Dim comandoConcentrado As SqlCommand
+        Dim consultaConcentrado As String
+        consultaConcentrado = "select nombre,id,(AbonadoSinMultas -(case when exists(select id from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio')) then (select PagoNormal from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio'))else 0 end ))AbonadoSinMultas,
+AbonadoSinMultasC,AbonadoSinMultasR,(AbonadoMultasL + AbonadoMultasV-(case when exists(select id from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio')) then (select Intereses from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio'))else 0 end )) as AbonadoMultas,
+(AbonadoMultasLC + AbonadoMultasVC+AbonadoMultasPC) as AbonadoMultasC,(AbonadoMultasLR+AbonadoMultasVR+AbonadoMultasPR) as AbonadoMultasR,(AbonadoMultasL+AbonadoMultasV+AbonadoSinMultas-(case when exists(select id from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio')) then (select Total from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio'))else 0 end )) as TotalAbonadoNormal,
+(AbonadoMultasLC+AbonadoMultasVC+AbonadoMultasPC+AbonadoSinMultasC) as TotalAbonadoC,
+(AbonadoMultasLR+AbonadoMultasVR+AbonadoMultasPR+AbonadoSinMultasR) as TotalAbonadoR,
+((AbonadoMultasL+AbonadoMultasLC+AbonadoMultasLR+AbonadoMultasV+AbonadoMultasVC+AbonadoMultasVR+AbonadoSinMultas+AbonadoSinMultasC+AbonadoSinMultasR+AbonadoMultasPC+AbonadoMultasPR)-(case when exists(select id from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio')) then (select Total from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio'))else 0 end ) ) as TotalAbonado,
+(AbonadoMultasL+AbonadoMultasLC+AbonadoMultasLR+AbonadoMultasPC+AbonadoMultasPR+AbonadoMultasV+AbonadoMultasVC+AbonadoMultasVR-(case when exists(select id from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio')) then (select Intereses from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio'))else 0 end )) as TotalAbonadoMultas,
+(AbonadoSinMultas+AbonadoSinMultasC+AbonadoSinMultasR-(case when exists(select id from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio')) then (select PagoNormal from Ticket where idCredito = CarteraTotal.id and TipoDoc = (select id from TipoDoc where Nombre='Cancelación de Convenio'))else 0 end )) as TotalAbonadoCredito,Estado from
+(select Cartera.nombre,Cartera.id,case when exists(select id from ReestructurasSac where idCredito = Cartera.id)  then
+ isnull((select SUM(Abonado - interes) as pagonormal from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where Abonado <> 0 and Abonado >= interes and ReestructurasSac.idcredito = Cartera.id group by idcredito),0)
+ else '0' end as AbonadoSinMultasR,
+case when exists (select id from ConveniosSac where idCredito = Cartera.id) then
+ isnull((select SUM(Abonado - interes) as pagonormal from CalendarioConveniossac inner join Conveniossac on CalendarioConveniossac.IdConvenio = Conveniossac.id where Abonado <> 0 and Abonado >= interes and conveniossac.idcredito = Cartera.id group by idcredito),0)
+else '0'
+end as AbonadoSinMultasC,
+isnull((select SUM(Abonado - interes)  as pagonormal from CalendarioNormal where Abonado <> 0 and Abonado >= interes and id_credito = Cartera.id group by id_credito),0) as AbonadoSinMultas ,
+case when exists(select id from ConveniosSac where idCredito = Cartera.id) then
+isnull((select SUM( Abonado) as AbonadoInteres from CalendarioConveniossac inner join Conveniossac on ConveniosSac.id = CalendarioConveniossac.IdConvenio where abonado <> 0 and abonado <= interes and CalendarioConveniossac.estado = 'V' and Conveniossac.idcredito = Cartera.id group by Conveniossac.idcredito),0)
++
+isnull((select SUM( ((((abonado -(abonado -calendarioconveniossac.Interes) ))) )) as AbonadoInteres from calendarioconveniossac inner join conveniossac on calendarioconveniossac.idconvenio = conveniossac.id where calendarioconveniossac.estado = 'V' and Abonado >=calendarioconveniossac.Interes and conveniossac.idcredito =Cartera.id group by conveniossac.idcredito),0) 
+else '0'
+end as AbonadoMultasVC,
+case when exists(select id from ReestructurasSac where idCredito = Cartera.id) then
+isnull((select isnull((select SUM( ((((abonado ))) )) as AbonadoInteres from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.idconvenio = ReestructurasSac.id where CalendarioReestructurasSac.estado = 'V' and Abonado <= CalendarioReestructurasSac.Interes and ReestructurasSac.idCredito =cartera.id group by CalendarioReestructurasSac.idConvenio),0)
++
+isnull((select SUM( ((((abonado -(abonado -CalendarioReestructurasSac.Interes) ))) )) as AbonadoInteres from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.idConvenio = ReestructurasSac.id where CalendarioReestructurasSac.estado = 'V' and Abonado >=CalendarioReestructurasSac.Interes and ReestructurasSac.idCredito =cartera.id group by CalendarioReestructurasSac.idConvenio),0)),0)
+else '0' end as AbonadoMultasVR
+,
+isnull((select isnull((select SUM( ((((abonado ))) )) as AbonadoInteres from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where CalendarioNormal.estado = 'V' and Abonado <= CalendarioNormal.Interes and CalendarioNormal.id_credito =cartera.id group by CalendarioNormal.id_credito),0)
++
+isnull((select SUM( ((((abonado -(abonado -calendarionormal.Interes) ))) )) as AbonadoInteres from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where CalendarioNormal.estado = 'V' and Abonado >=CalendarioNormal.Interes and CalendarioNormal.id_credito =cartera.id group by CalendarioNormal.id_credito),0)),0) AbonadoMultasV
+,
+case when exists(select id from ConveniosSac where idCredito = Cartera.id) then
+isnull((select SUM(Abonado - CalendarioConveniossac.monto) as AbonadoMultas from CalendarioConveniossac inner join Conveniossac on Conveniossac.id = CalendarioConveniossac.IdConvenio where  Pendiente=0 and Conveniossac.idcredito = Cartera.id group by Conveniossac.idcredito),0)
+else '0' end as AbonadoMultasLC,
+case when exists(select id from ReestructurasSac where idCredito = Cartera.id ) then
+isnull((select SUM(Abonado - CalendarioReestructurasSac.monto) as AbonadoMultas from CalendarioReestructurasSac inner join ReestructurasSac on ReestructurasSac.id = CalendarioReestructurasSac.IdConvenio where  CalendarioReestructurasSac.estado IN ('L') and ReestructurasSac.idcredito = Cartera.id group by ReestructurasSac.idcredito),0)
+else '0' end as AbonadoMultasLR,
+isnull((select SUM(Abonado - CalendarioNormal.monto) as AbonadoMultas from CalendarioNormal inner join Credito on CalendarioNormal.id_credito = Credito.id where  CalendarioNormal.estado = 'L'  and CalendarioNormal.id_credito = Cartera.id group by CalendarioNormal.id_credito),0) as AbonadoMultasL,
+case when exists (select id from ConveniosSac where idCredito = Cartera.id) then
+ isnull((select SUM( case when Abonado >= Interes then Interes else Abonado end ) as pagonormal from CalendarioConveniossac inner join Conveniossac on CalendarioConveniossac.IdConvenio = Conveniossac.id where Abonado <> 0  and calendarioconveniossac.Estado = 'P' and conveniossac.idcredito = Cartera.id group by idcredito),0)
+else '0'
+end as AbonadoMultasPC,
+case when exists(select id from ReestructurasSac where idCredito = Cartera.id)  then
+ isnull((select SUM( case when Abonado >= Interes then Interes else Abonado end) as pagonormal from CalendarioReestructurasSac inner join ReestructurasSac on CalendarioReestructurasSac.IdConvenio = ReestructurasSac.id where Abonado <> 0  and calendarioreestructurassac.Estado = 'P' and ReestructurasSac.idcredito = Cartera.id group by idcredito),0)
+ else '0' end as AbonadoMultasPR,
+Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado from
+(select credito.nombre,Credito.id,Credito.idgestor,Credito.IdPromotor,credito.Estado from Credito inner join CalendarioNormal on credito.id = CalendarioNormal.id_credito where Credito.id = '" & idCredito & "'  group by Credito.id,Credito.nombre,Credito.IdGestor,Credito.IdPromotor,Credito.estado) Cartera inner join
+(select * from Empleados where Tipo = 'G') Gestores on Cartera.IdGestor = Gestores.id inner join 
+(select * from Empleados where Tipo = 'P') Promotores on Cartera.IdPromotor = Promotores.id ) CarteraTotal order by nombre asc"
+        Dim readerConcentrado As SqlDataReader
+        comandoConcentrado = New SqlCommand
+        comandoConcentrado.Connection = conexionempresa
+        comandoConcentrado.CommandText = consultaConcentrado
+        readerConcentrado = comandoConcentrado.ExecuteReader
+        If readerConcentrado.HasRows Then
+            While readerConcentrado.Read
+                btnCreditoNormal.ButtonText = FormatCurrency(readerConcentrado("AbonadoSinMultas"), 2)
+                btnMultasNormal.ButtonText = FormatCurrency(readerConcentrado("AbonadoMultas"), 2)
+                btnTotalNormal.ButtonText = FormatCurrency(readerConcentrado("TotalAbonadoNormal"), 2)
+                btnCreditoConvenio.ButtonText = FormatCurrency(readerConcentrado("AbonadoSinMultasC"), 2)
+                btnMultasConvenio.ButtonText = FormatCurrency(readerConcentrado("AbonadoMultasC"), 2)
+                btnTotalConvenio.ButtonText = FormatCurrency(readerConcentrado("TotalAbonadoC"), 2)
+                btnCreditoReestructura.ButtonText = FormatCurrency(readerConcentrado("AbonadoSinMultasR"), 2)
+                btnMultasReestructura.ButtonText = FormatCurrency(readerConcentrado("AbonadoMultasR"), 2)
+                btnTotalReestructura.ButtonText = FormatCurrency(readerConcentrado("TotalAbonadoR"), 2)
+                btnCreditoTotal.ButtonText = FormatCurrency(readerConcentrado("TotalAbonadoCredito"), 2)
+                btnMultasTotal.ButtonText = FormatCurrency(readerConcentrado("TotalAbonadoMultas"), 2)
+                btnTotal.ButtonText = FormatCurrency(readerConcentrado("TotalAbonado"), 2)
+            End While
+        End If
+        readerConcentrado.Close()
+
+    End Sub
+
+    Private Sub BackgroundConcentrado_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundConcentrado.RunWorkerCompleted
+        Cargando.Close()
+
     End Sub
 End Class

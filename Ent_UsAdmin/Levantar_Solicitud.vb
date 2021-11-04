@@ -481,10 +481,16 @@ Select id,nombre from empleados where tipo = 'P'"
            ,[CalleR2]
            ,[NoExtR2]
            ,[NoIntR2]
+           ,[Hijos]
+           ,[ColoniaReal]
+           ,[DomicilioAlterno]
+           ,[TelefonoConyuge]
+           ,[OcupacionConyuge]
+           ,[MontoMaximoAutorizado]
           
 )
      VALUES
-           ('" & idSolicitud & "','" & row.Cells(2).Value & "','" & row.Cells(0).Value & "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','P','','','','','','','','','','')"
+           ('" & idSolicitud & "','" & row.Cells(2).Value & "','" & row.Cells(0).Value & "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','P','','','','','','','','','','','','','','','','')"
             comandoDatosSolicitud = New SqlCommand
             comandoDatosSolicitud.Connection = conexionempresa
             comandoDatosSolicitud.CommandText = consultaDatosSolicitud

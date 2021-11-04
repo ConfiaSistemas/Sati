@@ -161,6 +161,12 @@ Public Class DatosAprobacion
                 txtMontoVerificacion.Text = row("MontoVerificacion")
                 txtMontoAutorizado.Text = row("MontoVerificacion")
                 txtComentariosVerificacion.Text = row("ComentariosVerificacion").ToString
+                txtHijos.Text = row("Hijos").ToString
+                txtColoniaReal.Text = row("ColoniaReal").ToString
+                txtDomicilioAlterno.Text = row("DomicilioAlterno").ToString
+                txtTelefonoConyuge.Text = row("TelefonoConyuge").ToString
+                txtOcupacionConyuge.Text = row("OcupacionConyuge").ToString
+                txtMontoMaximoAutorizado.Text = row("MontoMaximoAutorizado").ToString
                 Exit For
             End If
         Next
@@ -192,9 +198,22 @@ Public Class DatosAprobacion
     End Sub
 
     Private Sub btn_Procesar_Click(sender As Object, e As EventArgs) Handles btn_Procesar.Click
-        Cargando.Show()
-        Cargando.MonoFlat_Label1.Text = "Registrando Captura"
-        BackgroundAct.RunWorkerAsync()
+        If estadoDatosSolicitud = "A" Then
+            If txtMontoAutorizado.Text > txtMontoMaximoAutorizado.Text Then
+                MessageBox.Show("El monto autorizado no puede ser mayor al monto autorizado máximo")
+            Else
+                Cargando.Show()
+                Cargando.MonoFlat_Label1.Text = "Registrando Captura"
+                BackgroundAct.RunWorkerAsync()
+            End If
+
+        Else
+            Cargando.Show()
+            Cargando.MonoFlat_Label1.Text = "Registrando Captura"
+            BackgroundAct.RunWorkerAsync()
+        End If
+
+
     End Sub
 
     Private Sub BackgroundAct_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundAct.DoWork

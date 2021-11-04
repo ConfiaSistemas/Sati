@@ -165,6 +165,12 @@ Public Class DatosConsultaSolicitud
                 txtMontoVerificacion.Text = FormatCurrency(row("MontoVerificacion").ToString)
                 txtMontoSolicitado.Text = FormatCurrency(row("Monto").ToString)
                 txtComentariosVerificacion.Text = row("ComentariosVerificacion").ToString
+                txtHijos.Text = row("Hijos").ToString
+                txtColoniaReal.Text = row("ColoniaReal").ToString
+                txtDomicilioAlterno.Text = row("DomicilioAlterno").ToString
+                txtTelefonoConyuge.Text = row("TelefonoConyuge").ToString
+                txtOcupacionConyuge.Text = row("OcupacionConyuge").ToString
+                txtMontoAutorizadoMaximo.Text = row("MontoAutorizadoMaximo").ToString
 
                 Exit For
             End If
@@ -470,6 +476,10 @@ Public Class DatosConsultaSolicitud
     End Sub
 
     Private Sub TabPage3_Click(sender As Object, e As EventArgs) Handles TabPage3.Click
+
+    End Sub
+
+    Private Sub TabPage5_Click(sender As Object, e As EventArgs) Handles TabPage5.Click
 
     End Sub
 End Class

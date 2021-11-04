@@ -131,6 +131,13 @@ Public Class DatosVerificacion
                 txtHorarioVerificacion.Text = row("HorarioVerificacion").ToString
                 txtMontoSolicitado.Text = row("Monto").ToString
                 txtMontoVerificacion.Text = row("Monto").ToString
+                txtHijos.Text = row("Hijos").ToString
+                txtColoniaReal.Text = row("ColoniaReal").ToString
+                txtDomicilioAlterno.Text = row("DomicilioAlterno").ToString
+                txtTelefonoConyuge.Text = row("TelefonoConyuge").ToString
+                txtOcupacionConyuge.Text = row("OcupacionConyuge").ToString
+                txtMontoMaximoAutorizado.Text = row("MontoMaximo").ToString
+
                 Exit For
             End If
         Next
@@ -159,16 +166,21 @@ Public Class DatosVerificacion
     End Sub
 
     Private Sub btn_Procesar_Click(sender As Object, e As EventArgs) Handles btn_Procesar.Click
-        For Each row As DataRow In dataPermisos.Rows
-            If row("SatiModSolicitudesModificar") Then
-                Cargando.Show()
-                Cargando.MonoFlat_Label1.Text = "Registrando Captura"
-                BackgroundAct.RunWorkerAsync()
-                Exit For
-            Else
+        If txtMontoVerificacion.Text > txtMontoMaximoAutorizado.Text Then
+            MessageBox.Show("El monto autorizado no puede ser mayor a monto autorizado máximo")
+        Else
+            For Each row As DataRow In dataPermisos.Rows
+                If row("SatiModSolicitudesModificar") Then
+                    Cargando.Show()
+                    Cargando.MonoFlat_Label1.Text = "Registrando Captura"
+                    BackgroundAct.RunWorkerAsync()
+                    Exit For
+                Else
 
-            End If
-        Next
+                End If
+            Next
+
+        End If
 
     End Sub
 
@@ -178,7 +190,7 @@ Public Class DatosVerificacion
 
         Dim comandoActDatos As SqlCommand
         Dim consultaActDatos As String
-        consultaActDatos = "update DatosSolicitud set ComentariosVerificacion = '" & txtComentarios.Text & "', MontoVerificacion = '" & txtMontoVerificacion.Text & "' where id = '" & idDatosSolicitud & "'"
+        consultaActDatos = "update DatosSolicitud set ComentariosVerificacion = '" & txtComentarios.Text & "', MontoVerificacion = '" & txtMontoVerificacion.Text & "',MontoMaximoAutorizado = '" & txtMontoMaximoAutorizado.Text & "' where id = '" & idDatosSolicitud & "'"
         comandoActDatos = New SqlCommand
         '  Dim croquis As New SqlParameter("@Croquis", SqlDbType.Image)
         ' Dim mscroquis As New MemoryStream
@@ -371,7 +383,8 @@ Public Class DatosVerificacion
         iniciarconexionempresa()
 
         Dim consultaDatosSolicitud As String
-        consultaDatosSolicitud = "select datosSolicitud.*, (clientes.nombre +' '+clientes.ApellidoPaterno+' '+clientes.ApellidoMaterno) as nombrecompleto,clientes.nombre,clientes.ApellidoPaterno,clientes.ApellidoMaterno,clientes.FechaNacimiento,clientes.Telefono,clientes.Celular from datosSolicitud inner join clientes on datosSolicitud.idCliente = clientes.id where datosSolicitud.idSolicitud = '" & idSolicitud & "'"
+        consultaDatosSolicitud = "select datos.*,ISNULL((select top 1 MontoMaximoAutorizado from DatosSolicitud inner join Solicitud on DatosSolicitud.IdSolicitud = Solicitud.id where datossolicitud.IdCliente =Datos.idCliente order by Fecha asc),0) as MontoMaximo from
+(select datosSolicitud.*, (clientes.nombre +' '+clientes.ApellidoPaterno+' '+clientes.ApellidoMaterno) as nombrecompleto,clientes.nombre,clientes.ApellidoPaterno,clientes.ApellidoMaterno,clientes.FechaNacimiento from datosSolicitud inner join clientes on datosSolicitud.idCliente = clientes.id where datosSolicitud.idSolicitud = '" & idSolicitud & "') datos"
         adapterDatos = New SqlDataAdapter(consultaDatosSolicitud, conexionempresa)
         dataDatos = New DataTable
         adapterDatos.Fill(dataDatos)

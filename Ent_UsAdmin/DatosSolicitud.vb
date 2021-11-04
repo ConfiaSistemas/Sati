@@ -212,6 +212,12 @@ Public Class DatosSolicitud
                 txtFrecuenciaInversion.Text = row("FrecuenciaInversion").ToString
                 txtObservacionesDomicilio.Text = row("ObservacionesDomicilio").ToString
                 txtHorarioVerificacion.Text = row("HorarioVerificacion").ToString
+                txtHijos.Text = row("Hijos").ToString
+                txtDomicilioAlterno.Text = row("DomicilioAlterno").ToString
+                txtColoniaReal.Text = row("ColoniaReal").ToString
+                txtTelefonoConyuge.Text = row("TelefonoConyuge").ToString
+                txtOcupacionConyuge.Text = row("OcupacionConyuge").ToString
+
                 'txtMontoAutorizado.Text = row("Monto").ToString
                 Exit For
             End If
@@ -316,6 +322,11 @@ Public Class DatosSolicitud
       ,[HorarioVerificacion] =  '" & txtHorarioVerificacion.Text & "'
           
       ,[CasaDondeViveEs] = '" & TxtCasaDondeVive.Text & "'
+      ,[Hijos]='" & txtHijos.Text & "'
+      ,[ColoniaReal]='" & txtColoniaReal.Text & "'
+      ,[TelefonoConyuge]='" & txtTelefonoConyuge.Text & "'
+      ,[OcupacionConyuge]='" & txtOcupacionConyuge.Text & "'
+      ,[DomicilioAlterno]='" & txtDomicilioAlterno.Text & "'
  WHERE ID = '" & idDatosSolicitud & "'"
         comandoActDatos = New SqlCommand
         '  Dim croquis As New SqlParameter("@Croquis", SqlDbType.Image)
