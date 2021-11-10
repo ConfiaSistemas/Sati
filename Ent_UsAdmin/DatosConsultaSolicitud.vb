@@ -170,7 +170,7 @@ Public Class DatosConsultaSolicitud
                 txtDomicilioAlterno.Text = row("DomicilioAlterno").ToString
                 txtTelefonoConyuge.Text = row("TelefonoConyuge").ToString
                 txtOcupacionConyuge.Text = row("OcupacionConyuge").ToString
-                txtMontoAutorizadoMaximo.Text = row("MontoAutorizadoMaximo").ToString
+                txtMontoAutorizadoMaximo.Text = row("MontoMaximoAutorizado").ToString
 
                 Exit For
             End If

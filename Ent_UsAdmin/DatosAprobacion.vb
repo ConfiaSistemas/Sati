@@ -186,7 +186,7 @@ Public Class DatosAprobacion
         Cargando.MonoFlat_Label1.Text = "Cargando Información"
         Cargando.TopMost = True
         idDatosSolicitud = dtdatos.CurrentRow.Cells(0).Value
-            ConsultarCliente(dtdatos.CurrentRow.Cells(1).Value)
+        ConsultarCliente(dtdatos.CurrentRow.Cells(1).Value)
 
 
 
@@ -198,8 +198,14 @@ Public Class DatosAprobacion
     End Sub
 
     Private Sub btn_Procesar_Click(sender As Object, e As EventArgs) Handles btn_Procesar.Click
+        Dim montoA As Double
+        Dim montoB As Double
+        montoA = Convert.ToDouble(txtMontoAutorizado.Text)
+        montoB = Convert.ToDouble(txtMontoMaximoAutorizado.Text)
         If estadoDatosSolicitud = "A" Then
-            If txtMontoAutorizado.Text > txtMontoMaximoAutorizado.Text Then
+
+
+            If montoA > montoB Then
                 MessageBox.Show("El monto autorizado no puede ser mayor al monto autorizado máximo")
             Else
                 Cargando.Show()
