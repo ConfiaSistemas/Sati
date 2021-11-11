@@ -459,3 +459,8 @@ D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.exe.licenses
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.exe
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.xml
 D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.pdb
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AplicarDescuentoBuenFin.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.CrearNotificacionDescuentoBuenFin.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromPagoBuenFin.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.PromPagoLegalBuenFin.resources
+D:\Repos\SATI\Ent_UsAdmin\obj\x86\Debug\ConfiaAdmin.AutorizacionNotificacionBuenFin.resources

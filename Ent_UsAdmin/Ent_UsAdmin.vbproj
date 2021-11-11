@@ -376,7 +376,19 @@
     <Compile Include="AplicarDepositoLegal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AplicarDescuentoBuenFin.Designer.vb">
+      <DependentUpon>AplicarDescuentoBuenFin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AplicarDescuentoBuenFin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="AutorizacionNotificacionBuenFin.Designer.vb">
+      <DependentUpon>AutorizacionNotificacionBuenFin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AutorizacionNotificacionBuenFin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AutorizacionNotificacion.Designer.vb">
       <DependentUpon>AutorizacionNotificacion.vb</DependentUpon>
     </Compile>
@@ -429,6 +441,12 @@
       <DependentUpon>ConfigurarEmpresa.vb</DependentUpon>
     </Compile>
     <Compile Include="ConfigurarEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearNotificacionDescuentoBuenFin.Designer.vb">
+      <DependentUpon>CrearNotificacionDescuentoBuenFin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CrearNotificacionDescuentoBuenFin.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CrearNotificacionDescuentoPromesa.Designer.vb">
@@ -496,6 +514,18 @@
       <DependentUpon>ModificarEmpresa.vb</DependentUpon>
     </Compile>
     <Compile Include="ModificarEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PromPagoBuenFin.Designer.vb">
+      <DependentUpon>PromPagoBuenFin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PromPagoBuenFin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PromPagoLegalBuenFin.Designer.vb">
+      <DependentUpon>PromPagoLegalBuenFin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PromPagoLegalBuenFin.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SolicitudPorFecha.Designer.vb">
@@ -1235,6 +1265,12 @@
     <EmbeddedResource Include="AplicarDepositoLegal.resx">
       <DependentUpon>AplicarDepositoLegal.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AplicarDescuentoBuenFin.resx">
+      <DependentUpon>AplicarDescuentoBuenFin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutorizacionNotificacionBuenFin.resx">
+      <DependentUpon>AutorizacionNotificacionBuenFin.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AutorizacionNotificacion.resx">
       <DependentUpon>AutorizacionNotificacion.vb</DependentUpon>
     </EmbeddedResource>
@@ -1261,6 +1297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigurarEmpresa.resx">
       <DependentUpon>ConfigurarEmpresa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearNotificacionDescuentoBuenFin.resx">
+      <DependentUpon>CrearNotificacionDescuentoBuenFin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearNotificacionDescuentoPromesa.resx">
       <DependentUpon>CrearNotificacionDescuentoPromesa.vb</DependentUpon>
@@ -1294,6 +1333,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModificarEmpresa.resx">
       <DependentUpon>ModificarEmpresa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PromPagoBuenFin.resx">
+      <DependentUpon>PromPagoBuenFin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PromPagoLegalBuenFin.resx">
+      <DependentUpon>PromPagoLegalBuenFin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SolicitudPorFecha.resx">
       <DependentUpon>SolicitudPorFecha.vb</DependentUpon>

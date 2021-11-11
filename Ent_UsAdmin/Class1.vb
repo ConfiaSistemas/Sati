@@ -1466,6 +1466,12 @@ Namespace MonoFlat
                         AutorizacionNotificacion.MonoFlat_Button1.Enabled = False
                         AutorizacionNotificacion.MonoFlat_Button2.Enabled = False
                         AutorizacionNotificacion.BackgroundWorker1.RunWorkerAsync()
+                    ElseIf FindForm.Name = "AutorizacionNotificacionBuenFin" Then
+                        AutorizacionNotificacionBuenFin.FlowEspere.Visible = True
+                        AutorizacionNotificacionBuenFin.txtcontra.Enabled = False
+                        AutorizacionNotificacionBuenFin.MonoFlat_Button1.Enabled = False
+                        AutorizacionNotificacionBuenFin.MonoFlat_Button2.Enabled = False
+                        AutorizacionNotificacionBuenFin.BackgroundWorker1.RunWorkerAsync()
                     Else
 
 

@@ -316,6 +316,13 @@ Public Class CentroDeNotificaciones
                         Exit For
 
                     End If
+                    If lblTipo.Text = "DescuentoBuenFin" Then
+                        AplicarDescuentoBuenFin.idPromesa = sender.tag
+                        AplicarDescuentoBuenFin.idNotificacion = sender.name
+                        AplicarDescuentoBuenFin.Show()
+                        Exit For
+
+                    End If
                     If lblTipo.Text = "DepositoLegal" Then
                         AplicarDepositoLegal.idDeposito = sender.tag
                         AplicarDepositoLegal.idNotificacion = sender.name

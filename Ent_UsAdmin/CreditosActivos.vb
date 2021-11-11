@@ -51,6 +51,13 @@ Public Class CreditosActivos
     End Sub
 
     Private Sub dtimpuestos_SelectionChanged(sender As Object, e As EventArgs) Handles dtimpuestos.SelectionChanged
+        If Now.Date <= "2021-11-16" Then
+            DescuentoBuenFinToolStripMenuItem.Visible = True
+        Else
+            DescuentoBuenFinToolStripMenuItem.Visible = False
+
+        End If
+
         If dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value = "A" Then
             CrearReestructuraToolStripMenuItem.Visible = False
             CrearConvenioToolStripMenuItem.Visible = True
@@ -128,5 +135,11 @@ Public Class CreditosActivos
         PromPago.estadoCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value
         PromPago.Show()
 
+    End Sub
+
+    Private Sub DescuentoBuenFinToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DescuentoBuenFinToolStripMenuItem.Click
+        PromPagoBuenFin.idCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
+        PromPagoBuenFin.estadoCredito = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value
+        PromPagoBuenFin.Show()
     End Sub
 End Class
