@@ -30,6 +30,8 @@ Public Class DatosAprobacion
     Dim idPromotorSolicitud As Integer
     Dim modalidadSolicitud As String
     Public autorizado As Boolean
+    Dim moto As Boolean = False
+    Dim Enganche As Double
     Private Sub DatosSolicitud_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Me.Height = 1600
         'Me.Width = 1600
@@ -72,7 +74,7 @@ Public Class DatosAprobacion
         Dim comandoSolicitud As SqlCommand
         Dim readerSolicitud As SqlDataReader
 
-        consultaSolicitud = "select solicitud.nombre,solicitud.Monto,solicitud.Tipo,solicitud.Plazo,solicitud.Interes,PagoIndividual,Integrantes,IdCliente,IdPromotor,IdGestor,TiposDeCredito.Modalidad From solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.id = '" & idSolicitud & "'"
+        consultaSolicitud = "select solicitud.nombre,solicitud.Monto,solicitud.Tipo,solicitud.Plazo,solicitud.Interes,PagoIndividual,Integrantes,IdCliente,IdPromotor,IdGestor,TiposDeCredito.Modalidad,TiposDeCredito.Moto,TiposDeCredito.Enganche From solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.id = '" & idSolicitud & "'"
         comandoSolicitud = New SqlCommand
         comandoSolicitud.Connection = conexionempresa
         comandoSolicitud.CommandText = consultaSolicitud
@@ -86,6 +88,8 @@ Public Class DatosAprobacion
             idPromotorSolicitud = readerSolicitud("IdPromotor")
             idGestorSolicitud = readerSolicitud("IdGestor")
             modalidadSolicitud = readerSolicitud("Modalidad")
+            moto = readerSolicitud("Moto")
+            Enganche = readerSolicitud("Enganche")
         End While
 
     End Sub
@@ -356,26 +360,60 @@ Public Class DatosAprobacion
         comandoActEstado.Connection = conexionempresa
         comandoActEstado.CommandText = consultaActEstado
         comandoActEstado.ExecuteNonQuery()
+        Dim montoAutorizadoMotocicleta As Double
 
-
+        If moto Then
+            montoAutorizadoMotocicleta = montoAutorizadoTotal - (montoAutorizadoTotal * (Enganche / 100))
+        End If
         Dim comandoCredito As SqlCommand
         Dim consultaCredito As String
         Dim idCreditoCreado As Integer
         Dim pagoIndividualCredito As Double
         Select Case modalidadSolicitud
             Case "S"
-                pagoIndividualCredito = (montoAutorizadoTotal / 1000) * InteresSolicitud
+                If moto Then
+                    pagoIndividualCredito = (montoAutorizadoMotocicleta / 1000) * InteresSolicitud
+                Else
+                    pagoIndividualCredito = (montoAutorizadoTotal / 1000) * InteresSolicitud
+                End If
+
             Case "Q"
-                pagoIndividualCredito = ((montoAutorizadoTotal / 1000) * InteresSolicitud) * 2
+                If moto Then
+                    pagoIndividualCredito = ((montoAutorizadoMotocicleta / 1000) * InteresSolicitud) * 2
+                Else
+                    pagoIndividualCredito = ((montoAutorizadoTotal / 1000) * InteresSolicitud) * 2
+                End If
+
         End Select
 
         Dim PagareCredito As Double
+
         PagareCredito = pagoIndividualCredito * PlazoSolicitud
-        consultaCredito = "insert into Credito(Fecha,Hora,Nombre,Monto,Pagare,Tipo,Integrantes,PagoIndividual,Plazo,Interes,IdCliente,IdPromotor,IdGestor,IdSolicitud,Estado) values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & nombreSolicitud & "','" & montoAutorizadoTotal & "','" & PagareCredito & "','" & TipoSolicitud & "','" & Aprobados & "','" & pagoIndividualCredito & "','" & PlazoSolicitud & "','" & InteresSolicitud & "','" & idClienteSolicitud & "','" & idPromotorSolicitud & "','" & idGestorSolicitud & "','" & idSolicitud & "','E') select SCOPE_IDENTITY()"
+
+
+        If moto Then
+            consultaCredito = "insert into Credito(Fecha,Hora,Nombre,Monto,Pagare,Tipo,Integrantes,PagoIndividual,Plazo,Interes,IdCliente,IdPromotor,IdGestor,IdSolicitud,Estado) values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & nombreSolicitud & "','" & montoAutorizadoMotocicleta & "','" & PagareCredito & "','" & TipoSolicitud & "','" & Aprobados & "','" & pagoIndividualCredito & "','" & PlazoSolicitud & "','" & InteresSolicitud & "','" & idClienteSolicitud & "','" & idPromotorSolicitud & "','" & idGestorSolicitud & "','" & idSolicitud & "','E') select SCOPE_IDENTITY()"
+
+        Else
+            consultaCredito = "insert into Credito(Fecha,Hora,Nombre,Monto,Pagare,Tipo,Integrantes,PagoIndividual,Plazo,Interes,IdCliente,IdPromotor,IdGestor,IdSolicitud,Estado) values('" & Now.ToString("yyyy-MM-dd") & "','" & tiempo & "','" & nombreSolicitud & "','" & montoAutorizadoTotal & "','" & PagareCredito & "','" & TipoSolicitud & "','" & Aprobados & "','" & pagoIndividualCredito & "','" & PlazoSolicitud & "','" & InteresSolicitud & "','" & idClienteSolicitud & "','" & idPromotorSolicitud & "','" & idGestorSolicitud & "','" & idSolicitud & "','E') select SCOPE_IDENTITY()"
+
+        End If
         comandoCredito = New SqlCommand
         comandoCredito.Connection = conexionempresa
         comandoCredito.CommandText = consultaCredito
         idCreditoCreado = comandoCredito.ExecuteScalar
+
+
+        If moto Then
+            Dim consultaMotocicleta As String
+            Dim comandoMotocicleta As SqlCommand
+            consultaMotocicleta = "insert into Motocicletas values('" & idCreditoCreado & "','','','','','','','','','','','" & montoAutorizadoTotal & "','','')"
+            comandoMotocicleta = New SqlCommand
+            comandoMotocicleta.Connection = conexionempresa
+            comandoMotocicleta.CommandText = consultaMotocicleta
+            comandoMotocicleta.ExecuteNonQuery()
+
+        End If
 
         Dim insertCronogramaSolicitud As SqlCommand
         Dim consultaInsertCronogramaSolicitud As String

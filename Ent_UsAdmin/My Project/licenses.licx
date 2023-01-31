@@ -11,11 +11,9 @@ Telerik.WinControls.UI.RadPanorama, Telerik.WinControls.UI, Version=2018.1.116.2
 Telerik.WinControls.UI.Gauges.RadLinearGauge, Telerik.WinControls.UI, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.UI.RadDataEntry, Telerik.WinControls.UI, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.Themes.BreezeTheme, Telerik.WinControls.Themes.Breeze, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
-Gnostice.Controls.WinForms.DocumentPrinter, Gnostice.Controls.WinForms, Version=19.3.365.1347, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63
 Telerik.WinControls.UI.RadButton, Telerik.WinControls.UI, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.UI.Docking.RadDock, Telerik.WinControls.RadDock, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.UI.RadPivotGrid, Telerik.WinControls.PivotGrid, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
-Gnostice.Controls.WinForms.DocumentViewer, Gnostice.Controls.WinForms, Version=19.3.365.1347, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63
 Telerik.WinControls.UI.RadCalculatorDropDown, Telerik.WinControls.UI, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.UI.RadPopupEditor, Telerik.WinControls.UI, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.UI.RadCarousel, Telerik.WinControls.UI, Version=2018.1.116.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e

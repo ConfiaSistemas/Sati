@@ -194,6 +194,8 @@ Public Class AplicarDescuentoPromesa
                             consultaActualizaCalendarioPromesa = "update calendarioconveniossac set convenio = 1 where idpago in ((select idpago from detallepromesa where idpromesa = '" & idPromesa & "'))"
                         Case "R"
                             consultaActualizaCalendarioPromesa = "update calendarioreestructurassac set convenio = 1 where idpago in ((select idpago from detallepromesa where idpromesa = '" & idPromesa & "'))"
+                        Case "L"
+                            consultaActualizaCalendarioPromesa = "update calendariolegales set convenio = 1 where idpago in ((select idpago from detallepromesa where idpromesa = '" & idPromesa & "'))"
                         Case Else
                             consultaActualizaCalendarioPromesa = "update calendarionormal set convenio = 1 where idpago in ((select idpago from detallepromesa where idpromesa = '" & idPromesa & "'))"
                     End Select

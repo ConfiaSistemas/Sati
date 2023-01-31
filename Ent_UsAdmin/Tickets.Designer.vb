@@ -24,9 +24,9 @@ Partial Class Tickets
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim CheckBoxProperties2 As PresentationControls.CheckBoxProperties = New PresentationControls.CheckBoxProperties()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim CheckBoxProperties1 As PresentationControls.CheckBoxProperties = New PresentationControls.CheckBoxProperties()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Tickets))
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.dtdatos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
@@ -40,6 +40,7 @@ Partial Class Tickets
         Me.Caja = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.dateDesde = New Bunifu.Framework.UI.BunifuDatepicker()
         Me.dateHasta = New Bunifu.Framework.UI.BunifuDatepicker()
         Me.MonoFlat_Label1 = New ConfiaAdmin.MonoFlat.MonoFlat_Label()
@@ -57,7 +58,6 @@ Partial Class Tickets
         Me.BackgroundCancelar = New System.ComponentModel.BackgroundWorker()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.dtdatos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.ContextMenuCancelar.SuspendLayout()
@@ -79,8 +79,8 @@ Partial Class Tickets
         '
         Me.dtdatos.AllowUserToAddRows = False
         Me.dtdatos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtdatos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dtdatos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -88,14 +88,14 @@ Partial Class Tickets
         Me.dtdatos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtdatos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtdatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtdatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dtdatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtdatos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.idCredito, Me.Nombre, Me.Monto, Me.Fecha, Me.Hora, Me.Tipo, Me.Caja, Me.Estado})
         Me.dtdatos.DoubleBuffered = True
@@ -184,6 +184,18 @@ Partial Class Tickets
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1194, 36)
         Me.Panel1.TabIndex = 8
+        '
+        'Button1
+        '
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button1.Location = New System.Drawing.Point(11, 8)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(54, 23)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "Atrás"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'dateDesde
         '
@@ -293,8 +305,8 @@ Partial Class Tickets
         '
         'CheckedCajas
         '
-        CheckBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CheckedCajas.CheckBoxProperties = CheckBoxProperties2
+        CheckBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.CheckedCajas.CheckBoxProperties = CheckBoxProperties1
         Me.CheckedCajas.DisplayMemberSingleItem = ""
         Me.CheckedCajas.FormattingEnabled = True
         Me.CheckedCajas.Location = New System.Drawing.Point(23, 77)
@@ -306,12 +318,12 @@ Partial Class Tickets
         '
         Me.ContextMenuCancelar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CancelarToolStripMenuItem})
         Me.ContextMenuCancelar.Name = "ContextMenuCancelar"
-        Me.ContextMenuCancelar.Size = New System.Drawing.Size(121, 26)
+        Me.ContextMenuCancelar.Size = New System.Drawing.Size(153, 48)
         '
         'CancelarToolStripMenuItem
         '
         Me.CancelarToolStripMenuItem.Name = "CancelarToolStripMenuItem"
-        Me.CancelarToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.CancelarToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CancelarToolStripMenuItem.Text = "Cancelar"
         '
         'BackgroundCancelar
@@ -368,18 +380,6 @@ Partial Class Tickets
         Me.BunifuThinButton22.Size = New System.Drawing.Size(92, 31)
         Me.BunifuThinButton22.TabIndex = 5
         Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Button1
-        '
-        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.White
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.ForeColor = System.Drawing.SystemColors.Control
-        Me.Button1.Location = New System.Drawing.Point(11, 8)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(54, 23)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Atrás"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'Tickets
         '

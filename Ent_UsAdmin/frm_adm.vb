@@ -745,7 +745,7 @@ Public Class frm_adm
     Private Sub BunifuFlatButton8_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton8.Click
         BunifuFlatButton8.Textcolor = Color.White
         For Each row As DataRow In dataPermisos.Rows
-            If row("SatiModSolicitudes") Then
+            If row("SatiModReportes") Then
                 For Each frmForm As Form In My.Application.OpenForms
 
 
@@ -1410,5 +1410,9 @@ Public Class frm_adm
     Private Sub notificaciones_Click(sender As Object, e As EventArgs) Handles notificaciones.Click
         CentroDeNotificaciones.Show()
 
+    End Sub
+
+    Private Sub BunifuFlatButton9_Click(sender As Object, e As EventArgs) Handles BunifuFlatButton9.Click
+        CierresSinRecibir.Show()
     End Sub
 End Class

@@ -23,20 +23,10 @@ Partial Class Solicitudes
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Solicitudes))
         Me.dtimpuestos = New Bunifu.Framework.UI.BunifuCustomDataGrid()
-        Me.Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Monto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MontoAutorizado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoCredito = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Gestor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Promotor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
@@ -75,8 +65,8 @@ Partial Class Solicitudes
         '
         Me.dtimpuestos.AllowUserToAddRows = False
         Me.dtimpuestos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.dtimpuestos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dtimpuestos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -84,16 +74,15 @@ Partial Class Solicitudes
         Me.dtimpuestos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dtimpuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtimpuestos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dtimpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtimpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Nombre, Me.Fecha, Me.Monto, Me.MontoAutorizado, Me.TipoCredito, Me.Gestor, Me.Promotor, Me.Estado, Me.Tipo})
         Me.dtimpuestos.DoubleBuffered = True
         Me.dtimpuestos.EnableHeadersVisualStyles = False
         Me.dtimpuestos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
@@ -105,77 +94,6 @@ Partial Class Solicitudes
         Me.dtimpuestos.RowHeadersVisible = False
         Me.dtimpuestos.Size = New System.Drawing.Size(884, 446)
         Me.dtimpuestos.TabIndex = 4
-        '
-        'Id
-        '
-        Me.Id.HeaderText = "Id"
-        Me.Id.Name = "Id"
-        Me.Id.ReadOnly = True
-        Me.Id.Width = 42
-        '
-        'Nombre
-        '
-        Me.Nombre.HeaderText = "Nombre"
-        Me.Nombre.Name = "Nombre"
-        Me.Nombre.ReadOnly = True
-        Me.Nombre.Width = 79
-        '
-        'Fecha
-        '
-        Me.Fecha.HeaderText = "Fecha"
-        Me.Fecha.Name = "Fecha"
-        Me.Fecha.ReadOnly = True
-        Me.Fecha.Width = 68
-        '
-        'Monto
-        '
-        Me.Monto.HeaderText = "Monto"
-        Me.Monto.Name = "Monto"
-        Me.Monto.ReadOnly = True
-        Me.Monto.Width = 70
-        '
-        'MontoAutorizado
-        '
-        Me.MontoAutorizado.HeaderText = "Monto Autorizado"
-        Me.MontoAutorizado.Name = "MontoAutorizado"
-        Me.MontoAutorizado.ReadOnly = True
-        Me.MontoAutorizado.Width = 126
-        '
-        'TipoCredito
-        '
-        Me.TipoCredito.HeaderText = "Tipo"
-        Me.TipoCredito.Name = "TipoCredito"
-        Me.TipoCredito.ReadOnly = True
-        Me.TipoCredito.Width = 55
-        '
-        'Gestor
-        '
-        Me.Gestor.HeaderText = "Gestor"
-        Me.Gestor.Name = "Gestor"
-        Me.Gestor.ReadOnly = True
-        Me.Gestor.Width = 71
-        '
-        'Promotor
-        '
-        Me.Promotor.HeaderText = "Promotor"
-        Me.Promotor.Name = "Promotor"
-        Me.Promotor.ReadOnly = True
-        Me.Promotor.Width = 86
-        '
-        'Estado
-        '
-        Me.Estado.HeaderText = "Estado"
-        Me.Estado.Name = "Estado"
-        Me.Estado.ReadOnly = True
-        Me.Estado.Width = 71
-        '
-        'Tipo
-        '
-        Me.Tipo.HeaderText = "Tipo"
-        Me.Tipo.Name = "Tipo"
-        Me.Tipo.ReadOnly = True
-        Me.Tipo.Visible = False
-        Me.Tipo.Width = 55
         '
         'MonoFlat_HeaderLabel1
         '
@@ -468,16 +386,6 @@ Partial Class Solicitudes
     Friend WithEvents BunifuMaterialTextbox1 As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents MonoFlat_Label1 As MonoFlat.MonoFlat_Label
     Friend WithEvents Combofiltro As ComboBox
-    Friend WithEvents Id As DataGridViewTextBoxColumn
-    Friend WithEvents Nombre As DataGridViewTextBoxColumn
-    Friend WithEvents Fecha As DataGridViewTextBoxColumn
-    Friend WithEvents Monto As DataGridViewTextBoxColumn
-    Friend WithEvents MontoAutorizado As DataGridViewTextBoxColumn
-    Friend WithEvents TipoCredito As DataGridViewTextBoxColumn
-    Friend WithEvents Gestor As DataGridViewTextBoxColumn
-    Friend WithEvents Promotor As DataGridViewTextBoxColumn
-    Friend WithEvents Estado As DataGridViewTextBoxColumn
-    Friend WithEvents Tipo As DataGridViewTextBoxColumn
     Friend WithEvents BunifuThinButton22 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents BackgroundExcel As System.ComponentModel.BackgroundWorker
     Friend WithEvents ReenviarCorreoToolStripMenuItem As ToolStripMenuItem

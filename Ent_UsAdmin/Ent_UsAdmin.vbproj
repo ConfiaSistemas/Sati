@@ -154,6 +154,9 @@
     <Reference Include="Gnostice.XtremeImageEngine">
       <HintPath>..\XtremeDocumentStudio.NETFree.19.1.1\lib\net40\Gnostice.XtremeImageEngine.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.42.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.42\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -184,6 +187,15 @@
     <Reference Include="Spire.Doc">
       <HintPath>C:\Program Files (x86)\e-iceblue\Spire.Doc-FE\Bin\NET4.0\Spire.Doc.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Core.WinForms, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfInput.WinForms, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -280,6 +292,12 @@
     <Compile Include="AgregarCaja.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AgregarDocumentoMotocicleta.Designer.vb">
+      <DependentUpon>AgregarDocumentoMotocicleta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarDocumentoMotocicleta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AgregarDocumentoEmpeño.Designer.vb">
       <DependentUpon>AgregarDocumentoEmpeño.vb</DependentUpon>
     </Compile>
@@ -358,6 +376,12 @@
     <Compile Include="AgregarTipoDocumentoSolicitud.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ActualizarCliente.Designer.vb">
+      <DependentUpon>ActualizarCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ActualizarCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Agregar_Impuestos.Designer.vb">
       <DependentUpon>Agregar_Impuestos.vb</DependentUpon>
     </Compile>
@@ -380,6 +404,12 @@
       <DependentUpon>AplicarDescuentoBuenFin.vb</DependentUpon>
     </Compile>
     <Compile Include="AplicarDescuentoBuenFin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AplicarActualizacionCliente.Designer.vb">
+      <DependentUpon>AplicarActualizacionCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AplicarActualizacionCliente.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
@@ -419,6 +449,18 @@
     <Compile Include="CancelarTicket.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ConsultarMotocicleta.Designer.vb">
+      <DependentUpon>ConsultarMotocicleta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarMotocicleta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CaputarMotocicleta.Designer.vb">
+      <DependentUpon>CaputarMotocicleta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CaputarMotocicleta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CentroDeNotificaciones.Designer.vb">
       <DependentUpon>CentroDeNotificaciones.vb</DependentUpon>
     </Compile>
@@ -449,6 +491,12 @@
     <Compile Include="CrearNotificacionDescuentoBuenFin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CrearNotificacionActualizarCliente.Designer.vb">
+      <DependentUpon>CrearNotificacionActualizarCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CrearNotificacionActualizarCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CrearNotificacionDescuentoPromesa.Designer.vb">
       <DependentUpon>CrearNotificacionDescuentoPromesa.vb</DependentUpon>
     </Compile>
@@ -459,6 +507,12 @@
       <DependentUpon>CrearNotificacionCancelarTicket.vb</DependentUpon>
     </Compile>
     <Compile Include="CrearNotificacionCancelarTicket.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreditosAsociadosActualizarCliente.Designer.vb">
+      <DependentUpon>CreditosAsociadosActualizarCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreditosAsociadosActualizarCliente.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DatosSolicitudReenviarCorreo.Designer.vb">
@@ -526,6 +580,24 @@
       <DependentUpon>PromPagoLegalBuenFin.vb</DependentUpon>
     </Compile>
     <Compile Include="PromPagoLegalBuenFin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CierresSinRecibir.Designer.vb">
+      <DependentUpon>CierresSinRecibir.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CierresSinRecibir.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecibirCierre.Designer.vb">
+      <DependentUpon>RecibirCierre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RecibirCierre.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CierresPorFecha.Designer.vb">
+      <DependentUpon>CierresPorFecha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CierresPorFecha.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SolicitudPorFecha.Designer.vb">
@@ -897,6 +969,12 @@
     <Compile Include="Run.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TicketsSinRecibir.Designer.vb">
+      <DependentUpon>TicketsSinRecibir.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TicketsSinRecibir.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TiposDeEmpeños.Designer.vb">
       <DependentUpon>TiposDeEmpeños.vb</DependentUpon>
     </Compile>
@@ -1179,6 +1257,12 @@
     <Compile Include="VistaPreviaDocumento.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="vistPreviaSolicitud.Designer.vb">
+      <DependentUpon>vistPreviaSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="vistPreviaSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="webcamEmpeño.Designer.vb">
       <DependentUpon>webcamEmpeño.vb</DependentUpon>
     </Compile>
@@ -1213,6 +1297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarCaja.resx">
       <DependentUpon>AgregarCaja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarDocumentoMotocicleta.resx">
+      <DependentUpon>AgregarDocumentoMotocicleta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarDocumentoEmpeño.resx">
       <DependentUpon>AgregarDocumentoEmpeño.vb</DependentUpon>
@@ -1253,6 +1340,9 @@
     <EmbeddedResource Include="AgregarTipoDocumentoSolicitud.resx">
       <DependentUpon>AgregarTipoDocumentoSolicitud.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ActualizarCliente.resx">
+      <DependentUpon>ActualizarCliente.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Agregar_Impuestos.resx">
       <DependentUpon>Agregar_Impuestos.vb</DependentUpon>
     </EmbeddedResource>
@@ -1267,6 +1357,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AplicarDescuentoBuenFin.resx">
       <DependentUpon>AplicarDescuentoBuenFin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AplicarActualizacionCliente.resx">
+      <DependentUpon>AplicarActualizacionCliente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AutorizacionNotificacionBuenFin.resx">
       <DependentUpon>AutorizacionNotificacionBuenFin.vb</DependentUpon>
@@ -1286,6 +1379,12 @@
     <EmbeddedResource Include="CancelarTicket.resx">
       <DependentUpon>CancelarTicket.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarMotocicleta.resx">
+      <DependentUpon>ConsultarMotocicleta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CaputarMotocicleta.resx">
+      <DependentUpon>CaputarMotocicleta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CentroDeNotificaciones.resx">
       <DependentUpon>CentroDeNotificaciones.vb</DependentUpon>
     </EmbeddedResource>
@@ -1301,11 +1400,17 @@
     <EmbeddedResource Include="CrearNotificacionDescuentoBuenFin.resx">
       <DependentUpon>CrearNotificacionDescuentoBuenFin.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrearNotificacionActualizarCliente.resx">
+      <DependentUpon>CrearNotificacionActualizarCliente.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrearNotificacionDescuentoPromesa.resx">
       <DependentUpon>CrearNotificacionDescuentoPromesa.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearNotificacionCancelarTicket.resx">
       <DependentUpon>CrearNotificacionCancelarTicket.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreditosAsociadosActualizarCliente.resx">
+      <DependentUpon>CreditosAsociadosActualizarCliente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatosSolicitudReenviarCorreo.resx">
       <DependentUpon>DatosSolicitudReenviarCorreo.vb</DependentUpon>
@@ -1339,6 +1444,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PromPagoLegalBuenFin.resx">
       <DependentUpon>PromPagoLegalBuenFin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CierresSinRecibir.resx">
+      <DependentUpon>CierresSinRecibir.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecibirCierre.resx">
+      <DependentUpon>RecibirCierre.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CierresPorFecha.resx">
+      <DependentUpon>CierresPorFecha.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SolicitudPorFecha.resx">
       <DependentUpon>SolicitudPorFecha.vb</DependentUpon>
@@ -1515,6 +1629,9 @@
     <EmbeddedResource Include="Run.resx">
       <DependentUpon>Run.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TicketsSinRecibir.resx">
+      <DependentUpon>TicketsSinRecibir.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TiposDeEmpeños.resx">
       <DependentUpon>TiposDeEmpeños.vb</DependentUpon>
     </EmbeddedResource>
@@ -1653,6 +1770,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaPreviaDocumento.resx">
       <DependentUpon>VistaPreviaDocumento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistPreviaSolicitud.resx">
+      <DependentUpon>vistPreviaSolicitud.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="webcamEmpeño.resx">
       <DependentUpon>webcamEmpeño.vb</DependentUpon>
@@ -1844,6 +1964,8 @@
     <None Include="Resources\16606.png" />
     <None Include="Resources\notificacion.png" />
     <None Include="Resources\164531372_453725909175899_8573093330485258261_n.png" />
+    <None Include="Resources\png-transparent-calendar-pictogram-payday-loan-text-calendar-logo.png" />
+    <None Include="Resources\png-transparent-calendar-pictogram-payday-loan-text-calendar-logo1.png" />
     <Content Include="SATI.ico" />
     <None Include="Resources\Logo Confia.png" />
     <None Include="Resources\eaad3b05-c22d-49fb-ae4f-2d0e4ff7b0cb.jpg" />

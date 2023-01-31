@@ -126,6 +126,9 @@ Public Class AutorizacionNotificacion
             Case "SatiModLegalAplicaDeposito"
                 AplicarDepositoLegal.Autorizado = False
                 Me.Close()
+            Case "SatiModCreditosModificar"
+                AplicarActualizacionCliente.Autorizado = False
+                Me.Close()
 
         End Select
     End Sub
@@ -407,6 +410,18 @@ Public Class AutorizacionNotificacion
 
                     txtcontra.Text = ""
                 End If
+            Case "SatiModCreditosModificar"
+                If autorizado Then
+                    AplicarActualizacionCliente.Autorizado = True
+                    autorizado = False
+
+                    txtcontra.Text = ""
+                Else
+                    AplicarActualizacionCliente.Autorizado = False
+                    autorizado = False
+
+                    txtcontra.Text = ""
+                End If
 
         End Select
     End Sub
@@ -602,6 +617,9 @@ Public Class AutorizacionNotificacion
                     Me.Close()
                 Case "SatiModLegalAplicaDeposito"
                     AplicarDepositoLegal.Autorizado = True
+                    Me.Close()
+                Case "SatiModCreditosModificar"
+                    AplicarActualizacionCliente.Autorizado = True
                     Me.Close()
             End Select
         Else

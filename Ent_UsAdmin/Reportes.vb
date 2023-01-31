@@ -20,6 +20,8 @@
     Public CatListadoMaestro As New ListadoMaestro
     Public CatReporteLegal As New ReporteLegal
     Public catSolicitudesFecha As New SolicitudPorFecha
+    Public catTicketsSinCierre As New TicketsSinRecibir
+    Public catCierresRecibidos As New CierresPorFecha
 
 
     Private Sub inv_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
@@ -54,6 +56,10 @@
                 CatReporteLegal.Size = Panel1.Size
             Case "SolicitudPorFecha"
                 catSolicitudesFecha.Size = Panel1.Size
+            Case "TicketsSinCierre"
+                catTicketsSinCierre.Size = Panel1.Size
+            Case "CierresRecibidos"
+                catCierresRecibidos.Size = Panel1.Size
         End Select
         Panel1.Size = Me.Size
         RadPanorama1.Size = Me.Size
@@ -296,6 +302,7 @@
         catCreditosEnMora.Visible = False
         catValorCartera.Visible = False
         catRetiros.Visible = False
+        catCierresRecibidos.Visible = False
         CatMoraNiveles.Visible = False
         catPagosHoy.Visible = False
         catTicketsDetalle.Visible = True
@@ -304,6 +311,7 @@
         CatListadoMaestro.Visible = False
         CatReporteLegal.Visible = False
         catSolicitudesFecha.Visible = False
+        catTicketsSinCierre.Visible = False
         catTicketsDetalle.Size = Panel1.Size
         catTicketsDetalle.Location = New System.Drawing.Point(0, 0)
         catTicketsDetalle.WindowState = FormWindowState.Normal
@@ -326,10 +334,12 @@
         catCreditosEnMora.Visible = False
         CatMoraNiveles.Visible = False
         catValorCartera.Visible = False
+        catCierresRecibidos.Visible = False
         catPagosHoy.Visible = False
         catRetiros.Visible = False
         catDesembolsos.Visible = True
         CatListadoMaestro.Visible = False
+        catTicketsSinCierre.Visible = False
         CatReporteLegal.Visible = False
         catSolicitudesFecha.Visible = False
         catDesembolsos.TopLevel = False
@@ -355,11 +365,13 @@
         catValorCartera.Visible = False
         catCreditosEnMora.Visible = False
         catRetiros.Visible = False
+        catCierresRecibidos.Visible = False
         catPagosHoy.Visible = False
         CatMoraNiveles.Visible = False
         CatReporteLegal.Visible = False
         catSolicitudesFecha.Visible = False
         CatListadoMaestro.Visible = True
+        catTicketsSinCierre.Visible = False
         CatListadoMaestro.TopLevel = False
 
         CatListadoMaestro.Size = Panel1.Size
@@ -381,6 +393,7 @@
         catValorCartera.Visible = False
         catCreditosEnMora.Visible = False
         catPagosHoy.Visible = False
+        catCierresRecibidos.Visible = False
         CatMoraNiveles.Visible = False
         catRetiros.Visible = True
         catRetiros.Visible = True
@@ -388,6 +401,7 @@
         catRetiros.TopLevel = False
         CatListadoMaestro.Visible = False
         CatReporteLegal.Visible = False
+        catTicketsSinCierre.Visible = False
         catSolicitudesFecha.Visible = False
         catRetiros.Size = Panel1.Size
         catRetiros.Location = New System.Drawing.Point(0, 0)
@@ -413,8 +427,10 @@
         catValorCartera.Visible = False
         CatMoraNiveles.Visible = False
         catPagosHoy.Visible = False
+        catCierresRecibidos.Visible = False
         catRetiros.Visible = False
         CatTickets.Visible = True
+        catTicketsSinCierre.Visible = False
         CatTickets.TopLevel = False
         CatListadoMaestro.Visible = False
         CatReporteLegal.Visible = False
@@ -442,7 +458,8 @@
                 tile_group_retiros.Visibility = Telerik.WinControls.ElementVisibility.Visible
             End If
         Next
-
+        RadPanorama1.Visible = True
+        RadPanorama1.BringToFront()
     End Sub
 
     Private Sub RadLiveTileElement2_Click(sender As Object, e As EventArgs) Handles RadLiveTileElement2.Click
@@ -457,7 +474,9 @@
         catPagosHoy.Visible = True
         catPagosHoy.Visible = True
         catPagosHoy.TopLevel = False
+        catCierresRecibidos.Visible = False
         CatListadoMaestro.Visible = False
+        catTicketsSinCierre.Visible = False
         CatReporteLegal.Visible = False
         catSolicitudesFecha.Visible = False
         catPagosHoy.Size = Panel1.Size
@@ -484,9 +503,10 @@
         CatReporteLegal.Visible = False
         catSolicitudesFecha.Visible = False
         catCreditosEnMora.Visible = True
+        catCierresRecibidos.Visible = False
         catCreditosEnMora.Visible = True
         catCreditosEnMora.TopLevel = False
-
+        catTicketsSinCierre.Visible = False
         catCreditosEnMora.Size = Panel1.Size
         catCreditosEnMora.Location = New System.Drawing.Point(0, 0)
         catCreditosEnMora.WindowState = FormWindowState.Normal
@@ -513,7 +533,8 @@
         catValorCartera.Visible = True
         catValorCartera.Visible = True
         catValorCartera.TopLevel = False
-
+        catCierresRecibidos.Visible = False
+        catTicketsSinCierre.Visible = False
         catValorCartera.Size = Panel1.Size
         catValorCartera.Location = New System.Drawing.Point(0, 0)
         catValorCartera.WindowState = FormWindowState.Normal
@@ -535,8 +556,9 @@
         CatMoraNiveles.Visible = False
         catRetiros.Visible = False
         catSolicitudesFecha.Visible = False
+        catCierresRecibidos.Visible = False
         CatListadoMaestro.Visible = False
-
+        catTicketsSinCierre.Visible = False
         CatReporteLegal.Visible = True
         CatReporteLegal.Size = Panel1.Size
         CatReporteLegal.Location = New System.Drawing.Point(0, 0)
@@ -560,8 +582,9 @@
         CatMoraNiveles.Visible = False
         catRetiros.Visible = False
         CatListadoMaestro.Visible = False
-
+        catCierresRecibidos.Visible = False
         CatReporteLegal.Visible = False
+        catTicketsSinCierre.Visible = False
         catSolicitudesFecha.Visible = True
         catSolicitudesFecha.Size = Panel1.Size
         catSolicitudesFecha.Location = New System.Drawing.Point(0, 0)
@@ -570,6 +593,59 @@
         catSolicitudesFecha.TopLevel = False
         ventanapanel = "SolicitudPorFecha"
         Panel1.Controls.Add(catSolicitudesFecha)
+        Panel1.Visible = True
+
+        RadPanorama1.Visible = False
+    End Sub
+
+    Private Sub RadLiveTileElement7_Click(sender As Object, e As EventArgs) Handles RadLiveTileElement7.Click
+        catDesembolsos.Visible = False
+        CatTickets.Visible = False
+        catTicketsDetalle.Visible = False
+        catValorCartera.Visible = False
+        catCreditosEnMora.Visible = False
+        catPagosHoy.Visible = False
+        CatMoraNiveles.Visible = False
+        catRetiros.Visible = False
+        CatListadoMaestro.Visible = False
+        catCierresRecibidos.Visible = False
+        CatReporteLegal.Visible = False
+        catSolicitudesFecha.Visible = False
+        catTicketsSinCierre.Visible = True
+        catTicketsSinCierre.Size = Panel1.Size
+        catTicketsSinCierre.Location = New System.Drawing.Point(0, 0)
+        catTicketsSinCierre.WindowState = FormWindowState.Normal
+
+        catTicketsSinCierre.TopLevel = False
+        ventanapanel = "TicketsSinCierre"
+        Panel1.Controls.Add(catTicketsSinCierre)
+        Panel1.Visible = True
+
+        RadPanorama1.Visible = False
+    End Sub
+
+    Private Sub RadTileElement4_Click(sender As Object, e As EventArgs) Handles RadTileElement4.Click
+        catDesembolsos.Visible = False
+        CatTickets.Visible = False
+        catTicketsDetalle.Visible = False
+        catValorCartera.Visible = False
+        catCreditosEnMora.Visible = False
+        catPagosHoy.Visible = False
+        CatMoraNiveles.Visible = False
+        catRetiros.Visible = False
+        CatListadoMaestro.Visible = False
+
+        CatReporteLegal.Visible = False
+        catSolicitudesFecha.Visible = False
+        catTicketsSinCierre.Visible = False
+        catCierresRecibidos.Visible = True
+        catCierresRecibidos.Size = Panel1.Size
+        catCierresRecibidos.Location = New System.Drawing.Point(0, 0)
+        catCierresRecibidos.WindowState = FormWindowState.Normal
+
+        catCierresRecibidos.TopLevel = False
+        ventanapanel = "CierresRecibidos"
+        Panel1.Controls.Add(catCierresRecibidos)
         Panel1.Visible = True
 
         RadPanorama1.Visible = False

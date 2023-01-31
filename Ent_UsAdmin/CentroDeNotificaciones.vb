@@ -330,6 +330,13 @@ Public Class CentroDeNotificaciones
                         Exit For
 
                     End If
+                    If lblTipo.Text = "ActualizarCliente" Then
+                        AplicarActualizacionCliente.idActualizacion = sender.tag
+                        AplicarActualizacionCliente.idNotificacion = sender.name
+                        AplicarActualizacionCliente.Show()
+                        Exit For
+
+                    End If
                 End If
 
 

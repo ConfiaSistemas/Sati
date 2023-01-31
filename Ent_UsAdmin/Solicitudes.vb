@@ -4,6 +4,11 @@ Imports System.Threading.Tasks
 
 Public Class Solicitudes
     Dim consultaSolicitudes
+    Dim dataSolicitudes As DataTable
+    Dim adapterSolicitudes As SqlDataAdapter
+    Dim estadoFiltro As String
+    Dim consultaEstado As String
+    Dim consultaEmpleadoAsignado As String
     Private Sub btn_agregar_Click(sender As Object, e As EventArgs) Handles btn_agregar.Click
         Levantar_Solicitud.Show()
     End Sub
@@ -34,7 +39,9 @@ Public Class Solicitudes
         cargarSolicitudes()
     End Sub
     Public Async Sub cargarSolicitudes()
-        dtimpuestos.Rows.Clear()
+        '  dtimpuestos.Rows.Clear()
+        dtimpuestos.DataSource = Nothing
+
         dtimpuestos.ScrollBars = ScrollBars.None
         BunifuMaterialTextbox1.Enabled = False
         BunifuThinButton22.Enabled = False
@@ -50,49 +57,61 @@ Public Class Solicitudes
         Panel2.Location = New Point((Me.Size.Width / 2) + (Panel2.Width / 2) - 200, (Me.Height / 2) + (Panel2.Height / 2) - 200)
 
         Await Task.Factory.StartNew(Sub()
-                                        Dim strimpuestos As String
-                                        iniciarconexionempresa()
-                                        If EmpleadoAsignado <> 0 Then
+                                        Me.Invoke(Sub()
+                                                      Dim strimpuestos As String
+                                                      iniciarconexionempresa()
+                                                      'If EmpleadoAsignado <> 0 Then
 
-                                            strimpuestos = "select id,nombre,fecha,monto,estado,tipo, from Solicitud inner join tipo where idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "' order by nombre"
-                                        Else
-                                            strimpuestos = "select id,nombre,fecha,monto,estado,tipo from Solicitud order by nombre asc"
-                                        End If
+                                                      '    strimpuestos = "select id,nombre,fecha,monto,estado,tipo, from Solicitud inner join tipo where idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "' order by nombre"
+                                                      'Else
+                                                      '    strimpuestos = "select id,nombre,fecha,monto,estado,tipo from Solicitud order by nombre asc"
+                                                      'End If
 
-                                        If Combofiltro.Text = "Por Nombre" Then
+                                                      If Combofiltro.Text = "Por Nombre" Then
 
-                                            If EmpleadoAsignado <> 0 Then
-                                                consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,solicitud.estado,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.nombre like '%" & BunifuMaterialTextbox1.Text & "%' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
+                                                          If EmpleadoAsignado <> 0 Then
+                                                              consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,Format(asce.Monto,'C','es-mx') as Monto,Format(asce.MontoAutorizado,'C','es-mx') as 'Monto Autorizado',asce.nombretipo as Tipo,asce.interes as 'Interés',asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado,asce.tipo from
+(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,solicitud.estado,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.nombre like '%" & BunifuMaterialTextbox1.Text & "%' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
 (select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
 (select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
-                                                ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where nombre like '%" & BunifuMaterialTextbox1.Text & "%' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
-                                            Else
-                                                consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,solicitud.estado,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.nombre like '%" & BunifuMaterialTextbox1.Text & "%'  ) asce inner join
+                                                              ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where nombre like '%" & BunifuMaterialTextbox1.Text & "%' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
+                                                          Else
+                                                              consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,Format(asce.Monto,'C','es-mx') as Monto,Format(asce.MontoAutorizado,'C','es-mx') as 'Monto Autorizado',asce.nombretipo as Tipo,Format(asce.interes,'C','es-mx') as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.Estado,asce.tipo from
+(select Solicitud.id,Solicitud.Nombre,solicitud.estado,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.nombre like '%" & BunifuMaterialTextbox1.Text & "%'  ) asce inner join
 (select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
 (select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.Nombre asc"
-                                                ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where nombre like '%" & BunifuMaterialTextbox1.Text & "%' "
-                                            End If
-                                        End If
+                                                              ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where nombre like '%" & BunifuMaterialTextbox1.Text & "%' "
+                                                          End If
+                                                      End If
 
-                                        Dim ejec = New SqlCommand(consultaSolicitudes)
-                                        ejec.Connection = conexionempresa
-                                        Dim id, nombre, valor, factor, tipo As String
+                                                      'Dim ejec = New SqlCommand(consultaSolicitudes)
+                                                      'ejec.Connection = conexionempresa
+                                                      'Dim id, nombre, valor, factor, tipo As String
 
-                                        Dim myreaderimpuestos As SqlDataReader = ejec.ExecuteReader()
-                                        While myreaderimpuestos.Read
-                                            id = myreaderimpuestos("id")
-                                            nombre = myreaderimpuestos("nombre")
-                                            If IsDBNull(myreaderimpuestos("MontoAutorizado")) Then
-                                                valor = 0
-                                            Else
-                                                valor = myreaderimpuestos("MontoAutorizado")
-                                            End If
-                                            dtimpuestos.Rows.Add(id, nombre, myreaderimpuestos("fecha"), FormatCurrency(myreaderimpuestos("Monto"), 2), FormatCurrency(valor, 2), myreaderimpuestos("nombretipo"), myreaderimpuestos("gestor"), myreaderimpuestos("promotor"), myreaderimpuestos("estado"), myreaderimpuestos("tipo"))
-                                        End While
-                                        myreaderimpuestos.Close()
+                                                      'Dim myreaderimpuestos As SqlDataReader = ejec.ExecuteReader()
+                                                      'While myreaderimpuestos.Read
+                                                      '    id = myreaderimpuestos("id")
+                                                      '    nombre = myreaderimpuestos("nombre")
+                                                      '    If IsDBNull(myreaderimpuestos("MontoAutorizado")) Then
+                                                      '        valor = 0
+                                                      '    Else
+                                                      '        valor = myreaderimpuestos("MontoAutorizado")
+                                                      '    End If
+                                                      '    dtimpuestos.Rows.Add(id, nombre, myreaderimpuestos("fecha"), FormatCurrency(myreaderimpuestos("Monto"), 2), FormatCurrency(valor, 2), myreaderimpuestos("nombretipo"), myreaderimpuestos("gestor"), myreaderimpuestos("promotor"), myreaderimpuestos("estado"), myreaderimpuestos("tipo"))
+                                                      'End While
+                                                      'myreaderimpuestos.Close()
+                                                      adapterSolicitudes = New SqlDataAdapter(consultaSolicitudes, conexionempresa)
+                                                      dataSolicitudes = New DataTable
+                                                      adapterSolicitudes.Fill(dataSolicitudes)
+
+
+                                                  End Sub)
+
+
                                     End Sub)
+        dtimpuestos.DataSource = dataSolicitudes
+        dtimpuestos.Columns(10).Visible = False
+
         'Try
         BunifuMaterialTextbox1.Enabled = True
         BunifuThinButton22.Enabled = True
@@ -100,6 +119,7 @@ Public Class Solicitudes
         Combofiltro.Enabled = True
         dtimpuestos.Visible = True
         Panel2.Visible = False
+
         dtimpuestos.ScrollBars = ScrollBars.Both
         ' Catch ex As Exception
         '  MessageBox.Show(ex.Message)
@@ -109,23 +129,23 @@ Public Class Solicitudes
 
     Private Sub VerificarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerificarToolStripMenuItem.Click
         DatosVerificacion.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
-        DatosVerificacion.tipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(9).Value
+        DatosVerificacion.tipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(10).Value
         DatosVerificacion.Show()
     End Sub
 
 
     Private Sub dtimpuestos_SelectionChanged(sender As Object, e As EventArgs) Handles dtimpuestos.SelectionChanged
-        If dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(8).Value = "E" Then
+        If dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(9).Value = "E" Then
             dtimpuestos.ContextMenuStrip = ContextMenuVerificar
-        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(8).Value = "I" Then
+        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(9).Value = "I" Then
             dtimpuestos.ContextMenuStrip = ContextMenuIncompleto
-        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(8).Value = "V" Then
+        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(9).Value = "V" Then
             dtimpuestos.ContextMenuStrip = ContextMenuAprobacion
-        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(8).Value = "A" Then
+        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(9).Value = "A" Then
             dtimpuestos.ContextMenuStrip = ContextMenuAprobado
-        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(8).Value = "R" Then
+        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(9).Value = "R" Then
             dtimpuestos.ContextMenuStrip = ContextMenuAprobado
-        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(8).Value = "N" Then
+        ElseIf dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(9).Value = "N" Then
             dtimpuestos.ContextMenuStrip = ContextMenuIncompleto
         Else
 
@@ -136,7 +156,7 @@ Public Class Solicitudes
 
     Private Sub SeguimientoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SeguimientoToolStripMenuItem.Click
         DatosSolicitud.idSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(0).Value
-        DatosSolicitud.tipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(9).Value
+        DatosSolicitud.tipoSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(10).Value
         DatosSolicitud.nombreSolicitud = dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(1).Value
         DatosSolicitud.Show()
     End Sub
@@ -189,99 +209,119 @@ Public Class Solicitudes
                 End If
 
             Case "Rechazadas"
-                If EmpleadoAsignado <> 0 Then
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,solicitud.estado,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'R' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
-                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'R' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
-                Else
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'R' ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.nombre asc"
-                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'R' "
-                End If
-                cargarSolicitudes()
+                '                If EmpleadoAsignado <> 0 Then
+                ''                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo AS tIPO,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                ''(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,solicitud.estado,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'R' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
+                ''(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                ''(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
+                ''                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'R' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
+                ''                Else
+                ''                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                ''(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'R' ) asce inner join
+                ''(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                ''(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.nombre asc"
+                '                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'R' "
+                '                End If
+                consultaEstado = "where Estado ='R'"
+
+
             Case "Autorizadas"
-                If EmpleadoAsignado <> 0 Then
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,solicitud.estado,Solicitud.Tipo,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'A' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
-                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'A' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
-                Else
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'A' ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.nombre asc"
-                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'A' "
-                End If
-                cargarSolicitudes()
+                '                If EmpleadoAsignado <> 0 Then
+                '                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                '(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,solicitud.estado,Solicitud.Tipo,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'A' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
+                '(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
+                '                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'A' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
+                '                Else
+                '                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                '(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'A' ) asce inner join
+                '(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.nombre asc"
+                '                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'A' "
+                '                End If
+                consultaEstado = "where Estado ='A'"
+
             Case "En Espera"
-                If EmpleadoAsignado <> 0 Then
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'E' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
-                    ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'E' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
-                Else
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'E'  ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.nombre asc"
-                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'E' "
-                End If
-                cargarSolicitudes()
+                '                If EmpleadoAsignado <> 0 Then
+                '                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                '(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'E' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
+                '(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
+                '                    ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'E' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
+                '                Else
+                '                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                '(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'E'  ) asce inner join
+                '(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.nombre asc"
+                '                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'E' "
+                '                End If
+                consultaEstado = "where Estado ='E'"
+
             Case "Verificadas"
-                If EmpleadoAsignado <> 0 Then
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'V' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
-                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'V' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
-                Else
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'V'  ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.nombre asc"
-                    ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'V' "
+                '                If EmpleadoAsignado <> 0 Then
+                '                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                '(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'V' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
+                '(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
+                '                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'V' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
+                '                Else
+                '                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                '(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'V'  ) asce inner join
+                '(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.nombre asc"
+                '                    ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'V' "
 
-                End If
-                cargarSolicitudes()
+                '                End If
+                consultaEstado = "where Estado ='V'"
+
             Case "Todas"
-                If EmpleadoAsignado <> 0 Then
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where  ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
-                    ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where  ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
-                Else
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id  ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.Nombre asc"
-                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud "
-                End If
+                'If EmpleadoAsignado <> 0 Then
+                '                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                '(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where  ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
+                '(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
+                '                    ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where  ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
+                '                Else
+                '                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                '(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id  ) asce inner join
+                '(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.Nombre asc"
+                '                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud "
+                '                End If
+                consultaEstado = ""
 
-                cargarSolicitudes()
+
             Case "Incompletas"
-                If EmpleadoAsignado <> 0 Then
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'I' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
-                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'V' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
-                Else
-                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo,gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
-(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'I'  ) asce inner join
-(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
-(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.nombre asc"
-                    ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'V' "
+                '                If EmpleadoAsignado <> 0 Then
+                '                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                '(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'I' and ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) asce inner join
+                '(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id"
+                '                    'consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'V' and ( idpromotor = '" & EmpleadoAsignado & "' or idgestor = '" & EmpleadoAsignado & "')"
+                '                Else
+                '                    consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,asce.Monto,asce.MontoAutorizado,asce.Tipo,asce.nombretipo as Tipo,asce.interes as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.estado from
+                '(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id where solicitud.estado = 'I'  ) asce inner join
+                '(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+                '(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id order by asce.nombre asc"
+                '                    ' consultaSolicitudes = "select id,nombre,fecha,monto,estado,tipo from Solicitud where estado = 'V' "
 
-                End If
-                cargarSolicitudes()
+                '                End If
+
+                consultaEstado = "where Estado ='I'"
+
+
         End Select
+        If EmpleadoAsignado <> 0 Then
+            consultaEmpleadoAsignado = "  where  ( solicitud.idpromotor = '" & EmpleadoAsignado & "' or solicitud.idgestor = '" & EmpleadoAsignado & "' ) "
+        Else
+            consultaEmpleadoAsignado = ""
+        End If
+        consultaSolicitudes = "select asce.id,asce.nombre,asce.Fecha,Format(asce.Monto,'C','es-mx') as Monto,Format(asce.MontoAutorizado,'C','es-mx') as 'Monto Autorizado',asce.nombretipo as Tipo,Format(asce.interes,'C','es-mx') as 'Interés',gestores.Nombre  as Gestor,promotores.Nombre as Promotor,asce.Estado,asce.tipo from
+(select Solicitud.id,Solicitud.Nombre,Solicitud.Fecha,Solicitud.Monto,Solicitud.MontoAutorizado,Solicitud.Tipo,solicitud.estado,TiposDeCredito.Nombre as nombretipo,Solicitud.IdPromotor,Solicitud.IdGestor,solicitud.interes from Solicitud inner join TiposDeCredito on Solicitud.Tipo = TiposDeCredito.id " & consultaEmpleadoAsignado & "  ) asce inner join
+(select * from Empleados where Tipo = 'G') gestores on asce.IdGestor = gestores.id inner join
+(select * from Empleados where Tipo = 'P') promotores on asce.IdPromotor = promotores.id " & consultaEstado & " order  by asce.nombre asc"
+        cargarSolicitudes()
+        '  If estadoFiltro <> "" Then
     End Sub
 
     Private Sub BunifuMaterialTextbox1_OnValueChanged(sender As Object, e As EventArgs) Handles BunifuMaterialTextbox1.OnValueChanged

@@ -76,6 +76,16 @@ Public Class login
             TipoEquipo = ""
             ' MessageBox.Show("No se encontró el valor leyenda configurado, se recomienda revisar la configuración")
         End Try
+        Try
+            ImpresoraTarjetas = iniFile.Sections(0).Keys("Tarjetas").Value
+
+        Catch ex As System.ArgumentOutOfRangeException
+            ImpresoraTarjetas = ""
+            'MessageBox.Show("No se encontró el valor leyenda configurado, se recomienda revisar la configuración")
+        Catch ex As NullReferenceException
+            ImpresoraTarjetas = ""
+            ' MessageBox.Show("No se encontró el valor leyenda configurado, se recomienda revisar la configuración")
+        End Try
 
         ImpresoraPredeterminada = iniFile.Sections(0).Keys("Impresora").Value
         'noCaja = iniFile.Sections(0).Keys("Caja").Value
@@ -266,6 +276,17 @@ Public Class login
         ipser = iniFile.Sections(0).Keys(0).Value
         bdser = iniFile.Sections(0).Keys(1).Value
         ImpresoraPredeterminada = iniFile.Sections(0).Keys("Impresora").Value
+        Try
+            ImpresoraTarjetas = iniFile.Sections(0).Keys("Tarjetas").Value
+
+        Catch ex As System.ArgumentOutOfRangeException
+            ImpresoraTarjetas = ""
+            'MessageBox.Show("No se encontró el valor leyenda configurado, se recomienda revisar la configuración")
+        Catch ex As NullReferenceException
+            ImpresoraTarjetas = ""
+            ' MessageBox.Show("No se encontró el valor leyenda configurado, se recomienda revisar la configuración")
+        End Try
+
         'noCaja = iniFile.Sections(0).Keys("Caja").Value
         'Impresora = iniFile.Sections(0).Keys("Impresora").Value
         iniciarconexion()

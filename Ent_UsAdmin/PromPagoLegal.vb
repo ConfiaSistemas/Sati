@@ -405,7 +405,7 @@ ISNULL((select top 1 Interes from CalendarioLegales where Estado = 'V' and idCre
     Private Sub BackgroundPromesaNotificacion_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundPromesaNotificacion.RunWorkerCompleted
         ncargando.Close()
         CrearNotificacionDescuentoPromesa.idPromesa = idPromesa
-        CrearNotificacionDescuentoPromesa.tipoCredito = TipoCredito
+        CrearNotificacionDescuentoPromesa.tipoCredito = "L"
         CrearNotificacionDescuentoPromesa.ShowDialog()
 
         If creada Then
@@ -424,7 +424,7 @@ ISNULL((select top 1 Interes from CalendarioLegales where Estado = 'V' and idCre
         Else
             If MessageBox.Show("¿La notificación no fue creada, desea volver a intentarlo?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                 CrearNotificacionDescuentoPromesa.idPromesa = idPromesa
-                CrearNotificacionDescuentoPromesa.tipoCredito = TipoCredito
+                CrearNotificacionDescuentoPromesa.tipoCredito = "L"
                 CrearNotificacionDescuentoPromesa.ShowDialog()
                 If creada Then
                     Task.Factory.StartNew(Sub()
@@ -473,7 +473,7 @@ ISNULL((select top 1 Interes from CalendarioLegales where Estado = 'V' and idCre
     Private Sub BackgroundConsultaPromesaPendiente_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundConsultaPromesaPendiente.RunWorkerCompleted
         ncargando.Close()
         CrearNotificacionDescuentoPromesa.idPromesa = idPromesa
-        CrearNotificacionDescuentoPromesa.tipoCredito = TipoCredito
+        CrearNotificacionDescuentoPromesa.tipoCredito = "L"
         CrearNotificacionDescuentoPromesa.ShowDialog()
 
         If creada Then
@@ -492,7 +492,7 @@ ISNULL((select top 1 Interes from CalendarioLegales where Estado = 'V' and idCre
         Else
             If MessageBox.Show("¿La notificación no fue creada, desea volver a intentarlo?", "SATI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                 CrearNotificacionDescuentoPromesa.idPromesa = idPromesa
-                CrearNotificacionDescuentoPromesa.tipoCredito = TipoCredito
+                CrearNotificacionDescuentoPromesa.tipoCredito = "L"
                 CrearNotificacionDescuentoPromesa.ShowDialog()
                 If creada Then
                     Task.Factory.StartNew(Sub()

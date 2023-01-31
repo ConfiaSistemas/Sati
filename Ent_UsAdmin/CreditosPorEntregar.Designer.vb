@@ -35,6 +35,7 @@ Partial Class CreditosPorEntregar
         Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Monto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Plazo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cobrado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -65,7 +66,7 @@ Partial Class CreditosPorEntregar
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtimpuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dtimpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtimpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Fecha, Me.Nombre, Me.Monto, Me.Plazo, Me.Cobrado, Me.Estado, Me.Ciudad})
+        Me.dtimpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Fecha, Me.Nombre, Me.Monto, Me.Tipo, Me.Plazo, Me.Cobrado, Me.Estado, Me.Ciudad})
         Me.dtimpuestos.DoubleBuffered = True
         Me.dtimpuestos.EnableHeadersVisualStyles = False
         Me.dtimpuestos.HeaderBgColor = System.Drawing.Color.DarkSlateGray
@@ -156,6 +157,13 @@ Partial Class CreditosPorEntregar
         Me.Monto.ReadOnly = True
         Me.Monto.Width = 70
         '
+        'Tipo
+        '
+        Me.Tipo.HeaderText = "Tipo"
+        Me.Tipo.Name = "Tipo"
+        Me.Tipo.ReadOnly = True
+        Me.Tipo.Width = 55
+        '
         'Plazo
         '
         Me.Plazo.HeaderText = "Plazo"
@@ -213,6 +221,7 @@ Partial Class CreditosPorEntregar
     Friend WithEvents Fecha As DataGridViewTextBoxColumn
     Friend WithEvents Nombre As DataGridViewTextBoxColumn
     Friend WithEvents Monto As DataGridViewTextBoxColumn
+    Friend WithEvents Tipo As DataGridViewTextBoxColumn
     Friend WithEvents Plazo As DataGridViewTextBoxColumn
     Friend WithEvents Cobrado As DataGridViewTextBoxColumn
     Friend WithEvents Estado As DataGridViewTextBoxColumn

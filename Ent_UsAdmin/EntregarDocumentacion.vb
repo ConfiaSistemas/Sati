@@ -36,8 +36,11 @@ Public Class EntregarDocumentacion
     Public estadoCredito As String
     Dim fechaCredito As Date
     Dim fechaPimerPago As Date
-
+    Dim moto As Boolean = False
+    Dim motoCapturada As Boolean = False
+    Public MotoActualizada As Boolean = False
     Private Sub EntregarDocumentacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         BunifuImageButton1.Image = Nothing
         CheckForIllegalCrossThreadCalls = False
         BunifuImageButton1.AllowDrop = True
@@ -51,7 +54,7 @@ Public Class EntregarDocumentacion
         Dim comando As SqlCommand
         Dim consulta As String
         Dim reader As SqlDataReader
-        consulta = "select credito.Nombre,Monto,Pagare,Integrantes,PagoIndividual,credito.Plazo,credito.Interes,IdSolicitud,idCLiente,Clientes.Nombre + ' ' + Clientes.ApellidoPaterno + ' ' + Clientes.ApellidoMaterno as nombreCliente,tiposdecredito.modalidad,Credito.estado from Credito inner join Clientes on Credito.IdCliente = Clientes.id inner join tiposdecredito on credito.tipo = tiposdecredito.id where credito.id = '" & idCreditoAentregar & "'"
+        consulta = "select credito.Nombre,Monto,Pagare,Integrantes,PagoIndividual,credito.Plazo,credito.Interes,IdSolicitud,idCLiente,Clientes.Nombre + ' ' + Clientes.ApellidoPaterno + ' ' + Clientes.ApellidoMaterno as nombreCliente,tiposdecredito.modalidad,tiposdecredito.moto,Credito.estado from Credito inner join Clientes on Credito.IdCliente = Clientes.id inner join tiposdecredito on credito.tipo = tiposdecredito.id where credito.id = '" & idCreditoAentregar & "'"
         comando = New SqlCommand
         comando.Connection = conexionempresa
         comando.CommandText = consulta
@@ -69,8 +72,24 @@ Public Class EntregarDocumentacion
             NombreClienteAentregar = reader("nombreCliente")
             modalidadAentregar = reader("modalidad")
             estadoCredito = reader("Estado")
+            moto = reader("moto")
         End While
         reader.Close()
+
+        Dim comandoMotoCapturada As SqlCommand
+        Dim consultaMotoCapturada As String
+        consultaMotoCapturada = "if exists(select Motocicletas.id from Motocicletas inner join credito on Motocicletas.idCredito= Credito.id inner join DocumentosCredito on Credito.id= DocumentosCredito.IdCredito where motocicletas.idCredito='" & idCreditoAentregar & "' and documentoscredito.tipo = (select id from tiposdedocumentosSolicitud where nombre='Motocicleta'))
+begin
+select 1
+end
+else
+select 0"
+        comandoMotoCapturada = New SqlCommand
+        comandoMotoCapturada.Connection = conexionempresa
+        comandoMotoCapturada.CommandText = consultaMotoCapturada
+        motoCapturada = comandoMotoCapturada.ExecuteScalar
+
+
         Dim consultaIntegrantes As String
         consultaIntegrantes = "select IdCliente,Clientes.Nombre+' '+Clientes.ApellidoPaterno +' '+ Clientes.ApellidoMaterno as nombreCliente,montoAutorizado from DatosSolicitud inner join Clientes on DatosSolicitud.IdCliente = Clientes.id where datossolicitud.idsolicitud = '" & idSolicitudAentregar & "' and datossolicitud.estado = 'A'"
         adapterIntegrantes = New SqlDataAdapter(consultaIntegrantes, conexionempresa)
@@ -85,6 +104,15 @@ Public Class EntregarDocumentacion
         Cargando.Close()
         Select Case estadoCredito
             Case "E"
+                If moto Then
+                    If motoCapturada Then
+                        btnMoto.Visible = False
+                    Else
+                        btnMoto.Visible = True
+                    End If
+                Else
+                    btnMoto.Visible = False
+                End If
                 BunifuThinButton22.Visible = True
                 BunifuThinButton21.Visible = False
                 btn_Procesar.Visible = False
@@ -95,6 +123,15 @@ Public Class EntregarDocumentacion
                 btn_activar.Visible = False
 
             Case "P"
+                If moto Then
+                    If motoCapturada Then
+                        btnMoto.Visible = False
+                    Else
+                        btnMoto.Visible = True
+                    End If
+                Else
+                    btnMoto.Visible = False
+                End If
                 BunifuThinButton22.Visible = False
                 BunifuThinButton21.Visible = True
                 btn_Procesar.Visible = True
@@ -112,6 +149,16 @@ Public Class EntregarDocumentacion
                 BunifuImageButton1.Visible = False
                 labelimagen.Visible = False
                 btn_activar.Visible = False
+            Case Else
+                BunifuThinButton22.Visible = False
+                BunifuThinButton21.Visible = True
+                btn_Procesar.Visible = True
+                BunifuThinButton24.Visible = True
+                BunifuThinButton23.Visible = False
+                BunifuImageButton1.Visible = False
+                labelimagen.Visible = False
+                btn_activar.Visible = False
+
         End Select
     End Sub
 
@@ -640,13 +687,31 @@ Sábado 09:00 a.m. a 02:00 p.m."
     End Sub
 
     Private Sub btn_activar_Click(sender As Object, e As EventArgs) Handles btn_activar.Click
-        If BunifuImageButton1.Image IsNot Nothing Then
-            Cargando.Show()
-            Cargando.MonoFlat_Label1.Text = "Activando Crédito"
-            BackgroundActivar.RunWorkerAsync()
+        If moto Then
+            If motoCapturada Then
+                If BunifuImageButton1.Image IsNot Nothing Then
+                    Cargando.Show()
+                    Cargando.MonoFlat_Label1.Text = "Activando Crédito"
+                    BackgroundActivar.RunWorkerAsync()
+                Else
+                    MessageBox.Show("Para activar el crédito es necesario cargar una imagen del cliente")
+                End If
+            Else
+                MessageBox.Show("Éste crédito contiene una motocicleta que no ha sido capturada, captúrala para proseguir")
+            End If
+
         Else
-            MessageBox.Show("Para activar el crédito es necesario cargar una imagen del cliente")
+            If BunifuImageButton1.Image IsNot Nothing Then
+                Cargando.Show()
+                Cargando.MonoFlat_Label1.Text = "Activando Crédito"
+                BackgroundActivar.RunWorkerAsync()
+            Else
+                MessageBox.Show("Para activar el crédito es necesario cargar una imagen del cliente")
+            End If
+
         End If
+
+
 
     End Sub
 
@@ -892,27 +957,13 @@ Sábado 09:00 a.m. a 02:00 p.m."
         End Try
     End Sub
 
-    Private Sub btnTarjeta_Click(sender As Object, e As EventArgs) Handles btnTarjeta.Click
-        Dim Word As Application
-        Dim Doc As Word.Document
-        Word = CreateObject("Word.Application")
-        FileCopy("C:\ConfiaAdmin\SATI\SolicitudGrupal.docx", "C:\ConfiaAdmin\SATI\TEMPDOCS\TempSolicitudGrupal.docx.docx")
-        Doc = Word.Documents.Open("C:\ConfiaAdmin\SATI\TEMPDOCS\TempSolicitudGrupal.docx.docx")
-        For Each row As DataRow In dataIntegrantes.Rows
-            Doc.Tables(1).Rows.Add()
+    Private Sub btnTarjeta_Click(sender As Object, e As EventArgs) Handles btnMoto.Click
+        CaputarMotocicleta.idCredito = idCreditoAentregar
+        CaputarMotocicleta.ShowDialog()
+        If MotoActualizada Then
+            BackgroundWorker1.RunWorkerAsync()
 
-        Next
-
-        ' Doc.Tables(1).Rows(1).Select()
-
-        'If Doc.Tables.Count >= 1 Then
-        '    With Doc.Tables(1).Cell(Row:=1, Column:=1).Range
-        '        .Delete()
-        '        .InsertBefore(Text:="Cell 1,1")
-        '    End With
-        'End If
-        Doc.Save()
-        Doc.Close()
+        End If
 
     End Sub
     Private Sub gen_qr_file(ByVal file_name As String, ByVal content As String, ByVal image_size As Integer)
@@ -981,6 +1032,18 @@ set @sql = 'select row_number() over(order by integrante) as Numero,Integrante,f
         Cargando.Show()
         Cargando.MonoFlat_Label1.Text = "Generando Calendario Grupal"
         BackgroundGrupal.RunWorkerAsync()
+
+    End Sub
+
+    Private Sub TileLayout1_Paint(sender As Object, e As PaintEventArgs)
+
+    End Sub
+
+    Private Sub TileLayout1_Paint_1(sender As Object, e As PaintEventArgs)
+
+    End Sub
+
+    Private Sub ImageStreamer1_Click(sender As Object, e As EventArgs)
 
     End Sub
 End Class

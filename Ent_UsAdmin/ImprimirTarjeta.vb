@@ -41,7 +41,7 @@ Public Class ImprimirTarjeta
 
         Try
             '  spDoc.PrintDialog = dialog.
-            spDoc.PrintDocument.PrinterSettings.PrinterName = ImpresoraPredeterminada
+            spDoc.PrintDocument.PrinterSettings.PrinterName = ImpresoraTarjetas
 
             dialog.Document = spDoc.PrintDocument
             dialog.ShowDialog()
@@ -173,7 +173,7 @@ Public Class ImprimirTarjeta
 
         Try
             '  spDoc.PrintDialog = dialog.
-            spDoc.PrintDocument.PrinterSettings.PrinterName = ImpresoraPredeterminada
+            spDoc.PrintDocument.PrinterSettings.PrinterName = ImpresoraTarjetas
 
             Dialog.Document = spDoc.PrintDocument
             Dialog.ShowDialog()

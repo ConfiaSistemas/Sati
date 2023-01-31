@@ -88,23 +88,37 @@ Partial Class InformacionSolicitud
         Me.TabPage9 = New System.Windows.Forms.TabPage()
         Me.dtPromesas = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.TabPage10 = New System.Windows.Forms.TabPage()
+        Me.MonoFlat_HeaderLabel22 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel19 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel20 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.btnCreditoTotal = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.btnMultasTotal = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.btnTotal = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.MonoFlat_HeaderLabel21 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel18 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel17 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.MonoFlat_HeaderLabel16 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.MonoFlat_HeaderLabel13 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.MonoFlat_HeaderLabel14 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnCreditoReestructura = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.btnMultasReestructura = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.btnTotalReestructura = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.MonoFlat_HeaderLabel15 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.MonoFlat_HeaderLabel10 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.MonoFlat_HeaderLabel11 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnCreditoConvenio = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.btnMultasConvenio = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.btnTotalConvenio = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.MonoFlat_HeaderLabel12 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.MonoFlat_HeaderLabel9 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.MonoFlat_HeaderLabel8 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnCreditoNormal = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.btnMultasNormal = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.btnTotalNormal = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.MonoFlat_HeaderLabel5 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.BackgroundClientes = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundSolicitud = New System.ComponentModel.BackgroundWorker()
@@ -134,20 +148,7 @@ Partial Class InformacionSolicitud
         Me.ContextMenuPromesa = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ReimprimirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackgroundConcentrado = New System.ComponentModel.BackgroundWorker()
-        Me.btnTotalNormal = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.btnTotalConvenio = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.btnTotalReestructura = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.MonoFlat_HeaderLabel16 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.MonoFlat_HeaderLabel17 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.MonoFlat_HeaderLabel18 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.MonoFlat_HeaderLabel19 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.MonoFlat_HeaderLabel20 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.btnCreditoTotal = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.btnMultasTotal = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.btnTotal = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.MonoFlat_HeaderLabel21 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
-        Me.MonoFlat_HeaderLabel22 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
+        Me.btn_Moto = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -167,13 +168,13 @@ Partial Class InformacionSolicitud
         Me.TabPage9.SuspendLayout()
         CType(Me.dtPromesas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage10.SuspendLayout()
+        Me.FlowLayoutPanel4.SuspendLayout()
         Me.FlowLayoutPanel3.SuspendLayout()
         Me.FlowLayoutPanel2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuPromesa.SuspendLayout()
-        Me.FlowLayoutPanel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -794,6 +795,176 @@ Partial Class InformacionSolicitud
         Me.TabPage10.TabIndex = 9
         Me.TabPage10.Text = "Concentrado"
         '
+        'MonoFlat_HeaderLabel22
+        '
+        Me.MonoFlat_HeaderLabel22.AutoSize = True
+        Me.MonoFlat_HeaderLabel22.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel22.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel22.Location = New System.Drawing.Point(264, 253)
+        Me.MonoFlat_HeaderLabel22.Name = "MonoFlat_HeaderLabel22"
+        Me.MonoFlat_HeaderLabel22.Size = New System.Drawing.Size(44, 20)
+        Me.MonoFlat_HeaderLabel22.TabIndex = 52
+        Me.MonoFlat_HeaderLabel22.Text = "Total"
+        '
+        'MonoFlat_HeaderLabel19
+        '
+        Me.MonoFlat_HeaderLabel19.AutoSize = True
+        Me.MonoFlat_HeaderLabel19.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel19.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel19.Location = New System.Drawing.Point(149, 253)
+        Me.MonoFlat_HeaderLabel19.Name = "MonoFlat_HeaderLabel19"
+        Me.MonoFlat_HeaderLabel19.Size = New System.Drawing.Size(57, 20)
+        Me.MonoFlat_HeaderLabel19.TabIndex = 51
+        Me.MonoFlat_HeaderLabel19.Text = "Multas"
+        '
+        'MonoFlat_HeaderLabel20
+        '
+        Me.MonoFlat_HeaderLabel20.AutoSize = True
+        Me.MonoFlat_HeaderLabel20.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel20.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel20.Location = New System.Drawing.Point(40, 253)
+        Me.MonoFlat_HeaderLabel20.Name = "MonoFlat_HeaderLabel20"
+        Me.MonoFlat_HeaderLabel20.Size = New System.Drawing.Size(60, 20)
+        Me.MonoFlat_HeaderLabel20.TabIndex = 50
+        Me.MonoFlat_HeaderLabel20.Text = "Crédito"
+        '
+        'FlowLayoutPanel4
+        '
+        Me.FlowLayoutPanel4.Controls.Add(Me.btnCreditoTotal)
+        Me.FlowLayoutPanel4.Controls.Add(Me.btnMultasTotal)
+        Me.FlowLayoutPanel4.Controls.Add(Me.btnTotal)
+        Me.FlowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.FlowLayoutPanel4.Location = New System.Drawing.Point(13, 276)
+        Me.FlowLayoutPanel4.Name = "FlowLayoutPanel4"
+        Me.FlowLayoutPanel4.Size = New System.Drawing.Size(338, 90)
+        Me.FlowLayoutPanel4.TabIndex = 49
+        '
+        'btnCreditoTotal
+        '
+        Me.btnCreditoTotal.ActiveBorderThickness = 1
+        Me.btnCreditoTotal.ActiveCornerRadius = 20
+        Me.btnCreditoTotal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnCreditoTotal.ActiveForecolor = System.Drawing.Color.White
+        Me.btnCreditoTotal.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btnCreditoTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btnCreditoTotal.BackgroundImage = CType(resources.GetObject("btnCreditoTotal.BackgroundImage"), System.Drawing.Image)
+        Me.btnCreditoTotal.ButtonText = "..."
+        Me.btnCreditoTotal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCreditoTotal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCreditoTotal.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btnCreditoTotal.IdleBorderThickness = 1
+        Me.btnCreditoTotal.IdleCornerRadius = 20
+        Me.btnCreditoTotal.IdleFillColor = System.Drawing.Color.White
+        Me.btnCreditoTotal.IdleForecolor = System.Drawing.Color.Gray
+        Me.btnCreditoTotal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnCreditoTotal.Location = New System.Drawing.Point(5, 5)
+        Me.btnCreditoTotal.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnCreditoTotal.Name = "btnCreditoTotal"
+        Me.btnCreditoTotal.Size = New System.Drawing.Size(102, 79)
+        Me.btnCreditoTotal.TabIndex = 158
+        Me.btnCreditoTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnMultasTotal
+        '
+        Me.btnMultasTotal.ActiveBorderThickness = 1
+        Me.btnMultasTotal.ActiveCornerRadius = 20
+        Me.btnMultasTotal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnMultasTotal.ActiveForecolor = System.Drawing.Color.White
+        Me.btnMultasTotal.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btnMultasTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btnMultasTotal.BackgroundImage = CType(resources.GetObject("btnMultasTotal.BackgroundImage"), System.Drawing.Image)
+        Me.btnMultasTotal.ButtonText = "..."
+        Me.btnMultasTotal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnMultasTotal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMultasTotal.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btnMultasTotal.IdleBorderThickness = 1
+        Me.btnMultasTotal.IdleCornerRadius = 20
+        Me.btnMultasTotal.IdleFillColor = System.Drawing.Color.White
+        Me.btnMultasTotal.IdleForecolor = System.Drawing.Color.Gray
+        Me.btnMultasTotal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnMultasTotal.Location = New System.Drawing.Point(117, 5)
+        Me.btnMultasTotal.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnMultasTotal.Name = "btnMultasTotal"
+        Me.btnMultasTotal.Size = New System.Drawing.Size(102, 79)
+        Me.btnMultasTotal.TabIndex = 159
+        Me.btnMultasTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnTotal
+        '
+        Me.btnTotal.ActiveBorderThickness = 1
+        Me.btnTotal.ActiveCornerRadius = 20
+        Me.btnTotal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnTotal.ActiveForecolor = System.Drawing.Color.White
+        Me.btnTotal.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btnTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btnTotal.BackgroundImage = CType(resources.GetObject("btnTotal.BackgroundImage"), System.Drawing.Image)
+        Me.btnTotal.ButtonText = "..."
+        Me.btnTotal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnTotal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTotal.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btnTotal.IdleBorderThickness = 1
+        Me.btnTotal.IdleCornerRadius = 20
+        Me.btnTotal.IdleFillColor = System.Drawing.Color.White
+        Me.btnTotal.IdleForecolor = System.Drawing.Color.Gray
+        Me.btnTotal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnTotal.Location = New System.Drawing.Point(229, 5)
+        Me.btnTotal.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnTotal.Name = "btnTotal"
+        Me.btnTotal.Size = New System.Drawing.Size(102, 79)
+        Me.btnTotal.TabIndex = 160
+        Me.btnTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'MonoFlat_HeaderLabel21
+        '
+        Me.MonoFlat_HeaderLabel21.AutoSize = True
+        Me.MonoFlat_HeaderLabel21.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel21.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel21.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel21.Location = New System.Drawing.Point(9, 216)
+        Me.MonoFlat_HeaderLabel21.Name = "MonoFlat_HeaderLabel21"
+        Me.MonoFlat_HeaderLabel21.Size = New System.Drawing.Size(44, 20)
+        Me.MonoFlat_HeaderLabel21.TabIndex = 48
+        Me.MonoFlat_HeaderLabel21.Text = "Total"
+        '
+        'MonoFlat_HeaderLabel18
+        '
+        Me.MonoFlat_HeaderLabel18.AutoSize = True
+        Me.MonoFlat_HeaderLabel18.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel18.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel18.Location = New System.Drawing.Point(264, 57)
+        Me.MonoFlat_HeaderLabel18.Name = "MonoFlat_HeaderLabel18"
+        Me.MonoFlat_HeaderLabel18.Size = New System.Drawing.Size(44, 20)
+        Me.MonoFlat_HeaderLabel18.TabIndex = 47
+        Me.MonoFlat_HeaderLabel18.Text = "Total"
+        '
+        'MonoFlat_HeaderLabel17
+        '
+        Me.MonoFlat_HeaderLabel17.AutoSize = True
+        Me.MonoFlat_HeaderLabel17.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel17.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel17.Location = New System.Drawing.Point(617, 57)
+        Me.MonoFlat_HeaderLabel17.Name = "MonoFlat_HeaderLabel17"
+        Me.MonoFlat_HeaderLabel17.Size = New System.Drawing.Size(44, 20)
+        Me.MonoFlat_HeaderLabel17.TabIndex = 46
+        Me.MonoFlat_HeaderLabel17.Text = "Total"
+        '
+        'MonoFlat_HeaderLabel16
+        '
+        Me.MonoFlat_HeaderLabel16.AutoSize = True
+        Me.MonoFlat_HeaderLabel16.BackColor = System.Drawing.Color.Transparent
+        Me.MonoFlat_HeaderLabel16.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.MonoFlat_HeaderLabel16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.MonoFlat_HeaderLabel16.Location = New System.Drawing.Point(967, 57)
+        Me.MonoFlat_HeaderLabel16.Name = "MonoFlat_HeaderLabel16"
+        Me.MonoFlat_HeaderLabel16.Size = New System.Drawing.Size(44, 20)
+        Me.MonoFlat_HeaderLabel16.TabIndex = 45
+        Me.MonoFlat_HeaderLabel16.Text = "Total"
+        '
         'MonoFlat_HeaderLabel13
         '
         Me.MonoFlat_HeaderLabel13.AutoSize = True
@@ -878,6 +1049,31 @@ Partial Class InformacionSolicitud
         Me.btnMultasReestructura.Size = New System.Drawing.Size(102, 79)
         Me.btnMultasReestructura.TabIndex = 159
         Me.btnMultasReestructura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnTotalReestructura
+        '
+        Me.btnTotalReestructura.ActiveBorderThickness = 1
+        Me.btnTotalReestructura.ActiveCornerRadius = 20
+        Me.btnTotalReestructura.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnTotalReestructura.ActiveForecolor = System.Drawing.Color.White
+        Me.btnTotalReestructura.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btnTotalReestructura.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btnTotalReestructura.BackgroundImage = CType(resources.GetObject("btnTotalReestructura.BackgroundImage"), System.Drawing.Image)
+        Me.btnTotalReestructura.ButtonText = "..."
+        Me.btnTotalReestructura.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnTotalReestructura.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTotalReestructura.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btnTotalReestructura.IdleBorderThickness = 1
+        Me.btnTotalReestructura.IdleCornerRadius = 20
+        Me.btnTotalReestructura.IdleFillColor = System.Drawing.Color.White
+        Me.btnTotalReestructura.IdleForecolor = System.Drawing.Color.Gray
+        Me.btnTotalReestructura.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnTotalReestructura.Location = New System.Drawing.Point(229, 5)
+        Me.btnTotalReestructura.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnTotalReestructura.Name = "btnTotalReestructura"
+        Me.btnTotalReestructura.Size = New System.Drawing.Size(102, 79)
+        Me.btnTotalReestructura.TabIndex = 160
+        Me.btnTotalReestructura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MonoFlat_HeaderLabel15
         '
@@ -976,6 +1172,31 @@ Partial Class InformacionSolicitud
         Me.btnMultasConvenio.TabIndex = 159
         Me.btnMultasConvenio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'btnTotalConvenio
+        '
+        Me.btnTotalConvenio.ActiveBorderThickness = 1
+        Me.btnTotalConvenio.ActiveCornerRadius = 20
+        Me.btnTotalConvenio.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnTotalConvenio.ActiveForecolor = System.Drawing.Color.White
+        Me.btnTotalConvenio.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btnTotalConvenio.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btnTotalConvenio.BackgroundImage = CType(resources.GetObject("btnTotalConvenio.BackgroundImage"), System.Drawing.Image)
+        Me.btnTotalConvenio.ButtonText = "..."
+        Me.btnTotalConvenio.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnTotalConvenio.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTotalConvenio.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btnTotalConvenio.IdleBorderThickness = 1
+        Me.btnTotalConvenio.IdleCornerRadius = 20
+        Me.btnTotalConvenio.IdleFillColor = System.Drawing.Color.White
+        Me.btnTotalConvenio.IdleForecolor = System.Drawing.Color.Gray
+        Me.btnTotalConvenio.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnTotalConvenio.Location = New System.Drawing.Point(229, 5)
+        Me.btnTotalConvenio.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnTotalConvenio.Name = "btnTotalConvenio"
+        Me.btnTotalConvenio.Size = New System.Drawing.Size(102, 79)
+        Me.btnTotalConvenio.TabIndex = 160
+        Me.btnTotalConvenio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'MonoFlat_HeaderLabel12
         '
         Me.MonoFlat_HeaderLabel12.AutoSize = True
@@ -1072,6 +1293,31 @@ Partial Class InformacionSolicitud
         Me.btnMultasNormal.Size = New System.Drawing.Size(102, 79)
         Me.btnMultasNormal.TabIndex = 159
         Me.btnMultasNormal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnTotalNormal
+        '
+        Me.btnTotalNormal.ActiveBorderThickness = 1
+        Me.btnTotalNormal.ActiveCornerRadius = 20
+        Me.btnTotalNormal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnTotalNormal.ActiveForecolor = System.Drawing.Color.White
+        Me.btnTotalNormal.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btnTotalNormal.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btnTotalNormal.BackgroundImage = CType(resources.GetObject("btnTotalNormal.BackgroundImage"), System.Drawing.Image)
+        Me.btnTotalNormal.ButtonText = "..."
+        Me.btnTotalNormal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnTotalNormal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTotalNormal.ForeColor = System.Drawing.Color.DarkBlue
+        Me.btnTotalNormal.IdleBorderThickness = 1
+        Me.btnTotalNormal.IdleCornerRadius = 20
+        Me.btnTotalNormal.IdleFillColor = System.Drawing.Color.White
+        Me.btnTotalNormal.IdleForecolor = System.Drawing.Color.Gray
+        Me.btnTotalNormal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.btnTotalNormal.Location = New System.Drawing.Point(229, 5)
+        Me.btnTotalNormal.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnTotalNormal.Name = "btnTotalNormal"
+        Me.btnTotalNormal.Size = New System.Drawing.Size(102, 79)
+        Me.btnTotalNormal.TabIndex = 160
+        Me.btnTotalNormal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MonoFlat_HeaderLabel5
         '
@@ -1369,250 +1615,14 @@ Partial Class InformacionSolicitud
         'BackgroundConcentrado
         '
         '
-        'btnTotalNormal
+        'btn_Moto
         '
-        Me.btnTotalNormal.ActiveBorderThickness = 1
-        Me.btnTotalNormal.ActiveCornerRadius = 20
-        Me.btnTotalNormal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnTotalNormal.ActiveForecolor = System.Drawing.Color.White
-        Me.btnTotalNormal.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btnTotalNormal.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.btnTotalNormal.BackgroundImage = CType(resources.GetObject("btnTotalNormal.BackgroundImage"), System.Drawing.Image)
-        Me.btnTotalNormal.ButtonText = "..."
-        Me.btnTotalNormal.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnTotalNormal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTotalNormal.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btnTotalNormal.IdleBorderThickness = 1
-        Me.btnTotalNormal.IdleCornerRadius = 20
-        Me.btnTotalNormal.IdleFillColor = System.Drawing.Color.White
-        Me.btnTotalNormal.IdleForecolor = System.Drawing.Color.Gray
-        Me.btnTotalNormal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnTotalNormal.Location = New System.Drawing.Point(229, 5)
-        Me.btnTotalNormal.Margin = New System.Windows.Forms.Padding(5)
-        Me.btnTotalNormal.Name = "btnTotalNormal"
-        Me.btnTotalNormal.Size = New System.Drawing.Size(102, 79)
-        Me.btnTotalNormal.TabIndex = 160
-        Me.btnTotalNormal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnTotalConvenio
-        '
-        Me.btnTotalConvenio.ActiveBorderThickness = 1
-        Me.btnTotalConvenio.ActiveCornerRadius = 20
-        Me.btnTotalConvenio.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnTotalConvenio.ActiveForecolor = System.Drawing.Color.White
-        Me.btnTotalConvenio.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btnTotalConvenio.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.btnTotalConvenio.BackgroundImage = CType(resources.GetObject("btnTotalConvenio.BackgroundImage"), System.Drawing.Image)
-        Me.btnTotalConvenio.ButtonText = "..."
-        Me.btnTotalConvenio.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnTotalConvenio.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTotalConvenio.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btnTotalConvenio.IdleBorderThickness = 1
-        Me.btnTotalConvenio.IdleCornerRadius = 20
-        Me.btnTotalConvenio.IdleFillColor = System.Drawing.Color.White
-        Me.btnTotalConvenio.IdleForecolor = System.Drawing.Color.Gray
-        Me.btnTotalConvenio.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnTotalConvenio.Location = New System.Drawing.Point(229, 5)
-        Me.btnTotalConvenio.Margin = New System.Windows.Forms.Padding(5)
-        Me.btnTotalConvenio.Name = "btnTotalConvenio"
-        Me.btnTotalConvenio.Size = New System.Drawing.Size(102, 79)
-        Me.btnTotalConvenio.TabIndex = 160
-        Me.btnTotalConvenio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnTotalReestructura
-        '
-        Me.btnTotalReestructura.ActiveBorderThickness = 1
-        Me.btnTotalReestructura.ActiveCornerRadius = 20
-        Me.btnTotalReestructura.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnTotalReestructura.ActiveForecolor = System.Drawing.Color.White
-        Me.btnTotalReestructura.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btnTotalReestructura.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.btnTotalReestructura.BackgroundImage = CType(resources.GetObject("btnTotalReestructura.BackgroundImage"), System.Drawing.Image)
-        Me.btnTotalReestructura.ButtonText = "..."
-        Me.btnTotalReestructura.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnTotalReestructura.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTotalReestructura.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btnTotalReestructura.IdleBorderThickness = 1
-        Me.btnTotalReestructura.IdleCornerRadius = 20
-        Me.btnTotalReestructura.IdleFillColor = System.Drawing.Color.White
-        Me.btnTotalReestructura.IdleForecolor = System.Drawing.Color.Gray
-        Me.btnTotalReestructura.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnTotalReestructura.Location = New System.Drawing.Point(229, 5)
-        Me.btnTotalReestructura.Margin = New System.Windows.Forms.Padding(5)
-        Me.btnTotalReestructura.Name = "btnTotalReestructura"
-        Me.btnTotalReestructura.Size = New System.Drawing.Size(102, 79)
-        Me.btnTotalReestructura.TabIndex = 160
-        Me.btnTotalReestructura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'MonoFlat_HeaderLabel16
-        '
-        Me.MonoFlat_HeaderLabel16.AutoSize = True
-        Me.MonoFlat_HeaderLabel16.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_HeaderLabel16.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.MonoFlat_HeaderLabel16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel16.Location = New System.Drawing.Point(967, 57)
-        Me.MonoFlat_HeaderLabel16.Name = "MonoFlat_HeaderLabel16"
-        Me.MonoFlat_HeaderLabel16.Size = New System.Drawing.Size(44, 20)
-        Me.MonoFlat_HeaderLabel16.TabIndex = 45
-        Me.MonoFlat_HeaderLabel16.Text = "Total"
-        '
-        'MonoFlat_HeaderLabel17
-        '
-        Me.MonoFlat_HeaderLabel17.AutoSize = True
-        Me.MonoFlat_HeaderLabel17.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_HeaderLabel17.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.MonoFlat_HeaderLabel17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel17.Location = New System.Drawing.Point(617, 57)
-        Me.MonoFlat_HeaderLabel17.Name = "MonoFlat_HeaderLabel17"
-        Me.MonoFlat_HeaderLabel17.Size = New System.Drawing.Size(44, 20)
-        Me.MonoFlat_HeaderLabel17.TabIndex = 46
-        Me.MonoFlat_HeaderLabel17.Text = "Total"
-        '
-        'MonoFlat_HeaderLabel18
-        '
-        Me.MonoFlat_HeaderLabel18.AutoSize = True
-        Me.MonoFlat_HeaderLabel18.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_HeaderLabel18.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.MonoFlat_HeaderLabel18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel18.Location = New System.Drawing.Point(264, 57)
-        Me.MonoFlat_HeaderLabel18.Name = "MonoFlat_HeaderLabel18"
-        Me.MonoFlat_HeaderLabel18.Size = New System.Drawing.Size(44, 20)
-        Me.MonoFlat_HeaderLabel18.TabIndex = 47
-        Me.MonoFlat_HeaderLabel18.Text = "Total"
-        '
-        'MonoFlat_HeaderLabel19
-        '
-        Me.MonoFlat_HeaderLabel19.AutoSize = True
-        Me.MonoFlat_HeaderLabel19.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_HeaderLabel19.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.MonoFlat_HeaderLabel19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel19.Location = New System.Drawing.Point(149, 253)
-        Me.MonoFlat_HeaderLabel19.Name = "MonoFlat_HeaderLabel19"
-        Me.MonoFlat_HeaderLabel19.Size = New System.Drawing.Size(57, 20)
-        Me.MonoFlat_HeaderLabel19.TabIndex = 51
-        Me.MonoFlat_HeaderLabel19.Text = "Multas"
-        '
-        'MonoFlat_HeaderLabel20
-        '
-        Me.MonoFlat_HeaderLabel20.AutoSize = True
-        Me.MonoFlat_HeaderLabel20.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_HeaderLabel20.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.MonoFlat_HeaderLabel20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel20.Location = New System.Drawing.Point(40, 253)
-        Me.MonoFlat_HeaderLabel20.Name = "MonoFlat_HeaderLabel20"
-        Me.MonoFlat_HeaderLabel20.Size = New System.Drawing.Size(60, 20)
-        Me.MonoFlat_HeaderLabel20.TabIndex = 50
-        Me.MonoFlat_HeaderLabel20.Text = "Crédito"
-        '
-        'FlowLayoutPanel4
-        '
-        Me.FlowLayoutPanel4.Controls.Add(Me.btnCreditoTotal)
-        Me.FlowLayoutPanel4.Controls.Add(Me.btnMultasTotal)
-        Me.FlowLayoutPanel4.Controls.Add(Me.btnTotal)
-        Me.FlowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.FlowLayoutPanel4.Location = New System.Drawing.Point(13, 276)
-        Me.FlowLayoutPanel4.Name = "FlowLayoutPanel4"
-        Me.FlowLayoutPanel4.Size = New System.Drawing.Size(338, 90)
-        Me.FlowLayoutPanel4.TabIndex = 49
-        '
-        'btnCreditoTotal
-        '
-        Me.btnCreditoTotal.ActiveBorderThickness = 1
-        Me.btnCreditoTotal.ActiveCornerRadius = 20
-        Me.btnCreditoTotal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnCreditoTotal.ActiveForecolor = System.Drawing.Color.White
-        Me.btnCreditoTotal.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btnCreditoTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.btnCreditoTotal.BackgroundImage = CType(resources.GetObject("btnCreditoTotal.BackgroundImage"), System.Drawing.Image)
-        Me.btnCreditoTotal.ButtonText = "..."
-        Me.btnCreditoTotal.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCreditoTotal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCreditoTotal.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btnCreditoTotal.IdleBorderThickness = 1
-        Me.btnCreditoTotal.IdleCornerRadius = 20
-        Me.btnCreditoTotal.IdleFillColor = System.Drawing.Color.White
-        Me.btnCreditoTotal.IdleForecolor = System.Drawing.Color.Gray
-        Me.btnCreditoTotal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnCreditoTotal.Location = New System.Drawing.Point(5, 5)
-        Me.btnCreditoTotal.Margin = New System.Windows.Forms.Padding(5)
-        Me.btnCreditoTotal.Name = "btnCreditoTotal"
-        Me.btnCreditoTotal.Size = New System.Drawing.Size(102, 79)
-        Me.btnCreditoTotal.TabIndex = 158
-        Me.btnCreditoTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnMultasTotal
-        '
-        Me.btnMultasTotal.ActiveBorderThickness = 1
-        Me.btnMultasTotal.ActiveCornerRadius = 20
-        Me.btnMultasTotal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnMultasTotal.ActiveForecolor = System.Drawing.Color.White
-        Me.btnMultasTotal.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btnMultasTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.btnMultasTotal.BackgroundImage = CType(resources.GetObject("btnMultasTotal.BackgroundImage"), System.Drawing.Image)
-        Me.btnMultasTotal.ButtonText = "..."
-        Me.btnMultasTotal.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnMultasTotal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMultasTotal.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btnMultasTotal.IdleBorderThickness = 1
-        Me.btnMultasTotal.IdleCornerRadius = 20
-        Me.btnMultasTotal.IdleFillColor = System.Drawing.Color.White
-        Me.btnMultasTotal.IdleForecolor = System.Drawing.Color.Gray
-        Me.btnMultasTotal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnMultasTotal.Location = New System.Drawing.Point(117, 5)
-        Me.btnMultasTotal.Margin = New System.Windows.Forms.Padding(5)
-        Me.btnMultasTotal.Name = "btnMultasTotal"
-        Me.btnMultasTotal.Size = New System.Drawing.Size(102, 79)
-        Me.btnMultasTotal.TabIndex = 159
-        Me.btnMultasTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnTotal
-        '
-        Me.btnTotal.ActiveBorderThickness = 1
-        Me.btnTotal.ActiveCornerRadius = 20
-        Me.btnTotal.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnTotal.ActiveForecolor = System.Drawing.Color.White
-        Me.btnTotal.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.btnTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.btnTotal.BackgroundImage = CType(resources.GetObject("btnTotal.BackgroundImage"), System.Drawing.Image)
-        Me.btnTotal.ButtonText = "..."
-        Me.btnTotal.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnTotal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTotal.ForeColor = System.Drawing.Color.DarkBlue
-        Me.btnTotal.IdleBorderThickness = 1
-        Me.btnTotal.IdleCornerRadius = 20
-        Me.btnTotal.IdleFillColor = System.Drawing.Color.White
-        Me.btnTotal.IdleForecolor = System.Drawing.Color.Gray
-        Me.btnTotal.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btnTotal.Location = New System.Drawing.Point(229, 5)
-        Me.btnTotal.Margin = New System.Windows.Forms.Padding(5)
-        Me.btnTotal.Name = "btnTotal"
-        Me.btnTotal.Size = New System.Drawing.Size(102, 79)
-        Me.btnTotal.TabIndex = 160
-        Me.btnTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'MonoFlat_HeaderLabel21
-        '
-        Me.MonoFlat_HeaderLabel21.AutoSize = True
-        Me.MonoFlat_HeaderLabel21.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_HeaderLabel21.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.MonoFlat_HeaderLabel21.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel21.Location = New System.Drawing.Point(9, 216)
-        Me.MonoFlat_HeaderLabel21.Name = "MonoFlat_HeaderLabel21"
-        Me.MonoFlat_HeaderLabel21.Size = New System.Drawing.Size(44, 20)
-        Me.MonoFlat_HeaderLabel21.TabIndex = 48
-        Me.MonoFlat_HeaderLabel21.Text = "Total"
-        '
-        'MonoFlat_HeaderLabel22
-        '
-        Me.MonoFlat_HeaderLabel22.AutoSize = True
-        Me.MonoFlat_HeaderLabel22.BackColor = System.Drawing.Color.Transparent
-        Me.MonoFlat_HeaderLabel22.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.MonoFlat_HeaderLabel22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MonoFlat_HeaderLabel22.Location = New System.Drawing.Point(264, 253)
-        Me.MonoFlat_HeaderLabel22.Name = "MonoFlat_HeaderLabel22"
-        Me.MonoFlat_HeaderLabel22.Size = New System.Drawing.Size(44, 20)
-        Me.MonoFlat_HeaderLabel22.TabIndex = 52
-        Me.MonoFlat_HeaderLabel22.Text = "Total"
+        Me.btn_Moto.Location = New System.Drawing.Point(493, 130)
+        Me.btn_Moto.Name = "btn_Moto"
+        Me.btn_Moto.Size = New System.Drawing.Size(27, 21)
+        Me.btn_Moto.TabIndex = 158
+        Me.btn_Moto.Text = "+"
+        Me.btn_Moto.UseVisualStyleBackColor = True
         '
         'InformacionSolicitud
         '
@@ -1620,6 +1630,7 @@ Partial Class InformacionSolicitud
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1096, 687)
+        Me.Controls.Add(Me.btn_Moto)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.lbltipo)
         Me.Controls.Add(Me.lblmontopagare)
@@ -1659,13 +1670,13 @@ Partial Class InformacionSolicitud
         CType(Me.dtPromesas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage10.ResumeLayout(False)
         Me.TabPage10.PerformLayout()
+        Me.FlowLayoutPanel4.ResumeLayout(False)
         Me.FlowLayoutPanel3.ResumeLayout(False)
         Me.FlowLayoutPanel2.ResumeLayout(False)
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuPromesa.ResumeLayout(False)
-        Me.FlowLayoutPanel4.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1781,4 +1792,5 @@ Partial Class InformacionSolicitud
     Friend WithEvents MonoFlat_HeaderLabel18 As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents MonoFlat_HeaderLabel17 As MonoFlat.MonoFlat_HeaderLabel
     Friend WithEvents MonoFlat_HeaderLabel16 As MonoFlat.MonoFlat_HeaderLabel
+    Friend WithEvents btn_Moto As Button
 End Class

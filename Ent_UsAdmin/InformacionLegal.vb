@@ -157,7 +157,7 @@ end"
 
         readerNombre.Close()
         Dim consultaClientes As String
-        consultaClientes = "if exists(select * from Legales where id = '" & idCredito & "' and idSolicitud=0 )
+        consultaClientes = "if exists(select * from Legales where id = '" & idCredito & "' and idSolicitud=0 ) 
 begin
 select Nombre,Direccion as Domicilio,CP,Colonia,Municipio,Estado,Telefono,'0' as Celular from DireccionesLegales where idLegal ='" & idCredito & "'
 end

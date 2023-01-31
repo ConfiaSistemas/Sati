@@ -228,4 +228,8 @@ Public Class Run
     Private Sub txtcmd_OnValueChanged(sender As Object, e As EventArgs) Handles txtcmd.OnValueChanged
 
     End Sub
+
+    Private Sub Run_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

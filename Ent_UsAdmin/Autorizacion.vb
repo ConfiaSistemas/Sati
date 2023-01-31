@@ -131,6 +131,9 @@ Public Class Autorizacion
             Case "SatiModClientes"
             Case "SatiModClientesVer"
             Case "SatiModClientesModificar"
+                ActualizarCliente.autorizado = False
+                Me.Close()
+
             Case "SatiModClientesAgregar"
                 Agregar_Impuestos.autorizado = False
                 Me.Close()
@@ -199,6 +202,9 @@ Public Class Autorizacion
             Case "SatiModEmpeñosAgregarSolicitud"
                 Solicitud_Boleta.autorizado = False
                 Me.Close()
+            Case "SatiModCreditosModificar"
+                CreditosAsociadosActualizarCliente.Autorizado = False
+                Me.Close()
 
         End Select
     End Sub
@@ -265,6 +271,17 @@ Public Class Autorizacion
             Case "SatiModClientes"
             Case "SatiModClientesVer"
             Case "SatiModClientesModificar"
+                If autorizado Then
+                    ActualizarCliente.autorizado = True
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                Else
+                    ActualizarCliente.autorizado = False
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                End If
             Case "SatiModClientesAgregar"
                 If autorizado Then
                     Agregar_Impuestos.autorizado = True
@@ -457,6 +474,18 @@ Public Class Autorizacion
                     txtusr.Text = ""
                     txtcontra.Text = ""
                 End If
+            Case "SatiModCreditosModificar"
+                If autorizado Then
+                    CreditosAsociadosActualizarCliente.Autorizado = True
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                Else
+                    CreditosAsociadosActualizarCliente.Autorizado = False
+                    autorizado = False
+                    txtusr.Text = ""
+                    txtcontra.Text = ""
+                End If
 
         End Select
     End Sub
@@ -580,6 +609,8 @@ Public Class Autorizacion
                 Case "SatiModClientes"
                 Case "SatiModClientesVer"
                 Case "SatiModClientesModificar"
+                    ActualizarCliente.autorizado = True
+                    Me.Close()
                 Case "SatiModClientesAgregar"
                     Agregar_Impuestos.autorizado = True
                     Me.Close()
@@ -646,6 +677,9 @@ Public Class Autorizacion
                     Me.Close()
                 Case "SatiModEmpeñosAgregarSolicitud"
                     Solicitud_Boleta.autorizado = True
+                    Me.Close()
+                Case "SatiModCreditosModificar"
+                    CreditosAsociadosActualizarCliente.Autorizado = True
                     Me.Close()
             End Select
         Else

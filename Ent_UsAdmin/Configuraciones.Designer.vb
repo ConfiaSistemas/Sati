@@ -33,6 +33,8 @@ Partial Class Configuraciones
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboImpresora = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.ComboTarjeta = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -130,7 +132,7 @@ Partial Class Configuraciones
         Me.btn_Procesar.IdleFillColor = System.Drawing.Color.White
         Me.btn_Procesar.IdleForecolor = System.Drawing.Color.Gray
         Me.btn_Procesar.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_Procesar.Location = New System.Drawing.Point(230, 335)
+        Me.btn_Procesar.Location = New System.Drawing.Point(246, 383)
         Me.btn_Procesar.Margin = New System.Windows.Forms.Padding(5)
         Me.btn_Procesar.Name = "btn_Procesar"
         Me.btn_Procesar.Size = New System.Drawing.Size(216, 38)
@@ -175,12 +177,32 @@ Partial Class Configuraciones
         Me.Label2.TabIndex = 36
         Me.Label2.Text = "Impresora Predeterminada"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(133, 309)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(105, 13)
+        Me.Label3.TabIndex = 38
+        Me.Label3.Text = "Impresora de tarjetas"
+        '
+        'ComboTarjeta
+        '
+        Me.ComboTarjeta.FormattingEnabled = True
+        Me.ComboTarjeta.Location = New System.Drawing.Point(136, 334)
+        Me.ComboTarjeta.Name = "ComboTarjeta"
+        Me.ComboTarjeta.Size = New System.Drawing.Size(379, 21)
+        Me.ComboTarjeta.TabIndex = 37
+        '
         'Configuraciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(744, 407)
+        Me.ClientSize = New System.Drawing.Size(744, 435)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.ComboTarjeta)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.ComboImpresora)
         Me.Controls.Add(Me.Label1)
@@ -210,4 +232,6 @@ Partial Class Configuraciones
     Friend WithEvents Label1 As Label
     Friend WithEvents ComboImpresora As ComboBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents ComboTarjeta As ComboBox
 End Class

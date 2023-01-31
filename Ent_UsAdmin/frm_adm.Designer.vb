@@ -27,8 +27,6 @@ Partial Class frm_adm
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btn_Actualizar = New Bunifu.Framework.UI.BunifuFlatButton()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.BunifuFlatButton7 = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.BunifuFlatButton6 = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.notificaciones = New ConfiaAdmin.MonoFlat.MonoFlat_NotificationBox()
@@ -58,8 +56,10 @@ Partial Class frm_adm
         Me.BackgroundActSesion = New System.ComponentModel.BackgroundWorker()
         Me.TimerActSesion = New System.Windows.Forms.Timer(Me.components)
         Me.imgmostrarpanel = New Bunifu.Framework.UI.BunifuImageButton()
+        Me.BunifuFlatButton7 = New Bunifu.Framework.UI.BunifuFlatButton()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.BunifuFlatButton9 = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.Panel1.SuspendLayout()
-        Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panelconfiguracion.SuspendLayout()
         Me.panelusuarios.SuspendLayout()
@@ -67,6 +67,7 @@ Partial Class frm_adm
         CType(Me.BunifuImageButton1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelmenus.SuspendLayout()
         CType(Me.imgmostrarpanel, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Timer1
@@ -76,6 +77,7 @@ Partial Class frm_adm
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.BunifuFlatButton9)
         Me.Panel1.Controls.Add(Me.btn_Actualizar)
         Me.Panel1.Controls.Add(Me.Panel4)
         Me.Panel1.Controls.Add(Me.Panel3)
@@ -110,13 +112,13 @@ Partial Class frm_adm
         Me.btn_Actualizar.IconVisible = True
         Me.btn_Actualizar.IconZoom = 90.0R
         Me.btn_Actualizar.IsTab = False
-        Me.btn_Actualizar.Location = New System.Drawing.Point(571, 7)
+        Me.btn_Actualizar.Location = New System.Drawing.Point(629, 6)
         Me.btn_Actualizar.Name = "btn_Actualizar"
         Me.btn_Actualizar.Normalcolor = System.Drawing.Color.Empty
         Me.btn_Actualizar.OnHovercolor = System.Drawing.Color.Gray
         Me.btn_Actualizar.OnHoverTextColor = System.Drawing.Color.White
         Me.btn_Actualizar.selected = False
-        Me.btn_Actualizar.Size = New System.Drawing.Size(144, 48)
+        Me.btn_Actualizar.Size = New System.Drawing.Size(135, 48)
         Me.btn_Actualizar.TabIndex = 6
         Me.btn_Actualizar.Text = "Hay una actualización"
         Me.btn_Actualizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -124,53 +126,12 @@ Partial Class frm_adm
         Me.btn_Actualizar.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Actualizar.Visible = False
         '
-        'Panel4
-        '
-        Me.Panel4.Controls.Add(Me.BunifuFlatButton7)
-        Me.Panel4.Location = New System.Drawing.Point(437, 10)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(111, 45)
-        Me.Panel4.TabIndex = 8
-        '
-        'BunifuFlatButton7
-        '
-        Me.BunifuFlatButton7.Activecolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.BunifuFlatButton7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.BunifuFlatButton7.BorderRadius = 0
-        Me.BunifuFlatButton7.ButtonText = "Grupos"
-        Me.BunifuFlatButton7.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BunifuFlatButton7.DisabledColor = System.Drawing.Color.Gray
-        Me.BunifuFlatButton7.Iconcolor = System.Drawing.Color.Transparent
-        Me.BunifuFlatButton7.Iconimage = Global.ConfiaAdmin.My.Resources.Resources.usuarios
-        Me.BunifuFlatButton7.Iconimage_right = Nothing
-        Me.BunifuFlatButton7.Iconimage_right_Selected = Nothing
-        Me.BunifuFlatButton7.Iconimage_Selected = Nothing
-        Me.BunifuFlatButton7.IconMarginLeft = 0
-        Me.BunifuFlatButton7.IconMarginRight = 0
-        Me.BunifuFlatButton7.IconRightVisible = True
-        Me.BunifuFlatButton7.IconRightZoom = 0R
-        Me.BunifuFlatButton7.IconVisible = True
-        Me.BunifuFlatButton7.IconZoom = 90.0R
-        Me.BunifuFlatButton7.IsTab = False
-        Me.BunifuFlatButton7.Location = New System.Drawing.Point(3, -3)
-        Me.BunifuFlatButton7.Name = "BunifuFlatButton7"
-        Me.BunifuFlatButton7.Normalcolor = System.Drawing.Color.Empty
-        Me.BunifuFlatButton7.OnHovercolor = System.Drawing.Color.Gray
-        Me.BunifuFlatButton7.OnHoverTextColor = System.Drawing.Color.White
-        Me.BunifuFlatButton7.selected = False
-        Me.BunifuFlatButton7.Size = New System.Drawing.Size(111, 48)
-        Me.BunifuFlatButton7.TabIndex = 5
-        Me.BunifuFlatButton7.Text = "Grupos"
-        Me.BunifuFlatButton7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BunifuFlatButton7.Textcolor = System.Drawing.Color.WhiteSmoke
-        Me.BunifuFlatButton7.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.BunifuFlatButton6)
         Me.Panel3.Location = New System.Drawing.Point(317, 12)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(111, 45)
+        Me.Panel3.Size = New System.Drawing.Size(90, 45)
         Me.Panel3.TabIndex = 7
         '
         'BunifuFlatButton6
@@ -199,7 +160,7 @@ Partial Class frm_adm
         Me.BunifuFlatButton6.OnHovercolor = System.Drawing.Color.Gray
         Me.BunifuFlatButton6.OnHoverTextColor = System.Drawing.Color.White
         Me.BunifuFlatButton6.selected = False
-        Me.BunifuFlatButton6.Size = New System.Drawing.Size(122, 48)
+        Me.BunifuFlatButton6.Size = New System.Drawing.Size(90, 48)
         Me.BunifuFlatButton6.TabIndex = 5
         Me.BunifuFlatButton6.Text = "Retiros"
         Me.BunifuFlatButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -634,6 +595,80 @@ Partial Class frm_adm
         Me.imgmostrarpanel.TabStop = False
         Me.imgmostrarpanel.Zoom = 10
         '
+        'BunifuFlatButton7
+        '
+        Me.BunifuFlatButton7.Activecolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.BunifuFlatButton7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BunifuFlatButton7.BorderRadius = 0
+        Me.BunifuFlatButton7.ButtonText = "Grupos"
+        Me.BunifuFlatButton7.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BunifuFlatButton7.DisabledColor = System.Drawing.Color.Gray
+        Me.BunifuFlatButton7.Iconcolor = System.Drawing.Color.Transparent
+        Me.BunifuFlatButton7.Iconimage = Global.ConfiaAdmin.My.Resources.Resources.usuarios
+        Me.BunifuFlatButton7.Iconimage_right = Nothing
+        Me.BunifuFlatButton7.Iconimage_right_Selected = Nothing
+        Me.BunifuFlatButton7.Iconimage_Selected = Nothing
+        Me.BunifuFlatButton7.IconMarginLeft = 0
+        Me.BunifuFlatButton7.IconMarginRight = 0
+        Me.BunifuFlatButton7.IconRightVisible = True
+        Me.BunifuFlatButton7.IconRightZoom = 0R
+        Me.BunifuFlatButton7.IconVisible = True
+        Me.BunifuFlatButton7.IconZoom = 90.0R
+        Me.BunifuFlatButton7.IsTab = False
+        Me.BunifuFlatButton7.Location = New System.Drawing.Point(3, -3)
+        Me.BunifuFlatButton7.Name = "BunifuFlatButton7"
+        Me.BunifuFlatButton7.Normalcolor = System.Drawing.Color.Empty
+        Me.BunifuFlatButton7.OnHovercolor = System.Drawing.Color.Gray
+        Me.BunifuFlatButton7.OnHoverTextColor = System.Drawing.Color.White
+        Me.BunifuFlatButton7.selected = False
+        Me.BunifuFlatButton7.Size = New System.Drawing.Size(105, 48)
+        Me.BunifuFlatButton7.TabIndex = 5
+        Me.BunifuFlatButton7.Text = "Grupos"
+        Me.BunifuFlatButton7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BunifuFlatButton7.Textcolor = System.Drawing.Color.WhiteSmoke
+        Me.BunifuFlatButton7.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.BunifuFlatButton7)
+        Me.Panel4.Location = New System.Drawing.Point(510, 12)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(102, 45)
+        Me.Panel4.TabIndex = 8
+        '
+        'BunifuFlatButton9
+        '
+        Me.BunifuFlatButton9.Activecolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.BunifuFlatButton9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BunifuFlatButton9.BorderRadius = 0
+        Me.BunifuFlatButton9.ButtonText = "Cierres"
+        Me.BunifuFlatButton9.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BunifuFlatButton9.DisabledColor = System.Drawing.Color.Gray
+        Me.BunifuFlatButton9.Iconcolor = System.Drawing.Color.Transparent
+        Me.BunifuFlatButton9.Iconimage = Global.ConfiaAdmin.My.Resources.Resources._109846
+        Me.BunifuFlatButton9.Iconimage_right = Nothing
+        Me.BunifuFlatButton9.Iconimage_right_Selected = Nothing
+        Me.BunifuFlatButton9.Iconimage_Selected = Nothing
+        Me.BunifuFlatButton9.IconMarginLeft = 0
+        Me.BunifuFlatButton9.IconMarginRight = 0
+        Me.BunifuFlatButton9.IconRightVisible = True
+        Me.BunifuFlatButton9.IconRightZoom = 0R
+        Me.BunifuFlatButton9.IconVisible = True
+        Me.BunifuFlatButton9.IconZoom = 90.0R
+        Me.BunifuFlatButton9.IsTab = False
+        Me.BunifuFlatButton9.Location = New System.Drawing.Point(413, 11)
+        Me.BunifuFlatButton9.Name = "BunifuFlatButton9"
+        Me.BunifuFlatButton9.Normalcolor = System.Drawing.Color.Empty
+        Me.BunifuFlatButton9.OnHovercolor = System.Drawing.Color.Gray
+        Me.BunifuFlatButton9.OnHoverTextColor = System.Drawing.Color.White
+        Me.BunifuFlatButton9.selected = False
+        Me.BunifuFlatButton9.Size = New System.Drawing.Size(90, 48)
+        Me.BunifuFlatButton9.TabIndex = 6
+        Me.BunifuFlatButton9.Text = "Cierres"
+        Me.BunifuFlatButton9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BunifuFlatButton9.Textcolor = System.Drawing.Color.WhiteSmoke
+        Me.BunifuFlatButton9.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        '
         'frm_adm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -653,7 +688,6 @@ Partial Class frm_adm
         Me.Text = "Confía Admin"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
-        Me.Panel4.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panelconfiguracion.ResumeLayout(False)
         Me.panelusuarios.ResumeLayout(False)
@@ -661,6 +695,7 @@ Partial Class frm_adm
         CType(Me.BunifuImageButton1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelmenus.ResumeLayout(False)
         CType(Me.imgmostrarpanel, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -681,11 +716,9 @@ Partial Class frm_adm
     Friend WithEvents btnusuarios As Bunifu.Framework.UI.BunifuFlatButton
     Friend WithEvents Panelconfiguracion As System.Windows.Forms.Panel
     Friend WithEvents btnconfiguracion As Bunifu.Framework.UI.BunifuFlatButton
-    Friend WithEvents BunifuFlatButton7 As Bunifu.Framework.UI.BunifuFlatButton
     Friend WithEvents imgmostrarpanel As Bunifu.Framework.UI.BunifuImageButton
     Friend WithEvents BunifuFlatButton5 As Bunifu.Framework.UI.BunifuFlatButton
     Friend WithEvents BunifuFlatButton8 As Bunifu.Framework.UI.BunifuFlatButton
-    Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents BunifuFlatButton6 As Bunifu.Framework.UI.BunifuFlatButton
     Friend WithEvents TimerLiberar As Timer
@@ -698,4 +731,7 @@ Partial Class frm_adm
     Friend WithEvents TimerNotificaciones As Timer
     Friend WithEvents BackgroundActSesion As System.ComponentModel.BackgroundWorker
     Friend WithEvents TimerActSesion As Timer
+    Friend WithEvents BunifuFlatButton9 As Bunifu.Framework.UI.BunifuFlatButton
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents BunifuFlatButton7 As Bunifu.Framework.UI.BunifuFlatButton
 End Class

@@ -39,6 +39,11 @@ Partial Class AgregarTipoCredito
         Me.btn_Procesar = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.lblOtroPlazo = New System.Windows.Forms.Label()
         Me.txtOtroPlazo = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.checkMotocicleta = New ConfiaAdmin.MonoFlat.MonoFlat_CheckBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtEnganche = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtApertura = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -213,7 +218,7 @@ Partial Class AgregarTipoCredito
         Me.btn_Procesar.IdleFillColor = System.Drawing.Color.White
         Me.btn_Procesar.IdleForecolor = System.Drawing.Color.Gray
         Me.btn_Procesar.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.btn_Procesar.Location = New System.Drawing.Point(210, 281)
+        Me.btn_Procesar.Location = New System.Drawing.Point(210, 346)
         Me.btn_Procesar.Margin = New System.Windows.Forms.Padding(5)
         Me.btn_Procesar.Name = "btn_Procesar"
         Me.btn_Procesar.Size = New System.Drawing.Size(216, 38)
@@ -251,12 +256,85 @@ Partial Class AgregarTipoCredito
         Me.txtOtroPlazo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtOtroPlazo.Visible = False
         '
+        'checkMotocicleta
+        '
+        Me.checkMotocicleta.Checked = False
+        Me.checkMotocicleta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.checkMotocicleta.Location = New System.Drawing.Point(460, 147)
+        Me.checkMotocicleta.Name = "checkMotocicleta"
+        Me.checkMotocicleta.Size = New System.Drawing.Size(148, 16)
+        Me.checkMotocicleta.TabIndex = 35
+        Me.checkMotocicleta.Text = "Crédito de Motocicleta"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.Location = New System.Drawing.Point(207, 253)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(56, 13)
+        Me.Label6.TabIndex = 37
+        Me.Label6.Text = "Enganche"
+        '
+        'txtEnganche
+        '
+        Me.txtEnganche.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtEnganche.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtEnganche.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        Me.txtEnganche.HintForeColor = System.Drawing.Color.White
+        Me.txtEnganche.HintText = ""
+        Me.txtEnganche.isPassword = False
+        Me.txtEnganche.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtEnganche.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtEnganche.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtEnganche.LineThickness = 3
+        Me.txtEnganche.Location = New System.Drawing.Point(210, 270)
+        Me.txtEnganche.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtEnganche.Name = "txtEnganche"
+        Me.txtEnganche.Size = New System.Drawing.Size(53, 33)
+        Me.txtEnganche.TabIndex = 36
+        Me.txtEnganche.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(299, 253)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(47, 13)
+        Me.Label7.TabIndex = 39
+        Me.Label7.Text = "Apertura"
+        '
+        'txtApertura
+        '
+        Me.txtApertura.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtApertura.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtApertura.ForeColor = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        Me.txtApertura.HintForeColor = System.Drawing.Color.White
+        Me.txtApertura.HintText = ""
+        Me.txtApertura.isPassword = False
+        Me.txtApertura.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtApertura.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtApertura.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtApertura.LineThickness = 3
+        Me.txtApertura.Location = New System.Drawing.Point(302, 270)
+        Me.txtApertura.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtApertura.Name = "txtApertura"
+        Me.txtApertura.Size = New System.Drawing.Size(53, 33)
+        Me.txtApertura.TabIndex = 38
+        Me.txtApertura.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
         'AgregarTipoCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(632, 356)
+        Me.ClientSize = New System.Drawing.Size(632, 442)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.txtApertura)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.txtEnganche)
+        Me.Controls.Add(Me.checkMotocicleta)
         Me.Controls.Add(Me.lblOtroPlazo)
         Me.Controls.Add(Me.txtOtroPlazo)
         Me.Controls.Add(Me.btn_Procesar)
@@ -299,4 +377,9 @@ Partial Class AgregarTipoCredito
     Friend WithEvents btn_Procesar As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents lblOtroPlazo As Label
     Friend WithEvents txtOtroPlazo As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents checkMotocicleta As MonoFlat.MonoFlat_CheckBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents txtEnganche As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents txtApertura As Bunifu.Framework.UI.BunifuMaterialTextbox
 End Class

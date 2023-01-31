@@ -24,6 +24,8 @@ Partial Class Agregar_Impuestos
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Agregar_Impuestos))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.RadioOp2 = New System.Windows.Forms.RadioButton()
+        Me.RadioOp1 = New System.Windows.Forms.RadioButton()
         Me.MonoFlat_HeaderLabel1 = New ConfiaAdmin.MonoFlat.MonoFlat_HeaderLabel()
         Me.EvolveControlBox1 = New ConfiaAdmin.EvolveControlBox()
         Me.txtnombre = New Bunifu.Framework.UI.BunifuMaterialTextbox()
@@ -39,18 +41,55 @@ Partial Class Agregar_Impuestos
         Me.txtTelefono = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtCelular = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.txtcurp = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.btnConsultaCurp = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.BackgroundConsultarCurp = New System.ComponentModel.BackgroundWorker()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.BackgroundAgregar = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundValidar = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundValidaExistencia = New System.ComponentModel.BackgroundWorker()
+        Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.BackgroundConsultaCurpOp2 = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.RadioOp2)
+        Me.Panel1.Controls.Add(Me.RadioOp1)
         Me.Panel1.Controls.Add(Me.MonoFlat_HeaderLabel1)
         Me.Panel1.Controls.Add(Me.EvolveControlBox1)
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(675, 36)
         Me.Panel1.TabIndex = 1
+        '
+        'RadioOp2
+        '
+        Me.RadioOp2.AutoSize = True
+        Me.RadioOp2.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.RadioOp2.Location = New System.Drawing.Point(421, 6)
+        Me.RadioOp2.Name = "RadioOp2"
+        Me.RadioOp2.Size = New System.Drawing.Size(68, 17)
+        Me.RadioOp2.TabIndex = 3
+        Me.RadioOp2.TabStop = True
+        Me.RadioOp2.Text = "Opción 2"
+        Me.RadioOp2.UseVisualStyleBackColor = True
+        '
+        'RadioOp1
+        '
+        Me.RadioOp1.AutoSize = True
+        Me.RadioOp1.Checked = True
+        Me.RadioOp1.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.RadioOp1.Location = New System.Drawing.Point(338, 6)
+        Me.RadioOp1.Name = "RadioOp1"
+        Me.RadioOp1.Size = New System.Drawing.Size(68, 17)
+        Me.RadioOp1.TabIndex = 2
+        Me.RadioOp1.TabStop = True
+        Me.RadioOp1.Text = "Opción 1"
+        Me.RadioOp1.UseVisualStyleBackColor = True
         '
         'MonoFlat_HeaderLabel1
         '
@@ -92,7 +131,7 @@ Partial Class Agregar_Impuestos
         Me.txtnombre.LineIdleColor = System.Drawing.Color.Gray
         Me.txtnombre.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtnombre.LineThickness = 3
-        Me.txtnombre.Location = New System.Drawing.Point(35, 78)
+        Me.txtnombre.Location = New System.Drawing.Point(37, 127)
         Me.txtnombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnombre.Name = "txtnombre"
         Me.txtnombre.Size = New System.Drawing.Size(171, 25)
@@ -103,7 +142,7 @@ Partial Class Agregar_Impuestos
         '
         Me.Label1.AutoSize = True
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(32, 61)
+        Me.Label1.Location = New System.Drawing.Point(34, 110)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(44, 13)
         Me.Label1.TabIndex = 7
@@ -113,7 +152,7 @@ Partial Class Agregar_Impuestos
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(264, 61)
+        Me.Label2.Location = New System.Drawing.Point(266, 110)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(84, 13)
         Me.Label2.TabIndex = 9
@@ -131,7 +170,7 @@ Partial Class Agregar_Impuestos
         Me.txtApellidoP.LineIdleColor = System.Drawing.Color.Gray
         Me.txtApellidoP.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtApellidoP.LineThickness = 3
-        Me.txtApellidoP.Location = New System.Drawing.Point(267, 78)
+        Me.txtApellidoP.Location = New System.Drawing.Point(269, 127)
         Me.txtApellidoP.Margin = New System.Windows.Forms.Padding(4)
         Me.txtApellidoP.Name = "txtApellidoP"
         Me.txtApellidoP.Size = New System.Drawing.Size(170, 25)
@@ -156,7 +195,7 @@ Partial Class Agregar_Impuestos
         Me.btn_agregar.IdleFillColor = System.Drawing.Color.White
         Me.btn_agregar.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.btn_agregar.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.btn_agregar.Location = New System.Drawing.Point(257, 275)
+        Me.btn_agregar.Location = New System.Drawing.Point(249, 287)
         Me.btn_agregar.Margin = New System.Windows.Forms.Padding(5)
         Me.btn_agregar.Name = "btn_agregar"
         Me.btn_agregar.Size = New System.Drawing.Size(207, 38)
@@ -175,7 +214,7 @@ Partial Class Agregar_Impuestos
         Me.txtApellidoM.LineIdleColor = System.Drawing.Color.Gray
         Me.txtApellidoM.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtApellidoM.LineThickness = 3
-        Me.txtApellidoM.Location = New System.Drawing.Point(469, 78)
+        Me.txtApellidoM.Location = New System.Drawing.Point(471, 127)
         Me.txtApellidoM.Margin = New System.Windows.Forms.Padding(4)
         Me.txtApellidoM.Name = "txtApellidoM"
         Me.txtApellidoM.Size = New System.Drawing.Size(170, 25)
@@ -186,7 +225,7 @@ Partial Class Agregar_Impuestos
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(466, 61)
+        Me.Label5.Location = New System.Drawing.Point(468, 110)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(86, 13)
         Me.Label5.TabIndex = 18
@@ -196,7 +235,7 @@ Partial Class Agregar_Impuestos
         '
         Me.Label6.AutoSize = True
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(33, 139)
+        Me.Label6.Location = New System.Drawing.Point(35, 188)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(108, 13)
         Me.Label6.TabIndex = 20
@@ -209,7 +248,7 @@ Partial Class Agregar_Impuestos
         Me.DateNacimiento.ForeColor = System.Drawing.Color.White
         Me.DateNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DateNacimiento.FormatCustom = Nothing
-        Me.DateNacimiento.Location = New System.Drawing.Point(36, 165)
+        Me.DateNacimiento.Location = New System.Drawing.Point(38, 214)
         Me.DateNacimiento.Name = "DateNacimiento"
         Me.DateNacimiento.Size = New System.Drawing.Size(170, 36)
         Me.DateNacimiento.TabIndex = 21
@@ -219,11 +258,11 @@ Partial Class Agregar_Impuestos
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(264, 148)
+        Me.Label3.Location = New System.Drawing.Point(34, 47)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(49, 13)
+        Me.Label3.Size = New System.Drawing.Size(32, 13)
         Me.Label3.TabIndex = 23
-        Me.Label3.Text = "Teléfono"
+        Me.Label3.Text = "Curp:"
         '
         'txtTelefono
         '
@@ -237,7 +276,7 @@ Partial Class Agregar_Impuestos
         Me.txtTelefono.LineIdleColor = System.Drawing.Color.Gray
         Me.txtTelefono.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtTelefono.LineThickness = 3
-        Me.txtTelefono.Location = New System.Drawing.Point(267, 165)
+        Me.txtTelefono.Location = New System.Drawing.Point(269, 214)
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(170, 25)
@@ -248,7 +287,7 @@ Partial Class Agregar_Impuestos
         '
         Me.Label4.AutoSize = True
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(466, 148)
+        Me.Label4.Location = New System.Drawing.Point(468, 197)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(39, 13)
         Me.Label4.TabIndex = 25
@@ -266,19 +305,144 @@ Partial Class Agregar_Impuestos
         Me.txtCelular.LineIdleColor = System.Drawing.Color.Gray
         Me.txtCelular.LineMouseHoverColor = System.Drawing.Color.Blue
         Me.txtCelular.LineThickness = 3
-        Me.txtCelular.Location = New System.Drawing.Point(469, 165)
+        Me.txtCelular.Location = New System.Drawing.Point(471, 214)
         Me.txtCelular.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCelular.Name = "txtCelular"
         Me.txtCelular.Size = New System.Drawing.Size(170, 25)
         Me.txtCelular.TabIndex = 24
         Me.txtCelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
+        'BunifuThinButton21
+        '
+        Me.BunifuThinButton21.ActiveBorderThickness = 1
+        Me.BunifuThinButton21.ActiveCornerRadius = 20
+        Me.BunifuThinButton21.ActiveFillColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.ActiveForecolor = System.Drawing.Color.White
+        Me.BunifuThinButton21.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.BunifuThinButton21.BackgroundImage = CType(resources.GetObject("BunifuThinButton21.BackgroundImage"), System.Drawing.Image)
+        Me.BunifuThinButton21.ButtonText = "Agregar"
+        Me.BunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BunifuThinButton21.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuThinButton21.ForeColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.IdleBorderThickness = 1
+        Me.BunifuThinButton21.IdleCornerRadius = 20
+        Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
+        Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton21.Location = New System.Drawing.Point(505, 426)
+        Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(5)
+        Me.BunifuThinButton21.Name = "BunifuThinButton21"
+        Me.BunifuThinButton21.Size = New System.Drawing.Size(207, 38)
+        Me.BunifuThinButton21.TabIndex = 26
+        Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'txtcurp
+        '
+        Me.txtcurp.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtcurp.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtcurp.ForeColor = System.Drawing.Color.White
+        Me.txtcurp.HintForeColor = System.Drawing.Color.White
+        Me.txtcurp.HintText = ""
+        Me.txtcurp.isPassword = False
+        Me.txtcurp.LineFocusedColor = System.Drawing.Color.Blue
+        Me.txtcurp.LineIdleColor = System.Drawing.Color.Gray
+        Me.txtcurp.LineMouseHoverColor = System.Drawing.Color.Blue
+        Me.txtcurp.LineThickness = 3
+        Me.txtcurp.Location = New System.Drawing.Point(38, 64)
+        Me.txtcurp.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtcurp.Name = "txtcurp"
+        Me.txtcurp.Size = New System.Drawing.Size(170, 25)
+        Me.txtcurp.TabIndex = 27
+        Me.txtcurp.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'btnConsultaCurp
+        '
+        Me.btnConsultaCurp.ActiveBorderThickness = 1
+        Me.btnConsultaCurp.ActiveCornerRadius = 20
+        Me.btnConsultaCurp.ActiveFillColor = System.Drawing.Color.SeaGreen
+        Me.btnConsultaCurp.ActiveForecolor = System.Drawing.Color.White
+        Me.btnConsultaCurp.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.btnConsultaCurp.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btnConsultaCurp.BackgroundImage = CType(resources.GetObject("btnConsultaCurp.BackgroundImage"), System.Drawing.Image)
+        Me.btnConsultaCurp.ButtonText = "Consultar"
+        Me.btnConsultaCurp.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnConsultaCurp.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnConsultaCurp.ForeColor = System.Drawing.Color.SeaGreen
+        Me.btnConsultaCurp.IdleBorderThickness = 1
+        Me.btnConsultaCurp.IdleCornerRadius = 20
+        Me.btnConsultaCurp.IdleFillColor = System.Drawing.Color.White
+        Me.btnConsultaCurp.IdleForecolor = System.Drawing.Color.SeaGreen
+        Me.btnConsultaCurp.IdleLineColor = System.Drawing.Color.SeaGreen
+        Me.btnConsultaCurp.Location = New System.Drawing.Point(260, 51)
+        Me.btnConsultaCurp.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnConsultaCurp.Name = "btnConsultaCurp"
+        Me.btnConsultaCurp.Size = New System.Drawing.Size(207, 38)
+        Me.btnConsultaCurp.TabIndex = 28
+        Me.btnConsultaCurp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'BackgroundConsultarCurp
+        '
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(266, 188)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(52, 13)
+        Me.Label7.TabIndex = 29
+        Me.Label7.Text = "Teléfono:"
+        '
+        'BackgroundAgregar
+        '
+        '
+        'BackgroundValidar
+        '
+        '
+        'BackgroundValidaExistencia
+        '
+        '
+        'BunifuThinButton22
+        '
+        Me.BunifuThinButton22.ActiveBorderThickness = 1
+        Me.BunifuThinButton22.ActiveCornerRadius = 20
+        Me.BunifuThinButton22.ActiveFillColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton22.ActiveForecolor = System.Drawing.Color.White
+        Me.BunifuThinButton22.ActiveLineColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton22.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.BunifuThinButton22.BackgroundImage = CType(resources.GetObject("BunifuThinButton22.BackgroundImage"), System.Drawing.Image)
+        Me.BunifuThinButton22.ButtonText = "Consultar"
+        Me.BunifuThinButton22.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BunifuThinButton22.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuThinButton22.ForeColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton22.IdleBorderThickness = 1
+        Me.BunifuThinButton22.IdleCornerRadius = 20
+        Me.BunifuThinButton22.IdleFillColor = System.Drawing.Color.White
+        Me.BunifuThinButton22.IdleForecolor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton22.IdleLineColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton22.Location = New System.Drawing.Point(502, 51)
+        Me.BunifuThinButton22.Margin = New System.Windows.Forms.Padding(5)
+        Me.BunifuThinButton22.Name = "BunifuThinButton22"
+        Me.BunifuThinButton22.Size = New System.Drawing.Size(139, 38)
+        Me.BunifuThinButton22.TabIndex = 30
+        Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.BunifuThinButton22.Visible = False
+        '
+        'BackgroundConsultaCurpOp2
+        '
+        '
         'Agregar_Impuestos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(677, 347)
+        Me.ClientSize = New System.Drawing.Size(677, 341)
+        Me.Controls.Add(Me.BunifuThinButton22)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.btnConsultaCurp)
+        Me.Controls.Add(Me.txtcurp)
+        Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtCelular)
         Me.Controls.Add(Me.Label3)
@@ -319,4 +483,16 @@ Partial Class Agregar_Impuestos
     Friend WithEvents txtTelefono As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label4 As Label
     Friend WithEvents txtCelular As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents txtcurp As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents btnConsultaCurp As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents BackgroundConsultarCurp As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Label7 As Label
+    Friend WithEvents BackgroundAgregar As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BackgroundValidar As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BackgroundValidaExistencia As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BunifuThinButton22 As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents RadioOp2 As RadioButton
+    Friend WithEvents RadioOp1 As RadioButton
+    Friend WithEvents BackgroundConsultaCurpOp2 As System.ComponentModel.BackgroundWorker
 End Class

@@ -10,10 +10,13 @@ Public Class CreditosPorEntregar
             Dim strimpuestos As String
             iniciarconexionempresa()
 
+            'strimpuestos = "select * from
+            '(select SinEntregar.*,case when sinentregar.ciudad <> '" & CiudadEmpresa & "' and Ciudad <> '' and Ciudad <> '0' and Ciudad <> '-' then 1 else  isnull((select count(id) from ticket where idCredito = SinEntregar.id and TipoDoc = '2' and estado = 'A'),0) END as Cobrado from
+            '(select credito.id,credito.Fecha,credito.Nombre,credito.Monto,credito.Plazo,credito.fechaEntrega,credito.estado,ISNULL((select Ciudad from DatosSolicitud where DatosSolicitud.IdSolicitud = Credito.IdSolicitud and DatosSolicitud.IdCliente = Credito.IdCliente),0) as Ciudad from credito  where (credito.Estado = 'E' or credito.estado = 'P') ) SinEntregar) ComisionCobrada where Cobrado = 1 "
             strimpuestos = "select * from
-(select SinEntregar.*,case when sinentregar.ciudad <> '" & CiudadEmpresa & "' and Ciudad <> '' and Ciudad <> '0' and Ciudad <> '-' then 1 else  isnull((select count(id) from ticket where idCredito = SinEntregar.id and TipoDoc = '2' and estado = 'A'),0) END as Cobrado from
-(select credito.id,credito.Fecha,credito.Nombre,credito.Monto,credito.Plazo,credito.fechaEntrega,credito.estado,ISNULL((select Ciudad from DatosSolicitud where DatosSolicitud.IdSolicitud = Credito.IdSolicitud and DatosSolicitud.IdCliente = Credito.IdCliente),0) as Ciudad from credito  where (credito.Estado = 'E' or credito.estado = 'P') ) SinEntregar) ComisionCobrada where Cobrado = 1 "
-
+(select SinEntregar.*,isnull((select count(id) from ticket where idCredito = SinEntregar.id and TipoDoc = '2'),0) as Cobrado,isnull((select count(id) from ticket where idCredito = SinEntregar.id and TipoDoc = (select id from tipodoc where nombre='Enganche Motocicleta')),0) as EngancheCobrado from
+(select credito.id,credito.Fecha,credito.Nombre,credito.Monto,credito.Plazo,TiposDeCredito.Moto,credito.Estado,tiposdecredito.Nombre as NombreTipo,ISNULL((select Ciudad from DatosSolicitud where DatosSolicitud.IdSolicitud = Credito.IdSolicitud and DatosSolicitud.IdCliente = Credito.IdCliente),0) as Ciudad from credito inner join tiposdecredito on credito.tipo = tiposdecredito.id where (credito.Estado = 'E' or credito.estado = 'P')) SinEntregar) ComisionCobrada where (moto=1 and Cobrado=1 and EngancheCobrado=1 ) or (moto=0 and Cobrado=1 and EngancheCobrado=0 ) 
+"
             Dim ejec = New SqlCommand(strimpuestos)
             ejec.Connection = conexionempresa
             Dim id, nombre, valor, factor, tipo As String
@@ -23,7 +26,7 @@ Public Class CreditosPorEntregar
                 id = myreaderimpuestos("id")
                 nombre = myreaderimpuestos("nombre")
 
-                dtimpuestos.Rows.Add(id, myreaderimpuestos("fecha"), nombre, FormatCurrency(myreaderimpuestos("Monto"), 2), myreaderimpuestos("Plazo"), myreaderimpuestos("Cobrado"), myreaderimpuestos("Estado"), myreaderimpuestos("ciudad"))
+                dtimpuestos.Rows.Add(id, myreaderimpuestos("fecha"), nombre, FormatCurrency(myreaderimpuestos("Monto"), 2), myreaderimpuestos("NombreTipo"), myreaderimpuestos("Plazo"), myreaderimpuestos("Cobrado"), myreaderimpuestos("Estado"), myreaderimpuestos("ciudad"))
             End While
             myreaderimpuestos.Close()
         Catch ex As Exception
@@ -37,7 +40,7 @@ Public Class CreditosPorEntregar
     End Sub
 
     Private Sub dtimpuestos_SelectionChanged(sender As Object, e As EventArgs) Handles dtimpuestos.SelectionChanged
-        If dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(5).Value = "1" Then
+        If dtimpuestos.Rows(dtimpuestos.CurrentRow.Index).Cells(6).Value = "1" Then
             dtimpuestos.ContextMenuStrip = ContextMenuEntregar
 
         Else

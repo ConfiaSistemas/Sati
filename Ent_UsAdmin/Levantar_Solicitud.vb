@@ -24,6 +24,8 @@ Public Class Levantar_Solicitud
     Dim usarNombre As Boolean
     Public autorizado As Boolean
     Dim correoEmpleado As String
+    Dim curp As String
+    Public continuar As Boolean
     Private Sub txtTipo_OnValueChanged(sender As Object, e As EventArgs) Handles txtTipo.OnValueChanged
 
     End Sub
@@ -297,7 +299,7 @@ Select id,nombre from empleados where tipo = 'P'"
         Dim comando As SqlCommand
         Dim consulta As String
         Dim reader As SqlDataReader
-        consulta = "select id,id,(nombre+' '+apellidoPaterno+' '+apellidoMaterno) as nombre from clientes where id = '" & txtIdCliente.Text & "'"
+        consulta = "select id,id,(nombre+' '+apellidoPaterno+' '+apellidoMaterno) as nombre,curp from clientes where id = '" & txtIdCliente.Text & "'"
         comando = New SqlCommand
         comando.Connection = conexionempresa
         comando.CommandText = consulta
@@ -306,6 +308,11 @@ Select id,nombre from empleados where tipo = 'P'"
             While reader.Read
                 idCliente = reader("id")
                 nombreCliente = reader("nombre")
+                If IsDBNull(reader("curp")) Then
+                    curp = ""
+                Else
+                    curp = reader("curp")
+                End If
             End While
 
             lblCliente.Text = nombreCliente
@@ -362,16 +369,22 @@ Select id,nombre from empleados where tipo = 'P'"
                         txtTotalMoratorios.Visible = True
                         lblTotalMoratorios.Visible = True
                     Else
-                        btn_agregar.Visible = True
-                        txtMoratorios.Visible = False
-                        lblMoratorios.Visible = False
-                        txtTotal.Visible = False
-                        lblTotal.Visible = False
-                        CheckNombre.Visible = False
-                        ComboLegal.Visible = False
-                        lblGestorLegal.Visible = False
-                        txtTotalMoratorios.Visible = False
-                        lblTotalMoratorios.Visible = False
+                        If curp = "" Then
+
+                            MessageBox.Show("Este cliente no cuenta con sus datos actualizados, favor de actualizar para continuar")
+                        Else
+                            btn_agregar.Visible = True
+                            txtMoratorios.Visible = False
+                            lblMoratorios.Visible = False
+                            txtTotal.Visible = False
+                            lblTotal.Visible = False
+                            CheckNombre.Visible = False
+                            ComboLegal.Visible = False
+                            lblGestorLegal.Visible = False
+                            txtTotalMoratorios.Visible = False
+                            lblTotalMoratorios.Visible = False
+                        End If
+
                     End If
 
 
@@ -526,9 +539,25 @@ Select id,nombre from empleados where tipo = 'P'"
                         Autorizacion.tipoAutorizacion = "SatiModSolicitudesAgregar"
                         Autorizacion.ShowDialog()
                         If autorizado Then
-                            Cargando.Show()
-                            Cargando.MonoFlat_Label1.Text = "Procesando"
-                            BackgroundWorker1.RunWorkerAsync()
+                            Dim DtGrid As DataTable
+                            DtGrid = DatagridviewToDt(dtdatos)
+                            vistPreviaSolicitud.nombre = txtNombreSolicitud.Text
+                            vistPreviaSolicitud.Monto = txtMontoTotal.Text
+                            vistPreviaSolicitud.plazo = txtplazo.Text
+                            vistPreviaSolicitud.tipo = lblTipo.Text
+                            vistPreviaSolicitud.intere = txtInteres.Text
+                            vistPreviaSolicitud.promotor = ComboPromotor.Text
+                            vistPreviaSolicitud.gestor = ComboGestor.Text
+                            vistPreviaSolicitud.dataIntegrantes = DtGrid
+                            vistPreviaSolicitud.ShowDialog()
+                            If continuar = True Then
+                                Cargando.Show()
+                                Cargando.MonoFlat_Label1.Text = "Procesando"
+                                BackgroundWorker1.RunWorkerAsync()
+                            Else
+
+                            End If
+
                         Else
                             MessageBox.Show("No fue autorizado")
                         End If
@@ -564,6 +593,24 @@ Select id,nombre from empleados where tipo = 'P'"
 
         End If
     End Sub
+
+    Private Function DatagridviewToDt(dtv As DataGridView) As DataTable
+        Dim dt As New DataTable()
+
+        'Adding the Columns.
+        For Each column As DataGridViewColumn In dtv.Columns
+            dt.Columns.Add(column.HeaderText, GetType(String))
+        Next
+
+        'Adding the Rows.
+        For Each row As DataGridViewRow In dtv.Rows
+            dt.Rows.Add()
+            For Each cell As DataGridViewCell In row.Cells
+                dt.Rows(dt.Rows.Count - 1)(cell.ColumnIndex) = cell.Value.ToString()
+            Next
+        Next
+        Return dt
+    End Function
 
     Private Sub BackgroundLegal_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundLegal.DoWork
         Try

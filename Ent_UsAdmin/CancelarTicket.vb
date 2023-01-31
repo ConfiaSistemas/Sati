@@ -25,6 +25,7 @@ Public Class CancelarTicket
         nCargando.Show()
         nCargando.MonoFlat_Label1.Text = "Consultando estado de notificación"
         nCargando.TopMost = True
+        dtDetalle.ScrollBars = ScrollBars.None
         BackgroundVerificaNotificacion.RunWorkerAsync()
 
     End Sub
@@ -360,6 +361,7 @@ when 'Reestructura' then
     End Sub
 
     Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
+        dtDetalle.ScrollBars = ScrollBars.Both
         nCargando.Close()
     End Sub
 

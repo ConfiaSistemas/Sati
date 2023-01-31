@@ -4,6 +4,7 @@ Public Class AgregarTipoCredito
     Dim insertar As Boolean
     Public autorizado As Boolean
     Dim plazo As Integer
+
     Private Sub btn_Procesar_Click(sender As Object, e As EventArgs) Handles btn_Procesar.Click
         Autorizacion.tipoAutorizacion = "SatiModTiposCreditosAgregar"
         Autorizacion.ShowDialog()
@@ -19,7 +20,8 @@ Public Class AgregarTipoCredito
                 End If
 
                 Dim consulta As String
-                consulta = "Insert into TiposDecredito values('" & txtNombre.Text & "','" & ComboModalidad.Text & "','" & ComboTipo.Text & "','" & plazo & "','" & txtInteres.Text & "')"
+
+                consulta = "Insert into TiposDecredito values('" & txtNombre.Text & "','" & ComboModalidad.Text & "','" & ComboTipo.Text & "','" & plazo & "','" & txtInteres.Text & "','" & checkMotocicleta.Checked & "','" & txtEnganche.Text & "','" & txtApertura.Text & "')"
                 comando = New SqlCommand
                 comando.Connection = conexionempresa
                 comando.CommandText = consulta
@@ -95,4 +97,6 @@ Public Class AgregarTipoCredito
             txtOtroPlazo.Visible = False
         End If
     End Sub
+
+
 End Class

@@ -19,6 +19,7 @@ Public Class InformacionSolicitud
     Dim estado As String
     Dim adapterPromesas As SqlDataAdapter
     Dim dataPromesas As DataTable
+    Dim moto As Boolean = False
     Private Sub InformacionSolicitud_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Panel2.Size = New Size(51, 85)
         Panel2.Location = New Drawing.Point(Me.Width - Panel2.Width, TabControl1.Location.Y - Panel2.Height)
@@ -35,7 +36,7 @@ Public Class InformacionSolicitud
         Dim comandoCredito As SqlCommand
         Dim readerCredito As SqlDataReader
 
-        consultaCredito = "select format(FechaEntrega,'dd-MM-yy') as FechaEntrega,credito.Nombre,Monto,Credito.Pagare,TiposDeCredito.Nombre as tipo,credito.estado from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id where credito.id = '" & idCredito & "'"
+        consultaCredito = "select format(FechaEntrega,'dd-MM-yy') as FechaEntrega,credito.Nombre,Monto,Credito.Pagare,TiposDeCredito.Nombre as tipo,credito.estado,tiposdecredito.moto from Credito inner join TiposDeCredito on Credito.Tipo = TiposDeCredito.id where credito.id = '" & idCredito & "'"
         comandoCredito = New SqlCommand
         comandoCredito.Connection = conexionempresa
         comandoCredito.CommandText = consultaCredito
@@ -52,6 +53,7 @@ Public Class InformacionSolicitud
             lblmontopagare.Text = FormatCurrency(readerCredito("Pagare"))
             lbltipo.Text = readerCredito("tipo")
             estado = readerCredito("estado")
+            moto = readerCredito("moto")
         End While
 
         readerCredito.Close()
@@ -826,6 +828,12 @@ Gestores.Nombre as Gestor,Promotores.Nombre as Promotor,cartera.Estado from
 
     Private Sub BackgroundConcentrado_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundConcentrado.RunWorkerCompleted
         Cargando.Close()
+
+    End Sub
+
+    Private Sub btn_Moto_Click(sender As Object, e As EventArgs) Handles btn_Moto.Click
+        ConsultarMotocicleta.idCredito = idCredito
+        ConsultarMotocicleta.Show()
 
     End Sub
 End Class

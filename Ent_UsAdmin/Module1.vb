@@ -62,7 +62,7 @@ Module Module1
     Public correoEmpresa As String
     Public passwordCorreoEmpresa As String
     Public dataEmpresas As DataTable
-
+    Public ImpresoraTarjetas As String
 
     Dim exApp As New Microsoft.Office.Interop.Excel.Application
     Public exLibro As Microsoft.Office.Interop.Excel.Workbook
@@ -437,14 +437,14 @@ ByVal maximumWorkingSetSize As Integer) As Integer
 
             exHoja = Nothing
 
-
+            Return True
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error al exportar a Excel")
 
             Return False
         End Try
 
-        Return True
+
 
     End Function
 

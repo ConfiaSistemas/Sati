@@ -23,7 +23,6 @@ Partial Class Reportes
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Reportes))
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.MonoFlat_Button5 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button3 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
@@ -34,12 +33,21 @@ Partial Class Reportes
         Me.MonoFlat_Button7 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button8 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
         Me.MonoFlat_Button9 = New ConfiaAdmin.MonoFlat.MonoFlat_Button()
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1 = New Telerik.WinControls.RootRadElement()
+        Me.RadTileElement1 = New Telerik.WinControls.UI.RadTileElement()
+        Me.TileGroupElement5 = New Telerik.WinControls.UI.TileGroupElement()
+        Me.RadLiveTileElement6 = New Telerik.WinControls.UI.RadLiveTileElement()
+        Me.LiveTileFrameElement10 = New Telerik.WinControls.UI.LiveTileFrameElement()
+        Me.LiveTileFrameElement11 = New Telerik.WinControls.UI.LiveTileFrameElement()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.RadPanorama1 = New Telerik.WinControls.UI.RadPanorama()
         Me.TileGroupElement1 = New Telerik.WinControls.UI.TileGroupElement()
         Me.RadTileElement2 = New Telerik.WinControls.UI.RadTileElement()
         Me.RadLiveTileElement1 = New Telerik.WinControls.UI.RadLiveTileElement()
         Me.LiveTileFrameElement1 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.LiveTileFrameElement2 = New Telerik.WinControls.UI.LiveTileFrameElement()
+        Me.RadLiveTileElement7 = New Telerik.WinControls.UI.RadLiveTileElement()
+        Me.LiveTileFrameElement12 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.TileGroupElement2 = New Telerik.WinControls.UI.TileGroupElement()
         Me.RadTileElement3 = New Telerik.WinControls.UI.RadTileElement()
         Me.RadTileElement6 = New Telerik.WinControls.UI.RadTileElement()
@@ -50,32 +58,19 @@ Partial Class Reportes
         Me.LiveTileFrameElement5 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.LiveTileFrameElement6 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.RadLiveTileElement5 = New Telerik.WinControls.UI.RadLiveTileElement()
+        Me.LiveTileFrameElement9 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.TileGroupElement3 = New Telerik.WinControls.UI.TileGroupElement()
         Me.RadLiveTileElement4 = New Telerik.WinControls.UI.RadLiveTileElement()
         Me.LiveTileFrameElement7 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.LiveTileFrameElement8 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.tile_group_retiros = New Telerik.WinControls.UI.TileGroupElement()
         Me.RadTileElement8 = New Telerik.WinControls.UI.RadTileElement()
+        Me.RadTileElement4 = New Telerik.WinControls.UI.RadTileElement()
         Me.tile_group_legal = New Telerik.WinControls.UI.TileGroupElement()
         Me.tile_btn_cartera_legal = New Telerik.WinControls.UI.RadTileElement()
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1 = New Telerik.WinControls.RootRadElement()
-        Me.RadTileElement1 = New Telerik.WinControls.UI.RadTileElement()
-        Me.TileGroupElement5 = New Telerik.WinControls.UI.TileGroupElement()
-        Me.LiveTileFrameElement9 = New Telerik.WinControls.UI.LiveTileFrameElement()
         Me.FlowLayoutPanel1.SuspendLayout()
         CType(Me.RadPanorama1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Panel1
-        '
-        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.Location = New System.Drawing.Point(695, 199)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(72, 143)
-        Me.Panel1.TabIndex = 2
-        Me.Panel1.Visible = False
         '
         'FlowLayoutPanel1
         '
@@ -214,6 +209,79 @@ Partial Class Reportes
         Me.MonoFlat_Button9.Text = "Listado Maestro"
         Me.MonoFlat_Button9.TextAlignment = System.Drawing.StringAlignment.Center
         '
+        'object_463b1597_0fcb_4548_89e9_00c7d5dddaf1
+        '
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AccessibleDescription = "Reportes"
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AccessibleName = "Reportes"
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableBorderHighlight = True
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableElementShadow = True
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableRippleAnimation = True
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.Name = "object_463b1597_0fcb_4548_89e9_00c7d5dddaf1"
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.StretchHorizontally = True
+        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.StretchVertically = True
+        '
+        'RadTileElement1
+        '
+        Me.RadTileElement1.AutoSize = False
+        Me.RadTileElement1.Bounds = New System.Drawing.Rectangle(-1, 0, 161, 90)
+        Me.RadTileElement1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.RadTileElement1.Font = New System.Drawing.Font("Segoe UI Light", 8.0!)
+        Me.RadTileElement1.Name = "RadTileElement1"
+        Me.RadTileElement1.Row = 1
+        Me.RadTileElement1.Text = "Tickets Detalle"
+        Me.RadTileElement1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.RadTileElement1.UseCompatibleTextRendering = False
+        '
+        'TileGroupElement5
+        '
+        Me.TileGroupElement5.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.TileGroupElement5.Name = "TileGroupElement5"
+        Me.TileGroupElement5.Text = "Legal"
+        Me.TileGroupElement5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.TileGroupElement5.UseCompatibleTextRendering = False
+        '
+        'RadLiveTileElement6
+        '
+        Me.RadLiveTileElement6.Alignment = System.Drawing.ContentAlignment.TopCenter
+        Me.RadLiveTileElement6.AutoSize = False
+        Me.RadLiveTileElement6.Bounds = New System.Drawing.Rectangle(0, 0, 160, 90)
+        Me.RadLiveTileElement6.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.RadLiveTileElement6.FlipText = True
+        Me.RadLiveTileElement6.Items.AddRange(New Telerik.WinControls.RadItem() {Me.LiveTileFrameElement10, Me.LiveTileFrameElement11})
+        Me.RadLiveTileElement6.Name = "RadLiveTileElement6"
+        Me.RadLiveTileElement6.Text = "Tickets"
+        Me.RadLiveTileElement6.TextAlignment = System.Drawing.ContentAlignment.TopCenter
+        Me.RadLiveTileElement6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.RadLiveTileElement6.TextWrap = True
+        Me.RadLiveTileElement6.UseCompatibleTextRendering = False
+        '
+        'LiveTileFrameElement10
+        '
+        Me.LiveTileFrameElement10.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.LiveTileFrameElement10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LiveTileFrameElement10.Name = "LiveTileFrameElement10"
+        Me.LiveTileFrameElement10.Text = "Consulta los tickets generados en una fecha"
+        Me.LiveTileFrameElement10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.LiveTileFrameElement10.TextWrap = True
+        Me.LiveTileFrameElement10.UseCompatibleTextRendering = False
+        '
+        'LiveTileFrameElement11
+        '
+        Me.LiveTileFrameElement11.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.LiveTileFrameElement11.Name = "LiveTileFrameElement11"
+        Me.LiveTileFrameElement11.Text = "Cancela Tickets"
+        Me.LiveTileFrameElement11.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.LiveTileFrameElement11.TextWrap = True
+        Me.LiveTileFrameElement11.UseCompatibleTextRendering = False
+        '
+        'Panel1
+        '
+        Me.Panel1.Location = New System.Drawing.Point(712, 245)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(45, 100)
+        Me.Panel1.TabIndex = 5
+        '
         'RadPanorama1
         '
         Me.RadPanorama1.Groups.AddRange(New Telerik.WinControls.RadItem() {Me.TileGroupElement1, Me.TileGroupElement2, Me.TileGroupElement3, Me.tile_group_retiros, Me.tile_group_legal})
@@ -252,11 +320,11 @@ Partial Class Reportes
         'TileGroupElement1
         '
         Me.TileGroupElement1.AutoSize = False
-        Me.TileGroupElement1.Bounds = New System.Drawing.Rectangle(1, 0, 206, 240)
+        Me.TileGroupElement1.Bounds = New System.Drawing.Rectangle(1, 0, 206, 444)
         Me.TileGroupElement1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.TileGroupElement1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadTileElement2, Me.RadLiveTileElement1})
+        Me.TileGroupElement1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadTileElement2, Me.RadLiveTileElement1, Me.RadLiveTileElement7})
         Me.TileGroupElement1.Name = "TileGroupElement1"
-        Me.TileGroupElement1.RowsCount = 2
+        Me.TileGroupElement1.RowsCount = 3
         Me.TileGroupElement1.Text = "Tickets"
         Me.TileGroupElement1.TextAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.TileGroupElement1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
@@ -265,7 +333,7 @@ Partial Class Reportes
         'RadTileElement2
         '
         Me.RadTileElement2.AutoSize = False
-        Me.RadTileElement2.Bounds = New System.Drawing.Rectangle(-1, 0, 161, 90)
+        Me.RadTileElement2.Bounds = New System.Drawing.Rectangle(-1, 0, 119, 90)
         Me.RadTileElement2.Font = New System.Drawing.Font("Segoe UI Light", 8.0!)
         Me.RadTileElement2.Name = "RadTileElement2"
         Me.RadTileElement2.Row = 1
@@ -276,12 +344,15 @@ Partial Class Reportes
         Me.RadLiveTileElement1.Alignment = System.Drawing.ContentAlignment.TopCenter
         Me.RadLiveTileElement1.AutoSize = False
         Me.RadLiveTileElement1.Bounds = New System.Drawing.Rectangle(0, 0, 160, 90)
+        Me.RadLiveTileElement1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         Me.RadLiveTileElement1.FlipText = True
         Me.RadLiveTileElement1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.LiveTileFrameElement1, Me.LiveTileFrameElement2})
         Me.RadLiveTileElement1.Name = "RadLiveTileElement1"
         Me.RadLiveTileElement1.Text = "Tickets"
         Me.RadLiveTileElement1.TextAlignment = System.Drawing.ContentAlignment.TopCenter
+        Me.RadLiveTileElement1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         Me.RadLiveTileElement1.TextWrap = True
+        Me.RadLiveTileElement1.UseCompatibleTextRendering = False
         '
         'LiveTileFrameElement1
         '
@@ -295,6 +366,24 @@ Partial Class Reportes
         Me.LiveTileFrameElement2.Name = "LiveTileFrameElement2"
         Me.LiveTileFrameElement2.Text = "Cancela Tickets"
         Me.LiveTileFrameElement2.TextWrap = True
+        '
+        'RadLiveTileElement7
+        '
+        Me.RadLiveTileElement7.AutoSize = False
+        Me.RadLiveTileElement7.Bounds = New System.Drawing.Rectangle(0, 0, 160, 90)
+        Me.RadLiveTileElement7.Items.AddRange(New Telerik.WinControls.RadItem() {Me.LiveTileFrameElement12})
+        Me.RadLiveTileElement7.Name = "RadLiveTileElement7"
+        Me.RadLiveTileElement7.Row = 2
+        Me.RadLiveTileElement7.Text = "Tickets sin recibir"
+        Me.RadLiveTileElement7.TextAlignment = System.Drawing.ContentAlignment.TopCenter
+        '
+        'LiveTileFrameElement12
+        '
+        Me.LiveTileFrameElement12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LiveTileFrameElement12.Name = "LiveTileFrameElement12"
+        Me.LiveTileFrameElement12.Text = "Controla los tickets sin cierre"
+        Me.LiveTileFrameElement12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.LiveTileFrameElement12.TextWrap = True
         '
         'TileGroupElement2
         '
@@ -396,6 +485,13 @@ Partial Class Reportes
         Me.RadLiveTileElement5.TextAlignment = System.Drawing.ContentAlignment.TopCenter
         Me.RadLiveTileElement5.TransitionType = Telerik.WinControls.UI.ContentTransitionType.SlideLeft
         '
+        'LiveTileFrameElement9
+        '
+        Me.LiveTileFrameElement9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.LiveTileFrameElement9.Name = "LiveTileFrameElement9"
+        Me.LiveTileFrameElement9.Text = "Consulta las solicitudes ingresadas en una determinada fecha"
+        Me.LiveTileFrameElement9.TextWrap = True
+        '
         'TileGroupElement3
         '
         Me.TileGroupElement3.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadLiveTileElement4})
@@ -427,8 +523,9 @@ Partial Class Reportes
         '
         'tile_group_retiros
         '
-        Me.tile_group_retiros.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadTileElement8})
+        Me.tile_group_retiros.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadTileElement8, Me.RadTileElement4})
         Me.tile_group_retiros.Name = "tile_group_retiros"
+        Me.tile_group_retiros.RowsCount = 2
         Me.tile_group_retiros.Text = "Retiros"
         Me.tile_group_retiros.Visibility = Telerik.WinControls.ElementVisibility.Hidden
         '
@@ -438,6 +535,15 @@ Partial Class Reportes
         Me.RadTileElement8.Name = "RadTileElement8"
         Me.RadTileElement8.Text = "Retiros recibidos"
         Me.RadTileElement8.TextWrap = True
+        '
+        'RadTileElement4
+        '
+        Me.RadTileElement4.Font = New System.Drawing.Font("Segoe UI Light", 10.0!)
+        Me.RadTileElement4.Name = "RadTileElement4"
+        Me.RadTileElement4.Row = 1
+        Me.RadTileElement4.Text = "Cierres recibidos"
+        Me.RadTileElement4.TextOrientation = System.Windows.Forms.Orientation.Horizontal
+        Me.RadTileElement4.TextWrap = True
         '
         'tile_group_legal
         '
@@ -451,7 +557,6 @@ Partial Class Reportes
         Me.tile_group_legal.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         Me.tile_group_legal.UseCompatibleTextRendering = False
         Me.tile_group_legal.Visibility = Telerik.WinControls.ElementVisibility.Hidden
-        CType(Me.tile_group_legal.GetChildAt(0), Telerik.WinControls.Layouts.GridLayout).Enabled = True
         '
         'tile_btn_cartera_legal
         '
@@ -460,54 +565,15 @@ Partial Class Reportes
         Me.tile_btn_cartera_legal.Text = "Cartera Legal"
         Me.tile_btn_cartera_legal.TextWrap = True
         '
-        'object_463b1597_0fcb_4548_89e9_00c7d5dddaf1
-        '
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AccessibleDescription = "Reportes"
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AccessibleName = "Reportes"
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableBorderHighlight = True
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableElementShadow = True
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.EnableRippleAnimation = True
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.Name = "object_463b1597_0fcb_4548_89e9_00c7d5dddaf1"
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.StretchHorizontally = True
-        Me.object_463b1597_0fcb_4548_89e9_00c7d5dddaf1.StretchVertically = True
-        '
-        'RadTileElement1
-        '
-        Me.RadTileElement1.AutoSize = False
-        Me.RadTileElement1.Bounds = New System.Drawing.Rectangle(-1, 0, 161, 90)
-        Me.RadTileElement1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.RadTileElement1.Font = New System.Drawing.Font("Segoe UI Light", 8.0!)
-        Me.RadTileElement1.Name = "RadTileElement1"
-        Me.RadTileElement1.Row = 1
-        Me.RadTileElement1.Text = "Tickets Detalle"
-        Me.RadTileElement1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.RadTileElement1.UseCompatibleTextRendering = False
-        '
-        'TileGroupElement5
-        '
-        Me.TileGroupElement5.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.TileGroupElement5.Name = "TileGroupElement5"
-        Me.TileGroupElement5.Text = "Legal"
-        Me.TileGroupElement5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.TileGroupElement5.UseCompatibleTextRendering = False
-        '
-        'LiveTileFrameElement9
-        '
-        Me.LiveTileFrameElement9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.LiveTileFrameElement9.Name = "LiveTileFrameElement9"
-        Me.LiveTileFrameElement9.Text = "Consulta las solicitudes ingresadas en una determinada fecha"
-        Me.LiveTileFrameElement9.TextWrap = True
-        '
         'Reportes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(5, Byte), Integer), CType(CType(11, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(769, 485)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.RadPanorama1)
         Me.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Reportes"
@@ -518,7 +584,6 @@ Partial Class Reportes
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents MonoFlat_Button3 As ConfiaAdmin.MonoFlat.MonoFlat_Button
     Friend WithEvents MonoFlat_Button5 As MonoFlat.MonoFlat_Button
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
@@ -557,4 +622,11 @@ Partial Class Reportes
     Friend WithEvents tile_group_legal As Telerik.WinControls.UI.TileGroupElement
     Friend WithEvents tile_btn_cartera_legal As Telerik.WinControls.UI.RadTileElement
     Friend WithEvents LiveTileFrameElement9 As Telerik.WinControls.UI.LiveTileFrameElement
+    Friend WithEvents RadLiveTileElement7 As Telerik.WinControls.UI.RadLiveTileElement
+    Friend WithEvents LiveTileFrameElement12 As Telerik.WinControls.UI.LiveTileFrameElement
+    Friend WithEvents RadLiveTileElement6 As Telerik.WinControls.UI.RadLiveTileElement
+    Friend WithEvents LiveTileFrameElement10 As Telerik.WinControls.UI.LiveTileFrameElement
+    Friend WithEvents LiveTileFrameElement11 As Telerik.WinControls.UI.LiveTileFrameElement
+    Friend WithEvents RadTileElement4 As Telerik.WinControls.UI.RadTileElement
+    Friend WithEvents Panel1 As Panel
 End Class

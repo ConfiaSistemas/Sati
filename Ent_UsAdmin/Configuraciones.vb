@@ -10,6 +10,11 @@ Public Class Configuraciones
             ComboImpresora.Items.Add(Impresoras.ToString)
         Next
         ComboImpresora.Text = ImpresoraPredeterminada
+
+        For Each Impresoras2 In PrinterSettings.InstalledPrinters
+            ComboTarjeta.Items.Add(Impresoras2.ToString)
+        Next
+        ComboTarjeta.Text = ImpresoraTarjetas
     End Sub
 
     Private Sub btn_Procesar_Click(sender As Object, e As EventArgs) Handles btn_Procesar.Click
@@ -22,6 +27,7 @@ Public Class Configuraciones
         '  section.Keys.Add("Caja", txtcaja.Text)
         section.Keys.Add("Impresora", ComboImpresora.Text)
         section.Keys.Add("Tipo", TipoEquipo)
+        section.Keys.Add("Tarjetas", ComboTarjeta.Text)
         ' Save and encrypt the file.
         file.Save("C:\ConfiaAdmin\SATI\SetConfig.ini")
 
@@ -29,6 +35,7 @@ Public Class Configuraciones
         ipser = txtIp.Text
         bdser = txtBD.Text
         ImpresoraPredeterminada = ComboImpresora.Text
+        ImpresoraTarjetas = ComboTarjeta.Text
         MessageBox.Show("Listo")
         Me.Close()
     End Sub

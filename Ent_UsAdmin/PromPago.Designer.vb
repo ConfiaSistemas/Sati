@@ -107,8 +107,8 @@ Partial Class PromPago
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.WizardAeroView).HideWelcomeImage = True
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0), Telerik.WinControls.UI.WizardAeroView).HideCompletionImage = True
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3), Telerik.WinControls.UI.WizardCommandArea).IsWelcomePage = False
-        CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3), Telerik.WinControls.UI.WizardCommandArea).IsCompletionPage = False
-        CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(1), Telerik.WinControls.UI.WizardCommandAreaButtonElement).IsFocusedWizardButton = False
+        CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3), Telerik.WinControls.UI.WizardCommandArea).IsCompletionPage = True
+        CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(1), Telerik.WinControls.UI.WizardCommandAreaButtonElement).IsFocusedWizardButton = True
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(1), Telerik.WinControls.UI.WizardCommandAreaButtonElement).Text = "Generar"
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(2), Telerik.WinControls.UI.WizardCommandAreaButtonElement).IsFocusedWizardButton = False
         CType(Me.RadWizard1.GetChildAt(0).GetChildAt(0).GetChildAt(3).GetChildAt(2), Telerik.WinControls.UI.WizardCommandAreaButtonElement).Text = "Siguiente >"
